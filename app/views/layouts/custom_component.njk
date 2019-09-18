@@ -11,14 +11,13 @@
 {% set componentNameHuman = componentName | replace("-", " ") %}
 
 {% set htmlMarkup %}
-    {{ componentName }}
   {% include componentName +"/"+ componentName +".njk" ignore missing %}
 {% endset %}
 
 {% block beforeContent %}
   {{ govukBreadcrumbs({
     "items": [
-    { text: 'ID-SK frontend', href: '/' + legacyQuery },
+    { text: 'ID-SK Frontend', href: '/' + legacyQuery },
     { text: componentNameHuman | capitalize }
     ]
   }) }}
@@ -30,10 +29,17 @@
       {% block componentName %}
         {{ componentNameHuman | capitalize }}
       {% endblock %}
+      idsk
     </h1>
+
+    {% if idskComponentData.description %}
+      <div class="govuk-inset-text">
+        {{ idskComponentData.description | safe }}
+      </div>
+    {% endif %}
   </div>
 
   {% block examples %}
-    {{ showExamples(componentName, componentNameHuman, componentData, legacyQuery) }}
+    {{ showExamples(componentName, componentNameHuman, idskComponentData, legacyQuery) }}
   {% endblock %}
 {% endblock %}

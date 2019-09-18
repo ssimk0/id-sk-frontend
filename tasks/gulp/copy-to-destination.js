@@ -12,15 +12,15 @@ const path = require('path')
 const map = require('map-stream')
 const rename = require('gulp-rename')
 
-const scssFiles = filter([configPaths.src + '**/*.scss'], { restore: true })
+const scssFiles = filter([configPaths.idsk_src + '**/*.scss'], { restore: true })
 const yamlFiles = filter([configPaths.components + '**/*.yaml'], { restore: true })
 
 gulp.task('copy-files', () => {
   return gulp.src([
-    configPaths.src + '**/*',
+    configPaths.idsk_src + '**/*',
     '!**/.DS_Store',
     '!**/*.test.js',
-    '!' + configPaths.src + 'README.md', // Don't override the existing README in /package
+    '!' + configPaths.idsk_src + 'README.md', // Don't override the existing README in /package
     '!' + configPaths.components + '**/__snapshots__/**',
     '!' + configPaths.components + '**/__snapshots__/'
   ])
@@ -60,5 +60,5 @@ gulp.task('copy-files', () => {
       path.extname = '.json'
     }))
     .pipe(yamlFiles.restore)
-    .pipe(gulp.dest(taskArguments.destination + '/govuk/'))
+    .pipe(gulp.dest(taskArguments.destination + '/idsk/'))
 })

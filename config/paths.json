@@ -12,7 +12,9 @@
   "public": "public/",
   "sassdoc": "sassdoc/",
   "src": "src/govuk/",
+    "idsk_src": "src/idsk/",
     "components": "src/govuk/components/",
+    "idsk_components": "src/idsk/components/",
   "ports": {
     "app": 3000,
     "test": 8888
