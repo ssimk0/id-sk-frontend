@@ -1,3 +1,6 @@
+// Overrides of GOV.UK fronten
+@import "overrides/all";
+
 // Import GOV.UK frontend
 @import "../govuk/settings/all";
 
@@ -11,9 +14,6 @@
 
 @import "../govuk/utilities/all";
 @import "../govuk/overrides/all";
-
-// Overrides of GOV.UK fronten
-@import "overrides/all";
 
 .idsk-class {
     font-family: $govuk-font-family-gds-transport;

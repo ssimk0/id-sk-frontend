@@ -1,0 +1,32 @@
+// ID-SK colours palette
+$_idsk-colour-palette-modern: (
+  "red": #DF3034,
+  "yellow": #FFBF47,
+  "green": #006435,
+  "blue": #005EA5,
+  "dark-blue": #003078,
+  "light-blue": #2B8CC4,
+  "purple": #2E358B,
+
+  "black": #0B0C0C,
+  "dark-grey": #6f777b,
+  "mid-grey": #BFC1C3,
+  "light-grey": #DEE0E2,
+  "white": #ffffff,
+
+  "light-purple": #6f72af,
+  "bright-purple": #912b88,
+  "pink": #d53880,
+  "light-pink": #f499be,
+  "orange": #F47738,
+  "brown": #b58840,
+  "light-green": #85994b,
+  "turquoise": #28a197,
+
+  "grey-1": #6f777b,
+  "grey-2": #bfc1c3,
+  "grey-3": #dee0e2,
+  "grey-4": #f8f8f8
+);
+// Overrides GOV.UK colours palette
+$govuk-colours: $_idsk-colour-palette-modern;
