@@ -19,7 +19,9 @@ const appViews = [
   configPaths.examples,
   configPaths.fullPageExamples,
   configPaths.components,
+  configPaths.idsk_components,
   configPaths.src,
+  configPaths.idsk_src,
   configPaths.node_modules
 ]
 
@@ -159,7 +161,7 @@ module.exports = (options) => {
   app.get('/custom-components/:custom_component', function (req, res, next) {
     // make variables available to nunjucks template
     res.locals.componentPath = req.params.custom_component
-
+    
     res.render('custom_component', function (error, html) {
       if (error) {
         next(error)
@@ -167,39 +169,6 @@ module.exports = (options) => {
         res.send(html)
       }
     })
-  })
-
-  // Component example preview
-  app.get('/components/_custom/:custom_component/:example*?/preview', function (req, res, next) {
-    // Find the data for the specified example (or the default example)
-    let componentName = req.params.custom_component
-    let requestedExampleName = req.params.example || 'default'
-
-    let previewLayout = res.locals.idskComponentData.previewLayout || 'layout'
-
-    let exampleConfig = res.locals.idskComponentData.examples.find(
-      example => example.name.replace(/ /g, '-') === requestedExampleName
-    )
-
-    if (!exampleConfig) {
-      next()
-    }
-
-    // Construct and evaluate the component with the data for this example
-    let macroName = helperFunctions.componentNameToMacroName(componentName)
-    let macroParameters = JSON.stringify(exampleConfig.data, null, '\t')
-
-    res.locals.componentView = env.renderString(
-      `{% from '_custom/${componentName}/macro.njk' import ${macroName} %}
-      {{ ${macroName}(${macroParameters}) }}`
-    )
-
-    let bodyClasses = ''
-    if (req.query.iframe) {
-      bodyClasses = 'app-iframe-in-component-preview'
-    }
-
-    res.render('component-preview', { bodyClasses, previewLayout })
   })
 
   // Component example preview
@@ -238,6 +207,7 @@ module.exports = (options) => {
   // Component example preview
   app.get('/custom-components/:custom_component/:example*?/preview', function (req, res, next) {
     // Find the data for the specified example (or the default example)
+
     let componentName = req.params.custom_component
     let requestedExampleName = req.params.example || 'default'
 
@@ -256,9 +226,10 @@ module.exports = (options) => {
     let macroParameters = JSON.stringify(exampleConfig.data, null, '\t')
 
     res.locals.componentView = env.renderString(
-      `{% from '_custom/${componentName}/macro.njk' import ${macroName} %}
+      `{% from '../../idsk/components/${componentName}/macro.njk' import ${macroName} %}
       {{ ${macroName}(${macroParameters}) }}`
     )
+
 
     let bodyClasses = ''
     if (req.query.iframe) {

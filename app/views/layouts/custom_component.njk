@@ -1,5 +1,5 @@
 {% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
-{% from "macros/showExamples.njk" import showExamples %}
+{% from "macros/showExamples.njk" import showCustomExamples %}
 
 {% extends "full-width.njk" %}
 
@@ -40,6 +40,6 @@
   </div>
 
   {% block examples %}
-    {{ showExamples(componentName, componentNameHuman, idskComponentData, legacyQuery) }}
+    {{ showCustomExamples(componentName, componentNameHuman, idskComponentData, legacyQuery) }}
   {% endblock %}
 {% endblock %}
