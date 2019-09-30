@@ -30,3 +30,14 @@ $_idsk-colour-palette-modern: (
 );
 // Overrides GOV.UK colours palette
 $govuk-colours: $_idsk-colour-palette-modern;
+
+// =========================================================
+// Generic
+// =========================================================
+
+/// Brand colour
+///
+/// @type Colour
+/// @access public
+
+$idsk-brand-colour: govuk-colour("blue") !default;

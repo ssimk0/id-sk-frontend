@@ -2,19 +2,7 @@
 @import "overrides/all";
 
 // Import GOV.UK frontend
-@import "../govuk/settings/all";
+@import "../govuk/all";
 
-@import "../govuk/tools/all";
-@import "../govuk/helpers/all";
-
-@import "../govuk/core/all";
-@import "../govuk/objects/all";
-
-@import "../govuk/components/all";
-
-@import "../govuk/utilities/all";
-@import "../govuk/overrides/all";
-
-.idsk-class {
-    font-family: $govuk-font-family-gds-transport;
-}
+// ID-SK components
+@import "components/all"
