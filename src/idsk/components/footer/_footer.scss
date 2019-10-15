@@ -12,8 +12,8 @@
   // as it'll just be the same as $govuk-footer-border.
   $govuk-footer-border-top: $govuk-border-colour;
   $govuk-footer-text: $govuk-text-colour;
-  $govuk-footer-link: $govuk-footer-text;
-  $govuk-footer-link-hover: false;
+  $govuk-footer-link: $govuk-link-colour;
+  $govuk-footer-link-hover: $govuk-focus-text-colour;
 
   @if ($govuk-use-legacy-palette) {
     // sass-lint:disable no-color-literals
