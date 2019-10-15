@@ -41,6 +41,7 @@ module.exports = (options) => {
 
   // make the function available as a filter for all templates
   env.addFilter('componentNameToMacroName', helperFunctions.componentNameToMacroName)
+  env.addFilter('idskComponentNameToMacroName', helperFunctions.idskComponentNameToMacroName)
   env.addGlobal('markdown', require('marked'))
 
   // Set view engine
@@ -222,7 +223,7 @@ module.exports = (options) => {
     }
 
     // Construct and evaluate the component with the data for this example
-    let macroName = helperFunctions.componentNameToMacroName(componentName)
+    let macroName = helperFunctions.idskComponentNameToMacroName(componentName)
     let macroParameters = JSON.stringify(exampleConfig.data, null, '\t')
 
     res.locals.componentView = env.renderString(
