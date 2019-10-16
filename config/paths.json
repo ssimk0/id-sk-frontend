@@ -5,6 +5,7 @@
       "fullPageExamples": "app/views/full-page-examples/",
       "partials": "app/views/partials/",
       "layouts": "app/views/layouts/",
+      "uvod": "app/views/uvod/",
   "config": "config/",
   "dist": "dist/",
   "node_modules": "node_modules/",

@@ -1,0 +1,43 @@
+{% extends "layout.njk" %}
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+
+{% set pageName = "Ako začať s vývojom" %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    "items": [
+    { text: 'ID-SK frontend', href: '/' + legacyQuery },
+    { text: pageName }
+    ]
+  }) }}
+{% endblock %}  
+
+{% block content %}
+  <div class="govuk-width-container">
+    <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
+
+    <span class="govuk-caption-xl">Úvod</span>
+    <h1 class="govuk-heading-xl">{{pageName}}</h1>
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+            <h2 class="govuk-heading-s">Obsah:</h2>
+            <ul class="govuk-list">
+                <li><a href="#sablona">Ako použiť šablónu ID-SK?</a></li>
+                <li><a href="#toolkit">Ako používať ID-SK front-end toolkit?</a></li>
+            </ul>
+
+            <p class="govuk-body">Ak budete chcieť vytvoriť elektronickú službu pomocou ID-SK, môžete využiť dva repozitáre dostupné na GitHube. Šablóna ponúka hlavičku, pätičku a súvisiace prvky pre elektronickú službu. Front-end toolkit ponúka webové komponenty používateľského rozhrania elektronických služieb.</p>
+
+            <h2 class="govuk-heading-m" id="">Ako použiť šablónu ID-SK?</h2>
+            <p class="govuk-body"><a href="https://id-sk.github.io/idsk_template/">Manuál pre použitie šablóny ID-SK (v angličtine)</a></p>
+            
+            <h2 class="govuk-heading-m" id="">Ako používať ID-SK front-end toolkit?</h2>
+            <p class="govuk-body"><a href="https://github.com/id-sk/idsk_frontend_toolkit">Manuál pre použitie front-end toolkit ID-SK (v angličtine)</a></p>
+        </div>
+    </div>
+
+    </main>
+  </div>
+{% endblock %}

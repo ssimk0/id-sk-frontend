@@ -11,6 +11,7 @@ const readdir = util.promisify(fs.readdir)
 const helperFunctions = require('../lib/helper-functions')
 const fileHelper = require('../lib/file-helper')
 const configPaths = require('../config/paths.json')
+const idskContentStructure = require('../config/idskContentStructure.json')
 
 // Set up views
 const appViews = [
@@ -22,7 +23,9 @@ const appViews = [
   configPaths.idsk_components,
   configPaths.src,
   configPaths.idsk_src,
-  configPaths.node_modules
+  configPaths.node_modules,
+
+  configPaths.uvod
 ]
 
 module.exports = (options) => {
@@ -98,12 +101,14 @@ module.exports = (options) => {
     const idskComponents = fileHelper.allIdskComponents
     const examples = await readdir(path.resolve(configPaths.examples))
     const fullPageExamples = fileHelper.fullPageExamples()
+    const idskItroductionContent = idskContentStructure
 
     res.render('index', {
       componentsDirectory: components,
       idskComponentsDirectory: idskComponents,
       examplesDirectory: examples,
-      fullPageExamples: fullPageExamples
+      fullPageExamples: fullPageExamples,
+      idskItroductionContent: idskItroductionContent
     })
   })
 
@@ -245,6 +250,19 @@ module.exports = (options) => {
     // Passing a random number used for the links so that they will be unique and not display as "visited"
     const randomPageHash = (Math.random() * 1000000).toFixed()
     res.render(`${req.params.example}/${req.params.action || 'index'}`, { randomPageHash }, function (error, html) {
+      if (error) {
+        next(error)
+      } else {
+        res.send(html)
+      }
+    })
+  })
+
+  // Introduction (Uvod) view
+  app.get('/uvod/:content/:action?', function (req, res, next) {
+    // Passing a random number used for the links so that they will be unique and not display as "visited"
+    const randomPageHash = (Math.random() * 1000000).toFixed()
+    res.render(`${req.params.content}/${req.params.action || 'index'}`, { randomPageHash }, function (error, html) {
       if (error) {
         next(error)
       } else {

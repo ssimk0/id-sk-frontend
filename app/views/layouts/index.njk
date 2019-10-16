@@ -1,22 +1,110 @@
 {% extends "layout.njk" %}
+{% from "accordion/macro.njk" import govukAccordion %}
 
 {% block content %}
+
   <h1 class="govuk-heading-xl">
-    ID-SK Frontend
+    ID-SK Frontend - Jednotný dizajn manuál elektronických služieb
   </h1>
 
   <div class="govuk-grid-row">
 
-    <div class="govuk-grid-column-one-third">
-      <h2 class="govuk-heading-m">ID-SK components</h2>
+    <div class="govuk-grid-column-two-thirds">
+      <p class="govuk-body-l">Manuál, ktorý má za cieľ zjednotiť používateľské rozhrania a spôsob komunikácie s používateľom pri poskytovaní elektronických služieb na Slovensku.</p>
+    </div>
+  </div>
 
-        <ul class="govuk-list">
-          {% for componentName in idskComponentsDirectory | sort %}
-              {% if componentName != '_partials' %}
-                  <li><a href="/custom-components/{{ componentName }}" class="govuk-link">{{ componentName | replace("-", " ") | capitalize }}</a></li>
-              {% endif %}
-          {% endfor %}
-        </ul>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+    {% set idskComponents %}
+      <ul class="govuk-list">
+        {% for componentName in idskComponentsDirectory | sort %}
+          <li><a href="/custom-components/{{ componentName }}" class="govuk-link">{{ componentName | replace("-", " ") | capitalize }}</a></li>
+        {% endfor %}
+      </ul>
+    {% endset %}
+
+    {% set idskItroductionContent %}
+      <ul class="govuk-list">
+        {% for pageName, pageTitle in idskItroductionContent %}
+          <li><a href="/uvod/{{ pageName }}" class="govuk-link">{{ pageTitle | replace("-", " ") | capitalize }}</a></li>
+        {% endfor %}
+      </ul>
+    {% endset %}
+
+    {{ govukAccordion({
+      "id": "default-example",
+      "classes": "myClass",
+      "attributes": {
+        "data-attribute": "value"
+      },
+      "items": [
+        {
+          "heading": {
+            "text": "Úvod"
+          },
+          "summary": {
+            "text": "Prečo dodržiavať tento manuál, ako pristupovať k novej online službe a ako vylepšovať existujúce online služby."
+          },
+          "content": {
+            "html": idskItroductionContent
+          }
+        },
+        {
+          "heading": {
+            "text": "Webové komponenty"
+          },
+          "summary": {
+            "text": "Prehľad webových komponentov, ktoré sa používajú na tvorbu elektronických služieb."
+          },
+          "content": {
+            "html": idskComponents
+          }
+        },
+        {
+          "heading": {
+            "text": "Vzory"
+          },
+          "summary": {
+            "text": "Používanie a adaptácia návrhových vzorov"
+          },
+          "content": {
+            "html": "\n"
+          }
+        },
+        {
+          "heading": {
+            "text": "Slovník"
+          },
+          "summary": {
+            "text": "Najčastejšie používané výrazy"
+          },
+          "content": {
+            "html": "\n"
+          }
+        },
+        {
+          "heading": {
+            "text": "Benchmark životných situácií"
+          },
+          "summary": {
+            "text": "Metodika pre benchmark životných situácií z pohľadu behaviorálnych intervencií"
+          },
+          "content": {
+            "html": "\n"
+          }
+        }
+      ]
+    }) }}
+  
+    </div>
+  </div>
+  
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+
+        
 
       <h2 class="govuk-heading-m">gov.uk components</h2>
 
