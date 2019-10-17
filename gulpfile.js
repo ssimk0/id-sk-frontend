@@ -39,6 +39,14 @@ gulp.task('copy:assets', () => {
     .pipe(gulp.dest(taskArguments.destination + '/assets/'))
 })
 
+// Copy assets task ----------------------
+// Copies assets to taskArguments.destination (public)
+// --------------------------------------
+gulp.task('copy:appAssets', () => {
+  return gulp.src(paths.app + 'assets/**/*')
+    .pipe(gulp.dest(taskArguments.destination + '/assets/'))
+})
+
 // All test combined --------------------
 // Runs js, scss and accessibility tests
 // --------------------------------------
@@ -71,6 +79,7 @@ gulp.task('serve', gulp.parallel(
 gulp.task('dev', gulp.series(
   'clean',
   'copy-assets',
+  'copy:appAssets',
   'sassdoc',
   'serve'
 ))
