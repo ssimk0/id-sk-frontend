@@ -6,6 +6,7 @@
       "partials": "app/views/partials/",
       "layouts": "app/views/layouts/",
       "uvod": "app/views/uvod/",
+      "slovnik": "app/views/slovnik/",
   "config": "config/",
   "dist": "dist/",
   "node_modules": "node_modules/",

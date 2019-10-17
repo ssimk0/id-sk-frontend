@@ -4,3 +4,45 @@ $govuk-show-breakpoints: true;
 @import "partials/app";
 @import "partials/banner";
 @import "partials/prose";
+
+// Create responsive video or slideshow embeds based on the width of the parent by creating an intrinsic ratio that scales on any device.
+// copied from Bootstrap 4
+// Credit: Nicolas Gallagher and SUIT CSS.
+// Hack for Benchmark presentation
+// only for ratio 16:9 
+
+.embed-responsive {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+  
+    margin-top: em(5, 16);
+    margin-bottom: em(20, 16);
+  
+    @include govuk-media-query(tablet) {
+      margin-top: em(5);
+      margin-bottom: em(20);
+    }
+  
+    &::before {
+      display: block;
+      content: "";
+      padding-top: 56.25%;
+    }
+  
+    .embed-responsive-item,
+    iframe,
+    embed,
+    object,
+    video {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  }

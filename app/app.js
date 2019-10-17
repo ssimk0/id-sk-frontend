@@ -25,7 +25,8 @@ const appViews = [
   configPaths.idsk_src,
   configPaths.node_modules,
 
-  configPaths.uvod
+  configPaths.uvod,
+  configPaths.slovnik
 ]
 
 module.exports = (options) => {
@@ -258,8 +259,36 @@ module.exports = (options) => {
     })
   })
 
+  // Example view
+  app.get('/full-page-examples/:example/:action?', function (req, res, next) {
+    // Passing a random number used for the links so that they will be unique and not display as "visited"
+    const randomPageHash = (Math.random() * 1000000).toFixed()
+    res.render(`${req.params.example}/${req.params.action || 'index'}`, { randomPageHash }, function (error, html) {
+      if (error) {
+        next(error)
+      } else {
+        res.send(html)
+      }
+    })
+  })
+
   // Introduction (Uvod) view
   app.get('/uvod/:content/:action?', function (req, res, next) {
+    // Passing a random number used for the links so that they will be unique and not display as "visited"
+    const randomPageHash = (Math.random() * 1000000).toFixed()
+    res.render(`${req.params.content}/${req.params.action || 'index'}`, { randomPageHash }, function (error, html) {
+      if (error) {
+        next(error)
+      } else {
+        res.send(html)
+      }
+    })
+  })
+
+  // shallow content view
+  // e.g.:
+  // /slovnik
+  app.get('/:content/:action?', function (req, res, next) {
     // Passing a random number used for the links so that they will be unique and not display as "visited"
     const randomPageHash = (Math.random() * 1000000).toFixed()
     res.render(`${req.params.content}/${req.params.action || 'index'}`, { randomPageHash }, function (error, html) {
