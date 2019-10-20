@@ -102,14 +102,16 @@ module.exports = (options) => {
     const idskComponents = fileHelper.allIdskComponents
     const examples = await readdir(path.resolve(configPaths.examples))
     const fullPageExamples = fileHelper.fullPageExamples()
-    const idskItroductionContent = idskContentStructure
+    const idskItroductionContent = idskContentStructure.introduction
+    const idskPatternsContent = idskContentStructure.patterns
 
     res.render('index', {
       componentsDirectory: components,
       idskComponentsDirectory: idskComponents,
       examplesDirectory: examples,
       fullPageExamples: fullPageExamples,
-      idskItroductionContent: idskItroductionContent
+      idskItroductionContent: idskItroductionContent,
+      idskPatternsContent: idskPatternsContent
     })
   })
 

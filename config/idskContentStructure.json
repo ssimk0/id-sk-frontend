@@ -1,6 +1,32 @@
 {
-  "id-sk": "Čo je dizajn manuál ID-SK",
-  "metodika-ucd" : "Metodické usmernenie",
-  "principy" : "10 princípov tvorby elektronických služieb podľa ID-SK",
-  "ako-zacat-s-vyvojom" : "Ako začať s vývojom"
+  "introduction" : {
+    "id-sk": "Čo je dizajn manuál ID-SK",
+    "metodika-ucd" : "Metodické usmernenie",
+    "principy" : "10 princípov tvorby elektronických služieb podľa ID-SK",
+    "ako-zacat-s-vyvojom" : "Ako začať s vývojom"
+  },
+
+  "patterns" : {
+    "adresy" : "Adresy",
+    "datumy" : "Dátumy",
+    "emailove-adresy" : "E-mailové adresy",
+    "hesla" : "Heslá",
+    "indikatory-progresu" : "Indikátory progresu",
+    "mena" : "Mená",
+    "overenie-pred-zaciatkom-procesu" : "Overenie pred začiatkom procesu",
+    "platobna-stranka" : "Platobná stránka",
+    "pomocny-text" : "Pomocný text",
+    "pouzivatelske-mena" : "Používateľské mená",
+    "prihlasenie-a-ucty" : "Prihlásenie a používateľské účty",
+    "proces-overenia-emailovej-adresy" : "Proces overenia e-mailovej adresy",
+    "stranky-dokoncenia-procesu" : "Stránky dokončenia procesu",
+    "stranky-s-otazkami" : "Stránky s otázkami",
+    "stranky-so-spatnou-vazbou" : "Stránky so spätnou väzbou",
+    "struktura-formularov" : "Štruktúra formulárov",
+    "ukazka-podania-ziadosti" : "Ukážka podania žiadosti",
+    "uvodne-obrazovky" : "Úvodné obrazovky",
+    "vyber-pohlavia" : "Výber pohlavia",
+    "zhrnutie" : "Zhrnutie",
+    "zoznamy-uloh" : "Zoznamy úloh"
+  }
 }

@@ -8,7 +8,6 @@
   </h1>
 
   <div class="govuk-grid-row">
-
     <div class="govuk-grid-column-two-thirds">
       <p class="govuk-body-l">Manuál, ktorý má za cieľ zjednotiť používateľské rozhrania a spôsob komunikácie s používateľom pri poskytovaní elektronických služieb na Slovensku.</p>
     </div>
@@ -29,6 +28,14 @@
       <ul class="govuk-list">
         {% for pageName, pageTitle in idskItroductionContent %}
           <li><a href="/uvod/{{ pageName }}" class="govuk-link">{{ pageTitle | replace("-", " ") | capitalize }}</a></li>
+        {% endfor %}
+      </ul>
+    {% endset %}
+
+    {% set idskPatternsContent %}
+      <ul class="govuk-list">
+        {% for pageName, pageTitle in idskPatternsContent %}
+          <li><a href="/vzory/{{ pageName }}" class="govuk-link">{{ pageTitle | replace("-", " ") | capitalize }}</a></li>
         {% endfor %}
       </ul>
     {% endset %}
@@ -70,7 +77,7 @@
             "text": "Používanie a adaptácia návrhových vzorov"
           },
           "content": {
-            "html": "\n"
+            "html": idskPatternsContent
           }
         },
         {
