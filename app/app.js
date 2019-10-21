@@ -104,6 +104,7 @@ module.exports = (options) => {
     const fullPageExamples = fileHelper.fullPageExamples()
     const idskItroductionContent = idskContentStructure.introduction
     const idskPatternsContent = idskContentStructure.patterns
+    const idskComponentsUsageContent = idskContentStructure.componentsUsage
 
     res.render('index', {
       componentsDirectory: components,
@@ -111,7 +112,8 @@ module.exports = (options) => {
       examplesDirectory: examples,
       fullPageExamples: fullPageExamples,
       idskItroductionContent: idskItroductionContent,
-      idskPatternsContent: idskPatternsContent
+      idskPatternsContent: idskPatternsContent,
+      idskComponentsUsageContent: idskComponentsUsageContent
     })
   })
 

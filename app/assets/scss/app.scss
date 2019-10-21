@@ -18,12 +18,12 @@ $govuk-show-breakpoints: true;
     padding: 0;
     overflow: hidden;
   
-    margin-top: em(5, 16);
-    margin-bottom: em(20, 16);
+    margin-top: govuk-spacing(3);
+    margin-bottom: govuk-spacing(3);
   
     @include govuk-media-query(tablet) {
-      margin-top: em(5);
-      margin-bottom: em(20);
+      margin-top: govuk-spacing(3);
+      margin-bottom: govuk-spacing(3);
     }
   
     &::before {
@@ -46,3 +46,194 @@ $govuk-show-breakpoints: true;
       border: 0;
     }
   }
+
+  .example:after {
+    content: "";
+    display: block;
+    clear: both; }
+  
+  .site-wrapper {
+    max-width: 960px;
+    margin: 0 15px; }
+    @media (min-width: 641px) {
+      .site-wrapper {
+        margin: 0 30px; } }
+    @media (min-width: 1020px) {
+      .site-wrapper {
+        margin: 0 auto; } }
+  
+  .visually-hidden,
+  .visuallyhidden {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0; }
+  
+  .site-wrapper #content {
+    margin: 0; }
+  
+  .elements-index .heading-medium {
+    margin: 1em 0 0 0; }
+  
+  .elements-index .divider {
+    margin-top: 4em; }
+  
+  @media (min-width: 641px) {
+    main > .heading-xlarge {
+      margin-top: 1.25em;
+      margin-bottom: 0.625em; } }
+  
+  .heading-contents {
+    margin-top: 3em; }
+  
+  .list-contents li {
+    font-family: "Source Sans Pro", "Arial", sans-serif;
+    font-weight: 400;
+    text-transform: none;
+    font-size: 14px;
+    line-height: 1.14286; }
+    @media (min-width: 641px) {
+      .list-contents li {
+        font-size: 16px;
+        line-height: 1.25; } }
+  
+  .lead-in {
+    margin-bottom: 0; }
+  
+  .list-bullet {
+    margin-bottom: 45px; }
+  
+  .list-underline {
+    border-top: 1px solid #bfc1c3; }
+  
+  .list-underline li {
+    border-bottom: 1px solid #bfc1c3;
+    padding: 2px 0 3px 0; }
+  
+  .list-underline a {
+    text-decoration: none; }
+  
+  .no-top-margin {
+    margin-top: 0; }
+  
+  .example {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #bfc1c3;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding-top: 30px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    padding-left: 15px; }
+    @media (min-width: 641px) {
+      .example {
+        padding-top: 45px;
+        padding-right: 30px;
+        padding-bottom: 30px;
+        padding-left: 30px; } }
+    .example:before {
+      content: "PRÍKLAD";
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 0.21053em 0.78947em 0.21053em 0.78947em;
+      font-family: "Source Sans Pro", "Arial", sans-serif;
+      font-weight: 400;
+      text-transform: none;
+      font-size: 12px;
+      line-height: 1.25;
+      background: #bfc1c3;
+      color: white; }
+      @media (min-width: 641px) {
+        .example:before {
+          font-size: 14px;
+          line-height: 1.42857; } }
+    .example .highlight { 
+      font-style: normal;
+      color: #0076c0; }
+    .example .list-bullet {
+      margin-bottom: 20px; }
+  
+  .example-grid p {
+    width: 100%;
+    background-color: #7DADD3;
+    background-image: repeating-linear-gradient(180deg, #7DADD3, #7DADD3 15px, #B7CFE1 15px, #B7CFE1 30px);
+    margin-bottom: 0;
+    height: 30px;
+    overflow: hidden;
+    text-indent: -999em; }
+    @media (min-width: 641px) {
+      .example-grid p {
+        height: 60px; } }
+
+// 3. Colour
+// ==========================================================================
+
+// Colour swatches
+.swatch {
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  @include govuk-media-query(mobile) {
+    clear: both;
+    float: left;
+    margin-right: govuk-spacing(3);
+    margin-bottom: govuk-spacing(3);
+  }
+  @include govuk-media-query(tablet) {
+    margin: 0 auto govuk-spacing(3) auto;
+    float: none;
+  }
+}
+
+// Colour swatch layout
+.swatch-wrapper {
+  @include govuk-media-query(tablet) {
+    float: left;
+    width: 20%;
+    text-align: center;
+  }
+
+  .heading-small {
+    margin-bottom: govuk-spacing(3);
+  }
+
+  ul {
+    list-style-type: none;
+    padding-bottom: govuk-spacing(3);
+    @include govuk-media-query(mobile) {
+      min-height: 50px;
+      padding-top: 10px;
+    }
+    @include govuk-media-query(tablet) {
+      padding-left: 0;
+    }
+  }
+  li {
+    font-size: 16px;
+    line-height: 1.25;
+  }
+  b {
+  font-weight: bold;
+  text-transform: uppercase;
+  }
+}
+
+
+@mixin color-swatches {
+  @each $color in $_idsk-colour-palette-modern {
+    $color-name: nth($color, 1);
+    $color-var: nth($color, 2);
+    .swatch-#{$color-name} {
+      background-color: $color-var;
+    }
+  }
+}
+
+// Generate swatch classes for each colour in palette list
+@include color-swatches;

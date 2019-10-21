@@ -28,5 +28,18 @@
     "vyber-pohlavia" : "Výber pohlavia",
     "zhrnutie" : "Zhrnutie",
     "zoznamy-uloh" : "Zoznamy úloh"
+  },
+
+  "componentsUsage" : {
+    "chyby-a-validacia" : "Chyby a validácia",
+    "farby" : "Farby",
+    "formularove-prvky" : "Formulárové prvky",
+    "hlavicka-paticka" : "Hlavička a pätička",
+    "icons-images" : "Ikony a obrázky",
+    "oznacenie-verzie-sluzby" : "Označenie verzie služby",
+    "rozlozenie-stranky" : "Rozloženie stránky",
+    "tlacidla" : "Tlačidlá",
+    "typografia" : "Typografia",
+    "udaje" : "Údaje"
   }
 }

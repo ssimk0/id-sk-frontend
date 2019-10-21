@@ -40,6 +40,14 @@
       </ul>
     {% endset %}
 
+    {% set idskComponentsUsageContent %}
+      <ul class="govuk-list">
+        {% for pageName, pageTitle in idskComponentsUsageContent %}
+          <li><a href="/komponenty/{{ pageName }}" class="govuk-link">{{ pageTitle | replace("-", " ") | capitalize }}</a></li>
+        {% endfor %}
+      </ul>
+    {% endset %}
+
     {{ govukAccordion({
       "id": "default-example",
       "classes": "myClass",
@@ -66,7 +74,7 @@
             "text": "Prehľad webových komponentov, ktoré sa používajú na tvorbu elektronických služieb."
           },
           "content": {
-            "html": idskComponents
+            "html": idskComponentsUsageContent + idskComponents
           }
         },
         {

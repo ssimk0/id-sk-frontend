@@ -1,0 +1,237 @@
+{% extends "layout.njk" %}
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+
+{% set pageName = "Farby" %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    "items": [
+    { text: 'ID-SK frontend', href: '/' + legacyQuery },
+    { text: pageName }
+    ]
+  }) }}
+{% endblock %}  
+
+{% block content %}
+  <div class="govuk-width-container">
+
+    <span class="govuk-caption-xl">Webové komponenty</span>
+    <h1 class="govuk-heading-xl">{{pageName}}</h1>
+    <p class="govuk-body-l">Vždy používajte farebnú paletu ID-SK.</p>
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+            <h2 class="govuk-heading-s">Obsah:</h2>
+            <ul class="govuk-list">
+                <li><a href="#colour-contrast">Farebný kontrast</a></li>
+                <li><a href="#colour-sass-variables">Sass premenné</a></li>
+                <li><a href="#colour-status-colours">Farby stavu</a></li>
+                <li><a href="#colour-greyscale-palette">Paleta odtieňov šedej</a></li>
+                <li><a href="#colour-extended-palette">Rozšírená paleta</a></li>
+                <li><a href="#examples">Príklady</a></li>
+            </ul>
+
+            <h3 class="govuk-heading-m" id="colour-contrast">Farebný kontrast</h3>
+            <p class="govuk-body">
+                Pomerová hodnota farebného kontrastu pre text a interaktívne prvky by mala byť aspoň 4,5:1
+                <a href="http://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html" rel="external">
+                    ako odporúča W3C</a>. Na to, aby vaša služba spĺňala tento štandard, je potrebné vždy otestovať kontrast všetkých použitých prvkov.
+            </p>
+            <h3 class="govuk-heading-m" id="colour-sass-variables">Sass premenné</h3>
+            <p class="govuk-body">
+                Odporúčame používať nasledovné Sass premenné pre prípad, že farby bude nutné v budúcnosti aktualizovať. Nájdete ich v súbore
+                <a href="https://github.com/id-sk/idsk_frontend_toolkit/blob/master/stylesheets/_colours.scss" rel="external">colours.scss</a>.
+            </p>
+        </div>
+
+        <div class="govuk-grid-column-full">
+
+            <div class="example">
+
+                <div class="swatch-wrapper">
+                    <div class="swatch swatch-red"></div>
+                    <ul>
+                        <li><b>red</b></li>
+                        <li>#DF3034</li>
+                    </ul>
+                
+                    <div class="swatch swatch-yellow"></div>
+                    <ul>
+                        <li><b>yellow</b></li>
+                        <li>#FFBF47</li>
+                    </ul>
+                
+                    <div class="swatch swatch-green"></div>
+                    <ul>
+                        <li><b>green</b></li>
+                        <li>#006435</li>
+                    </ul>
+                
+                    <div class="swatch swatch-blue"></div>
+                    <ul>
+                        <li><b>blue</b></li>
+                        <li>#005EA5</li>
+                    </ul>
+                
+                    <div class="swatch swatch-dark-blue"></div>
+                    <ul>
+                        <li><b>dark-blue</b></li>
+                        <li>#003078</li>
+                    </ul>
+                </div>
+                
+                <div class="swatch-wrapper">
+                    <div class="swatch swatch-light-blue"></div>
+                    <ul>
+                        <li><b>light-blue</b></li>
+                        <li>#2B8CC4</li>
+                    </ul>
+                
+                    <div class="swatch swatch-purple"></div>
+                    <ul>
+                        <li><b>purple</b></li>
+                        <li>#2E358B</li>
+                    </ul>
+                
+                    <div class="swatch swatch-black"></div>
+                    <ul>
+                        <li><b>black</b></li>
+                        <li>#0B0C0C</li>
+                    </ul>
+                
+                    <div class="swatch swatch-dark-grey"></div>
+                    <ul>
+                        <li><b>dark-grey</b></li>
+                        <li>#6f777b</li>
+                    </ul>
+                
+                    <div class="swatch swatch-mid-grey"></div>
+                    <ul>
+                        <li><b>mid-grey</b></li>
+                        <li>#BFC1C3</li>
+                    </ul>
+                </div>
+                
+                <div class="swatch-wrapper">
+                    <div class="swatch swatch-light-grey"></div>
+                    <ul>
+                        <li><b>light-grey</b></li>
+                        <li>#DEE0E2</li>
+                    </ul>
+                
+                    <div class="swatch swatch-white"></div>
+                    <ul>
+                        <li><b>white</b></li>
+                        <li>#ffffff</li>
+                    </ul>
+                
+                    <div class="swatch swatch-light-purple"></div>
+                    <ul>
+                        <li><b>light-purple</b></li>
+                        <li>#6f72af</li>
+                    </ul>
+                
+                    <div class="swatch swatch-bright-purple"></div>
+                    <ul>
+                        <li><b>bright-purple</b></li>
+                        <li>#912b88</li>
+                    </ul>
+                
+                    <div class="swatch swatch-pink"></div>
+                    <ul>
+                        <li><b>pink</b></li>
+                        <li>#d53880</li>
+                    </ul>
+                </div>
+                
+                <div class="swatch-wrapper">
+                    <div class="swatch swatch-light-pink"></div>
+                    <ul>
+                        <li><b>light-pink</b></li>
+                        <li>#f499be</li>
+                    </ul>
+                
+                    <div class="swatch swatch-orange"></div>
+                    <ul>
+                        <li><b>orange</b></li>
+                        <li>#F47738</li>
+                    </ul>
+                
+                    <div class="swatch swatch-brown"></div>
+                    <ul>
+                        <li><b>brown</b></li>
+                        <li>#b58840</li>
+                    </ul>
+                
+                    <div class="swatch swatch-light-green"></div>
+                    <ul>
+                        <li><b>light-green</b></li>
+                        <li>#85994b</li>
+                    </ul>
+                
+                    <div class="swatch swatch-turquoise"></div>
+                    <ul>
+                        <li><b>turquoise</b></li>
+                        <li>#28a197</li>
+                    </ul>
+                </div>
+                
+                <div class="swatch-wrapper">
+                    <div class="swatch swatch-grey-1"></div>
+                    <ul>
+                        <li><b>grey-1</b></li>
+                        <li>#6f777b</li>
+                    </ul>
+                
+                    <div class="swatch swatch-grey-2"></div>
+                    <ul>
+                        <li><b>grey-2</b></li>
+                        <li>#bfc1c3</li>
+                    </ul>
+                
+                    <div class="swatch swatch-grey-3"></div>
+                    <ul>
+                        <li><b>grey-3</b></li>
+                        <li>#dee0e2</li>
+                    </ul>
+                
+                    <div class="swatch swatch-grey-4"></div>
+                    <ul>
+                        <li><b>grey-4</b></li>
+                        <li>#f8f8f8</li>
+                    </ul>
+                </div>
+            
+            </div>
+
+        </div>
+
+        <div class="govuk-grid-column-two-thirds">
+            <h3 class="govuk-heading-m" id="examples">Príklady</h3>
+            <h4 class="govuk-heading-s">Stránka s potvrdením</h4>
+            
+            <div class="govuk-inset-text">
+                    Pri použití bieleho textu na pozadí tyrkysovej farby sa uistite, že približná minimálna veľkosť písma je 24 pixelov
+                    (normálny rez písma) alebo 19 pixelov tučného písma, pričom veľkosť sa uvádza v relatívnych jednotkách a nie v jednotkách
+                    pixelov. Týmto splníte požiadavku na dostatočný farebný kontrast.
+            </div>
+
+        </div>
+
+        <div class="govuk-grid-column-full">
+            <div class="example example-error">
+            {% set exampleComponentHtml %}
+                {% include "../komponenty/examples/example3.njk" %}
+            {% endset %}
+            {{exampleComponentHtml | safe}}
+            </div>
+            <pre class=" language-markup"><code class="govuk-!-font-size-16  language-markup">{{ exampleComponentHtml }}</code></pre>
+        </div>
+
+    </div>
+        
+    </div>
+
+  </div>
+{% endblock %}
