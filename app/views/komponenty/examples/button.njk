@@ -1,0 +1,13 @@
+{% from "input/macro.njk" import govukInput %}
+{% from "button/macro.njk" import govukButton %}
+
+{{ govukInput({
+  "label": {
+    "text": "E-mailová adresa"
+  },
+  "id": "input-email",
+  "name": "email"
+}) }}
+{{ govukButton({
+  "text": "Uložiť a pokračovať"
+}) }}

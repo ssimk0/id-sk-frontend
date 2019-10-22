@@ -171,6 +171,10 @@ $govuk-show-breakpoints: true;
       .example-grid p {
         height: 60px; } }
 
+.example-images img {
+  max-width: 100%;
+  vertical-align: top; }
+
 // 3. Colour
 // ==========================================================================
 

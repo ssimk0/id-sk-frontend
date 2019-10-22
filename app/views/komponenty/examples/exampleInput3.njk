@@ -1,0 +1,12 @@
+{% from "input/macro.njk" import govukInput %}
+
+{{ govukInput({
+  "label": {
+    "text": "Meno a priezvisko"
+  },
+  "hint": {
+    "text": "Uvádza sa na vašom preukaze poistenca. Napríklad ‘QQ 12 34 56 C’."
+  },
+  "id": "input-example",
+  "name": "fullName"
+}) }}
