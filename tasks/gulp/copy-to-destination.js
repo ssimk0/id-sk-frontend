@@ -13,7 +13,7 @@ const map = require('map-stream')
 const rename = require('gulp-rename')
 
 const scssFiles = filter([configPaths.idsk_src + '**/*.scss'], { restore: true })
-const yamlFiles = filter([configPaths.components + '**/*.yaml'], { restore: true })
+const yamlFiles = filter([configPaths.idsk_components + '**/*.yaml'], { restore: true })
 
 gulp.task('copy-files', () => {
   return gulp.src([
