@@ -34,7 +34,7 @@ describe('package/', () => {
 
     // Build an array of files we expect to be found in the package directory,
     // based on the contents of the src directory.
-    const expectedPackageFiles = () => {
+    const expectedPackageFiles = (src) => () => {
       const filesToIgnore = [
         '.DS_Store',
         '*.test.js',
@@ -50,7 +50,7 @@ describe('package/', () => {
         'README.md'
       ]
 
-      return recursive(configPaths.idsk_src, filesToIgnore).then(
+      return recursive(src, filesToIgnore).then(
         files => {
           let filesNotInSrc = files
           // Use glob to generate an array of files that accounts for wildcards in filenames
@@ -72,9 +72,17 @@ describe('package/', () => {
 
     // Compare the expected directory listing with the files we expect
     // to be present
-    Promise.all([actualPackageFiles(), expectedPackageFiles()])
+    Promise.all([
+      actualPackageFiles(),
+      expectedPackageFiles(configPaths.src)(),
+      expectedPackageFiles(configPaths.idsk_src)()
+    ])
       .then(results => {
-        const [actualPackageFiles, expectedPackageFiles] = results
+        const onlyUnique = (value, index, self) => { 
+          return self.indexOf(value) === index;
+        }
+        const [actualPackageFiles, expectedPackageFiles_govuk, expectedPackageFiles_idsk] = results
+        const expectedPackageFiles = [].concat(expectedPackageFiles_govuk, expectedPackageFiles_idsk).sort().filter(onlyUnique);
 
         expect(actualPackageFiles).toEqual(expectedPackageFiles)
       })

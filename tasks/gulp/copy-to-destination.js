@@ -12,17 +12,17 @@ const path = require('path')
 const map = require('map-stream')
 const rename = require('gulp-rename')
 
-const scssFiles = filter([configPaths.idsk_src + '**/*.scss'], { restore: true })
-const yamlFiles = filter([configPaths.idsk_components + '**/*.yaml'], { restore: true })
+const copyFiles = (src, components, dist) => () => {
+  const scssFiles = filter([src + '**/*.scss'], { restore: true })
+  const yamlFiles = filter([components + '**/*.yaml'], { restore: true })
 
-gulp.task('copy-files', () => {
   return gulp.src([
-    configPaths.idsk_src + '**/*',
+    src + '**/*',
     '!**/.DS_Store',
     '!**/*.test.js',
-    '!' + configPaths.idsk_src + 'README.md', // Don't override the existing README in /package
-    '!' + configPaths.components + '**/__snapshots__/**',
-    '!' + configPaths.components + '**/__snapshots__/'
+    '!' + src + 'README.md', // Don't override the existing README in /package
+    '!' + components + '**/__snapshots__/**',
+    '!' + components + '**/__snapshots__/'
   ])
     .pipe(scssFiles)
     .pipe(postcss([
@@ -32,7 +32,7 @@ gulp.task('copy-files', () => {
     .pipe(yamlFiles)
     .pipe(map(function (file, done) {
       const componentName = path.dirname(file.path).split(path.sep).slice(-1).toString()
-      const componentPath = path.join(configPaths.components, componentName, `${componentName}.yaml`)
+      const componentPath = path.join(components, componentName, `${componentName}.yaml`)
       let yaml
       let json
       let paramsJson
@@ -60,5 +60,8 @@ gulp.task('copy-files', () => {
       path.extname = '.json'
     }))
     .pipe(yamlFiles.restore)
-    .pipe(gulp.dest(taskArguments.destination + '/idsk/'))
-})
+    .pipe(gulp.dest(taskArguments.destination + "/" + dist))
+}
+
+gulp.task('copy-files-govuk', copyFiles(configPaths.src, configPaths.components, "govuk"))
+gulp.task('copy-files-idsk', copyFiles(configPaths.idsk_src, configPaths.idsk_components, "idsk"))
