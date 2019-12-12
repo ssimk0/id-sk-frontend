@@ -26,10 +26,7 @@
             <ul class="govuk-list">
                 <li><a href="#colour-contrast">Farebný kontrast</a></li>
                 <li><a href="#colour-sass-variables">Sass premenné</a></li>
-                <li><a href="#colour-status-colours">Farby stavu</a></li>
-                <li><a href="#colour-greyscale-palette">Paleta odtieňov šedej</a></li>
-                <li><a href="#colour-extended-palette">Rozšírená paleta</a></li>
-                <li><a href="#examples">Príklady</a></li>
+                <li><a href="#colours">Ukážka</a></li>
             </ul>
 
             <h3 class="govuk-heading-m" id="colour-contrast">Farebný kontrast</h3>
@@ -47,6 +44,7 @@
 
         <div class="govuk-grid-column-full">
 
+            <h3 class="govuk-heading-m" id="colours">Ukážka</h3>
             <div class="example">
 
                 <div class="swatch-wrapper">
@@ -205,28 +203,6 @@
             
             </div>
 
-        </div>
-
-        <div class="govuk-grid-column-two-thirds">
-            <h3 class="govuk-heading-m" id="examples">Príklady</h3>
-            <h4 class="govuk-heading-s">Stránka s potvrdením</h4>
-            
-            <div class="govuk-inset-text">
-                    Pri použití bieleho textu na pozadí tyrkysovej farby sa uistite, že približná minimálna veľkosť písma je 24 pixelov
-                    (normálny rez písma) alebo 19 pixelov tučného písma, pričom veľkosť sa uvádza v relatívnych jednotkách a nie v jednotkách
-                    pixelov. Týmto splníte požiadavku na dostatočný farebný kontrast.
-            </div>
-
-        </div>
-
-        <div class="govuk-grid-column-full">
-            <div class="example example-error">
-            {% set exampleComponentHtml %}
-                {% include "../komponenty/examples/example3.njk" %}
-            {% endset %}
-            {{exampleComponentHtml | safe}}
-            </div>
-            <pre class=" language-markup"><code class="govuk-!-font-size-16  language-markup">{{ exampleComponentHtml }}</code></pre>
         </div>
 
     </div>
