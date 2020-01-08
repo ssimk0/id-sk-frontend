@@ -6,7 +6,7 @@
 
 {# Turn the header and footer off #}
 {% block header %}
-  {% include "../partials/banner.njk" %}
+  {# {% include "../partials/banner.njk" %} #}
   {% from "../../../src/idsk/components/header/macro.njk" import idskHeader %}
   {{ idskHeader({"serviceName": "Jednotný dizajn manuál elektronických služieb"}) }}
   
