@@ -62,7 +62,6 @@
       <ul class="govuk-list">
         {% for exampleName in examplesDirectory | sort %}
           <li><a href="/examples/{{ exampleName }}{{ legacyQuery }}" class="govuk-link">{{ exampleName | replace("-", " ") | capitalize }}</a></li>
-          <!--li><a href="/examples/{{ exampleName }}/index" class="govuk-link">{{ exampleName | replace("-", " ") | capitalize }}</a></li-->
         {% endfor %}
       </ul>
     {% endset %}
@@ -101,7 +100,7 @@
             "text": "Prehľad webových komponentov, ktoré sa používajú na tvorbu elektronických služieb."
           },
           "content": {
-            "html": idskComponentsUsageContent + idskComponents
+            "html": idskComponentsUsageContent
           }
         },
         {
