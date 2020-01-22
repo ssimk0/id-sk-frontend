@@ -179,3 +179,34 @@ examples:
         text: Navigation item 2
       - href: '#3'
         text: Navigation item 3
+
+- name: full width with user
+  data:
+    containerClasses: govuk-header__container--with-user govuk-header__container--full-width
+    usersClasses: idsk-header__user--end
+    productName: Product Name
+    navigation:
+      - href: '#1'
+        text: Navigation item 1
+        active: true
+      - href: '#2'
+        text: Navigation item 2
+      - href: '#3'
+        text: Navigation item 3
+    headerUser: true
+
+- name: width with user
+  data:
+    containerClasses: govuk-header__container--with-user govuk-width-container
+    usersClasses: idsk-header__user--end
+    productName: Product Name
+    serviceName: Service Name
+    navigation:
+      - href: '#1'
+        text: Navigation item 1
+        active: true
+      - href: '#2'
+        text: Navigation item 2
+      - href: '#3'
+        text: Navigation item 3
+    headerUser: true

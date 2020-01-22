@@ -153,11 +153,22 @@
     }
   }
 
+  .govuk-header__container--with-user .idsk-header__logo {
+    @include mq ($from: desktop) {
+      width: 25%;
+    }
+  }
+
   .idsk-header__content {
     @include mq ($from: desktop) {
       width: 66.66%;
       padding-left: $govuk-gutter-half;
       float: left;
+    }
+  }
+  .govuk-header__container--with-user .idsk-header__content {
+    @include mq ($from: desktop) {
+      width: 50%;
     }
   }
 
@@ -166,7 +177,7 @@
     display: none;
     position: absolute;
     top: govuk-spacing(4);
-    right: 0;
+    right: 1rem;
     margin: 0;
     padding: 0;
     border: 0;
@@ -274,6 +285,60 @@
 
   .idsk-header__navigation-item:last-child {
     margin-right: 0;
+  }
+
+  .idsk-header__user {
+    text-align: right;
+    @include mq ($from: desktop) {
+      width: 25%;
+    }
+  }
+
+  .idsk-header__user--end {
+    @include mq ($from: desktop) {
+      margin: 0;
+      padding: govuk-spacing(1) 0;
+      text-align: right;
+    }
+  }
+
+  .idsk-header__user-icon {
+      display: inline-block;
+      vertical-align: middle;
+      width: 2rem;
+      height: 2rem;
+      margin-top: -0.5rem;
+      margin-right: 0.5rem;
+      fill: govuk-colour("white");
+      // Prevent the exclamation mark from being included when the warning text
+      // is copied, for example.
+      user-select: none;
+      @include mq ($from: desktop) {
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+  }
+
+  .idsk--header__user-name {
+    float: right;
+    margin-top: -0.5rem;
+  }
+  
+  .govuk-header__container--full-width {
+    .idsk-header__user-icon {
+      @include mq ($from: desktop) {
+        margin-top: -0.5rem;
+        margin-right: 0.5rem;
+      }
+    }
+    
+    .idsk--header__user-name {
+      margin-top: -0.5rem;
+    }
+  }
+
+  .idsk--header__user-logout {
+    color: govuk-colour("white");
   }
 
   @include govuk-media-query($media-type: print) {
