@@ -21,7 +21,7 @@
     "test:build:package": "jest tasks/gulp/__tests__/after-build-package.test.js",
     "test:build:dist": "jest tasks/gulp/__tests__/after-build-dist.test.js"
   },
-  "devDependencies": {
+  "dependencies": {
     "acorn": "^6.1.1",
     "autoprefixer": "^9.5.1",
     "body-parser": "^1.18.3",
