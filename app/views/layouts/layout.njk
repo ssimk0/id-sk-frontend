@@ -1,8 +1,9 @@
 {% extends "_generic.njk" %}
 
 {% set htmlClasses = "app-no-canvas-background" %}
+{% set pageName = pageName %}
 
-{% block pageTitle %}ID-KS Frontend{% endblock %}
+{% block pageTitle %}ID-KS Frontend{{" - " + pageName if pageName}}{% endblock %}
 
 {# Turn the header and footer off #}
 {% block header %}
