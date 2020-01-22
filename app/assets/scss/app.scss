@@ -241,3 +241,18 @@ $govuk-show-breakpoints: true;
 
 // Generate swatch classes for each colour in palette list
 @include color-swatches;
+
+.example-grid p {
+  width: 100%;
+  background-color: #7DADD3;
+  background-image: repeating-linear-gradient(180deg, #7DADD3, #7DADD3 15px, #B7CFE1 15px, #B7CFE1 30px);
+  margin-bottom: 0;
+  height: 30px;
+  overflow: hidden;
+  text-indent: -999em;
+}
+  @media (min-width: 641px) {
+    .example-grid p {
+      height: 60px;
+    }
+  }
