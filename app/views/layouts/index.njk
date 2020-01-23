@@ -4,7 +4,7 @@
 {% block content %}
 
   <h1 class="govuk-heading-xl">
-    ID-SK Frontend - Jednotný dizajn manuál elektronických služieb
+    ID-SK Frontend – Jednotný dizajn manuál elektronických služieb
   </h1>
 
   <div class="govuk-grid-row">
@@ -35,7 +35,7 @@
     {% set idskPatternsContent %}
       <ul class="govuk-list">
         {% for pageName, pageTitle in idskPatternsContent %}
-          <li><a href="/vzory/{{ pageName }}" class="govuk-link">{{ pageTitle | replace("-", " ") | capitalize }}</a></li>
+          <li><a href="/vzory/{{ pageName }}" class="govuk-link">{{ pageTitle | replace("-", " ") | capitalize | safe }}</a></li>
         {% endfor %}
       </ul>
     {% endset %}
@@ -62,7 +62,6 @@
       <ul class="govuk-list">
         {% for exampleName in examplesDirectory | sort %}
           <li><a href="/examples/{{ exampleName }}{{ legacyQuery }}" class="govuk-link">{{ exampleName | replace("-", " ") | capitalize }}</a></li>
-          <!--li><a href="/examples/{{ exampleName }}/index" class="govuk-link">{{ exampleName | replace("-", " ") | capitalize }}</a></li-->
         {% endfor %}
       </ul>
     {% endset %}
@@ -101,7 +100,7 @@
             "text": "Prehľad webových komponentov, ktoré sa používajú na tvorbu elektronických služieb."
           },
           "content": {
-            "html": idskComponentsUsageContent + idskComponents
+            "html": idskComponentsUsageContent
           }
         },
         {
@@ -141,6 +140,7 @@
     }) }}
 
     <h2 class="govuk-heading-m">GOV.UK Frontend</h2>
+    <p class="govuk-body">Prevzaté komponenty, vzory a ukážky z GOV.UK Frontend a ich dokumentácia (obsah je v&nbsp;anglickom jazyku)</p>
     {{ govukAccordion({
       "id": "default-example2",
       "classes": "govuk-!-margin-bottom-9",
@@ -153,7 +153,7 @@
             "text": "GOV.UK - Komponenty"
           },
           "summary": {
-            "text": "Prevzaté komponenty z GOV.UK Frontend a ich dokumentácia (obsah je v anglickom jazyku)"
+            "text": ""
           },
           "content": {
             "html": govukComponents
@@ -164,7 +164,6 @@
             "text": "GOV.UK - Vzory"
           },
           "summary": {
-            "text": "Prevzaté vzory z GOV.UK Frontend a ich dokumentácia (obsah je v anglickom jazyku)"
           },
           "content": {
             "html": govukExamples
@@ -175,7 +174,6 @@
             "text": "GOV.UK - Ukážky stránok"
           },
           "summary": {
-            "text": "Prevzaté ukážky stránok z GOV.UK Frontend a ich dokumentácia (obsah je v anglickom jazyku)"
           },
           "content": {
             "html": govukPageExamples

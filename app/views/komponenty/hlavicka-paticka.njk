@@ -40,36 +40,85 @@
             <h3 class="govuk-heading-m">Hlavička bez názvu služby</h3>
             <p class="govuk-body">Ak má vaša služba len jednu alebo len zopár strán, napr. nejaké doplnkové informácie, použite štandardnú hlavičku stránky.
             </p>
-            <img src="/public/assets/images/guides/header-footer1.png" alt="img">
+        
+        </div>
+
+        <div class="govuk-grid-column-full">
+            <div class="example">
+            {% set exampleComponentHtml %}
+                {% include "../komponenty/examples/header-1.njk" %}
+            {% endset %}
+            {{exampleComponentHtml | safe}}
+            </div>
+        </div>
+
+        <div class="govuk-grid-column-two-thirds">
 
             <h3 class="govuk-heading-m">Hlavička s názvom služby</h3>
             <p class="govuk-body">Pridajte štandardnú a najčastejšie používanú hlavičku s názvom služby, ak vaša služba obsahuje viac než jednu stránku. Pomôžete sa tak používateľovi zorientovať, kde sa práve nachádza.
             </p>
 
-            <img src="/public/assets/images/guides/header-footer2.png" alt="img">
+        </div>
 
+        <div class="govuk-grid-column-full">
+            <div class="example">
+            {% set exampleComponentHtml %}
+                {% include "../komponenty/examples/header-2.njk" %}
+            {% endset %}
+            {{exampleComponentHtml | safe}}
+            </div>
+        </div>
 
+        <div class="govuk-grid-column-two-thirds">
             <h3 class="govuk-heading-m">Hlavička s dodatočnou navigáciou</h3>
             <p class="govuk-body">Túto hlavičku odporúčame použiť v prípade, že potrebujete doplniť jednoduchú navigáciu.
             </p>
+        </div>
 
-            <img src="/public/assets/images/guides/header-footer3.png" alt="img">
+        <div class="govuk-grid-column-full">
+            <div class="example">
+            {% set exampleComponentHtml %}
+                {% include "../komponenty/examples/header-3.njk" %}
+            {% endset %}
+            {{exampleComponentHtml | safe}}
+            </div>
+        </div>
 
+        <div class="govuk-grid-column-two-thirds">
             <h3 class="govuk-heading-m">Hlavička s identifikáciou prihlásenia</h3>
             <p class="govuk-body">Túto hlavičku odporúčame použiť v prípade, že pre použitie služby je potrebné prihlásenie používateľa.
             </p>
-            <p><img src="/public/assets/images/guides/header-footer4.png" alt="img"></p>
-            <p><img src="/public/assets/images/guides/header-footer5.png" alt="img"></p>
+        </div>
 
+        <div class="govuk-grid-column-full">
+            <div class="example">
+            {% set exampleComponentHtml %}
+                {% include "../komponenty/examples/header-4.njk" %}
+            {% endset %}
+            {{exampleComponentHtml | safe}}
+            </div>
+        </div>
+
+        <div class="govuk-grid-column-two-thirds">
 
             <h2 class="govuk-heading-l" id="paticka">Pätička stránky</h2>
             <h3 class="govuk-heading-m">Základná pätička stránky
             </h3>
 
-            <p class="govuk-body">Všetky služby musia používať základnú štandardnú pätičku stránky, ktorá obsahuje najmä textové informácie o prevádzkovateľovi služby a textové odkazy na:
-            </p>
+            <p class="govuk-body">Všetky služby musia používať základnú štandardnú pätičku stránky, ktorá obsahuje najmä textové informácie o prevádzkovateľovi služby a textové odkazy na:</p>
 
-            <img src="/public/assets/images/guides/header-footer6.png" alt="img">
+        </div>
+
+        <div class="govuk-grid-column-full">
+            <div class="example">
+            {% set exampleComponentHtml %}
+                {% include "../komponenty/examples/footer-1.njk" %}
+            {% endset %}
+            {{exampleComponentHtml | safe}}
+            </div>
+        </div>
+
+        <div class="govuk-grid-column-two-thirds">
 
             <ul class="govuk-list govuk-list--bullet">
                 <li>kontaktnú stránku vašej organizácie</li>
@@ -83,11 +132,15 @@
             <p class="govuk-body">Pätičku môžete doplniť aj o logo vašej organizácie. Používateľ tak nadobudne väčšiu istotu pri prechode zo stránky vašej organizácie na stránku online služby. Maximálna šírka loga organizácie je 210 pixelov, maximálna výška je 70 pixelov.
             </p>
             
-            <img src="/public/assets/images/guides/header-footer7.png" alt="img">
-            
-            <p class="govuk-body">Pozrite si <a href="https://id-sk.github.io/idsk_template/">automaticky generovanú šablónu pre hlavičku aj pätičku stránky.</a>
-                Stiahnite si hlavičku a pätičku z <a href="https://github.com/id-sk/idsk_template">GitHub.</a>
-            </p>
+        </div>
+
+        <div class="govuk-grid-column-full">
+            <div class="example">
+            {% set exampleComponentHtml %}
+                {% include "../komponenty/examples/footer-2.njk" %}
+            {% endset %}
+            {{exampleComponentHtml | safe}}
+            </div>
         </div>
         
     </div>
