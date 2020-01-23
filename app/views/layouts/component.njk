@@ -3,9 +3,9 @@
 
 {% extends "full-width.njk" %}
 
-{% set bodyClasses %}
-  language-markup
-{% endset %}
+{% set htmlLang = 'en' %}
+
+{% set bodyClasses %}language-markup{% endset %}
 
 {% set componentName = componentPath %}
 {% set componentNameHuman = componentName | replace("-", " ") %}
