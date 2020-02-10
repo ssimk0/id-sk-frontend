@@ -1,29 +1,69 @@
 ID-SK Frontend
 =====================
 
-ID-SK   frontend je knižnica komponentov, ktorá výchadza z open source knižnice gov.uk Frontend a pridáva k nej nové komponenty.
+ID-SK Frontend je jednotný dizajnový systém elektronických služieb Slovenska, ktorý má za cieľ zjednotiť používateľské rozhrania a spôsob komunikácie s používateľom pri poskytovaní elektronických služieb na Slovensku.
 
-Pozrite si funkčné príklady použitia komponentov v [Dizajn manuále ID-SK](https://idsk-elements.herokuapp.com).
+ID-SK Frontend obsahuje zdrojový kód, ktorý vychádza z britského dizajn manuálu elektronických služieb GOV.UK.
 
-[//]: # (# Kontakt na tím)
+Živé príklady ID-SK komponentov s pokynmi ako ich využiť pri tvorbe vlastnej služby nájdete na {link na Dizajn systém [Dizajn manuále ID-SK](https://idsk-elements.herokuapp.com).
 
-[//]: # (GOV.UK Frontend is maintained by a team at Government Digital Service. If you want to know more about GOV.UK Frontend, please email the [Design System)
-[//]: # (team](mailto:govuk-design-system-support@digital.cabinet-office.gov.uk) or get in touch with them on [Slack](https://ukgovernmentdigital.slack.com/messages/govuk-design-system).)
+## Kontakt na tím
+ID-SK Frontend je tvorený pod záštitou Oddelenia behaviorálnych inovácií Úradu podpredsedu vlády SR pre investície a inovácie. Pre viac informácií nám svoje otázky smerujte na e-mail idsk@vicepremier.gov.sk.
 
-## Ako pracovať s týmto repozitárom
+Našli ste v ID-SK chybu alebo chcete navrhnúť zmenu? Môžete tak urobiť priamo na [https://github.com/id-sk/id-sk-frontend/issues](https://github.com/id-sk/id-sk-frontend/issues).
 
-S týmto repozitárom je možné pracovať viacerými spôsobmi:
+## Rýchly štart
+Sú 2 spôsoby, ako začať používať ID-SK Frontend vo vašej aplikácii.
 
-### 1. Použitie statického js/css vo vašom projekte
+### 1. Inštaláciou npm (odporúčame)
+Odporúčame nainštalovať si ID-SK Frontend zo správcu balíčkov platformy [Node (NPM)](https://www.npmjs.com/package/@id-sk/frontend).
 
-Najnovší build js/css sa nachádza v adresári `/dist`. Na použitie na vašom projekte stačí skopírovať obsah adresára `/dist` do public adresára vášho projektu a nalinkovať js a css súbor. [Zobraziť viac podrobnosti (v angličtine).](docs/installation/installing-from-dist.md).
+### 2. Inštaláciou kompilovaných súborov
+Môžete si tiež stiahnuť zkompilovanú a minifikovanú prvky (CSS, Javascript) z [GitHub] (https://github.com/id-sk/id-sk-frontend/tree/master/dist).
+Po inštalácii budete môcť vo vašej službe používať kód z dizajn systému ID-SK.
 
-### 2. Použitie sass build vo vašom projekte
+## Podpora prehliadačov
+ID-SK Frontend vám umožní budovať služby, ktoré sú v súlade s pokynmi uvedenými v [metodickom usmernení](https://idsk-preview.herokuapp.com/uvod/metodika-ucd).
+ID-SK Frontend oficiálne podporuje nasledovné prehliadače:
 
-Najnovší sass build spolu s js sa nachádza v adresári `/package`. Na použitie na vašom webovom sídle alebo aplikácii stačí skopírovať obsah adresára `/package` do ľubovolného adresára a zaradiť to do buildovania assetov podľa vášho výberu. [Zobraziť viac podrobností (v angličtine).](docs/installation/installing-with-npm.md)
+| Operačný systém | Prehliadač | Podpora |
+|--|--|--|
+| Windows | Internet Explorer 8-10 | funkčný |
+| Windows | Internet Explorer 11 | vyhovujúci |
+| Windows | Edge (posledné 2 verzie) | vyhovujúci |
+| Windows | Google Chrome (posledné 2 verzie) | vyhovujúci |
+| Windows | Mozilla Firefox (posledné 2 verzie) | vyhovujúci |
+| macOS | Safari 9+ | vyhovujúci | 
+| macOS | Google Chrome (posledné 2 verzie) | vyhovujúci | 
+| macOS | Mozilla Firefox (posledné 2 verzie) | vyhovujúci |
+| iOS | Safari for iOS 9.3+ | vyhovujúci |
+| iOS | Google Chrome (posledné 2 verzie) | vyhovujúci |
+| Android | Google Chrome (posledné 2 verzie) | vyhovujúci |
+| Android | Samsung Internet (posledné 2 verzie) | vyhovujúci |
 
-## Licencia
+„Vyhovujúci“ znamená, že komponenty musia vyzerať i fungovať rovnako dobre ako v iných moderných prehliadačoch.
 
-Ak nie je uvedené inak, kódy sú publikované s MIT License. Toto zahŕňa kódy aj ukážky kódov v dokumentácii.
-Pôvodná gov.uk dokumentácia je licencovaná pod &copy; Crown copyright a dostupná podľa podmienok definovaných v
-Open Government 3.0 licence.
+„Funkčný“ znamená, že komponenty nemusia v danom prehliadači vyzerať dokonale, ale musia byť stále použiteľné bez chýb.
+
+V prípade, že v aplikácii generujete CSS súbory, ktorých súčasťou sú ID-SK štýly, na podporu prehliadača Internet Explorer 8 je potrebné vygenerovať a zahrnúť aj separátne štýly.
+
+## Asistenčné technológie
+ID-SK Frontend vám umožní budovať služby, ktoré sú v súlade s pokynmi uvedenými v [metodickom usmernení](https://idsk-preview.herokuapp.com/uvod/metodika-ucd).
+
+ID-SK Frontend oficiálne podporuje nasledovné asistenčné technológie:
+
+| Softvér| Verzia| Typ| Prehliadač |
+|--|--|--|--|
+| JAWS | 15 alebo novšia | čítačka obrazovky | Internet Explorer 11 |
+| ZoomText | 10.11 alebo novšia | zväčšovacia lupa | Internet Explorer 11 |
+| Dragon NaturallySpeaking | 11 alebo novšia | rozpoznávač reči | Internet Explorer 11 |
+| NVDA | 2016 alebo novšia | čítačka obrazovky | Firefox (najnovšie verzie) |
+| VoiceOver | 7.0 alebo novšia | čítačka obrazovky | Safari na iOS10 a OS X |
+
+Okrem toho testujeme, či je všetok obsah prístupný iba pomocou klávesnice.
+
+Naším cieľom je podporovať používateľov, ktorí potrebujú upravené farby webových stránok, ktoré navštevujú. Testujeme to zmenou farieb v prehliadači Firefox, povolením režimu „Vysoký kontrast“ v operačnom systéme Windows a použitím doplnku „Vysoký kontrast“ pre prehliadač Chrome.
+
+## Ako prispieť k ID-SK
+
+Ak nám chcete pomôcť rozšíriť ID-SK Frontend, [pozrite si návod](https://github.com/id-sk/id-sk-frontend/blob/master/CONTRIBUTING.md)
