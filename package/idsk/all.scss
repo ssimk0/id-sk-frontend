@@ -1,17 +1,8 @@
+// Overrides of GOV.UK fronten
+@import "overrides/all";
+
 // Import GOV.UK frontend
-// The order we import settings in is important, as some settings files rely on
-// others
-@import "settings/all";
-/* @import "tools/all";
-@import "helpers/all";
+@import "../govuk/all";
 
-@import "core/all";
-@import "objects/all";
-
-@import "components/all";
-
-@import "utilities/all";
-@import "overrides/all"; */
-
-// Import your custom things
-@import "../custom/all";
+// ID-SK components
+@import "components/all"
