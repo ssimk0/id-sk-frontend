@@ -78,11 +78,11 @@ describe('package/', () => {
       expectedPackageFiles(configPaths.idsk_src)()
     ])
       .then(results => {
-        const onlyUnique = (value, index, self) => { 
-          return self.indexOf(value) === index;
+        const onlyUnique = (value, index, self) => {
+          return self.indexOf(value) === index
         }
         const [actualPackageFiles, expectedPackageFiles_govuk, expectedPackageFiles_idsk] = results
-        const expectedPackageFiles = [].concat(expectedPackageFiles_govuk, expectedPackageFiles_idsk).sort().filter(onlyUnique);
+        const expectedPackageFiles = [].concat(expectedPackageFiles_govuk, expectedPackageFiles_idsk).sort().filter(onlyUnique)
 
         expect(actualPackageFiles).toEqual(expectedPackageFiles)
       })

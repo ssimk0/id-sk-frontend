@@ -59,7 +59,7 @@ describe(`http://localhost:${PORT}`, () => {
         const componentsList = $('li a[href^="/components/"]').get()
         // Since we have an 'all' component link that renders the default example of all
         // components, there will always be one more expected link.
-        //const expectedComponentLinks = lib.allComponents.length + 1
+        // const expectedComponentLinks = lib.allComponents.length + 1
         const expectedComponentLinks = lib.allComponents.length
         expect(componentsList.length).toEqual(expectedComponentLinks)
         done(err)

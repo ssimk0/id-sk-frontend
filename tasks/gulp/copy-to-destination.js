@@ -60,8 +60,8 @@ const copyFiles = (src, components, dist) => () => {
       path.extname = '.json'
     }))
     .pipe(yamlFiles.restore)
-    .pipe(gulp.dest(taskArguments.destination + "/" + dist))
+    .pipe(gulp.dest(taskArguments.destination + '/' + dist))
 }
 
-gulp.task('copy-files-govuk', copyFiles(configPaths.src, configPaths.components, "govuk"))
-gulp.task('copy-files-idsk', copyFiles(configPaths.idsk_src, configPaths.idsk_components, "idsk"))
+gulp.task('copy-files-govuk', copyFiles(configPaths.src, configPaths.components, 'govuk'))
+gulp.task('copy-files-idsk', copyFiles(configPaths.idsk_src, configPaths.idsk_components, 'idsk'))
