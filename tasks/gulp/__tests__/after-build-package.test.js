@@ -8,7 +8,7 @@ const recursive = require('recursive-readdir')
 var glob = require('glob')
 
 const configPaths = require('../../../config/paths.json')
-const lib = require('../../../lib/file-helper')
+// const lib = require('../../../lib/file-helper')
 
 const { renderSass } = require('../../../lib/jest-helpers')
 
@@ -81,8 +81,8 @@ describe('package/', () => {
         const onlyUnique = (value, index, self) => {
           return self.indexOf(value) === index
         }
-        const [actualPackageFiles, expectedPackageFiles_govuk, expectedPackageFiles_idsk] = results
-        const expectedPackageFiles = [].concat(expectedPackageFiles_govuk, expectedPackageFiles_idsk).sort().filter(onlyUnique)
+        const [actualPackageFiles, expectedPackageFilesGovuk, expectedPackageFilesIdsk] = results
+        const expectedPackageFiles = [].concat(expectedPackageFilesGovuk, expectedPackageFilesIdsk).sort().filter(onlyUnique)
 
         expect(actualPackageFiles).toEqual(expectedPackageFiles)
       })
