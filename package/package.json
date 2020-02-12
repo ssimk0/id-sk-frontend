@@ -1,7 +1,7 @@
 {
   "name": "@id-sk/frontend",
-  "description": "IDSK 2.0",
-  "version": "2.0.0-alpha.0",
+  "description": "ID-SK Frontend",
+  "version": "2.1.0-alpha.0",
   "main": "idsk/all.js",
   "sass": "idsk/all.scss",
   "engines": {
@@ -9,7 +9,7 @@
   },
   "author": {
     "name": "IDSK team at LB*",
-    "email": "hello@lbstudio.sk"
+    "email": "idsk@vicepremier.gov.sk"
   },
   "repository": {
     "type": "git",
