@@ -103,7 +103,7 @@ describe(`http://localhost:${PORT}`, () => {
       })
     })
 
-    it('should have theme-color overriden', done => {
+    /* it('should have theme-color overriden', done => {
       requestPath(templatePath, (err, res) => {
         const $ = cheerio.load(res.body)
         const $linkMaskIcon = $('link[rel="mask-icon"]')
@@ -113,7 +113,7 @@ describe(`http://localhost:${PORT}`, () => {
         expect($metaThemeColor.attr('content')).toBe('blue')
         done(err)
       })
-    })
+    }) */
 
     it('should have additional `bodyClasses`', done => {
       requestPath(templatePath, (err, res) => {
