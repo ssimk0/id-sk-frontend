@@ -1,303 +1,279 @@
-# Installing GOV.UK Frontend with node package manager (NPM)
 
-## Requirements
+# Inštalácia ID-SK Frontend pomocou Node Package Manager (NPM)**
 
-To use GOV.UK Frontend with NPM you must:
+  
 
-1. Install the long-term support (LTS) version of
-   [Node.js](https://nodejs.org/en/), which includes NPM. The minimum version of
-   Node required is 4.2.0.
+## Požiadavky
 
-   (We recommend using [`nvm`](https://github.com/creationix/nvm) for managing
-   versions of Node.)
+Aby ste mohli používať ID-SK Frontend pomocou NPM:
 
-2. Create a [package.json file](https://docs.npmjs.com/files/package.json) if
-   you don’t already have one. You can create a default `package.json` file by
-   running `npm init` from the root of your application.
+1. Nainštalujte si verziu [Node.js](https://nodejs.org/en/) s dlhodobou podporou (LTS), ktorá obsahuje NPM. Minimálna požadovaná verzia Node je 4.2.0. (Na správu verzií Node odporúčame použiť [nvm](https://github.com/creationix/nvm).)
 
-3. If you want to use the GOV.UK Frontend Nunjucks macros, install Nunjucks -
-   the minimum version required is 3.0.0.
+2. Vytvorte [package.json](https://docs.npmjs.com/files/package.json) súbor, ak ho ešte nemáte. Môžete vytvoriť predvolený súbor spustením `npm init` z koreňovej zložky vašej aplikácie.
+
+3. Ak chcete použiť ID-SK Frontend Nunjucks makrá, nainštalujte Nunjucks. Minimálna požadovaná verzia je 3.0.0.
 
 ```
 npm install nunjucks --save
 ```
 
-## Installation
+## Inštalácia
 
-To install, run:
+Pre inštaláciu spustite:  
 
 ```
 npm install --save govuk-frontend
 ```
 
-After you have installed GOV.UK Frontend the `govuk-frontend` package will
-appear in your `node_modules` folder.
+Po skončení inštalácie ID-SK Frontend, balík govuk-frontend sa objaví v súbore
+```
+node_modules
+```
+  
 
-## Importing styles
+## Importovanie štýlov
 
-You need to import the GOV.UK Frontend styles into the main Sass file in your
-project. You should place the below code before your own Sass rules (or Sass
-imports) if you want to override GOV.UK Frontend with your own styles.
+Štýly ID-SK Frontend musíte importovať do hlavného súboru Sass vo vašom projekte. Ak chcete nahradiť ID-SK Frontend vlastnými štýlmi, mali by ste umiestniť nasledujúci kód pred svoje vlastné Sass pravidlá (alebo Sass importy).
 
-1. To import all components, add the below to your Sass file:
+  
 
-  ```SCSS
-  @import "node_modules/govuk-frontend/govuk/all";
-  ```
+1. Pre import všetkých komponentov, do svojho Sass súboru pridajte:
+```SCSS
+@import  '@id-sk/frontend/idsk/all';
+```
+2. Pre import individuálneho GOVUK komponentu (napríklad tlačidla), do svojho Sass súboru pridajte:
+```SCSS
+@import  "node_modules/@id-sk/frontend/govuk/components/button/button";
+```
+3. Pre import individuálneho ID-SK komponentu (napríklad hlavičky), do svojho Sass súboru pridajte:
+```SCSS
+@import  "node_modules/@id-sk/frontend/idsk/components/header/header";
+```
 
-2. To import an individual component (for example a button), add the below to
-your Sass file:
+### Voliteľné: Ošetrenie SCSS importovacích ciest
 
-  ```SCSS
-  @import "node_modules/govuk-frontend/govuk/components/button/button";
-  ```
+Ak chcete ošetriť vyššie uvedené `@import` cesty vo vašej zostave (aby ste sa vyhli prefixovaniu ciest s `node_modules`), pridajte `node_modules` do [Sass include paths](https://github.com/sass/node-sass#includepaths) (v Ruby ich treba pridať do [assets paths](http://guides.rubyonrails.org/asset_pipeline.html#search-paths)).
 
-### Optional: Resolving SCSS import paths
-
-If you wish to resolve the above `@import` paths in your build (in order to
-avoid prefixing paths with `node_modules`), you should add `node_modules` to
-your [Sass include paths](https://github.com/sass/node-sass#includepaths)
-(in Ruby, they should be added to [assets
-paths](http://guides.rubyonrails.org/asset_pipeline.html#search-paths)).
-
-For example, if your project uses Gulp, you would add the Sass include paths to
-your Gulp configuration file (for example `gulpfile.js`) with
-[gulp-sass](https://www.npmjs.com/package/gulp-sass). Below is an example:
+Napríklad, ak váš projekt používa Gulp, pridali by ste [Sass include paths](https://github.com/sass/node-sass#includepaths) do Gulp konfiguračného súboru (napríklad `gulpfile.js`) s [gulp-sass](https://www.npmjs.com/package/gulp-sass).
 
 ```JS
 gulp.task('sass', function () {
-  return gulp.src('./sass/**/*.scss')
+  return  gulp.src('./sass/**/*.scss')
     .pipe(sass({
-      includePaths: 'node_modules'
-     }))
+      includePaths:  'node_modules'
+    }))
     .pipe(gulp.dest('./css'));
 });
-
 ```
+Ak už vo svojom projekte kompilujete Sass do CSS, pravdepodobne máte podobnú Gulp úlohu ako v príklade vyššie. V takom prípade iba zahrňte cestu do `includePaths`.
 
-If you compile Sass to CSS in your project, your build tasks will already
-include something similar to the above task - in that case, you will just need
-to include add `includePaths` to it.
-
-After resolving the import paths you can import GOV.UK Frontend by using:
-
+Po ošetrení importovacích ciest môžete importovať ID-SK Frontend použitím:
 ```SCSS
-@import "govuk-frontend/govuk/components/button/button";
+@import  "govuk-frontend/govuk/components/button/button";
 ```
 
 ### Global Styles
 
-GOV.UK Frontend avoids applying styles globally on HTML elements such as `body`; instead, styles are are applied using classes.
+ID-SK Frontend sa vyhýba globálnemu aplikovaniu štýlov na prvky HTML, ako napríklad `body`; namiesto toho sú štýly aplikované používaním tried.
 
-This to avoid the risk of global styles conflicting with any pre-existing globals, for example in GOV.UK Elements or GOV.UK Template, or with any app specific CSS.
+Predíde sa tým riziku konfliktu globálnych štýlov s akýmikoľvek existujúcimi globálmi, napríklad v ID-SK Elements alebo ID-SK Template alebo s akýmkoľvek CSS špecifickým pre aplikáciu.  
 
-Hovever, we do include some global styles in the [GOV.UK Prototype Kit](https://github.com/alphagov/govuk-prototype-kit-private-beta) to speed up prototyping.
-
-These [global styles](../../src/govuk/core/_global-styles.scss) are are not included by default in GOV.UK Frontend. To include these global styles in your app, you can set `$govuk-global-styles` variable to `true` before importing GOV.UK Frontend styles into your app:
+Tieto [globálne štýly](../../src/govuk/core/_global-styles.scss) nie sú predvolene zahrnuté v ID-SK Frontend. Ak ich chcete zahrnúť do svojej aplikácie, pred importom štýlov ID-SK Frontend do aplikácie môžete nastaviť premennú `$govuk-global-styles` na `true`:
 
 ```SCSS
 // application.scss
-
-$govuk-global-styles: true;
-
-@import "govuk-frontend/govuk/all";
+  
+$govuk-global-styles: true;  
+@import  '@id-sk/frontend/idsk/all';
 ```
 
-### Using GOV.UK Frontend with old frameworks
+### Používanie ID-SK Frontend so starými frameworkami
 
-Find out how to [configure GOV.UK Frontend for compatibility](compatibility.md) with GOV.UK Frontend Toolkit, GOV.UK Template or GOV.UK Elements.
+Ako nakonfigurovať [ID-SK Frontend for compatibility](https://github.com/id-sk/id-sk-frontend/blob/master/docs/installation/compatibility.md) s ID-SK Frontend Toolkit, ID-SK Template alebo ID-SK Elements.
 
-## Using JavaScript
+## JavaScript
 
-Some of the JavaScript included in GOV.UK Frontend improves the usability and
-accessibility of the components.
+JavaScript obsiahnutý v ID-SK frontend zlepšuje použiteľnosť a prístupnosť komponentov.
 
-For example, the JavaScript will:
+JavaScript napríklad:
 
-- allow links styled as buttons to be triggered with the space bar when focused,
-  which matches the behaviour of native buttons and the way the button is
-  described when using assistive technologies.
-- enhance the details component to help users of assistive technologies
-  understand whether it is expanded or collapsed, and to make the component
-  behave correctly for users of Internet Explorer 8.
+- umožňuje linky, ktoré sú dizajnované ako tlačidlá, spúšťať medzerníkom pri focuse, čo zodpovedá správaniu natívnych tlačidiel a spôsobu, akým sú tlačidlá opísané pri používaní asistenčných technológií.
+- rozširuje komponent Details, aby mohli používatelia asistenčných technológií pochopiť, či je zbalený alebo rozbalený a zaistiť, aby sa komponent správal správne pre používateľov prehliadača Internet Explorer 8.
 
-You should [include](#option-1-include-javascript) or [import](#option-2-import-javascript) GOV.UK Frontend JavaScript, and then initialise the script in your application to ensure that all users can use it successfully.
+Môžete zahrnúť alebo [import](https://github.com/id-sk/id-sk-frontend/blob/master/docs/installation/installing-with-npm.md#option-2-import-javascript)ovať ID-SK Frontend JavaScript a následne script inicializovať vo svojej aplikácii aby ste sa uistili, že všetci používatelia ho dokážu použiť.
 
-Note that GOV.UK Frontend does not initialise any scripts by default; all scripts **must** be initialised in order for them to work.
+Upozorňujeme, že ID-SK Frontend defaultne neinicializuje žiadne skripty; aby fungovali všetky skripty, musia byť inicializované.
+  
 
-### Option 1: Include JavaScript
+### Možnosť 1: Zahrnúť JavaScript
 
-Include the `node_modules/govuk-frontend/govuk/all.js` script on your page. You might wish to copy the file into your project or reference it from `node_modules`.
+Zahrňte script `node_modules/govuk-frontend/govuk/all.js` na vašu stránku. Možno budete chcieť súbor skopírovať do svojho projektu alebo naň odkazovať cez `node_modules`.
 
-To initialise all components, use the `initAll` function.
+Pre inicializáciu všetkých komponentov použite funkciu `initAll`.
 
-JavaScript in GOV.UK Frontend requires HTML to be parsed first by the browser before it is initialised. Because of this, make sure you include the script before the closing `</body>` tag.
-Including the script elsewhere will stop components from functioning or displaying correctly.
+JavaScript v ID-SK Frontend vyžaduje, aby bolo HTML predtým, ako sa inicializuje analyzované prehliadačom. Z tohto dôvodu sa uistite, že ste script zahrnuli pred `</body>` tag. Zahrnutie skriptu na iné miesto zabráni správnemu fungovaniu komponentov alebo ich zobrazeniu.
 
 ```html
-    <script src="path-to-assets/govuk-frontend/govuk/all.js"></script>
+    <script  src="path-to-assets/govuk-frontend/govuk/all.js"></script>
     <script>window.GOVUKFrontend.initAll()</script>
   </body>
 </html>
 ```
 
-#### Initialise GOV.UK Frontend in only certain sections of a page
+#### Inicializácia ID-SK Frontend iba v určitých sekciách stránky
 
-By default, the `initAll` function from GOV.UK Frontend initialises all components scoped to an entire page with the `document` object.
+Funkcia `initAll` z ID-SK Frontend predvolene inicializuje všetky komponenty s rozsahom na celú stránku pomocou objektu `document` .
 
-You can change this by passing the `scope` parameter to the `initAll` function.
+Zmeniť to môžete presunutím parametra `scope` do funkcie `initAll`.
 
-For example, if you have a modal dialog box that opens with new markup you could do the following:
+Napríklad, ak máte modálne dialógové okno, ktoré sa otvára s novým markupom, môžete urobiť nasledovné:
 
 ```js
-var $modal = document.querySelector('.modal')
+var  $modal = document.querySelector('.modal')
 window.GOVUKFrontend.initAll({
-  scope: $modal
+  scope:  $modal
 })
 ```
 
-#### Initialise individual included components
+#### Inicializácia individuálnych zahrnutých komponentov
 
-GOV.UK Frontend components with JavaScript behaviour have the `data-module` attribute set in their markup.
+ID-SK Frontend komponenty s JavaScript správaním majú vo svojom markupe nastavený atribút `data-module`.
 
-You can use this attribute to initialise the component manually. This may be useful if you are adding markup to a page after it has loaded.
+Tento atribút môžete použiť na manuálnu inicializáciu komponentu. Môže to byť užitočné, ak pridávate markup na stránku po jej načítaní.  
 
-To initialise the first radio component on a page, use:
+Na inicializáciu prvého radio-komponentu na stránke použite:
 
 ```js
-var Radios = window.GOVUKFrontend.Radios
-var $radio = document.querySelector('[data-module="govuk-radios"]')
+var  Radios = window.GOVUKFrontend.Radios
+var  $radio = document.querySelector('[data-module="govuk-radios"]')
 if ($radio) {
-  new Radios($radio).init()
+  new  Radios($radio).init()
 }
 ```
 
-### Option 2: Import JavaScript
+  
 
-If you're using a bundler such as [Webpack](https://webpack.js.org/), use the `import` syntax to import all components. To initialise them, use the `initAll` function:
+### Možnosť 2: Importovať JavaScript
+
+Ak používate balík ako napríklad Webpack, na import všetkých komponentov použite syntax `import`. Pre ich inicializáciu použite funkciu `initAll`:  
 
 ```JS
-import { initAll } from 'govuk-frontend'
-
+import { initAll } from  'govuk-frontend'
 initAll()
 ```
-
-If you're using a bundler such as [Browserify](http://browserify.org/), you may need to use the CommonJS `require`:
+ 
+Ak používate balík ako napríklad napríklad [Browserify](http://browserify.org/), možno budete musieť použiť požiadavku CommonJS `require`:  
 
 ```JS
-const GOVUKFrontend = require('govuk-frontend')
-
+const  GOVUKFrontend = require('govuk-frontend')
 GOVUKFrontend.initAll()
 ```
 
 #### Import individual components
 
-If you're using a bundler such as Webpack, use the `import` syntax to import a component:
+Ak používate balík ako napríklad Webpack, pre importovanie komponentu použite syntax `import`:
 
 ```JS
-import { Radios } from 'govuk-frontend'
+import { Radios } from  'govuk-frontend'
 ```
 
-If you're using a bundler such as [Browserify](http://browserify.org/), you may need to use the CommonJS `require`:
-
+**Ak používate balík ako napríklad napríklad [Browserify](http://browserify.org/), možno budete musieť použiť požiadavku CommonJS require:**  
 
 ```JS
-const GOVUKFrontend = require('govuk-frontend')
-
-const Radios = GOVUKFrontend.Radios
+const  GOVUKFrontend = require('govuk-frontend')
+const  Radios = GOVUKFrontend.Radios
 ```
 
-GOV.UK Frontend components with JavaScript behaviour have the `data-module` attribute set in their markup.
+ID-SK Frontend (GOV.UK) komponenty s JavaScript správaním majú vo svojom markupe nastavený atribút data-module.
 
-You can use this attribute to initialise the component manually, this may be useful if you are adding markup to a page after it has loaded.
+Tento atribút môžete použiť na manuálnu inicializáciu komponentu. Môže to byť užitočné, ak pridávate markup na stránku po jej načítaní.
 
-To initialise the first radio component on a page, use:
+Na inicializáciu prvého rádiového komponentu na stránke použite:
 
 ```js
-var $radio = document.querySelector('[data-module="govuk-radios"]')
+var  $radio = document.querySelector('[data-module="govuk-radios"]')
 if ($radio) {
-  new Radios($radio).init()
+  new  Radios($radio).init()
 }
 ```
 
+  
+
 ### Polyfills
-A JavaScript polyfill provides functionality on older browsers or assistive technology that do not natively support it.
 
-The polyfills provided with GOV.UK Frontend aim to fix usability and accessibility issues. If there is a JavaScript included in the component directory, it is important to import and initialise it in your project to ensure that all users can properly use the component (see [Polyfilling](/docs/contributing/polyfilling.md)).
 
-### How GOV.UK Frontend is bundled
-The JavaScript included in GOV.UK Frontend components are in [UMD (Universal Module Definition)](https://github.com/umdjs/umd) format which makes it compatible with AMD (Asynchronous module definition) and CommonJS.
+Polyfill JavaScript poskytuje funkčnosť v starších prehliadačoch alebo podporných technológiách, ktoré ju natívne nepodporujú.
 
-See [JavaScript Coding Standards](/docs/contributing/coding-standards/js.md) for more details of how JavaScript is used in the project.
+Účelom polyfillov poskytovaných s ID-SK Frontend je vyriešiť problémy s použiteľnosťou a prístupnosťou. Ak je v adresári komponentov JavaScript, je dôležité ho importovať a inicializovať vo vašom projekte, aby ste zaistili, že ho môžu všetci používatelia správne používať (pozri [Polyfilling](/docs/contributing/polyfilling.md)).
 
-#### Using GOV.UK Frontend with Webpack 4
-Here's an example of setting up [`webpack.config.js`](examples/webpack/webpack.config.js) in your project
+### Ako je ID-SK Frontend zabalený
 
-## Importing assets
+JavaScript zahrnutý v ID-SK Frontend komponentoch je v [UMD (Universal Module Definition)](https://github.com/umdjs/umd) formáte, čo zabezpečuje kompatibilitu s AMD (Asynchronous module definition) a CommonJS.
 
-In order to import GOV.UK Frontend images and fonts to your project, you should configure your application to reference or copy the relevant GOV.UK Frontend assets.
+Viac o tom, ako je JavaScript použitý v projekte: [JavaScript Coding Standards](https://github.com/id-sk/id-sk-frontend/blob/master/docs/contributing/coding-standards/js.md)
 
-Follow either [Recommended solution](#recommended-solution) or [Alternative solution](#alternative-solution).
+#### Použitie ID-SK Frontend s Webpack 4
+To je príklad, ako nastaviť [webpack.config.js](https://github.com/id-sk/id-sk-frontend/blob/master/docs/installation/examples/webpack/webpack.config.js) do vášho projektu.
 
-### Recommended solution
+## Importovanie assetov
 
-Make `/node_modules/govuk-frontend/assets` available to your project by routing
-requests for your assets folder there.
+Ak chcete do svojho projektu importovať obrázky a písma z ID-SK Frontend, mali by ste nakonfigurovať svoju aplikáciu tak, aby odkazovala alebo kopírovala príslušné ID-SK Frontend assety.
 
-For example, if your project uses [express.js](https://expressjs.com/), below is
-a code sample you could add to your configuration:
+Držte sa bud’ [Odporúčaného riešenia](#recommended-solution) alebo [Alternatívneho riešenia](#alternative-solution).
+
+### Odporúčané riešenie  
+
+Sprístupnite `/node_modules/govuk-frontend/assets` pre váš projekt smerovaním požiadaviek na priečinok s assetmi.
+
+Napríklad, ak váš projekt využíva [express.js](https://expressjs.com/), nižšie je ukážka kódu, ktorú môžete pridať do svojej konfigurácie: 
 
 ```JS
 app.use('/assets', express.static(path.join(__dirname, '/node_modules/govuk-frontend/assets')))
 ```
-### Alternative solution
 
-Manually copy the images and fonts from `/node_modules/govuk-frontend/assets` into a public facing directory in your project. Ideally copying the files to your project should be an automated task or part of your build pipeline to ensure that the GOV.UK Frontend assets stay up-to-date.
+### Alternatívne riešenie
 
-The default paths used for assets are `assets/images` and `assets/fonts`. **If your asset folders follow this structure, you will not need to complete the following steps.**
+Obrázky a fonty skopírujte manuálne z `/node_modules/govuk-frontend/assets` do verejného adresára vo vašom projekte. V ideálnom prípade by kopírovanie súborov do vášho projektu malo byť automatizovanou úlohou alebo súčasťou pipeline, aby sa zaistilo, že ID-SK Frontend assety zostanú aktuálne.
 
-To use different asset paths, also complete the below step(s).
+Predvolené cesty pre assety sú `assets/images` a `assets/fonts`. **Ak majú vaše priečinky assetov takúto štruktúru, nebudete musieť robiť nasledujúce kroky.**
 
-1. Set `$govuk-assets-path`, `$govuk-images-path` and `$govuk-fonts-path` in your project Sass file to point to the relevant directories in your project (this will override the defaults set in `/node_modules/govuk-frontend/settings/_assets.scss`). Make sure you do this in Sass before importing `govuk-frontend` into your project - see [Importing styles](#importing-styles).
+Ak chcete použiť iné cesty assetov, vykonajte tiež nasledovné kroky:
 
-  Example 1:
+1. Nastavte `$govuk-assets-path, $govuk-images-path` a `$govuk-fonts-path` do vášho projektového Sass súboru tak, aby odkazoval na príslušné adresáre v projekte (prepíše sa tým predvolené nastavenie v /node_modules/govuk-frontend/settings/_assets.scss). Uistite sa, že ste tak urobili pred importovaním govuk-frontend do vášho projektu – pozri [Importing styles](https://github.com/id-sk/id-sk-frontend/blob/master/docs/installation/installing-with-npm.md#importing-styles).
 
-  ``` SCSS
-  // Include images from /application/assets/images and fonts from /application/assets/fonts
-  $govuk-assets-path: '/application/assets';
+Príklad 1:
+``` SCSS
+// Include images from /application/assets/images and fonts from /application/assets/fonts
+$govuk-assets-path: '/application/assets';
+@import  "govuk-frontend/govuk/all";
+```
+Príklad 2:
 
-  @import "govuk-frontend/govuk/all";
-  ```
+``` SCSS
+// Include images from /images/govuk-frontend and fonts from /fonts
+$govuk-images-path: "/images/govuk-frontend/";
+$govuk-fonts-path: "/fonts/";
+@import  "govuk-frontend/govuk/all";
+```
 
-  Example 2:
+2. Nepovinné: Môžete tiež prepísať pomocníkov, ktorí sa používajú na generovanie url adries assetov, napríklad ak používate sass-rails asset-pipeline. Môžete to urobiť nastavením `$govuk-image-url-function` na názov funkcie (funkcií), ktoré chcete použiť. Ďalšie informácie a príklady nájdete na stránke `src/govuk/settings/_assets.scss`.
+ 
+## Zahrnutie CSS a JavaScript
 
-  ``` SCSS
-  // Include images from /images/govuk-frontend and fonts from /fonts
-  $govuk-images-path: "/images/govuk-frontend/";
-  $govuk-fonts-path: "/fonts/";
-
-  @import "govuk-frontend/govuk/all";
-  ```
-
-2. Optional: You can also override the helpers used to generate the asset urls, for example if you are using sass-rails' asset-pipeline functionality. You can do this by setting `$govuk-image-url-function` to the name of the function(s) you wish to use. See `src/govuk/settings/_assets.scss` for more information and examples.
-
-## Include CSS and JavaScript
-
-Add the CSS and JavaScript code to your HTML template:
+Pridajte CSS a JavaScript kód do vašej HTML šablóny:
 
 ```html
-<!DOCTYPE html>
+<!DOCTYPE  html>
   <head>
     <title>Example</title>
-    <link rel="stylesheet" href="assets/application.css">
+    <link  rel="stylesheet"  href="assets/application.css">
   </head>
   <body>
     <!-- Copy and paste component HTML-->
-    <button class="govuk-button">This is a button component</button>
-    <script src="assets/application.js"></script>
+    <button  class="govuk-button">This is a button component</button>
+    <script  src="assets/application.js"></script>
   </body>
 </html>
 ```
 
-If your service supports Internet Explorer 8, you will need to [generate and
-include a separate stylesheet](supporting-internet-explorer-8.md) as well.
+Ak vaša služba podporuje Internet Explorer 8, budete musieť vygenerovať a zahrnúť aj osobitnú šablónu so štýlmi.
