@@ -3,21 +3,22 @@
 
 {% extends "full-width.njk" %}
 
-{% set bodyClasses %}
-  language-markup
-{% endset %}
+{% set htmlLang = 'en' %}
+
+{% set bodyClasses %}language-markup{% endset %}
 
 {% set componentName = componentPath %}
 {% set componentNameHuman = componentName | replace("-", " ") %}
 
 {% set htmlMarkup %}
+    {{ componentName }}
   {% include componentName +"/"+ componentName +".njk" ignore missing %}
 {% endset %}
 
 {% block beforeContent %}
   {{ govukBreadcrumbs({
     "items": [
-    { text: 'GOV.UK Frontend', href: '/' + legacyQuery },
+    { text: 'ID-SK frontend', href: '/' + legacyQuery },
     { text: componentNameHuman | capitalize }
     ]
   }) }}
@@ -33,6 +34,6 @@
   </div>
 
   {% block examples %}
-    {{ showExamples(componentName, componentNameHuman, componentData,legacyQuery) }}
+    {{ showExamples(componentName, componentNameHuman, componentData, legacyQuery) }}
   {% endblock %}
 {% endblock %}

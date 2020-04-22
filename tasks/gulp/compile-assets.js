@@ -34,7 +34,7 @@ const destinationPath = function () {
   if (taskArguments.destination === 'dist' || taskArguments.destination === 'public') {
     return taskArguments.destination
   } else {
-    return `${taskArguments.destination}/govuk/`
+    return `${taskArguments.destination}/idsk/`
   }
 }
 
@@ -47,8 +47,8 @@ const errorHandler = function (error) {
   this.emit('end')
 }
 // different entry points for both streams below and depending on destination flag
-const compileStyleshet = isDist ? configPaths.src + 'all.scss' : configPaths.app + 'assets/scss/app.scss'
-const compileOldIeStyleshet = isDist ? configPaths.src + 'all-ie8.scss' : configPaths.app + 'assets/scss/app-ie8.scss'
+const compileStyleshet = isDist ? configPaths.idsk_src + 'all.scss' : configPaths.app + 'assets/scss/app.scss'
+const compileOldIeStyleshet = isDist ? configPaths.idsk_src + 'all-ie8.scss' : configPaths.app + 'assets/scss/app-ie8.scss'
 
 gulp.task('scss:compile', () => {
   const compile = gulp.src(compileStyleshet)
@@ -67,7 +67,7 @@ gulp.task('scss:compile', () => {
     ])))
     .pipe(gulpif(isDist,
       rename({
-        basename: 'govuk-frontend',
+        basename: 'idsk-frontend',
         extname: '.min.css'
       })
     ))
@@ -100,7 +100,7 @@ gulp.task('scss:compile', () => {
     ])))
     .pipe(gulpif(isDist,
       rename({
-        basename: 'govuk-frontend-ie8',
+        basename: 'idsk-frontend-ie8',
         extname: '.min.css'
       })
     ))
@@ -151,11 +151,11 @@ gulp.task('scss:compile', () => {
 // --------------------------------------
 gulp.task('js:compile', () => {
   // for dist/ folder we only want compiled 'all.js' file
-  const srcFiles = isDist ? configPaths.src + 'all.js' : configPaths.src + '**/*.js'
+  const srcFiles = isDist ? configPaths.idsk_src + 'all.js' : configPaths.idsk_src + '**/*.js'
 
   return gulp.src([
     srcFiles,
-    '!' + configPaths.src + '**/*.test.js'
+    '!' + configPaths.idsk_src + '**/*.test.js'
   ])
     .pipe(rollup({
       // Used to set the `window` global and UMD/AMD export name.
@@ -170,7 +170,7 @@ gulp.task('js:compile', () => {
     })))
     .pipe(gulpif(isDist,
       rename({
-        basename: 'govuk-frontend',
+        basename: 'idsk-frontend',
         extname: '.min.js'
       })
     ))

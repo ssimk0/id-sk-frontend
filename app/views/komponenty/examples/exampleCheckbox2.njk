@@ -1,0 +1,21 @@
+{% from "checkboxes/macro.njk" import govukCheckboxes %}
+{% from "input/macro.njk" import govukInput %}
+
+{{ govukInput({
+  "label": {
+    "text": "Zadajte vaše telefónne číslo"
+  },
+  "id": "input-tel",
+  "name": "tel"
+}) }}
+
+{{ govukCheckboxes({
+  "idPrefix": "checkbox-sms",
+  "name": "sms",
+  "items": [
+    {
+      "value": "sms",
+      "text": "Chcem byť kontaktovaný SMS správou"
+    }
+  ]
+}) }}

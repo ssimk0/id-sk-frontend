@@ -11,6 +11,7 @@ const readdir = util.promisify(fs.readdir)
 const helperFunctions = require('../lib/helper-functions')
 const fileHelper = require('../lib/file-helper')
 const configPaths = require('../config/paths.json')
+const idskContentStructure = require('../config/idskContentStructure.json')
 
 // Set up views
 const appViews = [
@@ -19,8 +20,13 @@ const appViews = [
   configPaths.examples,
   configPaths.fullPageExamples,
   configPaths.components,
+  configPaths.idsk_components,
   configPaths.src,
-  configPaths.node_modules
+  configPaths.idsk_src,
+  configPaths.node_modules,
+
+  configPaths.uvod,
+  configPaths.slovnik
 ]
 
 module.exports = (options) => {
@@ -39,6 +45,7 @@ module.exports = (options) => {
 
   // make the function available as a filter for all templates
   env.addFilter('componentNameToMacroName', helperFunctions.componentNameToMacroName)
+  env.addFilter('idskComponentNameToMacroName', helperFunctions.idskComponentNameToMacroName)
   env.addGlobal('markdown', require('marked'))
 
   // Set view engine
@@ -92,13 +99,21 @@ module.exports = (options) => {
   // Index page - render the component list template
   app.get('/', async function (req, res) {
     const components = fileHelper.allComponents
+    const idskComponents = fileHelper.allIdskComponents
     const examples = await readdir(path.resolve(configPaths.examples))
     const fullPageExamples = fileHelper.fullPageExamples()
+    const idskItroductionContent = idskContentStructure.introduction
+    const idskPatternsContent = idskContentStructure.patterns
+    const idskComponentsUsageContent = idskContentStructure.componentsUsage
 
     res.render('index', {
       componentsDirectory: components,
+      idskComponentsDirectory: idskComponents,
       examplesDirectory: examples,
-      fullPageExamples: fullPageExamples
+      fullPageExamples: fullPageExamples,
+      idskItroductionContent: idskItroductionContent,
+      idskPatternsContent: idskPatternsContent,
+      idskComponentsUsageContent: idskComponentsUsageContent
     })
   })
 
@@ -106,6 +121,13 @@ module.exports = (options) => {
   // from its YAML file
   app.param('component', function (req, res, next, componentName) {
     res.locals.componentData = fileHelper.getComponentData(componentName)
+    next()
+  })
+
+  // Whenever the route includes a :component parameter, read the component data
+  // from its YAML file
+  app.param('custom_component', function (req, res, next, componentName) {
+    res.locals.idskComponentData = fileHelper.getIdskComponentData(componentName)
     next()
   })
 
@@ -138,6 +160,20 @@ module.exports = (options) => {
     res.locals.componentPath = req.params.component
 
     res.render('component', function (error, html) {
+      if (error) {
+        next(error)
+      } else {
+        res.send(html)
+      }
+    })
+  })
+
+  // Component 'README' page
+  app.get('/custom-components/:custom_component', function (req, res, next) {
+    // make variables available to nunjucks template
+    res.locals.componentPath = req.params.custom_component
+
+    res.render('custom_component', function (error, html) {
       if (error) {
         next(error)
       } else {
@@ -179,11 +215,86 @@ module.exports = (options) => {
     res.render('component-preview', { bodyClasses, previewLayout })
   })
 
+  // Component example preview
+  app.get('/custom-components/:custom_component/:example*?/preview', function (req, res, next) {
+    // Find the data for the specified example (or the default example)
+
+    const componentName = req.params.custom_component
+    const requestedExampleName = req.params.example || 'default'
+
+    const previewLayout = res.locals.idskComponentData.previewLayout || 'layout'
+
+    const exampleConfig = res.locals.idskComponentData.examples.find(
+      example => example.name.replace(/ /g, '-') === requestedExampleName
+    )
+
+    if (!exampleConfig) {
+      next()
+    }
+
+    // Construct and evaluate the component with the data for this example
+    const macroName = helperFunctions.idskComponentNameToMacroName(componentName)
+    const macroParameters = JSON.stringify(exampleConfig.data, null, '\t')
+
+    res.locals.componentView = env.renderString(
+      `{% from '../../idsk/components/${componentName}/macro.njk' import ${macroName} %}
+      {{ ${macroName}(${macroParameters}) }}`
+    )
+
+    let bodyClasses = ''
+    if (req.query.iframe) {
+      bodyClasses = 'app-iframe-in-component-preview'
+    }
+
+    res.render('component-preview', { bodyClasses, previewLayout })
+  })
+
   // Example view
-  app.get('/examples/:example', function (req, res, next) {
+  app.get('/examples/:example/:action?', function (req, res, next) {
     // Passing a random number used for the links so that they will be unique and not display as "visited"
     const randomPageHash = (Math.random() * 1000000).toFixed()
-    res.render(`${req.params.example}/index`, { randomPageHash }, function (error, html) {
+    res.render(`${req.params.example}/${req.params.action || 'index'}`, { randomPageHash }, function (error, html) {
+      if (error) {
+        next(error)
+      } else {
+        res.send(html)
+      }
+    })
+  })
+
+  // Example view
+  app.get('/full-page-examples/:example/:action?', function (req, res, next) {
+    // Passing a random number used for the links so that they will be unique and not display as "visited"
+    const randomPageHash = (Math.random() * 1000000).toFixed()
+    res.render(`${req.params.example}/${req.params.action || 'index'}`, { randomPageHash }, function (error, html) {
+      if (error) {
+        next(error)
+      } else {
+        res.send(html)
+      }
+    })
+  })
+
+  // Introduction (Uvod) view
+  app.get('/uvod/:content/:action?', function (req, res, next) {
+    // Passing a random number used for the links so that they will be unique and not display as "visited"
+    const randomPageHash = (Math.random() * 1000000).toFixed()
+    res.render(`${req.params.content}/${req.params.action || 'index'}`, { randomPageHash }, function (error, html) {
+      if (error) {
+        next(error)
+      } else {
+        res.send(html)
+      }
+    })
+  })
+
+  // shallow content view
+  // e.g.:
+  // /slovnik
+  app.get('/:content/:action?', function (req, res, next) {
+    // Passing a random number used for the links so that they will be unique and not display as "visited"
+    const randomPageHash = (Math.random() * 1000000).toFixed()
+    res.render(`${req.params.content}/${req.params.action || 'index'}`, { randomPageHash }, function (error, html) {
       if (error) {
         next(error)
       } else {

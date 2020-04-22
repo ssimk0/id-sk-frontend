@@ -1,41 +1,38 @@
-# Installing GOV.UK Frontend from `dist`
+# Inštalácia ID-SK Frontend z dist
 
-## Limitations
+## Obmedzenia
 
-When installing from `dist`, you are using compiled and minified versions of the
-stylesheet. This means that you will not be able to:
+Pri inštalácii z `dist` sa používajú kompilované a minifikované verzie šablóny so štýlmi. To znamená, že nebudete môcť:
 
-- selectively include the CSS or JavaScript for individual components.
-- build your own styles or components based on the palette or typography and
-  spacing mixins.
-- customise the build (for example, overriding colours or enabling global
-  styles).
-- use the component Nunjucks templates.
+- selektívne zahrnúť CSS alebo JavaScript pre jednotlivé komponenty
+- zostaviť si vlastné štýly alebo komponenty na základe palety alebo typografických či medzerových kombinácií.
+- prispôsobiť zostavu (napríklad prepísať farby alebo povoliť globálne štýly)
+- Použiť komponenty z Nunjucks šablón.
 
-If you require any of this functionality, you should [install GOV.UK Frontend
-using node package manager](installing-with-npm.md) instead.
+Ak požadujete niektorú z týchto funkcií, je výhodnejšie nainštalovať ID-SK Frontend pomocou [node package manager](https://github.com/id-sk/id-sk-frontend/blob/master/docs/installation/installing-with-npm.md).
 
-## Steps to install
 
-### 1. Download resources
+## Kroky k inštalácii
 
-Download the latest compiled and minified versions of the stylesheets,
-JavaScript and the assets:
+### 1. Stiahnite si zdroje
 
-- [CSS and JavaScript](https://github.com/alphagov/govuk-frontend/tree/master/dist)
-- [Assets](https://github.com/alphagov/govuk-frontend/tree/master/dist/assets)
 
-### 2. Include resources
+Stiahnite si najnovšie kompilované a minifikované verzie šablón štýlov, JavaScript a assetov:
 
-You must copy the entire `assets` folder to the root of your service.
+- [CSS a JS](https://github.com/id-sk/id-sk-frontend/tree/master/dist)
+- [Assety](https://github.com/id-sk/id-sk-frontend/tree/master/dist/assets)
 
-Follow the below example to add the CSS and JavaScript files to your HTML template. This example assumes you have copied the stylesheets and JavaScript files to `/stylesheets` and `/javascript` respectively.
+### 2. Zahrňte zdroje
+
+Skopírujte celý `assets` priečinok do rootu vašej služby.
+
+Podľa nižšie uvedeného príkladu pridajte súbory CSS a JavaScript do šablóny HTML. Tento príklad predpokladá, že ste skopírovali šablóny so štýlmi a JavaScript súbory do `/stylesheets` a `/javascript`.
 
 ```html
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Example</title>
+    <title>Ukážka</title>
     <!--[if !IE 8]><!-->
       <link rel="stylesheet" href="stylesheets/govuk-frontend-[latest version].min.css">
     <!--<![endif]-->
@@ -45,7 +42,7 @@ Follow the below example to add the CSS and JavaScript files to your HTML templa
   </head>
   <body>
     <!-- Copy and paste component HTML-->
-    <button class="govuk-button">This is a button component</button>
+    <button class="govuk-button">Toto je komponent tlačidlo</button>
     <script src="javascript/govuk-frontend-[latest version].min.js"></script>
     <script>window.GOVUKFrontend.initAll()</script>
   </body>

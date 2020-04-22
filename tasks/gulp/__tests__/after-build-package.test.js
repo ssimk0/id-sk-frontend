@@ -8,7 +8,7 @@ const recursive = require('recursive-readdir')
 var glob = require('glob')
 
 const configPaths = require('../../../config/paths.json')
-const lib = require('../../../lib/file-helper')
+// const lib = require('../../../lib/file-helper')
 
 const { renderSass } = require('../../../lib/jest-helpers')
 
@@ -34,7 +34,7 @@ describe('package/', () => {
 
     // Build an array of files we expect to be found in the package directory,
     // based on the contents of the src directory.
-    const expectedPackageFiles = () => {
+    const expectedPackageFiles = (src) => () => {
       const filesToIgnore = [
         '.DS_Store',
         '*.test.js',
@@ -50,7 +50,7 @@ describe('package/', () => {
         'README.md'
       ]
 
-      return recursive(configPaths.src, filesToIgnore).then(
+      return recursive(src, filesToIgnore).then(
         files => {
           let filesNotInSrc = files
           // Use glob to generate an array of files that accounts for wildcards in filenames
@@ -72,9 +72,17 @@ describe('package/', () => {
 
     // Compare the expected directory listing with the files we expect
     // to be present
-    Promise.all([actualPackageFiles(), expectedPackageFiles()])
+    Promise.all([
+      actualPackageFiles(),
+      expectedPackageFiles(configPaths.src)(),
+      expectedPackageFiles(configPaths.idsk_src)()
+    ])
       .then(results => {
-        const [actualPackageFiles, expectedPackageFiles] = results
+        const onlyUnique = (value, index, self) => {
+          return self.indexOf(value) === index
+        }
+        const [actualPackageFiles, expectedPackageFilesGovuk, expectedPackageFilesIdsk] = results
+        const expectedPackageFiles = [].concat(expectedPackageFilesGovuk, expectedPackageFilesIdsk).sort().filter(onlyUnique)
 
         expect(actualPackageFiles).toEqual(expectedPackageFiles)
       })
@@ -94,16 +102,16 @@ describe('package/', () => {
 
   describe('all.scss', () => {
     it('should compile without throwing an exception', async () => {
-      const allScssFile = path.join(configPaths.package, 'govuk', 'all.scss')
+      const allScssFile = path.join(configPaths.package, 'idsk', 'all.scss')
       await renderSass({ file: allScssFile })
     })
   })
 
-  describe('component', () => {
+  /* describe('component', () => {
     const componentNames = lib.allComponents.slice()
 
     it.each(componentNames)(`'%s' should have macro-options.json that contains JSON`, (name) => {
-      const filePath = path.join(configPaths.package, 'govuk', 'components', name, 'macro-options.json')
+      const filePath = path.join(configPaths.package, 'idsk', 'components', name, 'macro-options.json')
       return readFile(filePath, 'utf8')
         .then((data) => {
           var parsedData = JSON.parse(data)
@@ -123,5 +131,5 @@ describe('package/', () => {
           throw error
         })
     })
-  })
+  }) */
 })

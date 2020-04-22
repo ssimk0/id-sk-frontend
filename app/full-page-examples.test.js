@@ -362,7 +362,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
       })
     })
 
-    describe('news-and-communications', () => {
+    /* describe('news-and-communications', () => {
       it('should show most wanted results by default', (done) => {
         requestPath.get('news-and-communications', (err, res) => {
           const $ = cheerio.load(res.body)
@@ -387,7 +387,7 @@ describe(`http://localhost:${PORT}/full-page-examples/`, () => {
           done(err)
         })
       })
-    })
+    }) */
 
     describe('what-was-the-last-country-you-visited', () => {
       it('should not show errors if submit with no input', (done) => {

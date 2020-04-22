@@ -24,11 +24,11 @@ fi
 # at some point we should create a team and check if user exists in a team
 # ! npm team ls developers | grep -q $NPM_USER
 
-NPM_USER=$(npm whoami)
-if ! [ "govuk-patterns-and-tools" == "$NPM_USER" ]; then
-    echo "⚠️ FAILURE: You are not logged in with the correct user."
-    exit 1
-fi
+# NPM_USER=$(npm whoami)
+# if ! [ "govuk-patterns-and-tools" == "$NPM_USER" ]; then
+#     echo "⚠️ FAILURE: You are not logged in with the correct user."
+#     exit 1
+# fi
 
 echo "📦  Publishing package..."
 

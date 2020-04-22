@@ -1,0 +1,45 @@
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "macros/showExamples.njk" import showCustomExamples %}
+
+{% extends "full-width.njk" %}
+
+{% set bodyClasses %}
+  language-markup
+{% endset %}
+
+{% set componentName = componentPath %}
+{% set componentNameHuman = componentName | replace("-", " ") %}
+
+{% set htmlMarkup %}
+  {% include componentName +"/"+ componentName +".njk" ignore missing %}
+{% endset %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    "items": [
+    { text: 'ID-SK Frontend', href: '/' + legacyQuery },
+    { text: componentNameHuman | capitalize }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    <h1 class="govuk-heading-xl">
+      {% block componentName %}
+        {{ componentNameHuman | capitalize }}
+      {% endblock %}
+      idsk
+    </h1>
+
+    {% if idskComponentData.description %}
+      <div class="govuk-inset-text">
+        {{ idskComponentData.description | safe }}
+      </div>
+    {% endif %}
+  </div>
+
+  {% block examples %}
+    {{ showCustomExamples(componentName, componentNameHuman, idskComponentData, legacyQuery) }}
+  {% endblock %}
+{% endblock %}

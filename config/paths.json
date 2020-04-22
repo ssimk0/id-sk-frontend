@@ -5,6 +5,8 @@
       "fullPageExamples": "app/views/full-page-examples/",
       "partials": "app/views/partials/",
       "layouts": "app/views/layouts/",
+      "uvod": "app/views/uvod/",
+      "slovnik": "app/views/slovnik/",
   "config": "config/",
   "dist": "dist/",
   "node_modules": "node_modules/",
@@ -12,7 +14,9 @@
   "public": "public/",
   "sassdoc": "sassdoc/",
   "src": "src/govuk/",
+    "idsk_src": "src/idsk/",
     "components": "src/govuk/components/",
+    "idsk_components": "src/idsk/components/",
   "ports": {
     "app": 3000,
     "test": 8888

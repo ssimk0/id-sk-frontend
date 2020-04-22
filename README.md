@@ -1,122 +1,69 @@
-GOV.UK Frontend ·
-[![Build Status](https://travis-ci.org/alphagov/govuk-frontend.svg?branch=master)](https://travis-ci.org/alphagov/govuk-frontend)
-[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+ID-SK Frontend
 =====================
 
-GOV.UK Frontend contains the code you need to start building a user interface
-for government platforms and services.
+ID-SK Frontend je jednotný dizajnový systém elektronických služieb Slovenska, ktorý má za cieľ zjednotiť používateľské rozhrania a spôsob komunikácie s používateľom pri poskytovaní elektronických služieb na Slovensku.
 
-See live examples of GOV.UK Frontend components, and guidance on when to use
-them in your service, in the [GOV.UK Design
-System](https://design-system.service.gov.uk/).
+ID-SK Frontend obsahuje zdrojový kód, ktorý vychádza z britského dizajn manuálu elektronických služieb GOV.UK.
 
-## Contact the team
+Živé príklady ID-SK komponentov s pokynmi ako ich využiť pri tvorbe vlastnej služby nájdete na {link na Dizajn systém [Dizajn manuále ID-SK](https://idsk-elements.herokuapp.com).
 
-GOV.UK Frontend is maintained by a team at Government Digital Service. If you want to know more about GOV.UK Frontend, please email the [Design System
-team](mailto:govuk-design-system-support@digital.cabinet-office.gov.uk) or get in touch with them on [Slack](https://ukgovernmentdigital.slack.com/messages/govuk-design-system).
+## Kontakt na tím
+ID-SK Frontend je tvorený pod záštitou Oddelenia behaviorálnych inovácií Úradu podpredsedu vlády SR pre investície a inovácie. Pre viac informácií nám svoje otázky smerujte na e-mail idsk@vicepremier.gov.sk.
 
-## Quick start
+Našli ste v ID-SK chybu alebo chcete navrhnúť zmenu? Môžete tak urobiť priamo na [https://github.com/id-sk/id-sk-frontend/issues](https://github.com/id-sk/id-sk-frontend/issues).
 
-There are 2 ways to start using GOV.UK Frontend in your app.
+## Rýchly štart
+Sú 2 spôsoby, ako začať používať ID-SK Frontend vo vašej aplikácii.
 
-Once installed, you will be able to use the code from the examples in the
-[GOV.UK Design System](https://design-system.service.gov.uk/)
-in your service.
+### 1. Inštaláciou npm (odporúčame)
+Odporúčame nainštalovať si ID-SK Frontend zo správcu balíčkov platformy [Node (NPM)](https://www.npmjs.com/package/@id-sk/frontend).
 
-### 1. Install with npm (recommended)
+### 2. Inštaláciou kompilovaných súborov
+Môžete si tiež stiahnuť zkompilovanú a minifikovanú prvky (CSS, Javascript) z [GitHub] (https://github.com/id-sk/id-sk-frontend/tree/master/dist).
+Po inštalácii budete môcť vo vašej službe používať kód z dizajn systému ID-SK.
 
-We recommend [installing GOV.UK Frontend using node package manager
-(npm)](docs/installation/installing-with-npm.md).
+## Podpora prehliadačov
+ID-SK Frontend vám umožní budovať služby, ktoré sú v súlade s pokynmi uvedenými v [metodickom usmernení](https://idsk-preview.herokuapp.com/uvod/metodika-ucd).
+ID-SK Frontend oficiálne podporuje nasledovné prehliadače:
 
-### 2. Install by using compiled files
+| Operačný systém | Prehliadač | Podpora |
+|--|--|--|
+| Windows | Internet Explorer 8-10 | funkčný |
+| Windows | Internet Explorer 11 | vyhovujúci |
+| Windows | Edge (posledné 2 verzie) | vyhovujúci |
+| Windows | Google Chrome (posledné 2 verzie) | vyhovujúci |
+| Windows | Mozilla Firefox (posledné 2 verzie) | vyhovujúci |
+| macOS | Safari 9+ | vyhovujúci | 
+| macOS | Google Chrome (posledné 2 verzie) | vyhovujúci | 
+| macOS | Mozilla Firefox (posledné 2 verzie) | vyhovujúci |
+| iOS | Safari for iOS 9.3+ | vyhovujúci |
+| iOS | Google Chrome (posledné 2 verzie) | vyhovujúci |
+| Android | Google Chrome (posledné 2 verzie) | vyhovujúci |
+| Android | Samsung Internet (posledné 2 verzie) | vyhovujúci |
 
-You can also [download the compiled and minified assets (CSS, JavaScript) from
-GitHub](docs/installation/installing-from-dist.md).
+„Vyhovujúci“ znamená, že komponenty musia vyzerať i fungovať rovnako dobre ako v iných moderných prehliadačoch.
 
-## Browser support
+„Funkčný“ znamená, že komponenty nemusia v danom prehliadači vyzerať dokonale, ale musia byť stále použiteľné bez chýb.
 
-GOV.UK Frontend will allow you to build services that comply with the [guidance
-in the Service Manual][service-manual-browsers].
+V prípade, že v aplikácii generujete CSS súbory, ktorých súčasťou sú ID-SK štýly, na podporu prehliadača Internet Explorer 8 je potrebné vygenerovať a zahrnúť aj separátne štýly.
 
-Currently, GOV.UK Frontend officially supports the following browsers:
+## Asistenčné technológie
+ID-SK Frontend vám umožní budovať služby, ktoré sú v súlade s pokynmi uvedenými v [metodickom usmernení](https://idsk-preview.herokuapp.com/uvod/metodika-ucd).
 
-| Operating system | Browser                                | Support     |
-|----------------- |----------------------------------------|-------------|
-| Windows          | Internet Explorer 8-10                 | functional  |
-| Windows          | Internet Explorer 11                   | compliant   |
-| Windows          | Edge (latest 2 versions)               | compliant   |
-| Windows          | Google Chrome (latest 2 versions)      | compliant   |
-| Windows          | Mozilla Firefox (latest 2 versions)    | compliant   |
-| macOS            | Safari 9+                              | compliant   |
-| macOS            | Google Chrome (latest 2 versions)      | compliant   |
-| macOS            | Mozilla Firefox (latest 2 versions)    | compliant   |
-| iOS              | Safari for iOS 9.3+                    | compliant   |
-| iOS              | Google Chrome (latest 2 versions)      | compliant   |
-| Android          | Google Chrome (latest 2 versions)      | compliant   |
-| Android          | Samsung Internet (latest 2 versions)   | compliant   |
+ID-SK Frontend oficiálne podporuje nasledovné asistenčné technológie:
 
-‘Compliant’ means that the components must look as good and function as well as
-they do in other modern browsers.
+| Softvér| Verzia| Typ| Prehliadač |
+|--|--|--|--|
+| JAWS | 15 alebo novšia | čítačka obrazovky | Internet Explorer 11 |
+| ZoomText | 10.11 alebo novšia | zväčšovacia lupa | Internet Explorer 11 |
+| Dragon NaturallySpeaking | 11 alebo novšia | rozpoznávač reči | Internet Explorer 11 |
+| NVDA | 2016 alebo novšia | čítačka obrazovky | Firefox (najnovšie verzie) |
+| VoiceOver | 7.0 alebo novšia | čítačka obrazovky | Safari na iOS10 a OS X |
 
-'Functional' means the components may not look perfect in the given browser, but
-must still be usable without errors and without 'looking broken'.
+Okrem toho testujeme, či je všetok obsah prístupný iba pomocou klávesnice.
 
-If you are including GOV.UK Frontend as part of a stylesheet that you are
-generating in your application's build pipeline, you will need to [generate and
-include a separate stylesheet in order to support Internet Explorer
-8](docs/installation/supporting-internet-explorer-8.md).
+Naším cieľom je podporovať používateľov, ktorí potrebujú upravené farby webových stránok, ktoré navštevujú. Testujeme to zmenou farieb v prehliadači Firefox, povolením režimu „Vysoký kontrast“ v operačnom systéme Windows a použitím doplnku „Vysoký kontrast“ pre prehliadač Chrome.
 
-[service-manual-browsers]: https://www.gov.uk/service-manual/technology/designing-for-different-browsers-and-devices#browsers-to-test-in
+## Ako prispieť k ID-SK
 
-## Assistive technology support
-
-GOV.UK Frontend will allow you to build services that comply with the [guidance
-in the Service Manual][service-manual-assistive-technologies].
-
-Currently, GOV.UK Frontend officially supports the following assistive technologies:
-
-| Software                 | Version        | Type               | Browser                   |
-|--------------------------|----------------|--------------------|---------------------------|
-| JAWS                     | 15 or later    | screen reader      | Internet Explorer 11      |
-| ZoomText                 | 10.11 or later | screen magnifier   | Internet Explorer 11      |
-| Dragon NaturallySpeaking | 11 or later    | speech recognition | Internet Explorer 11      |
-| NVDA                     | 2016 or later  | screen reader      | Firefox (latest versions) |
-| VoiceOver                | 7.0 or later   | screen reader      | Safari on iOS10 and OS X  |
-
-In addition, we test that all content is accessible with keyboard only.
-
-We aim to support [users who adjust or override the colours of websites they visit][how-users-change-colours-on-websites]. We test this by [changing colours in Firefox][changing-colours-in-firefox], by [enabling 'High Contrast' mode in Windows][enabling-high-contrast-mode-in-windows] and by using the [High Contrast plugin for Chrome][high-contrast-plugin-for-chrome].
-
-[service-manual-assistive-technologies]: https://www.gov.uk/service-manual/technology/testing-with-assistive-technologies#what-to-test
-
-[changing-colours-in-firefox]:
-https://support.mozilla.org/en-US/kb/change-fonts-and-colors-websites-use
-
-[enabling-high-contrast-mode-in-windows]:
-https://support.microsoft.com/en-gb/help/13862/windows-use-high-contrast-mode
-
-[high-contrast-plugin-for-chrome]: https://chrome.google.com/webstore/detail/high-contrast/djcfdncoelnlbldjfhinnjlhdjlikmph?hl=en-US
-
-[how-users-change-colours-on-websites]:
-https://accessibility.blog.gov.uk/2017/03/27/how-users-change-colours-on-websites/
-
-## Getting updates
-
-To be notified when there’s a new release, you can either:
-
-- [watch the govuk-frontend Github repository](https://help.github.com/en/articles/watching-and-unwatching-repositories)
-- join the [#govuk-design-system channel on cross-government Slack](https://ukgovernmentdigital.slack.com/app_redirect?channel=govuk-design-system)
-
-Find out how to [update with npm](https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/updating-with-npm.md).
-
-## Licence
-
-Unless stated otherwise, the codebase is released under the MIT License. This
-covers both the codebase and any sample code in the documentation. The
-documentation is &copy; Crown copyright and available under the terms of the
-Open Government 3.0 licence.
-
-## Contribution guidelines
-
-If you want to help us build GOV.UK Frontend, view our [contribution
-guidelines](CONTRIBUTING.md).
+Ak nám chcete pomôcť rozšíriť ID-SK Frontend, [pozrite si návod](https://github.com/id-sk/id-sk-frontend/blob/master/CONTRIBUTING.md)

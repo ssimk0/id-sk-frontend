@@ -1,14 +1,32 @@
 {% extends "_generic.njk" %}
 
 {% set htmlClasses = "app-no-canvas-background" %}
+{% set pageName = pageName %}
 
-{% block pageTitle %}GOV.UK Frontend{% endblock %}
+{% block pageTitle %}ID-SK Frontend{{" - " + pageName if pageName}}{% endblock %}
 
 {# Turn the header and footer off #}
 {% block header %}
-  {% include "../partials/banner.njk" %}
+  {# {% include "../partials/banner.njk" %} #}
+  {% from "../../../src/idsk/components/header/macro.njk" import idskHeader %}
+  {{ idskHeader({"serviceName": "Jednotný dizajn manuál elektronických služieb"}) }}
+  
+  {% from "phase-banner/macro.njk" import govukPhaseBanner %}
+  <div class="govuk-width-container">
+  {{ govukPhaseBanner({
+    "tag": {
+      "text": "ver. 2.0"
+    },
+    "html": "Nová verzia ID-SK Frontend nahradzuje pôvodnú verziu. Dokumentáciu staršej verzie nájdete na <a href=\"https:\/\/idsk-elements.herokuapp.com\" target=\"_blank\">ID-SK Elements</a>"
+  }) }}
+  </div>
+
 {% endblock %}
-{% block footer %}{% endblock %}
+
+{% block footer %}
+  {% from "../../../src/idsk/components/footer/macro.njk" import idskFooter %}
+  {{ idskFooter({"logo": true, "serviceName": "Jednotný dizajn manuál elektronických služieb"}) }}
+{% endblock %}
 
 {% block bodyEnd %}
   {{ super() }}

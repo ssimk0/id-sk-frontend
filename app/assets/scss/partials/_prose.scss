@@ -57,3 +57,7 @@
     padding-top: govuk-spacing(2);
   }
 }
+
+pre[class*=language-] {
+  margin: 1em 0 2em 0!important;
+}

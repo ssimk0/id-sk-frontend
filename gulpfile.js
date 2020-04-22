@@ -35,7 +35,15 @@ gulp.task('styles', gulp.series(
 // Copies assets to taskArguments.destination (public)
 // --------------------------------------
 gulp.task('copy:assets', () => {
-  return gulp.src(paths.src + 'assets/**/*')
+  return gulp.src(paths.idsk_src + 'assets/**/*')
+    .pipe(gulp.dest(taskArguments.destination + '/assets/'))
+})
+
+// Copy assets task ----------------------
+// Copies assets to taskArguments.destination (public)
+// --------------------------------------
+gulp.task('copy:appAssets', () => {
+  return gulp.src(paths.app + 'assets/**/*')
     .pipe(gulp.dest(taskArguments.destination + '/assets/'))
 })
 
@@ -71,6 +79,7 @@ gulp.task('serve', gulp.parallel(
 gulp.task('dev', gulp.series(
   'clean',
   'copy-assets',
+  'copy:appAssets',
   'sassdoc',
   'serve'
 ))
@@ -80,7 +89,8 @@ gulp.task('dev', gulp.series(
 // -------------------------------------
 gulp.task('build:package', gulp.series(
   'clean',
-  'copy-files',
+  'copy-files-govuk',
+  'copy-files-idsk',
   'js:compile'
 ))
 gulp.task('build:dist', gulp.series(

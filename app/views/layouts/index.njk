@@ -1,47 +1,198 @@
 {% extends "layout.njk" %}
+{% from "accordion/macro.njk" import govukAccordion %}
 
 {% block content %}
+
   <h1 class="govuk-heading-xl">
-    GOV.UK Frontend
+    ID-SK Frontend – Jednotný dizajn manuál elektronických služieb
   </h1>
 
   <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <p class="govuk-body-l">Manuál, ktorý má za cieľ zjednotiť používateľské rozhrania a spôsob komunikácie s používateľom pri poskytovaní elektronických služieb na Slovensku.</p>
+    </div>
+  </div>
 
-    <div class="govuk-grid-column-one-third">
-      <h2 class="govuk-heading-m">Components</h2>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
+    {% set idskComponents %}
       <ul class="govuk-list">
-        <li><a href="/components/all{{ legacyQuery }}" class="govuk-link">All</a></li>
-        {% for componentName in componentsDirectory | sort %}
-          <li><a href="/components/{{ componentName }}{{ legacyQuery }}" class="govuk-link">{{ componentName | replace("-", " ") | capitalize }}</a></li>
+        {% for componentName in idskComponentsDirectory | sort %}
+          <li><a href="/custom-components/{{ componentName }}" class="govuk-link">{{ componentName | replace("-", " ") | capitalize }}</a></li>
         {% endfor %}
       </ul>
-    </div>
+    {% endset %}
 
-    <div class="govuk-grid-column-one-third">
-      <h2 class="govuk-heading-m">Examples</h2>
-
+    {% set idskItroductionContent %}
       <ul class="govuk-list">
-      {% for exampleName in examplesDirectory | sort %}
-        <li><a href="/examples/{{ exampleName }}{{ legacyQuery }}" class="govuk-link">{{ exampleName | replace("-", " ") | capitalize }}</a></li>
-      {% endfor %}
+        {% for pageName, pageTitle in idskItroductionContent %}
+          <li><a href="/uvod/{{ pageName }}" class="govuk-link">{{ pageTitle | replace("-", " ") | capitalize }}</a></li>
+        {% endfor %}
       </ul>
-    </div>
+    {% endset %}
 
-    <div class="govuk-grid-column-one-third">
-      <h2 class="govuk-heading-m"><a href="/full-page-examples" class="govuk-link">Full page examples</a></h2>
-
+    {% set idskPatternsContent %}
       <ul class="govuk-list">
-      {% for example in fullPageExamples %}
-        <li><a href="/full-page-examples/{{ example.path }}{{ legacyQuery }}" class="govuk-link">{{ example.name | replace("-", " ") | capitalize }}</a></li>
-      {% endfor %}
+        {% for pageName, pageTitle in idskPatternsContent %}
+          <li><a href="/vzory/{{ pageName }}" class="govuk-link">{{ pageTitle | replace("-", " ") | capitalize | safe }}</a></li>
+        {% endfor %}
       </ul>
+    {% endset %}
 
-      <h2 class="govuk-heading-m">Misc</h2>
-
+    {% set idskComponentsUsageContent %}
       <ul class="govuk-list">
-        <li><a href="/docs" class="govuk-link">Sass Documentation</a></li>
+        {% for pageName, pageTitle in idskComponentsUsageContent %}
+          <li><a href="/komponenty/{{ pageName }}" class="govuk-link">{{ pageTitle | replace("-", " ") | capitalize }}</a></li>
+        {% endfor %}
       </ul>
+    {% endset %}
+
+    {% set govukComponents %}
+      <ul class="govuk-list" lang="en">
+        {% for componentName in componentsDirectory | sort %}
+          {% if componentName != 'idsk' and componentName != 'custom' %}
+            <li><a href="/components/{{ componentName }}" class="govuk-link">{{ componentName | replace("-", " ") | capitalize }}</a></li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    {% endset %}
+
+    {% set govukExamples %}
+      <ul class="govuk-list" lang="en">
+        {% for exampleName in examplesDirectory | sort %}
+          <li><a href="/examples/{{ exampleName }}{{ legacyQuery }}" class="govuk-link">{{ exampleName | replace("-", " ") | capitalize }}</a></li>
+        {% endfor %}
+      </ul>
+    {% endset %}
+
+    {% set govukPageExamples %}
+      <ul class="govuk-list" lang="en">
+        {% for example in fullPageExamples %}
+          <li><a href="/full-page-examples/{{ example.path }}{{ legacyQuery }}" class="govuk-link">{{ example.name | replace("-", " ") | capitalize }}</a></li>
+        {% endfor %}
+      </ul>
+    {% endset %}
+
+    {{ govukAccordion({
+      "id": "default-example",
+      "classes": "govuk-!-margin-bottom-9",
+      "attributes": {
+        "data-attribute": "value"
+      },
+      "items": [
+        {
+          "heading": {
+            "text": "Úvod"
+          },
+          "summary": {
+            "text": "Prečo dodržiavať tento manuál, ako pristupovať k novej online službe a ako vylepšovať existujúce online služby."
+          },
+          "content": {
+            "html": idskItroductionContent
+          }
+        },
+        {
+          "heading": {
+            "text": "Webové komponenty"
+          },
+          "summary": {
+            "text": "Prehľad webových komponentov, ktoré sa používajú na tvorbu elektronických služieb."
+          },
+          "content": {
+            "html": idskComponentsUsageContent
+          }
+        },
+        {
+          "heading": {
+            "text": "Vzory"
+          },
+          "summary": {
+            "text": "Používanie a adaptácia návrhových vzorov"
+          },
+          "content": {
+            "html": idskPatternsContent
+          }
+        },
+        {
+          "heading": {
+            "text": "Slovník"
+          },
+          "summary": {
+            "text": "Najčastejšie používané výrazy"
+          },
+          "content": {
+            "html": "<p class=\"govuk-body\"><a href=\"/slovnik\">Slovník</a></p>\n"
+          }
+        },
+        {
+          "heading": {
+            "text": "Benchmark životných situácií"
+          },
+          "summary": {
+            "text": "Metodika pre benchmark životných situácií z pohľadu behaviorálnych intervencií"
+          },
+          "content": {
+            "html": "<p class=\"govuk-body\"><a href=\"/benchmark-zivotnych-situacii\">Benchmark životných situácií</a></p>\n"
+          }
+        }
+      ]
+    }) }}
+
+    <h2 class="govuk-heading-m">GOV.UK Frontend</h2>
+    <p class="govuk-body">Prevzaté komponenty, vzory a ukážky z GOV.UK Frontend a ich dokumentácia (obsah je v&nbsp;anglickom jazyku)</p>
+    {{ govukAccordion({
+      "id": "default-example2",
+      "classes": "govuk-!-margin-bottom-9",
+      "attributes": {
+        "data-attribute": "value"
+      },
+      "items": [
+        {
+          "heading": {
+            "text": "GOV.UK - Komponenty"
+          },
+          "summary": {
+            "text": ""
+          },
+          "content": {
+            "html": govukComponents
+          }
+        },
+        {
+          "heading": {
+            "text": "GOV.UK - Vzory"
+          },
+          "summary": {
+          },
+          "content": {
+            "html": govukExamples
+          }
+        },
+        {
+          "heading": {
+            "text": "GOV.UK - Ukážky stránok"
+          },
+          "summary": {
+          },
+          "content": {
+            "html": govukPageExamples
+          }
+        },
+        {
+          "heading": {
+            "text": "Dokumentácia Sass"
+          },
+          "summary": {
+            "text": "Developerská dokumentácia Sass (obsah je v anglickom jazyku)"
+          },
+          "content": {
+            "html": "<ul class=\"govuk-list\"><li><a href=\"/docs\" class=\"govuk-link\">Sass Documentation</a></li></ul>\n"
+          }
+        }
+      ]
+    }) }}
+  
     </div>
   </div>
 {% endblock %}

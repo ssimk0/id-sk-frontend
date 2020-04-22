@@ -1,0 +1,17 @@
+{% from "input/macro.njk" import govukInput %}
+
+{{ govukInput({
+  "label": {
+    "text": "Krstné meno"
+  },
+  "id": "input-example-4-name",
+  "name": "name"
+}) }}
+
+{{ govukInput({
+  "label": {
+    "text": "Priezvisko"
+  },
+  "id": "input-example-4-surname",
+  "name": "surname"
+}) }}
