@@ -1,0 +1,36 @@
+{% extends "layout.njk" %}
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+
+{% set pageName = "Nástroje pre dizanérov (Figma)" %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    "items": [
+    { text: 'ID-SK frontend', href: '/' + legacyQuery },
+    { text: pageName }
+    ]
+  }) }}
+{% endblock %}  
+
+{% block content %}
+  <div class="govuk-width-container">
+
+    <span class="govuk-caption-xl">Úvod</span>
+    <h1 class="govuk-heading-xl">{{pageName}}</h1>
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds govuk-body">
+
+            <p>Tu nájdete webové komponenty, rozloženia stránok a detaily stavov a elementov v dizajnérskom nástroji Figma.</p>
+            <p>Všetky súbory sú voľne prístupné na prepoužitie a pre prácu s nimi je nevyhnutné duplikovať súbory alebo skopírovať do nového súboru.</p>
+            <p>Pomocou týchto komponentov je možné vyskladať elektronickú v službu a/alebo webové sídlo v IDSK.</p>
+
+            <p><a href="https://www.figma.com/file/WzmISpWDWHCMM5FGirQEQt/ID-SK-public?node-id=83%3A1193" class="govuk-button " target="_blank">Odkaz na Figma súbor</a></p>
+
+            <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&amp;url=https%3A%2F%2Fwww.figma.com%2Ffile%2FWzmISpWDWHCMM5FGirQEQt%2FID-SK-public%3Fnode-id%3D83%253A1318&amp;chrome=DOCUMENTATION" allowfullscreen></iframe>
+
+        </div>
+    </div>
+
+  </div>
+{% endblock %}
