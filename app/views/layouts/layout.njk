@@ -17,7 +17,7 @@
     "tag": {
       "text": "ver. 2.0"
     },
-    "html": "Nová verzia ID-SK Frontend nahradzuje pôvodnú verziu. Dokumentáciu staršej verzie nájdete na <a href=\"https:\/\/idsk-elements.herokuapp.com\" target=\"_blank\">ID-SK Elements</a>"
+    "html": "Nová verzia ID-SK Frontend nahradzuje pôvodnú verziu. Dokumentáciu staršej verzie nájdete na <a href=\"https:\/\/github.com\/id-sk\/idsk_elements\" target=\"_blank\">ID-SK Elements</a>"
   }) }}
   </div>
 
@@ -25,7 +25,13 @@
 
 {% block footer %}
   {% from "../../../src/idsk/components/footer/macro.njk" import idskFooter %}
-  {{ idskFooter({"logo": true, "serviceName": "Jednotný dizajn manuál elektronických služieb"}) }}
+  {{ idskFooter({
+    "logo": true, 
+    "meta": {
+      "copy": "Prevádzkovateľom služby je Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky. Vytvorené v súlade s Jednotným dizajn manuálom elektronických služieb.",
+      "footerLogoLink": "https://www.mirri.gov.sk/"
+    }
+  }) }}
 {% endblock %}
 
 {% block bodyEnd %}

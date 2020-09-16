@@ -108,12 +108,18 @@ accessibilityCriteria: |
 examples:
 - name: default
   data:
-    {}
+    logo: true
+    meta:
+      copy: 'Prevádzkovateľom služby je Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky. Vytvorené v súlade s Jednotným dizajn manuálom elektronických služieb.'
+      footerLogoLink: 'https://www.mirri.gov.sk/'
 
 - name: with meta
   description: Secondary navigation with meta information relating to the site
   data:
+    logo: true
     meta:
+      copy: 'Prevádzkovateľom služby je Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky. Vytvorené v súlade s Jednotným dizajn manuálom elektronických služieb.'
+      footerLogoLink: 'https://www.mirri.gov.sk/'
       visuallyHiddenTitle: Items
       items:
         - href: '#1'
@@ -126,13 +132,19 @@ examples:
 - name: with custom meta
   description: Custom meta section
   data:
+    logo: true
     meta:
+      copy: 'Prevádzkovateľom služby je Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky. Vytvorené v súlade s Jednotným dizajn manuálom elektronických služieb.'
+      footerLogoLink: 'https://www.mirri.gov.sk/'
       text: GOV.UK Prototype Kit v7.0.1
 
 - name: with meta links and meta content
   description: Secondary navigation links and custom meta text
   data:
+    logo: true
     meta:
+      copy: 'Prevádzkovateľom služby je Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky. Vytvorené v súlade s Jednotným dizajn manuálom elektronických služieb.'
+      footerLogoLink: 'https://www.mirri.gov.sk/'
       items:
         - href: '#1'
           text: Bibendum Ornare
@@ -155,11 +167,18 @@ examples:
 - name: with custom meta
   description: Custom meta section
   data:
+    logo: true
     meta:
+      copy: 'Prevádzkovateľom služby je Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky. Vytvorené v súlade s Jednotným dizajn manuálom elektronických služieb.'
+      footerLogoLink: 'https://www.mirri.gov.sk/'
       text: GOV.UK Prototype Kit v7.0.1
 
 - name: with navigation
   data:
+    logo: true
+    meta:
+      copy: 'Prevádzkovateľom služby je Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky. Vytvorené v súlade s Jednotným dizajn manuálom elektronických služieb.'
+      footerLogoLink: 'https://www.mirri.gov.sk/'
     navigation:
       - title: Two column list
         columns: 2
@@ -188,6 +207,7 @@ examples:
 - name: GOV.UK
   description: A full example based on GOV.UK's current footer
   data:
+    logo: true
     navigation:
       - title: Services and information
         columns: 2
@@ -239,6 +259,8 @@ examples:
           - href: '/government/announcements'
             text: Announcements
     meta:
+      copy: 'Prevádzkovateľom služby je Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky. Vytvorené v súlade s Jednotným dizajn manuálom elektronických služieb.'
+      footerLogoLink: 'https://www.mirri.gov.sk/'
       items:
         - href: '/help'
           text: Help
