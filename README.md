@@ -13,13 +13,13 @@ ID-SK Frontend je tvorený pod záštitou Oddelenia behaviorálnych inovácií �
 Našli ste v ID-SK chybu alebo chcete navrhnúť zmenu? Môžete tak urobiť priamo na [https://github.com/id-sk/id-sk-frontend/issues](https://github.com/id-sk/id-sk-frontend/issues).
 
 ## Rýchly štart
-Sú 2 spôsoby, ako začať používať ID-SK Frontend vo vašej aplikácii.
+Sú dva spôsoby, ako začať používať ID-SK Frontend vo vašej aplikácii.
 
 ### 1. Inštaláciou npm (odporúčame)
 Odporúčame nainštalovať si ID-SK Frontend zo správcu balíčkov platformy [Node (NPM)](https://www.npmjs.com/package/@id-sk/frontend).
 
 ### 2. Inštaláciou kompilovaných súborov
-Môžete si tiež stiahnuť zkompilovanú a minifikovanú prvky (CSS, Javascript) z [GitHub] (https://github.com/id-sk/id-sk-frontend/tree/master/dist).
+Môžete si tiež stiahnuť skompilované a minifikované prvky (CSS, Javascript) z [GitHub] (https://github.com/id-sk/id-sk-frontend/tree/master/dist).
 Po inštalácii budete môcť vo vašej službe používať kód z dizajn systému ID-SK.
 
 ## Podpora prehliadačov
