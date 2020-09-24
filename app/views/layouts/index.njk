@@ -27,7 +27,7 @@
     {% set idskItroductionContent %}
       <ul class="govuk-list">
         {% for pageName, pageTitle in idskItroductionContent %}
-          <li><a href="/uvod/{{ pageName }}" class="govuk-link">{{ pageTitle | replace("-", " ") | capitalize }}</a></li>
+          <li><a href="/uvod/{{ pageName }}" class="govuk-link">{{ pageTitle }}</a></li>
         {% endfor %}
       </ul>
     {% endset %}
@@ -150,7 +150,7 @@
       "items": [
         {
           "heading": {
-            "text": "GOV.UK - Komponenty"
+            "text": "GOV.UK – Komponenty"
           },
           "summary": {
             "text": ""
@@ -161,7 +161,7 @@
         },
         {
           "heading": {
-            "text": "GOV.UK - Vzory"
+            "text": "GOV.UK – Vzory"
           },
           "summary": {
           },
@@ -171,7 +171,7 @@
         },
         {
           "heading": {
-            "text": "GOV.UK - Ukážky stránok"
+            "text": "GOV.UK – Ukážky stránok"
           },
           "summary": {
           },

@@ -57,7 +57,7 @@ module.exports = (options) => {
     // noindex - Do not show this page in search results and do not show a
     //   "Cached" link in search results.
     // nofollow - Do not follow the links on this page
-    res.setHeader('X-Robots-Tag', 'none')
+    res.setHeader('X-Robots-Tag', 'all')
     next()
   })
 

@@ -46,7 +46,7 @@ describe(`http://localhost:${PORT}`, () => {
 
     it('should prevent search indexing', done => {
       requestPath.get(path, (err, res) => {
-        expect(res.headers['x-robots-tag']).toEqual('none')
+        expect(res.headers['x-robots-tag']).toEqual('all')
         done(err)
       })
     })
