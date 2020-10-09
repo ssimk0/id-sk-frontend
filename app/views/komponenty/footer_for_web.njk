@@ -1,0 +1,83 @@
+{% extends "layout.njk" %}
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+
+{% set pageName = "Pätička pre webové sídla" %}
+
+{% block beforeContent %}
+    {{ govukBreadcrumbs({
+    "items": [
+    { text: 'ID-SK frontend', href: '/' + legacyQuery },
+    { text: pageName }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-width-container">
+
+        <span class="govuk-caption-xl">Webové komponenty</span>
+        <h1 class="govuk-heading-xl">{{pageName}}</h1>
+        <p class="govuk-body-l">Takto by vyzeral popis k novemu komponentu.</p>
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+
+                <h2 class="govuk-heading-s">Obsah:</h2>
+                <ul class="govuk-list">
+                    <li>
+                        <a href="#kratky-popis">Kratky popis</a>
+                    </li>
+                    <li>
+                        <a href="#ukazka-zakladna-paticka">Základná pätička</a>
+                    </li>
+                    <li>
+                        <a href="#ukazka-rozsirena-paticka-1">Rozšírená pätička 1</a>
+                    </li>
+                    <li>
+                        <a href="#ukazka-rozsirena-paticka-2">Rozšírená pätička 2</a>
+                    </li>
+                </ul>
+
+                <h3 class="govuk-heading-m" id="kratky-popis">Kratky popis</h3>
+                <p class="govuk-body">
+                    Tento prekrasny, farebne zladeny komponent odporucame pouvat vyhradne len na vyucbu tvorby komponentov nikdy nie v praxi.
+                </p>
+            </div>
+
+            <div class="govuk-grid-column-full">
+                <h3 class="govuk-heading-m" id="ukazka-zakladna-paticka">Základná pätička</h3>
+                <div class="example">
+                    {% set exampleComponentHtml %}
+                    {% include "../komponenty/examples/exampleFooterForWeb1.njk" %}
+                    {% endset %}
+                    {{exampleComponentHtml | safe}}
+                </div>
+            </div>
+
+            <div class="govuk-grid-column-full">
+                <h3 class="govuk-heading-m" id="ukazka-rozsirena-paticka-1">Rozšírená pätička 1</h3>
+                <p class="govuk-body">V nasledujucej ukazke su pouzite vstupne parametres.</p>
+                <div class="example">
+                    {% set exampleComponentHtml %}
+                    {% include "../komponenty/examples/exampleFooterForWeb2.njk" %}
+                    {% endset %}
+                    {{exampleComponentHtml | safe}}
+                </div>
+            </div>
+
+            <div class="govuk-grid-column-full">
+                <h3 class="govuk-heading-m" id="ukazka-rozsirena-paticka-2">Rozšírená pätička 2</h3>
+                <p class="govuk-body">V nasledujucej ukazke su pouzite vstupne parametres.</p>
+                <div class="example">
+                    {% set exampleComponentHtml %}
+                    {% include "../komponenty/examples/exampleFooterForWeb3.njk" %}
+                    {% endset %}
+                    {{exampleComponentHtml | safe}}
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}
