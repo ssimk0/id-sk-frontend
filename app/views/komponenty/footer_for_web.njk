@@ -17,15 +17,14 @@
 
         <span class="govuk-caption-xl">Webové komponenty</span>
         <h1 class="govuk-heading-xl">{{pageName}}</h1>
-        <p class="govuk-body-l">Takto by vyzeral popis k novemu komponentu.</p>
-
+        <p class="govuk-body-l">Odporúčame pridať na stránku svojej služby pätičku podľa tohto manuálu. Je dôležité, aby všetky online služby Slovenskej republiky vyzerali pre používateľa rovnako.</p>
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
 
                 <h2 class="govuk-heading-s">Obsah:</h2>
                 <ul class="govuk-list">
                     <li>
-                        <a href="#kratky-popis">Kratky popis</a>
+                        <a href="#kratky-popis">Krátky popis</a>
                     </li>
                     <li>
                         <a href="#ukazka-zakladna-paticka">Základná pätička</a>
@@ -38,9 +37,9 @@
                     </li>
                 </ul>
 
-                <h3 class="govuk-heading-m" id="kratky-popis">Kratky popis</h3>
+                <h3 class="govuk-heading-m" id="kratky-popis">Krátky popis</h3>
                 <p class="govuk-body">
-                    Tento prekrasny, farebne zladeny komponent odporucame pouvat vyhradne len na vyucbu tvorby komponentov nikdy nie v praxi.
+                    Všetky služby musia používať základnú štandardnú pätičku stránky, ktorá obsahuje najmä textové informácie o prevádzkovateľovi služby a textové odkazy na:
                 </p>
             </div>
 
@@ -51,6 +50,15 @@
                     {% include "../komponenty/examples/exampleFooterForWeb1.njk" %}
                     {% endset %}
                     {{exampleComponentHtml | safe}}
+                </div>
+                <div>
+                    <ul class="govuk-list govuk-list--bullet">
+                        <li>kontaktnú stránku vašej organizácie</li>
+                        <li>pomocné informácie – len ak je táto stránka naozaj nutná kvôli komplexnosti a náročnosti samotnej služby</li>
+                        <li>iné jazykové možnosti – názov odkazu píšte v danom jazyku</li>
+                        <li>informácie o ochrane osobných údajov</li>
+                        <li>vyhlásenie o prístupnosti</li>
+                    </ul>
                 </div>
             </div>
 
@@ -78,6 +86,5 @@
         </div>
 
     </div>
-
 </div>
 {% endblock %}

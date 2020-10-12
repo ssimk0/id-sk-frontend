@@ -1,108 +1,99 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <div class="idsk-novy-body idsk-footer__meta">
-
     <div class="govuk-width-container">
-        <div class="govuk-grid-row second-subtitle">
-            <div class="govuk-grid-column-two-thirds two-thirds">
-                <h3 class="govuk-heading-m ">
-
-                    {% if params.firstTitle %}
+        {% if params.firstTitle %}
+            <div class="govuk-grid-row second-subtitle">
+                <div class="govuk-grid-column-two-thirds two-thirds">
+                    <h3 class="govuk-heading-m ">
                         {{ params.firstTitle }}
-
-                    {% endif %}
-                </h3>
-
-                <div class="govuk-grid-row small_subtitle">
-                    <div class="govuk-grid-column-one-half">
-                        {% for i in range(0, params.numberOfSubtitles) -%}
-                            <li class="idsk-footer__inline-list-item" href="{{firstSubtitle.href}}">{{ params.firstSubtitle }}</li>
-                        {%- endfor %}
-                    </div>
-                    <div class="govuk-grid-column-one-half">
-                        {% for i in range(0, params.numberOfSubtitles) -%}
-                            <li class="idsk-footer__inline-list-item" href="{{firstTitle.href}}">{{ params.firstSubtitle }}</li>
-                        {%- endfor %}
-                    </div>
-
-                </div>
-
-            </div>
-            <div class="govuk-grid-column-one-third one-third">
-                <h3 class="govuk-heading-m">
-                    {% if params.secondTitle %}
-                        {{ params.secondTitle }}
-                    {% endif %}
-                </h3>
-                <div class="govuk-grid-column-three-thirds small_subtitle">
-                    {% for i in range(0, params.numberOfSubtitles) -%}
-                        <li class="idsk-footer__inline-list-item" href="{{firstTitle.href}}">{{ params.firstSubtitle }}</li>
-                    {%- endfor %}
-                </div>
-            </div>
-
-        </div>
-        <div class="govuk-grid-row second-subtitle">
-            <div class="govuk-grid-column-two-thirds two-thirds">
-                <h3 class="govuk-heading-m ">
-                    {% if params.thirdTitle %}
-                        {{ params.thirdTitle }}
-                    {% endif %}
-                </h3>
-
-                <div class="govuk-grid-row small_subtitle">
-                    <div class="govuk-grid-column-one-half">
-
-                        {% if params.secondSubtitle %}
-
+                    </h3>
+                    <div class="govuk-grid-row small_subtitle">
+                        <div class="govuk-grid-column-one-half bottom-space">
                             {% for i in range(0, params.numberOfSubtitles) -%}
-                                <li class="idsk-footer__inline-list-item" href="{{secondSubtitle.href}}">{{ params.secondSubtitle }}</li>
+                                <li class="idsk-footer__inline-list-item">
+                                    <a class="idsk-footer__link" href="{{firstSubtitle.href}}">{{ params.firstSubtitle }}</a>
+                                </li>
+                            {%- endfor %}
+                        </div>
+                        <div class="govuk-grid-column-one-half ">
+                            {% for i in range(0, params.numberOfSubtitles) -%}
+                                <li class="idsk-footer__inline-list-item">
+                                    <a class="idsk-footer__link" href="{{firstTitle.href}}">{{ params.firstSubtitle }}</a>
+                                </li>
+                            {%- endfor %}
+                        </div>
+
+                    </div>
+                </div>
+                <div class="govuk-grid-column-one-third one-third">
+                    <h3 class="govuk-heading-m">
+                        {% if params.secondTitle %}
+                            {{ params.secondTitle }}
+                        {% endif %}
+                    </h3>
+                    <div class="govuk-grid-column-three-thirds small_subtitle">
+                        {% for i in range(0, params.numberOfSubtitles) -%}
+                            <li class="idsk-footer__inline-list-item">
+                                <a class="idsk-footer__link" href="{{firstTitle.href}}">{{ params.firstSubtitle }}</a>
+                            </li>
+                        {%- endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% if params.thirdTitle %}
+            <div class="govuk-grid-row second-subtitle">
+                <div class="govuk-grid-column-two-thirds two-thirds">
+                    <h3 class="govuk-heading-m ">
+                        {{ params.thirdTitle }}
+                    </h3>
+                    <div class="govuk-grid-row small_subtitle">
+                        <div class="govuk-grid-column-one-half bottom-space">
+
+                            {% if params.secondSubtitle %}
+
+                                {% for i in range(0, params.numberOfSubtitles) -%}
+                                    <li class="idsk-footer__inline-list-item">
+                                        <a class="idsk-footer__link" href="{{secondSubtitle.href}}">{{ params.secondSubtitle }}</a>
+                                    </li>
+                                {%- endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="govuk-grid-column-one-third one-third">
+                    <h3 class="govuk-heading-m">
+                        {% if params.fourthTitle %}
+                            {{ params.fourthTitle }}
+                        {% endif %}
+                    </h3>
+                    <div class="govuk-grid-column-three-thirds small_subtitle">
+                        {% if params.secondSubtitle %}
+                            {% for i in range(0, params.numberOfSubtitles) -%}
+                                <li class="idsk-footer__inline-list-item">
+                                    <a class="idsk-footer__link" href="{{secondSubtitle.href}}">{{ params.secondSubtitle }}</a>
+                                </li>
                             {%- endfor %}
                         {% endif %}
-
                     </div>
-
-                </div>
-
-            </div>
-            <div class="govuk-grid-column-one-third one-third">
-                <h3 class="govuk-heading-m">
-                    {% if params.fourthTitle %}
-                        {{ params.fourthTitle }}
-                    {% endif %}
-                </h3>
-                <div class="govuk-grid-column-three-thirds small_subtitle">
-                    {% if params.secondSubtitle %}
-                        {% for i in range(0, params.numberOfSubtitles) -%}
-                            <li class="idsk-footer__inline-list-item" href="{{secondSubtitle.href}}">{{ params.secondSubtitle }}</li>
-                        {%- endfor %}
-                    {% endif %}
                 </div>
             </div>
-
-        </div>
+        {% endif %}
     </div>
-
     <div class="bordering">
-
         <div class="idsk-footer__meta-item idsk-footer__meta-item--grow ">
             <h1 class="idsk-novy-title frame">
                 Prevádzkovateľom služby je Ministerstvo investícií,
                 <br>
                 regionálneho rozvoja a informatizácie SR.
             </h1>
-
-            <p class="idsk-novy-title frame">Vytvorené v súlade s
-                <a href="href" class=" frame2">
-                    Jednotným dizajn manuálom elektronických služieb.</a href>
-            </p>
         </div>
-
         <div class="govuk-grid-row ">
             <div class="govuk-grid-column-two-thirds">
+                <p class="idsk-novy-title frame">Vytvorené v súlade s
+                    <a href="href" class=" label">
+                        Jednotným dizajn manuálom elektronických služieb.</a href>
+                </p>
                 <ul class="idsk-footer__inline-list ">
-
                     {% for subtitle in params.subtitles %}
                         <li class="idsk-footer__inline-list-item">
                             <a class="idsk-footer__link" href="{{subtitle.href}}">
@@ -112,9 +103,7 @@
                     {% else %}
                         <li>This would display if the 'item' collection were empty</li>
                     {% endfor %}
-
                 </ul>
-
             </div>
             <div class="govuk-grid-column-one-third">
                 <h2 class="idsk-novy-title logo">
@@ -137,5 +126,4 @@
             </div>
         </div>
     </div>
-
 </div>
