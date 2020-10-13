@@ -1,0 +1,82 @@
+@import "../../../govuk/settings/all";
+@import "../../../govuk/tools/all";
+@import "../../../govuk/helpers/all";
+
+@import "../../../govuk/helpers/typography";
+
+@include govuk-exports("idsk/component/card") {
+  .idsk-date-tag-secondary {
+    color: govuk-colour("grey-1");
+  }
+
+  .idsk-date {
+    padding-right: govuk-spacing(3);
+  }
+
+  .idsk-card-basic,
+  .idsk-card-simple {
+    @include govuk-grid-column("full");
+  }
+
+  .idsk-card-basic img,
+  .idsk-card-simple img {
+    @include govuk-responsive-padding(4, "bottom");
+  }
+
+  .idsk-card-hero,
+  .idsk-card-secondary {
+    @include govuk-width-container;
+  }
+
+  .idsk-card-hero img,
+  .idsk-card-secondary img {
+    @include govuk-grid-column("full");
+    @include govuk-responsive-padding(4, "bottom");
+  }
+
+  .idsk-card-hero .idsk-card-content,
+  .idsk-card-secondary .idsk-card-content {
+    @include govuk-grid-column("full");
+  }
+
+  @include mq($from: tablet) {
+    .idsk-card-basic {
+      @include govuk-grid-column("two-thirds");
+    }
+
+    .idsk-card-simple {
+      @include govuk-grid-column("one-half");
+    }
+
+    .idsk-date-tag-basic,
+    .idsk-date-tag-hero {
+      display: flex;
+    }
+  }
+
+  @include mq($from: desktop) {
+    .idsk-card-basic {
+      @include govuk-grid-column("one-half");
+    }
+
+    .idsk-card-simple {
+      @include govuk-grid-column("one-third");
+    }
+
+    .idsk-card-hero img {
+      @include govuk-grid-column("one-half");
+    }
+
+    .idsk-card-hero .idsk-card-content {
+      @include govuk-grid-column("one-half");
+    }
+
+    .idsk-card-secondary img {
+      @include govuk-grid-column("one-third");
+    }
+
+    .idsk-card-secondary .idsk-card-content {
+      @include govuk-grid-column("two-thirds");
+    }
+  }
+}

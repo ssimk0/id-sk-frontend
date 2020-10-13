@@ -1,0 +1,35 @@
+{% set type = params.type if params.type else "basic" %}
+{% set headingSize = "m" if type == 'simple' or type == 'secondary' else "l" %}
+
+<div class="idsk-card-{{ type }}">
+
+    {% if params.imgSrc %}
+        <img width="100%" src="{{ params.imgSrc }}" alt="{{ params.heading }}" />
+    {% endif %}
+    
+    <div class="idsk-card-content">
+        <h1 class="govuk-heading-{{ headingSize }}">{{ params.heading }}</h1>
+        
+        {% if params.description %}
+        <p class="govuk-body">
+            {{ params.description}}
+        </p>
+        {% endif %}
+
+        {% if type == "secondary" %}
+            <div class="idsk-date-tag-{{ type }}">
+                {{ params.date }} | {{ params.tag }}
+            </div>
+        {% else %}
+            <div class="idsk-date-tag-{{ type }}">
+                <div class="idsk-date govuk-body">
+                   {{ params.date }}
+                </div>
+                <div>
+                    <strong class="govuk-tag">{{ params.tag }}</strong>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+</div>

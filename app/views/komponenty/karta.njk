@@ -1,0 +1,143 @@
+{% extends "layout.njk" %}
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "../../../src/idsk/components/card/macro.njk" import idskCard %}
+
+{% set pageName = "Karta" %}
+
+{% block beforeContent %}
+ {{ govukBreadcrumbs({
+     "items": [
+         { text: 'ID-SK frontend', href: '/' + legacyQuery },
+         { text: pageName }
+     ]
+ }) }}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-width-container">
+        <span class="govuk-caption-xl">Webové komponenty</span>
+        <h1 class="govuk-heading-xl">{{pageName}}</h1>
+        <p class="govuk-body-l">Karty sa používaju na rôzne veci</p>
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <h2 class="govuk-heading-s">Typy kariet:</h2>
+
+                <ul class="govuk-list">
+                <li><a href="#card-basic">Základná kartička</a></li>
+                <li><a href="#card-simple">Jednoduchá kartička</a></li>
+                <li><a href="#card-hero">Hero kartička</a></li>
+                <li><a href="#card-hero-secondary">Sekundárna kartička</a></li>
+                </ul>
+
+                <h3 class="govuk-heading-m" id="card-basic">Základná kartička</h3>
+                <p class="govuk-body">Základné použitie karty</p>
+            </div>
+
+            <div class="govuk-grid-column-full">
+                <div class="example example-error">
+                    {% set exampleComponentHtml %}
+                        {{ idskCard({ 
+                            "type": "basic", 
+                            "imgSrc": "https://s3-alpha-sig.figma.com/img/4aad/43c6/d061125856d1edfcd5abf79198e22a8f?Expires=1603065600&Signature=SSGe0wVFUWaeVSsy4cRFkpEO7ab8MePPA3tKUA0giEaBdp1MVkNDhggnsnteuy7yDNe~SIzCDnZyKY8DfiTXpoL9C7TI66bO7U70hpNoGbPB5OX3N8DsMSMaxZa~iBoRe6~tNjprNyUt9zxsayicE309-Nj6MYrQok7cTHtNT2qFww6aXXrMfnre8FgzoWK~PjuSXYpKbEmvMzs431W8TmGnmmF0c-vEEQvMet80Ae141Wu4IpbiEFgYiVjL6EejmDTYuYnGlE~U2464QI2A3sbhaH~EzxfYM77KHdKrcE7PeQXA~YVnl~-COoiBDzd8J~s-ZsS3pTCRR08FeDxv2g__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA", 
+                            "heading": "Podpora najmenej rozvinutých okresov: Nové výzvy po novom!",
+                            "description": "Regióny sú pre vládu prioritou, preto podpredsedníčka vlády a ministerka investícií, regionálneho rozvoja a informatizácie Veronika Remišová.",
+                            "date": "1.7. 2020",
+                            "tag": "Regionálny rozvoj"
+                        }) }}
+                    {% endset %}
+                    {{exampleComponentHtml | safe}}
+                </div>
+                <pre class=" language-markup"><code class="govuk-!-font-size-16  language-markup">{{ exampleComponentHtml }}</code></pre>
+            </div>
+
+            <div class="govuk-grid-column-two-thirds">
+                <h3 class="govuk-heading-m" id="card-basic">Jednoduchá kartička</h3>
+                <p class="govuk-body">Zjednodušené použitie kartičky, obsahuje len obrázok a hlavičku</p>
+            </div>
+
+            <div class="govuk-grid-column-full">
+                <div class="example example-error">
+                    {% set exampleComponentHtml %}
+                        {{ idskCard({ 
+                            "type": "simple", 
+                            "imgSrc": "https://s3-alpha-sig.figma.com/img/ebda/6549/7a80372680e588b356e664f64fbdfb46?Expires=1603065600&Signature=HkMhRatX6DOQ-SKWir6qdMD2c8TaN~HhxRzqp39kXm7XEANlUwLE7OVdlmxR2H~2-mz3B~hXgd9yuxs4Um1Wm3frFvZsbU746F1ZdySVVQ1WPPZ9mTZY0R1D4LMWHeVLyLT07MkRQlNPYmBOawuSZAdDRC6TCwK3Gbvv0iYn1-QWwAowYhfFtbEFx~Uane0XCdO9W-RTRaGUUklyYKh5fXuP7x-2TzckPA6ZpHialreI72z4u9QZFGAm4npSH2nqBmxCVoRP7F9zRqLOg9bvGeWxGil1nCtuPFs2HummivMCOuLgjuS7Q2k3bmM9ypMQ3q2Ml0MJ3B-1sQxYCwt-tQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA", 
+                            "heading": "V. Remišová rokovala s ministrami V4 o nových návrhoch financovania projektov na zmiernenie dopadov pandémie",
+                            "date": "1.7. 2020",
+                            "tag": "Regionálny rozvoj"
+                        }) }}
+                    {% endset %}
+                    {{exampleComponentHtml | safe}}
+                </div>
+                <pre class=" language-markup"><code class="govuk-!-font-size-16  language-markup">{{ exampleComponentHtml }}</code></pre>
+            </div>
+  
+
+        <div class="govuk-grid-column-two-thirds">
+            <h3 class="govuk-heading-m" id="card-basic">Hero kartička</h3>
+            <p class="govuk-body">Kartička ktorá sa používa na vyplnenie celkovej šírky kontajnera</p>
+        </div>
+
+        <div class="govuk-grid-column-full">
+            <div class="example example-error">
+                {% set exampleComponentHtml %}
+                    {{ idskCard({ 
+                        "type": "hero", 
+                        "imgSrc": "https://s3-alpha-sig.figma.com/img/4aad/43c6/d061125856d1edfcd5abf79198e22a8f?Expires=1603065600&Signature=SSGe0wVFUWaeVSsy4cRFkpEO7ab8MePPA3tKUA0giEaBdp1MVkNDhggnsnteuy7yDNe~SIzCDnZyKY8DfiTXpoL9C7TI66bO7U70hpNoGbPB5OX3N8DsMSMaxZa~iBoRe6~tNjprNyUt9zxsayicE309-Nj6MYrQok7cTHtNT2qFww6aXXrMfnre8FgzoWK~PjuSXYpKbEmvMzs431W8TmGnmmF0c-vEEQvMet80Ae141Wu4IpbiEFgYiVjL6EejmDTYuYnGlE~U2464QI2A3sbhaH~EzxfYM77KHdKrcE7PeQXA~YVnl~-COoiBDzd8J~s-ZsS3pTCRR08FeDxv2g__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA", 
+                        "heading": "Podpora najmenej rozvinutých okresov: Nové výzvy po novom!",
+                        "description": "Regióny sú pre vládu prioritou, preto podpredsedníčka vlády a ministerka investícií, regionálneho rozvoja a informatizácie Veronika Remišová.",
+                        "date": "1.7. 2020",
+                        "tag": "Regionálny rozvoj"
+                    }) }}
+                {% endset %}
+                {{exampleComponentHtml | safe}}
+            </div>
+            <pre class=" language-markup"><code class="govuk-!-font-size-16  language-markup">{{ exampleComponentHtml }}</code></pre>
+        </div>
+
+        <div class="govuk-grid-column-two-thirds">
+            <h3 class="govuk-heading-m" id="card-basic">Sekundárna kartička</h3>
+            <p class="govuk-body">Ďalší typ kartičky ktorý sa používa na vyplnenie celkovej šírky kontajnera</p>
+        </div>
+
+        <div class="govuk-grid-column-full">
+            <div class="example example-error">
+                {% set exampleComponentHtml %}
+                    {{ idskCard({ 
+                        "type": "secondary", 
+                        "imgSrc": "https://s3-alpha-sig.figma.com/img/ebda/6549/7a80372680e588b356e664f64fbdfb46?Expires=1603065600&Signature=HkMhRatX6DOQ-SKWir6qdMD2c8TaN~HhxRzqp39kXm7XEANlUwLE7OVdlmxR2H~2-mz3B~hXgd9yuxs4Um1Wm3frFvZsbU746F1ZdySVVQ1WPPZ9mTZY0R1D4LMWHeVLyLT07MkRQlNPYmBOawuSZAdDRC6TCwK3Gbvv0iYn1-QWwAowYhfFtbEFx~Uane0XCdO9W-RTRaGUUklyYKh5fXuP7x-2TzckPA6ZpHialreI72z4u9QZFGAm4npSH2nqBmxCVoRP7F9zRqLOg9bvGeWxGil1nCtuPFs2HummivMCOuLgjuS7Q2k3bmM9ypMQ3q2Ml0MJ3B-1sQxYCwt-tQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA", 
+                        "heading": "V. Remišová rokovala s ministrami V4",
+                        "description": "Podpredsedníčka vlády SR pre investície a informatizáciu Veronika Remišová sa spoločne s ministrami krajín Visegrádskej štvorky (V4) zodpovednými za politiku súdržnosti zúčastnila videokonferencie",
+                        "date": "1.7. 2020",
+                        "tag": "Ministerka"
+                    }) }}
+                {% endset %}
+                {{exampleComponentHtml | safe}}
+            </div>
+            <pre class=" language-markup"><code class="govuk-!-font-size-16  language-markup">{{ exampleComponentHtml }}</code></pre>
+        </div>
+
+        <div class="govuk-grid-column-two-thirds">
+            <h3 class="govuk-heading-m" id="card-basic">Základná kartička - bez obrázka</h3>
+            <p class="govuk-body">Základná kartička bez pridaného obrázka</p>
+        </div>
+
+        <div class="govuk-grid-column-full">
+            <div class="example example-error">
+                {% set exampleComponentHtml %}
+                    {{ idskCard({ 
+                        "type": "basic", 
+                        "heading": "Nadpis",
+                        "description": "Popis",
+                        "date": "1.7. 2020",
+                        "tag": "Ministerka"
+                    }) }}
+                {% endset %}
+                {{exampleComponentHtml | safe}}
+            </div>
+            <pre class=" language-markup"><code class="govuk-!-font-size-16  language-markup">{{ exampleComponentHtml }}</code></pre>
+        </div>
+
+      </div>
+    </div>
+{% endblock %}
