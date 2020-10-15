@@ -1,7 +1,10 @@
+@import "../../../govuk/settings/all";
+@import "../../../govuk/tools/all";
+@import "../../../govuk/helpers/all";
 @import "../../../govuk/helpers/typography";
 @import "../../../govuk/objects/grid";
 
-@include govuk-exports("idsk/component/footer_for_web") {
+@include govuk-exports("idsk/component/footer-for-web") {
     $govuk-footer-background: $govuk-canvas-background-colour;
     $govuk-footer-border: $govuk-border-colour;
     // This variable can be removed entirely once the legacy palette goes away,
@@ -34,7 +37,9 @@
         xl: 1140px,
     );
 
-    .idsk-novy-body {
+    .idsk-footer-for-web {
+        @include govuk-font($size: 14);
+        padding: 0 24px;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -42,18 +47,15 @@
         background: #dee0e2;
         box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.25);
     }
-    .idsk-novy-lable {
-        color: navy;
-    }
 
     .container {
         flex-flow: column wrap;
     }
 
     .idsk-footer__inline-list {
-        margin-top: 0;
+        margin-top: 15px;
         margin-bottom: govuk-spacing(3);
-        padding-left: 19px;
+        //padding-left: 19px;
     }
 
     .idsk-footer__meta-custom {
@@ -68,12 +70,12 @@
     }
 
     .title {
-         width: 287px;
+        width: 287px;
         height: 30px;
         left: 240px;
         top: 50px;
 
-        font-family: Source Sans Pro;
+        //font-family: Source Sans Pro;
         font-style: normal;
         font-weight: bold;
         font-size: 24px;
@@ -82,11 +84,11 @@
     }
 
     .idsk-footer__link {
-        font-family: Source Sans Pro;
+        //font-family: Source Sans Pro;
         font-size: 16px;
         font-style: normal;
         font-weight: normal;
-        line-height: 25px;
+        line-height: 22px;
         text-decoration-line: underline;
         color: #0b0c0c;
         @if ($govuk-use-legacy-palette) {
@@ -109,27 +111,22 @@
         }
     }
 
-    .idsk-novy-text {
-        color: black;
-    }
-
-    .second-subtitle {
-        padding-top:28px
-    }
-
     .bordering {
         border-top: 1px solid #bfc1c3;
         padding-top: 7px;
     }
 
-    .two-thirds{
-        padding-right: 40px;
-        padding-left: 37px;
+    .one-third {
+        padding-top: 28px;
+    }
+
+    .two-thirds {
+        padding-top: 28px;
     }
 
     .small_subtitle {
         border-top: 1px solid #bfc1c3;
-        padding-top: 7px;      
+        padding-top: 7px;
     }
 
     .idsk-footer__meta-item {
@@ -144,19 +141,21 @@
         order: 1;
         align-self: flex-end;
         flex-grow: 0;
+        padding-top: 8px;
     }
 
     .frame {
+        display: inline-block;
         width: 100%;
         height: 30px;
         left: 0px;
         top: 0px;
-        padding-left: 15px;
+        //padding-left: 15px;
 
-        font-family: Source Sans Pro;
+        //font-family: Source Sans Pro;
         font-style: normal;
-        font-weight: normal;
-        font-size: 19px;
+        font-weight: 400;
+        font-size: 17px;
         line-height: 25px;
 
         /* sass / text */
@@ -165,7 +164,7 @@
     }
 
     .label {
-        font-family: Source Sans Pro;
+        //font-family: Source Sans Pro;
         font-style: normal;
         font-weight: normal;
         font-size: 19px;
