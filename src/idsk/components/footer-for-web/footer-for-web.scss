@@ -55,7 +55,6 @@
     .idsk-footer__inline-list {
         margin-top: 15px;
         margin-bottom: govuk-spacing(3);
-        //padding-left: 19px;
     }
 
     .idsk-footer__meta-custom {
@@ -75,7 +74,6 @@
         left: 240px;
         top: 50px;
 
-        //font-family: Source Sans Pro;
         font-style: normal;
         font-weight: bold;
         font-size: 24px;
@@ -84,7 +82,6 @@
     }
 
     .idsk-footer__link {
-        //font-family: Source Sans Pro;
         font-size: 16px;
         font-style: normal;
         font-weight: normal;
@@ -150,28 +147,20 @@
         height: 30px;
         left: 0px;
         top: 0px;
-        //padding-left: 15px;
 
-        //font-family: Source Sans Pro;
         font-style: normal;
         font-weight: 400;
         font-size: 17px;
         line-height: 25px;
 
-        /* sass / text */
-
         color: #0b0c0c;
     }
 
     .label {
-        //font-family: Source Sans Pro;
         font-style: normal;
         font-weight: normal;
         font-size: 19px;
         line-height: 25px;
-        /* or 132% */
-
-        /* sass / text */
 
         color: #0b0c0c;
         text-decoration: underline;
