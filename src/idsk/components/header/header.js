@@ -1,7 +1,7 @@
 import '../../../govuk/vendor/polyfills/Function/prototype/bind'
 import '../../../govuk/vendor/polyfills/Event' // addEventListener and event.target normaliziation
 
-function Header ($module) {
+function Header($module) {
   this.$module = $module
 }
 

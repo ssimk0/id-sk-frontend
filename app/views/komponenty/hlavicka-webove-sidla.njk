@@ -1,0 +1,77 @@
+{% extends "layout.njk" %}
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+
+{% set pageName = "Hlavička pre webové sídla" %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    "items": [
+    { text: 'ID-SK frontend', href: '/' + legacyQuery },
+    { text: pageName }
+    ]
+  }) }}
+{% endblock %}  
+
+{% block content %}
+  <div class="govuk-width-container">
+
+    <span class="govuk-caption-xl">Webové komponenty</span>
+    <h1 class="govuk-heading-xl">{{pageName}}</h1>
+    <p class="govuk-body-l">POPIS</p>
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds"> 
+
+            <h2 class="govuk-heading-s">Obsah:</h2>
+            <ul class="govuk-list">
+                <li><a href="#info">Popis</a></li>
+                <li><a href="#ukazka1">Ukážka 1</a></li>
+                <li><a href="#ukazka2">Ukážka 2</a></li>
+                <li><a href="#ukazka3">Ukážka 3</a></li>
+                <li><a href="#priklady">Priklady</a></li>
+            </ul>
+
+            <h3 class="govuk-heading-m" id="info">Popis</h3>
+            <p class="govuk-body">
+               Informacie o komponente
+            </p>
+        </div>
+
+        <div class="govuk-grid-column-full">
+          <h3 class="govuk-heading-m" id="ukazka1">Ukážka 1</h3>
+          <div class="example">
+            {% set exampleComponentHtml %}
+                {% include "../komponenty/examples/hlavickaWeboveSidla1.njk" %}
+            {% endset %}
+            {{exampleComponentHtml | safe}}
+          </div>
+          <h3 class="govuk-heading-m" id="ukazka2">Ukážka 2</h3>
+          <div class="example example-overflowed">
+            {% set exampleComponentHtml %}
+                {% include "../komponenty/examples/hlavickaWeboveSidla2.njk" %}
+            {% endset %}
+            {{exampleComponentHtml | safe}}
+          </div>
+          <h3 class="govuk-heading-m" id="ukazka3">Ukážka 3</h3>
+          <p class="govuk-body">
+            Každá položka v podmenu môže obsahovať aj ikonku. Všetky voľne dostupné ikonky nájdete na <a href="https://fontawesome.com/icons?d=gallery&m=free" title="FontAwesome" target="_blank">tejto stránke</a>.
+          </p>
+          <div class="example example-overflowed">
+            {% set exampleComponentHtml %}
+                {% include "../komponenty/examples/hlavickaWeboveSidla3.njk" %}
+            {% endset %}
+            {{exampleComponentHtml | safe}}
+          </div>
+        </div>
+
+        <div class="govuk-grid-column-two-thirds">
+            <h2 class="govuk-heading-l" id="priklady">Rozšírené príklady pre hlavičku a pätičku</h2>
+            <ul class="govuk-list">
+                <li><a href="/custom-components/header-extended">Rozšírené príklady hlavičky pre webové sídla</a></li>
+            </ul>
+        </div>
+        
+    </div>
+
+  </div>
+{% endblock %}
