@@ -4,7 +4,7 @@
 @import "../../../govuk/helpers/typography";
 @import "../../../govuk/objects/grid";
 
-@include govuk-exports("idsk/component/footer-for-web") {
+@include govuk-exports("idsk/component/footer-extended") {
     $govuk-footer-background: $govuk-canvas-background-colour;
     $govuk-footer-border: $govuk-border-colour;
     // This variable can be removed entirely once the legacy palette goes away,
@@ -37,7 +37,7 @@
         xl: 1140px,
     );
 
-    .idsk-footer-for-web {
+    .idsk-footer-extended {
         @include govuk-font($size: 14);
         padding: 0 24px;
         display: flex;
