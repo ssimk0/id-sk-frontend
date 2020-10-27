@@ -170,6 +170,173 @@
         padding-bottom: 23px;
     }
 
+    .heading-feedback {
+        //height: 58px;
+        margin: 0 -15px;
+
+        background: #0065b3;
+    }
+
+    .feedback-text {
+        // position: absolute;
+
+        top: 7.49%;
+        bottom: 91.98%;
+
+        font-family: Source Sans Pro;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 23px;
+        /* identical to box height */
+
+        /* white */
+
+        color: #ffffff;
+    }
+
+    .sirka {
+        width: auto;
+        //max-height: 20px;
+    }
+
+    .right-text {
+        float: right;
+    }
+
+    @include mq($from: tablet) {
+        .text-padding {
+            padding-left: 70px;
+        }
+    }
+    .feedback-container {
+        padding-top: 0px;
+        padding-left: 15px;
+
+        overflow: hidden;
+        // transition: max-height 0.3s ease-out; // note that we're transitioning max-height, not height!
+        // height: auto;
+        // max-height: 600px; //
+    }
+
+    @include mq($from: desktop) {
+        .feedback-container {
+            padding-top: 15px;
+            padding-left: 25px;
+            padding-bottom: 17px;
+        }
+    }
+
+    .feedback-container.collapsed {
+        max-height: 0;
+    }
+
+    .feedback-button {
+        padding: 25px;
+    }
+
+    .dropdown {
+        padding-top: 10px;
+    }
+
+    .select-box {
+        width: 200px;
+    }
+
+    .close-button {
+        padding-top: 20px;
+    }
+
+    .help-button {
+        background: none;
+        border-style: none;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    .blue-border {
+        border-top: 5px solid #0065b3;
+        border-bottom: 5px solid #0065b3;
+        // margin: 0 -15px;
+        background-clip: border-box;
+        //margin: 0 -1.7%;
+    }
+
+    .form-text {
+        font-family: Source Sans Pro;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 19px;
+        line-height: 25px;
+        /* or 132% */
+
+        color: #000000;
+    }
+
+    .idsk-display-none {
+        //display: none;
+        visibility: hidden;
+
+        //height: 0;
+    }
+
+    .idsk-visually-hidden {
+        opacity: 0;
+    }
+
+    .idsk-feedback-hidden {
+        //display: none;
+        max-height: 0;
+        transition: max-height 1.5s ease-out;
+    }
+
+    .idsk-open {
+        //display: block;
+        max-height: 500px;
+        height: auto;
+        transition: max-height 1.5s ease-in;
+    }
+
+    .footer-usefull-question {
+        @include govuk-grid-column("full");
+        padding-left: 0px;
+        box-sizing: content-box;
+       // line-height: 23px;
+    }
+
+    @include mq($from: tablet) {
+        .footer-usefull-question {
+            @include govuk-grid-column("two-thirds");
+        }
+    }
+
+    // .footer-error-question {
+    //     @include govuk-grid-column("one-third");
+
+    // }
+
+    .idsk-heart{
+        display: none;
+    }
+
+    .idsk-heart-visible {
+        display: block;
+    }
+
+    .idsk-footer-error-question {
+        border-top: 2px solid white;
+        padding-right: 1px;
+        padding-left: 1px;
+        @include govuk-grid-column("full");
+    }
+
+    @include mq($from: tablet) {
+        .idsk-footer-error-question {
+            border-top: none;
+            @include govuk-grid-column("one-third");
+        }
+    }
+
     @keyframes blinker {
         50% {
             opacity: 0;
