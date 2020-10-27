@@ -1,0 +1,178 @@
+@import "../../../govuk/settings/all";
+@import "../../../govuk/tools/all";
+@import "../../../govuk/helpers/all";
+@import "../../../govuk/helpers/typography";
+@import "../../../govuk/objects/grid";
+
+@include govuk-exports("idsk/component/footer-extended") {
+    $govuk-footer-background: $govuk-canvas-background-colour;
+    $govuk-footer-border: $govuk-border-colour;
+    // This variable can be removed entirely once the legacy palette goes away,
+    // as it'll just be the same as $govuk-footer-border.
+    $govuk-footer-border-top: $govuk-border-colour;
+    $govuk-footer-text: $govuk-text-colour;
+    $govuk-footer-link: $govuk-link-colour;
+    $govuk-footer-link-hover: $govuk-focus-text-colour;
+
+    $grid-columns: 12;
+    $grid-gutter-width: 30px;
+
+    $grid-breakpoints: (
+        // Extra small screen / phone
+        xs: 0,
+        // Small screen / phone
+        sm: 576px,
+        // Medium screen / tablet
+        md: 768px,
+        // Large screen / desktop
+        lg: 992px,
+        // Extra large screen / wide desktop
+        xl: 1200px
+    );
+
+    $container-max-widths: (
+        sm: 540px,
+        md: 720px,
+        lg: 960px,
+        xl: 1140px,
+    );
+
+    .idsk-footer-extended {
+        @include govuk-font($size: 14);
+        padding: 0 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        left: 100px;
+        background: #dee0e2;
+        box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.25);
+    }
+
+    .container {
+        flex-flow: column wrap;
+    }
+
+    .idsk-footer__inline-list {
+        margin-top: 15px;
+        margin-bottom: govuk-spacing(3);
+    }
+
+    .idsk-footer__meta-custom {
+        margin-bottom: govuk-spacing(4);
+    }
+
+    .idsk-footer__inline-list-item {
+        display: inline-block;
+        margin-right: govuk-spacing(3);
+        margin-bottom: govuk-spacing(1);
+        text-decoration-line: underline;
+    }
+
+    .title {
+        width: 287px;
+        height: 30px;
+        left: 240px;
+        top: 50px;
+
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 30px;
+        color: #0b0c0c;
+    }
+
+    .idsk-footer__link {
+        font-size: 16px;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 22px;
+        text-decoration-line: underline;
+        color: #0b0c0c;
+        @if ($govuk-use-legacy-palette) {
+            &:link,
+            &:visited {
+                color: $govuk-footer-link;
+            }
+
+            &:hover,
+            &:active {
+                color: #0b0c0c;
+            }
+        } @else {
+            &:link,
+            &:visited,
+            &:hover,
+            &:active {
+                color: #0b0c0c;
+            }
+        }
+    }
+
+    .bordering {
+        border-top: 1px solid #bfc1c3;
+        padding-top: 7px;
+    }
+
+    .one-third {
+        padding-top: 28px;
+    }
+
+    .two-thirds {
+        padding-top: 28px;
+    }
+
+    .small_subtitle {
+        border-top: 1px solid #bfc1c3;
+        padding-top: 7px;
+    }
+
+    .idsk-footer__meta-item {
+        margin-right: 15px;
+        margin-bottom: 25px;
+        margin-left: 0px;
+        padding-bottom: 20px;
+    }
+
+    .logo {
+        flex: none;
+        order: 1;
+        align-self: flex-end;
+        flex-grow: 0;
+        padding-top: 8px;
+    }
+
+    .frame {
+        display: inline-block;
+        width: 100%;
+        height: 30px;
+        left: 0px;
+        top: 0px;
+
+        font-style: normal;
+        font-weight: 400;
+        font-size: 17px;
+        line-height: 25px;
+
+        color: #0b0c0c;
+    }
+
+    .label {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 19px;
+        line-height: 25px;
+
+        color: #0b0c0c;
+        text-decoration: underline;
+    }
+
+    .bottom-space {
+        padding-bottom: 23px;
+    }
+
+    @keyframes blinker {
+        50% {
+            opacity: 0;
+        }
+    }
+}
