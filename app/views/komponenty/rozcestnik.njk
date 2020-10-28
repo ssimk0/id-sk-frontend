@@ -1,0 +1,82 @@
+{% extends "layout.njk" %}
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "../../../src/idsk/components/crossroad/macro.njk" import idskCrossroad %}
+
+{% set pageName = "Rozcestník" %}
+
+{% block beforeContent %}
+ {{ govukBreadcrumbs({
+     "items": [
+         { text: 'ID-SK frontend', href: '/' + legacyQuery },
+         { text: pageName }
+     ]
+ }) }}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-width-container">
+        <span class="govuk-caption-xl">Webové komponenty</span>
+        <h1 class="govuk-heading-xl">{{pageName}}</h1>
+        <p class="govuk-body-l">Rozcestník sa používa na navigáciu</p>
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <h2 class="govuk-heading-s">Rozcestník:</h2>
+
+                <ul class="govuk-list">
+                    <li><a href="#crossroad-two">Rozcestník s textom - 2 stĺpce</a></li>
+                    <li><a href="#crossroad-one">Rozcestník s textom - 1 stĺpec</a></li>
+                </ul>
+
+                <h3 class="govuk-heading-m" id="crossroad-two">Rozcestník s textom - 2 stĺpce</h3>
+                <p class="govuk-body">Použitie rozcestníka s dvoma stĺpcami</p>
+            </div>
+
+            <div class="govuk-grid-column-full">
+                <div class="example example-error">
+                    {% set exampleComponentHtml %}
+                        {{ idskCrossroad({
+                            "columns": 2,
+                            "items": [ 
+                                { "title": 'Title for 1st element', "subtitle": 'Subtitle for 1st element', "link": 'http://localhost:3000/komponenty/rozcestnik' },
+                                { "title": 'Title for 2nd element', "subtitle": 'Subtitle for 2nd element', "link": 'http://localhost:3000/komponenty/karta' }, 
+                                { "title": 'Title for 3rd element', "subtitle": 'Subtitle for 3rd element', "link": 'http://localhost:3000/komponenty/rozcestnik' },  
+                                { "title": 'Title for 4th element', "subtitle": 'Subtitle for 4th element', "link": 'http://localhost:3000/komponenty/rozcestnik' },  
+                                { "title": 'Title for 5th element', "subtitle": 'Subtitle for 5th element', "link": 'http://localhost:3000/komponenty/rozcestnik' },  
+                                { "title": 'Title for 6th element', "subtitle": 'Subtitle for 6th element' }
+                            ]
+                        }) }}
+                    {% endset %}
+                    {{exampleComponentHtml | safe}}
+                </div>
+                <pre class=" language-markup"><code class="govuk-!-font-size-16  language-markup">{{ exampleComponentHtml }}</code></pre>
+            </div>
+
+            <div class="govuk-grid-column-two-thirds">
+                <h3 class="govuk-heading-m" id="crossroad-one">Rozcestník s textom - 1 stĺpec</h3>
+                <p class="govuk-body">Použitie rozcestníka s jedným stĺpcom</p>
+            </div>
+
+            <div class="govuk-grid-column-full">
+                <div class="example example-error">
+                    {% set exampleComponentHtml %}
+                        {{ idskCrossroad({
+                            "columns": 1,
+                            "items": [ 
+                                { "title": 'Title for 1st element', "subtitle": 'Subtitle for 1st element', "link": 'http://localhost:3000/komponenty/rozcestnik' },
+                                { "title": 'Title for 2nd element', "subtitle": 'Subtitle for 2nd element', "link": 'http://localhost:3000/komponenty/rozcestnik' }, 
+                                { "title": 'Title for 3rd element', "subtitle": 'Subtitle for 3rd element', "link": 'http://localhost:3000/komponenty/rozcestnik' },  
+                                { "title": 'Title for 4th element', "subtitle": 'Subtitle for 4th element', "link": 'http://localhost:3000/komponenty/rozcestnik' },  
+                                { "title": 'Title for 5th element', "subtitle": 'Subtitle for 5th element', "link": 'http://localhost:3000/komponenty/rozcestnik' },  
+                                { "title": 'Title for 6th element', "subtitle": 'Subtitle for 6th element' }
+                            ]
+                        }) }}
+                    {% endset %}
+                    {{exampleComponentHtml | safe}}
+                </div>
+                <pre class=" language-markup"><code class="govuk-!-font-size-16  language-markup">{{ exampleComponentHtml }}</code></pre>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
