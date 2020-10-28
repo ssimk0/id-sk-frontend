@@ -140,6 +140,7 @@ examples:
         text: 'Aktuality'
       - link: '#5'
         text: 'Kontakt'
+    search: true
     language: 
       current:
         text: "slovenčina"

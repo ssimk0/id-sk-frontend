@@ -20,8 +20,8 @@ class HeaderExtended {
         }
 
         // check for search component
-        let $toggleSearchComponent = $module.querySelector('.idsk-header-extended__info-search');
-        let $toggleSearchInputComponent = $module.querySelector('.idsk-header-extended__info-search-form input');
+        let $toggleSearchComponent = $module.querySelector('.idsk-header-extended__search');
+        let $toggleSearchInputComponent = $module.querySelector('.idsk-header-extended__search-form input');
         if ($toggleSearchComponent && $toggleSearchInputComponent) {
             // Handle $toggleSearchComponent click and blur events
             $toggleSearchComponent.addEventListener('focus', this.handleSearchComponentClick.bind(this));
@@ -51,6 +51,15 @@ class HeaderExtended {
             })
         }
 
+        // check for menu button and x-mark button
+        let $hamburgerMenuButton = $module.querySelector('.idsk-js-header-extended-side-menu');
+        let $xMarkMenuButton = $module.querySelector('.idsk-header-extended-x-mark');
+        if ($hamburgerMenuButton && $xMarkMenuButton) {
+            $hamburgerMenuButton.addEventListener('click', this.handleMobilMenu.bind(this));
+            $xMarkMenuButton.addEventListener('click', this.handleMobilMenu.bind(this));
+        }
+
+        window.onscroll = () => { this.scrollFunction() };
     }
 
     /**
@@ -59,10 +68,10 @@ class HeaderExtended {
      */
     handleSearchComponentClick(e) {
         let $el = e.target || e.srcElement;
-        let $target = $el.closest('.idsk-header-extended__info-search');
-        let $relatedTarget = e.relatedTarget ? (e.relatedTarget).closest('.idsk-header-extended__info-search-form') : e.relatedTarget;
-        let $searchText = $target.querySelector('.idsk-header-extended__info-search-text');
-        let $searchForm = $target.querySelector('.idsk-header-extended__info-search-form');
+        let $target = $el.closest('.idsk-header-extended__search');
+        let $relatedTarget = e.relatedTarget ? (e.relatedTarget).closest('.idsk-header-extended__search-form') : e.relatedTarget;
+        let $searchText = $target.querySelector('.idsk-header-extended__search-text');
+        let $searchForm = $target.querySelector('.idsk-header-extended__search-form');
         if ($searchText && $searchForm) {
             if (e.type === 'focus') {
                 $searchText.classList.add('--hide');
@@ -80,9 +89,9 @@ class HeaderExtended {
      */
     handleLanguageSelectorClick(e) {
         let $toggleButton = e.target || e.srcElement;
-        let $target = $toggleButton.closest('.idsk-header-extended__info-language');
+        let $target = $toggleButton.closest('.idsk-header-extended__language');
         if ($target) {
-            toggleClass($target, 'idsk-header-extended__info-language--active');
+            toggleClass($target, 'idsk-header-extended__language--active');
         }
     }
 
@@ -98,7 +107,47 @@ class HeaderExtended {
             .closest('.idsk-header-extended__navigation-item')
             .querySelector('.idsk-header-extended__navigation-submenu');
         if ($target) {
-            toggleClass($target, 'idsk-header-extended__navigation-submenu--open');
+            toggleClass($target, '--open');
+        }
+    }
+
+    /**
+     * Show/hide mobil menu
+     * @param {object} e
+     */
+    handleMobilMenu(e) {
+        let $mobilMenu = this.$module.querySelector('.idsk-header-extended-overlay');
+        let $logo = this.$module.querySelector('.idsk-header-extended__logo');
+        let $xMark = this.$module.querySelector('.idsk-header-extended-x-mark')
+        let $searchBar = this.$module.querySelector('.idsk-header-extended__search');
+        let $languageBar = this.$module.querySelector('.idsk-header-extended__language');
+        let $socialBar = this.$module.querySelector('.idsk-header-extended__social');
+        let $navigation = this.$module.querySelector('.idsk-header-extended__navigation');
+
+        toggleClass($mobilMenu, "--open");
+        toggleClass($logo, "--show-mobile");
+        toggleClass($xMark, "--show-mobile");
+        toggleClass($searchBar, "--show-mobile");
+        toggleClass($languageBar, "--show-mobile");
+        toggleClass($socialBar, "--show-mobile");
+        toggleClass($navigation, "--show-mobile");
+    }
+
+    /**
+     * When the user scrolls down from the top of the document, resize the navbar's padding and the logo
+     */
+    scrollFunction() {
+        // skip if it's not a mobile view
+        let $mobileButton = this.$module.querySelector('.idsk-header-extended__menu-button');
+        let $isMobileView = getComputedStyle($mobileButton);
+        if ($isMobileView.getPropertyValue('display') === 'none') {
+            return;
+        }
+
+        if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+            this.$module.classList.add('--shrink');
+        } else {
+            this.$module.classList.remove('--shrink');
         }
     }
 
