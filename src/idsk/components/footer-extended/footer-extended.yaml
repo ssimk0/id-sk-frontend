@@ -121,6 +121,16 @@ examples:
           item: RSS          
         - href: '#6' 
           item: Vyhlásenie o prístupnosti
+     dropdownItems: 
+        - value: published
+          text: Validačná chyba
+        - value: updated
+          text: Gramatická chyba
+        - value: views
+          text: Chyba responzivity
+        - value: comments
+          text: Chyba iná
+        
           
 
 - name: extended 1
@@ -143,6 +153,15 @@ examples:
           item: RSS          
         - href: '#6' 
           item: Vyhlásenie o prístupnosti
+    dropdownItems: 
+        - value: published
+          text: Validačná chyba
+        - value: updated
+          text: Gramatická chyba
+        - value: views
+          text: Chyba responzivity
+        - value: comments
+          text: Chyba iná
 
 
 - name: extended 2
@@ -168,3 +187,16 @@ examples:
           item: RSS          
         - href: '#6' 
           item: Vyhlásenie o prístupnosti
+    dropdownItems: 
+        - value: published
+          text: Kompilačná chyba
+        - value: updated
+          text: Gramatická chyba
+        - value: views
+          text: Chyba responzivity
+        - value: comments
+          text: Chyba iná
+        - value: comments
+          text: Chyba piata
+        - value: comments
+          text: Chyba šiesta

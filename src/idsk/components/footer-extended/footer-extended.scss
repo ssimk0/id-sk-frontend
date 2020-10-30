@@ -178,21 +178,36 @@
     }
 
     .feedback-text {
-        // position: absolute;
-
-        top: 7.49%;
-        bottom: 91.98%;
-
         font-family: Source Sans Pro;
         font-style: normal;
         font-weight: bold;
-        font-size: 18px;
+        font-size: 12px;
         line-height: 23px;
         /* identical to box height */
 
         /* white */
 
         color: #ffffff;
+    }
+
+    @include mq($from: tablet) {
+        .feedback-text {
+            // position: absolute;
+
+            top: 7.49%;
+            bottom: 91.98%;
+
+            font-family: Source Sans Pro;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 18px;
+            line-height: 23px;
+            /* identical to box height */
+
+            /* white */
+
+            color: #ffffff;
+        }
     }
 
     .sirka {
@@ -225,6 +240,10 @@
             padding-left: 25px;
             padding-bottom: 17px;
         }
+
+        // .idsk-info-question {
+        //     padding-left: 23px;
+        // }
     }
 
     .feedback-container.collapsed {
@@ -232,7 +251,7 @@
     }
 
     .feedback-button {
-        padding: 25px;
+        padding: 0 0 0 25px;
     }
 
     .dropdown {
@@ -280,6 +299,9 @@
         //height: 0;
     }
 
+    .idsk-display- {
+        display: none;
+    }
     .idsk-visually-hidden {
         opacity: 0;
     }
@@ -287,26 +309,76 @@
     .idsk-feedback-hidden {
         //display: none;
         max-height: 0;
-        transition: max-height 1.5s ease-out;
+        transition: max-height 0.7s ease-out;
+    }
+
+    #with-hint:active, #with-hint:focus {
+        outline: none;
+
+        //padding-left: 105px;
+    }
+
+    .govuk-select:active, .govuk-select:focus {
+        outline: none;
     }
 
     .idsk-open {
         //display: block;
-        max-height: 500px;
+        max-height: 619px;
         height: auto;
-        transition: max-height 1.5s ease-in;
+        transition: max-height 0.7s ease-in;
     }
 
     .footer-usefull-question {
         @include govuk-grid-column("full");
         padding-left: 0px;
         box-sizing: content-box;
-       // line-height: 23px;
+        // line-height: 23px;
+    }
+
+    .feedback-question-info-usefull {
+        display: none;
+    }
+
+    .footer-usefull-question-mobile {
+        display: revert;
+        line-height: 38px;
+    }
+
+    .idsk-white-border {
+        border-top: 2px solid white;
+    }
+    @include mq(mobile) {
+        .idsk-usefull-answers-mobile {
+            float: right;
+            /* text-align: right; */
+            padding-right: 4%;
+            padding-top: 2%;
+        }
     }
 
     @include mq($from: tablet) {
         .footer-usefull-question {
             @include govuk-grid-column("two-thirds");
+        }
+
+        .idsk-usefull-answers-mobile {
+            float: none;
+            display: inline;
+            padding-right: none;
+            padding-top: none;
+        }
+
+        .feedback-question-info-usefull {
+            display: unset;
+        }
+
+        .footer-usefull-question-mobile {
+            display: none;
+        }
+
+        .idsk-white-border {
+            border-top: none;
         }
     }
 
@@ -315,7 +387,7 @@
 
     // }
 
-    .idsk-heart{
+    .idsk-heart {
         display: none;
     }
 
