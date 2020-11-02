@@ -3,7 +3,7 @@
     <div id="feedback-question" class="heading-feedback feedback-text ">
         <div class="govuk-width-container feedback-container">
             <div id="idsk-info-question" class="govuk-grid-row">
-                <div class="footer-usefull-question sirka">
+                <div class="footer-usefull-question">
                     <a class="feedback-question-info-usefull">
                         Boli tieto informácie pre vás užitočné?
                     </a>
@@ -24,7 +24,6 @@
                     <button id="idsk-error-button" class=" feedback-text help-button">
                         Našli ste na stránke chybu?
                     </button>
-
                 </div>
                 <div class="footer-usefull-question-mobile idsk-white-border">
                     <a >
@@ -33,7 +32,6 @@
                     <button id="idsk-write-us-button" class="feedback-text help-button idsk-usefull-answers-mobile">
                         Napíšte nám
                     </button>
-
                 </div>
             </div>
             <div id="idsk-heart" class="idsk-heart">
@@ -56,21 +54,18 @@
             <div class="govuk-width-container">
                 <div class="govuk-grid-row">
                     <div class="govuk-grid-column-two-thirds bottom-space">
-                        <h3 class="">
+                        <h3 class="idsk-text-h3">
                             Pomôžte nám zlepšiť mirri.gov.sk
                         </h3>
-
                         <a class="form-text">
                             Aby sme vedeli zlepšiť obsah na tejto stránke, chceli by sme vedieť o Vašej skúsenosti so stránkou. Pošleme Vám link na fomrulár spätnej väzby. jeho vyplnanie Vám zaberie iba 2 minúty.
                         </a>
-
                     </div>
                     <div class="govuk-grid-column-one-third close-button">
                         <button id="close-help-form-button" class="feedback-button help-button">
                             Zatvoriť
                         </button>
                     </div>
-
                 </div>
                 <div class="feedback-button ">
                     <a href="href">
@@ -102,18 +97,15 @@
             <div class="govuk-width-container">
                 <div class="govuk-grid-row ">
                     <div class="govuk-grid-column-two-thirds">
-                        <h3 class="">
+                        <h3 class="idsk-text-h3">
                             Pomôžte nám zlepšiť mirri.gov.sk
                         </h3>
-
                         <a class="form-text">
                             Prosím nevpisujte žiadne osobné informácie (meno, kontakt a iné).
                         </a>
-
                         <br>
                         <div class="close-button">
-                             {% from "../../../govuk/components/select/macro.njk" import govukSelect %}
-
+                            {% from "../../../govuk/components/select/macro.njk" import govukSelect %}
                             {{ govukSelect({
                                 id: "sort",
                                 name: "sort",
@@ -126,9 +118,7 @@
                         </div>
                         <div class="">
                             <br>
-
                             {% from "../../../govuk/components/character-count/macro.njk" import govukCharacterCount %}
-
                             {{ govukCharacterCount({
                                 name: "with-hint",
                                 id: "with-hint",
@@ -163,8 +153,6 @@
 
                             </a>
                         </div>
-                        {# </div> #}
-
                     </div>
                     <div class="govuk-grid-column-one-third close-button">
                         <button id="close-error-form-button" class="feedback-button help-button">
@@ -179,60 +167,58 @@
 
     <div class="idsk-footer__meta idsk-footer-extended {{ params.classes if params.classes }}">
         <div class="govuk-width-container">
-            {% if params.firstTitle %}
+            {% if params.firstColumn.title %}
                 <div class="govuk-grid-row">
                     <div class="govuk-grid-column-two-thirds two-thirds">
                         <h3 class="govuk-heading-m ">
-                            {{ params.firstTitle }}
+                            {{ params.firstColumn.title }}
                         </h3>
-                        <div class="govuk-grid-row small_subtitle">
+                        <div class="govuk-grid-row idsk-subtitle">
                             <div class="govuk-grid-column-one-half bottom-space">
-                                {% for i in range(0, params.numberOfSubtitles) -%}
-                                    <li class="idsk-footer__inline-list-item">
-                                        <a class="idsk-footer__link" href="{{firstSubtitle.href}}">{{ params.firstSubtitle }}</a>
+
+                                {% for item in params.firstColumn.leftItems -%}
+                                    <li class="idsk-footer-extended-inline-list-item">
+                                        <a class="idsk-footer__link" href="{{item.name.href}}">{{ item.name }}</a>
                                     </li>
                                 {%- endfor %}
                             </div>
                             <div class="govuk-grid-column-one-half ">
-                                {% for i in range(0, params.numberOfSubtitles) -%}
-                                    <li class="idsk-footer__inline-list-item">
-                                        <a class="idsk-footer__link" href="{{firstTitle.href}}">{{ params.firstSubtitle }}</a>
+                                {% for item in params.firstColumn.rightItems -%}
+                                    <li class="idsk-footer-extended-inline-list-item">
+                                        <a class="idsk-footer__link" href="{{item.name.href}}">{{ item.name }}</a>
                                     </li>
                                 {%- endfor %}
                             </div>
-
                         </div>
                     </div>
                     <div class="govuk-grid-column-one-third one-third">
                         <h3 class="govuk-heading-m">
-                            {% if params.secondTitle %}
-                                {{ params.secondTitle }}
+                            {% if params.secondColumn.title %}
+                                {{ params.secondColumn.title }}
                             {% endif %}
                         </h3>
-                        <div class="govuk-grid-column-three-thirds small_subtitle">
-                            {% for i in range(0, params.numberOfSubtitles) -%}
-                                <li class="idsk-footer__inline-list-item">
-                                    <a class="idsk-footer__link" href="{{firstTitle.href}}">{{ params.firstSubtitle }}</a>
+                        <div class="govuk-grid-column-three-thirds idsk-subtitle">
+                            {% for item in params.secondColumn.items -%}
+                                <li class="idsk-footer-extended-inline-list-item">
+                                    <a class="idsk-footer__link" href="{{item.name.href}}">{{ item.name }}</a>
                                 </li>
                             {%- endfor %}
                         </div>
                     </div>
                 </div>
             {% endif %}
-            {% if params.thirdTitle %}
+            {% if params.thirdColumn.title %}
                 <div class="govuk-grid-row">
                     <div class="govuk-grid-column-two-thirds two-thirds">
                         <h3 class="govuk-heading-m ">
-                            {{ params.thirdTitle }}
+                            {{ params.thirdColumn.title }}
                         </h3>
-                        <div class="govuk-grid-row small_subtitle">
+                        <div class="govuk-grid-row idsk-subtitle">
                             <div class="govuk-grid-column-one-half bottom-space">
-
-                                {% if params.secondSubtitle %}
-
-                                    {% for i in range(0, params.numberOfSubtitles) -%}
-                                        <li class="idsk-footer__inline-list-item">
-                                            <a class="idsk-footer__link" href="{{secondSubtitle.href}}">{{ params.secondSubtitle }}</a>
+                                {% if params.thirdColumn.items %}
+                                    {% for item in params.thirdColumn.items -%}
+                                        <li class="idsk-footer-extended-inline-list-item">
+                                            <a class="idsk-footer__link" href="{{item.name.href}}">{{ item.name }}</a>
                                         </li>
                                     {%- endfor %}
                                 {% endif %}
@@ -241,15 +227,15 @@
                     </div>
                     <div class="govuk-grid-column-one-third one-third">
                         <h3 class="govuk-heading-m">
-                            {% if params.fourthTitle %}
-                                {{ params.fourthTitle }}
+                            {% if params.fourthColumn.title %}
+                                {{ params.fourthColumn.title }}
                             {% endif %}
                         </h3>
-                        <div class="govuk-grid-column-three-thirds small_subtitle">
-                            {% if params.secondSubtitle %}
-                                {% for i in range(0, params.numberOfSubtitles) -%}
-                                    <li class="idsk-footer__inline-list-item">
-                                        <a class="idsk-footer__link" href="{{secondSubtitle.href}}">{{ params.secondSubtitle }}</a>
+                        <div class="govuk-grid-column-three-thirds idsk-subtitle">
+                            {% if params.fourthColumn.items %}
+                                {% for item in params.fourthColumn.items -%}
+                                    <li class="idsk-footer-extended-inline-list-item">
+                                        <a class="idsk-footer__link" href="{{item.name.href}}">{{ item.name }}</a>
                                     </li>
                                 {%- endfor %}
                             {% endif %}
@@ -259,7 +245,7 @@
             {% endif %}
             <div class="bordering">
                 <div class="idsk-footer__meta-item idsk-footer__meta-item--grow ">
-                    <h1 class="idsk-novy-title frame">
+                    <h1 class="idsk-frame">
                         Prevádzkovateľom služby je Ministerstvo investícií,
                         <br>
                         regionálneho rozvoja a informatizácie SR.
@@ -267,13 +253,13 @@
                 </div>
                 <div class="govuk-grid-row ">
                     <div class="govuk-grid-column-two-thirds">
-                        <p class="idsk-novy-title frame">Vytvorené v súlade s
-                            <a href="href" class=" label">
+                        <p class="idsk-frame">Vytvorené v súlade s
+                            <a href="href" class=" idsk-label">
                                 Jednotným dizajn manuálom elektronických služieb.</a href>
                         </p>
-                        <ul class="idsk-footer__inline-list ">
+                        <ul class="idsk-footer-extended-inline-list ">
                             {% for subtitle in params.subtitles %}
-                                <li class="idsk-footer__inline-list-item">
+                                <li class="idsk-footer-extended-inline-list-item">
                                     <a class="idsk-footer__link" href="{{subtitle.href}}">
                                         {{ subtitle.item }}
                                     </a>
@@ -284,7 +270,7 @@
                         </ul>
                     </div>
                     <div class="govuk-grid-column-one-third">
-                        <h2 class="idsk-novy-title logo">
+                        <h2 class="idsk-ministri-logo">
                             <svg width="103%" height="80%" viewbox="0 0 293 67" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g clip-path="url(#clip0)">
                                     <path d="M150.937 16.636H44.0049V15.104H150.937V16.636Z" fill="black"/>
@@ -305,7 +291,5 @@
                 </div>
             </div>
         </div>
-
     </div>
-
 </div>

@@ -135,11 +135,30 @@ examples:
 
 - name: extended 1
   description: 
-  data:
-    numberOfSubtitles: 4
-    firstTitle: "Navigácia v 2 stĺpcoch (2/3)"
-    secondTitle: "Navigácia v 1 stĺpci (1/3)"
-    firstSubtitle: "Link small Regular 16/20"
+  data:    
+    firstColumn: 
+      title: Navigácia v 2 stĺpcoch (2/3)
+      leftItems: 
+       - name: Link small Regular 12/20 
+       - name: Link small Regular 13/20
+       - name: Link small Regular 14/20
+       - name: Link small Regular 15/20
+     
+      rightItems: 
+       - name: Link small Regular 16/20 
+       - name: Link small Regular 17/20
+       - name: Link small Regular 18/20
+       - name: Link small Regular 19/20
+    
+    secondColumn: 
+      title: Navigácia v 1 stĺpci (1/3)
+      items: 
+       - name: Link small Regular 20/20 
+       - name: Link small Regular 21/20
+       - name: Link small Regular 22/20
+       - name: Link small Regular 23/20
+    
+    
     subtitles: 
         - href: '#1' 
           item: Pomoc          
@@ -166,14 +185,46 @@ examples:
 
 - name: extended 2
   description: 
-  data:
-    numberOfSubtitles: 4
-    firstTitle: "Navigácia v 2 stĺpcoch (2/3)"
-    secondTitle: "Navigácia v 1 stĺpci (1/3)"
-    firstSubtitle: "Link small Regular 16/20"
-    secondSubtitle: "Link small Regular 16/20"
-    thirdTitle: "Dodatočná hyperlinková navigácia (1/4)"
-    fourthTitle: "Navigácia  v 1 stĺpci (1/3)"
+  data:    
+    firstColumn: 
+      title: Navigácia v 2 stĺpcoch (2/3)
+      leftItems: 
+       - name: Link small Regular 12/20 
+       - name: Link small Regular 13/20
+       - name: Link small Regular 14/20
+       - name: Link small Regular 15/20
+     
+      rightItems: 
+       - name: Link small Regular 16/20 
+       - name: Link small Regular 17/20
+       - name: Link small Regular 18/20
+       - name: Link small Regular 19/20
+    
+    secondColumn: 
+      title: Navigácia v 1 stĺpci (1/3)
+      items: 
+       - name: Link small Regular 20/20 
+       - name: Link small Regular 21/20
+       - name: Link small Regular 22/20
+       - name: Link small Regular 23/20
+
+    thirdColumn: 
+      title: Dodatočná hyperlinková navigácia (1/4)
+      items: 
+       - name: Link small Regular 24/20 
+       - name: Link small Regular 25/20
+       - name: Link small Regular 26/20
+       - name: Link small Regular 27/20
+
+    fourthColumn: 
+      title: Navigácia v 1 stĺpci (1/3)
+      items: 
+       - name: Link small Regular 28/20 
+       - name: Link small Regular 29/20
+       - name: Link small Regular 30/20
+       - name: Link small Regular 31/20
+
+
     subtitles: 
         - href: '#1' 
           item: Pomoc          
