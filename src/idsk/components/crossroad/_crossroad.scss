@@ -13,33 +13,35 @@
     @include govuk-grid-column("one-half");
   }
 
-  .idsk-crossroad-title {
-    @include govuk-font($size: 19, $weight: bold);
-    color: #0065b3;
-    text-decoration: underline;
-    cursor: pointer;
-  }
+  .idsk-crossroad {
+    &-title {
+      @include govuk-font($size: 19, $weight: bold);
+      color: #0065b3;
+      text-decoration: underline;
+      cursor: pointer;
 
-  .idsk-crossroad-title:hover {
-    color: #003078;
-  }
+      &:hover {
+        color: #003078;
+      }
+    }
 
-  .idsk-crossroad-subtitle {
-    @include govuk-font($size: 16);
-    @include govuk-responsive-padding(2, "top");
-    @include govuk-responsive-padding(4, "bottom");
-    margin: 0;
-    color: #626a6e;
-    cursor: pointer;
-  }
+    &-subtitle {
+      @include govuk-font($size: 16);
+      @include govuk-responsive-padding(2, "top");
+      @include govuk-responsive-padding(4, "bottom");
+      margin: 0;
+      color: #626a6e;
+      cursor: pointer;
+    }
 
-  .idsk-crossroad-line {
-    color: #bfc1c3;
-    border-color: #bfc1c3;
-    background-color: #bfc1c3;
-    height: 1px;
-    border: 0;
-    border-top: 1px;
-    margin-bottom: 10px !important;
+    &-line {
+      color: #bfc1c3;
+      border-color: govuk-colour("mid-grey");
+      background-color: govuk-colour("mid-grey");
+      height: 1px;
+      border: 0;
+      border-top: 1px;
+      margin-bottom: 10px;
+    }
   }
 }
