@@ -6,8 +6,7 @@
 
 @include govuk-exports("idsk/component/header-extended") {
 
-  /* load font face for FontAwesome icons */
-  // TODO: font-face declarations should be moved somewhere ...
+  /// load font face for FontAwesome icons
   @font-face {
     font-family: "FontAwesome";
     src: govuk-font-url("fa-regular-400.woff2") format("woff2"),
@@ -74,7 +73,7 @@
       flex-flow: wrap row;
     }
 
-    /* content menu navigation */
+    /// content menu navigation
     &__content {
       width: 100%;
       order: 3;
@@ -87,7 +86,7 @@
 
   }
 
-  /* logo part */
+  ///  logo part
   .idsk-header-extended__logo {
     order: 1;
     padding-left: 0px;
@@ -99,7 +98,7 @@
     }
   }
 
-  // logo svg image
+  /// logo svg image
   .idsk-header-extended__logotype-crown {
     position: relative;
     fill: currentColor;
@@ -113,7 +112,7 @@
     }
   }
 
-  // logo svg image - mobile view
+  /// logo svg image - mobile view
   .idsk-header-extended__logotype-crown-mobile-small,
   .idsk-header-extended__logotype-crown-mobile-navigation {
     display: none;
@@ -150,7 +149,7 @@
     }
   }
 
-  /* search bar */
+  /// search bar
   .idsk-header-extended__search {
     order: 2;
     width: 215px;
@@ -198,7 +197,7 @@
     }
   }
 
-  /* language selector */
+  /// language selector
   .idsk-header-extended__language {
     order: 3;
     position: relative;
@@ -217,7 +216,7 @@
 
     &-list {
       display: none;
-      background-color: #ffffff;
+      background-color: govuk-colour("white");
       border: 1px solid #c0c0c047;
       min-width: 120px;
 
@@ -233,7 +232,7 @@
       }
     }
     
-    /* arrow at the end of language switcher */
+    /// arrow at the end of language switcher
     &--current-text {
       padding-right: 20px;
 
@@ -262,7 +261,7 @@
     }
   }
 
-  /* social icons */
+  /// social icons
   .idsk-header-extended__social {
     order: 4;
     ul {
@@ -286,7 +285,7 @@
     }
   }
 
-  /* navigation */
+  /// navigation
   .idsk-header-extended__navigation {
     display: block;
     margin: 0;
@@ -317,6 +316,20 @@
         }
       }
 
+      /// arrow
+      .idsk-header-extended__arrow::after {
+        @include govuk-shape-arrow($direction: down, $base: 10px, $display: inline-block);
+        border-color: $idsk-header-link transparent transparent;
+        content: "";
+        position: relative;
+        left: 10px;
+        transition: transform 0.2s;
+
+        @include mq ($from: desktop){
+          display: none;
+        }
+      }
+
       &--active {
         background-color: $idsk-header-dark-blue;
     
@@ -328,11 +341,16 @@
             outline: none;
           }
         }
+
+        .idsk-header-extended__arrow::after {
+          transition: transform 0.2s;
+          transform: rotate(180deg);
+        }
       }
     }
   }
 
-  // navigation - submenu
+  /// navigation - submenu
   .idsk-header-extended__navigation-submenu {
     display: none;
     left: 0;
@@ -378,7 +396,7 @@
         }
 
         &:before {
-          content: "\2022"; /* unicode for a bullet */
+          content: "\2022"; // unicode for a bullet
           color: $idsk-header-light-blue;
           font-weight: bolder;
           display: inline-block;
@@ -398,7 +416,7 @@
     }
   }
 
-  // navigation - hmaburger button
+  /// navigation - hmaburger button
   .idsk-header-extended__menu-button {
     @include govuk-font($size: 24);
     font-weight: 700;
@@ -411,17 +429,7 @@
     background: none;
     display: none;
     align-items: center;
-  }
-
-  /* arrow */
-  .arrow::after {
-    position: absolute;
-    margin-top: 8px;
-    border-style: solid;
-    border-width: 5px 5px 0;
-    border-color: $idsk-header-dark-blue transparent transparent;
-    content: "";
-    transition: transform 0.2s;
+    cursor: pointer;
   }
  
   @include govuk-media-query($media-type: print) {
@@ -430,7 +438,7 @@
       color: govuk-colour("black");
       background: transparent;
 
-      // Hide the inverted crown when printing in browsers that don't support SVG.
+      /// Hide the inverted crown when printing in browsers that don't support SVG.
       &__logotype-crown-fallback-image {
         display: none;
       }
@@ -442,7 +450,7 @@
         }
       }
 
-      // Do not append link href to GOV.UK link when printing (e.g. '(/)')
+      /// Do not append link href to GOV.UK link when printing (e.g. '(/)')
       &:after {
         display: none;
       }
@@ -484,6 +492,7 @@
       top: 0;
       display: none;
       z-index: 5;
+      cursor: pointer;
 
       &:after {
         content: "\2715";
@@ -497,12 +506,12 @@
     &__menu-button {
       display: inline-flex;
 
-      @include mq ($from: desktop) {
-        display: none;
-      }
-
       @include mq ($from: tablet) {
         right: 40px;
+      }
+
+      @include mq ($from: desktop) {
+        display: none;
       }
     }
 
@@ -633,7 +642,7 @@
           }
 
           &--current-text:after {
-            border-color: #fff transparent transparent;
+            border-color: govuk-colout("white") transparent transparent;
           }
         }
       }

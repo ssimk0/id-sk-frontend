@@ -90,9 +90,7 @@ class HeaderExtended {
     handleLanguageSelectorClick(e) {
         let $toggleButton = e.target || e.srcElement;
         let $target = $toggleButton.closest('.idsk-header-extended__language');
-        if ($target) {
-            toggleClass($target, 'idsk-header-extended__language--active');
-        }
+        toggleClass($target, 'idsk-header-extended__language--active');
     }
 
     /**
@@ -106,9 +104,7 @@ class HeaderExtended {
         let $target = $toggleButton
             .closest('.idsk-header-extended__navigation-item')
             .querySelector('.idsk-header-extended__navigation-submenu');
-        if ($target) {
-            toggleClass($target, '--open');
-        }
+        toggleClass($target, '--open');
     }
 
     /**

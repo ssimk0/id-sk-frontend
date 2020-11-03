@@ -202,7 +202,7 @@
               {% for language in params.language.choices %}
                 <li>
                   <span>
-                    <img src="{{ params.assetsPath | default('/assets/images') }}/flags/{{ language.flag }}" alt="{{ language.current.text }}">
+                    <img src="{{ params.assetsPath | default('/assets/images') }}/flags/{{ language.flag }}" alt="{{ language.text }}">
                     <span>{{ language.text }}</span>
                   </span> 
                 </li>
@@ -249,10 +249,14 @@
             aria-label="Top Level Navigation"
             >
             {% for item in params.navigation %}
-              <li class="idsk-header-extended__navigation-item{{ ' idsk-header-extended__navigation-item--active' if item.active }}">
+              <li class="idsk-header-extended__navigation-item
+                {{ ' idsk-header-extended__navigation-item--active' if item.active }}"
+              >
                 <a 
                   tabindex="{{loop.index + 1}}"
-                  class="idsk-header-extended__link {{ ' idsk-js-header-extended-submenu-toggle' if item.submenu }}"
+                  class="idsk-header-extended__link
+                    {{ ' idsk-js-header-extended-submenu-toggle' if item.submenu }}
+                    {{ ' idsk-header-extended__arrow' if item.submenu }}"
                   href="{{ item.link }}"{% for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %}
                   title="{{ item.text }}"
                   >
@@ -260,7 +264,7 @@
                 </a>
                 {% if item.submenu %}
                   <div class="idsk-header-extended__navigation-submenu">
-                    <ul>
+                    <ul class="govuk-width-container">
                       {% for subItem in item.submenu%}
                         <li>
                           <span>
@@ -297,20 +301,3 @@
     }) }}
   {% endfor %}
 {% endif %}
-
-{# <div class="govuk-width-container">
-  <span class="govuk-caption-xl">Úvod</span>
-  <h1 class="govuk-heading-xl">Čo je dizajn manuál ID-SK</h1>
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-        <h2 class="govuk-heading-m">Všeobecný úvod ID-SK</h2>
-        <p class="govuk-body">Jednotný dizajn manuál elektronických služieb Slovenska „ID-SK“ je manuálom, ktorý má za cieľ zjednotiť používateľské rozhrania a spôsob komunikácie s používateľom pri poskytovaní elektronických služieb na Slovensku.</p>
-        <p class="govuk-body">Požiadavka zjednotenia elektronických služieb vyplýva z Národnej koncepcie informatizácie verejnej správy z roku 2016. Bol navrhnutý v spolupráci s odbornou verejnosťou a pracovnými skupinami Komisie pre štandardizáciu informačných systémov verejnej správy. Pravidlá a prístupy uvedené v ID-SK sú tvorené tak, aby využívanie elektronických služieb bolo pre verejnosť jednoduchšie, a aby pomáhal predchádzať bežným problémom.</p>
-        <p class="govuk-body">ID-SK je súbor pravidiel tvorby obsahu a funkčnosti elektronických služieb v súlade s potrebami používateľov. Definuje komponenty, jednotné používanie výrazov, princípy, vzory a pravidlá pre tvorbu jednotného používateľského rozhrania. Jeho účelom je jednotný spôsob komunikácie s používateľom elektronických služieb v celej verejnej správe.</p>
-        <p class="govuk-body">ID-SK zohľadňuje používanie rôznych technických prostriedkov (PC, mobil, tablet) a zároveň dbá aj na prípadné využitie asistenčných informačných technológii (napr. čítač). Tento manuál bol tvorený tak, aby služby, ktoré budú poskytované v jeho dizajne boli jednoduché, zrozumiteľné a ľahko dostupné pre všetky vekové kategórie. Zároveň poskytuje praktické tipy, ktoré pomôžu poskytovateľom zjednodušiť komplikované formuláre. ID-SK je verejne dostupný na voľné použitie pre všetkých tvorcov elektronických služieb spolu s poskytnutím zdrojového kódu.</p>
-        <p class="govuk-body">ID-SK je metodickým usmernením, pre všetkých poskytovateľov pri tvorbe nových a súčasne pri pretváraní existujúcich elektronických služieb a to tak, aby bol postupne naplnený jeho cieľ zjednotenia tvorby všetkých elektronických služieb verejnej správy.</p>
-        <p class="govuk-body">ID-SK je verejne dostupný a je zverejnený na webovom sídle Úradu podpredsedu vlády Slovenskej republiky pre investície a informatizáciu.</p>
-        <p class="govuk-body">Súčasťou manuálu je aj vzorový programový kód. Pozrite si, <a href="/uvod/ako-zacat-s-vyvojom">ako začať s vývojom</a>.</p>
-    </div>
-  </div>
-</div> #}
