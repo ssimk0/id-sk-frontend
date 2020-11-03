@@ -45,11 +45,7 @@
         align-items: flex-start;
         left: 100px;
         background: govuk-colour("light-grey");
-        box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.25);
-    }
-
-    .container {
-        flex-flow: column wrap;
+        box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
     }
 
     .idsk-footer-extended-inline-list {
@@ -93,7 +89,7 @@
         }
     }
 
-    .idsk-description-panel {
+    .idsk-footer-extended-description-panel {
         border-top: 1px solid govuk-colour("mid-grey");
         padding-top: 7px;
     }
@@ -103,7 +99,7 @@
         padding-top: 28px;
     }
 
-    .idsk-subtitle {
+    .idsk-footer-extended-subtitle {
         border-top: 1px solid govuk-colour("mid-grey");
         padding-top: 7px;
     }
@@ -138,7 +134,7 @@
         }
       }
 
-    .idsk-ministri-logo {
+    .idsk-footer-extended-logo {
         flex: none;
         order: 1;
         align-self: flex-end;
@@ -146,7 +142,7 @@
         padding-top: 8px;
     }
 
-    .idsk-frame {
+    .idsk-footer-extended-frame {
         display: inline-block;
         width: 100%;
         height: 30px;
@@ -159,7 +155,7 @@
         color: govuk-colour("black");
     }
 
-    .idsk-label {
+    .idsk-footer-extended-label {
         font-style: normal;
         font-weight: normal;
         font-size: 19px;
@@ -168,11 +164,11 @@
         text-decoration: underline;
     }
 
-    .idsk-grid-column {
+    .idsk-footer-extended-grid-column {
         padding-bottom: 23px;
     }
 
-    .idsk-text-h3 {
+    .idsk-footer-extended-text-h3 {
         font-family: Source Sans Pro;
         font-style: normal;
         font-weight: normal;
@@ -182,12 +178,12 @@
         font-weight: bold;
     }
 
-    .heading-feedback {
+    .idsk-footer-extended-heading-feedback {
         margin: 0 -15px;
         background: govuk-colour("blue");
     }
 
-    .feedback-text {
+    .idsk-footer-extended-feedback-text {
         font-family: Source Sans Pro;
         font-style: normal;
         font-weight: bold;
@@ -203,7 +199,7 @@
     }
 
     @include mq($from: tablet) {
-        .feedback-text {
+        .idsk-footer-extended-feedback-text {
             top: 7.49%;
             bottom: 91.98%;
             font-family: Source Sans Pro;
@@ -215,18 +211,14 @@
         }
     }
 
-    .right-text {
-        float: right;
-    }
-
     @include mq(tablet) {
-        .text-padding {
+        .idsk-footer-extended-text-padding {
             padding-left: 34px;
         }
     }
 
     @include mq($from: desktop) {
-        .text-padding {
+        .idsk-footer-extended-text-padding {
             padding-left: 70px;
         }
 
@@ -234,46 +226,46 @@
             font-size: 1.5em;
         }
     }
-    .feedback-container {
+    .idsk-footer-extended-feedback-container {
         padding-top: 0;
         padding-left: 15px;
         overflow: hidden;
     }
 
     @include mq($from: desktop) {
-        .feedback-container {
+        .idsk-footer-extended-feedback-container {
             padding-top: 15px;
             padding-left: 25px;
             padding-bottom: 17px;
         }
     }
 
-    .feedback-container.collapsed {
+    .idsk-footer-extended-feedback-container.collapsed {
         max-height: 0;
     }
 
-    .feedback-button {
+    .idsk-footer-extended-feedback-button {
         padding: 0 0 0 25px;
     }
 
-    .idsk-close-button {
+    .idsk-footer-extended-close-button {
         padding-top: 20px;
     }
 
-    .help-button {
+    .idsk-footer-extended-help-button {
         background: none;
         border-style: none;
         text-decoration: underline;
         cursor: pointer;
     }
 
-    .blue-border {
+    .idsk-footer-extended-blue-border {
         border-top: 5px solid govuk-colour("blue");
         border-bottom: 5px solid govuk-colour("blue");
         background-clip: border-box;
     }
 
-    .form-text {
+    .idsk-footer-extended-form-text {
         font-family: Source Sans Pro;
         font-style: normal;
         font-weight: normal;
@@ -282,18 +274,15 @@
         color: govuk-colour("black");
     }
 
-    .idsk-display-none {
+    .idsk-footer-extended-display-hidden {
         visibility: hidden;
     }
 
-    .idsk-display- {
+    .idsk-footer-extended-display-none {
         display: none;
     }
-    .idsk-visually-hidden {
-        opacity: 0;
-    }
-
-    .idsk-feedback-hidden {
+  
+    .idsk-footer-extended-feedback-hidden {
         max-height: 0;
         transition: max-height 0.7s ease-out;
     }
@@ -308,33 +297,33 @@
         outline: none;
     }
 
-    .idsk-open {
+    .idsk-footer-extended-open {
         max-height: 619px;
         height: auto;
         transition: max-height 0.7s ease-in;
     }
 
-    .footer-usefull-question {
+    .idsk-footer-extended-usefull-question {
         @include govuk-grid-column("full");
         padding-left: 0;
         box-sizing: content-box;
     }
 
-    .feedback-question-info-usefull {
+    .idsk-footer-extended-feedback-question-info-usefull {
         display: none;
     }
 
-    .footer-usefull-question-mobile {
+    .idsk-footer-extended-usefull-question-mobile {
         display: revert;
         line-height: 38px;
         padding-left: 15px;
     }
 
-    .idsk-white-border {
+    .idsk-footer-extended-white-border {
         border-top: 2px solid govuk-colour("white");
     }
     @include mq(mobile) {
-        .idsk-usefull-answers-mobile {
+        .idsk-footer-extended-usefull-answers-mobile {
             float: right;
             padding-right: 10%;
             padding-top: 2%;
@@ -342,39 +331,39 @@
     }
 
     @include mq($from: tablet) {
-        .footer-usefull-question {
+        .idsk-footer-extended-usefull-question {
             @include govuk-grid-column("two-thirds");
         }
 
-        .idsk-usefull-answers-mobile {
+        .idsk-footer-extended-usefull-answers-mobile {
             float: none;
             display: inline;
             padding-right: none;
             padding-top: none;
         }
 
-        .feedback-question-info-usefull {
+        .idsk-footer-extended-feedback-question-info-usefull {
             display: unset;
         }
 
-        .footer-usefull-question-mobile {
+        .idsk-footer-extended-usefull-question-mobile {
             display: none;
         }
 
-        .idsk-white-border {
+        .idsk-footer-extended-white-border {
             border-top: none;
         }
     }
 
-    .idsk-heart {
+    .idsk-footer-extended-heart {
         display: none;
     }
 
-    .idsk-heart-visible {
+    .idsk-footer-extended-heart-visible {
         display: block;
     }
 
-    .idsk-footer-error-question {
+    .idsk-footer-extended-error-question {
         border-top: 2px solid govuk-colour("white");
         padding-right: 1px;
         padding-left: 1px;
@@ -382,7 +371,7 @@
     }
 
     @include mq($from: tablet) {
-        .idsk-footer-error-question {
+        .idsk-footer-extended-error-question {
             border-top: none;
             @include govuk-grid-column("one-third");
         }
