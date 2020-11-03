@@ -53,7 +53,7 @@
         <div id="idsk-help-container" class="blue-border feedback-container">
             <div class="govuk-width-container">
                 <div class="govuk-grid-row">
-                    <div class="govuk-grid-column-two-thirds bottom-space">
+                    <div class="govuk-grid-column-two-thirds idsk-grid-column">
                         <h3 class="idsk-text-h3">
                             Pomôžte nám zlepšiť mirri.gov.sk
                         </h3>
@@ -61,7 +61,7 @@
                             Aby sme vedeli zlepšiť obsah na tejto stránke, chceli by sme vedieť o Vašej skúsenosti so stránkou. Pošleme Vám link na fomrulár spätnej väzby. jeho vyplnanie Vám zaberie iba 2 minúty.
                         </a>
                     </div>
-                    <div class="govuk-grid-column-one-third close-button">
+                    <div class="govuk-grid-column-one-third idsk-close-button">
                         <button id="close-help-form-button" class="feedback-button help-button">
                             Zatvoriť
                         </button>
@@ -104,16 +104,17 @@
                             Prosím nevpisujte žiadne osobné informácie (meno, kontakt a iné).
                         </a>
                         <br>
-                        <div class="close-button">
+                        <div class="idsk-close-button">
                             {% from "../../../govuk/components/select/macro.njk" import govukSelect %}
                             {{ govukSelect({
-                                id: "sort",
-                                name: "sort",
-                                label: {
-                                text: " Aký typ chyby ste našli?"
-                            },
-                            items: params.dropdownItems
-                            }) }}
+                                    id: "sort",
+                                    name: "sort",
+                                    label: {
+                                    text: " Aký typ chyby ste našli?"
+                                },
+                                    items: params.dropdownItems
+                                }) 
+                            }}
 
                         </div>
                         <div class="">
@@ -129,7 +130,8 @@
                                 hint: {
                                     text: ""
                                     }
-                                }) }}
+                                }) 
+                            }}
 
                         </div>
                         <div class="feedback-button">
@@ -154,7 +156,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="govuk-grid-column-one-third close-button">
+                    <div class="govuk-grid-column-one-third idsk-close-button">
                         <button id="close-error-form-button" class="feedback-button help-button">
                             Zatvoriť
                         </button>
@@ -165,7 +167,7 @@
         </div>
     </div>
 
-    <div class="idsk-footer__meta idsk-footer-extended {{ params.classes if params.classes }}">
+    <div class="idsk-footer-extended-meta idsk-footer-extended {{ params.classes if params.classes }}">
         <div class="govuk-width-container">
             {% if params.firstColumn.title %}
                 <div class="govuk-grid-row">
@@ -174,18 +176,18 @@
                             {{ params.firstColumn.title }}
                         </h3>
                         <div class="govuk-grid-row idsk-subtitle">
-                            <div class="govuk-grid-column-one-half bottom-space">
+                            <div class="govuk-grid-column-one-half idsk-grid-column">
 
                                 {% for item in params.firstColumn.leftItems -%}
                                     <li class="idsk-footer-extended-inline-list-item">
-                                        <a class="idsk-footer__link" href="{{item.name.href}}">{{ item.name }}</a>
+                                        <a class="idsk-footer-extended-link" href="{{item.name.href}}">{{ item.name }}</a>
                                     </li>
                                 {%- endfor %}
                             </div>
                             <div class="govuk-grid-column-one-half ">
                                 {% for item in params.firstColumn.rightItems -%}
                                     <li class="idsk-footer-extended-inline-list-item">
-                                        <a class="idsk-footer__link" href="{{item.name.href}}">{{ item.name }}</a>
+                                        <a class="idsk-footer-extended-link" href="{{item.name.href}}">{{ item.name }}</a>
                                     </li>
                                 {%- endfor %}
                             </div>
@@ -200,7 +202,7 @@
                         <div class="govuk-grid-column-three-thirds idsk-subtitle">
                             {% for item in params.secondColumn.items -%}
                                 <li class="idsk-footer-extended-inline-list-item">
-                                    <a class="idsk-footer__link" href="{{item.name.href}}">{{ item.name }}</a>
+                                    <a class="idsk-footer-extended-link" href="{{item.name.href}}">{{ item.name }}</a>
                                 </li>
                             {%- endfor %}
                         </div>
@@ -214,11 +216,11 @@
                             {{ params.thirdColumn.title }}
                         </h3>
                         <div class="govuk-grid-row idsk-subtitle">
-                            <div class="govuk-grid-column-one-half bottom-space">
+                            <div class="govuk-grid-column-one-half idsk-grid-column">
                                 {% if params.thirdColumn.items %}
                                     {% for item in params.thirdColumn.items -%}
                                         <li class="idsk-footer-extended-inline-list-item">
-                                            <a class="idsk-footer__link" href="{{item.name.href}}">{{ item.name }}</a>
+                                            <a class="idsk-footer-extended-link" href="{{item.name.href}}">{{ item.name }}</a>
                                         </li>
                                     {%- endfor %}
                                 {% endif %}
@@ -235,7 +237,7 @@
                             {% if params.fourthColumn.items %}
                                 {% for item in params.fourthColumn.items -%}
                                     <li class="idsk-footer-extended-inline-list-item">
-                                        <a class="idsk-footer__link" href="{{item.name.href}}">{{ item.name }}</a>
+                                        <a class="idsk-footer-extended-link" href="{{item.name.href}}">{{ item.name }}</a>
                                     </li>
                                 {%- endfor %}
                             {% endif %}
@@ -243,8 +245,8 @@
                     </div>
                 </div>
             {% endif %}
-            <div class="bordering">
-                <div class="idsk-footer__meta-item idsk-footer__meta-item--grow ">
+            <div class="idsk-description-panel">
+                <div class="idsk-footer-extended-meta-item idsk-footer-extended-meta-item--grow ">
                     <h1 class="idsk-frame">
                         Prevádzkovateľom služby je Ministerstvo investícií,
                         <br>
@@ -260,7 +262,7 @@
                         <ul class="idsk-footer-extended-inline-list ">
                             {% for subtitle in params.subtitles %}
                                 <li class="idsk-footer-extended-inline-list-item">
-                                    <a class="idsk-footer__link" href="{{subtitle.href}}">
+                                    <a class="idsk-footer-extended-link" href="{{subtitle.href}}">
                                         {{ subtitle.item }}
                                     </a>
                                 </li>

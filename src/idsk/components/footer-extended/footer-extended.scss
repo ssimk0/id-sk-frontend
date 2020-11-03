@@ -44,7 +44,7 @@
         flex-direction: column;
         align-items: flex-start;
         left: 100px;
-        background: govuk-colour("light-grey"); 
+        background: govuk-colour("light-grey");
         box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.25);
     }
 
@@ -59,10 +59,6 @@
         padding-top: 20px;
     }
 
-    .idsk-footer__meta-custom {
-        margin-bottom: govuk-spacing(4);
-    }
-
     .idsk-footer-extended-inline-list-item {
         display: inline-block;
         margin-right: govuk-spacing(3);
@@ -70,7 +66,7 @@
         text-decoration-line: underline;
     }
 
-    .idsk-footer__link {
+    .idsk-footer-extended-link {
         font-size: 16px;
         font-style: normal;
         font-weight: normal;
@@ -97,7 +93,7 @@
         }
     }
 
-    .bordering {
+    .idsk-description-panel {
         border-top: 1px solid govuk-colour("mid-grey");
         padding-top: 7px;
     }
@@ -112,12 +108,35 @@
         padding-top: 7px;
     }
 
-    .idsk-footer__meta-item {
+    .idsk-footer-extended-meta {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex; // Support: Flexbox
+        margin-right: -$govuk-gutter-half;
+        margin-left: -$govuk-gutter-half;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap; // Support: Flexbox
+        -webkit-box-align: start;
+            -ms-flex-align: start;
+                align-items: flex-start; // Support: Flexbox
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center; // Support: Flexbox
+      }
+
+    .idsk-footer-extended-meta-item {
         margin-right: 15px;
         margin-bottom: 25px;
         margin-left: 0;
         padding-bottom: 20px;
     }
+
+    .idsk-footer-extended-meta-item--grow {
+        flex: 1; // Support: Flexbox
+        @include mq ($until: tablet) {
+          flex-basis: 320px; // Support: Flexbox
+        }
+      }
 
     .idsk-ministri-logo {
         flex: none;
@@ -149,7 +168,7 @@
         text-decoration: underline;
     }
 
-    .bottom-space {
+    .idsk-grid-column {
         padding-bottom: 23px;
     }
 
@@ -175,6 +194,12 @@
         font-size: 12px;
         line-height: 23px;
         color: govuk-colour("white");
+    }
+
+    @include mq(tablet) {
+        .govuk-heading-m {
+            font-size: 1.39em;
+        }
     }
 
     @include mq($from: tablet) {
@@ -204,6 +229,10 @@
         .text-padding {
             padding-left: 70px;
         }
+
+        .govuk-heading-m {
+            font-size: 1.5em;
+        }
     }
     .feedback-container {
         padding-top: 0;
@@ -227,15 +256,7 @@
         padding: 0 0 0 25px;
     }
 
-    .dropdown {
-        padding-top: 10px;
-    }
-
-    .select-box {
-        width: 200px;
-    }
-
-    .close-button {
+    .idsk-close-button {
         padding-top: 20px;
     }
 
@@ -277,11 +298,13 @@
         transition: max-height 0.7s ease-out;
     }
 
-    #with-hint:active, #with-hint:focus {
+    #with-hint:active,
+    #with-hint:focus {
         outline: none;
     }
 
-    .govuk-select:active, .govuk-select:focus {
+    .govuk-select:active,
+    .govuk-select:focus {
         outline: none;
     }
 
