@@ -2,12 +2,12 @@
 
 {% set dateAndTag %}
     {% if params.date and params.tags %}
-        {% set tags = '<p class="idsk-tag-date idsk-tag-date-underline">' + params.tags[0]  + '</p>' %}
+        {% set tags = '<a  href="' + params.tags[0].link + '" class="idsk-tag-date idsk-tag-date-underline">' + params.tags[0].tag  + '</a>' %}
         {% for index in range(1, params.tags | length) %}
-            {% set tags = tags + '<p class="idsk-tag-date">&nbsp;|&nbsp;</p>' + '<p class="idsk-tag-date idsk-tag-date-underline">' + params.tags[index]  + '</p>' %}
+            {% set tags = tags + '<p class="idsk-tag-date">&nbsp;|&nbsp;</p>' + '<a  href="' + params.tags[index].link + '" class="idsk-tag-date idsk-tag-date-underline">' + params.tags[index].tag  + '</a>' %}
         {% endfor %}
     <div>
-        <a href="" class="idsk-tag-date idsk-tag-date-underline">{{ params.date }}</a> <p class="idsk-tag-date">&nbsp;-&nbsp;</p> {{ tags | safe }}
+        <a href="{{params.date.link}}" class="idsk-tag-date idsk-tag-date-underline">{{params.date.date}}</a> <p class="idsk-tag-date">&nbsp;-&nbsp;</p> {{ tags | safe }}
     </div>
     {% endif %}
 {% endset %}
@@ -23,7 +23,7 @@
         {{ dateAndTag | safe }}
         {% endif %}
 
-        <h1 class="idsk-heading idsk-heading-{{ type }}">{{ params.heading }}</h1>
+        <a href="{{params.link}}" class="idsk-heading idsk-heading-{{ type }}">{{ params.heading }}</a>
 
         {% if params.description %}
         <p class="idsk-body idsk-body-{{ type }}">

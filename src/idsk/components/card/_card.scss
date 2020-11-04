@@ -58,9 +58,11 @@
   .idsk-heading {
     @include govuk-responsive-padding(2, "top");
     @include govuk-responsive-padding(2, "bottom");
+    display: block;
     color: #0065b3;
     cursor: pointer;
     margin: 0;
+    text-decoration: none;
 
     &:hover {
       color: #0b0c0c;

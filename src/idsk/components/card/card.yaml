@@ -7,6 +7,10 @@ params:
     type: string
     required: false
     description: Source for the image to display with the card. It should be used with most of card types, except 'basic' which can be without image.
+  - name: link
+    type: string
+    required: true
+    description: Link to the card main article
   - name: heading
     type: string
     required: true
@@ -16,13 +20,27 @@ params:
     required: false
     description: Additional description text for the card.
   - name: date
-    type: string
+    type: object
     required: false
-    description: Date value in format DD-MM-YYYY, used to indicate creation time of news card.
+    description: Card date object with value and link to news page for that day.
+    params:
+      - name: date
+        type: string
+        description: Date value in format DD-MM-YYYY, used to indicate creation time of news card.
+      - name: link
+        type: string
+        description: Link to news page for date.
   - name: tags
     type: array
     required: false
-    description: Small string value that represents type of the news card.
+    description: Array of tags for the news card.
+    params:
+      - name: tag
+        type: string
+        description: Small string value that represents type of the news card.
+      - name: link
+        type: string
+        description: Link to news cards with the same tag
   - name: quote
     type: string
     required: false
