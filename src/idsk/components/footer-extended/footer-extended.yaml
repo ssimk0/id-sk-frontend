@@ -1,77 +1,100 @@
 params:
-- name: meta
-  type: object
-  required: false
-  description: Object containing options for the meta navigation.
-  params:
-  - name: visuallyHiddenTitle
-    type: string
-    description: Title for a meta item section, which defaults to Support links
-  - name: html
-    type: string
-    description: HTML to add to the meta section of the footer, which will appear below any links specified using meta.items.
-  - name: text
-    type: string
-    description: Text to add to the meta section of the footer, which will appear below any links specified using meta.items. If meta.html is specified, this option is ignored.
-  - name: items
+  - name: designAddress
+    type: html
+    required: false
+    description: Url address for design page.
+
+  - name: feedbackButtonAddress
+    type: html
+    required: false
+    description: Url address for feedback button.
+  
+  - name: firstColumn
+    type: object
+    required: false
+    description: Object containing options for the footer first column.
+    params:
+    - name: title
+      type: string
+      description: Title for a first column section.
+    - name: leftItems
+      type: array
+      required: false
+      description: Array of items for use in the first column section of the footer extended.
+      params:
+      - name: name
+        type: string
+        required: false
+        description: Name of links in first column of footer extended
+
+  - name: rightItems
     type: array
     required: false
-    description: Array of items for use in the meta section of the footer.
+    description: Array of items for use in the first column section of the footer extended.
     params:
-    - name: text
+    - name: name
       type: string
       required: false
-      description: List item text in the meta section of the footer.
-    - name: href
-      type: string
-      required: false
-      description: List item href attribute in the meta section of the footer.
-    - name: attributes
-      type: object
-      required: false
-      description: HTML attributes (for example data attributes) to add to the anchor in the footer meta section.
-- name: navigation
-  type: array
-  required: false
-  description: Array of items for use in the navigation section of the footer.
-  params:
-  - name: title
-    type: string
-    required: false
-    description: Title for a section
-  - name: columns
-    type: integer
-    required: false
-    description: Amount of columns to display items in navigation section of the footer.
-  - name: items
+      description: Name of links in first column of footer extended
+
+  - name: secondColumn
     type: array
     required: false
-    description: Array of items to display in the list in navigation section of the footer.
+    description: Array of items for use in the second column section of the footer extended.
     params:
-    - name: text
+    - name: name
       type: string
       required: false
-      description: List item text in the navigation section of the footer.
+      description: Name of links in second column of footer extended
+
+  - name: thirdColumn
+    type: array
+    required: false
+    description: Array of items for use in the third column section of the footer extended.
+    params:
+    - name: name
+      type: string
+      required: false
+      description: Name of links in third column of footer extended
+
+  - name: fourthColumn
+    type: array
+    required: false
+    description: Array of items for use in the fourth column section of the footer extended.
+    params:
+    - name: name
+      type: string
+      required: false
+      description: Name of links in fourth column of footer extended
+
+  - name: subtitles
+    type: array
+    required: false
+    description: Array of navigation links for footer extended.
+    params:
+    - name: name
+      type: string
+      required: false
+      description: Name ofnavigation links
     - name: href
+      type: html
+      required: false
+      description: Url address for navigation links
+
+  - name: dropdownItems
+    type: array
+    required: false
+    description: Array of errors which should be in dropdown as a part of error form
+    params:
+    - name: name
       type: string
       required: false
-      description: List item href attribute in the navigation section of the footer. Both `text` and `href` attributes need to be present to create a link.
-    - name: attributes
-      type: object
+      description: Name of errors
+    - name: value
+      type: string
       required: false
-      description: HTML attributes (for example data attributes) to add to the anchor in the footer navigation section.
-- name: containerClasses
-  type: string
-  required: false
-  description: Classes that can be added to the inner container, useful if you want to make the footer full width.
-- name: classes
-  type: string
-  required: false
-  description: Classes to add to the footer component container.
-- name: attributes
-  type: object
-  required: false
-  description: HTML attributes (for example data attributes) to add to the footer component container.
+      description: Value of errors    
+
 
 previewLayout: full-width
 accessibilityCriteria: |
@@ -186,6 +209,7 @@ examples:
 - name: extended 2
   description: 
   data:    
+    feedbackButtonAddress: https://www.idsk.gov.sk
     firstColumn: 
       title: Navigácia v 2 stĺpcoch (2/3)
       leftItems: 

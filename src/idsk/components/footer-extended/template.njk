@@ -1,35 +1,35 @@
 {% from "details/macro.njk" import govukDetails %}
 <div data-module="idsk-footer-extended">
-    <div id="feedback-question" class="idsk-footer-extended-heading-feedback idsk-footer-extended-feedback-text ">
+    <div class="idsk-footer-extended-heading-feedback idsk-footer-extended-feedback-text ">
         <div class="govuk-width-container idsk-footer-extended-feedback-container">
-            <div id="idsk-info-question" class="govuk-grid-row">
+            <div id="idsk-footer-extended-info-question" class="govuk-grid-row">
                 <div class="idsk-footer-extended-usefull-question">
-                    <a class="idsk-footer-extended-feedback-question-info-usefull">
+                    <span class="idsk-footer-extended-feedback-question-info-usefull">
                         Boli tieto informácie pre vás užitočné?
-                    </a>
-                    <a class="idsk-footer-extended-usefull-question-mobile">
+                    </span>
+                    <span class="idsk-footer-extended-usefull-question-mobile">
                         Je táto stránka užitočná?
-                    </a>
+                    </span>
                     <div class="idsk-footer-extended-usefull-answers-mobile">
-                        <button id="idsk-yes-button" class="idsk-footer-extended-feedback-text idsk-footer-extended-text-padding idsk-footer-extended-help-button">
+                        <button id="idsk-footer-extended-feedback-yes-button" class="idsk-footer-extended-feedback-text idsk-footer-extended-text-padding idsk-footer-extended-help-button">
                             Áno
                         </button>
                         &nbsp
-                        <button id="idsk-no-button" class="idsk-footer-extended-feedback-text idsk-footer-extended-help-button">
+                        <button id="idsk-footer-extended-feedback-no-button" class="idsk-footer-extended-feedback-text idsk-footer-extended-help-button">
                             Nie
                         </button>
                     </div>
                 </div>
                 <div class="idsk-footer-extended-error-question idsk-footer-extended-feedback-question-info-usefull">
-                    <button id="idsk-error-button" class=" idsk-footer-extended-feedback-text idsk-footer-extended-help-button">
+                    <button id="idsk-footer-extended-error-button" class=" idsk-footer-extended-feedback-text idsk-footer-extended-help-button">
                         Našli ste na stránke chybu?
                     </button>
                 </div>
                 <div class="idsk-footer-extended-usefull-question-mobile idsk-footer-extended-white-border">
-                    <a >
+                    <span>
                         Našli ste na stránke chybu?
-                    </a>
-                    <button id="idsk-write-us-button" class="idsk-footer-extended-feedback-text idsk-footer-extended-help-button idsk-footer-extended-usefull-answers-mobile">
+                    </span>
+                    <button id="idsk-footer-extended-write-us-button" class="idsk-footer-extended-feedback-text idsk-footer-extended-help-button idsk-footer-extended-usefull-answers-mobile">
                         Napíšte nám
                     </button>
                 </div>
@@ -49,7 +49,7 @@
         </div>
     </div>
 
-    <div id="idsk-help-form" class="idsk-footer-extended-feedback-hidden idsk-footer-extended-display-hidden">
+    <div id="idsk-footer-extended-help-form" class="idsk-footer-extended-feedback-hidden idsk-footer-extended-display-hidden">
         <div id="idsk-help-container" class="idsk-footer-extended-blue-border idsk-footer-extended-feedback-container">
             <div class="govuk-width-container">
                 <div class="govuk-grid-row">
@@ -62,13 +62,13 @@
                         </a>
                     </div>
                     <div class="govuk-grid-column-one-third idsk-footer-extended-close-button">
-                        <button id="close-help-form-button" class="idsk-footer-extended-feedback-button idsk-footer-extended-help-button">
+                        <button id="idsk-footer-extended-close-help-form-button" class="idsk-footer-extended-feedback-button idsk-footer-extended-help-button">
                             Zatvoriť
                         </button>
                     </div>
                 </div>
                 <div class="idsk-footer-extended-feedback-button ">
-                    <a href="href">
+                    <a href="{{ params.feedbackButtonAddress }}">
                         <svg width="158" height="45" viewbox="0 0 158 45" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g filter="url(#filter0_d)">
                                 <rect width="158" height="43" fill="#00703C"/>
@@ -92,7 +92,7 @@
         </div>
     </div>
 
-    <div id="idsk-error-form" class="idsk-footer-extended-feedback-hidden idsk-footer-extended-display-hidden">
+    <div id="idsk-footer-extended-error-form" class="idsk-footer-extended-feedback-hidden idsk-footer-extended-display-hidden">
         <div class="idsk-footer-extended-blue-border idsk-footer-extended-feedback-container ">
             <div class="govuk-width-container">
                 <div class="govuk-grid-row ">
@@ -119,8 +119,8 @@
                         </div>
                         <div class="">
                             <br>
-                            {% from "../../components/character-count/macro.njk" import govukCharacterCount %}
-                            {{ govukCharacterCount({
+                            {% from "../../components/character-count/macro.njk" import idskCharacterCount %}
+                            {{ idskCharacterCount({
                                 name: "with-hint",
                                 id: "with-hint",
                                 maxlength: 200,
@@ -135,7 +135,7 @@
 
                         </div>
                         <div class="idsk-footer-extended-feedback-button">
-                            <a href="">
+                            <a href="#idsk.gov.sk">
                                 <svg width="86" height="45" viewbox="0 0 86 45" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g filter="url(#filter0_d)">
                                         <rect width="86" height="43" fill="#00703C"/>
@@ -157,7 +157,7 @@
                         </div>
                     </div>
                     <div class="govuk-grid-column-one-third idsk-footer-extended-close-button">
-                        <button id="close-error-form-button" class="idsk-footer-extended-feedback-button idsk-footer-extended-help-button">
+                        <button id="idsk-footer-extended-close-error-form-button" class="idsk-footer-extended-feedback-button idsk-footer-extended-help-button">
                             Zatvoriť
                         </button>
                     </div>
@@ -256,8 +256,8 @@
                 <div class="govuk-grid-row ">
                     <div class="govuk-grid-column-two-thirds">
                         <p class="idsk-footer-extended-frame">Vytvorené v súlade s
-                            <a href="href" class="idsk-footer-extended-label">
-                                Jednotným dizajn manuálom elektronických služieb.</a href>
+                            <a class="idsk-footer-extended-label" href= "{{ params.designAddress if params.designAddress else '#1'  }}" >
+                                Jednotným dizajn manuálom elektronických služieb.</a>
                         </p>
                         <ul class="idsk-footer-extended-inline-list ">
                             {% for subtitle in params.subtitles %}
@@ -266,8 +266,6 @@
                                         {{ subtitle.item }}
                                     </a>
                                 </li>
-                            {% else %}
-                                <li>This would display if the 'item' collection were empty</li>
                             {% endfor %}
                         </ul>
                     </div>
