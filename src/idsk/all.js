@@ -16,7 +16,7 @@ function initAll(options) {
     new FooterExtended($footerExtended).init()
   })
 
-  var $characterCounts = scope.querySelectorAll('[data-module="govuk-character-count"]')
+  var $characterCounts = scope.querySelectorAll('[data-module="idsk-character-count"]')
   nodeListForEach($characterCounts, function ($characterCount) {
     new CharacterCount($characterCount).init()
   })

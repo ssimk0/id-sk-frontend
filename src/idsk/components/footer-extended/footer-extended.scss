@@ -205,7 +205,7 @@
             font-family: Source Sans Pro;
             font-style: normal;
             font-weight: bold;
-            font-size: 18px;
+            font-size: 16px;
             line-height: 23px;
             color: govuk-colour("white");
         }
@@ -218,6 +218,10 @@
     }
 
     @include mq($from: desktop) {
+        .idsk-footer-extended-feedback-text {
+            font-size: 18px;
+        }
+
         .idsk-footer-extended-text-padding {
             padding-left: 70px;
         }
@@ -232,7 +236,7 @@
         overflow: hidden;
     }
 
-    @include mq($from: desktop) {
+    @include mq($from: tablet) {
         .idsk-footer-extended-feedback-container {
             padding-top: 15px;
             padding-left: 25px;
@@ -333,6 +337,7 @@
     @include mq($from: tablet) {
         .idsk-footer-extended-usefull-question {
             @include govuk-grid-column("two-thirds");
+            padding: 0;
         }
 
         .idsk-footer-extended-usefull-answers-mobile {
