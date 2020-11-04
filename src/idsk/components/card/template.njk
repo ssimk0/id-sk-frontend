@@ -1,36 +1,38 @@
 {% set type = params.type if params.type else "basic" %}
-{% set headingSize = "m" if type == 'simple' or type == 'secondary' else "l" %}
 
-<div class="idsk-card-{{ type }}">
+{% set dateAndTag %}
+    {% if params.date and params.tags %}
+        {% set tags = '<p class="idsk-tag-date idsk-tag-date-underline">' + params.tags[0]  + '</p>' %}
+        {% for index in range(1, params.tags | length) %}
+            {% set tags = tags + '<p class="idsk-tag-date">&nbsp;|&nbsp;</p>' + '<p class="idsk-tag-date idsk-tag-date-underline">' + params.tags[index]  + '</p>' %}
+        {% endfor %}
+    <div>
+        <a href="" class="idsk-tag-date idsk-tag-date-underline">{{ params.date }}</a> <p class="idsk-tag-date">&nbsp;-&nbsp;</p> {{ tags | safe }}
+    </div>
+    {% endif %}
+{% endset %}
+
+<div class="idsk-card idsk-card-{{ type }}">
 
     {% if params.imgSrc %}
-    <img width="100%" src="{{ params.imgSrc }}" alt="{{ params.heading }}" />
+    <img class="idsk-card-img idsk-card-img-{{type}}" width="100%" src="{{ params.imgSrc }}" alt="{{ params.heading }}" />
     {% endif %}
     
-    <div class="idsk-card-content">
-        <h1 class="idsk-heading-{{ type }}">{{ params.heading }}</h1>
+    <div class="idsk-card-content idsk-card-content-{{ type }}">
+        {% if type != 'basic-variant' %}
+        {{ dateAndTag | safe }}
+        {% endif %}
+
+        <h1 class="idsk-heading idsk-heading-{{ type }}">{{ params.heading }}</h1>
 
         {% if params.description %}
-        <p class="idsk-body-{{ type }}">
+        <p class="idsk-body idsk-body-{{ type }}">
             {{ params.description}}
         </p>
         {% endif %}
 
-        {% if params.date and params.tag %}
-            {% if type == "secondary" %}
-                <div class="idsk-date-tag-{{ type }}">
-                    {{ params.date }} | {{ params.tag }}
-                </div>
-            {% else %}
-                <div class="idsk-date-tag-{{ type }}">
-                    <div class="idsk-date govuk-body">
-                        {{ params.date }}
-                    </div>
-                    <div>
-                        <strong class="govuk-tag">{{ params.tag }}</strong>
-                    </div>
-                </div>
-            {% endif %}
+        {% if type == 'basic-variant' %}
+        {{ dateAndTag | safe }}
         {% endif %}
 
         {% if params.quote %}

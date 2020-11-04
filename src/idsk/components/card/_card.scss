@@ -5,48 +5,107 @@
 @import "../../../govuk/helpers/typography";
 
 @include govuk-exports("idsk/component/card") {
-  .idsk-date-tag-secondary {
+  .idsk-card {
+    &-basic,
+    &-basic-variant,
+    &-hero,
+    &-secondary-horizontal,
+    &-profile-horizontal {
+      @include govuk-width-container;
+    }
+
+    &-simple,
+    &-secondary-vertical,
+    &-profile-vertical {
+      @include govuk-grid-column("one-third");
+    }
+  }
+
+  .idsk-card-img {
+    @include govuk-responsive-padding(2, "bottom");
+
+    &-hero {
+      @include govuk-grid-column("one-half");
+    }
+
+    &-secondary-horizontal,
+    &-profile-horizontal {
+      @include govuk-grid-column("one-third");
+    }
+  }
+
+  .idsk-tag-date {
+    @include govuk-font($size: 16);
     color: govuk-colour("grey-1");
+    display: inline;
+
+    &-underline {
+      text-decoration: underline;
+    }
   }
 
-  .idsk-date {
-    padding-right: govuk-spacing(3);
+  .idsk-card-content {
+    &-hero {
+      @include govuk-grid-column("one-half");
+    }
+
+    &-secondary-horizontal,
+    &-profile-horizontal {
+      @include govuk-grid-column("two-thirds");
+    }
   }
 
-  .idsk-heading-basic,
-  .idsk-heading-hero {
-    @include govuk-font($size: 36, $weight: bold);
-    margin-top: 0;
-  }
-
-  .idsk-heading-profile-vertical,
-  .idsk-heading-profile-horizontal {
-    @include govuk-font($size: 36, $weight: bold);
+  .idsk-heading {
+    @include govuk-responsive-padding(2, "top");
+    @include govuk-responsive-padding(2, "bottom");
     color: #0065b3;
-    margin-top: 0;
-    text-decoration: underline;
+    cursor: pointer;
+    margin: 0;
+
+    &:hover {
+      color: #0b0c0c;
+    }
+
+    &-basic-variant,
+    &-simple,
+    &-secondary-vertical {
+      @include govuk-font($size: 19, $weight: bold);
+    }
+
+    &-basic,
+    &-hero,
+    &-secondary-horizontal {
+      @include govuk-font($size: 24, $weight: bold);
+    }
+
+    &-profile-vertical,
+    &-profile-horizontal {
+      @include govuk-font($size: 36, $weight: bold);
+      text-decoration: underline;
+    }
   }
 
-  .idsk-heading-simple,
-  .idsk-heading-secondary {
-    @include govuk-font($size: 24, $weight: bold);
+  .idsk-body {
     margin-top: 0;
-  }
 
-  .idsk-body-basic,
-  .idsk-body-simple,
-  .idsk-body-hero,
-  .idsk-body-secondary {
-    @include govuk-font($size: 19);
-    margin-top: 0;
-  }
+    &-secondary-vertical {
+      @include govuk-font($size: 16);
+    }
 
-  .idsk-body-profile-vertical,
-  .idsk-body-profile-horizontal {
-    @include govuk-font($size: 24);
-    color: #0065b3;
-    margin-top: 0;
-    text-decoration: underline;
+    &-basic,
+    &-basic-variant,
+    &-hero,
+    &-secondary-horizontal {
+      @include govuk-font($size: 19);
+    }
+
+    &-profile-vertical,
+    &-profile-horizontal {
+      @include govuk-font($size: 24);
+      @include govuk-responsive-padding(2, "top");
+      color: #0065b3;
+      text-decoration: underline;
+    }
   }
 
   .idsk-quote {
@@ -54,78 +113,5 @@
     @include govuk-responsive-padding(8, "left");
     @include govuk-font($size: 24);
     margin-top: 0;
-  }
-
-  .idsk-card-basic,
-  .idsk-card-simple {
-    @include govuk-grid-column("full");
-  }
-
-  .idsk-card-basic img,
-  .idsk-card-simple img,
-  .idsk-card-profile-vertical img,
-  .idsk-card-profile-horizontal img {
-    @include govuk-responsive-padding(4, "bottom");
-  }
-
-  .idsk-card-hero,
-  .idsk-card-secondary,
-  .idsk-card-profile-horizontal {
-    @include govuk-width-container;
-  }
-
-  .idsk-card-hero img,
-  .idsk-card-secondary img {
-    @include govuk-grid-column("full");
-    @include govuk-responsive-padding(4, "bottom");
-  }
-
-  .idsk-card-hero .idsk-card-content,
-  .idsk-card-secondary .idsk-card-content {
-    @include govuk-grid-column("full");
-  }
-
-  @include mq($from: tablet) {
-    .idsk-card-basic {
-      @include govuk-grid-column("two-thirds");
-    }
-
-    .idsk-card-simple {
-      @include govuk-grid-column("one-half");
-    }
-
-    .idsk-date-tag-basic,
-    .idsk-date-tag-hero {
-      display: flex;
-    }
-  }
-
-  @include mq($from: desktop) {
-    .idsk-card-basic {
-      @include govuk-grid-column("one-half");
-    }
-
-    .idsk-card-simple,
-    .idsk-card-profile-vertical {
-      @include govuk-grid-column("one-third");
-    }
-
-    .idsk-card-hero img {
-      @include govuk-grid-column("one-half");
-    }
-
-    .idsk-card-hero .idsk-card-content {
-      @include govuk-grid-column("one-half");
-    }
-
-    .idsk-card-secondary img,
-    .idsk-card-profile-horizontal img {
-      @include govuk-grid-column("one-third");
-    }
-
-    .idsk-card-secondary .idsk-card-content,
-    .idsk-card-profile-horizontal .idsk-card-content {
-      @include govuk-grid-column("two-thirds");
-    }
   }
 }

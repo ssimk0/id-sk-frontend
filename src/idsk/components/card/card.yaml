@@ -2,7 +2,7 @@ params:
   - name: type
     type: string
     required: false
-    description: Type of the card to render. If none provided or if wrong value provded falls to 'basic' card. Supported types 'basic', 'simple', 'hero', 'secondary', 'profile-vertical' and 'profile-horizontal'.
+    description: Type of the card to render. If none provided or if wrong value provded falls to 'basic' card. Supported types 'basic', 'basic-variant', 'simple', 'hero', 'secondary-horizontal', 'secondary-vertical', 'profile-vertical' and 'profile-horizontal'.
   - name: imgSrc
     type: string
     required: false
@@ -19,8 +19,8 @@ params:
     type: string
     required: false
     description: Date value in format DD-MM-YYYY, used to indicate creation time of news card.
-  - name: tag
-    type: string
+  - name: tags
+    type: array
     required: false
     description: Small string value that represents type of the news card.
   - name: quote
