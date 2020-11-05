@@ -46,18 +46,18 @@ params:
       required: true
       description: The flag of current/selected language
   - name: choices
-      type: array
+    type: array
+    required: true
+    description: available language choices
+    params: 
+    - name: text
+      type: string
       required: true
-      description: available language choices
-      params: 
-      - name: text
-        type: string
-        required: true
-        description: Name of language
-      - name: flag
-        type: string
-        required: true
-        description: Name of flag image of language
+      description: Name of language
+    - name: flag
+      type: string
+      required: true
+      description: Name of flag image of language
 - name: socials
   type: array
   required: false
