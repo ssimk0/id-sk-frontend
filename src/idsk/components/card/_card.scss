@@ -34,13 +34,32 @@
     }
   }
 
-  .idsk-tag-date {
+  .idsk-card-underline {
+    text-decoration: underline;
+  }
+
+  .idsk-card-meta {
     @include govuk-font($size: 16);
     color: govuk-colour("grey-1");
     display: inline;
+    text-decoration: none;
 
-    &-underline {
-      text-decoration: underline;
+    &-date {
+      &:after {
+        content: "\00a0-\00a0";
+      }
+    }
+
+    &-tag {
+      &:after {
+        content: "\00a0|\00a0";
+      }
+    }
+  }
+
+  .idsk-card-meta-container a:last-child {
+    &:after {
+      content: "";
     }
   }
 

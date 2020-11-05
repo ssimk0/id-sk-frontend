@@ -2,12 +2,12 @@
 
 {% set dateAndTag %}
     {% if params.date and params.tags %}
-        {% set tags = '<a  href="' + params.tags[0].link + '" class="idsk-tag-date idsk-tag-date-underline">' + params.tags[0].tag  + '</a>' %}
-        {% for index in range(1, params.tags | length) %}
-            {% set tags = tags + '<p class="idsk-tag-date">&nbsp;|&nbsp;</p>' + '<a  href="' + params.tags[index].link + '" class="idsk-tag-date idsk-tag-date-underline">' + params.tags[index].tag  + '</a>' %}
+        {% set tags = '' %}
+        {% for tag in params.tags %}
+            {% set tags = tags + '<a  href="' + tag.link + '" class="idsk-card-meta idsk-card-meta-tag"><span class="idsk-card-underline">' + tag.tag  + '</span></a>' %}
         {% endfor %}
-    <div>
-        <a href="{{params.date.link}}" class="idsk-tag-date idsk-tag-date-underline">{{params.date.date}}</a> <p class="idsk-tag-date">&nbsp;-&nbsp;</p> {{ tags | safe }}
+    <div class="idsk-card-meta-container">
+        <a href="{{params.date.link}}" class="idsk-card-meta idsk-card-meta-date"><span class="idsk-card-underline">{{params.date.date}}</span></a> {{ tags | safe }}
     </div>
     {% endif %}
 {% endset %}
