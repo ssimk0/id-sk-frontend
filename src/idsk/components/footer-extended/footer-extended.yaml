@@ -130,7 +130,8 @@ accessibilityCriteria: |
 
 examples:
 - name: basic
-  data:     
+  data:    
+     characterLength: 350 
      subtitles: 
         - href: '#1' 
           item: Pomoc          
@@ -153,12 +154,41 @@ examples:
           text: Chyba responzivity
         - value: comments
           text: Chyba iná
-        
+     
+
+- name: basic + feedback
+  data:    
+     characterLength: 350
+     showFeedback: 'true' 
+     subtitles: 
+        - href: '#1' 
+          item: Pomoc          
+        - href: '#2'
+          item: Cookies          
+        - href: '#3'
+          item: Kontakty          
+        - href: '#4'
+          item: Mapa Stránky           
+        - href: '#5'
+          item: RSS          
+        - href: '#6' 
+          item: Vyhlásenie o prístupnosti
+     dropdownItems: 
+        - value: published
+          text: Validačná chyba
+        - value: updated
+          text: Gramatická chyba
+        - value: views
+          text: Chyba responzivity
+        - value: comments
+          text: Chyba iná
           
 
 - name: extended 1
   description: 
-  data:    
+  data:   
+    characterLength: 500 
+    showFeedback: 'true' 
     firstColumn: 
       title: Navigácia v 2 stĺpcoch (2/3)
       leftItems: 
@@ -210,6 +240,8 @@ examples:
   description: 
   data:    
     feedbackButtonAddress: https://www.idsk.gov.sk
+    characterLength: 200
+    showFeedback: 'true'
     firstColumn: 
       title: Navigácia v 2 stĺpcoch (2/3)
       leftItems: 

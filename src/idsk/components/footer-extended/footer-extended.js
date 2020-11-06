@@ -22,6 +22,12 @@ FooterExtended.prototype.init = function () {
     let $closeErrorFormButton = $module.querySelector('#idsk-footer-extended-close-error-form-button');
     let $closeHelpFormButton = $module.querySelector('#idsk-footer-extended-close-help-form-button');
 
+    let $textAreaCharacterCount = $module.querySelector('#idsk-footer-extended-error-form #with-hint');
+
+    let $fillFeedbackButton = $module.querySelector('#fill-feedback-help-form');
+    let $submitErrorButton = $module.querySelector('#submit-button-error-form');
+
+
     let $writeUsButton = this.$module.querySelector('#idsk-footer-extended-write-us-button');
 
     if ($yesButton && $noButton && $errorButton) {
@@ -42,7 +48,48 @@ FooterExtended.prototype.init = function () {
         $closeErrorFormButton.addEventListener('click', this.handleCloseErrorFormButtonClick.bind(this));
     }
 
+    if ($fillFeedbackButton) {
+        $fillFeedbackButton.addEventListener('click', this.handleSubmitButtonClick.bind(this));
+    }
+
+    if ($submitErrorButton) {
+        $submitErrorButton.addEventListener('click', this.handleSubmitButtonClick.bind(this));
+    }
+
+    if ($textAreaCharacterCount) {
+        $textAreaCharacterCount.addEventListener('keyup', this.handleStatusOfCharacterCountButton.bind(this));
+    }
 }
+
+
+FooterExtended.prototype.handleSubmitButtonClick = function (e) {
+    let $noOption = this.$module.querySelector('#idsk-footer-extended-help-form');
+    let $errorOption = this.$module.querySelector('#idsk-footer-extended-error-form');
+    let $infoQuestion = this.$module.querySelector('#idsk-footer-extended-info-question');
+    let $heartSymbol = this.$module.querySelector('#idsk-footer-extended-heart');
+    let $feedbackQuestion = this.$module.querySelector('.idsk-footer-extended-heading-feedback');
+
+    $noOption.classList.add('idsk-footer-extended-display-hidden');
+    $errorOption.classList.add('idsk-footer-extended-display-hidden');
+    $noOption.classList.remove('idsk-footer-extended-open');
+    $errorOption.classList.remove('idsk-footer-extended-open');
+
+    toggleClass($infoQuestion, 'idsk-footer-extended-heart');
+    toggleClass($heartSymbol, 'idsk-footer-extended-heart-visible');
+    toggleClass($feedbackQuestion, 'idsk-footer-extended-display-none');
+}
+
+FooterExtended.prototype.handleStatusOfCharacterCountButton = function (e) {
+    let $textAreaCharacterCount = this.$module.querySelector('#with-hint');
+    let $submitButton = this.$module.querySelector('#submit-button-error-form');
+  
+    if ($textAreaCharacterCount.classList.contains('govuk-textarea--error')) {
+        $submitButton.disabled = true;
+    } else {
+        $submitButton.disabled = false;
+    }
+}
+
 
 //Hiding feedback question text and showing thank notice with heart
 FooterExtended.prototype.handleYesButtonClick = function (e) {

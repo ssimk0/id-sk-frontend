@@ -44,7 +44,18 @@
             </div>
 
             <div class="govuk-grid-column-full">
-                <h3 class="govuk-heading-m" id="ukazka-zakladna-paticka">Základná pätička</h3>
+                <h3 class="govuk-heading-m" id="ukazka-rozsirena-paticka-1">Základná pätička</h3>
+                <p class="govuk-body">V nasledujucej ukazke su pouzite vstupne parametres.</p>
+                <div class="example">
+                    {% set exampleComponentHtml %}
+                    {% include "../komponenty/examples/exampleFooterForWeb.njk" %}
+                    {% endset %}
+                    {{exampleComponentHtml | safe}}
+                </div>
+            </div>
+
+            <div class="govuk-grid-column-full">
+                <h3 class="govuk-heading-m" id="ukazka-zakladna-paticka">Základná pätička + feedback</h3>
                 <div class="example">
                     {% set exampleComponentHtml %}
                     {% include "../komponenty/examples/exampleFooterForWeb1.njk" %}
