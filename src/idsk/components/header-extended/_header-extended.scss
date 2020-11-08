@@ -173,7 +173,7 @@
       &.--show {
         display: inline;
       }
-
+      
       & input,& input:focus {
         padding: 5px;
         border: 3px solid govuk-colour("orange");
@@ -460,6 +460,7 @@
   .js-enabled .idsk-header-extended {
 
     @include mq ($until: desktop){
+      position: fixed;
       position: sticky;
       top: 0px;
       padding-top: 15px;
@@ -558,7 +559,6 @@
       display: block;
       position: relative;
       z-index: 2;
-      width: 100%;
     }
 
     &__search {
@@ -613,6 +613,7 @@
     &__language {
       order: 4;
       color: $idsk-header-link;
+      width: 100%;
       display: none;
 
       &-wrapper {
@@ -642,7 +643,7 @@
           }
 
           &--current-text:after {
-            border-color: govuk-colout("white") transparent transparent;
+            border-color: govuk-colour("white") transparent transparent;
           }
         }
       }
@@ -656,7 +657,6 @@
       
       @include mq ($from: desktop) {
         display: block;
-        width: fit-content;
       }
 
       &.--show-mobile {

@@ -58,7 +58,7 @@ HeaderExtended.prototype.init = function () {
         $xMarkMenuButton.addEventListener('click', this.handleMobilMenu.bind(this));
     }
 
-    window.onscroll = () => { this.scrollFunction() };
+    window.addEventListener('scroll', this.scrollFunction.bind(this));
 }
 
 /**
@@ -132,17 +132,18 @@ HeaderExtended.prototype.handleMobilMenu = function (e) {
  * When the user scrolls down from the top of the document, resize the navbar's padding and the logo
  */
 HeaderExtended.prototype.scrollFunction = function () {
+    let $module = this.$module;
+    let $headerComputedStyle = getComputedStyle($module);
+    let $headerPosition = $headerComputedStyle.getPropertyValue('position');
     // skip if it's not a mobile view
-    let $mobileButton = this.$module.querySelector('.idsk-header-extended__menu-button');
-    let $isMobileView = getComputedStyle($mobileButton);
-    if ($isMobileView.getPropertyValue('display') === 'none') {
+    if (['sticky', 'fixed'].indexOf($headerPosition) < 0) {
         return;
     }
 
     if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-        this.$module.classList.add('--shrink');
-    } else {
-        this.$module.classList.remove('--shrink');
+        $module.classList.add('--shrink');
+    } else if (document.body.scrollTop < 10 && document.documentElement.scrollTop < 10) {
+        $module.classList.remove('--shrink');
     }
 }
 

@@ -140,18 +140,6 @@ examples:
 - name: defaultná
   description: Štandartná hlavička pre webové sídla
   data:
-    search: true
-    language: 
-      current:
-        text: "slovenčina"
-        flag: "slovakia-flag-icon-16.png"
-      choices:
-        - flag: "slovakia-flag-icon-16.png"
-          text: "slovenčina"
-        - flag: "united-states-of-america-flag-icon-16.png"
-          text: "english"
-        - flag: "germany-flag-icon-16.png"
-          text: "german"
 
 - name: s výberom jazyka a sociálnymi sieťami a navigáciou
   description: možnosť zvolenia jazykovej mutácia a pridania odkazov na sociálne siete a navigáciou
