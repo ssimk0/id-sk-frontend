@@ -26,9 +26,9 @@ HeaderExtended.prototype.init = function () {
         $toggleSearchComponent.addEventListener('focus', this.handleSearchComponentClick.bind(this));
         // both blur events needed
         // if form is shown, but has not been focused, inputs blur won't be fired, then trigger this one
-        $toggleSearchComponent.addEventListener('blur', this.handleSearchComponentClick.bind(this));
+        $toggleSearchComponent.addEventListener('focusout', this.handleSearchComponentClick.bind(this));
         // if form is shown, and has been focused, trigger this one
-        $toggleSearchInputComponent.addEventListener('blur', this.handleSearchComponentClick.bind(this));
+        $toggleSearchInputComponent.addEventListener('focusout', this.handleSearchComponentClick.bind(this));
     }
 
     // check for language selector
@@ -69,16 +69,11 @@ HeaderExtended.prototype.handleSearchComponentClick = function (e) {
     let $el = e.target || e.srcElement;
     let $target = $el.closest('.idsk-header-extended__search');
     let $relatedTarget = e.relatedTarget ? (e.relatedTarget).closest('.idsk-header-extended__search-form') : e.relatedTarget;
-    let $searchText = $target.querySelector('.idsk-header-extended__search-text');
     let $searchForm = $target.querySelector('.idsk-header-extended__search-form');
-    if ($searchText && $searchForm) {
-        if (e.type === 'focus') {
-            $searchText.classList.add('--hide');
-            $searchForm.classList.add('--show');
-        } else if (e.type === 'blur' && $relatedTarget !== $searchForm) {
-            $searchText.classList.remove('--hide');
-            $searchForm.classList.remove('--show');
-        }
+    if (e.type === 'focus') {
+        $target.classList.add('idsk-header-extended__search--active')
+    } else if (e.type === 'focusout' && $relatedTarget !== $searchForm) {
+        $target.classList.remove('idsk-header-extended__search--active')
     }
 }
 
@@ -100,10 +95,6 @@ HeaderExtended.prototype.handleSubmenuClick = function (e) {
     let $srcEl = e.target || e.srcElement;
     let $toggleButton = $srcEl.closest('.idsk-header-extended__navigation-item');
     toggleClass($toggleButton, 'idsk-header-extended__navigation-item--active');
-    let $target = $toggleButton
-        .closest('.idsk-header-extended__navigation-item')
-        .querySelector('.idsk-header-extended__navigation-submenu');
-    toggleClass($target, '--open');
 }
 
 /**
