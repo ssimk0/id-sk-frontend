@@ -55,8 +55,12 @@
         padding-top: 20px;
     }
 
-    .idsk-footer-extended-inline-list-item {
+    .idsk-footer-extended-description-panel .idsk-footer-extended-inline-list-item {
         display: inline-block;
+    }
+
+    .idsk-footer-extended-inline-list-item {
+        display: block;
         margin-right: govuk-spacing(3);
         margin-bottom: govuk-spacing(1);
         text-decoration-line: underline;
