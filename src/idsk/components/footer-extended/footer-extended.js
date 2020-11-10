@@ -57,7 +57,7 @@ FooterExtended.prototype.init = function () {
     }
 
     if ($textAreaCharacterCount) {
-        $textAreaCharacterCount.addEventListener('keyup', this.handleStatusOfCharacterCountButton.bind(this));
+        $textAreaCharacterCount.addEventListener('input', this.handleStatusOfCharacterCountButton.bind(this));
     }
 }
 
@@ -81,13 +81,21 @@ FooterExtended.prototype.handleSubmitButtonClick = function (e) {
 
 FooterExtended.prototype.handleStatusOfCharacterCountButton = function (e) {
     let $textAreaCharacterCount = this.$module.querySelector('#with-hint');
+    let $remainingCharacterCountMessage = this.$module.querySelector('#with-hint-info');
+
     let $submitButton = this.$module.querySelector('#submit-button-error-form');
-  
-    if ($textAreaCharacterCount.classList.contains('govuk-textarea--error')) {
-        $submitButton.disabled = true;
-    } else {
-        $submitButton.disabled = false;
-    }
+
+    setTimeout(function () {
+        if ($textAreaCharacterCount.classList.contains('govuk-textarea--error') || $remainingCharacterCountMessage.classList.contains('govuk-error-message')) {
+            console.log('yes');
+            console.log($textAreaCharacterCount.classList);
+            $submitButton.disabled = true;
+        } else {
+            console.log('no');
+            console.log($textAreaCharacterCount.classList);
+            $submitButton.disabled = false;
+        }
+    }, 300);
 }
 
 
