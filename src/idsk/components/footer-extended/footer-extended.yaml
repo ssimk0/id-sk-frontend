@@ -133,17 +133,17 @@ examples:
   data:    
      characterLength: 350 
      subtitles: 
-        - href: '#1' 
+        - href: '#' 
           item: Pomoc          
-        - href: '#2'
+        - href: '#'
           item: Cookies          
-        - href: '#3'
+        - href: '#'
           item: Kontakty          
-        - href: '#4'
+        - href: '#'
           item: Mapa Stránky           
-        - href: '#5'
+        - href: '#'
           item: RSS          
-        - href: '#6' 
+        - href: '#' 
           item: Vyhlásenie o prístupnosti
      dropdownItems: 
         - value: published
@@ -161,17 +161,17 @@ examples:
      characterLength: 350
      showFeedback: 'true' 
      subtitles: 
-        - href: '#1' 
+        - href: '#' 
           item: Pomoc          
-        - href: '#2'
+        - href: '#'
           item: Cookies          
-        - href: '#3'
+        - href: '#'
           item: Kontakty          
-        - href: '#4'
+        - href: '#'
           item: Mapa Stránky           
-        - href: '#5'
+        - href: '#'
           item: RSS          
-        - href: '#6' 
+        - href: '#' 
           item: Vyhlásenie o prístupnosti
      dropdownItems: 
         - value: published
@@ -213,17 +213,17 @@ examples:
     
     
     subtitles: 
-        - href: '#1' 
+        - href: '#' 
           item: Pomoc          
-        - href: '#2'
+        - href: '#'
           item: Cookies          
-        - href: '#3'
+        - href: '#'
           item: Kontakty          
-        - href: '#4'
+        - href: '#'
           item: Mapa Stránky           
-        - href: '#5'
+        - href: '#'
           item: RSS          
-        - href: '#6' 
+        - href: '#' 
           item: Vyhlásenie o prístupnosti
     dropdownItems: 
         - value: published
@@ -282,17 +282,17 @@ examples:
 
 
     subtitles: 
-        - href: '#1' 
+        - href: '#' 
           item: Pomoc          
-        - href: '#2'
+        - href: '#'
           item: Cookies          
-        - href: '#3'
+        - href: '#'
           item: Kontakty          
-        - href: '#4'
+        - href: '#'
           item: Mapa Stránky           
-        - href: '#5'
+        - href: '#'
           item: RSS          
-        - href: '#6' 
+        - href: '#' 
           item: Vyhlásenie o prístupnosti
     dropdownItems: 
         - value: published
