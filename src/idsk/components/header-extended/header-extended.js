@@ -102,21 +102,7 @@ HeaderExtended.prototype.handleSubmenuClick = function (e) {
  * @param {object} e
  */
 HeaderExtended.prototype.handleMobilMenu = function (e) {
-    let $mobilMenu = this.$module.querySelector('.idsk-header-extended-overlay');
-    let $logo = this.$module.querySelector('.idsk-header-extended__logo');
-    let $xMark = this.$module.querySelector('.idsk-header-extended-x-mark')
-    let $searchBar = this.$module.querySelector('.idsk-header-extended__search');
-    let $languageBar = this.$module.querySelector('.idsk-header-extended__language');
-    let $socialBar = this.$module.querySelector('.idsk-header-extended__social');
-    let $navigation = this.$module.querySelector('.idsk-header-extended__navigation');
-
-    toggleClass($mobilMenu, "--open");
-    toggleClass($logo, "--show-mobile");
-    toggleClass($xMark, "--show-mobile");
-    toggleClass($searchBar, "--show-mobile");
-    toggleClass($languageBar, "--show-mobile");
-    toggleClass($socialBar, "--show-mobile");
-    toggleClass($navigation, "--show-mobile");
+    toggleClass(this.$module, "show-mobile-menu")
 }
 
 /**
@@ -132,9 +118,9 @@ HeaderExtended.prototype.scrollFunction = function () {
     }
 
     if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-        $module.classList.add('--shrink');
+        $module.classList.add('idsk-header-extended--shrink');
     } else if (document.body.scrollTop < 10 && document.documentElement.scrollTop < 10) {
-        $module.classList.remove('--shrink');
+        $module.classList.remove('idsk-header-extended--shrink');
     }
 }
 
