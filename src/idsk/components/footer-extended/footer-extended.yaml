@@ -130,19 +130,20 @@ accessibilityCriteria: |
 
 examples:
 - name: basic
-  data:     
+  data:    
+     characterLength: 350 
      subtitles: 
-        - href: '#1' 
+        - href: '#' 
           item: Pomoc          
-        - href: '#2'
+        - href: '#'
           item: Cookies          
-        - href: '#3'
+        - href: '#'
           item: Kontakty          
-        - href: '#4'
+        - href: '#'
           item: Mapa Stránky           
-        - href: '#5'
+        - href: '#'
           item: RSS          
-        - href: '#6' 
+        - href: '#' 
           item: Vyhlásenie o prístupnosti
      dropdownItems: 
         - value: published
@@ -153,47 +154,87 @@ examples:
           text: Chyba responzivity
         - value: comments
           text: Chyba iná
-        
+     
+
+- name: basic + feedback
+  data:    
+     characterLength: 350
+     showFeedback: 'true' 
+     subtitles: 
+        - href: '#' 
+          item: Pomoc          
+        - href: '#'
+          item: Cookies          
+        - href: '#'
+          item: Kontakty          
+        - href: '#'
+          item: Mapa Stránky           
+        - href: '#'
+          item: RSS          
+        - href: '#' 
+          item: Vyhlásenie o prístupnosti
+     dropdownItems: 
+        - value: published
+          text: Validačná chyba
+        - value: updated
+          text: Gramatická chyba
+        - value: views
+          text: Chyba responzivity
+        - value: comments
+          text: Chyba iná
           
 
 - name: extended 1
   description: 
-  data:    
+  data:   
+    characterLength: 500 
+    showFeedback: 'true' 
     firstColumn: 
       title: Navigácia v 2 stĺpcoch (2/3)
       leftItems: 
        - name: Link small Regular 12/20 
+         href: '#'
        - name: Link small Regular 13/20
+         href: '#'
        - name: Link small Regular 14/20
+         href: '#'
        - name: Link small Regular 15/20
-     
+         href: '#'
+
       rightItems: 
        - name: Link small Regular 16/20 
+         href: '#'
        - name: Link small Regular 17/20
+         href: '#'
        - name: Link small Regular 18/20
+         href: '#'
        - name: Link small Regular 19/20
+         href: '#'
     
     secondColumn: 
       title: Navigácia v 1 stĺpci (1/3)
       items: 
        - name: Link small Regular 20/20 
+         href: '#'
        - name: Link small Regular 21/20
+         href: '#'
        - name: Link small Regular 22/20
+         href: '#'
        - name: Link small Regular 23/20
-    
+         href: '#'    
     
     subtitles: 
-        - href: '#1' 
+        - href: '#' 
           item: Pomoc          
-        - href: '#2'
+        - href: '#'
           item: Cookies          
-        - href: '#3'
+        - href: '#'
           item: Kontakty          
-        - href: '#4'
+        - href: '#'
           item: Mapa Stránky           
-        - href: '#5'
+        - href: '#'
           item: RSS          
-        - href: '#6' 
+        - href: '#' 
           item: Vyhlásenie o prístupnosti
     dropdownItems: 
         - value: published
@@ -210,57 +251,78 @@ examples:
   description: 
   data:    
     feedbackButtonAddress: https://www.idsk.gov.sk
+    characterLength: 200
+    showFeedback: 'true'
     firstColumn: 
       title: Navigácia v 2 stĺpcoch (2/3)
       leftItems: 
        - name: Link small Regular 12/20 
+         href: '#'
        - name: Link small Regular 13/20
+         href: '#'
        - name: Link small Regular 14/20
+         href: '#'
        - name: Link small Regular 15/20
-     
+         href: '#'
+
       rightItems: 
        - name: Link small Regular 16/20 
+         href: '#'
        - name: Link small Regular 17/20
+         href: '#'
        - name: Link small Regular 18/20
+         href: '#'
        - name: Link small Regular 19/20
+         href: '#'
     
     secondColumn: 
       title: Navigácia v 1 stĺpci (1/3)
       items: 
        - name: Link small Regular 20/20 
+         href: '#'
        - name: Link small Regular 21/20
+         href: '#'
        - name: Link small Regular 22/20
+         href: '#'
        - name: Link small Regular 23/20
+         href: '#'
 
     thirdColumn: 
       title: Dodatočná hyperlinková navigácia (1/4)
       items: 
        - name: Link small Regular 24/20 
+         href: '#'
        - name: Link small Regular 25/20
+         href: '#'
        - name: Link small Regular 26/20
+         href: '#'
        - name: Link small Regular 27/20
+         href: '#'
 
     fourthColumn: 
       title: Navigácia v 1 stĺpci (1/3)
       items: 
        - name: Link small Regular 28/20 
+         href: '#'
        - name: Link small Regular 29/20
+         href: '#'
        - name: Link small Regular 30/20
+         href: '#'
        - name: Link small Regular 31/20
-
+         href: '#'
 
     subtitles: 
-        - href: '#1' 
+        - href: '#' 
           item: Pomoc          
-        - href: '#2'
+        - href: '#'
           item: Cookies          
-        - href: '#3'
+        - href: '#'
           item: Kontakty          
-        - href: '#4'
+        - href: '#'
           item: Mapa Stránky           
-        - href: '#5'
+        - href: '#'
           item: RSS          
-        - href: '#6' 
+        - href: '#' 
           item: Vyhlásenie o prístupnosti
     dropdownItems: 
         - value: published
