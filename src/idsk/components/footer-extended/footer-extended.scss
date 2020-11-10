@@ -52,7 +52,7 @@
         margin-top: 0;
         margin-bottom: govuk-spacing(3);
         padding-left: 0;
-        padding-top: 20px;
+        padding-top: 30px;
     }
 
     .idsk-footer-extended-description-panel .idsk-footer-extended-inline-list-item {
@@ -144,6 +144,8 @@
         align-self: flex-end;
         flex-grow: 0;
         padding-top: 8px;
+        width: 265px;
+        height: 80px;
     }
 
     .idsk-footer-extended-frame {
@@ -202,6 +204,10 @@
         }
     }
 
+    .idsk-footer-extended-logo-box {
+        text-align: -webkit-center;
+    }
+
     @include mq($from: tablet) {
         .idsk-footer-extended-feedback-text {
             top: 7.49%;
@@ -213,10 +219,32 @@
             line-height: 23px;
             color: govuk-colour("white");
         }
-        
+
+        .idsk-footer-extended-logo-box {
+            text-align: none;
+        }
+
+        .idsk-footer-extended-logo {
+            width: 132%;
+            height: 80%;
+        }
+
         .govuk-button {
             width: 24%;
         }
+
+        .idsk-footer-extended-info-links {
+            width: 59%;
+        }
+
+        .idsk-footer-extended-inline-list {
+            padding-top: 20px;
+        }
+    }
+
+    _:-ms-fullscreen,
+    :root .idsk-footer-extended-logo-box {
+        margin-top: -20px;
     }
 
     @include mq(tablet) {
@@ -225,7 +253,7 @@
         }
     }
 
-    @include mq($from: desktop) {       
+    @include mq($from: desktop) {
         .idsk-footer-extended-feedback-text {
             font-size: 18px;
         }
@@ -238,6 +266,14 @@
             font-size: 1.5em;
         }
 
+        .idsk-footer-extended-logo {
+            width: 103%;
+            height: 80%;
+        }
+
+        .idsk-footer-extended-info-links {
+            width: 66.6666%;
+        }
     }
     .idsk-footer-extended-feedback-container {
         padding-top: 0;
@@ -342,9 +378,8 @@
             padding-right: 10%;
             padding-top: 2%;
         }
-  
     }
-    
+
     .govuk-button {
         width: 50%;
     }
