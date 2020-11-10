@@ -11,13 +11,23 @@
     &-hero,
     &-secondary-horizontal,
     &-profile-horizontal {
-      @include govuk-width-container;
+      @include govuk-grid-column("full");
     }
 
     &-simple,
     &-secondary-vertical,
     &-profile-vertical {
       @include govuk-grid-column("one-third");
+    }
+
+    &-profile-horizontal {
+      padding: 0;
+      padding-bottom: 60px;
+      border-bottom: 3px solid #bfc1c3;
+
+      @include mq($from: tablet) {
+        padding-bottom: 30px;
+      }
     }
   }
 
@@ -31,6 +41,10 @@
     &-secondary-horizontal,
     &-profile-horizontal {
       @include govuk-grid-column("one-third");
+    }
+
+    &-profile-horizontal {
+      padding: 0 15px 0 0;
     }
   }
 
@@ -124,8 +138,14 @@
     &-profile-horizontal {
       @include govuk-font($size: 24);
       @include govuk-responsive-padding(2, "top");
+      display: block;
       color: #0065b3;
+      cursor: pointer;
       text-decoration: underline;
+
+      &:hover {
+        color: #0b0c0c;
+      }
     }
   }
 

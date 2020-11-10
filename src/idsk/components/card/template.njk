@@ -26,9 +26,15 @@
         <a href="{{params.link}}" class="idsk-heading idsk-heading-{{ type }}">{{ params.heading }}</a>
 
         {% if params.description %}
+        {% if type != 'profile-horizontal' and type != 'profile-vertical' %}
         <p class="idsk-body idsk-body-{{ type }}">
             {{ params.description}}
         </p>
+        {% else %}
+        <a href="{{params.link}}" class="idsk-body idsk-body-{{ type }}">
+            {{ params.description}}
+        </a> 
+        {% endif %}
         {% endif %}
 
         {% if type == 'basic-variant' %}
