@@ -3,7 +3,7 @@
  * This seems to fail in IE8, requires more investigation.
  * See: https://github.com/imagitama/nodelist-foreach-polyfill
  */
-export function nodeListForEach (nodes, callback) {
+export function nodeListForEach(nodes, callback) {
   if (window.NodeList.prototype.forEach) {
     return nodes.forEach(callback)
   }
@@ -15,7 +15,7 @@ export function nodeListForEach (nodes, callback) {
 // Used to generate a unique string, allows multiple instances of the component without
 // Them conflicting with each other.
 // https://stackoverflow.com/a/8809472
-export function generateUniqueID () {
+export function generateUniqueID() {
   var d = new Date().getTime()
   if (typeof window.performance !== 'undefined' && typeof window.performance.now === 'function') {
     d += window.performance.now() // use high-precision timer if available

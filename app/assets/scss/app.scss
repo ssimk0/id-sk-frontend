@@ -129,7 +129,11 @@ $govuk-show-breakpoints: false;
     padding-top: 30px;
     padding-right: 15px;
     padding-bottom: 15px;
-    padding-left: 15px; }
+    padding-left: 15px; 
+      &-overflowed {
+        overflow: visible;
+      }
+    }
     @media (min-width: 641px) {
       .example {
         padding-top: 45px;
