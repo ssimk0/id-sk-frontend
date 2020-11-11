@@ -138,6 +138,8 @@
     &-profile-horizontal {
       @include govuk-font($size: 24);
       @include govuk-responsive-padding(2, "top");
+      @include govuk-responsive-padding(4, "bottom");
+
       display: block;
       color: #0065b3;
       cursor: pointer;
