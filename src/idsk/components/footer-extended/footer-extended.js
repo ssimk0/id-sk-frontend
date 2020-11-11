@@ -22,6 +22,11 @@ FooterExtended.prototype.init = function () {
     let $closeErrorFormButton = $module.querySelector('#idsk-footer-extended-close-error-form-button');
     let $closeHelpFormButton = $module.querySelector('#idsk-footer-extended-close-help-form-button');
 
+
+    let $closeErrorFormButtonTablet = $module.querySelector('#idsk-footer-extended-close-error-form-button-tablet');
+    let $closeHelpFormButtonTablet = $module.querySelector('#idsk-footer-extended-close-help-form-button-tablet');
+
+
     let $textAreaCharacterCount = $module.querySelector('#idsk-footer-extended-error-form #with-hint');
 
     let $fillFeedbackButton = $module.querySelector('#fill-feedback-help-form');
@@ -46,6 +51,14 @@ FooterExtended.prototype.init = function () {
 
     if ($closeErrorFormButton) {
         $closeErrorFormButton.addEventListener('click', this.handleCloseErrorFormButtonClick.bind(this));
+    }
+
+    if ($closeErrorFormButtonTablet) {
+        $closeErrorFormButtonTablet.addEventListener('click', this.handleCloseErrorFormButtonClick.bind(this));
+    }
+
+    if ($closeHelpFormButtonTablet) {
+        $closeHelpFormButtonTablet.addEventListener('click', this.handleCloseHelpFormButtonClick.bind(this));
     }
 
     if ($fillFeedbackButton) {
