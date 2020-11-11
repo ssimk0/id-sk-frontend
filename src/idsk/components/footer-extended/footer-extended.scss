@@ -295,6 +295,8 @@
 
     .idsk-footer-extended-feedback-button {
         padding: 0 0 25px;
+        text-align: center;
+        color: govuk-colour("blue");
     }
 
     .idsk-footer-extended-close-button {
@@ -372,12 +374,39 @@
     .idsk-footer-extended-white-border {
         border-top: 2px solid govuk-colour("white");
     }
+
+    .idsk-footer-extended-feedback-question-container {
+        display: -ms-flexbox;
+        display: flex;
+        width: -webkit-fill-available;
+    }
+
     @include mq(mobile) {
         .idsk-footer-extended-usefull-answers-mobile {
             float: right;
             padding-right: 10%;
             padding-top: 2%;
         }
+
+        .idsk-footer-extended-text-h3 {
+            font-size: 18px;
+        }
+
+        .idsk-footer-extended-help-form-header-mobile {
+            width: 104%;
+            padding: 0;
+        }
+    }
+
+    .idsk-footer-extended-close-button-mobile {
+        width: 19%;
+        /* padding: 0 15px; */
+        padding-top: 20px;
+        display: inline;
+    }
+
+    .idsk-footer-extended-close-button-tablet {
+        display: none;
     }
 
     .govuk-button {
@@ -411,6 +440,19 @@
 
         .govuk-button {
             width: 24%;
+        }
+
+        .idsk-footer-extended-close-button-mobile {
+            display: none;
+        }
+
+        .idsk-footer-extended-close-button-tablet {
+            display: inline;
+            padding-top: 19px;
+        }
+
+        .idsk-footer-extended-feedback-button {
+            text-align: left;
         }
     }
 
