@@ -96,6 +96,7 @@
     .idsk-footer-extended-description-panel {
         border-top: 1px solid govuk-colour("mid-grey");
         padding-top: 7px;
+        padding-left: 12px;
     }
 
     .one-third,
@@ -202,6 +203,10 @@
         .govuk-heading-m {
             font-size: 1.39em;
         }
+    }
+
+    .govuk-heading-m {
+        font-family: Source Sans Pro;
     }
 
     .idsk-footer-extended-logo-box {
@@ -314,6 +319,7 @@
         border-top: 5px solid govuk-colour("blue");
         border-bottom: 5px solid govuk-colour("blue");
         background-clip: border-box;
+        background-color: govuk-colour("white");
     }
 
     .idsk-footer-extended-form-text {
@@ -353,6 +359,7 @@
         height: auto;
         transition: max-height 0.7s ease-in;
         overflow: hidden;
+        margin: 0 -15px;
     }
 
     .idsk-footer-extended-usefull-question {
@@ -396,11 +403,14 @@
             width: 104%;
             padding: 0;
         }
+        #idsk-footer-extended-heart {
+            text-align: center;
+            padding-top: 5px;
+        }
     }
 
     .idsk-footer-extended-close-button-mobile {
         width: 19%;
-        /* padding: 0 15px; */
         padding-top: 20px;
         display: inline;
     }
@@ -454,6 +464,12 @@
         .idsk-footer-extended-feedback-button {
             text-align: left;
         }
+
+        #idsk-footer-extended-heart {
+            margin-bottom: -2px;
+            text-align: left;
+            padding-top: 0;
+        }
     }
 
     .idsk-footer-extended-heart {
@@ -462,6 +478,8 @@
 
     .idsk-footer-extended-heart-visible {
         display: block;
+        text-align: left;
+        padding-top: 0;
     }
 
     .idsk-footer-extended-error-question {
