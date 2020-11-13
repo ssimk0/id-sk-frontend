@@ -270,6 +270,21 @@
         .idsk-footer-extended-text-padding {
             padding-left: 34px;
         }
+        .idsk-footer-extended-feedback-container {
+            padding-top: 15px;
+            padding-left: 40px;
+            padding-bottom: 17px;
+            overflow: hidden;
+        }
+    }
+    
+    @include mq(desktop) {
+        .idsk-footer-extended-feedback-container {
+            padding-top: 15px;
+            padding-left: 33px;
+            padding-bottom: 17px;
+            overflow: hidden;
+        }
     }
 
     @include mq($from: desktop) {
@@ -294,27 +309,8 @@
             width: 66.6666%;
         }
 
-        .idsk-footer-extended-feedback-container {
-            padding-top: 15px;
-            padding-left: 25px;
-            padding-bottom: 17px;
-        }
-
         .idsk-footer-extended-description-panel {
             padding-left: 18px;
-        }
-    }
-    .idsk-footer-extended-feedback-container {
-        padding-top: 0;
-        padding-left: 0;
-        overflow: hidden;
-    }
-
-    @include mq($from: tablet) {
-        .idsk-footer-extended-feedback-container {
-            padding-top: 15px;
-            padding-left: 37px;
-            padding-bottom: 17px;
         }
     }
 
@@ -399,7 +395,7 @@
     .idsk-footer-extended-usefull-question-mobile {
         display: revert;
         line-height: 38px;
-        padding-left: 15px;
+        padding-left: 32px;
     }
 
     .idsk-footer-extended-white-border {
