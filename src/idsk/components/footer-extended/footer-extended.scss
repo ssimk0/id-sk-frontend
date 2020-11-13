@@ -109,6 +109,11 @@
         padding-top: 7px;
     }
 
+    #idsk-footer-extended-close-error-form-button-tablet:hover,
+    #idsk-footer-extended-close-help-form-button-tablet:hover {
+        color: govuk-colour("black");
+    }
+
     .idsk-footer-extended-meta {
         display: -webkit-box;
         display: -ms-flexbox;
@@ -173,10 +178,11 @@
 
     .idsk-footer-extended-grid-column {
         padding-bottom: 23px;
+        padding-left: 16px;
     }
 
     .idsk-footer-extended-text-h3 {
-        font-family: "Source Sans Pro";
+        font-family: "Source Sans Pro", "Arial", sans-serif;
         font-style: normal;
         font-weight: normal;
         font-size: 21px;
@@ -186,12 +192,12 @@
     }
 
     .idsk-footer-extended-heading-feedback {
-        margin: 0 -15px;
+        margin: 0 -24px;
         background: govuk-colour("blue");
     }
 
     .idsk-footer-extended-feedback-text {
-        font-family: "Source Sans Pro";
+        font-family: "Source Sans Pro", "Arial", sans-serif;
         font-style: normal;
         font-weight: bold;
         font-size: 12px;
@@ -206,7 +212,7 @@
     }
 
     .govuk-heading-m {
-        font-family: "Source Sans Pro";
+        font-family: "Source Sans Pro", "Arial", sans-serif;
     }
 
     .idsk-footer-extended-logo-box {
@@ -217,7 +223,7 @@
         .idsk-footer-extended-feedback-text {
             top: 7.49%;
             bottom: 91.98%;
-            font-family: "Source Sans Pro";
+            font-family: "Source Sans Pro", "Arial", sans-serif;
             font-style: normal;
             font-weight: bold;
             font-size: 16px;
@@ -245,6 +251,14 @@
         .idsk-footer-extended-inline-list {
             padding-top: 20px;
         }
+
+        .idsk-footer-extended-form-left-part {
+            padding-left: 0;
+        }
+
+        #idsk-footer-extended-help-form-feedback-button {
+            margin-left: -15px;
+        }
     }
 
     _:-ms-fullscreen,
@@ -255,6 +269,21 @@
     @include mq(tablet) {
         .idsk-footer-extended-text-padding {
             padding-left: 34px;
+        }
+        .idsk-footer-extended-feedback-container {
+            padding-top: 15px;
+            padding-left: 40px;
+            padding-bottom: 17px;
+            overflow: hidden;
+        }
+    }
+    
+    @include mq(desktop) {
+        .idsk-footer-extended-feedback-container {
+            padding-top: 15px;
+            padding-left: 33px;
+            padding-bottom: 17px;
+            overflow: hidden;
         }
     }
 
@@ -279,18 +308,9 @@
         .idsk-footer-extended-info-links {
             width: 66.6666%;
         }
-    }
-    .idsk-footer-extended-feedback-container {
-        padding-top: 0;
-        padding-left: 15px;
-        overflow: hidden;
-    }
 
-    @include mq($from: tablet) {
-        .idsk-footer-extended-feedback-container {
-            padding-top: 15px;
-            padding-left: 25px;
-            padding-bottom: 17px;
+        .idsk-footer-extended-description-panel {
+            padding-left: 18px;
         }
     }
 
@@ -323,7 +343,7 @@
     }
 
     .idsk-footer-extended-form-text {
-        font-family: "Source Sans Pro";
+        font-family: "Source Sans Pro", "Arial", sans-serif;
         font-style: normal;
         font-weight: normal;
         font-size: 19px;
@@ -359,7 +379,7 @@
         height: auto;
         transition: max-height 0.7s ease-in;
         overflow: hidden;
-        margin: 0 -15px;
+        margin: 0 -24px;
     }
 
     .idsk-footer-extended-usefull-question {
@@ -375,7 +395,7 @@
     .idsk-footer-extended-usefull-question-mobile {
         display: revert;
         line-height: 38px;
-        padding-left: 15px;
+        padding-left: 32px;
     }
 
     .idsk-footer-extended-white-border {
@@ -407,6 +427,16 @@
             text-align: center;
             padding-top: 5px;
         }
+
+        .idsk-footer-extended-error-wrapper {
+            padding-left: 14px;
+            padding-right: 14px;
+        }
+
+        .idsk-footer-extended-help-wrapper {
+            padding-left: 34px;
+            padding-right: 19px;
+        }
     }
 
     .idsk-footer-extended-close-button-mobile {
@@ -431,9 +461,14 @@
 
         .idsk-footer-extended-usefull-answers-mobile {
             float: none;
-            display: inline;
+            display: contents;
             padding-right: none;
             padding-top: none;
+        }
+
+        _:-ms-fullscreen,
+        :root .idsk-footer-extended-usefull-answers-mobile {
+            display: inline;
         }
 
         .idsk-footer-extended-feedback-question-info-usefull {
@@ -470,6 +505,16 @@
             text-align: left;
             padding-top: 0;
         }
+
+        .idsk-footer-extended {
+            margin-right: 0;
+        }
+
+        .idsk-footer-extended-error-wrapper,
+        .idsk-footer-extended-help-wrapper {
+            padding-left: 0;
+            padding-right: 0;
+        }
     }
 
     .idsk-footer-extended-heart {
@@ -480,6 +525,7 @@
         display: block;
         text-align: left;
         padding-top: 0;
+        margin-left: -15px;
     }
 
     .idsk-footer-extended-error-question {

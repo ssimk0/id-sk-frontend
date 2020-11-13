@@ -155,7 +155,6 @@ FooterExtended.prototype.handleCloseErrorFormButtonClick = function (e) {
     let $errorOption = this.$module.querySelector('#idsk-footer-extended-error-form');
     let $feedbackQuestion = this.$module.querySelector('.idsk-footer-extended-heading-feedback');
 
-    toggleClass($feedbackQuestion, 'idsk-footer-extended-open');
     toggleClass($feedbackQuestion, 'idsk-footer-extended-display-none');
     toggleClass($errorOption, 'idsk-footer-extended-open');
     toggleClass($errorOption, 'idsk-footer-extended-display-hidden');
@@ -166,7 +165,6 @@ FooterExtended.prototype.handleCloseHelpFormButtonClick = function () {
     let $helpOption = this.$module.querySelector('#idsk-footer-extended-help-form');
     let $feedbackQuestion = this.$module.querySelector('.idsk-footer-extended-heading-feedback');
 
-    toggleClass($feedbackQuestion, 'idsk-footer-extended-open');
     toggleClass($feedbackQuestion, 'idsk-footer-extended-display-none');
     toggleClass($helpOption, 'idsk-footer-extended-open');
     toggleClass($helpOption, 'idsk-footer-extended-display-hidden');
