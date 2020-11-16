@@ -80,8 +80,10 @@ FooterExtended.prototype.handleSubmitButtonClick = function (e) {
     let $errorOption = this.$module.querySelector('#idsk-footer-extended-error-form');
     let $infoQuestion = this.$module.querySelector('#idsk-footer-extended-info-question');
     let $heartSymbol = this.$module.querySelector('#idsk-footer-extended-heart');
-    let $feedbackQuestion = this.$module.querySelector('.idsk-footer-extended-heading-feedback');
+    let $feedbackQuestion = this.$module.querySelector('#idsk-footer-extended-feedback');
+    let $helpAndErrorContainer = this.$module.querySelector('.idsk-footer-extended-feedback-content');
 
+    toggleClass($helpAndErrorContainer, 'idsk-footer-extended-display-hidden');
     $noOption.classList.add('idsk-footer-extended-display-hidden');
     $errorOption.classList.add('idsk-footer-extended-display-hidden');
     $noOption.classList.remove('idsk-footer-extended-open');
@@ -130,8 +132,11 @@ FooterExtended.prototype.handleYesButtonClick = function (e) {
 //Hiding feedback question element and showing help form with animation
 FooterExtended.prototype.handleNoButtonClick = function (e) {
     let $helpOption = this.$module.querySelector('#idsk-footer-extended-help-form');
-    let $feedbackQuestion = this.$module.querySelector('.idsk-footer-extended-heading-feedback');
+    let $feedbackQuestion = this.$module.querySelector('#idsk-footer-extended-feedback');
 
+    let $helpAndErrorContainer = this.$module.querySelector('.idsk-footer-extended-feedback-content');
+
+    toggleClass($helpAndErrorContainer, 'idsk-footer-extended-display-hidden');
     toggleClass($feedbackQuestion, 'idsk-footer-extended-display-none');
     toggleClass($helpOption, 'idsk-footer-extended-display-hidden');
     toggleClass($helpOption, 'idsk-footer-extended-open');
@@ -141,8 +146,11 @@ FooterExtended.prototype.handleNoButtonClick = function (e) {
 FooterExtended.prototype.handleErrorButtonClick = function (e) {
     let $errorOption = this.$module.querySelector('#idsk-footer-extended-error-form');
     let $helpOption = this.$module.querySelector('#idsk-footer-extended-help-form');
-    let $feedbackQuestion = this.$module.querySelector('.idsk-footer-extended-heading-feedback');
+    let $feedbackQuestion = this.$module.querySelector('#idsk-footer-extended-feedback');
 
+    let $helpAndErrorContainer = this.$module.querySelector('.idsk-footer-extended-feedback-content');
+
+    toggleClass($helpAndErrorContainer, 'idsk-footer-extended-display-hidden');
     toggleClass($feedbackQuestion, 'idsk-footer-extended-display-none');
     $helpOption.classList.add('idsk-footer-extended-display-hidden');
     $helpOption.classList.remove('idsk-footer-extended-open');
@@ -153,8 +161,10 @@ FooterExtended.prototype.handleErrorButtonClick = function (e) {
 //Hiding error form with animation and showing feedback question element
 FooterExtended.prototype.handleCloseErrorFormButtonClick = function (e) {
     let $errorOption = this.$module.querySelector('#idsk-footer-extended-error-form');
-    let $feedbackQuestion = this.$module.querySelector('.idsk-footer-extended-heading-feedback');
+    let $feedbackQuestion = this.$module.querySelector('#idsk-footer-extended-feedback');
+    let $helpAndErrorContainer = this.$module.querySelector('.idsk-footer-extended-feedback-content');
 
+    toggleClass($helpAndErrorContainer, 'idsk-footer-extended-display-hidden');
     toggleClass($feedbackQuestion, 'idsk-footer-extended-display-none');
     toggleClass($errorOption, 'idsk-footer-extended-open');
     toggleClass($errorOption, 'idsk-footer-extended-display-hidden');
@@ -163,8 +173,10 @@ FooterExtended.prototype.handleCloseErrorFormButtonClick = function (e) {
 //Hiding help form with animation and showing feedback question element
 FooterExtended.prototype.handleCloseHelpFormButtonClick = function () {
     let $helpOption = this.$module.querySelector('#idsk-footer-extended-help-form');
-    let $feedbackQuestion = this.$module.querySelector('.idsk-footer-extended-heading-feedback');
+    let $feedbackQuestion = this.$module.querySelector('#idsk-footer-extended-feedback');
+    let $helpAndErrorContainer = this.$module.querySelector('.idsk-footer-extended-feedback-content');
 
+    toggleClass($helpAndErrorContainer, 'idsk-footer-extended-display-hidden');
     toggleClass($feedbackQuestion, 'idsk-footer-extended-display-none');
     toggleClass($helpOption, 'idsk-footer-extended-open');
     toggleClass($helpOption, 'idsk-footer-extended-display-hidden');

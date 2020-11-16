@@ -39,7 +39,7 @@
 
     .idsk-footer-extended {
         @include govuk-font($size: 14);
-        padding: 0 24px;
+        padding: 0;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -95,13 +95,11 @@
 
     .idsk-footer-extended-description-panel {
         border-top: 1px solid govuk-colour("mid-grey");
-        padding-top: 7px;
-        padding-left: 12px;
     }
 
     .one-third,
     .two-thirds {
-        padding-top: 28px;
+        padding-top: 18px;
     }
 
     .idsk-footer-extended-subtitle {
@@ -114,34 +112,11 @@
         color: govuk-colour("black");
     }
 
-    .idsk-footer-extended-meta {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: block; // Support: Flexbox
-        margin-right: -$govuk-gutter-half;
-        margin-left: -$govuk-gutter-half;
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap; // Support: Flexbox
-        -webkit-box-align: start;
-        -ms-flex-align: start;
-        align-items: flex-start; // Support: Flexbox
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center; // Support: Flexbox
-    }
-
     .idsk-footer-extended-meta-item {
         margin-right: 15px;
         margin-bottom: 25px;
         margin-left: 0;
         padding-bottom: 20px;
-    }
-
-    .idsk-footer-extended-meta-item--grow {
-        flex: 1; // Support: Flexbox
-        @include mq($until: tablet) {
-            flex-basis: 320px; // Support: Flexbox
-        }
     }
 
     .idsk-footer-extended-logo {
@@ -178,7 +153,6 @@
 
     .idsk-footer-extended-grid-column {
         padding-bottom: 23px;
-        padding-left: 16px;
     }
 
     .idsk-footer-extended-text-h3 {
@@ -191,8 +165,21 @@
         font-weight: bold;
     }
 
-    .idsk-footer-extended-heading-feedback {
-        margin: 0 -24px;
+    .idsk-footer-extended-main-content {
+        width: 100%;
+    }
+
+    .idsk-footer-extended-feedback-content {
+        background-color: govuk-colour("white");
+        width: 100%;
+        border-top: 5px solid govuk-colour("blue");
+        border-bottom: 5px solid govuk-colour("blue");
+        background-clip: border-box;
+        background-color: govuk-colour("white");
+    }
+
+    .idsk-footer-extended-feedback {
+        width: 100%;
         background: govuk-colour("blue");
     }
 
@@ -236,12 +223,7 @@
         }
 
         .idsk-footer-extended-logo {
-            width: 132%;
             height: 80%;
-        }
-
-        .govuk-button {
-            width: 24%;
         }
 
         .idsk-footer-extended-info-links {
@@ -250,14 +232,6 @@
 
         .idsk-footer-extended-inline-list {
             padding-top: 20px;
-        }
-
-        .idsk-footer-extended-form-left-part {
-            padding-left: 0;
-        }
-
-        #idsk-footer-extended-help-form-feedback-button {
-            margin-left: -15px;
         }
     }
 
@@ -269,21 +243,6 @@
     @include mq(tablet) {
         .idsk-footer-extended-text-padding {
             padding-left: 34px;
-        }
-        .idsk-footer-extended-feedback-container {
-            padding-top: 15px;
-            padding-left: 40px;
-            padding-bottom: 17px;
-            overflow: hidden;
-        }
-    }
-    
-    @include mq(desktop) {
-        .idsk-footer-extended-feedback-container {
-            padding-top: 15px;
-            padding-left: 33px;
-            padding-bottom: 17px;
-            overflow: hidden;
         }
     }
 
@@ -308,10 +267,10 @@
         .idsk-footer-extended-info-links {
             width: 66.6666%;
         }
+    }
 
-        .idsk-footer-extended-description-panel {
-            padding-left: 18px;
-        }
+    .idsk-footer-extended-description-panel {
+        margin-top: 15px;
     }
 
     .idsk-footer-extended-feedback-container.collapsed {
@@ -335,13 +294,6 @@
         cursor: pointer;
     }
 
-    .idsk-footer-extended-blue-border {
-        border-top: 5px solid govuk-colour("blue");
-        border-bottom: 5px solid govuk-colour("blue");
-        background-clip: border-box;
-        background-color: govuk-colour("white");
-    }
-
     .idsk-footer-extended-form-text {
         font-family: "Source Sans Pro", "Arial", sans-serif;
         font-style: normal;
@@ -351,12 +303,12 @@
         color: govuk-colour("black");
     }
 
-    .idsk-footer-extended-display-hidden {
-        visibility: hidden;
-    }
-
     .idsk-footer-extended-display-none {
         display: none;
+    }
+
+    .idsk-footer-extended-display-hidden {
+        visibility: hidden;
     }
 
     .idsk-footer-extended-feedback-hidden {
@@ -379,13 +331,6 @@
         height: auto;
         transition: max-height 0.7s ease-in;
         overflow: hidden;
-        margin: 0 -24px;
-    }
-
-    .idsk-footer-extended-usefull-question {
-        @include govuk-grid-column("full");
-        padding-left: 0;
-        box-sizing: content-box;
     }
 
     .idsk-footer-extended-feedback-question-info-usefull {
@@ -395,7 +340,6 @@
     .idsk-footer-extended-usefull-question-mobile {
         display: revert;
         line-height: 38px;
-        padding-left: 32px;
     }
 
     .idsk-footer-extended-white-border {
@@ -411,7 +355,6 @@
     @include mq(mobile) {
         .idsk-footer-extended-usefull-answers-mobile {
             float: right;
-            padding-right: 10%;
             padding-top: 2%;
         }
 
@@ -420,22 +363,14 @@
         }
 
         .idsk-footer-extended-help-form-header-mobile {
-            width: 104%;
             padding: 0;
         }
         #idsk-footer-extended-heart {
             text-align: center;
-            padding-top: 5px;
         }
 
-        .idsk-footer-extended-error-wrapper {
-            padding-left: 14px;
-            padding-right: 14px;
-        }
-
-        .idsk-footer-extended-help-wrapper {
-            padding-left: 34px;
-            padding-right: 19px;
+        .idsk-footer-extended .govuk-button {
+            width: 50%;
         }
     }
 
@@ -449,14 +384,13 @@
         display: none;
     }
 
-    .govuk-button {
-        width: 50%;
+    #idsk-footer-extended-help-form .govuk-button {
+        margin-top: 15px;
     }
 
     @include mq($from: tablet) {
-        .idsk-footer-extended-usefull-question {
-            @include govuk-grid-column("two-thirds");
-            padding: 0;
+        .idsk-footer-extended .govuk-button {
+            width: 26%;
         }
 
         .idsk-footer-extended-usefull-answers-mobile {
@@ -483,10 +417,6 @@
             border-top: none;
         }
 
-        .govuk-button {
-            width: 24%;
-        }
-
         .idsk-footer-extended-close-button-mobile {
             display: none;
         }
@@ -501,19 +431,52 @@
         }
 
         #idsk-footer-extended-heart {
-            margin-bottom: -2px;
             text-align: left;
-            padding-top: 0;
         }
 
         .idsk-footer-extended {
             margin-right: 0;
         }
+    }
 
-        .idsk-footer-extended-error-wrapper,
-        .idsk-footer-extended-help-wrapper {
-            padding-left: 0;
-            padding-right: 0;
+    .idsk-footer-extended-feedback-container {
+        overflow: hidden;
+        @include mq(mobile) {
+            margin: 0px -15px;
+            padding: 0;
+        }
+        @include mq($from: tablet) {
+            margin: 0;
+            padding: 10px 0;
+        }
+    }
+
+    #idsk-footer-extended-help-form .govuk-button {
+        @include mq(mobile) {
+            width: 57%;
+        }
+        @include mq(tablet) {
+            width: 36%;
+        }
+        @include mq(desktop) {
+            width: 27%;
+        }
+    }
+
+    .idsk-footer-extended-main-content .govuk-grid-column-two-thirds,
+    .idsk-footer-extended-main-content .govuk-grid-column-one-third,
+    .idsk-footer-extended-main-content .govuk-grid-column-full {
+        @include mq(mobile) {
+            padding: 5px 0;
+        }
+        @include mq($from: tablet) {
+            padding: 5px 15px 15px 15px;
+        }
+    }
+
+    .idsk-footer-extended-description-panel .govuk-grid-column-two-thirds {
+        @include mq($from: tablet) {
+            padding: 0;
         }
     }
 
@@ -523,22 +486,11 @@
 
     .idsk-footer-extended-heart-visible {
         display: block;
-        text-align: left;
-        padding-top: 0;
-        margin-left: -15px;
-    }
-
-    .idsk-footer-extended-error-question {
-        border-top: 2px solid govuk-colour("white");
-        padding-right: 1px;
-        padding-left: 1px;
-        @include govuk-grid-column("full");
-    }
-
-    @include mq($from: tablet) {
-        .idsk-footer-extended-error-question {
-            border-top: none;
-            @include govuk-grid-column("one-third");
+        @include mq(mobile) {
+            padding-top: 5px;
+        }
+        @include mq($from: tablet) {
+            padding-top: 0;
         }
     }
 
