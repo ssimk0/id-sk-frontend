@@ -291,13 +291,17 @@
 
 </header>
 
-{% if params.notifications %}
-  {% from "../warning-text/macro.njk" import idskWarningText %}
-  {% for notification in params.notifications %}
-    {{ idskWarningText({
-      "type": notification.type,
-      "html": notification.html,
-      "iconFallbackText": notification.iconFallbackText
-    }) }}
-  {% endfor %}
-{% endif %}
+<div class="idsk-header-extended-ie-fix"></div>
+
+<div class="idsk-header-extended-notifications">
+  {% if params.notifications %}
+    {% from "../warning-text/macro.njk" import idskWarningText %}
+    {% for notification in params.notifications %}
+      {{ idskWarningText({
+        "type": notification.type,
+        "html": notification.html,
+        "iconFallbackText": notification.iconFallbackText
+      }) }}
+    {% endfor %}
+  {% endif %}
+</div>

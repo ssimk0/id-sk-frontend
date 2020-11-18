@@ -694,3 +694,15 @@
   }
 
 }
+
+/// IE10+ CSS styles
+/// ie doesnt recognize position: sticky
+/// need to be there cause some part of top of contet will not be visible
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .idsk-header-extended-ie-fix {
+    height: 55px;
+    @include mq ($from: desktop){
+      height: 0;
+    }
+  }
+}
