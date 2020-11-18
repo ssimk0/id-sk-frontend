@@ -187,14 +187,14 @@
                             <div class="govuk-grid-column-one-half">
 
                                 {% for item in params.firstColumn.leftItems -%}
-                                    <li class="idsk-footer-extended-inline-list-item">
+                                    <li class="idsk-footer-extended-list-item">
                                         <a class="idsk-footer-extended-link" href="{{item.href}}">{{ item.name }}</a>
                                     </li>
                                 {%- endfor %}
                             </div>
                             <div class="govuk-grid-column-one-half ">
                                 {% for item in params.firstColumn.rightItems -%}
-                                    <li class="idsk-footer-extended-inline-list-item">
+                                    <li class="idsk-footer-extended-list-item">
                                         <a class="idsk-footer-extended-link" href="{{item.href}}">{{ item.name }}</a>
                                     </li>
                                 {%- endfor %}
@@ -209,7 +209,7 @@
                         </h3>
                         <div class="govuk-grid-column-three-thirds idsk-footer-extended-subtitle">
                             {% for item in params.secondColumn.items -%}
-                                <li class="idsk-footer-extended-inline-list-item">
+                                <li class="idsk-footer-extended-list-item">
                                     <a class="idsk-footer-extended-link" href="{{item.href}}">{{ item.name }}</a>
                                 </li>
                             {%- endfor %}
@@ -225,7 +225,7 @@
                             <div class="govuk-grid-column-one-half">
                                 {% if params.thirdColumn.items %}
                                     {% for item in params.thirdColumn.items -%}
-                                        <li class="idsk-footer-extended-inline-list-item">
+                                        <li class="idsk-footer-extended-list-item">
                                             <a class="idsk-footer-extended-link" href="{{item.href}}">{{ item.name }}</a>
                                         </li>
                                     {%- endfor %}
@@ -242,7 +242,7 @@
                         <div class="govuk-grid-column-three-thirds idsk-footer-extended-subtitle">
                             {% if params.fourthColumn.items %}
                                 {% for item in params.fourthColumn.items -%}
-                                    <li class="idsk-footer-extended-inline-list-item">
+                                    <li class="idsk-footer-extended-list-item">
                                         <a class="idsk-footer-extended-link" href="{{item.href}}">{{ item.name }}</a>
                                     </li>
                                 {%- endfor %}
