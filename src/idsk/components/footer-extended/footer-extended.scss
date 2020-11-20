@@ -7,7 +7,8 @@
 @include govuk-exports("idsk/component/footer-extended") {
     $govuk-footer-background: $govuk-canvas-background-colour;
     $govuk-footer-border: $govuk-border-colour;
-    $idsk-header-light-blue: #0065b3;
+    $idsk-footer-light-blue: #0065b3;
+    $idsk-footer-light-yellow: #ffdf0f;
     // This variable can be removed entirely once the legacy palette goes away,
     // as it'll just be the same as $govuk-footer-border.
     $govuk-footer-border-top: $govuk-border-colour;
@@ -166,7 +167,7 @@
 
     .idsk-footer-extended-logo:focus,
     .idsk-footer-extended-logo:active {
-        background-color: govuk-colour("yellow");
+        background-color: $idsk-footer-light-yellow;
     }
 
     .idsk-footer-extended-frame {
@@ -208,15 +209,19 @@
     .idsk-footer-extended-feedback-content {
         background-color: govuk-colour("white");
         width: 100%;
-        border-top: 5px solid $idsk-header-light-blue;
-        border-bottom: 5px solid $idsk-header-light-blue;
+        border-top: 5px solid $idsk-footer-light-blue;
+        border-bottom: 5px solid $idsk-footer-light-blue;
         background-clip: border-box;
         background-color: govuk-colour("white");
+        @include mq($from: desktop) {
+            border-top: 10px solid $idsk-footer-light-blue;
+            border-bottom: 10px solid $idsk-footer-light-blue;
+        }
     }
 
     .idsk-footer-extended-feedback {
         width: 100%;
-        background: $idsk-header-light-blue;
+        background: $idsk-footer-light-blue;
     }
 
     #idsk-footer-extended-feedback {
@@ -330,7 +335,7 @@
 
     .idsk-footer-extended-feedback-button {
         text-align: center;
-        color: $idsk-header-light-blue;
+        color: $idsk-footer-light-blue;
     }
 
     .idsk-footer-extended-close-button {
@@ -342,6 +347,11 @@
         border-style: none;
         text-decoration: underline;
         cursor: pointer;
+    }
+
+    .idsk-footer-extended-help-button:active,
+    .idsk-footer-extended-help-button:focus {
+        background-color: govuk-colour("green");
     }
 
     .idsk-footer-extended-form-text {
@@ -407,8 +417,14 @@
         }
     }
 
+    #idsk-footer-extended-error-button,
+    #idsk-footer-extended-close-help-form-button-tablet,
+    #idsk-footer-extended-close-error-form-button-tablet {
+        float: right;
+    }
+
     .idsk-footer-extended-close-button-mobile {
-        width: 19%;
+        width: 25%;
         padding-top: 20px;
         display: inline;
     }
@@ -549,7 +565,7 @@
     #idsk-footer-extended-close-error-form-button-tablet:active,
     #idsk-footer-extended-close-help-form-button-tablet:focus,
     #idsk-footer-extended-close-help-form-button-tablet:active {
-        outline: 3px solid govuk-colour("yellow");
+        outline: 3px solid $idsk-footer-light-yellow;
     }
 
     .idsk-footer-extended-feedback-container .govuk-textarea,
