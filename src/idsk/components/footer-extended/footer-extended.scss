@@ -213,6 +213,10 @@
         border-bottom: 5px solid $idsk-footer-light-blue;
         background-clip: border-box;
         background-color: govuk-colour("white");
+        @include mq($from: desktop) {
+            border-top: 10px solid $idsk-footer-light-blue;
+            border-bottom: 10px solid $idsk-footer-light-blue;
+        }
     }
 
     .idsk-footer-extended-feedback {
