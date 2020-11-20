@@ -9,7 +9,6 @@
     $govuk-footer-border: $govuk-border-colour;
     $idsk-footer-light-blue: #0065b3;
     $idsk-footer-light-yellow: #ffdf0f;
-    $idsk-footer-green: #006435;
     // This variable can be removed entirely once the legacy palette goes away,
     // as it'll just be the same as $govuk-footer-border.
     $govuk-footer-border-top: $govuk-border-colour;
@@ -352,7 +351,7 @@
 
     .idsk-footer-extended-help-button:active,
     .idsk-footer-extended-help-button:focus {
-        background-color: $idsk-footer-green;
+        background-color: govuk-colour("green");
     }
 
     .idsk-footer-extended-form-text {
