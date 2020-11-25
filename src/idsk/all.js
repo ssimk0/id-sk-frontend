@@ -3,6 +3,7 @@ import { initAll as initAllGOVUKjs } from "../govuk/all";
 import FooterExtended from "./components/footer-extended/footer-extended";
 import CharacterCount from "./components/character-count/character-count";
 import Crossroad from "./components/crossroad/crossroad";
+import HeaderExtended from './components/header-extended/header-extended'
 
 function initAll(options) {
   // Set the options to an empty object by default if no options are passed.
@@ -10,7 +11,8 @@ function initAll(options) {
 
   // Allow the user to initialise ID-SK Frontend in only certain sections of the page
   // Defaults to the entire document if nothing is set.
-  let scope = typeof options.scope !== "undefined" ? options.scope : document;
+  let scope = typeof options.scope !== 'undefined' ? options.scope : document
+
   // Find first Footer-extended module to enhance.
   let $footerExtended = scope.querySelectorAll(
     '[data-module="idsk-footer-extended"]'
@@ -31,8 +33,20 @@ function initAll(options) {
     new Crossroad($crossroad).init();
   });
 
+  // Find first Header-extended module to enhance.
+  let $headersExtended = scope.querySelectorAll('[data-module="idsk-header-extended"]')
+  nodeListForEach($headersExtended, function ($headerExtended) {
+    new HeaderExtended($headerExtended).init()
+  })
+
   // Init all GOVUK components js
   initAllGOVUKjs(options);
 }
 
-export { initAll, FooterExtended, CharacterCount, Crossroad };
+export {
+  initAll,
+  CharacterCount,
+  Crossroad,
+  FooterExtended,
+  HeaderExtended
+}

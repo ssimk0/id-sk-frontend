@@ -7,6 +7,8 @@
 @include govuk-exports("idsk/component/footer-extended") {
     $govuk-footer-background: $govuk-canvas-background-colour;
     $govuk-footer-border: $govuk-border-colour;
+    $idsk-footer-light-blue: #0065b3;
+    $idsk-footer-light-yellow: #ffdf0f;
     // This variable can be removed entirely once the legacy palette goes away,
     // as it'll just be the same as $govuk-footer-border.
     $govuk-footer-border-top: $govuk-border-colour;
@@ -37,36 +39,75 @@
         xl: 1140px,
     );
 
+    @font-face {
+        font-family: "SourceSansPro";
+        src: govuk-font-url("SourceSansPro-Bold.woff") format("woff");
+        font-weight: bold;
+    }
+
+    @font-face {
+        font-family: "SourceSansPro";
+        src: govuk-font-url("SourceSansPro-Light.woff") format("woff");
+        font-weight: 300;
+    }
+
+    @font-face {
+        font-family: "SourceSansPro";
+        src: govuk-font-url("SourceSansPro-Regular.woff") format("woff");
+    }
+
     .idsk-footer-extended {
-        @include govuk-font($size: 14);
-        padding: 0 24px;
+        font-family: "SourceSansPro";
+        padding: 0;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         left: 100px;
         background: govuk-colour("light-grey");
         box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+        font-style: normal;
+        font-weight: 400;
+        @include mq(mobile) {
+            font-size: 14px;
+            line-height: 16px;
+        }
+        @include mq(tablet) {
+            font-size: 16px;
+            line-height: 20px;
+        }
+        @include mq(desktop) {
+            font-size: 16px;
+            line-height: 20px;
+        }
     }
 
     .idsk-footer-extended-inline-list {
         margin-top: 0;
         margin-bottom: govuk-spacing(3);
         padding-left: 0;
-        padding-top: 20px;
+        padding-top: 30px;
+    }
+
+    .idsk-footer-extended-description-panel .idsk-footer-extended-inline-list-item {
+        display: inline-block;
     }
 
     .idsk-footer-extended-inline-list-item {
-        display: inline-block;
+        display: block;
         margin-right: govuk-spacing(3);
         margin-bottom: govuk-spacing(1);
         text-decoration-line: underline;
     }
 
+    .idsk-footer-extended-list-item {
+        display: block;
+        margin-bottom: govuk-spacing(1);
+        text-decoration-line: underline;
+    }
+
     .idsk-footer-extended-link {
-        font-size: 16px;
         font-style: normal;
         font-weight: normal;
-        line-height: 22px;
         text-decoration-line: underline;
         color: govuk-colour("black");
         @if ($govuk-use-legacy-palette) {
@@ -89,14 +130,13 @@
         }
     }
 
-    .idsk-footer-extended-description-panel {
+    .idsk-footer-extended-description-panel-top-border {
         border-top: 1px solid govuk-colour("mid-grey");
-        padding-top: 7px;
     }
 
     .one-third,
     .two-thirds {
-        padding-top: 28px;
+        padding-top: 18px;
     }
 
     .idsk-footer-extended-subtitle {
@@ -104,35 +144,16 @@
         padding-top: 7px;
     }
 
-    .idsk-footer-extended-meta {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex; // Support: Flexbox
-        margin-right: -$govuk-gutter-half;
-        margin-left: -$govuk-gutter-half;
-        -ms-flex-wrap: wrap;
-            flex-wrap: wrap; // Support: Flexbox
-        -webkit-box-align: start;
-            -ms-flex-align: start;
-                align-items: flex-start; // Support: Flexbox
-        -webkit-box-pack: center;
-            -ms-flex-pack: center;
-                justify-content: center; // Support: Flexbox
-      }
+    #idsk-footer-extended-close-error-form-button-tablet:hover,
+    #idsk-footer-extended-close-help-form-button-tablet:hover {
+        color: govuk-colour("black");
+    }
 
     .idsk-footer-extended-meta-item {
         margin-right: 15px;
         margin-bottom: 25px;
         margin-left: 0;
-        padding-bottom: 20px;
     }
-
-    .idsk-footer-extended-meta-item--grow {
-        flex: 1; // Support: Flexbox
-        @include mq ($until: tablet) {
-          flex-basis: 320px; // Support: Flexbox
-        }
-      }
 
     .idsk-footer-extended-logo {
         flex: none;
@@ -140,6 +161,13 @@
         align-self: flex-end;
         flex-grow: 0;
         padding-top: 8px;
+        width: 265px;
+        height: 80px;
+    }
+
+    .idsk-footer-extended-logo:focus,
+    .idsk-footer-extended-logo:active {
+        background-color: $idsk-footer-light-yellow;
     }
 
     .idsk-footer-extended-frame {
@@ -148,18 +176,12 @@
         height: 30px;
         left: 0;
         top: 0;
-        font-style: normal;
-        font-weight: 400;
-        font-size: 17px;
-        line-height: 25px;
         color: govuk-colour("black");
     }
 
     .idsk-footer-extended-label {
         font-style: normal;
-        font-weight: normal;
-        font-size: 19px;
-        line-height: 25px;
+        font-weight: 300;
         color: govuk-colour("black");
         text-decoration: underline;
     }
@@ -169,78 +191,141 @@
     }
 
     .idsk-footer-extended-text-h3 {
-        font-family: Source Sans Pro;
+        font-family: "SourceSansPro", "Arial", sans-serif;
         font-style: normal;
         font-weight: normal;
-        font-size: 21px;
-        line-height: 25px;
         color: govuk-colour("black");
         font-weight: bold;
     }
 
-    .idsk-footer-extended-heading-feedback {
-        margin: 0 -15px;
-        background: govuk-colour("blue");
+    .idsk-footer-extended-main-content {
+        width: 100%;
+    }
+
+    .idsk-footer-extended .govuk-heading-m {
+        padding-top: 15px;
+    }
+
+    .idsk-footer-extended-feedback-content {
+        background-color: govuk-colour("white");
+        width: 100%;
+        border-top: 5px solid $idsk-footer-light-blue;
+        border-bottom: 5px solid $idsk-footer-light-blue;
+        background-clip: border-box;
+        background-color: govuk-colour("white");
+        @include mq($from: desktop) {
+            border-top: 10px solid $idsk-footer-light-blue;
+            border-bottom: 10px solid $idsk-footer-light-blue;
+        }
+    }
+
+    .idsk-footer-extended-feedback {
+        width: 100%;
+        background: $idsk-footer-light-blue;
+    }
+
+    #idsk-footer-extended-feedback {
+        @include mq(mobile) {
+            font-size: 16px;
+        }
+
+        @include mq($from: tablet) {
+            height: 70px;
+        }
+
+        @include mq($from: desktop) {
+            font-size: 20px;
+        }
     }
 
     .idsk-footer-extended-feedback-text {
-        font-family: Source Sans Pro;
+        font-family: "SourceSansPro", "Arial", sans-serif;
         font-style: normal;
         font-weight: bold;
-        font-size: 12px;
-        line-height: 23px;
+        color: govuk-colour("white");
+    }
+
+    .idsk-footer-extended-feedback-text-answers {
+        font-family: "SourceSansPro", "Arial", sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 20px;
         color: govuk-colour("white");
     }
 
     @include mq(tablet) {
-        .govuk-heading-m {
+        .idsk-footer-extended .govuk-heading-m {
             font-size: 1.39em;
         }
     }
 
+    .govuk-heading-m {
+        font-family: "SourceSansPro", "Arial", sans-serif;
+    }
+
+    .idsk-footer-extended-logo-box {
+        text-align: -webkit-center;
+    }
+
     @include mq($from: tablet) {
         .idsk-footer-extended-feedback-text {
-            top: 7.49%;
-            bottom: 91.98%;
-            font-family: Source Sans Pro;
+            font-family: "SourceSansPro", "Arial", sans-serif;
             font-style: normal;
             font-weight: bold;
-            font-size: 16px;
-            line-height: 23px;
+
             color: govuk-colour("white");
         }
+
+        .idsk-footer-extended-logo-box {
+            text-align: none;
+        }
+
+        .idsk-footer-extended-logo {
+            height: 80%;
+        }
+
+        .idsk-footer-extended-info-links {
+            width: 57%;
+        }
+
+        .idsk-footer-extended-inline-list {
+            padding-top: 20px;
+        }
+    }
+
+    _:-ms-fullscreen,
+    :root .idsk-footer-extended-logo-box {
+        margin-top: -26px;
     }
 
     @include mq(tablet) {
         .idsk-footer-extended-text-padding {
-            padding-left: 34px;
+            padding-left: 10px;
         }
     }
 
     @include mq($from: desktop) {
-        .idsk-footer-extended-feedback-text {
-            font-size: 18px;
+        .idsk-footer-extended-feedback-text,
+        .idsk-footer-extended-feedback-text-answers {
+            font-size: 20px;
         }
 
         .idsk-footer-extended-text-padding {
-            padding-left: 70px;
+            padding-left: 15px;
         }
 
-        .govuk-heading-m {
+        .idsk-footer-extended .govuk-heading-m {
             font-size: 1.5em;
         }
-    }
-    .idsk-footer-extended-feedback-container {
-        padding-top: 0;
-        padding-left: 15px;
-        overflow: hidden;
-    }
 
-    @include mq($from: tablet) {
-        .idsk-footer-extended-feedback-container {
-            padding-top: 15px;
-            padding-left: 25px;
-            padding-bottom: 17px;
+        .idsk-footer-extended-logo {
+            width: 103%;
+            height: 80%;
+        }
+
+        .idsk-footer-extended-info-links {
+            width: 66.6666%;
         }
     }
 
@@ -249,11 +334,12 @@
     }
 
     .idsk-footer-extended-feedback-button {
-        padding: 0 0 0 25px;
+        text-align: center;
+        color: $idsk-footer-light-blue;
     }
 
     .idsk-footer-extended-close-button {
-        padding-top: 20px;
+        padding-top: 15px;
     }
 
     .idsk-footer-extended-help-button {
@@ -263,54 +349,36 @@
         cursor: pointer;
     }
 
-    .idsk-footer-extended-blue-border {
-        border-top: 5px solid govuk-colour("blue");
-        border-bottom: 5px solid govuk-colour("blue");
-        background-clip: border-box;
+    .idsk-footer-extended-help-button:active,
+    .idsk-footer-extended-help-button:focus {
+        background-color: govuk-colour("green");
     }
 
     .idsk-footer-extended-form-text {
-        font-family: Source Sans Pro;
+        font-family: "SourceSansPro", "Arial", sans-serif;
         font-style: normal;
-        font-weight: normal;
-        font-size: 19px;
-        line-height: 25px;
+        font-weight: 300;
         color: govuk-colour("black");
+    }
+
+    .idsk-footer-extended-display-none {
+        display: none;
     }
 
     .idsk-footer-extended-display-hidden {
         visibility: hidden;
     }
 
-    .idsk-footer-extended-display-none {
-        display: none;
-    }
-  
     .idsk-footer-extended-feedback-hidden {
         max-height: 0;
         transition: max-height 0.7s ease-out;
-    }
-
-    #with-hint:active,
-    #with-hint:focus {
-        outline: none;
-    }
-
-    .govuk-select:active,
-    .govuk-select:focus {
-        outline: none;
     }
 
     .idsk-footer-extended-open {
         max-height: 619px;
         height: auto;
         transition: max-height 0.7s ease-in;
-    }
-
-    .idsk-footer-extended-usefull-question {
-        @include govuk-grid-column("full");
-        padding-left: 0;
-        box-sizing: content-box;
+        overflow: hidden;
     }
 
     .idsk-footer-extended-feedback-question-info-usefull {
@@ -319,36 +387,83 @@
 
     .idsk-footer-extended-usefull-question-mobile {
         display: revert;
-        line-height: 38px;
-        padding-left: 15px;
+        line-height: 45px;
     }
 
     .idsk-footer-extended-white-border {
         border-top: 2px solid govuk-colour("white");
     }
+
+    .idsk-footer-extended-feedback-question-container {
+        display: -ms-flexbox;
+        display: flex;
+        width: -webkit-fill-available;
+    }
+
     @include mq(mobile) {
-        .idsk-footer-extended-usefull-answers-mobile {
-            float: right;
-            padding-right: 10%;
-            padding-top: 2%;
+        .idsk-footer-extended-text-h3 {
+            font-size: 18px;
+        }
+
+        .idsk-footer-extended-help-form-header-mobile {
+            padding: 0;
+        }
+        #idsk-footer-extended-heart {
+            text-align: center;
+        }
+
+        .idsk-footer-extended .govuk-button {
+            width: 50%;
+        }
+    }
+
+    #idsk-footer-extended-error-button,
+    #idsk-footer-extended-close-help-form-button-tablet,
+    #idsk-footer-extended-close-error-form-button-tablet {
+        float: right;
+    }
+
+    .idsk-footer-extended-close-button-mobile {
+        width: 25%;
+        padding-top: 20px;
+        display: inline;
+    }
+
+    .idsk-footer-extended-close-button-tablet {
+        display: none;
+    }
+
+    #idsk-footer-extended-help-form .govuk-button {
+        margin-top: 15px;
+    }
+
+    .idsk-footer-extended-usefull-answers-mobile {
+        float: right;
+        @include mq(mobile) {
+            padding-top: 13px;
+        }
+
+        @include mq(tablet) {
+            padding-top: 0;
+        }
+
+        @media screen and (min-width: 868px) {
+            padding-right: 12%;
         }
     }
 
     @include mq($from: tablet) {
-        .idsk-footer-extended-usefull-question {
-            @include govuk-grid-column("two-thirds");
-            padding: 0;
+        .idsk-footer-extended .govuk-button {
+            width: 26%;
         }
 
-        .idsk-footer-extended-usefull-answers-mobile {
-            float: none;
+        _:-ms-fullscreen,
+        :root .idsk-footer-extended-usefull-answers-mobile {
             display: inline;
-            padding-right: none;
-            padding-top: none;
         }
 
         .idsk-footer-extended-feedback-question-info-usefull {
-            display: unset;
+            display: inline;
         }
 
         .idsk-footer-extended-usefull-question-mobile {
@@ -358,6 +473,68 @@
         .idsk-footer-extended-white-border {
             border-top: none;
         }
+
+        .idsk-footer-extended-close-button-mobile {
+            display: none;
+        }
+
+        .idsk-footer-extended-close-button-tablet {
+            display: inline;
+            padding-top: 19px;
+        }
+
+        .idsk-footer-extended-feedback-button {
+            text-align: left;
+        }
+
+        #idsk-footer-extended-heart {
+            text-align: left;
+        }
+
+        .idsk-footer-extended {
+            margin-right: 0;
+        }
+    }
+
+    .idsk-footer-extended-feedback-container {
+        overflow: hidden;
+        @include mq(mobile) {
+            margin: 0px -15px;
+            padding: 0;
+        }
+        @include mq($from: tablet) {
+            margin: 0;
+            padding: 25px 0;
+        }
+    }
+
+    #idsk-footer-extended-help-form .govuk-button {
+        @include mq(mobile) {
+            width: 57%;
+        }
+        @include mq(tablet) {
+            width: 50%;
+        }
+        @include mq(desktop) {
+            width: 36%;
+        }
+    }
+
+    .idsk-footer-extended-main-content .govuk-grid-column-two-thirds,
+    .idsk-footer-extended-main-content .govuk-grid-column-one-third,
+    .idsk-footer-extended-main-content .govuk-grid-column-full {
+        @include mq(mobile) {
+            padding: 0;
+        }
+        @include mq($from: tablet) {
+            padding: 0px 15px 15px 15px;
+        }
+    }
+
+    .idsk-footer-extended-description-panel .govuk-grid-column-two-thirds {
+        @include mq($from: tablet) {
+            padding: 0;
+        }
     }
 
     .idsk-footer-extended-heart {
@@ -366,20 +543,38 @@
 
     .idsk-footer-extended-heart-visible {
         display: block;
-    }
-
-    .idsk-footer-extended-error-question {
-        border-top: 2px solid govuk-colour("white");
-        padding-right: 1px;
-        padding-left: 1px;
-        @include govuk-grid-column("full");
-    }
-
-    @include mq($from: tablet) {
-        .idsk-footer-extended-error-question {
-            border-top: none;
-            @include govuk-grid-column("one-third");
+        @include mq(mobile) {
+            padding-top: 5px;
         }
+        @include mq($from: tablet) {
+            padding-top: 0;
+        }
+    }
+
+    .idsk-footer-extended-answers-form {
+        float: right;
+
+        @include mq($from: desktop) {
+            padding-right: 15%;
+        }
+    }
+
+    .idsk-footer-extended-feedback-text-answers:focus,
+    .idsk-footer-extended-feedback-text-answers:active,
+    #idsk-footer-extended-close-error-form-button-tablet:focus,
+    #idsk-footer-extended-close-error-form-button-tablet:active,
+    #idsk-footer-extended-close-help-form-button-tablet:focus,
+    #idsk-footer-extended-close-help-form-button-tablet:active {
+        outline: 3px solid $idsk-footer-light-yellow;
+    }
+
+    .idsk-footer-extended-feedback-container .govuk-textarea,
+    .idsk-footer-extended-feedback-container .govuk-hint,
+    .idsk-footer-extended-feedback-container .govuk-label,
+    .idsk-footer-extended-feedback-container .govuk-select {
+        font-family: "SourceSansPro";
+        font-weight: 300;
+        font-size: 16px;
     }
 
     @keyframes blinker {
