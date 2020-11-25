@@ -1,32 +1,38 @@
-import { nodeListForEach } from '../govuk/common'
-import { initAll as initAllGOVUKjs } from '../govuk/all'
-import FooterExtended from './components/footer-extended/footer-extended'
-import CharacterCount from './components/character-count/character-count'
+import { nodeListForEach } from "./common";
+import { initAll as initAllGOVUKjs } from "../govuk/all";
+import FooterExtended from "./components/footer-extended/footer-extended";
+import CharacterCount from "./components/character-count/character-count";
+import Crossroad from "./components/crossroad/crossroad";
 
 function initAll(options) {
   // Set the options to an empty object by default if no options are passed.
-  options = typeof options !== 'undefined' ? options : {}
+  options = typeof options !== "undefined" ? options : {};
 
   // Allow the user to initialise ID-SK Frontend in only certain sections of the page
   // Defaults to the entire document if nothing is set.
-  let scope = typeof options.scope !== 'undefined' ? options.scope : document
+  let scope = typeof options.scope !== "undefined" ? options.scope : document;
   // Find first Footer-extended module to enhance.
-  let $footerExtended = scope.querySelectorAll('[data-module="idsk-footer-extended"]')
+  let $footerExtended = scope.querySelectorAll(
+    '[data-module="idsk-footer-extended"]'
+  );
   nodeListForEach($footerExtended, function ($footerExtended) {
-    new FooterExtended($footerExtended).init()
-  })
+    new FooterExtended($footerExtended).init();
+  });
 
-  var $characterCounts = scope.querySelectorAll('[data-module="idsk-character-count"]')
+  var $characterCounts = scope.querySelectorAll(
+    '[data-module="idsk-character-count"]'
+  );
   nodeListForEach($characterCounts, function ($characterCount) {
-    new CharacterCount($characterCount).init()
-  })
+    new CharacterCount($characterCount).init();
+  });
+
+  var $crossroad = scope.querySelectorAll('[data-module="idsk-crossroad"]');
+  nodeListForEach($crossroad, function ($crossroad) {
+    new Crossroad($crossroad).init();
+  });
 
   // Init all GOVUK components js
-  initAllGOVUKjs(options)
+  initAllGOVUKjs(options);
 }
 
-export {
-  initAll,
-  FooterExtended,
-  CharacterCount
-}
+export { initAll, FooterExtended, CharacterCount, Crossroad };

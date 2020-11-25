@@ -23,6 +23,10 @@
       &:hover {
         color: #003078;
       }
+
+      &:focus {
+        @include govuk-focused-text;
+      }
     }
 
     &-subtitle {
