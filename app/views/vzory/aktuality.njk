@@ -1,0 +1,101 @@
+{% extends "layout.njk" %}
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "../../../src/idsk/components/card/macro.njk" import idskCard %}
+
+{% set pageName = "Aktuality" %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    "items": [
+    { text: 'ID-SK frontend', href: '/' + legacyQuery },
+    { text: pageName }
+    ]
+  }) }}
+{% endblock %}  
+
+{% block content %}
+
+    <div class="govuk-width-container">
+        <h1 class="govuk-heading-xl">{{pageName}}</h1>
+        <div class="govuk-grid-row">
+            {% set exampleComponentHtml %}
+                {{ idskCard({ 
+                    "type": "hero", 
+                    "imgSrc": "/public/assets/images/examples/card-1.jpg", 
+                    "link": "#",
+                    "heading": "Podpora najmenej rozvinutých okresov: Nové výzvy po novom!",
+                    "description": "Regióny sú pre vládu prioritou, preto podpredsedníčka vlády a ministerka investícií, regionálneho rozvoja a informatizácie Veronika Remišová.",
+                    "date": { "date": "1.7.2020", "link": "#" },
+                    "tags": [ { "tag": "Ministerka", "link": "#" }, { "tag": "COVID-19", "link": "#" }, { "tag": "Eurofondy", "link": "#" } ]
+                }) }}
+            {% endset %}
+            {{exampleComponentHtml | safe}}
+
+            {% set exampleComponentHtml %}
+                {{ idskCard({ 
+                    "type": "secondary-vertical", 
+                    "imgSrc": "/public/assets/images/examples/card-2.jpg", 
+                    "link": "#",
+                    "heading": "V. Remišová rokovala s ministrami V4 o nových návrhoch financovania projektov na zmiernenie dopadov pandémie",
+                    "description": "Regióny sú pre vládu prioritou, preto podpredsedníčka vlády a ministerka investícií, regionálneho rozvoja a informatizácie Veronika Remišová.",
+                    "date": { "date": "1.7.2020", "link": "#" },
+                    "tags": [ { "tag": "Ministerka", "link": "#" }, { "tag": "COVID-19", "link": "#" } ]
+                }) }}
+            {% endset %}
+            {{exampleComponentHtml | safe}}
+
+            {% set exampleComponentHtml %}
+                {{ idskCard({ 
+                    "type": "secondary-vertical", 
+                    "imgSrc": "/public/assets/images/examples/card-2.jpg", 
+                    "link": "#",
+                    "heading": "V. Remišová rokovala s ministrami V4 o nových návrhoch financovania projektov na zmiernenie dopadov pandémie",
+                    "description": "Regióny sú pre vládu prioritou, preto podpredsedníčka vlády a ministerka investícií, regionálneho rozvoja a informatizácie Veronika Remišová.",
+                    "date": { "date": "1.7.2020", "link": "#" },
+                    "tags": [ { "tag": "Ministerka", "link": "#" }, { "tag": "COVID-19", "link": "#" } ]
+                }) }}
+            {% endset %}
+            {{exampleComponentHtml | safe}}
+
+            {% set exampleComponentHtml %}
+                {{ idskCard({ 
+                    "type": "secondary-vertical", 
+                    "imgSrc": "/public/assets/images/examples/card-2.jpg", 
+                    "link": "#",
+                    "heading": "V. Remišová rokovala s ministrami V4 o nových návrhoch financovania projektov na zmiernenie dopadov pandémie",
+                    "description": "Regióny sú pre vládu prioritou, preto podpredsedníčka vlády a ministerka investícií, regionálneho rozvoja a informatizácie Veronika Remišová.",
+                    "date": { "date": "1.7.2020", "link": "#" },
+                    "tags": [ { "tag": "Ministerka", "link": "#" }, { "tag": "COVID-19", "link": "#" } ]
+                }) }}
+            {% endset %}
+            {{exampleComponentHtml | safe}}
+
+            {% set exampleComponentHtml %}
+                {{ idskCard({ 
+                    "type": "secondary-vertical", 
+                    "imgSrc": "/public/assets/images/examples/card-2.jpg", 
+                    "link": "#",
+                    "heading": "V. Remišová rokovala s ministrami V4 o nových návrhoch financovania projektov na zmiernenie dopadov pandémie",
+                    "description": "Regióny sú pre vládu prioritou, preto podpredsedníčka vlády a ministerka investícií, regionálneho rozvoja a informatizácie Veronika Remišová.",
+                    "date": { "date": "1.7.2020", "link": "#" },
+                    "tags": [ { "tag": "Ministerka", "link": "#" }, { "tag": "COVID-19", "link": "#" } ]
+                }) }}
+            {% endset %}
+            {{exampleComponentHtml | safe}}
+
+            {% set exampleComponentHtml %}
+                {{ idskCard({ 
+                    "type": "secondary-vertical", 
+                    "imgSrc": "/public/assets/images/examples/card-2.jpg", 
+                    "link": "#",
+                    "heading": "V. Remišová rokovala s ministrami V4 o nových návrhoch financovania projektov na zmiernenie dopadov pandémie",
+                    "description": "Regióny sú pre vládu prioritou, preto podpredsedníčka vlády a ministerka investícií, regionálneho rozvoja a informatizácie Veronika Remišová.",
+                    "date": { "date": "1.7.2020", "link": "#" },
+                    "tags": [ { "tag": "Ministerka", "link": "#" }, { "tag": "COVID-19", "link": "#" } ]
+                }) }}
+            {% endset %}
+            {{exampleComponentHtml | safe}}
+        </div>
+    </div>
+{% endblock %}  
+

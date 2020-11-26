@@ -19,16 +19,6 @@
     &-profile-vertical {
       @include govuk-grid-column("one-third");
     }
-
-    &-profile-horizontal {
-      padding: 0;
-      padding-bottom: 60px;
-      border-bottom: 3px solid #bfc1c3;
-
-      @include mq($from: tablet) {
-        padding-bottom: 30px;
-      }
-    }
   }
 
   .idsk-card-img {
@@ -36,6 +26,7 @@
 
     &-hero {
       @include govuk-grid-column("one-half");
+      padding: 0 15px 0 0;
     }
 
     &-secondary-horizontal,
@@ -57,6 +48,11 @@
     color: govuk-colour("grey-1");
     display: inline;
     text-decoration: none;
+
+    &:hover,
+    &:visited {
+      color: #0b0c0c;
+    }
 
     &-date {
       &:after {
@@ -99,6 +95,15 @@
 
     &:hover {
       color: #0b0c0c;
+      text-decoration: underline;
+    }
+
+    &:focus {
+      @include govuk-focused-text;
+    }
+
+    &:visited {
+      color: #551a8b;
     }
 
     &-basic-variant,
