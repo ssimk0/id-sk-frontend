@@ -24,8 +24,6 @@
           role="presentation"
           focusable="false"
           class="idsk-header-extended__logotype-crown"
-          width="218"
-          height="47"
           viewBox="0 0 553.9584961 126.9964905"
           fill="none" 
           xmlns="http://www.w3.org/2000/svg"
@@ -159,26 +157,22 @@
         <img 
           src="{{ params.assetsPath | default('/assets/images') }}/logo-mirri-biele-sk-2.png" 
           class="idsk-header-extended__logotype-crown-mobile-navigation"
-          height="47"
-          width="auto"
         >
       </a>
       <div class="idsk-header-extended-x-mark"></div>
     </div>
 
-    {% if params.search %}
-      <div tabindex="0" class="idsk-header-extended__search">
-        <div class="idsk-header-extended__search-text">
-          <span><i class="fas fa-search"></i>Vyhľadávanie</span>
-        </div>
-        <div class="idsk-header-extended__search-form">
-          <input type="text" name="search" placeholder="Zadajte hľadaný výraz">
-          <a href="#" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
-            <i class="fas fa-search"></i>
-          </a>
-        </div>
+    <div tabindex="0" class="idsk-header-extended__search {{ 'mobile-only' if not params.search }}">
+      <div class="idsk-header-extended__search-text">
+        <span><i class="fas fa-search"></i>Vyhľadávanie</span>
       </div>
-    {% endif %}
+      <div class="idsk-header-extended__search-form">
+        <input type="text" name="search" placeholder="Zadajte hľadaný výraz">
+        <a href="#" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
+          <i class="fas fa-search"></i>
+        </a>
+      </div>
+    </div>
 
     {% if params.language %}
       <div
@@ -201,10 +195,10 @@
             <ul>
               {% for language in params.language.choices %}
                 <li>
-                  <span>
+                  <a title="{{ language.text }}" href="{{ language.link }}">
                     <img src="{{ params.assetsPath | default('/assets/images') }}/flags/{{ language.flag }}" alt="{{ language.text }}">
-                    <span>{{ language.text }}</span>
-                  </span> 
+                    {{ language.text }}
+                  </a> 
                 </li>
               {% endfor %}
             </ul>
@@ -227,21 +221,21 @@
       </div>
     {% endif %}
 
-    {% if params.navigation %}
-      <div class="idsk-header-extended__content">
-        <button 
-          type="button" 
-          role="button"
-          class="idsk-header-extended__menu-button idsk-js-header-extended-side-menu"
-          aria-controls="navigation"
-          aria-label="Show or hide Top Level Navigation"
-          >Menu 
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <line x1="5" y1="19.8752" x2="35" y2="19.8752" stroke="#003078" stroke-width="3"/>
-              <line x1="5" y1="29.2507" x2="30.5009" y2="29.2507" stroke="#003078" stroke-width="3"/>
-              <line x1="5.00177" y1="10.5" x2="30.5027" y2="10.5" stroke="#003078" stroke-width="3" stroke-linejoin="round"/>
-            </svg>
-          </button>
+    <div class="idsk-header-extended__content">
+      <button 
+        type="button" 
+        role="button"
+        class="idsk-header-extended__menu-button idsk-js-header-extended-side-menu"
+        aria-controls="navigation"
+        aria-label="Show or hide Top Level Navigation"
+        >Menu 
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="5" y1="19.8752" x2="35" y2="19.8752" stroke="#003078" stroke-width="3"/>
+          <line x1="5" y1="29.2507" x2="30.5009" y2="29.2507" stroke="#003078" stroke-width="3"/>
+          <line x1="5.00177" y1="10.5" x2="30.5027" y2="10.5" stroke="#003078" stroke-width="3" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      {% if params.navigation %}
         <nav>
           <ul
             id="navigation"
@@ -268,10 +262,12 @@
                       {% for subItem in item.submenu%}
                         <li>
                           <span>
-                            {% if subItem.icon %}
-                            <i class="{{ subItem.icon }}" aria-hidden="true"></i>
-                            {% endif %}
-                            <a href="{{ subItem.link }}" title="{{ subItem.text }}">{{ subItem.text }}</a>
+                            <a href="{{ subItem.link }}" title="{{ subItem.text }}">
+                              {% if subItem.icon %}
+                              <i class="{{ subItem.icon }}" aria-hidden="true"></i>
+                              {% endif %}
+                              {{ subItem.text }}
+                            </a>
                           <span>
                         </li>
                       {% endfor %}
@@ -282,8 +278,8 @@
             {% endfor %}
           </ul>
         </nav>
-      </div>
-    {% endif %}
+      {% endif %}
+    </div>
 
   </div>
   

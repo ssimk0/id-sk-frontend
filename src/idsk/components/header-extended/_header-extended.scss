@@ -15,7 +15,8 @@
   $idsk-header-dark-blue: govuk-colour("dark-blue");
   $idsk-header-light-blue: #0065B3;
   $idsk-header-link: govuk-colour("white");
-  $idsk-header-link-active: govuk-colour("white");
+  $idsk-header-link-active: ovuk-colour("black");
+  $idsk-header-link-active-background: govuk-colour("yellow");
   $idsk-header-nav-item-border-color: #2e3133;
   $idsk-header-mobile-font-size: 21px;
   
@@ -61,6 +62,32 @@
 
   }
 
+  .idsk-header__link {
+    text-decoration: none;
+
+    &:link,
+    &:visited {
+      color: $idsk-header-link;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:focus {
+      @include govuk-focused-text;
+    }
+
+    // alphagov/govuk_template includes a specific a:link:focus selector
+    // designed to make unvisited links a slightly darker blue when focussed, so
+    // we need to override the text colour for that combination of selectors.
+    @include govuk-compatibility(govuk_template) {
+      &:link:focus {
+        @include govuk-text-colour;
+      }
+    }
+  }
+
   ///  logo part
   .idsk-header-extended__logo {
     order: 1;
@@ -71,10 +98,20 @@
       padding-bottom: 40px;
       padding-left: 20px;
     }
+
+    & > a {
+      display: initial;
+
+      &:focus svg, &:focus img{
+        @include govuk-focused-text;
+      }
+    }
   }
 
   /// logo svg image
   .idsk-header-extended__logotype-crown {
+    max-width: 246px;
+    width: 70%;
     position: relative;
     fill: currentColor;
     vertical-align: top;
@@ -197,8 +234,18 @@
         margin: 0;
       }
 
-      span:hover {
-        text-decoration: underline
+      a {
+        color: $idsk-header-dark-blue;
+        display: block;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline
+        }
+        
+        &:focus {
+          @include govuk-focused-text;
+        }
       }
     }
     
@@ -219,6 +266,10 @@
       & > span {
         margin-right: 15px;
       }
+    }
+
+    &--active .idsk-header-extended__language--current-text{
+      @include govuk-focused-text;
     }
 
     &--active &--current-text::after {
@@ -250,6 +301,10 @@
         @include mq ($until: desktop){
           color: $idsk-header-link;
         }
+
+        &:focus {
+          @include govuk-focused-text;
+        }
       }
 
     }
@@ -263,26 +318,28 @@
     list-style: none;
 
     &-item {
-      padding: 0;
+      padding: 15px 0;
   
       @include mq ($from: desktop) {
         display: inline-block;
         border: none;
+        padding: 15px 35px;
       }
   
       & > a {
         @include govuk-font($size: 16, $weight: bold);
         white-space: nowrap;
-        outline: none;
         text-decoration: none;
-        padding: 15px 25px;
 
         &:link,
         &:hover,
         &:visited,
         &:active  {
           color: $idsk-header-dark-blue;
-          line-height: 50px;
+        }
+
+        &:focus {
+          @include govuk-focused-text;
         }
       }
 
@@ -307,8 +364,11 @@
           &:link,
           &:hover,
           &:visited {
-            color: $idsk-header-link-active;
-            outline: none;
+            color: $idsk-header-link;
+          }
+
+          &:focus {
+            @include govuk-focused-text;
           }
         }
 
@@ -351,6 +411,10 @@
         color: $idsk-header-link;
         background: none;
       }
+
+      &:focus {
+        @include govuk-focused-text;
+      }
     }
 
     ul {
@@ -392,7 +456,7 @@
     font-weight: 700;
     position: absolute;
     top: 15px;
-    right: 0;
+    right: 15px;
     padding: 0;
     border: 0;
     color: $idsk-header-dark-blue;
@@ -432,7 +496,7 @@
     @include mq ($until: desktop){
       position: fixed;
       position: sticky;
-      top: 0px;
+      top: 0;
       padding-top: 15px;
       width: 100vw;
       display: table;
@@ -458,8 +522,8 @@
       height: 25px;
       padding: 10px;
       position: absolute;
-      left: calc(100vw - 60px);
-      top: 0;
+      left: calc(100vw - 50px);
+      top: 10px;
       display: none;
       z-index: 5;
       cursor: pointer;
@@ -497,7 +561,6 @@
 
     &__search {
       order: 2; // for mobile/tablet devices
-      display: none; 
       color: $idsk-header-link;
 
       @include mq ($from: desktop) {
@@ -505,7 +568,10 @@
         color: $idsk-header-dark-blue;
         height: fit-content;
       }
-      
+    }
+
+    .mobile-only {
+      display: none;
     }
 
     &__language {
@@ -565,12 +631,15 @@
           }
   
           &type-crown-mobile-navigation {
+            height: auto;
+            max-width: 246px;
+            width: 70%;
             display: inline-block;
           }
         }
 
         &__search {
-          display: block;
+          display: inline-block;
           position: relative;
           z-index: 2;
           width: 100%;
@@ -590,6 +659,9 @@
               border: none;
               padding: 8px;
               font-size: $idsk-header-mobile-font-size;
+            }
+            input:focus {
+              outline: 3px solid govuk-colour("orange"); // nie border ale outline..
             }
   
             a {
@@ -614,6 +686,10 @@
             &-list {
               background-color: transparent;
               border: none;
+
+              a {
+                color: govuk-colour("white");
+              }
             }
 
             &--current-text:after {
@@ -643,6 +719,10 @@
             padding-left: 0;
             font-size: $idsk-header-mobile-font-size;
             font-weight: 600;
+          }
+
+          &-item--active .idsk-header-extended__link{
+            @include govuk-focused-text
           }
 
           .idsk-header-extended__navigation-submenu li a {

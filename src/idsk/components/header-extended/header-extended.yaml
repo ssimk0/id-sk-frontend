@@ -58,6 +58,10 @@ params:
       type: string
       required: true
       description: Name of flag image of language
+    - name: link
+      type: string
+      required: false
+      description: link to english mutation
 - name: socials
   type: array
   required: false
@@ -163,10 +167,13 @@ examples:
       choices:
         - flag: "slovakia-flag-icon-16.png"
           text: "slovenčina"
+          link: "#"
         - flag: "united-states-of-america-flag-icon-16.png"
           text: "english"
+          link: "#"
         - flag: "germany-flag-icon-16.png"
           text: "german"
+          link: "#"
     socials:
       - icon: "fab fa-instagram"
         link: "#"
@@ -201,10 +208,13 @@ examples:
       choices:
         - flag: "slovakia-flag-icon-16.png"
           text: "slovenčina"
+          link: "#"
         - flag: "united-states-of-america-flag-icon-16.png"
           text: "english"
+          link: "#"
         - flag: "germany-flag-icon-16.png"
           text: "german"
+          link: "#"
     socials:
       - icon: "fab fa-instagram"
         link: "#"
@@ -272,10 +282,13 @@ examples:
       choices:
         - flag: "slovakia-flag-icon-16.png"
           text: "slovenčina"
+          link: "#"
         - flag: "united-states-of-america-flag-icon-16.png"
           text: "english"
+          link: "#"
         - flag: "germany-flag-icon-16.png"
           text: "german"
+          link: "#"
     socials:
       - icon: "fab fa-instagram"
         link: "#"
