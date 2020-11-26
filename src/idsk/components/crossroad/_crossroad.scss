@@ -27,6 +27,10 @@
       &:focus {
         @include govuk-focused-text;
       }
+
+      &:visited {
+        color: #551a8b;
+      }
     }
 
     &-subtitle {
