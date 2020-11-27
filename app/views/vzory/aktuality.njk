@@ -17,7 +17,7 @@
 
     <div class="govuk-width-container">
         <h1 class="govuk-heading-xl">{{pageName}}</h1>
-        <div class="govuk-grid-row">
+        <div class="govuk-grid-row" style="padding-bottom: 20px">
             {% set exampleComponentHtml %}
                 {{ idskCard({ 
                     "type": "hero", 
@@ -30,7 +30,8 @@
                 }) }}
             {% endset %}
             {{exampleComponentHtml | safe}}
-
+        </div>
+        <div class="govuk-grid-row">
             {% set exampleComponentHtml %}
                 {{ idskCard({ 
                     "type": "secondary-vertical", 
@@ -69,6 +70,8 @@
                 }) }}
             {% endset %}
             {{exampleComponentHtml | safe}}
+        </div>
+        <div class="govuk-grid-row">
 
             {% set exampleComponentHtml %}
                 {{ idskCard({ 
