@@ -245,6 +245,11 @@
         }
     }
 
+    .idsk-footer-extended-logo:focus,
+    .idsk-footer-extended-logo:active {
+        @include govuk-focused-text;
+    }
+
     .idsk-footer-extended-logo-box {
         text-align: -webkit-center;
         @include mq($from: tablet) {
@@ -362,10 +367,7 @@
     }
 
     .idsk-footer-extended .govuk-button {
-        width: 50%;
-        @include mq($from: tablet) {
-            width: 26%;
-        }
+        width: auto;
     }
 
     #idsk-footer-extended-error-button,
@@ -437,13 +439,7 @@
 
     #idsk-footer-extended-help-form .govuk-button {
         margin-top: 15px;
-        width: 57%;
-        @include mq(tablet) {
-            width: 50%;
-        }
-        @include mq($from: desktop) {
-            width: 36%;
-        }
+        width: auto;
     }
 
     .idsk-footer-extended-feedback-container .govuk-textarea:focus {
