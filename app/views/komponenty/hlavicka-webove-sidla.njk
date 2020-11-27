@@ -28,6 +28,7 @@
                 <li><a href="#ukazka1">Ukážka 1</a></li>
                 <li><a href="#ukazka2">Ukážka 2</a></li>
                 <li><a href="#ukazka3">Ukážka 3</a></li>
+                <li><a href="#ukazka4">Ukážka 4</a></li>
                 <li><a href="#priklady">Priklady</a></li>
             </ul>
 
@@ -61,6 +62,19 @@
                 {% include "../komponenty/examples/hlavickaWeboveSidla3.njk" %}
             {% endset %}
             {{exampleComponentHtml | safe}}
+          </div>
+          <h3 class="govuk-heading-m" id="ukazka4">Ukážka 4</h3>
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-half">
+              <div class="example example-mobile example-mobile-scroll">
+                <iframe src="/custom-components/header-extended/s-v%C3%BDberom-jazyka-a-soci%C3%A1lnymi-sie%C5%A5ami-a-navig%C3%A1ciou/preview"></iframe>
+              </div>
+            </div>
+            <div class="govuk-grid-column-one-half">
+              <div class="example example-mobile example-mobile-scroll">
+                <iframe src="/custom-components/header-extended/defaultná/preview"></iframe>
+              </div>
+            </div>
           </div>
         </div>
 

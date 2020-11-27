@@ -15,13 +15,12 @@
   $idsk-header-dark-blue: govuk-colour("dark-blue");
   $idsk-header-light-blue: #0065B3;
   $idsk-header-link: govuk-colour("white");
-  $idsk-header-link-active: ovuk-colour("black");
-  $idsk-header-link-active-background: govuk-colour("yellow");
   $idsk-header-nav-item-border-color: #2e3133;
   $idsk-header-mobile-font-size: 21px;
   
   .idsk-header-extended {
     @include govuk-font($size: 16);
+    padding-top: 30px;
 
     color: $idsk-header-dark-blue;
     background: $idsk-header-background;
@@ -74,7 +73,8 @@
       text-decoration: underline;
     }
 
-    &:focus {
+    &:focus,
+    &:active {
       @include govuk-focused-text;
     }
 
@@ -102,7 +102,10 @@
     & > a {
       display: initial;
 
-      &:focus svg, &:focus img{
+      &:focus svg,
+      &:active svg,
+      &:focus img,
+      &:active img {
         @include govuk-focused-text;
       }
     }
@@ -229,9 +232,13 @@
 
       ul {
         list-style: none;
-        padding: 5px;
-        text-align: left;
+        padding: 0;
         margin: 0;
+        text-align: left;
+
+        @include mq($from: desktop){
+          padding: 5px;
+        }
       }
 
       a {
@@ -243,7 +250,8 @@
           text-decoration: underline
         }
         
-        &:focus {
+        &:focus,
+        &:active {
           @include govuk-focused-text;
         }
       }
@@ -302,7 +310,8 @@
           color: $idsk-header-link;
         }
 
-        &:focus {
+        &:focus,
+        &:active {
           @include govuk-focused-text;
         }
       }
@@ -333,12 +342,12 @@
 
         &:link,
         &:hover,
-        &:visited,
-        &:active  {
+        &:visited  {
           color: $idsk-header-dark-blue;
         }
 
-        &:focus {
+        &:focus,
+        &:active {
           @include govuk-focused-text;
         }
       }
@@ -367,7 +376,8 @@
             color: $idsk-header-link;
           }
 
-          &:focus {
+          &:focus,
+          &:active {
             @include govuk-focused-text;
           }
         }
@@ -412,7 +422,8 @@
         background: none;
       }
 
-      &:focus {
+      &:focus,
+      &:active {
         @include govuk-focused-text;
       }
     }
@@ -464,6 +475,11 @@
     display: none;
     align-items: center;
     cursor: pointer;
+
+    &:focus,
+    &:active {
+      @include govuk-focused-text;
+    }
   }
  
   @include govuk-media-query($media-type: print) {
@@ -530,6 +546,11 @@
 
       &:after {
         content: "\2715";
+      }
+
+      &:focus,
+      &:active {
+        @include govuk-focused-text;
       }
     }
 
@@ -730,7 +751,8 @@
             font-size: 19px;
           }
 
-          .idsk-header-extended__navigation-submenu li a:hover {
+          .idsk-header-extended__navigation-submenu li a:hover,
+          .idsk-header-extended__navigation-submenu li a:active {
             background: #FFDF0F;
             color: $idsk-header-dark-blue;
             font-weight: 600;
