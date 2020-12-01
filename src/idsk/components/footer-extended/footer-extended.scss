@@ -213,7 +213,7 @@
 
     #idsk-footer-extended-feedback {
         @include mq(mobile) {
-            font-size: 16px;
+            font-size: 14px;
         }
 
         @include mq($from: tablet) {
@@ -237,8 +237,6 @@
     .idsk-footer-extended-feedback-text-answers {
         font-style: normal;
         font-weight: normal;
-        font-size: 16px;
-        line-height: 20px;
         color: govuk-colour("white");
         @include mq($from: desktop) {
             font-size: 20px;
@@ -401,9 +399,7 @@
 
     .idsk-footer-extended-usefull-answers-mobile {
         float: right;
-        @include mq(mobile) {
-            padding-top: 13px;
-        }
+        padding-top: 13px;
 
         @include mq(tablet) {
             padding-top: 0;
@@ -427,10 +423,9 @@
 
     .idsk-footer-extended-feedback-container {
         overflow: hidden;
-        @include mq(mobile) {
-            margin: 0px -15px;
-            padding: 0;
-        }
+        margin: 0px -15px;
+        padding: 0;
+
         @include mq($from: tablet) {
             margin: 0;
             padding: 25px 0;
