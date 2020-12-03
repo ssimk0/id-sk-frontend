@@ -9,12 +9,14 @@
     $govuk-footer-border: $govuk-border-colour;
     $idsk-footer-light-blue: #0065b3;
     $idsk-footer-light-yellow: #ffdf0f;
+    $govuk-footer-link-hover: #171819;
+    $govuk-footer-text: #454a4c;
+    $govuk-footer-link-visited: #2e358b;
+
     // This variable can be removed entirely once the legacy palette goes away,
     // as it'll just be the same as $govuk-footer-border.
     $govuk-footer-border-top: $govuk-border-colour;
-    $govuk-footer-text: $govuk-text-colour;
     $govuk-footer-link: $govuk-link-colour;
-    $govuk-footer-link-hover: $govuk-focus-text-colour;
 
     $grid-columns: 12;
     $grid-gutter-width: 30px;
@@ -60,6 +62,17 @@
         @include mq(desktop) {
             font-size: 16px;
             line-height: 20px;
+        }
+    }
+
+    .idsk-footer-extended .govuk-link {
+        color: $govuk-footer-text;
+        &:hover {
+            color: $govuk-footer-link-hover;
+        }
+
+        &:visited {
+            color: $govuk-footer-link-visited;
         }
     }
 
@@ -212,9 +225,7 @@
     }
 
     #idsk-footer-extended-feedback {
-        @include mq(mobile) {
-            font-size: 14px;
-        }
+        font-size: 14px;
 
         @include mq($from: tablet) {
             height: 70px;
@@ -235,11 +246,13 @@
     }
 
     .idsk-footer-extended-feedback-text-answers {
+        @include govuk-font($size: 16);
         font-style: normal;
         font-weight: normal;
         color: govuk-colour("white");
         @include mq($from: desktop) {
             font-size: 20px;
+            margin-top: -4px;
         }
     }
 
@@ -475,8 +488,10 @@
     .idsk-footer-extended-heart-visible {
         display: block;
         padding-top: 5px;
+        line-height: 45px;
         @include mq($from: tablet) {
             padding-top: 0;
+            line-height: 0px;
         }
     }
 
