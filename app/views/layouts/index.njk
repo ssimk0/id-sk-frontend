@@ -43,7 +43,7 @@
     {% set idskComponentsUsageContent %}
       <ul class="govuk-list">
         {% for pageName, pageTitle in idskComponentsUsageContent %}
-          <li><a href="/{{ pageName }}" class="govuk-link">{{ pageTitle | replace("-", " ") | capitalize }}</a></li>
+          <li><a href="/komponenty/{{ pageName }}" class="govuk-link">{{ pageTitle | replace("-", " ") | capitalize }}</a></li>
         {% endfor %}
       </ul>
     {% endset %}

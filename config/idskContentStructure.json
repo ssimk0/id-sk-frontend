@@ -31,20 +31,19 @@
     "zoznamy-uloh": "Zoznamy úloh"
   },
   "componentsUsage": {
-    "komponenty/chyby-a-validacia": "Chyby a validácia",
-    "komponenty/farby": "Farby",
-    "komponenty/formularove-prvky": "Formulárové prvky",
-    "komponenty/hlavicka-paticka": "Hlavička a pätička",
-    "komponenty/hlavicka-webove-sidla": "Hlavička pre webové sídla",
-    "custom-components/header-extended": "Hlavička pre webové sídla - rozšírené",
-    "komponenty/icony-a-obrazky": "Ikony a obrázky",
-    "komponenty/karta": "Karta",
-    "komponenty/oznacenie-verzie-sluzby": "Označenie verzie služby",
-    "komponenty/footer-extended": "Patička pre webové sídla a spätná väzba",
-    "komponenty/rozcestnik": "Rozcestník",
-    "komponenty/rozlozenie-stranky": "Rozloženie stránky",
-    "komponenty/stitok-varovanie-info": "Štítok - varovanie / info",
-    "komponenty/tlacidla": "Tlačidlá",
-    "komponenty/typografia": "Typografia"
+    "chyby-a-validacia": "Chyby a validácia",
+    "farby": "Farby",
+    "formularove-prvky": "Formulárové prvky",
+    "hlavicka-paticka": "Hlavička a pätička",
+    "hlavicka-webove-sidla": "Hlavička pre webové sídla",
+    "footer-extended": "Patička pre webové sídla a spätná väzba",
+    "icony-a-obrazky": "Ikony a obrázky",
+    "karta": "Karta",
+    "oznacenie-verzie-sluzby": "Označenie verzie služby",
+    "rozcestnik": "Rozcestník",
+    "rozlozenie-stranky": "Rozloženie stránky",
+    "stitok-varovanie-info": "Štítok - varovanie / info",
+    "tlacidla": "Tlačidlá",
+    "typografia": "Typografia"
   }
 }

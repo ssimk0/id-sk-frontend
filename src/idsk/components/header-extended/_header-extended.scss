@@ -177,7 +177,7 @@
       
       & input,& input:focus {
         padding: 5px;
-        border: 3px solid govuk-colour("orange");
+        border: 3px solid govuk-colour("yellow");
         margin-right: -3px;
         outline: none;
       }
@@ -226,18 +226,17 @@
 
     &-list {
       display: none;
-      background-color: govuk-colour("white");
-      border: 1px solid #c0c0c047;
-      min-width: 120px;
 
       ul {
         list-style: none;
         padding: 0;
         margin: 0;
         text-align: left;
+        margin-top: 10px;
+        background-color: govuk-colour("white");
 
-        @include mq($from: desktop){
-          padding: 5px;
+        li {
+          padding: 5px 0;
         }
       }
 
@@ -280,9 +279,10 @@
       @include govuk-focused-text;
     }
 
-    &--active &--current-text::after {
+    &--active .idsk-header-extended__language--current-text::after {
       transition: transform 0.2s;
       transform: rotate(180deg);
+      border-color: govuk-colour("black") transparent transparent;
     }
 
     &--active &-list {
@@ -385,6 +385,7 @@
         .idsk-header-extended__arrow::after {
           transition: transform 0.2s;
           transform: rotate(180deg);
+          border-color: govuk-colour("black") transparent transparent;
         }
 
         .idsk-header-extended__navigation-submenu {
@@ -406,6 +407,7 @@
     @include mq ($from: desktop){
       position: absolute;
       padding: 20px 0;
+      margin-top: 15px;
     }
 
     a {
@@ -674,15 +676,21 @@
             text-align: left;
             display: block;
   
+            form:focus-within {
+              outline: 3px solid govuk-colour("yellow");
+
+              .govuk-button:focus {
+                box-shadow: none;
+                border: transparent;
+              }
+            }
+            
             input {
               width: 80%;
               max-width: 250px;
               border: none;
               padding: 8px;
               font-size: $idsk-header-mobile-font-size;
-            }
-            input:focus {
-              outline: 3px solid govuk-colour("orange"); // nie border ale outline..
             }
   
             a {
@@ -703,19 +711,19 @@
           display: inline-block;
           margin-top: 30px;
 
-          .idsk-header-extended__language {
-            &-list {
-              background-color: transparent;
-              border: none;
+          &-list ul {
+            background-color: transparent;
 
-              a {
-                color: govuk-colour("white");
-              }
+            a {
+              color: govuk-colour("white");
             }
+          }
 
-            &--current-text:after {
-              border-color: govuk-colour("white") transparent transparent;
-            }
+          &--current-text:after {
+            border-color: govuk-colour("white") transparent transparent;
+          }
+          &--active .idsk-header-extended__language--current-text::after {
+            border-color: govuk-colour("black") transparent transparent;
           }
         }
 
@@ -742,28 +750,42 @@
             font-weight: 600;
           }
 
-          &-item--active .idsk-header-extended__link{
+          &-item--active .idsk-header-extended__link {
             @include govuk-focused-text
           }
-
-          .idsk-header-extended__navigation-submenu li a {
-            font-weight: 200;
-            font-size: 19px;
-          }
-
-          .idsk-header-extended__navigation-submenu li a:hover,
-          .idsk-header-extended__navigation-submenu li a:active {
-            background: #FFDF0F;
-            color: $idsk-header-dark-blue;
-            font-weight: 600;
-            text-decoration: none;
-          }
-
-          .idsk-header-extended__navigation-submenu li a.active {
-            font-weight: 600;
+          .idsk-js-header-extended-submenu-toggle {
+            padding-right: 20px; // space for arrow, should be focused too
           }
         
         }
+
+        &__navigation-submenu {
+          padding-top: 20px;
+
+          ul {
+            padding-left: 0;
+            margin-left: 0;
+          }
+          
+          li a {
+            font-weight: 200;
+            font-size: 19px;
+            line-height: 25px;
+
+            &:hover,
+            &:active {
+              background: #FFDF0F;
+              color: $idsk-header-dark-blue;
+              font-weight: 600;
+              text-decoration: none;
+            }
+    
+            &.active {
+              font-weight: 600;
+            }
+          }
+        }
+
       }
 
     }
