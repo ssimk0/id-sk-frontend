@@ -58,6 +58,10 @@ params:
       type: string
       required: true
       description: Name of flag image of language
+    - name: link
+      type: string
+      required: false
+      description: link to english mutation
 - name: socials
   type: array
   required: false
@@ -138,8 +142,9 @@ previewLayout: full-width
 
 examples:
 - name: defaultná
-  description: Štandartná hlavička pre webové sídla
+  description: Štandartná hlavička pre webové sídla. Pri mobilnom zobrazení sa v tomto príklade ukáže zmenšené logo ako pri scrollovaní
   data:
+    classes: idsk-header-extended--shrink
 
 - name: s výberom jazyka a sociálnymi sieťami a navigáciou
   description: možnosť zvolenia jazykovej mutácia a pridania odkazov na sociálne siete a navigáciou
@@ -161,12 +166,12 @@ examples:
         text: "slovenčina"
         flag: "slovakia-flag-icon-16.png"
       choices:
-        - flag: "slovakia-flag-icon-16.png"
-          text: "slovenčina"
         - flag: "united-states-of-america-flag-icon-16.png"
           text: "english"
+          link: "#"
         - flag: "germany-flag-icon-16.png"
           text: "german"
+          link: "#"
     socials:
       - icon: "fab fa-instagram"
         link: "#"
@@ -199,12 +204,12 @@ examples:
         text: "slovenčina"
         flag: "slovakia-flag-icon-16.png"
       choices:
-        - flag: "slovakia-flag-icon-16.png"
-          text: "slovenčina"
         - flag: "united-states-of-america-flag-icon-16.png"
           text: "english"
+          link: "#"
         - flag: "germany-flag-icon-16.png"
           text: "german"
+          link: "#"
     socials:
       - icon: "fab fa-instagram"
         link: "#"
@@ -270,12 +275,12 @@ examples:
         text: "slovenčina"
         flag: "slovakia-flag-icon-16.png"
       choices:
-        - flag: "slovakia-flag-icon-16.png"
-          text: "slovenčina"
         - flag: "united-states-of-america-flag-icon-16.png"
           text: "english"
+          link: "#"
         - flag: "germany-flag-icon-16.png"
           text: "german"
+          link: "#"
     socials:
       - icon: "fab fa-instagram"
         link: "#"

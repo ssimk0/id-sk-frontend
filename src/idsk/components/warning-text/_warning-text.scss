@@ -5,18 +5,18 @@
 @include govuk-exports("idsk/component/warning-text") {
 
   .idsk-warning-text {
-    @include govuk-font($size: 19);
+    @include govuk-font($size: 16);
     @include govuk-text-colour;
 
     @include govuk-responsive-margin(6, "bottom");
-    padding: govuk-spacing(2) 0;
+    padding: 10px 0;
     background-color: #F3F2F1;
     padding-left: 30px;
 
     &__text {
       display: block;
       padding-left: 10px;
-      font-weight: 700;
+      font-weight: bold;
     }
 
     &__icon {
@@ -28,7 +28,7 @@
       color: govuk-colour("white");
       background: #D0190F;
       border-radius: 50%;
-      font-size: 1.1em;
+      font-size: 20px;
       text-align: center;
       // Prevent the exclamation mark from being included when the warning text
       // is copied, for example.

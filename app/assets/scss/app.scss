@@ -130,9 +130,6 @@ $govuk-show-breakpoints: false;
     padding-right: 15px;
     padding-bottom: 15px;
     padding-left: 15px; 
-      &-overflowed {
-        overflow: visible;
-      }
     }
     @media (min-width: 641px) {
       .example {
@@ -178,6 +175,16 @@ $govuk-show-breakpoints: false;
 .example-images img {
   max-width: 100%;
   vertical-align: top; }
+
+  .example-mobile {
+    padding-right: 0;
+    padding-left: 0;
+
+    iframe {
+      border: none;
+      width: 100%;
+    }
+  }
 
 // 3. Colour
 // ==========================================================================
