@@ -488,7 +488,7 @@
     .idsk-footer-extended-heart-visible {
         display: block;
         padding-top: 5px;
-        line-height: 45px;
+        line-height: 40px;
         @include mq($from: tablet) {
             padding-top: 0;
             line-height: 0px;
