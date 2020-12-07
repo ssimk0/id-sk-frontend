@@ -9,13 +9,19 @@
     &-basic,
     &-basic-variant,
     &-hero,
-    &-secondary-horizontal,
     &-profile-horizontal {
       @include govuk-grid-column("full");
     }
 
+    &-secondary {
+      @include govuk-grid-column("full");
+
+      @include mq($from: tablet) {
+        @include govuk-grid-column("one-third");
+      }
+    }
+
     &-simple,
-    &-secondary-vertical,
     &-profile-vertical {
       @include govuk-grid-column("one-third");
     }
@@ -29,12 +35,17 @@
       padding: 0 15px 0 0;
     }
 
-    &-secondary-horizontal,
-    &-profile-horizontal {
+    &-secondary {
       @include govuk-grid-column("one-third");
+
+      @include mq($from: tablet) {
+        @include govuk-grid-column("full");
+        padding: 0 0 10px 0;
+      }
     }
 
     &-profile-horizontal {
+      @include govuk-grid-column("one-third");
       padding: 0 15px 0 0;
     }
   }
@@ -51,7 +62,7 @@
 
     &:hover,
     &:visited {
-      color: #0b0c0c;
+      color: govuk-colour("black");
     }
 
     &-date {
@@ -78,23 +89,57 @@
       @include govuk-grid-column("one-half");
     }
 
-    &-secondary-horizontal,
     &-profile-horizontal {
       @include govuk-grid-column("two-thirds");
+    }
+
+    &-secondary {
+      @include govuk-grid-column("two-thirds");
+
+      @include mq($from: tablet) {
+        @include govuk-grid-column("full");
+        padding: 0;
+      }
     }
   }
 
   .idsk-heading {
     @include govuk-responsive-padding(2, "top");
     @include govuk-responsive-padding(2, "bottom");
-    display: block;
+
+    &-basic-variant,
+    &-simple {
+      @include govuk-font($size: 19, $weight: bold);
+    }
+
+    &-basic,
+    &-hero {
+      @include govuk-font($size: 24, $weight: bold);
+    }
+
+    &-secondary {
+      @include govuk-font($size: 19, $weight: bold);
+
+      @include mq($until: desktop) {
+        @include govuk-font($size: 24, $weight: bold);
+      }
+    }
+
+    &-profile-vertical,
+    &-profile-horizontal {
+      @include govuk-font($size: 36, $weight: bold);
+      text-decoration: underline;
+    }
+  }
+
+  .idsk-heading a {
     color: #0065b3;
     cursor: pointer;
     margin: 0;
     text-decoration: none;
 
     &:hover {
-      color: #0b0c0c;
+      color: govuk-colour("black");
       text-decoration: underline;
     }
 
@@ -105,38 +150,23 @@
     &:visited {
       color: #551a8b;
     }
-
-    &-basic-variant,
-    &-simple,
-    &-secondary-vertical {
-      @include govuk-font($size: 19, $weight: bold);
-    }
-
-    &-basic,
-    &-hero,
-    &-secondary-horizontal {
-      @include govuk-font($size: 24, $weight: bold);
-    }
-
-    &-profile-vertical,
-    &-profile-horizontal {
-      @include govuk-font($size: 36, $weight: bold);
-      text-decoration: underline;
-    }
   }
 
   .idsk-body {
     margin-top: 0;
 
-    &-secondary-vertical {
-      @include govuk-font($size: 16);
-    }
-
     &-basic,
     &-basic-variant,
-    &-hero,
-    &-secondary-horizontal {
+    &-hero {
       @include govuk-font($size: 19);
+    }
+
+    &-secondary {
+      @include govuk-font($size: 16);
+
+      @include mq($until: desktop) {
+        @include govuk-font($size: 19);
+      }
     }
 
     &-profile-vertical,
@@ -145,13 +175,24 @@
       @include govuk-responsive-padding(2, "top");
       @include govuk-responsive-padding(4, "bottom");
 
-      display: block;
-      color: #0065b3;
-      cursor: pointer;
-      text-decoration: underline;
+      a {
+        color: #0065b3;
+        cursor: pointer;
+        margin: 0;
+        text-decoration: none;
 
-      &:hover {
-        color: #0b0c0c;
+        &:hover {
+          color: govuk-colour("black");
+          text-decoration: underline;
+        }
+
+        &:focus {
+          @include govuk-focused-text;
+        }
+
+        &:visited {
+          color: #551a8b;
+        }
       }
     }
   }
@@ -161,5 +202,9 @@
     @include govuk-responsive-padding(8, "left");
     @include govuk-font($size: 24);
     margin-top: 0;
+
+    &-right {
+      float: right;
+    }
   }
 }

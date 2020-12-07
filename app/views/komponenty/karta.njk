@@ -27,8 +27,7 @@
                 <li><a href="#card-basic">Základná kartička</a></li>
                 <li><a href="#card-simple">Jednoduchá kartička</a></li>
                 <li><a href="#card-hero">Hero kartička</a></li>
-                <li><a href="#card-hero-secondary-horizontal">Sekundárna kartička - horizontálna</a></li>
-                <li><a href="#card-hero-secondary-vertical">Sekundárna kartička - vertikálna</a></li>
+                <li><a href="#card-hero-secondary">Sekundárna kartička</a></li>
                 <li><a href="#card-basic-no-image">Základná kartička - bez obrázka</a></li>
                 <li><a href="#card-profile-vertical">Profilová kartička - vertikálna</a></li>
                 <li><a href="#card-profile-horizontal">Profilová kartička - horizontálna</a></li>
@@ -103,7 +102,7 @@
         </div>
 
         <div class="govuk-grid-column-two-thirds">
-            <h3 class="govuk-heading-m" id="card-hero-secondary-horizontal">Sekundárna kartička - horizontálna</h3>
+            <h3 class="govuk-heading-m" id="card-hero-secondary">Sekundárna kartička</h3>
             <p class="govuk-body">Ďalší typ kartičky ktorý sa používa na vyplnenie celkovej šírky kontajnera</p>
         </div>
 
@@ -111,7 +110,7 @@
             <div class="example example-error">
                 {% set exampleComponentHtml %}
                     {{ idskCard({ 
-                        "type": "secondary-horizontal", 
+                        "type": "secondary", 
                         "imgSrc": "/public/assets/images/examples/card-2.jpg", 
                         "link": "#",
                         "heading": "V. Remišová rokovala s ministrami V4",
@@ -125,7 +124,7 @@
             <pre class=" language-markup"><code class="govuk-!-font-size-16  language-markup">{{ exampleComponentHtml }}</code></pre>
         </div>
 
-                <div class="govuk-grid-column-two-thirds">
+        {# <div class="govuk-grid-column-two-thirds">
             <h3 class="govuk-heading-m" id="card-hero-secondary-vertical">Sekundárna kartička - vertikálna</h3>
             <p class="govuk-body">Vertikálny typ sekundárnej kartičky</p>
         </div>
@@ -146,7 +145,7 @@
                 {{exampleComponentHtml | safe}}
             </div>
             <pre class=" language-markup"><code class="govuk-!-font-size-16  language-markup">{{ exampleComponentHtml }}</code></pre>
-        </div>
+        </div> #}
 
         <div class="govuk-grid-column-two-thirds">
             <h3 class="govuk-heading-m" id="card-basic-no-image">Základná kartička - bez obrázka</h3>
