@@ -1,0 +1,54 @@
+@import "../../../govuk/settings/all";
+@import "../../../govuk/tools/all";
+@import "../../../govuk/helpers/all";
+
+@import "../../../govuk/helpers/typography";
+
+@include govuk-exports("idsk/component/crossroad") {
+  .idsk-crossroad-1 {
+    @include govuk-grid-column("full");
+  }
+
+  .idsk-crossroad-2 {
+    @include govuk-grid-column("one-half");
+  }
+
+  .idsk-crossroad {
+    &-title {
+      @include govuk-font($size: 19, $weight: bold);
+      color: #0065b3;
+      text-decoration: underline;
+      cursor: pointer;
+
+      &:hover {
+        color: #003078;
+      }
+
+      &:focus {
+        @include govuk-focused-text;
+      }
+
+      &:visited {
+        color: #551a8b;
+      }
+    }
+
+    &-subtitle {
+      @include govuk-font($size: 16);
+      @include govuk-responsive-padding(2, "top");
+      @include govuk-responsive-padding(4, "bottom");
+      margin: 0;
+      color: #626a6e;
+    }
+
+    &-line {
+      color: #bfc1c3;
+      border-color: govuk-colour("mid-grey");
+      background-color: govuk-colour("mid-grey");
+      height: 1px;
+      border: 0;
+      border-top: 1px;
+      margin-bottom: 10px;
+    }
+  }
+}

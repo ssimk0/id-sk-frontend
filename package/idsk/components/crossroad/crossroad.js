@@ -659,59 +659,49 @@ if (detect) return
 })
 .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
-function Header($module) {
-  this.$module = $module;
+/**
+ * TODO: Ideally this would be a NodeList.prototype.forEach polyfill
+ * This seems to fail in IE8, requires more investigation.
+ * See: https://github.com/imagitama/nodelist-foreach-polyfill
+ */
+function nodeListForEach(nodes, callback) {
+  if (window.NodeList.prototype.forEach) {
+    return nodes.forEach(callback);
+  }
+  for (var i = 0; i < nodes.length; i++) {
+    callback.call(window, nodes[i], i, nodes);
+  }
 }
 
-Header.prototype.init = function () {
-  // Check for module
-  var $module = this.$module;
-  if (!$module) {
-    return
-  }
-
-  // Check for button
-  var $toggleButton = $module.querySelector('.govuk-js-header-toggle');
-  if (!$toggleButton) {
-    return
-  }
-
-  // Handle $toggleButton click events
-  $toggleButton.addEventListener('click', this.handleClick.bind(this));
-};
-
 /**
-* Toggle class
-* @param {object} node element
-* @param {string} className to toggle
-*/
-Header.prototype.toggleClass = function (node, className) {
-  if (node.className.indexOf(className) > 0) {
-    node.className = node.className.replace(' ' + className, '');
-  } else {
-    node.className += ' ' + className;
+ * Crossroad Component
+ */
+function Crossroad($module) {
+  this.$module = $module;
+  this.$items = $module.querySelectorAll(".idsk-crossroad-title");
+}
+
+Crossroad.prototype.init = function () {
+  let $module = this.$module;
+  let $items = this.$items;
+
+  if (!$module || !$items) {
+    return;
   }
+
+  nodeListForEach(
+    $items,
+    function ($item) {
+      $item.addEventListener("click", this.handleItemClick.bind(this));
+    }.bind(this)
+  );
 };
 
-/**
-* An event handler for click event on $toggleButton
-* @param {object} event event
-*/
-Header.prototype.handleClick = function (event) {
-  var $module = this.$module;
-  var $toggleButton = event.target || event.srcElement;
-  var $target = $module.querySelector('#' + $toggleButton.getAttribute('aria-controls'));
-
-  // If a button with aria-controls, handle click
-  if ($toggleButton && $target) {
-    this.toggleClass($target, 'govuk-header__navigation--open');
-    this.toggleClass($toggleButton, 'govuk-header__menu-button--open');
-
-    $toggleButton.setAttribute('aria-expanded', $toggleButton.getAttribute('aria-expanded') !== 'true');
-    $target.setAttribute('aria-hidden', $target.getAttribute('aria-hidden') === 'false');
-  }
+Crossroad.prototype.handleItemClick = function (e) {
+  var $item = e.target;
+  $item.setAttribute("aria-current", "true");
 };
 
-return Header;
+return Crossroad;
 
 })));
