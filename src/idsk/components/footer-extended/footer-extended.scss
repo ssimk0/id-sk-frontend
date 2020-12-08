@@ -137,8 +137,8 @@
         padding-top: 7px;
     }
 
-    #idsk-footer-extended-close-error-form-button-tablet:hover,
-    #idsk-footer-extended-close-help-form-button-tablet:hover {
+    #idsk-footer-extended-close-error-form-button:hover,
+    #idsk-footer-extended-close-help-form-button:hover {
         color: govuk-colour("black");
     }
 
@@ -231,6 +231,10 @@
             height: 70px;
         }
 
+        @media screen and (min-width: 670px) {
+            font-size: 16px;
+        }
+
         @include mq($from: desktop) {
             font-size: 20px;
         }
@@ -246,13 +250,16 @@
     }
 
     .idsk-footer-extended-feedback-text-answers {
-        @include govuk-font($size: 16);
         font-style: normal;
         font-weight: normal;
         color: govuk-colour("white");
+
+        @media screen and (min-width: 670px) {
+            font-size: 16px;
+        }
+
         @include mq($from: desktop) {
             font-size: 20px;
-            margin-top: -4px;
         }
     }
 
@@ -382,10 +389,9 @@
     }
 
     #idsk-footer-extended-error-button,
-    #idsk-footer-extended-close-help-form-button-tablet,
-    #idsk-footer-extended-close-error-form-button-tablet,
     #idsk-footer-extended-close-help-form-button,
-    #idsk-footer-extended-close-error-form-button {
+    #idsk-footer-extended-close-error-form-button,
+    .idsk-footer-extended-write-us-button {
         float: right;
     }
 
@@ -397,8 +403,8 @@
         width: 25%;
         padding-top: 20px;
         display: inline;
-        @include mq($from: tablet) {
-            display: none;
+        @media screen and (min-width: 600px) {
+            width: 50%;
         }
     }
 
@@ -508,6 +514,25 @@
     .idsk-footer-extended-feedback-container .govuk-select {
         font-weight: 300;
         font-size: 16px;
+    }
+
+    #idsk-footer-extended-close-help-form-button,
+    #idsk-footer-extended-close-error-form-button {
+        @include govuk-font($size: 14);
+        font-size: 14px;
+    }
+
+    .idsk-footer-extended-feedback button {
+        @include govuk-font($size: 14);
+        font-size: 14px;
+
+        @media screen and (min-width: 670px) {
+            font-size: 16px;
+            line-height: 20px;
+        }
+        @include mq(desktop) {
+            font-size: 20px;
+        }
     }
 
     @keyframes blinker {
