@@ -36,7 +36,8 @@
     }
 
     &-secondary {
-      @include govuk-grid-column("one-third");
+      width: 33.3%;
+      float: left;
 
       @include mq($from: tablet) {
         @include govuk-grid-column("full");
@@ -94,7 +95,10 @@
     }
 
     &-secondary {
-      @include govuk-grid-column("two-thirds");
+      width: 66.6%;
+      box-sizing: border-box;
+      padding-left: 10px;
+      float: left;
 
       @include mq($from: tablet) {
         @include govuk-grid-column("full");
