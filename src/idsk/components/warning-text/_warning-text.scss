@@ -11,12 +11,14 @@
     @include govuk-responsive-margin(6, "bottom");
     padding: 10px 0;
     background-color: #F3F2F1;
-    padding-left: 30px;
 
     &__text {
       display: block;
-      padding-left: 10px;
       font-weight: bold;
+
+      @include mq ($from: desktop) {
+        padding-left: 30px;
+      }
     }
 
     &__icon {
