@@ -4,10 +4,10 @@
     {% if params.date and params.tags %}
         {% set tags = '' %}
         {% for tag in params.tags %}
-            {% set tags = tags + '<a  href="' + tag.link + '" class="idsk-card-meta idsk-card-meta-tag"><span class="idsk-card-underline">' + tag.tag  + '</span></a>' %}
+            {% set tags = tags + '<span class="idsk-card-meta idsk-card-meta-tag"><a href="' + tag.link + '" class="idsk-link">' + tag.tag  + '</a></span>' %}
         {% endfor %}
     <div class="idsk-card-meta-container">
-        <a href="{{params.date.link}}" class="idsk-card-meta idsk-card-meta-date"><span class="idsk-card-underline">{{params.date.date}}</span></a> {{ tags | safe }}
+        <span class="idsk-card-meta idsk-card-meta-date"><a href="{{params.date.link}}" class="idsk-link">{{params.date.date}}</a></span> {{ tags | safe }}
     </div>
     {% endif %}
 {% endset %}
@@ -24,7 +24,7 @@
         {% endif %}
 
         <div class="idsk-heading idsk-heading-{{ type }}">
-            <a href="{{params.link}}">{{ params.heading }}</a>
+            <a href="{{params.link}}" class="idsk-title idsk-link">{{ params.heading }}</a>
         </div>
 
         {% if params.description %}
@@ -34,7 +34,7 @@
         </p>
         {% else %}
         <div class="idsk-body idsk-body-{{ type }}">
-            <a href="{{params.link}}">
+            <a href="{{params.link}}" class="idsk-title idsk-link">
                 {{ params.description}}
             </a> 
         </div>

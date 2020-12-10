@@ -5,6 +5,29 @@
 @import "../../../govuk/helpers/typography";
 
 @include govuk-exports("idsk/component/card") {
+  .idsk-link {
+    text-decoration: none;
+
+    &:visited {
+      color: #551a8b;
+    }
+
+    &:hover {
+      color: govuk-colour("black");
+      text-decoration: underline;
+    }
+
+    &:focus {
+      @include govuk-focused-text;
+    }
+  }
+
+  .idsk-title {
+    color: #0065b3;
+    cursor: pointer;
+    margin: 0;
+  }
+
   .idsk-card {
     &-basic,
     &-basic-variant,
@@ -61,11 +84,6 @@
     display: inline;
     text-decoration: none;
 
-    &:hover,
-    &:visited {
-      color: govuk-colour("black");
-    }
-
     &-date {
       &:after {
         content: "\00a0-\00a0";
@@ -79,7 +97,14 @@
     }
   }
 
-  .idsk-card-meta-container a:last-child {
+  .idsk-card-meta a {
+    @include govuk-font($size: 16);
+    color: govuk-colour("grey-1");
+    display: inline;
+    text-decoration: underline;
+  }
+
+  .idsk-card-meta-container span:last-child {
     &:after {
       content: "";
     }
@@ -136,26 +161,6 @@
     }
   }
 
-  .idsk-heading a {
-    color: #0065b3;
-    cursor: pointer;
-    margin: 0;
-    text-decoration: none;
-
-    &:hover {
-      color: govuk-colour("black");
-      text-decoration: underline;
-    }
-
-    &:focus {
-      @include govuk-focused-text;
-    }
-
-    &:visited {
-      color: #551a8b;
-    }
-  }
-
   .idsk-body {
     margin-top: 0;
 
@@ -178,26 +183,6 @@
       @include govuk-font($size: 24);
       @include govuk-responsive-padding(2, "top");
       @include govuk-responsive-padding(4, "bottom");
-
-      a {
-        color: #0065b3;
-        cursor: pointer;
-        margin: 0;
-        text-decoration: none;
-
-        &:hover {
-          color: govuk-colour("black");
-          text-decoration: underline;
-        }
-
-        &:focus {
-          @include govuk-focused-text;
-        }
-
-        &:visited {
-          color: #551a8b;
-        }
-      }
     }
   }
 
