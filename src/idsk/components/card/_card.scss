@@ -7,7 +7,6 @@
 @include govuk-exports("idsk/component/card") {
   .idsk-link {
     text-decoration: none;
-    line-height: 1.4;
 
     &:visited {
       color: #551a8b;
