@@ -37,7 +37,8 @@
       padding: 0 govuk-spacing(3);
       border-color: $idsk-header-border-color;
   
-      .idsk-header-extended__menu-button {
+      .idsk-header-extended__menu,
+      .idsk-header-extended-x-mark {
         right: govuk-spacing(3);
       }
     }
@@ -91,12 +92,20 @@
   ///  logo part
   .idsk-header-extended__logo {
     order: 1;
-    padding-left: 0px;
+    padding-left: 0;
     padding-bottom: 15px;
 
+    @include mq ($until: mobile){
+      width: 70%;
+    }
+
+    @include mq ($until: tablet){
+      padding-bottom: 15px;
+      max-width: 70%;
+    }
+
     @include mq ($from: desktop) {
-      padding-bottom: 40px;
-      padding-left: 20px;
+      padding: 0 0 40px 30px;
     }
 
     & > a {
@@ -114,7 +123,6 @@
   /// logo svg image
   .idsk-header-extended__logotype-crown {
     max-width: 246px;
-    width: 70%;
     position: relative;
     fill: currentColor;
     vertical-align: top;
@@ -145,7 +153,6 @@
 
       .idsk-header-extended__logotype-crown-mobile-small {
         display: inline-block;
-        padding-left: 7px;
       }
     }
   }
@@ -301,7 +308,7 @@
 
     &_item {
       display: inline-block;
-      padding: 0 5px;
+      padding: 0 4px;
 
       a {
         color: $idsk-header-dark-blue;
@@ -332,7 +339,7 @@
       @include mq ($from: desktop) {
         display: inline-block;
         border: none;
-        padding: 15px 35px;
+        padding: 15px 30px;
       }
   
       & > a {
@@ -530,21 +537,22 @@
       left: 0;
       background: $idsk-header-dark-blue;
       overflow-x: hidden;
-      transition: 0.1s;
+      //transition: 0.1s;
     }
 
     &-x-mark {
       color: $idsk-header-link;
-      font-size: 30px;
+      font-size: 31px;
+      line-height: 16px;
       width: 25px;
-      height: 25px;
-      padding: 10px;
+      height: 20px;
       position: absolute;
-      left: calc(100vw - 50px);
-      top: 10px;
+      right: 25px;
+      top: 25px;
       display: none;
       z-index: 5;
       cursor: pointer;
+      padding-top: 2px;
 
       &:after {
         content: "\2715";
@@ -553,6 +561,10 @@
       &:focus,
       &:active {
         @include govuk-focused-text;
+      }
+
+      @include mq ($from: tablet) {
+        right: 50px;
       }
     }
 
@@ -583,11 +595,12 @@
     }
 
     &__search {
-      order: 2; // for mobile/tablet devices
+      order: 2;
       color: $idsk-header-link;
+      display: none;
 
       @include mq ($from: desktop) {
-        display: block; // for desktop devices
+        display: block;
         color: $idsk-header-dark-blue;
         height: fit-content;
       }
@@ -613,7 +626,7 @@
 
       @include mq ($from: desktop) {
         display: block;
-        width: 160px;
+        width: 155px;
         height: 30px;
         color: $idsk-header-dark-blue;
       }
@@ -638,6 +651,9 @@
       .idsk-header-extended {
         &-overlay {
           width: 100%;
+          // background-image: linear-gradient(to right, rgba(255,255,255,0.08), rgba(255,255,255,0));
+          // background-size: 90% 75px;
+          // background-repeat: no-repeat;
         }
 
         &-x-mark {
@@ -656,7 +672,6 @@
           &type-crown-mobile-navigation {
             height: auto;
             max-width: 246px;
-            width: 70%;
             display: inline-block;
           }
         }
@@ -666,7 +681,7 @@
           position: relative;
           z-index: 2;
           width: 100%;
-          margin-bottom: 15px;
+          margin: 15px 0;
   
           .idsk-header-extended__search-text {
             display: none;
@@ -676,12 +691,17 @@
             text-align: left;
             display: block;
   
-            form:focus-within {
-              outline: 3px solid govuk-colour("yellow");
+            form {
+              width: fit-content;
+              display: initial;
 
-              .govuk-button:focus {
-                box-shadow: none;
-                border: transparent;
+              &:focus-within {
+                outline: 3px solid govuk-colour("yellow");
+
+                .govuk-button:focus {
+                  box-shadow: none;
+                  border: transparent;
+                }
               }
             }
             
@@ -691,11 +711,13 @@
               border: none;
               padding: 8px;
               font-size: $idsk-header-mobile-font-size;
+              margin-top: 0;
+              margin-bottom: 0;
             }
   
             a {
               width: 40px;
-              height: 40px;
+              height: 39px;
               margin: 0;
               padding-top: 8px;
             }

@@ -149,148 +149,151 @@ examples:
 - name: s výberom jazyka a sociálnymi sieťami a navigáciou
   description: možnosť zvolenia jazykovej mutácia a pridania odkazov na sociálne siete a navigáciou
   data:
+    logoGrid: govuk-grid-column-three-quarters govuk-grid-column-one-half-from-desktop
     navigation: 
       - link: '#1'
-        text: 'Ministerstvo'
+        text: Ministerstvo
       - link: '#2'
-        text: 'Sekcie'
+        text: Sekcie
         active: true
       - link: '#3'
-        text: 'Programy EŠIF'
+        text: Programy EŠIF
       - link: '#4'
-        text: 'Aktuality'
+        text: Aktuality
       - link: '#5'
-        text: 'Kontakt'
+        text: Kontakt
     language: 
       current:
-        text: "slovenčina"
-        flag: "slovakia-flag-icon-16.png"
+        text: slovenčina
+        flag: slovakia-flag-icon-16.png
       choices:
-        - flag: "united-states-of-america-flag-icon-16.png"
-          text: "english"
-          link: "#"
-        - flag: "germany-flag-icon-16.png"
-          text: "german"
-          link: "#"
+        - flag: united-states-of-america-flag-icon-16.png
+          text: english
+          link: '#'
+        - flag: germany-flag-icon-16.png
+          text: german
+          link: '#'
     socials:
-      - icon: "fab fa-instagram"
-        link: "#"
-        text: "Instagram"
-      - icon: "fab fa-linkedin-in"
-        link: "#"
-        text: "Linkedin"
-      - icon: "fab fa-facebook-f"
-        link: "#"
-        text: "Facebook"
-      - icon: "fab fa-twitter"
-        link: "#"
-        text: "Twitter"
+      - icon: fab fa-instagram
+        link: '#'
+        text: Instagram
+      - icon: fab fa-linkedin-in
+        link: '#'
+        text: Linkedin
+      - icon: fab fa-facebook-f
+        link: '#'
+        text: Facebook
+      - icon: fab fa-twitter
+        link: '#'
+        text: Twitter
 
 - name: s navigáciou a informačnou a výstražnou hláškou
   data:
+    logoGrid: govuk-grid-column-three-quarters govuk-grid-column-one-half-from-desktop
     navigation: 
       - link: '#1'
-        text: 'Ministerstvo'
+        text: Ministerstvo
       - link: '#2'
-        text: 'Sekcie'
+        text: Sekcie
       - link: '#3'
-        text: 'Programy EŠIF'
+        text: Programy EŠIF
       - link: '#4'
-        text: 'Aktuality'
+        text: Aktuality
       - link: '#5'
-        text: 'Kontakt'
+        text: Kontakt
     language: 
       current:
-        text: "slovenčina"
-        flag: "slovakia-flag-icon-16.png"
+        text: slovenčina
+        flag: slovakia-flag-icon-16.png
       choices:
-        - flag: "united-states-of-america-flag-icon-16.png"
-          text: "english"
-          link: "#"
-        - flag: "germany-flag-icon-16.png"
-          text: "german"
-          link: "#"
+        - flag: united-states-of-america-flag-icon-16.png
+          text: english
+          link: '#'
+        - flag: germany-flag-icon-16.png
+          text: german
+          link: '#'
     socials:
-      - icon: "fab fa-instagram"
-        link: "#"
-        text: "Instagram"
-      - icon: "fab fa-linkedin-in"
-        link: "#"
-        text: "Linkedin"
-      - icon: "fab fa-facebook-f"
-        link: "#"
-        text: "Facebook"
-      - icon: "fab fa-twitter"
-        link: "#"
-        text: "Twitter"
+      - icon: fab fa-instagram
+        link: '#'
+        text: Instagram
+      - icon: fab fa-linkedin-in
+        link: '#'
+        text: Linkedin
+      - icon: fab fa-facebook-f
+        link: '#'
+        text: Facebook
+      - icon: fab fa-twitter
+        link: '#'
+        text: Twitter
     notifications:
-      - type: "info"
-        iconFallbackText: "info"
-        html: "Ak prichádzate z rizikovej krajiny, musíte vyplniť <a href='#' title='formulár'>formulár</a>."
-      - iconFallbackText: "warning"
-        html: "Ak prichádzate z rizikovej krajiny, musíte vyplniť <a href='#' title='formulár'>formulár</a>."
+      - type: info
+        iconFallbackText: info
+        html: Ak prichádzate z rizikovej krajiny, musíte vyplniť <a href='#' title='formulár'>formulár</a>.
+      - iconFallbackText: warning
+        html: Ak prichádzate z rizikovej krajiny, musíte vyplniť <a href='#' title='formulár'>formulár</a>.
 
 - name: Ukážka podsekcií po kliknutí na "Programy EŠIF", vyhľadávanie
   data:
+    logoGrid: govuk-grid-column-one-half govuk-grid-column-one-third-from-desktop
     navigation: 
       - link: '#1'
-        text: 'Ministerstvo'
+        text: Ministerstvo
       - link: '#2'
-        text: 'Sekcie'
+        text: Sekcie
       - link: '#3'
-        text: 'Programy EŠIF'
+        text: Programy EŠIF
         submenu: 
-          - link: "#3.1"
-            text: "Domov dôchodcov"
-            icon: "fas fa-home"
-          - link: "#3.2"
-            text: "Zoznam úloh"
-            icon: "fas fa-tasks"
-          - link: "#3.3"
-            text: "Zabezpečenie dát"
-            icon: "fas fa-unlock"
-          - link: "#3.4"
-            text: "Ochrana práv"
-            icon: "fas fa-user-shield"
-          - link: "#3.5"
-            text: "Kvapka nádeje"
-            icon: "fas fa-hand-holding-water"
-          - link: "#3.6"
-            text: "Programy 6"
-          - link: "#3.7"
-            text: "Programy 7"
-          - link: "#3.8"
-            text: "Programy 8"
-          - link: "#3.9"
-            text: "Programy 9"
-          - link: "#3.10"
-            text: "Programy 10"
+          - link: '#3.1'
+            text: Domov dôchodcov
+            icon: fas fa-home
+          - link: '#3.2'
+            text: Zoznam úloh
+            icon: fas fa-tasks
+          - link: '#3.3'
+            text: Zabezpečenie dát
+            icon: fas fa-unlock
+          - link: '#3.4'
+            text: Ochrana práv
+            icon: fas fa-user-shield
+          - link: '#3.5'
+            text: Kvapka nádeje
+            icon: fas fa-hand-holding-water
+          - link: '#3.6'
+            text: Programy 6
+          - link: '#3.7'
+            text: Programy 7
+          - link: '#3.8'
+            text: Programy 8
+          - link: '#3.9'
+            text: Programy 9
+          - link: '#3.10'
+            text: Programy 10
       - link: '#4'
-        text: 'Aktuality'
+        text: Aktuality
       - link: '#5'
-        text: 'Kontakt'
+        text: Kontakt
     search: true
     language: 
       current:
-        text: "slovenčina"
-        flag: "slovakia-flag-icon-16.png"
+        text: slovenčina
+        flag: slovakia-flag-icon-16.png
       choices:
-        - flag: "united-states-of-america-flag-icon-16.png"
-          text: "english"
-          link: "#"
-        - flag: "germany-flag-icon-16.png"
-          text: "german"
-          link: "#"
+        - flag: united-states-of-america-flag-icon-16.png
+          text: english
+          link: '#'
+        - flag: germany-flag-icon-16.png
+          text: german
+          link: '#'
     socials:
-      - icon: "fab fa-instagram"
-        link: "#"
-        text: "Instagram"
-      - icon: "fab fa-linkedin-in"
-        link: "#"
-        text: "Linkedin"
-      - icon: "fab fa-facebook-f"
-        link: "#"
-        text: "Facebook"
-      - icon: "fab fa-twitter"
-        link: "#"
-        text: "Twitter"
+      - icon: fab fa-instagram
+        link: '#'
+        text: Instagram
+      - icon: fab fa-linkedin-in
+        link: '#'
+        text: Linkedin
+      - icon: fab fa-facebook-f
+        link: '#'
+        text: Facebook
+      - icon: fab fa-twitter
+        link: '#'
+        text: Twitter
