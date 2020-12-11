@@ -543,14 +543,16 @@
     &-x-mark {
       color: $idsk-header-link;
       font-size: 31px;
+      line-height: 16px;
       width: 25px;
-      height: 16px;
+      height: 20px;
       position: absolute;
       right: 25px;
-      top: 16px;
+      top: 25px;
       display: none;
       z-index: 5;
       cursor: pointer;
+      padding-top: 2px;
 
       &:after {
         content: "\2715";
