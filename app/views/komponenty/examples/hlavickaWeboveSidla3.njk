@@ -1,17 +1,18 @@
 {% from "../../../../src/idsk/components/header-extended/macro.njk" import idskHeaderExtended %}
 {{ idskHeaderExtended({
     headerTitle: "Domov",
+    logoGrid: "govuk-grid-column-one-third",
     navigation:[
         {
-            link: '#1',
-            text: 'Ministerstvo'
+            link: "#1",
+            text: "Ministerstvo"
         },
         {
-            link: '#2',
-            text: 'Sekcie'
+            link: "#2",
+            text: "Sekcie"
         },
         {
-            text: 'Programy EŠIF',
+            text: "Programy EŠIF",
             link: "#3",
             submenu: [
                 {
@@ -62,8 +63,8 @@
             ]
         },
         {
-            link: '#4',
-            text: 'Aktuality',
+            link: "#4",
+            text: "Aktuality",
             submenu: [
                 {
                     link: "#4.1",
@@ -84,8 +85,8 @@
             ]
         },
         {
-            link: '#5',
-            text: 'Kontakt'
+            link: "#5",
+            text: "Kontakt"
         }
     ],
     search: true,
