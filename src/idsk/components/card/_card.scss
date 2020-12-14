@@ -7,6 +7,11 @@
 @include govuk-exports("idsk/component/card") {
   .idsk-link {
     text-decoration: none;
+    display: block;
+
+    &:focus {
+      @include govuk-focused-text;
+    }
 
     &:visited {
       color: #551a8b;
@@ -15,10 +20,6 @@
     &:hover {
       color: govuk-colour("black");
       text-decoration: underline;
-    }
-
-    &:focus {
-      @include govuk-focused-text;
     }
   }
 
