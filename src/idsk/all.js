@@ -1,9 +1,12 @@
 import { nodeListForEach } from "./common";
 import { initAll as initAllGOVUKjs } from "../govuk/all";
+import Button from "./components/button/button";
 import FooterExtended from "./components/footer-extended/footer-extended";
 import CharacterCount from "./components/character-count/character-count";
 import Crossroad from "./components/crossroad/crossroad";
-import HeaderExtended from './components/header-extended/header-extended'
+import HeaderExtended from './components/header-extended/header-extended';
+
+
 
 function initAll(options) {
   // Set the options to an empty object by default if no options are passed.
@@ -12,6 +15,11 @@ function initAll(options) {
   // Allow the user to initialise ID-SK Frontend in only certain sections of the page
   // Defaults to the entire document if nothing is set.
   let scope = typeof options.scope !== 'undefined' ? options.scope : document
+
+  var $buttons = scope.querySelectorAll('[data-module="idsk-button"]')
+  nodeListForEach($buttons, function ($button) {
+    new Button($button).init()
+  })
 
   // Find first Footer-extended module to enhance.
   let $footerExtended = scope.querySelectorAll(
@@ -45,8 +53,9 @@ function initAll(options) {
 
 export {
   initAll,
+  Button,
   CharacterCount,
   Crossroad,
   FooterExtended,
-  HeaderExtended
+  HeaderExtended  
 }

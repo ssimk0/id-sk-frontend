@@ -1,6 +1,6 @@
 {% extends "layout.njk" %}
 {% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
-{% from "button/macro.njk" import govukButton %}
+{% from "button/macro.njk" import idskButton %}
 
 {% set pageName = "Tlačidlá" %}
 
@@ -41,7 +41,7 @@
         <div class="govuk-grid-column-full">
             <div class="example example-error">
             {% set exampleComponentHtml %}
-{{ govukButton({
+{{ idskButton({
   "text": "Uložiť a pokračovať"
 }) }}
             {% endset %}
@@ -60,7 +60,7 @@
         <div class="govuk-grid-column-full">
             <div class="example example-error">
             {% set exampleComponentHtml %}
-{{ govukButton({
+{{ idskButton({
   "text": "Začať",
   "href": "#",
   "isStartButton": true
@@ -102,7 +102,7 @@
         <div class="govuk-grid-column-full">
             <div class="example example-error">
             {% set exampleComponentHtml %}
-{{ govukButton({
+{{ idskButton({
   "text": "Neaktívne tlačidlo",
   "disabled": true
 }) }}
@@ -124,7 +124,7 @@
                 <div class="govuk-grid-row">
                     <div class="govuk-grid-column-one-third">
                     {% set exampleComponentHtml %}
-{{ govukButton({
+{{ idskButton({
   "text": "Uložiť a pokračovať"
 }) }}
 {% endset %}
