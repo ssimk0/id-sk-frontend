@@ -82,7 +82,7 @@
         padding-left: 0;
         padding-top: 30px;
         @include mq($from: tablet) {
-            padding-top: 10px;
+            padding-top: 25px;
         }
     }
 
@@ -144,7 +144,7 @@
 
     .idsk-footer-extended-meta-item {
         margin-right: 15px;
-        margin-bottom: 25px;
+        margin-bottom: 5px;
         margin-left: 0;
     }
 
@@ -168,7 +168,7 @@
     .idsk-footer-extended-frame {
         display: inline-block;
         width: 100%;
-        height: 30px;
+        height: 15px;
         left: 0;
         top: 0;
         color: govuk-colour("black");
