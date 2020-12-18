@@ -65,17 +65,6 @@
         }
     }
 
-    .idsk-footer-extended .govuk-link {
-        color: $govuk-footer-text;
-        &:hover {
-            color: $govuk-footer-link-hover;
-        }
-
-        &:visited {
-            color: $govuk-footer-link-visited;
-        }
-    }
-
     .idsk-footer-extended-inline-list {
         margin-top: 0;
         margin-bottom: govuk-spacing(3);
@@ -384,7 +373,7 @@
         }
     }
 
-    .idsk-footer-extended .govuk-button {
+    .idsk-footer-extended .idsk-button {
         width: auto;
     }
 
@@ -451,7 +440,7 @@
         }
     }
 
-    #idsk-footer-extended-help-form .govuk-button {
+    #idsk-footer-extended-help-form .idsk-button {
         margin-top: 15px;
         width: auto;
     }

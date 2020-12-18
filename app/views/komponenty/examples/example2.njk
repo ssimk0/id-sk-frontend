@@ -1,4 +1,4 @@
-{% from "button/macro.njk" import govukButton %}
+{% from "../../../../src/idsk/components/button/macro.njk" import idskButton %}
 {% from "input/macro.njk" import govukInput %}
 {% from "error-summary/macro.njk" import govukErrorSummary %}
 
@@ -54,7 +54,7 @@
   }
 }) }}
 
-{{ govukButton({
+{{ idskButton({
     "text": "Pokračovať"
 }) }}
 
