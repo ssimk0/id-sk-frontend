@@ -644,174 +644,172 @@
     }
 
     &.show-mobile-menu {
-      height: 100%;
-      overflow-y: scroll;
-      display: inline-block;
+      @include mq($until: desktop) {
+        height: 100%;
+        overflow-y: scroll;
+        display: inline-block;
 
-      .idsk-header-extended {
-        &-overlay {
-          width: 100%;
-          // background-image: linear-gradient(to right, rgba(255,255,255,0.08), rgba(255,255,255,0));
-          // background-size: 90% 75px;
-          // background-repeat: no-repeat;
-        }
-
-        &-x-mark {
-          display: block;
-        }
-
-        &__logo {
-          z-index: 2;
-          padding-bottom: 15px;
-  
-          &type-crown,
-          &type-crown-mobile-small {
-            display: none;
+        .idsk-header-extended {
+          &-overlay {
+            width: 100%;
           }
-  
-          &type-crown-mobile-navigation {
-            height: auto;
-            max-width: 246px;
-            display: inline-block;
-          }
-        }
 
-        &__search {
-          display: inline-block;
-          position: relative;
-          z-index: 2;
-          width: 100%;
-          margin: 15px 0;
-  
-          .idsk-header-extended__search-text {
-            display: none;
-          }
-  
-          .idsk-header-extended__search-form {
-            text-align: left;
+          &-x-mark {
             display: block;
-  
-            form {
-              width: fit-content;
-              display: initial;
-
-              &:focus-within {
-                outline: 3px solid govuk-colour("yellow");
-
-                .idsk-button:focus {
-                  box-shadow: none;
-                  border: transparent;
-                }
-              }
-            }
-            
-            input {
-              width: 80%;
-              max-width: 250px;
-              border: none;
-              padding: 8px;
-              font-size: $idsk-header-mobile-font-size;
-              margin-top: 0;
-              margin-bottom: 0;
-            }
-  
-            a {
-              width: 40px;
-              height: 39px;
-              margin: 0;
-              padding-top: 8px;
-            }
-  
-            i {
-              font-size: 16px;
-            }
-          }
-        }
-
-        &__language {
-          font-size: $idsk-header-mobile-font-size;
-          display: inline-block;
-          margin-top: 30px;
-
-          &-list ul {
-            background-color: transparent;
-
-            a {
-              color: govuk-colour("white");
-            }
           }
 
-          &--current-text:after {
-            border-color: govuk-colour("white") transparent transparent;
-          }
-          &--active .idsk-header-extended__language--current-text::after {
-            border-color: govuk-colour("black") transparent transparent;
-          }
-        }
-
-        &__social {
-          display: inline-block;
-          margin-top: 20px;
-  
-          .idsk-header-extended__social_item {
-            padding: 0 15px 0 0;
-            font-size: $idsk-header-mobile-font-size;
-          }
-        }
-
-        &__navigation {
-          display: block;
-          position: relative;
-          z-index: 2;
-          border-bottom: 1px solid;
-
-          a {
-            color: $idsk-header-link;
-            padding-left: 0;
-            font-size: $idsk-header-mobile-font-size;
-            font-weight: 600;
-          }
-
-          &-item--active .idsk-header-extended__link {
-            @include govuk-focused-text
-          }
-          .idsk-js-header-extended-submenu-toggle {
-            padding-right: 20px; // space for arrow, should be focused too
-          }
-        
-        }
-
-        &__navigation-submenu {
-          padding-top: 20px;
-
-          ul {
-            padding-left: 0;
-            margin-left: 0;
-          }
-          
-          li a {
-            font-weight: 200;
-            font-size: 19px;
-            line-height: 25px;
-
-            &:hover,
-            &:active {
-              background: #FFDF0F;
-              color: $idsk-header-dark-blue;
-              font-weight: 600;
-              text-decoration: none;
+          &__logo {
+            z-index: 2;
+            padding-bottom: 15px;
+    
+            &type-crown,
+            &type-crown-mobile-small {
+              display: none;
             }
     
-            &.active {
-              font-weight: 600;
+            &type-crown-mobile-navigation {
+              height: auto;
+              max-width: 246px;
+              display: inline-block;
             }
           }
+
+          &__search {
+            display: inline-block;
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            margin: 15px 0;
+    
+            .idsk-header-extended__search-text {
+              display: none;
+            }
+    
+            .idsk-header-extended__search-form {
+              text-align: left;
+              display: block;
+    
+              form {
+                width: fit-content;
+                display: initial;
+
+                &:focus-within {
+                  outline: 3px solid govuk-colour("yellow");
+                  
+                  .idsk-button:focus {
+                    box-shadow: none;
+                    border: transparent;
+                  }
+                }
+              }
+              
+              input {
+                width: 80%;
+                max-width: 250px;
+                border: none;
+                padding: 8px;
+                font-size: $idsk-header-mobile-font-size;
+                margin-top: 0;
+                margin-bottom: 0;
+              }
+    
+              a {
+                width: 40px;
+                height: 39px;
+                margin: 0;
+                padding-top: 8px;
+              }
+    
+              i {
+                font-size: 16px;
+              }
+            }
+          }
+
+          &__language {
+            font-size: $idsk-header-mobile-font-size;
+            display: inline-block;
+            margin-top: 30px;
+
+            &-list ul {
+              background-color: transparent;
+
+              a {
+                color: govuk-colour("white");
+              }
+            }
+
+            &--current-text:after {
+              border-color: govuk-colour("white") transparent transparent;
+            }
+            &--active .idsk-header-extended__language--current-text::after {
+              border-color: govuk-colour("black") transparent transparent;
+            }
+          }
+
+          &__social {
+            display: inline-block;
+            margin-top: 20px;
+    
+            .idsk-header-extended__social_item {
+              padding: 0 15px 0 0;
+              font-size: $idsk-header-mobile-font-size;
+            }
+          }
+
+          &__navigation {
+            display: block;
+            position: relative;
+            z-index: 2;
+            border-bottom: 1px solid;
+
+            a {
+              color: $idsk-header-link;
+              padding-left: 0;
+              font-size: $idsk-header-mobile-font-size;
+              font-weight: 600;
+            }
+
+            &-item--active .idsk-header-extended__link {
+              @include govuk-focused-text
+            }
+            .idsk-js-header-extended-submenu-toggle {
+              padding-right: 20px; // space for arrow, should be focused too
+            }
+          
+          }
+
+          &__navigation-submenu {
+            padding-top: 20px;
+
+            ul {
+              padding-left: 0;
+              margin-left: 0;
+            }
+            
+            li a {
+              font-weight: 200;
+              font-size: 19px;
+              line-height: 25px;
+
+              &:hover,
+              &:active {
+                background: #FFDF0F;
+                color: $idsk-header-dark-blue;
+                font-weight: 600;
+                text-decoration: none;
+              }
+      
+              &.active {
+                font-weight: 600;
+              }
+            }
+          }
+
         }
 
       }
-
     }
-
   }
 
 }
