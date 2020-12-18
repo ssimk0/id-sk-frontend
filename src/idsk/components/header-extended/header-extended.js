@@ -110,12 +110,6 @@ HeaderExtended.prototype.handleMobilMenu = function (e) {
  */
 HeaderExtended.prototype.scrollFunction = function () {
     let $module = this.$module;
-    let $headerComputedStyle = getComputedStyle($module);
-    let $headerPosition = $headerComputedStyle.getPropertyValue('position');
-    // skip if it's not a mobile view
-    if (['sticky', 'fixed'].indexOf($headerPosition) < 0) {
-        return;
-    }
 
     if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
         $module.classList.add('idsk-header-extended--shrink');
