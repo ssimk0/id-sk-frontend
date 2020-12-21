@@ -16,6 +16,10 @@
       display: block;
       font-weight: bold;
 
+      a:focus, a:active {
+        @include govuk-focused-text;
+      }
+
       @include mq ($from: desktop) {
         padding-left: 30px;
       }
