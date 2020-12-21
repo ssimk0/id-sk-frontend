@@ -172,6 +172,9 @@
         left: 0;
         top: 0;
         color: govuk-colour("black");
+        @include mq($from: tablet) {
+            width: 90%;
+        }
     }
 
     .idsk-footer-extended-label {
