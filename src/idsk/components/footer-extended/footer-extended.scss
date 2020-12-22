@@ -9,14 +9,10 @@
     $govuk-footer-border: $govuk-border-colour;
     $idsk-footer-light-blue: #0065b3;
     $idsk-footer-light-yellow: #ffdf0f;
-    $govuk-footer-link-hover: #171819;
-    $govuk-footer-text: #454a4c;
-    $govuk-footer-link-visited: #2e358b;
 
     // This variable can be removed entirely once the legacy palette goes away,
     // as it'll just be the same as $govuk-footer-border.
     $govuk-footer-border-top: $govuk-border-colour;
-    $govuk-footer-link: $govuk-link-colour;
 
     $grid-columns: 12;
     $grid-gutter-width: 30px;
@@ -90,31 +86,6 @@
         display: block;
         margin-bottom: govuk-spacing(3);
         text-decoration-line: underline;
-    }
-
-    .idsk-footer-extended-link {
-        font-style: normal;
-        font-weight: normal;
-        text-decoration-line: underline;
-        color: govuk-colour("black");
-        @if ($govuk-use-legacy-palette) {
-            &:link,
-            &:visited {
-                color: $govuk-footer-link;
-            }
-
-            &:hover,
-            &:active {
-                color: govuk-colour("black");
-            }
-        } @else {
-            &:link,
-            &:visited,
-            &:hover,
-            &:active {
-                color: govuk-colour("black");
-            }
-        }
     }
 
     .idsk-footer-extended-description-panel-top-border {
@@ -524,6 +495,29 @@
         }
         @include mq(desktop) {
             font-size: 20px;
+        }
+    }
+
+    .idsk-footer-extended-up-button-div {
+        height: 45px;
+    }
+
+    .idsk-footer-extended-up-button-a {
+        float: right;
+    }
+
+    .idsk-footer-extended .govuk-link {
+        &:link {
+            color: govuk-colour("black");
+        }
+        &:visited {
+            color: $govuk-link-visited-colour;
+        }
+        &:hover {
+            color: $govuk-link-hover-colour;
+        }
+        &:active {
+            color: govuk-colour("black");
         }
     }
 
