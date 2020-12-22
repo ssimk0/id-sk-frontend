@@ -169,4 +169,26 @@ FooterExtended.prototype.handleCloseHelpFormButtonClick = function () {
     toggleClass($helpOption, 'idsk-footer-extended-display-hidden');
 }
 
+//Get the button
+var mybutton = document.getElementById("footer-extended-up-button");
+
+// When the user scrolls down window screen heiht From the top of the document, show the button
+window.onscroll = function () {
+    scrollFunction()
+};
+
+function scrollFunction() {
+    if (window.screen.width > 992 && (document.body.scrollTop > window.screen.height || document.documentElement.scrollTop > window.screen.height)) {
+        mybutton.style.display = "block";
+    } else {
+        mybutton.style.display = "none";
+    }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
+
 export default FooterExtended

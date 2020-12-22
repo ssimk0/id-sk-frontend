@@ -500,6 +500,9 @@
 
     .idsk-footer-extended-up-button-div {
         height: 45px;
+        width: 100%;
+        background-color: govuk-colour("white");
+        box-shadow: 0 -1px 0 white;
     }
 
     .idsk-footer-extended-up-button-a {
@@ -519,6 +522,10 @@
         &:active {
             color: govuk-colour("black");
         }
+    }
+
+    #footer-extended-up-button {
+        display: none;
     }
 
     @keyframes blinker {

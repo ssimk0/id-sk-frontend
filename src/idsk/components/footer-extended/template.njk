@@ -1,6 +1,23 @@
 {% from "details/macro.njk" import govukDetails %}
 <div data-module="idsk-footer-extended">
     <div class="idsk-footer-extended {{ params.classes if params.classes }}">
+        <div class="idsk-footer-extended-up-button-div" id="footer-extended-up-button">
+            <div class="govuk-width-container">
+                <div class="govuk-grid-column-full">
+                    <a onclick="topFunction()"  href="#" role="button" draggable="false" class="idsk-button idsk-button--start idsk-footer-extended-up-button-a" data-module="idsk-button">
+                        <svg width="20" height="21" viewbox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M10 8.0984L0 17.5L-2.44708e-07 11.9017L10 2.5L10 8.0984Z" fill="white"/>
+                            <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M20 11.9016L10 2.5L10 8.09826L20 17.5L20 11.9016Z" fill="white"/>
+                        </svg>
+                        &nbsp;&nbsp;
+                        <svg width="44" height="20" viewbox="0 -1 39 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0.463 13H3.256V7.832H7.531V13H10.343V0.612H7.531V5.381H3.256V0.612H0.463V13ZM17.0847 13.228C19.4597 13.228 21.6637 11.423 21.6637 8.288C21.6637 5.153 19.4597 3.348 17.0847 3.348C14.6907 3.348 12.4867 5.153 12.4867 8.288C12.4867 11.423 14.6907 13.228 17.0847 13.228ZM17.0847 10.967C15.9257 10.967 15.3557 9.922 15.3557 8.288C15.3557 6.654 15.9257 5.609 17.0847 5.609C18.2247 5.609 18.8137 6.654 18.8137 8.288C18.8137 9.922 18.2247 10.967 17.0847 10.967ZM23.5768 13H26.3698V7.528C26.8638 6.255 27.7378 5.799 28.4408 5.799C28.8398 5.799 29.1248 5.856 29.4668 5.951L29.9228 3.538C29.6568 3.424 29.3338 3.348 28.8018 3.348C27.8328 3.348 26.8068 3.956 26.1228 5.229H26.0468L25.8568 3.576H23.5768V13ZM35.1796 13.228C36.3006 13.228 37.5546 12.829 38.5236 12.164L37.5926 10.473C36.9086 10.891 36.2626 11.1 35.5596 11.1C34.3056 11.1 33.3556 10.473 33.1086 9.105H38.7516C38.8086 8.877 38.8656 8.364 38.8656 7.87C38.8656 5.305 37.5356 3.348 34.8566 3.348C32.5956 3.348 30.4106 5.229 30.4106 8.288C30.4106 11.404 32.4816 13.228 35.1796 13.228ZM33.0896 7.262C33.2796 6.065 34.0396 5.476 34.9136 5.476C36.0346 5.476 36.4906 6.217 36.4906 7.262H33.0896Z" fill="white"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <script src="up-button.js"></script>
         {% if params.showFeedback %}
             <div class="idsk-footer-extended-feedback">
                 <div class="govuk-width-container">
