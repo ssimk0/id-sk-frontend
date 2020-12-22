@@ -136,8 +136,9 @@
   }
 
   /// logo svg image - mobile view
-  .idsk-header-extended__logotype-crown-mobile-small,
-  .idsk-header-extended__logotype-crown-mobile-navigation {
+  .idsk-header-extended__logotype-crown-mobile,
+  .idsk-header-extended__logotype-crown-mobile-navigation,
+  .idsk-header-extended__logotype-crown-mobile-small-navigation {
     display: none;
   }
 
@@ -147,14 +148,16 @@
         padding-bottom: 5px;
       }
 
-      .idsk-header-extended__logotype-crown {
+      .idsk-header-extended__logotype-crown,
+      .idsk-header-extended__logotype-crown-mobile-navigation {
         display: none;
       }
 
-      .idsk-header-extended__logotype-crown-mobile-small {
+      .idsk-header-extended__logotype-crown-mobile {
         display: inline-block;
       }
     }
+
   }
 
   /// search bar
@@ -455,7 +458,7 @@
 
         &:before {
           content: "\2022"; // unicode for a bullet
-          color: $idsk-header-light-blue;
+          color: $idsk-header-link;
           font-weight: bolder;
           display: inline-block;
           width: 20px;
@@ -663,7 +666,7 @@
             padding-bottom: 15px;
     
             &type-crown,
-            &type-crown-mobile-small {
+            &type-crown-mobile {
               display: none;
             }
     
@@ -805,11 +808,23 @@
               }
             }
           }
-
         }
+      }
 
+      &.idsk-header-extended--shrink {
+        @include mq($until: desktop) {
+          .idsk-header-extended__logotype-crown-mobile,
+          .idsk-header-extended__logotype-crown-mobile-navigation {
+            display: none;
+          }
+    
+          .idsk-header-extended__logotype-crown-mobile-small-navigation {
+            display: inline-block;
+          }
+        }
       }
     }
+    
   }
 
 }
