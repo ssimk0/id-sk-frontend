@@ -6,10 +6,6 @@
 
 @include govuk-exports("idsk/component/header-extended") {
 
-  .fa, .fas, .far, .fal, .fad, .fab {
-    font-family: "FontAwesome";
-  }
-
   $idsk-header-background: govuk-colour("white");
   $idsk-header-border-color: $idsk-brand-colour;
   $idsk-header-dark-blue: govuk-colour("dark-blue");
@@ -17,6 +13,19 @@
   $idsk-header-link: govuk-colour("white");
   $idsk-header-nav-item-border-color: #2e3133;
   $idsk-header-mobile-font-size: 21px;
+
+  .fa, .fas, .far, .fal, .fad, .fab {
+    font-family: "FontAwesome";
+  }
+
+  /// third office level logo
+  .margin-0 {
+    margin: 0;
+  }
+  /// hardcoded override of third office level logo
+  .padding-top-0 {
+    padding-top: 0!important;
+  }
   
   .idsk-header-extended {
     @include govuk-font($size: 16);
@@ -532,6 +541,7 @@
     }
 
     &-overlay {
+      display: block;
       height: 100%;
       width: 0;
       position: fixed;
