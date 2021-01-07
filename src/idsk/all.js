@@ -5,6 +5,7 @@ import FooterExtended from "./components/footer-extended/footer-extended";
 import CharacterCount from "./components/character-count/character-count";
 import Crossroad from "./components/crossroad/crossroad";
 import HeaderExtended from './components/header-extended/header-extended';
+import InPageNavigation from './components/in-page-navigation/in-page-navigation';
 
 
 
@@ -47,6 +48,9 @@ function initAll(options) {
     new HeaderExtended($headerExtended).init()
   })
 
+  let $inPageNavigation = scope.querySelector('[data-module="idsk-in-page-navigation"]')
+  new InPageNavigation($inPageNavigation).init()
+
   // Init all GOVUK components js
   initAllGOVUKjs(options);
 }
@@ -57,5 +61,6 @@ export {
   CharacterCount,
   Crossroad,
   FooterExtended,
-  HeaderExtended  
+  HeaderExtended,
+  InPageNavigation
 }

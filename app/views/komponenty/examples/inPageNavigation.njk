@@ -1,0 +1,18 @@
+{% from "../../../../src/idsk/components/in-page-navigation/macro.njk" import idskInPageNavigation %}
+{{ idskInPageNavigation({
+    items: [
+        {
+            text: "Úvod",
+            link: "#uvod",
+            active: true
+        },
+        {
+            text: "Počet subjektov aktuálne",
+            link: "#pocet-subjektov-aktualne"
+        },
+        {
+            text: "Odklad povinnej aktivácie",
+            link: "#odklad-povinnej-aktivacie"
+        }
+    ]
+}) }}

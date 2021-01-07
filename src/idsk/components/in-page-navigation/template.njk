@@ -1,0 +1,17 @@
+<div 
+  class="idsk-in-page-navigation{%- if params.classes %} {{ params.classes }}{% endif %}"
+  {% for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}
+  data-module="idsk-in-page-navigation"
+>
+  <div class="idsk-in-page-navigation__title">Obsah</div>
+  <div class="idsk-in-page-navigation__current-link">{{ params.items[0].text }}</div>
+  <ul class="idsk-in-page-navigation__list">
+  {% for item in params.items %}
+    <li class="idsk-in-page-navigation__list-item{{' idsk-in-page-navigation__list-item--active' if item.active }}">
+      <a class="idsk-in-page-navigation__link{{ '' + item.class if item.class}}" href="{{ item.link }}"{% for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+        {{ item.text }}
+      </a>
+    </li>
+  {% endfor %}
+  </ul>
+</div>

@@ -1,0 +1,68 @@
+@import "../../../govuk/settings/all";
+@import "../../../govuk/tools/all";
+@import "../../../govuk/helpers/all";
+
+@include govuk-exports("idsk/component/in-page-navigation") {
+
+  $link-colour: #0065B3;
+
+  .idsk-in-page-navigation {
+    @include govuk-font($size: 24);
+
+    max-width: 270px;
+  }
+
+  .idsk-in-page-navigation__title {
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  .idsk-in-page-navigation__current-link {
+    display: none;
+  }
+
+  .idsk-in-page-navigation__list {
+    @include govuk-clearfix;
+
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    &-item {
+      color: $link-colour;
+      margin-bottom: 20px;
+      padding-left: 15px;
+
+      &--active {
+        font-weight: bold;
+        position: relative;
+
+        &::before {
+          @include govuk-shape-arrow($direction: right, $base: 10px, $display: inline-block);
+
+          content: "";
+          position: absolute;
+          top: 10px;
+          left: 0;
+        }
+      }
+    }
+  }
+
+  .idsk-in-page-navigation__link {
+    @include govuk-link-common;
+    @include govuk-link-style-default;
+
+    text-decoration: none;
+  }
+
+  @include mq($until: desktop) {
+
+    .idsk-in-page-navigation__title {
+      display: none;
+    }
+    .idsk-in-page-navigation__current-link {
+      display: block;
+    }
+
+  }
+}
