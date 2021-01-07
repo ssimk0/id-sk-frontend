@@ -173,9 +173,11 @@ FooterExtended.prototype.handleCloseHelpFormButtonClick = function () {
 var mybutton = document.getElementById("footer-extended-up-button");
 
 // When the user scrolls down window screen heiht From the top of the document, show the button
-window.onscroll = function () {
-    scrollFunction()
-};
+if (mybutton != null) {
+    window.onscroll = function () {
+        scrollFunction()
+    };
+}
 
 function scrollFunction() {
     if (window.screen.width > 992 && (document.body.scrollTop > window.screen.height || document.documentElement.scrollTop > window.screen.height)) {

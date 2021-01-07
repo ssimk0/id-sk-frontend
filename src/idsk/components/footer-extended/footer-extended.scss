@@ -205,11 +205,15 @@
 
     .idsk-footer-extended-feedback-text {
         font-style: normal;
-        font-weight: bold;
         color: govuk-colour("white");
         @include mq($from: desktop) {
             font-size: 20px;
         }
+    }
+
+    #idsk-footer-extended-feedback-yes-button,
+    #idsk-footer-extended-feedback-no-button {
+        font-weight: bold;
     }
 
     .idsk-footer-extended-feedback-text-answers {
