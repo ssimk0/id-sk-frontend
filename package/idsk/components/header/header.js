@@ -659,7 +659,7 @@ if (detect) return
 })
 .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
-function Header ($module) {
+function Header($module) {
   this.$module = $module;
 }
 

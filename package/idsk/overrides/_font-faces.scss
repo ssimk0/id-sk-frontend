@@ -1,0 +1,63 @@
+@import "../../govuk/tools/font-url";
+
+/// Font Face - Source Sans Pro
+///
+/// Outputs the font-face declaration for Source Sans Pro at the root of the CSS document
+/// the first time it is called.
+///
+/// @access private
+
+@mixin _idsk-font-face-source-sans-pro {
+  @at-root {
+    @font-face {
+      font-family: "Source Sans Pro";
+      src: govuk-font-url("SourceSansPro-Regular.woff") format("woff");
+      font-weight: normal;
+      font-style: normal;
+      font-display: fallback;
+    }
+    @font-face {
+      font-family: "Source Sans Pro";
+      src: govuk-font-url("SourceSansPro-Bold.woff") format("woff");
+      font-weight: bold;
+      font-style: normal;
+      font-display: fallback;
+    }
+  }
+}
+
+/// Font Face - Font Awesome
+///
+/// Outputs the font-face declaration for Font Awesome at the root of the CSS document
+/// the first time it is called.
+///
+/// @access private
+
+@mixin _idsk-font-face-font-awesome {
+  @at-root {
+    @font-face {
+      font-family: "FontAwesome";
+      src: govuk-font-url("fa-regular-400.woff2") format("woff2"),
+      govuk-font-url("fa-regular-400.woff") format("woff");
+      font-weight: normal;
+      font-style: solid;
+      font-display: fallback;
+    }
+    @font-face {
+      font-family: "FontAwesome";
+      src: govuk-font-url("fa-solid-900.woff2") format("woff2"),
+      govuk-font-url("fa-solid-900.woff") format("woff");
+      font-weight: normal;
+      font-style: solid;
+      font-display: fallback;
+    }
+    @font-face {
+      font-family: "FontAwesome";
+      src: govuk-font-url("fa-brands-400.woff2") format("woff2"),
+      govuk-font-url("fa-brands-400.woff") format("woff");
+      font-weight: normal;
+      font-style: normal;
+      font-display: fallback;
+    }
+  }
+}

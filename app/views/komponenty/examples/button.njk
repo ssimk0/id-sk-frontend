@@ -1,5 +1,5 @@
 {% from "input/macro.njk" import govukInput %}
-{% from "button/macro.njk" import govukButton %}
+{% from "../../../../src/idsk/components/button/macro.njk" import idskButton %}
 
 {{ govukInput({
   "label": {
@@ -8,6 +8,6 @@
   "id": "input-email",
   "name": "email"
 }) }}
-{{ govukButton({
+{{ idskButton({
   "text": "Uložiť a pokračovať"
 }) }}

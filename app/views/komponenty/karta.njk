@@ -27,9 +27,9 @@
                 <li><a href="#card-basic">Základná kartička</a></li>
                 <li><a href="#card-simple">Jednoduchá kartička</a></li>
                 <li><a href="#card-hero">Hero kartička</a></li>
-                <li><a href="#card-hero-secondary-horizontal">Sekundárna kartička - horizontálna</a></li>
-                <li><a href="#card-hero-secondary-vertical">Sekundárna kartička - vertikálna</a></li>
+                <li><a href="#card-hero-secondary">Sekundárna kartička</a></li>
                 <li><a href="#card-basic-no-image">Základná kartička - bez obrázka</a></li>
+                <li><a href="#card-basic-no-image-no-desc"> Základná kartička - bez obrázka a popisu</a></li>
                 <li><a href="#card-profile-vertical">Profilová kartička - vertikálna</a></li>
                 <li><a href="#card-profile-horizontal">Profilová kartička - horizontálna</a></li>
                 </ul>
@@ -59,6 +59,7 @@
             <div class="govuk-grid-column-two-thirds">
                 <h3 class="govuk-heading-m" id="card-simple">Jednoduchá kartička</h3>
                 <p class="govuk-body">Zjednodušené použitie kartičky, obsahuje len obrázok a hlavičku</p>
+                <p class="govuk-body">Pre správne zobrazenie karty by dĺžka textu pre titulok nemala presahovať 10 znakov</p>
             </div>
 
             <div class="govuk-grid-column-full">
@@ -103,15 +104,15 @@
         </div>
 
         <div class="govuk-grid-column-two-thirds">
-            <h3 class="govuk-heading-m" id="card-hero-secondary-horizontal">Sekundárna kartička - horizontálna</h3>
+            <h3 class="govuk-heading-m" id="card-hero-secondary">Sekundárna kartička</h3>
             <p class="govuk-body">Ďalší typ kartičky ktorý sa používa na vyplnenie celkovej šírky kontajnera</p>
+            <p class="govuk-body">Pre správne zobrazenie karty by dĺžka textu pre titulok nemala presahovať 10 znakov a pre popis 15 znakov</p>
         </div>
-
         <div class="govuk-grid-column-full">
             <div class="example example-error">
                 {% set exampleComponentHtml %}
                     {{ idskCard({ 
-                        "type": "secondary-horizontal", 
+                        "type": "secondary", 
                         "imgSrc": "/public/assets/images/examples/card-2.jpg", 
                         "link": "#",
                         "heading": "V. Remišová rokovala s ministrami V4",
@@ -124,30 +125,6 @@
             </div>
             <pre class=" language-markup"><code class="govuk-!-font-size-16  language-markup">{{ exampleComponentHtml }}</code></pre>
         </div>
-
-                <div class="govuk-grid-column-two-thirds">
-            <h3 class="govuk-heading-m" id="card-hero-secondary-vertical">Sekundárna kartička - vertikálna</h3>
-            <p class="govuk-body">Vertikálny typ sekundárnej kartičky</p>
-        </div>
-
-        <div class="govuk-grid-column-full">
-            <div class="example example-error">
-                {% set exampleComponentHtml %}
-                    {{ idskCard({ 
-                        "type": "secondary-vertical", 
-                        "imgSrc": "/public/assets/images/examples/card-1.jpg", 
-                        "link": "#",
-                        "heading": "V. Remišová rokovala s ministrami V4 o nových návrhoch financovania projektov na zmiernenie dopadov pandémie",
-                        "description": "Regióny sú pre vládu prioritou, preto podpredsedníčka vlády a ministerka investícií, regionálneho rozvoja a informatizácie Veronika Remišová.",
-                        "date": { "date": "1.7.2020", "link": "#" },
-                        "tags": [ { "tag": "Ministerka", "link": "#" }, { "tag": "COVID-19", "link": "#" } ]
-                    }) }}
-                {% endset %}
-                {{exampleComponentHtml | safe}}
-            </div>
-            <pre class=" language-markup"><code class="govuk-!-font-size-16  language-markup">{{ exampleComponentHtml }}</code></pre>
-        </div>
-
         <div class="govuk-grid-column-two-thirds">
             <h3 class="govuk-heading-m" id="card-basic-no-image">Základná kartička - bez obrázka</h3>
             <p class="govuk-body">Variant základnej kartičky bez pridaného obrázka</p>
@@ -171,7 +148,7 @@
         </div>
 
         <div class="govuk-grid-column-two-thirds">
-            <h3 class="govuk-heading-m" id="card-basic-no-image">Základná kartička - bez obrázka a popisu</h3>
+            <h3 class="govuk-heading-m" id="card-basic-no-image-no-desc">Základná kartička - bez obrázka a popisu</h3>
             <p class="govuk-body">Variant základnej kartičky bez pridaného obrázka a popisu</p>
         </div>
 

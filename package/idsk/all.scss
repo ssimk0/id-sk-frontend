@@ -4,5 +4,7 @@
 // Import GOV.UK frontend
 @import "../govuk/all";
 
+@import "core/all";
+
 // ID-SK components
 @import "components/all"

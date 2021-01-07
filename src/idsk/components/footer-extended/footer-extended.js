@@ -22,11 +22,6 @@ FooterExtended.prototype.init = function () {
     let $closeErrorFormButton = $module.querySelector('#idsk-footer-extended-close-error-form-button');
     let $closeHelpFormButton = $module.querySelector('#idsk-footer-extended-close-help-form-button');
 
-
-    let $closeErrorFormButtonTablet = $module.querySelector('#idsk-footer-extended-close-error-form-button-tablet');
-    let $closeHelpFormButtonTablet = $module.querySelector('#idsk-footer-extended-close-help-form-button-tablet');
-
-
     let $textAreaCharacterCount = $module.querySelector('#idsk-footer-extended-error-form #with-hint');
 
     let $fillFeedbackButton = $module.querySelector('#fill-feedback-help-form');
@@ -51,14 +46,6 @@ FooterExtended.prototype.init = function () {
 
     if ($closeErrorFormButton) {
         $closeErrorFormButton.addEventListener('click', this.handleCloseErrorFormButtonClick.bind(this));
-    }
-
-    if ($closeErrorFormButtonTablet) {
-        $closeErrorFormButtonTablet.addEventListener('click', this.handleCloseErrorFormButtonClick.bind(this));
-    }
-
-    if ($closeHelpFormButtonTablet) {
-        $closeHelpFormButtonTablet.addEventListener('click', this.handleCloseHelpFormButtonClick.bind(this));
     }
 
     if ($fillFeedbackButton) {
@@ -181,5 +168,22 @@ FooterExtended.prototype.handleCloseHelpFormButtonClick = function () {
     toggleClass($helpOption, 'idsk-footer-extended-open');
     toggleClass($helpOption, 'idsk-footer-extended-display-hidden');
 }
+
+//Get the button
+var mybutton = document.getElementById("footer-extended-up-button");
+
+// When the user scrolls down window screen heiht From the top of the document, show the button
+window.onscroll = function () {
+    scrollFunction()
+};
+
+function scrollFunction() {
+    if (window.screen.width > 992 && (document.body.scrollTop > window.screen.height || document.documentElement.scrollTop > window.screen.height)) {
+        mybutton.style.display = "block";
+    } else {
+        mybutton.style.display = "none";
+    }
+}
+
 
 export default FooterExtended

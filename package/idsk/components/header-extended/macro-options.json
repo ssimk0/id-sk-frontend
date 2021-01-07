@@ -1,0 +1,213 @@
+[
+    {
+        "name": "classes",
+        "type": "string",
+        "required": false,
+        "description": "Classes to add to the header container."
+    },
+    {
+        "name": "attributes",
+        "type": "object",
+        "required": false,
+        "description": "HTML attributes (for example data attributes) to add to the header container."
+    },
+    {
+        "name": "containerClasses",
+        "type": "string",
+        "required": false,
+        "description": "Classes for the container, useful if you want to make the header fixed width."
+    },
+    {
+        "name": "homepageUrl",
+        "type": "string",
+        "required": false,
+        "description": "The url of the homepage. Defaults to /"
+    },
+    {
+        "name": "headerTitle",
+        "type": "string",
+        "required": false,
+        "description": "The title of logo. It shows after hover the logo element"
+    },
+    {
+        "name": "assetsPath",
+        "type": "string",
+        "required": false,
+        "description": "The public path for the assets folder. If not provided it defaults to /assets/images"
+    },
+    {
+        "name": "search",
+        "type": "boolean",
+        "required": false,
+        "description": "Display or not the search bar"
+    },
+    {
+        "name": "language",
+        "type": "object",
+        "reguired": false,
+        "description": "current language information and available language choices",
+        "params": [
+            {
+                "name": "current",
+                "type": "object",
+                "required": true,
+                "description": "information about current language",
+                "params": [
+                    {
+                        "name": "text",
+                        "type": "string",
+                        "required": true,
+                        "decription": "The name of current/selected language"
+                    },
+                    {
+                        "name": "flag",
+                        "type": "string",
+                        "required": true,
+                        "description": "The flag of current/selected language"
+                    }
+                ]
+            },
+            {
+                "name": "choices",
+                "type": "array",
+                "required": true,
+                "description": "available language choices",
+                "params": [
+                    {
+                        "name": "text",
+                        "type": "string",
+                        "required": true,
+                        "description": "Name of language"
+                    },
+                    {
+                        "name": "flag",
+                        "type": "string",
+                        "required": true,
+                        "description": "Name of flag image of language"
+                    },
+                    {
+                        "name": "link",
+                        "type": "string",
+                        "required": false,
+                        "description": "link to english mutation"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "socials",
+        "type": "array",
+        "required": false,
+        "description": "array of social links",
+        "params": [
+            {
+                "name": "text",
+                "type": "string",
+                "required": true,
+                "description": "Name of social network"
+            },
+            {
+                "name": "link",
+                "type": "string",
+                "required": true,
+                "description": "Link to social network"
+            },
+            {
+                "name": "icon",
+                "type": "string",
+                "required": true,
+                "description": "Icon of social network"
+            }
+        ]
+    },
+    {
+        "name": "navigationClasses",
+        "type": "string",
+        "required": false,
+        "description": "Classes for the navigation section of the header."
+    },
+    {
+        "name": "navigation",
+        "type": "array",
+        "required": false,
+        "description": "list of navigation items",
+        "params": [
+            {
+                "name": "text",
+                "type": "string",
+                "required": true,
+                "description": "Text of the navigation item"
+            },
+            {
+                "name": "link",
+                "type": "string",
+                "required": true,
+                "description": "Url of the navigation item anchor. Both `href` and `text` attributes for navigation items need to be provided to create an item."
+            },
+            {
+                "name": "active",
+                "type": "boolean",
+                "required": false,
+                "description": "Flag to mark the navigation item as active or not."
+            },
+            {
+                "name": "attributes",
+                "type": "object",
+                "required": false,
+                "description": "HTML attributes (for example data attributes) to add to the navigation item anchor."
+            },
+            {
+                "name": "submenu",
+                "type": "array",
+                "required": false,
+                "description": "array of submenu items",
+                "params": [
+                    {
+                        "name": "text",
+                        "type": "string",
+                        "required": true,
+                        "description": "Text of the submenu item"
+                    },
+                    {
+                        "name": "link",
+                        "type": "string",
+                        "required": true,
+                        "description": "Url of the submenu item anchor"
+                    },
+                    {
+                        "name": "icon",
+                        "type": "string",
+                        "required": false,
+                        "description": "Additional icon for visual description of the submenu item"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "notifications",
+        "type": "array",
+        "required": false,
+        "params": [
+            {
+                "name": "type",
+                "type": "string",
+                "required": false,
+                "description": "You can modify the notification type message"
+            },
+            {
+                "name": "iconFallbackText",
+                "type": "string",
+                "required": true,
+                "dexription": "The fallback text for the icon."
+            },
+            {
+                "name": "html",
+                "type": "string",
+                "required": true,
+                "description": "If `text` is set, this is not required. HTML to use within the warning text component. If `html` is provided, the `text` argument will be ignored."
+            }
+        ]
+    }
+]
