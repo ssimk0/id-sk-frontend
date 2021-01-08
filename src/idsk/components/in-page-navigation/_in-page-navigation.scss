@@ -4,8 +4,6 @@
 
 @include govuk-exports("idsk/component/in-page-navigation") {
 
-  $link-colour: #0065B3;
-
   .idsk-in-page-navigation {
     @include govuk-font($size: 24);
 
@@ -16,7 +14,8 @@
     margin-bottom: 20px;
     font-weight: bold;
   }
-  .idsk-in-page-navigation__current-link {
+  .idsk-in-page-navigation__link-panel,
+  .idsk-in-page-navigation__link-number {
     display: none;
   }
 
@@ -28,7 +27,7 @@
     padding: 0;
 
     &-item {
-      color: $link-colour;
+      color: govuk-colour("blue");
       margin-bottom: 20px;
       padding-left: 15px;
 
@@ -57,11 +56,84 @@
 
   @include mq($until: desktop) {
 
+    .idsk-in-page-navigation {
+      max-width: 100%;
+    }
+
     .idsk-in-page-navigation__title {
       display: none;
     }
-    .idsk-in-page-navigation__current-link {
-      display: block;
+
+    .idsk-in-page-navigation__link-panel {
+      background: govuk-colour("dark-blue");
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      width: 100%;
+      
+      &-button {
+        @include govuk-font($size: 24);
+
+        background: govuk-colour("dark-blue");
+        border: none;
+        color: govuk-colour("white");
+        font-weight: bold;
+        padding: 10px 50px 10px 15px;
+        text-align: left;
+        width: 100%;
+        background: govuk-colour("dark-blue");
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+
+        &:focus {
+          @include govuk-focused-text;
+        }
+      }
+
+      &::before {
+        border-style: solid;
+        border-width: 0.25em 0.25em 0 0;
+        color: govuk-colour("white");
+        content: "";
+        display: inline-block;
+        height: 0.45em;
+        right: 15px;
+        position: absolute;
+        top: 10px;
+        transform: rotate(135deg);
+        vertical-align: top;
+        width: 0.45em;
+      }
+    }
+
+    .idsk-in-page-navigation__link {
+      text-decoration: underline;
+
+      &-number {
+        display: inline-block;
+        text-decoration: underline;
+      }
+      &-number:focus {
+        text-decoration: none;
+      }
+    }
+
+    .idsk-in-page-navigation__list {
+      border-bottom: 4px solid govuk-colour("dark-blue");
+      padding-top: 15px;
+      max-height: 0;
+      transition: max-height 0.5s ease-out;
+      overflow: scroll;
+    }
+    
+    .idsk-in-page-navigation__list--expand {
+      max-height: 200px;
+      transition: max-height 0.5s ease-in;
+    }
+
+    .idsk-in-page-navigation__list-item--active::before {
+      top: 5px;
     }
 
   }
