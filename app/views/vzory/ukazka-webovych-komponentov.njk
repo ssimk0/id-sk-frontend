@@ -1,0 +1,289 @@
+{% extends "layout.njk" %}
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "../../../src/idsk/components/header-extended/macro.njk" import idskHeaderExtended %}
+{% from "../../../src/idsk/components/footer-extended/macro.njk" import idskFooterExtended %}
+{% from "../../../src/idsk/components/card/macro.njk" import idskCard %}
+
+{% set pageName = "Ukážka webových komponentov" %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    "items": [
+    { text: 'ID-SK frontend', href: '/' + legacyQuery },
+    { text: pageName }
+    ]
+  }) }}
+{% endblock %}
+
+{% block header %}
+
+  {{ idskHeaderExtended({
+    logoGrid: 'govuk-grid-column-two-thirds',
+    navigation: [
+        {
+            link: '#1',
+            text: 'Ministerstvo'
+        },
+        {
+            link: '#2',
+            text: 'Sekcie',
+            active: true
+        },
+        {
+            link: '#3',
+            text: 'Programy EŠIF'
+        },
+        {
+            link: '#4',
+            text: 'Aktuality'
+        },
+        {
+            link: '#5',
+            text: 'Kontakt'
+        }
+    ],
+    language: {
+        current: {
+            text: "slovenčina",
+            flag: "slovakia-flag-icon-16.png"
+        },
+        choices: [
+            {
+                flag: "united-states-of-america-flag-icon-16.png",
+                text: "english",
+                link: "#"
+            },
+            {
+                flag: "germany-flag-icon-16.png",
+                text: "german",
+                link: "#"
+            }
+        ]
+    },
+    socials: [
+        {
+            icon: "fab fa-instagram",
+            link: "#",
+            text: "Instagram"
+        },
+        {
+            icon: "fab fa-linkedin-in",
+            link: "#",
+            text: "Linkedin"
+        },
+        {
+            icon: "fab fa-facebook-f",
+            link: "#",
+            text: "Facebook"
+        },
+        {
+            icon: "fab fa-twitter",
+            link: "#",
+            text: "Twitter"
+        }
+    ]    
+}) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-width-container">
+
+    <span class="govuk-caption-xl">Vzory</span>
+    <h1 class="govuk-heading-xl">{{pageName}}</h1>
+    <p class="govuk-body-l">Toto je názorná ukážka, ako by mala vyzerať stránka, ktorá obsahuje webové komponenty ID-SK.</p>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        {{ idskCard({ 
+                            "type": "basic", 
+                            "imgSrc": "/public/assets/images/examples/card-1.jpg", 
+                            "link": "#",
+                            "heading": "Podpora najmenej rozvinutých okresov: Nové výzvy po novom!",
+                            "description": "Regióny sú pre vládu prioritou, preto podpredsedníčka vlády a ministerka investícií, regionálneho rozvoja a informatizácie Veronika Remišová.",
+                            "date": { "date": "1.7.2020", "link": "#" },
+                            "tags": [ { "tag": "Ministerka", "link": "#" }, { "tag": "COVID-19", "link": "#" }, { "tag": "Eurofondy", "link": "#" } ]
+                        }) }}
+
+      </div>
+    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        {{ idskCard({ 
+                            "type": "simple", 
+                            "imgSrc": "/public/assets/images/examples/card-2.jpg", 
+                            "link": "#",
+                            "heading": "V. Remišová rokovala s ministrami V4 o nových návrhoch financovania projektov na zmiernenie dopadov pandémie",
+                            "date": { "date": "1.7.2020", "link": "#" },
+                            "tags": [ { "tag": "Ministerka", "link": "#" }, { "tag": "COVID-19", "link": "#" } ]
+                        }) }}
+      </div>
+    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        {{ idskCard({ 
+                        "type": "basic-variant", 
+                        "link": "#",
+                        "heading": "Pandémia COVID-19 ešte viac zvýraznila potrebu urýchliť digitálnu transformáciu v Európe",
+                        "date": { "date": "1.7.2020", "link": "#" },
+                        "tags": [ { "tag": "Ministerka", "link": "#" }, { "tag": "COVID-19", "link": "#" }, { "tag": "Eurofondy", "link": "#" } ]
+                    }) }}
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block footer %}
+  {{ idskFooterExtended({
+    characterLength : 500,
+    showFeedback : "true",
+    designAddress : "#",
+    feedbackButtonAddress : "idsk.gov.sk",
+    firstColumn: {
+      title: "Navigácia v 2 stĺpcoch (2/3)",
+      leftItems: [
+        {
+          name:"Link small Regular 12/20", 
+          href:"#"  
+        },
+        {
+          name:"Link small Regular 13/20", 
+          href:"#"
+        },
+        {
+          name:"Link small Regular 14/20", 
+          href:"#"
+        },
+        {
+          name:"Link small Regular 15/20", 
+          href:"#"
+        }
+      ],
+      rightItems: [
+        {
+          name:"Link small Regular 16/20", 
+          href:"#"  
+        },
+        {
+          name:"Link small Regular 17/20", 
+          href:"#"
+        },
+        {
+          name:"Link small Regular 18/20", 
+          href:"#"
+        },
+        {
+          name:"Link small Regular 19/20", 
+          href:"#"
+        }
+      ]
+    },
+
+    secondColumn: {
+      title: "Navigácia v 1 stĺpci (1/3)",
+      items: [
+        {
+          name:"Link small Regular 20/20", 
+          href:"#"  
+        },
+        {
+          name:"Link small Regular 21/20", 
+          href:"#"
+        },
+        {
+          name:"Link small Regular 22/20", 
+          href:"#"
+        },
+        {
+          name:"Link small Regular 23/20", 
+          href:"#"
+        }
+      ]
+    },
+        
+    thirdColumn: {
+      title: "Dodatočná hyperlinková navigácia (1/4)",
+      items: [
+        {
+          name:"Link small Regular 24/20", 
+          href:"#"  
+        },
+        {
+          name:"Link small Regular 25/20", 
+          href:"#"
+        },
+        {
+          name:"Link small Regular 26/20", 
+          href:"#"
+        },
+        {
+          name:"Link small Regular 27/20", 
+          href:"#"
+        }
+      ]
+    },
+
+    fourthColumn: {
+      title: "Navigácia v 1 stĺpci (1/3)",
+      items: [
+        {
+          name:"Link small Regular 28/20", 
+          href:"#"  
+        },
+        {
+          name:"Link small Regular 29/20", 
+          href:"#"
+        },
+        {
+          name:"Link small Regular 30/20", 
+          href:"#"
+        },
+        {
+          name:"Link small Regular 31/20", 
+          href:"#"
+        }
+      ]
+    },
+
+    subtitles: [
+      {
+        item:"Pomoc", 
+        href:"#"
+      }, 
+      {
+        item:"Cookies",
+        href:"#"
+      }, 
+      {
+        item:"Kontakty",
+        href:"#"
+      }, 
+      {
+        item:"Mapa Stránky",
+        href:"#"
+      }, 
+      {
+        item:"RSS",
+        href:"#"
+      }, 
+      {
+        item:"Vyhlásenie o prístupnosti",
+        href:"#"
+      }
+    ],
+    dropdownItems: [
+      {
+        text:"Gramatická chyba", 
+        value:"#"
+      },
+      {
+        text:"chyba zobrazovania",
+        value:"#"
+      }, 
+      {
+        text:"chyba obsahu",
+        value:"#"
+      }
+    ]
+  }) 
+}}
+{% endblock %}
