@@ -6,12 +6,14 @@
 {% set pageName = "Hlavička s úvodným blokom" %}
 
 {% block beforeContent %}
-    {{ govukBreadcrumbs({
+    <div class="govuk-grid-column-two-thirds">
+        {{ govukBreadcrumbs({
     "items": [
     { text: 'ID-SK frontend', href: '/' + legacyQuery },
     { text: pageName }
     ]
   }) }}
+    </div>
 {% endblock %}
 
 {% block header %}
