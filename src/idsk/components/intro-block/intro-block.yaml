@@ -61,6 +61,15 @@ examples:
           item: Investície      
         - href: '#'
           item: O ministerstve
-
-     
-
+    
+     sideMenu: 
+        - href: '#' 
+          item: O eurofondoch          
+        - href: '#'
+          item: Aktuality          
+        - href: '#'
+          item: O ministerstve          
+        - href: '#'
+          item: Aktuálne výzvy      
+        - href: '#'
+          item: Dokumenty

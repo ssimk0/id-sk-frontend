@@ -42,16 +42,18 @@
                 <h2>
                     Populárny obsah
                 </h2>
-                <ul class="idsk-intro-block-top-content-menu">
-                    {% for bottomMenu in params.bottomMenu %}
-                        <li class="idsk-intro-block-top-content-menu-item">
-                            <p>
-                                <a class="govuk-link" href="{{bottomMenu.href}}">
-                                    {{ bottomMenu.item }}</a>
-                            </p>
-                        </li>
-                    {% endfor %}
-                </ul>
+                <div class="idsk-intro-block-popular-content-div">
+                    <ul class="idsk-intro-block-top-content-menu">
+                        {% for sideMenu in params.sideMenu %}
+                            <li class="idsk-intro-block-top-content-menu-item">
+                                <p>
+                                    <a class="govuk-link" href="{{sideMenu.href}}">
+                                        {{ sideMenu.item }}</a>
+                                </p>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
             <div id="idsk-intro-block-main-content-mobile" class="govuk-grid-column-full">
                 <h1 class="govuk-heading-xl">Ministerstvo investícií,
@@ -97,10 +99,10 @@
                         Populárny obsah
                     </h2>
                     <ul class="idsk-intro-block-top-content-menu">
-                        {% for bottomMenu in params.bottomMenu %}
+                        {% for sideMenu in params.sideMenu %}
                             <li class="idsk-intro-block-top-content-menu-item">
-                                <a class="govuk-link" href="{{bottomMenu.href}}">
-                                    {{ bottomMenu.item }}
+                                <a class="govuk-link" href="{{sideMenu.href}}">
+                                    {{ sideMenu.item }}
                                 </a>
                             </li>
                         {% endfor %}

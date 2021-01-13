@@ -90,7 +90,7 @@
     #idsk-intro-block-top-content-container h2 {
         margin: 0;
         float: unset;
-        @include mq($from: desktop) {
+        @include mq($from: tablet) {
             float: right;
         }
     }
@@ -110,6 +110,10 @@
         @include mq($from: desktop) {
             font-size: 32px;
         }
+    }
+
+    .idsk-intro-block-popular-content-div {
+        padding-top: 20px;
     }
 
     #idsk-intro-block-top-content-container-mobile,
