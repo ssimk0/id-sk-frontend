@@ -1,0 +1,129 @@
+@import "../../../govuk/settings/all";
+@import "../../../govuk/tools/all";
+@import "../../../govuk/helpers/all";
+@import "../../../govuk/helpers/typography";
+@import "../../../govuk/objects/grid";
+
+@include govuk-exports("idsk/component/intro-block") {
+    .idsk-intro-block {
+        @include govuk-font($size: 16);
+    }
+
+    .idsk-intro-block-search-button {
+        width: 49px;
+        height: 53px;
+        border: none;
+
+        @include mq($from: desktop) {
+            width: 67px;
+            height: 68px;
+        }
+    }
+
+    .idsk-intro-block-search-input {
+        width: 80%;
+        height: 53px;
+        border: none;
+        background: govuk-colour("grey-4");
+        margin-right: -3px;
+        font-family: Source Sans Pro;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 21px;
+        line-height: 26px;
+        color: #6f777b;
+
+        @include mq($from: desktop) {
+            height: 68px;
+            width: 73%;
+        }
+    }
+
+    .idsk-intro-block-inline-list {
+        margin-top: 0;
+        margin-bottom: govuk-spacing(3);
+        padding-left: 0;
+        display: table;
+    }
+
+    .idsk-intro-block-inline-list-item {
+        display: inline;
+        width: 60px;
+        margin-right: govuk-spacing(3);
+        margin-bottom: govuk-spacing(1);
+        text-decoration-line: underline;
+        line-height: 40px;
+
+        @include mq($from: desktop) {
+            display: unset;
+            line-height: 20px;
+        }
+    }
+
+    .idsk-intro-block-top-content-menu {
+        display: contents;
+        font-family: Source Sans Pro;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 19px;
+        line-height: 40px;
+        /* or 132% */
+
+        text-align: right;
+        text-decoration-line: underline;
+
+        /* sass / link */
+
+        color: #0065b3;
+    }
+
+    .idsk-intro-block-top-content-menu-item {
+        display: table;
+        float: none;
+
+        @include mq($from: desktop) {
+            display: contents;
+            float: right;
+        }
+    }
+
+    #idsk-intro-block-top-content-container h2 {
+        margin: 0;
+        float: unset;
+        @include mq($from: desktop) {
+            float: right;
+        }
+    }
+
+    .idsk-intro-block-bottom-menu-caption {
+        display: block;
+        padding-bottom: 10px;
+
+        @include mq($from: desktop) {
+            display: inline-grid;
+            padding-bottom: 0;
+        }
+    }
+
+    .idsk-intro-block .govuk-heading-xl {
+        font-size: 25px;
+        @include mq($from: desktop) {
+            font-size: 32px;
+        }
+    }
+
+    #idsk-intro-block-top-content-container-mobile,
+    #idsk-intro-block-main-content-mobile {
+        @include mq($from: desktop) {
+            display: none;
+        }
+    }
+
+    #idsk-intro-block-top-content-container,
+    #idsk-intro-block-main-content {
+        display: none;
+        @include mq($from: desktop) {
+            display: block;
+        }
+    }
+}
