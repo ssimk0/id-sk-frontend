@@ -7,7 +7,14 @@
   .idsk-in-page-navigation {
     @include govuk-font($size: 24);
 
-    max-width: 270px;
+    &.--sticky{
+      position: sticky;
+      top: 60px;
+
+      @include mq ($from: desktop) {
+        top: 0;
+      }
+    }
   }
 
   .idsk-in-page-navigation__title {
@@ -57,7 +64,24 @@
   @include mq($until: desktop) {
 
     .idsk-in-page-navigation {
-      max-width: 100%;
+      margin-left: -15px;
+      padding: 0;
+      width: calc(100% + 30px);
+
+      &--expand {
+        .idsk-in-page-navigation__list {
+          margin-bottom: 15px;
+          max-height: 200px;
+          overflow-y: auto;
+          padding-top: 15px;
+          transition: all 0.5s ease-in;
+        }
+        .idsk-in-page-navigation__link-panel::before {
+          top: 15px;
+          transform: rotate(-45deg);
+          transition: all 0.5s ease-in;
+        }
+      }
     }
 
     .idsk-in-page-navigation__title {
@@ -102,6 +126,7 @@
         position: absolute;
         top: 10px;
         transform: rotate(135deg);
+        transition: all 0.5s ease-out;
         vertical-align: top;
         width: 0.45em;
       }
@@ -120,16 +145,12 @@
     }
 
     .idsk-in-page-navigation__list {
+      background-color: white;
       border-bottom: 4px solid govuk-colour("dark-blue");
-      padding-top: 15px;
+      padding-top: 0;
       max-height: 0;
-      transition: max-height 0.5s ease-out;
-      overflow: scroll;
-    }
-    
-    .idsk-in-page-navigation__list--expand {
-      max-height: 200px;
-      transition: max-height 0.5s ease-in;
+      transition: all 0.5s ease-out;
+      overflow-y: hidden;
     }
 
     .idsk-in-page-navigation__list-item--active::before {

@@ -30,6 +30,10 @@ InPageNavigation.prototype.init = function () {
     }
     $linkPanelButton.addEventListener('click', this.handleClickLinkPanel.bind(this))
 
+    // Handle floating navigation
+    this.$navTopPosition = (this.$module).offsetTop
+    this.$navWidth = (this.$module).offsetWidth
+    window.addEventListener('scroll', this.scrollFunction.bind(this));
 }
 
 /**
@@ -57,8 +61,27 @@ InPageNavigation.prototype.handleClickLink = function (event) {
 InPageNavigation.prototype.handleClickLinkPanel = function (event) {
 
     let $module = this.$module
-    let $list = $module.querySelector('.idsk-in-page-navigation__list')
-    toggleClass($list, 'idsk-in-page-navigation__list--expand')
+    toggleClass($module, 'idsk-in-page-navigation--expand')
+}
+
+/**
+ * When the user scrolls down from the top of the document, set position to fixed
+ */
+InPageNavigation.prototype.scrollFunction = function () {
+    let $module = this.$module
+    let $inPageNavigationWrapper = $module.querySelector(".idsk-in-page-navigation-wrapper")
+
+    if (window.pageYOffset >= this.$navTopPosition) {
+        $module.classList.add("--sticky")
+    } else {
+        $module.classList.remove("--sticky");
+    }
+
+    // if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+    //     $module.classList.add('idsk-header-extended--shrink');
+    // } else if (document.body.scrollTop < 10 && document.documentElement.scrollTop < 10) {
+    //     $module.classList.remove('idsk-header-extended--shrink');
+    // }
 }
 
 export default InPageNavigation
