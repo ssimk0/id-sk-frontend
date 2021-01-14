@@ -27,7 +27,6 @@
         border: none;
         background: govuk-colour("grey-4");
         margin-right: -3px;
-        font-family: Source Sans Pro;
         font-style: normal;
         font-weight: normal;
         font-size: 21px;
@@ -47,27 +46,49 @@
         display: table;
     }
 
+    .idsk-intro-block-subtitle {
+        font-size: 18px;
+        line-height: 20px;
+
+        @include mq($from: desktop) {
+            font-size: 19px;
+            line-height: 25px;
+        }
+    }
+
+    .idsk-intro-block-inline-text-item {
+        display: inline;
+        width: 60px;
+        margin-right: govuk-spacing(3);
+        margin-bottom: govuk-spacing(1);
+        font-size: 19px;
+        line-height: 25px;
+    }
+
     .idsk-intro-block-inline-list-item {
         display: inline;
         width: 60px;
         margin-right: govuk-spacing(3);
         margin-bottom: govuk-spacing(1);
         text-decoration-line: underline;
-        line-height: 40px;
+        font-size: 16px;
+        line-height: 25px;
 
         @include mq($from: desktop) {
             display: unset;
-            line-height: 20px;
         }
+    }
+
+    .idsk-intro-block-inline-list-item-a {
+        white-space: nowrap;
     }
 
     .idsk-intro-block-top-content-menu {
         display: contents;
-        font-family: Source Sans Pro;
         font-style: normal;
         font-weight: bold;
         font-size: 19px;
-        line-height: 40px;
+        line-height: 25px;
         /* or 132% */
 
         text-align: right;
@@ -81,10 +102,12 @@
     .idsk-intro-block-top-content-menu-item {
         display: table;
         float: none;
+        padding-bottom: 20px;
 
         @include mq($from: desktop) {
             display: contents;
             float: right;
+            padding-bottom: 0;
         }
     }
 
@@ -125,7 +148,7 @@
     }
 
     #idsk-intro-block-top-content-container,
-    #idsk-intro-block-main-content { 
+    #idsk-intro-block-main-content {
         display: none;
         @include mq($from: desktop) {
             display: block;
