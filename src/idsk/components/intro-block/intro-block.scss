@@ -7,7 +7,6 @@
 @include govuk-exports("idsk/component/intro-block") {
     .idsk-intro-block {
         @include govuk-font($size: 16);
-        padding-top: 25px;
     }
 
     .idsk-intro-block-search-button {
@@ -35,7 +34,7 @@
 
         @include mq($from: desktop) {
             height: 68px;
-            width: 73%;
+            width: 83%;
         }
     }
 
@@ -49,6 +48,7 @@
     .idsk-intro-block-subtitle {
         font-size: 18px;
         line-height: 20px;
+        padding-bottom: 10px;
 
         @include mq($from: desktop) {
             font-size: 19px;
