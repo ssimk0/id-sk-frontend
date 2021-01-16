@@ -68,19 +68,25 @@
     .idsk-intro-block-inline-list-item {
         display: inline;
         width: 60px;
-        margin-right: govuk-spacing(3);
+        margin-right: govuk-spacing(6);
         margin-bottom: govuk-spacing(1);
         text-decoration-line: underline;
         font-size: 16px;
-        line-height: 25px;
+        line-height: 20px;
 
         @include mq($from: desktop) {
             display: unset;
+            margin-right: govuk-spacing(3);
         }
     }
 
     .idsk-intro-block-inline-list-item-a {
         white-space: nowrap;
+    }
+
+    .idsk-intro-block-inline-list-item .govuk-link:active,
+    .idsk-intro-block-inline-list-item .govuk-link:link {
+        color: #626a6e;
     }
 
     .idsk-intro-block-top-content-menu {
@@ -99,10 +105,22 @@
         color: #0065b3;
     }
 
-    .idsk-intro-block-top-content-menu-item {
+    .idsk-intro-block-top-content-menu-item-blue-background {
         display: table;
         float: none;
         padding-bottom: 20px;
+        display: contents;
+
+        @include mq($from: desktop) {
+            float: right;
+            padding-bottom: 0;
+        }
+    }
+
+    .idsk-intro-block-top-content-menu-item {
+        display: table;
+        float: none;
+        margin: -20px 0;
 
         @include mq($from: desktop) {
             display: contents;
@@ -111,7 +129,18 @@
         }
     }
 
-    #idsk-intro-block-top-content-container h2 {
+    .idsk-intro-block-top-content-menu-blue-background {
+        padding-inline-start: 0;
+    }
+
+    .idsk-intro-block-top-content-menu-blue-background-div {
+        padding-left: 10px;
+        @include mq($from: desktop) {
+            padding-left: 5px;
+        }
+    }
+
+    #idsk-intro-block-top-content-container-desktop h2 {
         margin: 0;
         float: unset;
         @include mq($from: tablet) {
@@ -119,13 +148,27 @@
         }
     }
 
+    #idsk-intro-block-top-content-container-blue-background h2 {
+        padding-top: 15px;
+        @include mq($from: desktop) {
+            margin-top: 10px;
+            padding-top: 0;
+            margin-bottom: -5px;
+        }
+    }
+
     .idsk-intro-block-bottom-menu-caption {
         display: block;
         padding-bottom: 10px;
+        font-size: 18px;
+        line-height: 20px;
 
         @include mq($from: desktop) {
             display: inline-grid;
             padding-bottom: 0;
+            font-size: 19px;
+            line-height: 25px;
+            padding-right: 20px;
         }
     }
 
@@ -140,18 +183,25 @@
         padding-top: 20px;
     }
 
-    #idsk-intro-block-top-content-container-mobile,
-    #idsk-intro-block-main-content-mobile {
+    #idsk-intro-block-top-content-container-blue-background {
+        padding-bottom: 5px;
         @include mq($from: desktop) {
-            display: none;
+            margin-left: 40px;
+            width: 25%;
         }
     }
 
-    #idsk-intro-block-top-content-container,
-    #idsk-intro-block-main-content {
-        display: none;
-        @include mq($from: desktop) {
-            display: block;
-        }
+    .app-pane-grey {
+        background-color: #dee0e2;
+    }
+
+    .app-pane-blue {
+        background-color: #0065b3;
+    }
+
+    .idsk-intro-block-text-colour {
+        color: govuk-colour("white");
+        width: auto;
+        line-break: normal;
     }
 }
