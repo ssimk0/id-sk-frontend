@@ -21,7 +21,6 @@
     }
 
     .idsk-intro-block-search-input {
-        width: 80%;
         height: 53px;
         border: none;
         background: govuk-colour("grey-4");
@@ -34,8 +33,11 @@
 
         @include mq($from: desktop) {
             height: 68px;
-            width: 83%;
         }
+    }
+
+    .idsk-intro-block-search-input-with-button {
+        display: flex;
     }
 
     .idsk-intro-block-inline-list {

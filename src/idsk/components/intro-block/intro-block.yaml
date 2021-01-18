@@ -13,10 +13,34 @@ params:
         required: false
         description: Url address for navigation links
 
+  - name: sideMenu
+    type: array
+    required: false
+    description: Array of navigation links called Popular content for intro block.
+    params:
+      - name: name
+        type: string
+        required: false
+        description: Name of navigation links
+      - name: href
+        type: html
+        required: false
+        description: Url address for navigation links
+
+  - name: moreInfoAboutMinistryLink
+    type: link
+    required: false
+    description: link name for page of ministry.
+
   - name: classContainer
     type: class
     required: false
     description: class name for having govuk-width-container on page.
+
+  - name: classBackground
+    type: class
+    required: false
+    description: class name for changing background of side menu.
 
 previewLayout: full-width
 accessibilityCriteria: |
