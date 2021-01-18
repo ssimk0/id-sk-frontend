@@ -89,11 +89,9 @@ FooterExtended.prototype.handleStatusOfCharacterCountButton = function (e) {
 
     setTimeout(function () {
         if ($textAreaCharacterCount.classList.contains('govuk-textarea--error') || $remainingCharacterCountMessage.classList.contains('govuk-error-message')) {
-            console.log('yes');
             console.log($textAreaCharacterCount.classList);
             $submitButton.disabled = true;
         } else {
-            console.log('no');
             console.log($textAreaCharacterCount.classList);
             $submitButton.disabled = false;
         }
