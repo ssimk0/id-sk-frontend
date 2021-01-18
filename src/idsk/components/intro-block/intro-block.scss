@@ -68,16 +68,14 @@
     }
 
     .idsk-intro-block-inline-list-item {
-        display: inline;
-        width: 60px;
+        display: inline-block;
         margin-right: govuk-spacing(6);
-        margin-bottom: govuk-spacing(1);
+        margin-bottom: govuk-spacing(2);
         text-decoration-line: underline;
         font-size: 16px;
         line-height: 20px;
 
         @include mq($from: desktop) {
-            display: unset;
             margin-right: govuk-spacing(3);
         }
     }
