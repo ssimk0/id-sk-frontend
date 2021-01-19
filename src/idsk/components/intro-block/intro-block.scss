@@ -48,32 +48,30 @@
     }
 
     .idsk-intro-block-subtitle {
-        font-size: 18px;
-        line-height: 20px;
-        padding-bottom: 10px;
+        color: govuk-colour("black");
+        padding-bottom: govuk-spacing(2);
 
         @include mq($from: desktop) {
-            font-size: 19px;
-            line-height: 25px;
+            @include govuk-font($size: 19);
         }
     }
 
     .idsk-intro-block-inline-text-item {
+        @include govuk-font($size: 19);
+
         display: inline;
         width: 60px;
         margin-right: govuk-spacing(3);
         margin-bottom: govuk-spacing(1);
-        font-size: 19px;
-        line-height: 25px;
     }
 
     .idsk-intro-block-inline-list-item {
+        @include govuk-font($size: 16);
+
         display: inline-block;
         margin-right: govuk-spacing(6);
         margin-bottom: govuk-spacing(2);
         text-decoration-line: underline;
-        font-size: 16px;
-        line-height: 20px;
 
         @include mq($from: desktop) {
             margin-right: govuk-spacing(3);
@@ -86,29 +84,26 @@
 
     .idsk-intro-block-inline-list-item .govuk-link:active,
     .idsk-intro-block-inline-list-item .govuk-link:link {
-        color: #626a6e;
+        color: govuk-colour("dark-grey");
     }
 
     .idsk-intro-block-top-content-menu {
+        @include govuk-font($size: 19);
+
         display: contents;
         font-style: normal;
         font-weight: bold;
-        font-size: 19px;
-        line-height: 25px;
-        /* or 132% */
-
         text-align: right;
         text-decoration-line: underline;
 
         /* sass / link */
-
-        color: #0065b3;
+        color: govuk-colour("blue");
     }
 
     .idsk-intro-block-top-content-menu-item-blue-background {
         display: table;
         float: none;
-        padding-bottom: 20px;
+        padding-bottom: govuk-spacing(4);
         display: contents;
 
         @include mq($from: desktop) {
@@ -134,24 +129,27 @@
     }
 
     .idsk-intro-block-top-content-menu-blue-background-div {
-        padding-left: 10px;
+        padding-left: govuk-spacing(2);
+
         @include mq($from: desktop) {
-            padding-left: 5px;
+            padding-left: govuk-spacing(1);
         }
     }
 
     #idsk-intro-block-top-content-container-desktop h2 {
         margin: 0;
         float: unset;
+
         @include mq($from: tablet) {
             float: right;
         }
     }
 
     #idsk-intro-block-top-content-container-blue-background h2 {
-        padding-top: 15px;
+        padding-top: govuk-spacing(3);
+
         @include mq($from: desktop) {
-            margin-top: 10px;
+            margin-top: govuk-spacing(2);
             padding-top: 0;
             margin-bottom: -5px;
         }
@@ -159,44 +157,43 @@
 
     .idsk-intro-block-bottom-menu-caption {
         display: block;
-        padding-bottom: 10px;
-        font-size: 18px;
-        line-height: 20px;
+        color: govuk-colour("black");
+        padding-bottom: govuk-spacing(2);
 
         @include mq($from: desktop) {
+            @include govuk-font($size: 19);
+
             display: inline-grid;
             padding-bottom: 0;
-            font-size: 19px;
-            line-height: 25px;
-            padding-right: 20px;
+            padding-right: govuk-spacing(4);
         }
     }
 
     .idsk-intro-block .govuk-heading-xl {
-        font-size: 25px;
         @include mq($from: desktop) {
-            font-size: 32px;
+            @include govuk-font($size: 36, $weight: bold);
         }
     }
 
     .idsk-intro-block-popular-content-div {
-        padding-top: 20px;
+        padding-top: govuk-spacing(4);
     }
 
     #idsk-intro-block-top-content-container-blue-background {
-        padding-bottom: 5px;
+        padding-bottom: govuk-spacing(1);
+
         @include mq($from: desktop) {
-            margin-left: 40px;
+            margin-left: govuk-spacing(7);
             width: 25%;
         }
     }
 
     .app-pane-grey {
-        background-color: #dee0e2;
+        background-color: govuk-colour("light-grey");
     }
 
     .app-pane-blue {
-        background-color: #0065b3;
+        background-color: govuk-colour("blue");
     }
 
     .idsk-intro-block-text-colour {
