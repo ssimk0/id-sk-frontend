@@ -42,6 +42,16 @@ params:
     required: false
     description: class name for changing background of side menu.
 
+  - name: searchEnabled
+    type: string
+    required: false
+    description: Determines whether search should be part of intro block.
+
+  - name: headline
+    type: string
+    required: false
+    description: headline of page.
+
 previewLayout: full-width
 accessibilityCriteria: |
   Text and links in the Footer must:
@@ -91,18 +101,18 @@ examples:
 
       sideMenu:
         - href: "#"
-          item: Financovanie zo štátneho rozpočtu
+          item: O eurofondoch
         - href: "#"
-          item: Riadenie kvality (QA) ITVS projektov
+          item: Aktuality
         - href: "#"
-          item: Číselník životných situácií
+          item: O ministerstve
         - href: "#"
-          item: MetaIS
+          item: Aktuálne výzvy
         - href: "#"
-          item: Pracovná skupina Lepšie služby
+          item: Dokumenty
 
       classContainer: "govuk-width-container"
-      classBackground: "app-pane-blue"
+      searchEnabled: "true"
 
   - name: extended
     data:
@@ -131,3 +141,36 @@ examples:
           item: Dokumenty
 
       classContainer: "govuk-width-container"
+      classBackground: "app-pane-grey"
+      searchEnabled: "true"
+
+  - name: without search
+    data:
+      bottomMenu:
+        - href: "#"
+          item: Eurofondy
+        - href: "#"
+          item: Kontakty
+        - href: "#"
+          item: Informatizácia
+        - href: "#"
+          item: Investície
+        - href: "#"
+          item: O ministerstve
+
+      sideMenu:
+        - href: "#"
+          item: Financovanie zo štátneho rozpočtu
+        - href: "#"
+          item: Riadenie kvality (QA) ITVS projektov
+        - href: "#"
+          item: Číselník životných situácií
+        - href: "#"
+          item: MetaIS
+        - href: "#"
+          item: Pracovná skupina Lepšie služby
+
+      classContainer: "govuk-width-container"
+      searchEnabled: "false"
+      classBackground: "app-pane-blue"
+      headline: "Informatizácia"

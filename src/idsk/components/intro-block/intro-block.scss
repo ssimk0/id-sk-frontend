@@ -150,6 +150,7 @@
 
         @include mq($from: desktop) {
             float: right;
+            display: contents;
         }
     }
 
