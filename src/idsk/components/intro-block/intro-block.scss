@@ -12,7 +12,6 @@
     .idsk-intro-block-search-button {
         width: 49px;
         height: 53px;
-        border: none;
 
         @include mq($from: desktop) {
             width: 67px;
@@ -34,6 +33,10 @@
         @include mq($from: desktop) {
             height: 68px;
         }
+    }
+
+    .idsk-intro-block-search-input-with-button .govuk-input:focus {
+        margin-right: 3px;
     }
 
     .idsk-intro-block-search-input-with-button {
@@ -101,7 +104,6 @@
     }
 
     .idsk-intro-block-top-content-menu-item-blue-background {
-        display: table;
         float: none;
         padding-bottom: govuk-spacing(4);
         display: contents;
@@ -110,6 +112,10 @@
             float: right;
             padding-bottom: 0;
         }
+    }
+
+    .idsk-intro-block-top-content-menu-item-blue-background li {
+        display: flex;
     }
 
     .idsk-intro-block-top-content-menu-item {
@@ -210,5 +216,10 @@
         color: govuk-colour("white");
         width: auto;
         line-break: normal;
+    }
+
+    .idsk-intro-block-side-menu-circle {
+        padding-top: govuk-spacing(3);
+        padding-right: govuk-spacing(1);
     }
 }

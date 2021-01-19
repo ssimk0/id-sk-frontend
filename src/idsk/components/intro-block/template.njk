@@ -4,7 +4,7 @@
             <div class="govuk-grid-column-full govuk-grid-column-two-thirds-from-desktop">
                 <h1 class="govuk-heading-xl">
                     {{ params.headline if params.headline else "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky"}}
-                    </h1>
+                </h1>
                 <p class="idsk-intro-block-subtitle govuk-caption-l">Vitajte na stránke Ministerstva investícií, regionálneho rozvoja a informatizácie. Dozvedieť sa
                     <a class="govuk-link" href="{{ params.moreInfoAboutMinistryLink if params.moreInfoAboutMinistryLink else '#'  }}">
                         viac o ministerstve.</a>
@@ -45,12 +45,13 @@
                         <div class="idsk-intro-block-top-content-menu-blue-background-div">
                             <ul class="idsk-intro-block-top-content-menu-item-blue-background">
                                 {% for sideMenu in params.sideMenu %}
-                                    <li class="idsk-intro-block-top-content-menu-item-blue-background">
-                                        <p>
+                                    <li>
+                                        <span class="idsk-intro-block-side-menu-circle">
                                             <svg width="10" height="10" viewbox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <circle cx="5" cy="5" r="5" fill="white"/>
                                             </svg>
-                                            &nbsp;
+                                        </span>
+                                        <p>
                                             <a class="idsk-intro-block-text-colour" href="{{sideMenu.href}}">
                                                 {{ sideMenu.item }}</a>
                                         </p>
