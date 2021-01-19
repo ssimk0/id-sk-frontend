@@ -170,6 +170,7 @@
     }
 
     .idsk-intro-block .govuk-heading-xl {
+        margin-bottom: 0;
         @include mq($from: desktop) {
             @include govuk-font($size: 36, $weight: bold);
         }
