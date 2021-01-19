@@ -145,6 +145,14 @@
         }
     }
 
+    #idsk-intro-block-top-content-container-desktop {
+        width: auto;
+
+        @include mq($from: desktop) {
+            float: right;
+        }
+    }
+
     #idsk-intro-block-top-content-container-blue-background h2 {
         padding-top: govuk-spacing(3);
 
