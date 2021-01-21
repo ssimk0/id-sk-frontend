@@ -9,27 +9,12 @@
   $idsk-header-background: govuk-colour("white");
   $idsk-header-border-color: $idsk-brand-colour;
   $idsk-header-dark-blue: govuk-colour("dark-blue");
-  $idsk-header-light-blue: #0065B3;
+  $idsk-header-light-blue: govuk-colour("blue");
   $idsk-header-link: govuk-colour("white");
-  $idsk-header-nav-item-border-color: #2e3133;
-  $idsk-header-mobile-font-size: 21px;
-
-  .fa, .fas, .far, .fal, .fad, .fab {
-    font-family: "FontAwesome";
-  }
-
-  /// third office level logo
-  .margin-0 {
-    margin: 0;
-  }
-  /// hardcoded override of third office level logo
-  .padding-top-0 {
-    padding-top: 0!important;
-  }
   
   .idsk-header-extended {
     @include govuk-font($size: 16);
-    padding-top: 30px;
+    padding-top: govuk-spacing(6);
 
     color: $idsk-header-dark-blue;
     background: $idsk-header-background;
@@ -64,8 +49,11 @@
       order: 3;
 
       @include mq ($from: desktop) {
-        order:5;
         float: left;
+        margin-left: -30px;
+        margin-right: -30px;
+        order:5;
+        width: auto;
       }
     }
 
@@ -102,19 +90,19 @@
   .idsk-header-extended__logo {
     order: 1;
     padding-left: 0;
-    padding-bottom: 15px;
+    padding-bottom: govuk-spacing(3);
 
     @include mq ($until: mobile){
       width: 70%;
     }
 
     @include mq ($until: tablet){
-      padding-bottom: 15px;
+      padding-bottom: govuk-spacing(3);
       max-width: 70%;
     }
 
     @include mq ($from: desktop) {
-      padding: 0 0 40px 30px;
+      padding: 0 0 govuk-spacing(6) 0;
     }
 
     & > a {
@@ -154,7 +142,7 @@
   @include mq ($until: desktop) {
     .idsk-header-extended.idsk-header-extended--shrink {
       .idsk-header-extended__logo {
-        padding-bottom: 5px;
+        padding-bottom: govuk-spacing(1);
       }
 
       .idsk-header-extended__logotype-crown,
@@ -171,6 +159,7 @@
 
   /// search bar
   .idsk-header-extended__search {
+    @include govuk-font($size: 19);
     order: 2;
     width: 220px;
     text-align: right;
@@ -178,12 +167,12 @@
     outline: none;
 
     &-text {
-      margin-left: 100px;
+      margin-left: 85px;
       width: fit-content;
 
       i {
         font-size: 12px;
-        padding-right: 10px;
+        padding-right: govuk-spacing(2);
       }
     }
 
@@ -195,7 +184,7 @@
       }
       
       & input,& input:focus {
-        padding: 5px;
+        padding: govuk-spacing(1);
         border: 3px solid govuk-colour("yellow");
         margin-right: -3px;
         outline: none;
@@ -212,10 +201,6 @@
       }
     }
 
-    .--hide {
-      display: none;
-    }
-
     &--active {
       .idsk-header-extended__search-text {
         display: none;
@@ -228,6 +213,8 @@
 
   /// language selector
   .idsk-header-extended__language {
+    @include govuk-font($size: 19);
+
     order: 3;
     position: relative;
     vertical-align: text-top;
@@ -239,7 +226,7 @@
     }
 
     &-wrapper {
-      margin-left: 15px;
+      margin-left: govuk-spacing(3);
       z-index: 1;
     }
 
@@ -251,11 +238,11 @@
         padding: 0;
         margin: 0;
         text-align: left;
-        margin-top: 10px;
+        margin-top: govuk-spacing(2);
         background-color: govuk-colour("white");
 
         li {
-          padding: 5px 0;
+          padding: govuk-spacing(1) 0;
         }
       }
 
@@ -277,7 +264,7 @@
     
     /// arrow at the end of language switcher
     &--current-text {
-      padding-right: 20px;
+      padding-right: govuk-spacing(4);
 
       &:after {
         position: absolute;
@@ -290,7 +277,7 @@
       }
 
       & > span {
-        margin-right: 15px;
+        margin-right: govuk-spacing(3);
       }
     }
 
@@ -323,6 +310,8 @@
       padding: 0 4px;
 
       a {
+        @include govuk-font($size: 19);
+
         color: $idsk-header-dark-blue;
         
         @include mq ($until: desktop){
@@ -346,16 +335,16 @@
     list-style: none;
 
     &-item {
-      padding: 15px 0;
+      padding: govuk-spacing(3) 0;
   
       @include mq ($from: desktop) {
         display: inline-block;
         border: none;
-        padding: 15px 30px;
+        padding: govuk-spacing(3) govuk-spacing(6);
       }
   
       & > a {
-        @include govuk-font($size: 16, $weight: bold);
+        @include govuk-font($size: 19, $weight: bold);
         white-space: nowrap;
         text-decoration: none;
 
@@ -425,8 +414,8 @@
 
     @include mq ($from: desktop){
       position: absolute;
-      padding: 20px 0;
-      margin-top: 15px;
+      padding: govuk-spacing(4) 0;
+      margin-top: govuk-spacing(3);
     }
 
     a {
@@ -451,18 +440,18 @@
 
     ul {
       display: block;
-      padding-left: 5px;
+      padding-left:govuk-spacing(1);
 
       li {
         display: inline-block;
-        padding: 5px 20px;
+        padding: govuk-spacing(1) govuk-spacing(4);
         width: 20%;
         color: $idsk-header-link;
 
         @include mq ($until: desktop) {
           width: 100%;
           padding: 0;
-          padding-bottom: 10px;
+          padding-bottom: govuk-spacing(2);
         }
 
         &:before {
@@ -534,7 +523,7 @@
       position: fixed;
       position: sticky;
       top: 0;
-      padding-top: 15px;
+      padding-top: govuk-spacing(3);
       width: 100vw;
       display: table;
       overflow-y: scroll;
@@ -631,7 +620,7 @@
 
       &-wrapper {
           @include mq ($until: desktop){
-          padding: 20px 0;
+          padding: govuk-spacing(4) 0;
           border-top: 1px solid;
           margin-left: 0;
         }
@@ -662,160 +651,168 @@
         overflow-y: scroll;
         display: inline-block;
 
-        .idsk-header-extended {
-          &-overlay {
-            width: 100%;
+        .idsk-header-extended-overlay {
+          width: 100%;
+        }
+
+        .idsk-header-extended-x-mark {
+          display: block;
+        }
+
+        .idsk-header-extended__logo {
+          z-index: 2;
+          padding-bottom: govuk-spacing(3);
+
+          &type-crown,
+          &type-crown-mobile {
+            display: none;
           }
 
-          &-x-mark {
-            display: block;
-          }
-
-          &__logo {
-            z-index: 2;
-            padding-bottom: 15px;
-    
-            &type-crown,
-            &type-crown-mobile {
-              display: none;
-            }
-    
-            &type-crown-mobile-navigation {
-              height: auto;
-              max-width: 246px;
-              display: inline-block;
-            }
-          }
-
-          &__search {
+          &type-crown-mobile-navigation {
+            height: auto;
+            max-width: 246px;
             display: inline-block;
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            margin: 15px 0;
-    
-            .idsk-header-extended__search-text {
-              display: none;
-            }
-    
-            .idsk-header-extended__search-form {
-              text-align: left;
-              display: block;
-    
-              form {
-                width: fit-content;
-                display: initial;
+          }
+        }
 
-                &:focus-within {
-                  outline: 3px solid govuk-colour("yellow");
-                  
-                  .idsk-button:focus {
-                    box-shadow: none;
-                    border: transparent;
-                  }
-                }
-              }
+        .idsk-header-extended__search {
+          display: inline-block;
+          position: relative;
+          z-index: 2;
+          width: 100%;
+          margin: govuk-spacing(3) 0;
+  
+          .idsk-header-extended__search-text {
+            display: none;
+          }
+        }
+
+        .idsk-header-extended__search-form {
+          text-align: left;
+          display: block;
+
+          form {
+            width: fit-content;
+            display: initial;
+
+            &:focus-within {
+              outline: 3px solid govuk-colour("yellow");
               
-              input {
-                width: 80%;
-                max-width: 250px;
-                border: none;
-                padding: 8px;
-                font-size: $idsk-header-mobile-font-size;
-                margin-top: 0;
-                margin-bottom: 0;
-              }
-    
-              a {
-                width: 40px;
-                height: 39px;
-                margin: 0;
-                padding-top: 8px;
-              }
-    
-              i {
-                font-size: 16px;
+              .idsk-button:focus {
+                box-shadow: none;
+                border: transparent;
               }
             }
           }
+          
+          input {
+            @include govuk-font($size: 27);
 
-          &__language {
-            font-size: $idsk-header-mobile-font-size;
-            display: inline-block;
-            margin-top: 30px;
+            width: 70%;
+            max-width: 250px;
+            border: none;
+            padding: govuk-spacing(3);
+            margin-top: 0;
+            margin-bottom: 0;
+          }
 
-            &-list ul {
-              background-color: transparent;
+          .idsk-button {
+            width: 44px;
+            height: 49px;
+            margin: 0;
+            padding-top: govuk-spacing(3);
 
-              a {
-                color: govuk-colour("white");
-              }
-            }
-
-            &--current-text:after {
-              border-color: govuk-colour("white") transparent transparent;
-            }
-            &--active .idsk-header-extended__language--current-text::after {
-              border-color: govuk-colour("black") transparent transparent;
+            @include mq($from: tablet) {
+              width: 54px;
+              height: 59px;
+              padding-top: govuk-spacing(4);
             }
           }
 
-          &__social {
-            display: inline-block;
-            margin-top: 20px;
-    
-            .idsk-header-extended__social_item {
-              padding: 0 15px 0 0;
-              font-size: $idsk-header-mobile-font-size;
-            }
+          i {
+            font-size: 16px;
           }
+        }
 
-          &__navigation {
-            display: block;
-            position: relative;
-            z-index: 2;
-            border-bottom: 1px solid;
+        .idsk-header-extended__language {
+          @include govuk-font($size: 36);
+          
+          display: inline-block;
+          margin-top: govuk-spacing(6);
+          text-transform: capitalize;
+
+          &-list ul {
+            background-color: transparent;
 
             a {
-              color: $idsk-header-link;
-              padding-left: 0;
-              font-size: $idsk-header-mobile-font-size;
-              font-weight: 600;
+              color: govuk-colour("white");
             }
-
-            &-item--active .idsk-header-extended__link {
-              @include govuk-focused-text
-            }
-            .idsk-js-header-extended-submenu-toggle {
-              padding-right: 20px; // space for arrow, should be focused too
-            }
-          
           }
 
-          &__navigation-submenu {
-            padding-top: 20px;
+          &--current-text:after {
+            border-color: govuk-colour("white") transparent transparent;
+            margin-top: govuk-spacing(2);
+            border-width: 8px 5px 0;
+          }
+          &--active .idsk-header-extended__language--current-text::after {
+            border-color: govuk-colour("black") transparent transparent;
+          }
+        }
 
-            ul {
-              padding-left: 0;
-              margin-left: 0;
+        .idsk-header-extended__social {
+          display: inline-block;
+          margin-top: govuk-spacing(2);
+  
+          .idsk-header-extended__social_item {
+            @include govuk-font($size: 36);
+
+            padding: 0 govuk-spacing(3) 0 0;
+          }
+        }
+
+        .idsk-header-extended__navigation {
+          display: block;
+          position: relative;
+          z-index: 2;
+          border-bottom: 1px solid;
+
+          a {
+            @include govuk-font($size: 36);
+
+            color: $idsk-header-link;
+            padding-left: 0;
+          }
+
+          &-item--active .idsk-header-extended__link {
+            @include govuk-focused-text
+          }
+
+          .idsk-js-header-extended-submenu-toggle {
+            padding-right: govuk-spacing(4); // space for arrow, should be focused too
+          }
+        }
+
+        .idsk-header-extended__navigation-submenu {
+          padding-top: govuk-spacing(4);
+
+          ul {
+            padding-left: 0;
+            margin-left: 0;
+          }
+          
+          li a {
+            @include govuk-font($size: 27);
+
+            &:hover,
+            &:active {
+              background: #FFDF0F;
+              color: $idsk-header-dark-blue;
+              font-weight: 600;
+              text-decoration: none;
             }
-            
-            li a {
-              font-weight: 200;
-              font-size: 19px;
-              line-height: 25px;
-
-              &:hover,
-              &:active {
-                background: #FFDF0F;
-                color: $idsk-header-dark-blue;
-                font-weight: 600;
-                text-decoration: none;
-              }
-      
-              &.active {
-                font-weight: 600;
-              }
+    
+            &.active {
+              font-weight: 600;
             }
           }
         }

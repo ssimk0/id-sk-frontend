@@ -19,10 +19,6 @@
       a:active {
         @include govuk-focused-text;
       }
-
-      @include mq($from: desktop) {
-        padding-left: govuk-spacing(6);
-      }
     }
 
     &--info {
