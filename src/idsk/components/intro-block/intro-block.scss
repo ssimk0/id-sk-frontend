@@ -146,7 +146,7 @@
         margin: 0;
         float: unset;
 
-        @include mq($from: tablet) {
+        @include mq($from: desktop) {
             float: right;
         }
     }
@@ -156,7 +156,7 @@
 
         @include mq($from: desktop) {
             float: right;
-            display: contents;
+            width: 22%;
         }
     }
 

@@ -5,19 +5,6 @@
 
 {% set pageName = "Hlavička s úvodným blokom" %}
 
-{% block beforeContent %}
-  <div class="govuk-width-container">
-    <div class="govuk-grid-column-full">
-      {{ govukBreadcrumbs({
-    "items": [
-    { text: 'ID-SK frontend', href: '/' + legacyQuery },
-    { text: pageName }
-    ]
-  }) }}
-    </div>
-  </div>
-{% endblock %}
-
 {% block header %}
   {{ idskHeaderExtended({
     logoGrid: 'govuk-grid-column-two-thirds',
@@ -87,8 +74,20 @@
 }) }}
 {% endblock %}
 
+{% block beforeContent %}
+  <div class="govuk-!-margin-left-3">
+    {{ govukBreadcrumbs({
+    "items": [
+    { text: ' ID-SK frontend', href: '/' + legacyQuery },
+    { text: pageName }
+    ]
+  }) }}
+  </div>
+{% endblock %}
+
 {% block content %}
-  {{ idskIntroBlock({ 
+  <div class="govuk-width-container">
+    {{ idskIntroBlock({ 
     bottomMenu: [
     {
       item:"Pomoc", 
@@ -135,6 +134,7 @@
       href:"#"
     }]
 })}}
+  </div>
 {% endblock %}
 
 {% block footer %}{% endblock %}
