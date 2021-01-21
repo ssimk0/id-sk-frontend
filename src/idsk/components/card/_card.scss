@@ -5,29 +5,6 @@
 @import "../../../govuk/helpers/typography";
 
 @include govuk-exports("idsk/component/card") {
-  .idsk-link {
-    text-decoration: none;
-    display: block;
-
-    &:focus {
-      @include govuk-focused-text;
-    }
-
-    &:visited {
-      color: #551a8b;
-    }
-
-    &:hover {
-      color: govuk-colour("black");
-      text-decoration: underline;
-    }
-  }
-
-  .idsk-title {
-    color: #0065b3;
-    cursor: pointer;
-    margin: 0;
-  }
 
   .idsk-card {
     &-basic,
@@ -50,13 +27,29 @@
       @include govuk-grid-column("one-third");
     }
   }
+  
+  .idsk-card-title {
+    cursor: pointer;
+    margin: 0;
+    text-decoration: none;
+
+    &:hover {
+      color: govuk-colour("black");
+      text-decoration: underline;
+    }
+    
+  }
 
   .idsk-card-img {
     @include govuk-responsive-padding(2, "bottom");
 
     &-hero {
       @include govuk-grid-column("one-half");
-      padding: 0 15px 0 0;
+      padding: 0;
+
+      @include mq($from: tablet) {
+        padding: 0 govuk-spacing(3) 0 0;
+      }
     }
 
     &-secondary {
@@ -65,13 +58,13 @@
 
       @include mq($from: tablet) {
         @include govuk-grid-column("full");
-        padding: 0 0 10px 0;
+        padding: 0 0 govuk-spacing(2) 0;
       }
     }
 
     &-profile-horizontal {
       @include govuk-grid-column("one-third");
-      padding: 0 15px 0 0;
+      padding: 0 govuk-spacing(3) 0 0;
     }
   }
 
@@ -98,11 +91,13 @@
     }
   }
 
-  .idsk-card-meta a {
+  .idsk-card-meta .govuk-link {
     @include govuk-font($size: 16);
     color: govuk-colour("grey-1");
-    display: inline;
-    text-decoration: underline;
+
+    &:visited {
+      color: $govuk-link-visited-colour;
+    }
   }
 
   .idsk-card-meta-container span:last-child {
@@ -114,6 +109,11 @@
   .idsk-card-content {
     &-hero {
       @include govuk-grid-column("one-half");
+      padding: 0;
+
+      @include mq($from: tablet) {
+        padding: 0 govuk-spacing(3) 0 0;
+      }
     }
 
     &-profile-horizontal {
@@ -123,7 +123,7 @@
     &-secondary {
       width: 66.6%;
       box-sizing: border-box;
-      padding-left: 10px;
+      padding-left: govuk-spacing(2);
       float: left;
 
       @include mq($from: tablet) {
