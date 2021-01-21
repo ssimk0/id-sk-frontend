@@ -179,7 +179,6 @@
         {% endif %}
         <div class="idsk-footer-extended-main-content">
             <div class="govuk-width-container">
-
                 {% if params.firstColumn.title %}
                     <div class="govuk-grid-column-two-thirds">
                         <h3 class="govuk-heading-m ">
@@ -187,7 +186,6 @@
                         </h3>
                         <div class="govuk-grid-row idsk-footer-extended-subtitle">
                             <div class="govuk-grid-column-one-half">
-
                                 {% for item in params.firstColumn.leftItems -%}
                                     <li class="idsk-footer-extended-list-item">
                                         <a class="govuk-link" href="{{item.href}}">{{ item.name }}</a>
@@ -225,8 +223,17 @@
                         </h3>
                         <div class="govuk-grid-row idsk-footer-extended-subtitle">
                             <div class="govuk-grid-column-one-half">
-                                {% if params.thirdColumn.items %}
-                                    {% for item in params.thirdColumn.items -%}
+                                {% if params.thirdColumn.leftItems %}
+                                    {% for item in params.thirdColumn.leftItems -%}
+                                        <li class="idsk-footer-extended-list-item">
+                                            <a class="govuk-link" href="{{item.href}}">{{ item.name }}</a>
+                                        </li>
+                                    {%- endfor %}
+                                {% endif %}
+                            </div>
+                            <div class="govuk-grid-column-one-half">
+                                {% if params.thirdColumn.rightItems %}
+                                    {% for item in params.thirdColumn.rightItems -%}
                                         <li class="idsk-footer-extended-list-item">
                                             <a class="govuk-link" href="{{item.href}}">{{ item.name }}</a>
                                         </li>

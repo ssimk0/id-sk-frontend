@@ -257,6 +257,15 @@
         cursor: pointer;
     }
 
+    #idsk-footer-extended-error-button {
+        padding: 0;
+        float: right;
+
+        @include mq($from: tablet) {
+            float: unset;
+        }
+    }
+
     #idsk-footer-extended-feedback-yes-button:focus,
     #idsk-footer-extended-feedback-no-button:focus,
     #idsk-footer-extended-error-button:focus,
@@ -333,7 +342,6 @@
         width: auto;
     }
 
-    #idsk-footer-extended-error-button,
     #idsk-footer-extended-close-help-form-button,
     #idsk-footer-extended-close-error-form-button,
     .idsk-footer-extended-write-us-button {
