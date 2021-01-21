@@ -262,9 +262,8 @@
         float: right;
         width: max-content;
 
-        @media screen and (min-width: 641px){
+        @media screen and (min-width: 641px) {
             float: unset;
-            
         }
     }
 
@@ -402,7 +401,7 @@
 
         @include mq($from: tablet) {
             margin: 0;
-            padding: 25px 0;
+            padding: govuk-spacing(5) 0;
         }
     }
 
@@ -432,7 +431,7 @@
     .idsk-footer-extended-main-content .govuk-grid-column-full {
         padding: 0;
         @include mq($from: tablet) {
-            padding: 0px 15px 15px 15px;
+            padding: 0px govuk-spacing(3) govuk-spacing(3) govuk-spacing(3);
         }
     }
 
