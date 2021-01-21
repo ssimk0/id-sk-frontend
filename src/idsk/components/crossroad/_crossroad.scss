@@ -16,12 +16,12 @@
   .idsk-crossroad {
     &-title {
       @include govuk-font($size: 19, $weight: bold);
-      color: #0065b3;
+      color: govuk-colour("blue");
       text-decoration: underline;
       cursor: pointer;
 
       &:hover {
-        color: #003078;
+        color: govuk-colour("dark-blue");
       }
 
       &:focus {
@@ -29,7 +29,7 @@
       }
 
       &:visited {
-        color: #551a8b;
+        color: govuk-colour("purple");
       }
     }
 
@@ -38,11 +38,11 @@
       @include govuk-responsive-padding(2, "top");
       @include govuk-responsive-padding(4, "bottom");
       margin: 0;
-      color: #626a6e;
+      color: govuk-colour("dark-grey");
     }
 
     &-line {
-      color: #bfc1c3;
+      color: govuk-colour("mid-grey");
       border-color: govuk-colour("mid-grey");
       background-color: govuk-colour("mid-grey");
       height: 1px;
