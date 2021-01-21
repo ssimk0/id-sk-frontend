@@ -36,11 +36,11 @@
                     </ul>
                 </div>
             </div>
-            <div>
+            <div class="{{ 'idsk-intro-block-top-content-container-default' if params.classBackground=='app-pane-blue' or params.classBackground=='app-pane-grey'}}">
                 {% if params.classBackground=="app-pane-blue" %}
                     <div id="idsk-intro-block-top-content-container-blue-background" class="govuk-grid-column-full govuk-grid-column-one-third-from-desktop app-pane-blue idsk-intro-block-text-colour">
                         <h2>
-                            Populárny obsah
+                            POPULÁRNY OBSAH
                         </h2>
                         <div class="idsk-intro-block-top-content-menu-blue-background-div">
                             <ul class="idsk-intro-block-top-content-menu-item-blue-background">
@@ -63,7 +63,7 @@
                 {% else %}
                     <div id="idsk-intro-block-top-content-container-desktop" class='govuk-grid-column-full govuk-grid-column-one-third-from-desktop {{ params.classBackground if params.classBackground }} '>
                         <h2>
-                            Populárny obsah
+                            POPULÁRNY OBSAH
                         </h2>
                         <div class="idsk-intro-block-popular-content-div">
                             <ul class="idsk-intro-block-top-content-menu">
