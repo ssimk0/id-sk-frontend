@@ -199,7 +199,7 @@
         font-weight: normal;
         color: govuk-colour("white");
 
-        @media screen and (min-width: 670px) {
+        @include mq($from: tablet) {
             @include govuk-font($size: 16);
         }
 
@@ -260,9 +260,11 @@
     #idsk-footer-extended-error-button {
         padding: 0;
         float: right;
+        width: max-content;
 
-        @include mq($from: tablet) {
+        @media screen and (min-width: 641px){
             float: unset;
+            
         }
     }
 
