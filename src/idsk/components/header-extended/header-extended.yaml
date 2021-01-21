@@ -170,15 +170,6 @@ params:
 previewLayout: full-width
 
 examples:
-- name: defaultná
-  description: Štandartná hlavička pre webové sídla. Pri mobilnom zobrazení sa v tomto príklade ukáže zmenšené logo ako pri scrollovaní
-  data:
-    logo: logo-mirri-farebne.svg
-    logoSmall: logo-mirri-small-farebne.svg
-    logoWhite: logo-mirri-biele.svg
-    logoSmallWhite: logo-mirri-small-biele.svg
-    classes: idsk-header-extended--shrink
-
 - name: s výberom jazyka a sociálnymi sieťami a navigáciou
   description: možnosť zvolenia jazykovej mutácia a pridania odkazov na sociálne siete a navigáciou
   data:
