@@ -199,7 +199,7 @@
         font-weight: normal;
         color: govuk-colour("white");
 
-        @media screen and (min-width: 670px) {
+        @include mq($from: tablet) {
             @include govuk-font($size: 16);
         }
 
@@ -473,18 +473,6 @@
     #idsk-footer-extended-close-help-form-button,
     #idsk-footer-extended-close-error-form-button {
         @include govuk-font($size: 14);
-    }
-
-    .idsk-footer-extended-feedback {
-        @include govuk-font($size: 14);
-        font-size: 14px;
-
-        @media screen and (min-width: 670px) {
-            @include govuk-font($size: 16);
-        }
-        @include mq(desktop) {
-            @include govuk-font($size: 19);
-        }
     }
 
     .idsk-footer-extended-up-button-div {
