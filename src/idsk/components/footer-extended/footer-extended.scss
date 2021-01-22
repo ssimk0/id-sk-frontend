@@ -379,6 +379,10 @@
         }
 
         @media screen and (min-width: 868px) {
+            padding-right: 5%;
+        }
+
+        @media screen and (min-width: 1200px) {
             padding-right: 12%;
         }
     }
@@ -475,7 +479,8 @@
         @include govuk-font($size: 14);
     }
 
-    .idsk-footer-extended-feedback button, .idsk-footer-extended-feedback-question-info-usefull {
+    .idsk-footer-extended-feedback button,
+    .idsk-footer-extended-feedback-question-info-usefull {
         @include govuk-font($size: 14);
         font-size: 14px;
 
