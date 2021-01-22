@@ -199,7 +199,7 @@
         font-weight: normal;
         color: govuk-colour("white");
 
-        @media screen and (min-width: 670px) {
+        @include mq($from: tablet) {
             @include govuk-font($size: 16);
         }
 
@@ -475,7 +475,7 @@
         @include govuk-font($size: 14);
     }
 
-    .idsk-footer-extended-feedback {
+    .idsk-footer-extended-feedback button, .idsk-footer-extended-feedback-question-info-usefull {
         @include govuk-font($size: 14);
         font-size: 14px;
 
