@@ -475,17 +475,6 @@
         @include govuk-font($size: 14);
     }
 
-    .idsk-footer-extended-feedback button {
-        @include govuk-font($size: 14);
-
-        @media screen and (min-width: 670px) {
-            @include govuk-font($size: 16);
-        }
-        @include mq(desktop) {
-            @include govuk-font($size: 19);
-        }
-    }
-
     .idsk-footer-extended-up-button-div {
         height: 45px;
         width: 100%;
