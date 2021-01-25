@@ -17,48 +17,47 @@
 
         <span class="govuk-caption-xl">Webové komponenty</span>
         <h1 class="govuk-heading-xl">{{pageName}}</h1>
-        <p class="govuk-body-l">Odporúčame pridať na stránku svojej služby pätičku podľa tohto manuálu. Je dôležité, aby všetky online služby Slovenskej republiky vyzerali pre používateľa rovnako.</p>
+        <p class="govuk-body-l">Všetky stránky musia používať štandardizovanú pätičku. Pätička môže ale nemusí obsahovať štrukturované, hyperlinkové odkazy na dôležitý obsah. Základnou variáciou je pätička bez sekundárdnej navigácie.</p>
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-
                 <h2 class="govuk-heading-s">Obsah:</h2>
                 <ul class="govuk-list">
                     <li>
-                        <a href="#kratky-popis">Krátky popis</a>
+                        <a href="#ukazka-zakladna-paticka">Príklad základnej pätičky bez navigácie</a>
                     </li>
                     <li>
-                        <a href="#ukazka-zakladna-paticka">Základná pätička</a>
+                        <a href="#ukazka-zakladna-paticka-feedback">Príklad základnej pätičky bez navigácie + spätná väzba</a>
                     </li>
                     <li>
-                        <a href="#ukazka-zakladna-paticka-feedback">Základná pätička + feedback</a>
+                        <a href="#ukazka-rozsirena-paticka-1">Príklad pätičky s jednoduchou navigáciou</a>
                     </li>
                     <li>
-                        <a href="#ukazka-rozsirena-paticka-1">Rozšírená pätička 1</a>
-                    </li>
-                    <li>
-                        <a href="#ukazka-rozsirena-paticka-2">Rozšírená pätička 2</a>
+                        <a href="#ukazka-rozsirena-paticka-2">Príklad pätičky s rozšírenou navigáciou vo viac. riadkoch</a>
                     </li>
                 </ul>
-
-                <h3 class="govuk-heading-m" id="kratky-popis">Krátky popis</h3>
-                <p class="govuk-body">
-                    Všetky služby musia používať základnú štandardnú pätičku stránky, ktorá obsahuje najmä textové informácie o prevádzkovateľovi služby a textové odkazy na:
-                </p>
             </div>
 
             <div class="govuk-grid-column-full">
-                <h3 class="govuk-heading-m" id="ukazka-zakladna-paticka">Základná pätička</h3>
-                <p class="govuk-body">V nasledujúcej ukážke sú použité vstupné parametre.</p>
+                <h3 class="govuk-heading-m" id="ukazka-zakladna-paticka">Príklad základnej pätičky bez navigácie</h3>
                 <div class="example">
                     {% set exampleComponentHtml %}
                     {% include "../komponenty/examples/exampleFooterForWeb.njk" %}
                     {% endset %}
                     {{exampleComponentHtml | safe}}
                 </div>
+                <div>
+                    <p class="govuk-body">Pätička obsahuje textové informácie o prevádzkovateľovi webovej stránky a textové odkazy na:</p>
+                    <p class="govuk-body govuk-!-margin-0">1) vyhlásenie o prístupnosti,</p>
+                    <p class="govuk-body govuk-!-margin-0">2) priamy kontakt na správcu a technického prevádzkovateľa webovej stránky,</p>
+                    <p class="govuk-body govuk-!-margin-0">3) odkaz na RSS kanál,</p>
+                    <p class="govuk-body">4) mapa webového sídla (ak má webové sídlo viac ako 50 stránok).</p>
+                    <p class="govuk-body">Pätička taktiež obsahuje čierne logo organizácie podľa logotypu štátnej správy, maximálna šírka loga je 290 pixelov a maximálna výška loga je 70 pixelov. Použite iba logo vo vektorovom formáte, optimálne Scalable Vector Graphics (SVG).</p>
+                    <p class="govuk-body">Pätičku je možné v prospech používateľov využiť aj ako rozšírenú, sekundárnu navigáciu stránkou. Môžete tam umiestniť hyperlinkove odkazy napríklad na vaše el.služby, alebo iné, dôležité informácie.</p>
+                </div>
             </div>
 
             <div class="govuk-grid-column-full">
-                <h3 class="govuk-heading-m" id="ukazka-zakladna-paticka-feedback">Základná pätička + feedback</h3>
+                <h3 class="govuk-heading-m" id="ukazka-zakladna-paticka-feedback">Príklad základnej pätičky bez navigácie + spätná väzba</h3>
                 <div class="example">
                     {% set exampleComponentHtml %}
                     {% include "../komponenty/examples/exampleFooterForWeb1.njk" %}
@@ -66,49 +65,57 @@
                     {{exampleComponentHtml | safe}}
                 </div>
                 <div>
-                    <ul class="govuk-list govuk-list--bullet">
-                        <li>kontaktnú stránku vašej organizácie</li>
-                        <li>pomocné informácie – len ak je táto stránka naozaj nutná kvôli komplexnosti a náročnosti samotnej služby</li>
-                        <li>iné jazykové možnosti – názov odkazu píšte v danom jazyku</li>
-                        <li>informácie o ochrane osobných údajov</li>
-                        <li>vyhlásenie o prístupnosti</li>
-                    </ul>
+                    <p class="govuk-body">Komponent spätná väzba je umiestnený vždy nad pätičkou. Spätná väzba vám pomôže zistiť či obsah, ktorý publikujete, je užitočný pre používateľa a či na portály nemáte chybu.</p>
+                    <p class="govuk-body">Používateľom tento komponent umožňuje interagovať s prevádzkovateľom portálu / služby v dvoch oblastiach:
+                    </p>
+                    <p class="govuk-body">*vyjadrenie spokojnosti resp. nespokojnosti s užitočnosťou stránky (formou kliknutia na ´Ano´ alebo ´Nie´ pod otázkou "Boli pre vás tieto informácie užitočné?")</p>
+                    <p class="govuk-body">*nahlásanie chyby na stránke (hyperlink v tvare "Našli ste na stránke chybu?")
+                    </p>
+                    <p class="govuk-body">Ak pri vyjadrení spokojnosti zvolí "Nie", máte možnosť vytvoriť krátky prieskum/dotazník (odporúčame taký, ktorý zaberie používateľovi max. 2 minúty - zvýšite tým pravdepodobnosť, že ho naozaj dokončí). Dotazník slúži na zber spätnej väzby ako obsah stránky zlepšiť. Prostredníctvom feedback baru vám môže používateľ nahlásiť aj nájdenú chybu.</p>
+                    <p class="govuk-body">Po kliknutí na "Našli ste na stránke chybu?" sa používateľovi zobrazí jednoduchý formulár na bližší popis chyby. Do zoznamu dajte okruhy chýb, ktoré môžu nastať (napr.: gramatická chyba, neaktuálny obsah a podobne). V poli nižšie používateľ popíše chybu, aby ste ju vedeli identifikovať a odstrániť. Prednastavených je 350 znakov na popis chyby. Rozsah je možné podľa potreby zmenšiť. Odporúčame ho nezvyšovať, aby ste sa nezahltili. Používatelia môžu mať totiž tendenciu využiť takýto priestor na rozsiahle sťažnosti.</p>
                 </div>
             </div>
 
             <div class="govuk-grid-column-full">
-                <h3 class="govuk-heading-m" id="ukazka-rozsirena-paticka-1">Rozšírená pätička 1</h3>
-                <p class="govuk-body">V nasledujúcej ukážke sú použité vstupné parametre.</p>
+                <h3 class="govuk-heading-m" id="ukazka-rozsirena-paticka-1">Príklad pätičky s jednoduchou navigáciou</h3>
                 <div class="example">
                     {% set exampleComponentHtml %}
                     {% include "../komponenty/examples/exampleFooterForWeb2.njk" %}
                     {% endset %}
                     {{exampleComponentHtml | safe}}
                 </div>
-            </div>
-
-            <div class="govuk-grid-column-full">
-                <h3 class="govuk-heading-m" id="ukazka-rozsirena-paticka-2">Rozšírená pätička 2</h3>
-                <p class="govuk-body">V nasledujúcej ukážke sú použité vstupné parametre.</p>
-                <div class="example">
-                    {% set exampleComponentHtml %}
-                    {% include "../komponenty/examples/exampleFooterForWeb3.njk" %}
-                    {% endset %}
-                    {{exampleComponentHtml | safe}}
+                <div>
+                    <p class="govuk-body">Ak sa rozhodnete do pätičky umiestniť sekundárnu navigáciu:
+                        <ul class="govuk-list govuk-list--bullet">
+                            <li>hyperlinkové odkazy štrukturujte do stĺpcov s min. 2 a max. 6 odkazmi na stĺpec</li>
+                            <li>každý stĺpec by mal mať vlastný nadpis, ktorý zrozumiteľne a vecne zastreší linky v danom stĺpci</li>
+                            <li>v stĺpcoch nemusí byť rovnaký počet linkov</li>
+                            <li>navigáciu štrukturujte podľa platných ID-SK pravidieľ rozloženia obsahu (tzv. grid) - použite rozloženie stránky buď na tretiny alebo na štvrtiny (nepoužitívajte iné formy rozloženia)</li>
+                            <li>stĺpce s navigáciou môžete štrukturovať aj do niekoľkých riadkov, ak je to pre naplnenie potrieb vašich používateľov užitočné</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        <div class="govuk-grid-column-two-thirds">
-            <h2 class="govuk-heading-l" id="priklady">Rozšírené príklady pre hlavičku a pätičku</h2>
-            <ul class="govuk-list">
-                <li>
-                    <a href="/custom-components/footer-extended">Rozšírené príklady pätičky</a>
-                </li>
-            </ul>
-        </div>
 
-        
+                <div class="govuk-grid-column-full">
+                    <h3 class="govuk-heading-m" id="ukazka-rozsirena-paticka-2">Príklad pätičky s rozšírenou navigáciou vo viac. riadkoch</h3>
+                    <div class="example">
+                        {% set exampleComponentHtml %}
+                        {% include "../komponenty/examples/exampleFooterForWeb3.njk" %}
+                        {% endset %}
+                        {{exampleComponentHtml | safe}}
+                    </div>
+                </div>
+                <div class="govuk-grid-column-two-thirds">
+                    <h2 class="govuk-heading-l" id="priklady">Rozšírené príklady pre hlavičku a pätičku</h2>
+                    <ul class="govuk-list">
+                        <li>
+                            <a href="/custom-components/footer-extended">Rozšírené príklady pätičky</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
         </div>
-        
     </div>
-</div>
 {% endblock %}

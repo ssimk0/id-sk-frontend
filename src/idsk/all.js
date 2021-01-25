@@ -7,43 +7,41 @@ import Crossroad from "./components/crossroad/crossroad";
 import HeaderExtended from './components/header-extended/header-extended';
 import InPageNavigation from './components/in-page-navigation/in-page-navigation';
 
-
-
 function initAll(options) {
   // Set the options to an empty object by default if no options are passed.
   options = typeof options !== "undefined" ? options : {};
 
   // Allow the user to initialise ID-SK Frontend in only certain sections of the page
   // Defaults to the entire document if nothing is set.
-  let scope = typeof options.scope !== 'undefined' ? options.scope : document
+  const scope = typeof options.scope !== 'undefined' ? options.scope : document
 
-  var $buttons = scope.querySelectorAll('[data-module="idsk-button"]')
+  const $buttons = scope.querySelectorAll('[data-module="idsk-button"]')
   nodeListForEach($buttons, function ($button) {
     new Button($button).init()
   })
 
   // Find first Footer-extended module to enhance.
-  let $footerExtended = scope.querySelectorAll(
+  const $footerExtended = scope.querySelectorAll(
     '[data-module="idsk-footer-extended"]'
   );
   nodeListForEach($footerExtended, function ($footerExtended) {
     new FooterExtended($footerExtended).init();
   });
 
-  var $characterCounts = scope.querySelectorAll(
+  const $characterCounts = scope.querySelectorAll(
     '[data-module="idsk-character-count"]'
   );
   nodeListForEach($characterCounts, function ($characterCount) {
     new CharacterCount($characterCount).init();
   });
 
-  var $crossroad = scope.querySelectorAll('[data-module="idsk-crossroad"]');
+  const $crossroad = scope.querySelectorAll('[data-module="idsk-crossroad"]');
   nodeListForEach($crossroad, function ($crossroad) {
     new Crossroad($crossroad).init();
   });
 
   // Find first Header-extended module to enhance.
-  let $headersExtended = scope.querySelectorAll('[data-module="idsk-header-extended"]')
+  const $headersExtended = scope.querySelectorAll('[data-module="idsk-header-extended"]')
   nodeListForEach($headersExtended, function ($headerExtended) {
     new HeaderExtended($headerExtended).init()
   })
