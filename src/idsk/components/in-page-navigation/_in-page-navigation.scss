@@ -75,6 +75,16 @@
           overflow-y: auto;
           padding-top: 15px;
           transition: all 0.5s ease-in;
+
+          &:before {
+            box-shadow: inset 0 -60px 20px -15px #fff, inset 0 60px 20px -15px #fff;
+            position: absolute;
+            width: 100%;
+            height: calc(100% - 40px);
+            display: block;
+            content: "";
+            margin-top: -15px;
+          }
         }
         .idsk-in-page-navigation__link-panel::before {
           top: 15px;
