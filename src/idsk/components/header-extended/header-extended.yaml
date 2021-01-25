@@ -183,7 +183,6 @@ examples:
         text: Ministerstvo
       - link: '#2'
         text: Sekcie
-        active: true
       - link: '#3'
         text: Programy EŠIF
       - link: '#4'
