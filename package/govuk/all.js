@@ -9,7 +9,7 @@ import Header from './components/header/header'
 import Radios from './components/radios/radios'
 import Tabs from './components/tabs/tabs'
 
-function initAll (options) {
+function initAll(options) {
   // Set the options to an empty object by default if no options are passed.
   options = typeof options !== 'undefined' ? options : {}
 

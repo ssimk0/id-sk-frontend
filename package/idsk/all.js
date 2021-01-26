@@ -9,7 +9,38 @@
  * This seems to fail in IE8, requires more investigation.
  * See: https://github.com/imagitama/nodelist-foreach-polyfill
  */
-function nodeListForEach (nodes, callback) {
+function nodeListForEach(nodes, callback) {
+  if (window.NodeList.prototype.forEach) {
+    return nodes.forEach(callback);
+  }
+  for (var i = 0; i < nodes.length; i++) {
+    callback.call(window, nodes[i], i, nodes);
+  }
+}
+
+/**
+ * Toggle class
+ * @param {object} node element
+ * @param {string} className to toggle
+ */
+function toggleClass(node, className) {
+    if (node === null) {
+        return;
+    }
+
+    if (node.className.indexOf(className) > 0) {
+        node.className = node.className.replace(' ' + className, '');
+    } else {
+        node.className += ' ' + className;
+    }
+}
+
+/**
+ * TODO: Ideally this would be a NodeList.prototype.forEach polyfill
+ * This seems to fail in IE8, requires more investigation.
+ * See: https://github.com/imagitama/nodelist-foreach-polyfill
+ */
+function nodeListForEach$1(nodes, callback) {
   if (window.NodeList.prototype.forEach) {
     return nodes.forEach(callback)
   }
@@ -21,7 +52,7 @@ function nodeListForEach (nodes, callback) {
 // Used to generate a unique string, allows multiple instances of the component without
 // Them conflicting with each other.
 // https://stackoverflow.com/a/8809472
-function generateUniqueID () {
+function generateUniqueID() {
   var d = new Date().getTime();
   if (typeof window.performance !== 'undefined' && typeof window.performance.now === 'function') {
     d += window.performance.now(); // use high-precision timer if available
@@ -831,7 +862,7 @@ Accordion.prototype.initControls = function () {
 // Initialise section headers
 Accordion.prototype.initSectionHeaders = function () {
   // Loop through section headers
-  nodeListForEach(this.$sections, function ($section, i) {
+  nodeListForEach$1(this.$sections, function ($section, i) {
     // Set header attributes
     var header = $section.querySelector('.' + this.sectionHeaderClass);
     this.initHeaderAttributes(header, i);
@@ -910,7 +941,7 @@ Accordion.prototype.onOpenOrCloseAllToggle = function () {
 
   var nowExpanded = !this.checkIfAllSectionsOpen();
 
-  nodeListForEach($sections, function ($section) {
+  nodeListForEach$1($sections, function ($section) {
     $module.setExpanded(nowExpanded, $section);
     // Store the state in sessionStorage when a change is triggered
     $module.storeState($section);
@@ -1701,7 +1732,7 @@ Checkboxes.prototype.init = function () {
   * Check if they have a matching conditional reveal
   * If they do, assign attributes.
   **/
-  nodeListForEach($inputs, function ($input) {
+  nodeListForEach$1($inputs, function ($input) {
     var controls = $input.getAttribute('data-aria-controls');
 
     // Check if input controls anything
@@ -1969,7 +2000,7 @@ Radios.prototype.init = function () {
   * Check if they have a matching conditional reveal
   * If they do, assign attributes.
   **/
-  nodeListForEach($inputs, function ($input) {
+  nodeListForEach$1($inputs, function ($input) {
     var controls = $input.getAttribute('data-aria-controls');
 
     // Check if input controls anything
@@ -2011,7 +2042,7 @@ Radios.prototype.handleClick = function (event) {
   //
   // We also only want radios which have aria-controls, as they support conditional reveals.
   var $allInputs = document.querySelectorAll('input[type="radio"][aria-controls]');
-  nodeListForEach($allInputs, function ($input) {
+  nodeListForEach$1($allInputs, function ($input) {
     // Only inputs with the same form owner should change.
     var hasSameFormOwner = ($input.form === $clickedInput.form);
 
@@ -2113,11 +2144,11 @@ Tabs.prototype.setup = function () {
 
   $tabList.setAttribute('role', 'tablist');
 
-  nodeListForEach($tabListItems, function ($item) {
+  nodeListForEach$1($tabListItems, function ($item) {
     $item.setAttribute('role', 'presentation');
   });
 
-  nodeListForEach($tabs, function ($tab) {
+  nodeListForEach$1($tabs, function ($tab) {
     // Set HTML attributes
     this.setAttributes($tab);
 
@@ -2154,11 +2185,11 @@ Tabs.prototype.teardown = function () {
 
   $tabList.removeAttribute('role');
 
-  nodeListForEach($tabListItems, function ($item) {
+  nodeListForEach$1($tabListItems, function ($item) {
     $item.removeAttribute('role', 'presentation');
   });
 
-  nodeListForEach($tabs, function ($tab) {
+  nodeListForEach$1($tabs, function ($tab) {
     // Remove events
     $tab.removeEventListener('click', $tab.boundTabClick, true);
     $tab.removeEventListener('keydown', $tab.boundTabKeydown, true);
@@ -2345,7 +2376,7 @@ Tabs.prototype.getHref = function ($tab) {
   return hash
 };
 
-function initAll (options) {
+function initAll(options) {
   // Set the options to an empty object by default if no options are passed.
   options = typeof options !== 'undefined' ? options : {};
 
@@ -2354,27 +2385,27 @@ function initAll (options) {
   var scope = typeof options.scope !== 'undefined' ? options.scope : document;
 
   var $buttons = scope.querySelectorAll('[data-module="govuk-button"]');
-  nodeListForEach($buttons, function ($button) {
+  nodeListForEach$1($buttons, function ($button) {
     new Button($button).init();
   });
 
   var $accordions = scope.querySelectorAll('[data-module="govuk-accordion"]');
-  nodeListForEach($accordions, function ($accordion) {
+  nodeListForEach$1($accordions, function ($accordion) {
     new Accordion($accordion).init();
   });
 
   var $details = scope.querySelectorAll('[data-module="govuk-details"]');
-  nodeListForEach($details, function ($detail) {
+  nodeListForEach$1($details, function ($detail) {
     new Details($detail).init();
   });
 
   var $characterCounts = scope.querySelectorAll('[data-module="govuk-character-count"]');
-  nodeListForEach($characterCounts, function ($characterCount) {
+  nodeListForEach$1($characterCounts, function ($characterCount) {
     new CharacterCount($characterCount).init();
   });
 
   var $checkboxes = scope.querySelectorAll('[data-module="govuk-checkboxes"]');
-  nodeListForEach($checkboxes, function ($checkbox) {
+  nodeListForEach$1($checkboxes, function ($checkbox) {
     new Checkboxes($checkbox).init();
   });
 
@@ -2387,25 +2418,576 @@ function initAll (options) {
   new Header($toggleButton).init();
 
   var $radios = scope.querySelectorAll('[data-module="govuk-radios"]');
-  nodeListForEach($radios, function ($radio) {
+  nodeListForEach$1($radios, function ($radio) {
     new Radios($radio).init();
   });
 
   var $tabs = scope.querySelectorAll('[data-module="govuk-tabs"]');
-  nodeListForEach($tabs, function ($tabs) {
+  nodeListForEach$1($tabs, function ($tabs) {
     new Tabs($tabs).init();
   });
 }
 
-exports.initAll = initAll;
-exports.Accordion = Accordion;
-exports.Button = Button;
-exports.Details = Details;
-exports.CharacterCount = CharacterCount;
-exports.Checkboxes = Checkboxes;
-exports.ErrorSummary = ErrorSummary;
-exports.Header = Header;
-exports.Radios = Radios;
-exports.Tabs = Tabs;
+/**
+ * Footer for extended websites
+ */
+function FooterExtended($module) {
+    this.$module = $module;
+}
+
+FooterExtended.prototype.init = function () {
+    let $module = this.$module;
+    // check for module
+    if (!$module) {
+        return;
+    }
+
+    let $yesButton = $module.querySelector('#idsk-footer-extended-feedback-yes-button');
+    let $noButton = $module.querySelector('#idsk-footer-extended-feedback-no-button');
+    let $errorButton = $module.querySelector('#idsk-footer-extended-error-button');
+    let $closeErrorFormButton = $module.querySelector('#idsk-footer-extended-close-error-form-button');
+    let $closeHelpFormButton = $module.querySelector('#idsk-footer-extended-close-help-form-button');
+
+
+    let $closeErrorFormButtonTablet = $module.querySelector('#idsk-footer-extended-close-error-form-button-tablet');
+    let $closeHelpFormButtonTablet = $module.querySelector('#idsk-footer-extended-close-help-form-button-tablet');
+
+
+    let $textAreaCharacterCount = $module.querySelector('#idsk-footer-extended-error-form #with-hint');
+
+    let $fillFeedbackButton = $module.querySelector('#fill-feedback-help-form');
+    let $submitErrorButton = $module.querySelector('#submit-button-error-form');
+
+
+    let $writeUsButton = this.$module.querySelector('#idsk-footer-extended-write-us-button');
+
+    if ($yesButton && $noButton && $errorButton) {
+        $yesButton.addEventListener('click', this.handleYesButtonClick.bind(this));
+        $noButton.addEventListener('click', this.handleNoButtonClick.bind(this));
+        $errorButton.addEventListener('click', this.handleErrorButtonClick.bind(this));
+    }
+
+    if ($writeUsButton) {
+        $writeUsButton.addEventListener('click', this.handleErrorButtonClick.bind(this));
+    }
+
+    if ($closeHelpFormButton) {
+        $closeHelpFormButton.addEventListener('click', this.handleCloseHelpFormButtonClick.bind(this));
+    }
+
+    if ($closeErrorFormButton) {
+        $closeErrorFormButton.addEventListener('click', this.handleCloseErrorFormButtonClick.bind(this));
+    }
+
+    if ($closeErrorFormButtonTablet) {
+        $closeErrorFormButtonTablet.addEventListener('click', this.handleCloseErrorFormButtonClick.bind(this));
+    }
+
+    if ($closeHelpFormButtonTablet) {
+        $closeHelpFormButtonTablet.addEventListener('click', this.handleCloseHelpFormButtonClick.bind(this));
+    }
+
+    if ($fillFeedbackButton) {
+        $fillFeedbackButton.addEventListener('click', this.handleSubmitButtonClick.bind(this));
+    }
+
+    if ($submitErrorButton) {
+        $submitErrorButton.addEventListener('click', this.handleSubmitButtonClick.bind(this));
+    }
+
+    if ($textAreaCharacterCount) {
+        $textAreaCharacterCount.addEventListener('input', this.handleStatusOfCharacterCountButton.bind(this));
+    }
+};
+
+
+FooterExtended.prototype.handleSubmitButtonClick = function (e) {
+    let $noOption = this.$module.querySelector('#idsk-footer-extended-help-form');
+    let $errorOption = this.$module.querySelector('#idsk-footer-extended-error-form');
+    let $infoQuestion = this.$module.querySelector('#idsk-footer-extended-info-question');
+    let $heartSymbol = this.$module.querySelector('#idsk-footer-extended-heart');
+    let $feedbackQuestion = this.$module.querySelector('#idsk-footer-extended-feedback');
+    let $helpAndErrorContainer = this.$module.querySelector('#idsk-footer-extended-feedback-content');
+
+    toggleClass($helpAndErrorContainer, 'idsk-footer-extended-feedback-content');
+    $noOption.classList.add('idsk-footer-extended-display-hidden');
+    $errorOption.classList.add('idsk-footer-extended-display-hidden');
+    $noOption.classList.remove('idsk-footer-extended-open');
+    $errorOption.classList.remove('idsk-footer-extended-open');
+
+    toggleClass($infoQuestion, 'idsk-footer-extended-heart');
+    toggleClass($heartSymbol, 'idsk-footer-extended-heart-visible');
+    toggleClass($feedbackQuestion, 'idsk-footer-extended-display-none');
+};
+
+FooterExtended.prototype.handleStatusOfCharacterCountButton = function (e) {
+    let $textAreaCharacterCount = this.$module.querySelector('#with-hint');
+    let $remainingCharacterCountMessage = this.$module.querySelector('#with-hint-info');
+
+    let $submitButton = this.$module.querySelector('#submit-button-error-form');
+
+    setTimeout(function () {
+        if ($textAreaCharacterCount.classList.contains('govuk-textarea--error') || $remainingCharacterCountMessage.classList.contains('govuk-error-message')) {
+            console.log('yes');
+            console.log($textAreaCharacterCount.classList);
+            $submitButton.disabled = true;
+        } else {
+            console.log('no');
+            console.log($textAreaCharacterCount.classList);
+            $submitButton.disabled = false;
+        }
+    }, 300);
+};
+
+
+//Hiding feedback question text and showing thank notice with heart
+FooterExtended.prototype.handleYesButtonClick = function (e) {
+    let $noOption = this.$module.querySelector('#idsk-footer-extended-help-form');
+    let $errorOption = this.$module.querySelector('#idsk-footer-extended-error-form');
+    let $infoQuestion = this.$module.querySelector('#idsk-footer-extended-info-question');
+    let $heartSymbol = this.$module.querySelector('#idsk-footer-extended-heart');
+
+    $noOption.classList.add('idsk-footer-extended-display-hidden');
+    $errorOption.classList.add('idsk-footer-extended-display-hidden');
+
+    toggleClass($infoQuestion, 'idsk-footer-extended-heart');
+    toggleClass($heartSymbol, 'idsk-footer-extended-heart-visible');
+};
+
+
+//Hiding feedback question element and showing help form with animation
+FooterExtended.prototype.handleNoButtonClick = function (e) {
+    let $helpOption = this.$module.querySelector('#idsk-footer-extended-help-form');
+    let $feedbackQuestion = this.$module.querySelector('#idsk-footer-extended-feedback');
+
+    let $helpAndErrorContainer = this.$module.querySelector('#idsk-footer-extended-feedback-content');
+
+    toggleClass($helpAndErrorContainer, 'idsk-footer-extended-feedback-content');
+    toggleClass($feedbackQuestion, 'idsk-footer-extended-display-none');
+    toggleClass($helpOption, 'idsk-footer-extended-display-hidden');
+    toggleClass($helpOption, 'idsk-footer-extended-open');
+};
+
+//Hiding feedback question element and showing error form with animation
+FooterExtended.prototype.handleErrorButtonClick = function (e) {
+    let $errorOption = this.$module.querySelector('#idsk-footer-extended-error-form');
+    let $helpOption = this.$module.querySelector('#idsk-footer-extended-help-form');
+    let $feedbackQuestion = this.$module.querySelector('#idsk-footer-extended-feedback');
+
+    let $helpAndErrorContainer = this.$module.querySelector('#idsk-footer-extended-feedback-content');
+
+    toggleClass($helpAndErrorContainer, 'idsk-footer-extended-feedback-content');
+    toggleClass($feedbackQuestion, 'idsk-footer-extended-display-none');
+    $helpOption.classList.add('idsk-footer-extended-display-hidden');
+    $helpOption.classList.remove('idsk-footer-extended-open');
+    toggleClass($errorOption, 'idsk-footer-extended-display-hidden');
+    toggleClass($errorOption, 'idsk-footer-extended-open');
+};
+
+//Hiding error form with animation and showing feedback question element
+FooterExtended.prototype.handleCloseErrorFormButtonClick = function (e) {
+    let $errorOption = this.$module.querySelector('#idsk-footer-extended-error-form');
+    let $feedbackQuestion = this.$module.querySelector('#idsk-footer-extended-feedback');
+    let $helpAndErrorContainer = this.$module.querySelector('#idsk-footer-extended-feedback-content');
+
+    toggleClass($helpAndErrorContainer, 'idsk-footer-extended-feedback-content');
+    toggleClass($feedbackQuestion, 'idsk-footer-extended-display-none');
+    toggleClass($errorOption, 'idsk-footer-extended-open');
+    toggleClass($errorOption, 'idsk-footer-extended-display-hidden');
+};
+
+//Hiding help form with animation and showing feedback question element
+FooterExtended.prototype.handleCloseHelpFormButtonClick = function () {
+    let $helpOption = this.$module.querySelector('#idsk-footer-extended-help-form');
+    let $feedbackQuestion = this.$module.querySelector('#idsk-footer-extended-feedback');
+    let $helpAndErrorContainer = this.$module.querySelector('#idsk-footer-extended-feedback-content');
+
+    toggleClass($helpAndErrorContainer, 'idsk-footer-extended-feedback-content');
+    toggleClass($feedbackQuestion, 'idsk-footer-extended-display-none');
+    toggleClass($helpOption, 'idsk-footer-extended-open');
+    toggleClass($helpOption, 'idsk-footer-extended-display-hidden');
+};
+
+function CharacterCount$1($module) {
+  this.$module = $module;
+  this.$textarea = $module.querySelector('.govuk-js-character-count');
+}
+
+CharacterCount$1.prototype.defaults = {
+  characterCountAttribute: 'data-maxlength',
+  wordCountAttribute: 'data-maxwords'
+};
+
+// Initialize component
+CharacterCount$1.prototype.init = function () {
+  // Check for module
+  var $module = this.$module;
+  var $textarea = this.$textarea;
+  if (!$textarea) {
+    return
+  }
+
+  // Read options set using dataset ('data-' values)
+  this.options = this.getDataset($module);
+
+  // Determine the limit attribute (characters or words)
+  var countAttribute = this.defaults.characterCountAttribute;
+  if (this.options.maxwords) {
+    countAttribute = this.defaults.wordCountAttribute;
+  }
+
+  // Save the element limit
+  this.maxLength = $module.getAttribute(countAttribute);
+
+  // Check for limit
+  if (!this.maxLength) {
+    return
+  }
+
+  // Generate and reference message
+  var boundCreateCountMessage = this.createCountMessage.bind(this);
+  this.countMessage = boundCreateCountMessage();
+
+  // If there's a maximum length defined and the count message exists
+  if (this.countMessage) {
+    // Remove hard limit if set
+    $module.removeAttribute('maxlength');
+
+    // Bind event changes to the textarea
+    var boundChangeEvents = this.bindChangeEvents.bind(this);
+    boundChangeEvents();
+
+    // Update count message
+    var boundUpdateCountMessage = this.updateCountMessage.bind(this);
+    boundUpdateCountMessage();
+  }
+};
+
+// Read data attributes
+CharacterCount$1.prototype.getDataset = function (element) {
+  var dataset = {};
+  var attributes = element.attributes;
+  if (attributes) {
+    for (var i = 0; i < attributes.length; i++) {
+      var attribute = attributes[i];
+      var match = attribute.name.match(/^data-(.+)/);
+      if (match) {
+        dataset[match[1]] = attribute.value;
+      }
+    }
+  }
+  return dataset
+};
+
+// Counts characters or words in text
+CharacterCount$1.prototype.count = function (text) {
+  var length;
+  if (this.options.maxwords) {
+    var tokens = text.match(/\S+/g) || []; // Matches consecutive non-whitespace chars
+    length = tokens.length;
+  } else {
+    length = text.length;
+  }
+  return length
+};
+
+// Generate count message and bind it to the input
+// returns reference to the generated element
+CharacterCount$1.prototype.createCountMessage = function () {
+  var countElement = this.$textarea;
+  var elementId = countElement.id;
+  // Check for existing info count message
+  var countMessage = document.getElementById(elementId + '-info');
+  // If there is no existing info count message we add one right after the field
+  if (elementId && !countMessage) {
+    countElement.insertAdjacentHTML('afterend', '<span id="' + elementId + '-info" class="govuk-hint govuk-character-count__message" aria-live="polite"></span>');
+    this.describedBy = countElement.getAttribute('aria-describedby');
+    this.describedByInfo = this.describedBy + ' ' + elementId + '-info';
+    countElement.setAttribute('aria-describedby', this.describedByInfo);
+    countMessage = document.getElementById(elementId + '-info');
+  } else {
+    // If there is an existing info count message we move it right after the field
+    countElement.insertAdjacentElement('afterend', countMessage);
+  }
+  return countMessage
+};
+
+// Bind input propertychange to the elements and update based on the change
+CharacterCount$1.prototype.bindChangeEvents = function () {
+  var $textarea = this.$textarea;
+  $textarea.addEventListener('keyup', this.checkIfValueChanged.bind(this));
+
+  // Bind focus/blur events to start/stop polling
+  $textarea.addEventListener('focus', this.handleFocus.bind(this));
+  $textarea.addEventListener('blur', this.handleBlur.bind(this));
+};
+
+// Speech recognition software such as Dragon NaturallySpeaking will modify the
+// fields by directly changing its `value`. These changes don't trigger events
+// in JavaScript, so we need to poll to handle when and if they occur.
+CharacterCount$1.prototype.checkIfValueChanged = function () {
+  if (!this.$textarea.oldValue) this.$textarea.oldValue = '';
+  if (this.$textarea.value !== this.$textarea.oldValue) {
+    this.$textarea.oldValue = this.$textarea.value;
+    var boundUpdateCountMessage = this.updateCountMessage.bind(this);
+    boundUpdateCountMessage();
+  }
+};
+
+// Update message box
+CharacterCount$1.prototype.updateCountMessage = function () {
+  var countElement = this.$textarea;
+  var options = this.options;
+  var countMessage = this.countMessage;
+
+  // Determine the remaining number of characters/words
+  var currentLength = this.count(countElement.value);
+  var maxLength = this.maxLength;
+  var remainingNumber = maxLength - currentLength;
+
+  // Set threshold if presented in options
+  var thresholdPercent = options.threshold ? options.threshold : 0;
+  var thresholdValue = maxLength * thresholdPercent / 100;
+  if (thresholdValue > currentLength) {
+    countMessage.classList.add('govuk-character-count__message--disabled');
+    // Ensure threshold is hidden for users of assistive technologies
+    countMessage.setAttribute('aria-hidden', true);
+  } else {
+    countMessage.classList.remove('govuk-character-count__message--disabled');
+    // Ensure threshold is visible for users of assistive technologies
+    countMessage.removeAttribute('aria-hidden');
+  }
+
+  // Update styles
+  if (remainingNumber < 0) {
+    countElement.classList.add('govuk-textarea--error');
+    countMessage.classList.remove('govuk-hint');
+    countMessage.classList.add('govuk-error-message');
+  } else {
+    countElement.classList.remove('govuk-textarea--error');
+    countMessage.classList.remove('govuk-error-message');
+    countMessage.classList.add('govuk-hint');
+  }
+  var charNoun = 'znak';
+  var displayNumber = remainingNumber;
+  if (options.maxwords) {
+    charNoun = 'slov';
+  }
+  //charNoun = charNoun + ((remainingNumber === -1 || remainingNumber === 1) ? '' : 'ov')
+
+  if ((remainingNumber > 1 && remainingNumber < 5) || (remainingNumber > -5 && remainingNumber < -1)) {
+    charNoun = charNoun + 'y';
+  } else if (remainingNumber == 1 || remainingNumber == -1) { } else {
+    charNoun = charNoun + 'ov';
+  }
+
+  displayNumber = Math.abs(remainingNumber);
+
+  countMessage.innerHTML = 'Zostáva Vám ' + displayNumber + ' ' + charNoun + ' ';
+};
+
+CharacterCount$1.prototype.handleFocus = function () {
+  // Check if value changed on focus
+  this.valueChecker = setInterval(this.checkIfValueChanged.bind(this), 1000);
+};
+
+CharacterCount$1.prototype.handleBlur = function () {
+  // Cancel value checking on blur
+  clearInterval(this.valueChecker);
+};
+
+/**
+ * Crossroad Component
+ */
+function Crossroad($module) {
+  this.$module = $module;
+  this.$items = $module.querySelectorAll(".idsk-crossroad-title");
+}
+
+Crossroad.prototype.init = function () {
+  let $module = this.$module;
+  let $items = this.$items;
+
+  if (!$module || !$items) {
+    return;
+  }
+
+  nodeListForEach(
+    $items,
+    function ($item) {
+      $item.addEventListener("click", this.handleItemClick.bind(this));
+    }.bind(this)
+  );
+};
+
+Crossroad.prototype.handleItemClick = function (e) {
+  var $item = e.target;
+  $item.setAttribute("aria-current", "true");
+};
+
+/**
+ * Header for extended websites
+ */
+function HeaderExtended($module) {
+    this.$module = $module;
+}
+
+HeaderExtended.prototype.init = function () {
+
+    let $module = this.$module;
+    // check for module
+    if (!$module) {
+        return;
+    }
+
+    // check for search component
+    let $toggleSearchComponent = $module.querySelector('.idsk-header-extended__search');
+    let $toggleSearchInputComponent = $module.querySelector('.idsk-header-extended__search-form input');
+    if ($toggleSearchComponent && $toggleSearchInputComponent) {
+        // Handle $toggleSearchComponent click and blur events
+        $toggleSearchComponent.addEventListener('focus', this.handleSearchComponentClick.bind(this));
+        // both blur events needed
+        // if form is shown, but has not been focused, inputs blur won't be fired, then trigger this one
+        $toggleSearchComponent.addEventListener('focusout', this.handleSearchComponentClick.bind(this));
+        // if form is shown, and has been focused, trigger this one
+        $toggleSearchInputComponent.addEventListener('focusout', this.handleSearchComponentClick.bind(this));
+    }
+
+    // check for language selector
+    let $toggleLanguageSelector = $module.querySelector('.idsk-js-header-extended-language-toggle');
+    if ($toggleLanguageSelector) {
+        // Handle $toggleLanguageSelect click events
+        $toggleLanguageSelector.addEventListener('focus', this.handleLanguageSelectorClick.bind(this));
+        $toggleLanguageSelector.addEventListener('blur', this.handleLanguageSelectorClick.bind(this));
+    }
+
+    // check for submenu
+    let $toggleSubmenus = $module.querySelectorAll('.idsk-header-extended__link');
+    if ($toggleSubmenus) {
+        let $self = this;
+        // Handle $toggleSubmenu click events
+        nodeListForEach$1($toggleSubmenus, function ($toggleSubmenu) {
+            $toggleSubmenu.addEventListener('focus', $self.handleSubmenuClick.bind($self));
+            $toggleSubmenu.addEventListener('blur', $self.handleSubmenuClick.bind($self));
+        });
+    }
+
+    // check for menu button and x-mark button
+    let $hamburgerMenuButton = $module.querySelector('.idsk-js-header-extended-side-menu');
+    let $xMarkMenuButton = $module.querySelector('.idsk-header-extended-x-mark');
+    if ($hamburgerMenuButton && $xMarkMenuButton) {
+        $hamburgerMenuButton.addEventListener('click', this.handleMobilMenu.bind(this));
+        $xMarkMenuButton.addEventListener('click', this.handleMobilMenu.bind(this));
+    }
+
+    window.addEventListener('scroll', this.scrollFunction.bind(this));
+};
+
+/**
+ * Handle focus/blur on search component - show/hide search form, hide/show search text wrapper
+ * @param {object} e 
+ */
+HeaderExtended.prototype.handleSearchComponentClick = function (e) {
+    let $el = e.target || e.srcElement;
+    let $target = $el.closest('.idsk-header-extended__search');
+    let $relatedTarget = e.relatedTarget ? (e.relatedTarget).closest('.idsk-header-extended__search-form') : e.relatedTarget;
+    let $searchForm = $target.querySelector('.idsk-header-extended__search-form');
+    if (e.type === 'focus') {
+        $target.classList.add('idsk-header-extended__search--active');
+    } else if (e.type === 'focusout' && $relatedTarget !== $searchForm) {
+        $target.classList.remove('idsk-header-extended__search--active');
+    }
+};
+
+/**
+ * Handle open/hide language switcher
+ * @param {object} e 
+ */
+HeaderExtended.prototype.handleLanguageSelectorClick = function (e) {
+    let $toggleButton = e.target || e.srcElement;
+    let $target = $toggleButton.closest('.idsk-header-extended__language');
+    toggleClass($target, 'idsk-header-extended__language--active');
+};
+
+/**
+ * Handle open/hide submenu
+ * @param {object} e 
+ */
+HeaderExtended.prototype.handleSubmenuClick = function (e) {
+    let $srcEl = e.target || e.srcElement;
+    let $toggleButton = $srcEl.closest('.idsk-header-extended__navigation-item');
+    toggleClass($toggleButton, 'idsk-header-extended__navigation-item--active');
+};
+
+/**
+ * Show/hide mobil menu
+ * @param {object} e
+ */
+HeaderExtended.prototype.handleMobilMenu = function (e) {
+    toggleClass(this.$module, "show-mobile-menu");
+};
+
+/**
+ * When the user scrolls down from the top of the document, resize the navbar's padding and the logo
+ */
+HeaderExtended.prototype.scrollFunction = function () {
+    let $module = this.$module;
+    let $headerComputedStyle = getComputedStyle($module);
+    let $headerPosition = $headerComputedStyle.getPropertyValue('position');
+    // skip if it's not a mobile view
+    if (['sticky', 'fixed'].indexOf($headerPosition) < 0) {
+        return;
+    }
+
+    if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+        $module.classList.add('idsk-header-extended--shrink');
+    } else if (document.body.scrollTop < 10 && document.documentElement.scrollTop < 10) {
+        $module.classList.remove('idsk-header-extended--shrink');
+    }
+};
+
+function initAll$1(options) {
+  // Set the options to an empty object by default if no options are passed.
+  options = typeof options !== "undefined" ? options : {};
+
+  // Allow the user to initialise ID-SK Frontend in only certain sections of the page
+  // Defaults to the entire document if nothing is set.
+  let scope = typeof options.scope !== 'undefined' ? options.scope : document;
+
+  // Find first Footer-extended module to enhance.
+  let $footerExtended = scope.querySelectorAll(
+    '[data-module="idsk-footer-extended"]'
+  );
+  nodeListForEach($footerExtended, function ($footerExtended) {
+    new FooterExtended($footerExtended).init();
+  });
+
+  var $characterCounts = scope.querySelectorAll(
+    '[data-module="idsk-character-count"]'
+  );
+  nodeListForEach($characterCounts, function ($characterCount) {
+    new CharacterCount$1($characterCount).init();
+  });
+
+  var $crossroad = scope.querySelectorAll('[data-module="idsk-crossroad"]');
+  nodeListForEach($crossroad, function ($crossroad) {
+    new Crossroad($crossroad).init();
+  });
+
+  // Find first Header-extended module to enhance.
+  let $headersExtended = scope.querySelectorAll('[data-module="idsk-header-extended"]');
+  nodeListForEach($headersExtended, function ($headerExtended) {
+    new HeaderExtended($headerExtended).init();
+  });
+
+  // Init all GOVUK components js
+  initAll(options);
+}
+
+exports.initAll = initAll$1;
+exports.CharacterCount = CharacterCount$1;
+exports.Crossroad = Crossroad;
+exports.FooterExtended = FooterExtended;
+exports.HeaderExtended = HeaderExtended;
 
 })));

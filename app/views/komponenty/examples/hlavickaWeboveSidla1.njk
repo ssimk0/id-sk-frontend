@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/public/app.css" />
+  </head>
+  <body class="js-enabled govuk-!-margin-0">
+
+    {% from "../../../../src/idsk/components/header-extended/macro.njk" import idskHeaderExtended %}
+    {{ idskHeaderExtended({
+        classes: "idsk-header-extended--shrink",
+        logo: "logo-mirri-farebne.svg",
+        logoSmall: "logo-mirri-small-farebne.svg",
+        logoWhite: "logo-mirri-biele.svg",
+        logoSmallWhite: "logo-mirri-small-biele.svg"
+    }) }}
+
+    <script src="/public/all.js"></script>
+    <script>window.GOVUKFrontend.initAll()</script>
+    
+  </body>
+</html>

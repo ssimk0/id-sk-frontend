@@ -129,7 +129,8 @@ $govuk-show-breakpoints: false;
     padding-top: 30px;
     padding-right: 15px;
     padding-bottom: 15px;
-    padding-left: 15px; }
+    padding-left: 15px; 
+    }
     @media (min-width: 641px) {
       .example {
         padding-top: 45px;
@@ -174,6 +175,16 @@ $govuk-show-breakpoints: false;
 .example-images img {
   max-width: 100%;
   vertical-align: top; }
+
+  .example-mobile {
+    padding-right: 0;
+    padding-left: 0;
+
+    iframe {
+      border: none;
+      width: 100%;
+    }
+  }
 
 // 3. Colour
 // ==========================================================================

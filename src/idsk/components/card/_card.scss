@@ -1,0 +1,200 @@
+@import "../../../govuk/settings/all";
+@import "../../../govuk/tools/all";
+@import "../../../govuk/helpers/all";
+
+@import "../../../govuk/helpers/typography";
+
+@include govuk-exports("idsk/component/card") {
+
+  .idsk-card {
+    &-basic,
+    &-basic-variant,
+    &-hero,
+    &-profile-horizontal {
+      @include govuk-grid-column("full");
+    }
+
+    &-secondary {
+      @include govuk-grid-column("full");
+
+      @include mq($from: tablet) {
+        @include govuk-grid-column("one-third");
+      }
+    }
+
+    &-simple,
+    &-profile-vertical {
+      @include govuk-grid-column("one-third");
+    }
+  }
+  
+  .idsk-card-title {
+    cursor: pointer;
+    margin: 0;
+    text-decoration: none;
+
+    &:hover {
+      color: govuk-colour("black");
+      text-decoration: underline;
+    }
+    
+  }
+
+  .idsk-card-img {
+    @include govuk-responsive-padding(2, "bottom");
+
+    &-hero {
+      @include govuk-grid-column("one-half");
+      padding: 0;
+
+      @include mq($from: tablet) {
+        padding: 0 govuk-spacing(3) 0 0;
+      }
+    }
+
+    &-secondary {
+      width: 33.3%;
+      float: left;
+
+      @include mq($from: tablet) {
+        @include govuk-grid-column("full");
+        padding: 0 0 govuk-spacing(2) 0;
+      }
+    }
+
+    &-profile-horizontal {
+      @include govuk-grid-column("one-third");
+      padding: 0 govuk-spacing(3) 0 0;
+    }
+  }
+
+  .idsk-card-underline {
+    text-decoration: underline;
+  }
+
+  .idsk-card-meta {
+    @include govuk-font($size: 16);
+    color: govuk-colour("grey-1");
+    display: inline;
+    text-decoration: none;
+
+    &-date {
+      &:after {
+        content: "\00a0-\00a0";
+      }
+    }
+
+    &-tag {
+      &:after {
+        content: "\00a0|\00a0";
+      }
+    }
+  }
+
+  .idsk-card-meta .govuk-link {
+    @include govuk-font($size: 16);
+    color: govuk-colour("grey-1");
+
+    &:visited {
+      color: $govuk-link-visited-colour;
+    }
+  }
+
+  .idsk-card-meta-container span:last-child {
+    &:after {
+      content: "";
+    }
+  }
+
+  .idsk-card-content {
+    &-hero {
+      @include govuk-grid-column("one-half");
+      padding: 0;
+
+      @include mq($from: tablet) {
+        padding: 0 govuk-spacing(3) 0 0;
+      }
+    }
+
+    &-profile-horizontal {
+      @include govuk-grid-column("two-thirds");
+    }
+
+    &-secondary {
+      width: 66.6%;
+      box-sizing: border-box;
+      padding-left: govuk-spacing(2);
+      float: left;
+
+      @include mq($from: tablet) {
+        @include govuk-grid-column("full");
+        padding: 0;
+      }
+    }
+  }
+
+  .idsk-heading {
+    @include govuk-responsive-padding(2, "top");
+    @include govuk-responsive-padding(2, "bottom");
+
+    &-basic-variant,
+    &-simple {
+      @include govuk-font($size: 19, $weight: bold);
+    }
+
+    &-basic,
+    &-hero {
+      @include govuk-font($size: 24, $weight: bold);
+    }
+
+    &-secondary {
+      @include govuk-font($size: 19, $weight: bold);
+
+      @include mq($until: desktop) {
+        @include govuk-font($size: 24, $weight: bold);
+      }
+    }
+
+    &-profile-vertical,
+    &-profile-horizontal {
+      @include govuk-font($size: 36, $weight: bold);
+      text-decoration: underline;
+    }
+  }
+
+  .idsk-body {
+    margin-top: 0;
+
+    &-basic,
+    &-basic-variant,
+    &-hero {
+      @include govuk-font($size: 19);
+    }
+
+    &-secondary {
+      @include govuk-font($size: 16);
+
+      @include mq($until: desktop) {
+        @include govuk-font($size: 19);
+      }
+    }
+
+    &-profile-vertical,
+    &-profile-horizontal {
+      @include govuk-font($size: 24);
+      @include govuk-responsive-padding(2, "top");
+      @include govuk-responsive-padding(4, "bottom");
+    }
+  }
+
+  .idsk-quote {
+    @include govuk-responsive-padding(8, "right");
+    @include govuk-responsive-padding(8, "left");
+    @include govuk-font($size: 24);
+    margin-top: 0;
+
+    &-right {
+      float: right;
+    }
+  }
+}

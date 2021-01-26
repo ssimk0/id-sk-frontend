@@ -1,6 +1,6 @@
 {% extends "layout.njk" %}
 {% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
-{% from "button/macro.njk" import govukButton %}
+{% from "../../../src/idsk/components/button/macro.njk" import idskButton %}
 
 {% set pageName = "Tlačidlá" %}
 
@@ -41,7 +41,7 @@
         <div class="govuk-grid-column-full">
             <div class="example example-error">
             {% set exampleComponentHtml %}
-{{ govukButton({
+{{ idskButton({
   "text": "Uložiť a pokračovať"
 }) }}
             {% endset %}
@@ -60,7 +60,7 @@
         <div class="govuk-grid-column-full">
             <div class="example example-error">
             {% set exampleComponentHtml %}
-{{ govukButton({
+{{ idskButton({
   "text": "Začať",
   "href": "#",
   "isStartButton": true
@@ -102,7 +102,7 @@
         <div class="govuk-grid-column-full">
             <div class="example example-error">
             {% set exampleComponentHtml %}
-{{ govukButton({
+{{ idskButton({
   "text": "Neaktívne tlačidlo",
   "disabled": true
 }) }}
@@ -124,7 +124,7 @@
                 <div class="govuk-grid-row">
                     <div class="govuk-grid-column-one-third">
                     {% set exampleComponentHtml %}
-{{ govukButton({
+{{ idskButton({
   "text": "Uložiť a pokračovať"
 }) }}
 {% endset %}
@@ -136,7 +136,7 @@
                             <div class="swatch swatch-green"></div>
                             <ul>
                                 <li><b>green</b></li>
-                                <li>#006435</li>
+                                <li>#00703C</li>
                             </ul>
                         </div>
                     </div>
@@ -146,7 +146,7 @@
                             <div class="swatch swatch-yellow"></div>
                             <ul>
                                 <li><b>yellow</b></li>
-                                <li>#FFBF47</li>
+                                <li>#FFDF0F</li>
                             </ul>
                         </div>
                     </div>

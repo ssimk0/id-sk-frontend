@@ -1,0 +1,11 @@
+<div class="idsk-warning-text {{- ' ' + params.type if params.type}} {{- ' ' + params.classes if params.classes}}"
+  {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor -%}
+  >
+  <div class="govuk-width-container">
+    <div class="idsk-warning-text__text">
+      <span class="idsk-warning-text__icon" aria-hidden="true">!</span>
+      <span class="idsk-warning-text__assistive">{{ params.iconFallbackText }}</span>
+      {{ params.html | safe if params.html else params.text }}
+    </div>
+  </div>
+</div>
