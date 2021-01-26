@@ -3,8 +3,8 @@ import { initAll as initAllGOVUKjs } from "../govuk/all";
 import Button from "./components/button/button";
 import FooterExtended from "./components/footer-extended/footer-extended";
 import CharacterCount from "./components/character-count/character-count";
-import Crossroad from "./components/crossroad/crossroad";
-import HeaderExtended from './components/header-extended/header-extended';
+// import Crossroad from "./components/crossroad/crossroad";
+// import HeaderExtended from './components/header-extended/header-extended';
 
 function initAll(options) {
   // Set the options to an empty object by default if no options are passed.
@@ -34,16 +34,16 @@ function initAll(options) {
     new CharacterCount($characterCount).init();
   });
 
-  const $crossroad = scope.querySelectorAll('[data-module="idsk-crossroad"]');
-  nodeListForEach($crossroad, function ($crossroad) {
-    new Crossroad($crossroad).init();
-  });
+  // const $crossroad = scope.querySelectorAll('[data-module="idsk-crossroad"]');
+  // nodeListForEach($crossroad, function ($crossroad) {
+  //   new Crossroad($crossroad).init();
+  // });
 
-  // Find first Header-extended module to enhance.
-  const $headersExtended = scope.querySelectorAll('[data-module="idsk-header-extended"]')
-  nodeListForEach($headersExtended, function ($headerExtended) {
-    new HeaderExtended($headerExtended).init()
-  })
+  // // Find first Header-extended module to enhance.
+  // const $headersExtended = scope.querySelectorAll('[data-module="idsk-header-extended"]')
+  // nodeListForEach($headersExtended, function ($headerExtended) {
+  //   new HeaderExtended($headerExtended).init()
+  // })
 
   // Init all GOVUK components js
   initAllGOVUKjs(options);
@@ -53,7 +53,7 @@ export {
   initAll,
   Button,
   CharacterCount,
-  Crossroad,
+  // Crossroad,
   FooterExtended,
-  HeaderExtended  
+  // HeaderExtended  
 }
