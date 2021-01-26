@@ -1,0 +1,213 @@
+{% extends "layout.njk" %}
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "../../../src/idsk/components/card/macro.njk" import idskCard %}
+
+{% set pageName = "Karta" %}
+
+{% block beforeContent %}
+ {{ govukBreadcrumbs({
+     "items": [
+         { text: 'ID-SK frontend', href: '/' + legacyQuery },
+         { text: pageName }
+     ]
+ }) }}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-width-container">
+        <span class="govuk-caption-xl">Webové komponenty</span>
+        <h1 class="govuk-heading-xl">{{pageName}}</h1>
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <h2 class="govuk-heading-s">Obsah:</h2>
+                <ul class="govuk-list">
+                    <li><a href="#card-basic">Základná kartička</a></li>
+                    <li><a href="#card-hero-secondary">Sekundárna kartička</a></li>
+                    <li><a href="#card-simple">Jednoduchá kartička</a></li>
+                    <li><a href="#card-hero">Hero kartička</a></li>
+                    <li><a href="#card-basic-no-image">Základná kartička bez obrázka</a></li>
+                    <li><a href="#card-basic-no-image-no-desc">Základná kartička bez obrázka a popisu</a></li>
+                    <li><a href="#card-profile-vertical">Profilová kartička - vertikálna</a></li>
+                    <li><a href="#card-profile-horizontal">Profilová kartička - horizontálna</a></li>
+                </ul>
+            </div>
+
+            <div class="govuk-grid-column-full">
+                <p class="govuk-body">
+                    Pozrite si <a href="/vzory/aktuality" title="Aktuality"> vzor použitia kartičiek</a>.
+                </p>
+            </div>
+
+            <div class="govuk-grid-column-full">
+                <h3 class="govuk-heading-m" id="card-basic">Základná kartička</h3>
+                <p class="govuk-body">
+                    Základnú kartičku použite ako hlavnú kartičku (primárnu kartičku). Môžete ju použiť ako najaktuálnejší obsah v aktualitách alebo ako dôležitý obsah, ktorý chcete, aby používateľ videl/našiel. Použite iba 1 základnú kartičku v jednom bloku. Použite maximálne 2 tagy.
+                </p>
+                <div class="example example-error">
+                    {% set exampleComponentHtml %}
+                        {{ idskCard({ 
+                            "type": "basic", 
+                            "imgSrc": "/public/assets/images/examples/ministerstvo-aktuality-cover.png", 
+                            "link": "#",
+                            "heading": "Lorem ipsum dolor sit amet: consectetur adipiscing elit!",
+                            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                            "date": { "date": "1.7.2020", "link": "#" },
+                            "tags": [ { "tag": "Tag 1", "link": "#" }, { "tag": "Tag 2", "link": "#" } ]
+                        }) }}
+                    {% endset %}
+                    {{exampleComponentHtml | safe}}
+                </div>
+                <pre class=" language-markup"><code class="govuk-!-font-size-16  language-markup">{{ exampleComponentHtml }}</code></pre>
+            </div>
+
+            <div class="govuk-grid-column-full">
+                <h3 class="govuk-heading-m" id="card-hero-secondary">Sekundárna kartička</h3>
+                <p class="govuk-body">
+                    Sekundárnu kartičku použite v jednom bloku spolu so základnou kartičkou alebo s hero kartičkou. V jednom bloku môžete  aj iba sekundárne kartičky no odporúčame ich používať po základnej, alebo po hero kartičke. Názov článku musí byť výstižný, maximálne na 4 riadky. Popis článku maximálne na 6 riadkov. Použite maximálne 2 tagy tak, aby sa zmestili do jedného riadku spolu s dátum publikovania článku.
+                </p>
+                <div class="example example-error">
+                    {% set exampleComponentHtml %}
+                        {{ idskCard({ 
+                            "type": "secondary", 
+                            "imgSrc": "/public/assets/images/examples/ministerstvo-aktuality-cover.png", 
+                            "link": "#",
+                            "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do",
+                            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+                            "date": { "date": "1.7.2020", "link": "#" },
+                            "tags": [ { "tag": "Tag 1", "link": "#" }, { "tag": "Tag 2", "link": "#" } ]
+                        }) }}
+                    {% endset %}
+                    {{exampleComponentHtml | safe}}
+                </div>
+                <pre class=" language-markup"><code class="govuk-!-font-size-16  language-markup">{{ exampleComponentHtml }}</code></pre>
+            </div>
+
+            <div class="govuk-grid-column-full">
+                <h3 class="govuk-heading-m" id="card-simple">Jednoduchá kartička</h3>
+                <p class="govuk-body">
+                    Jednoduchú kartičku použite, keď nepotrebujete pridať bližší popis. Názov musí byť výstižný, maximálne na 4 riadky. Použite maximálne 2 tagy.
+                </p>
+                <div class="example example-error">
+                    {% set exampleComponentHtml %}
+                        {{ idskCard({ 
+                            "type": "simple", 
+                            "imgSrc": "/public/assets/images/examples/ministerstvo-aktuality-cover.png", 
+                            "link": "#",
+                            "heading": "Lorem ipsum dolor sit amet",
+                            "date": { "date": "1.7.2020", "link": "#" },
+                            "tags": [ { "tag": "Tag 1", "link": "#" }, { "tag": "Tag 2", "link": "#" } ]
+                        }) }}
+                    {% endset %}
+                    {{exampleComponentHtml | safe}}
+                </div>
+                <pre class=" language-markup"><code class="govuk-!-font-size-16  language-markup">{{ exampleComponentHtml }}</code></pre>
+            </div>
+  
+            <div class="govuk-grid-column-full">
+                <h3 class="govuk-heading-m" id="card-hero">Hero kartička</h3>
+                <p class="govuk-body">
+                    Hero kartičku môžete použiť ako ekvivalent základnej kartičky (teda ako primárnu kartičku). Názov kartičky musí byť výstižný. Popis kartičky nesmie presahovať pod fotografiu.
+                </p>
+                <div class="example example-error">
+                    {% set exampleComponentHtml %}
+                        {{ idskCard({ 
+                            "type": "hero", 
+                            "imgSrc": "/public/assets/images/examples/ministerstvo-aktuality-cover.png", 
+                            "link": "#",
+                            "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed fo eiusmod tempor",
+                            "description": "Lorem ipsum dolor sit amet, consenctetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                            "date": { "date": "1.7.2020", "link": "#" },
+                            "tags": [ { "tag": "Tag 1", "link": "#" }, { "tag": "Tag 2", "link": "#" } ]
+                        }) }}
+                    {% endset %}
+                    {{exampleComponentHtml | safe}}
+                </div>
+                <pre class=" language-markup"><code class="govuk-!-font-size-16  language-markup">{{ exampleComponentHtml }}</code></pre>
+            </div>
+
+            <div class="govuk-grid-column-full">
+                <h3 class="govuk-heading-m" id="card-basic-no-image">Základná kartička bez obrázka</h3>
+                <p class="govuk-body">
+                    Kartičku použite, ak chcete zobraziť viacero článkov na menšom priestore.  Použite maximálne 2 tagy.
+                </p>
+                <div class="example example-error">
+                    {% set exampleComponentHtml %}
+                        {{ idskCard({ 
+                            "type": "basic-variant", 
+                            "link": "#",
+                            "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut",
+                            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua/ Ut enim ad minim veniam, quis nonstrud exercitation ullamc Lorem ipsum dolor.",
+                            "date": { "date": "1.7.2020", "link": "#" },
+                            "tags": [ { "tag": "Tag 1", "link": "#" }, { "tag": "Tag 2", "link": "#" } ]
+                        }) }}
+                    {% endset %}
+                    {{exampleComponentHtml | safe}}
+                </div>
+                <pre class=" language-markup"><code class="govuk-!-font-size-16  language-markup">{{ exampleComponentHtml }}</code></pre>
+            </div>
+
+            <div class="govuk-grid-column-full">
+                <h3 class="govuk-heading-m" id="card-basic-no-image-no-desc">Základná kartička bez obrázka a popisu</h3>
+                <p class="govuk-body">
+                    Kartičku použite, ak chcete zobraziť viacero článkov na menšom priestore. Použite maximálne 2 tagy.
+                </p>
+                <div class="example example-error">
+                    {% set exampleComponentHtml %}
+                        {{ idskCard({ 
+                            "type": "basic-variant", 
+                            "link": "#",
+                            "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolor magna aliqua",
+                            "date": { "date": "1.7.2020", "link": "#" },
+                            "tags": [ { "tag": "Tag 1", "link": "#" }, { "tag": "Tag 2", "link": "#" } ]
+                        }) }}
+                    {% endset %}
+                    {{exampleComponentHtml | safe}}
+                </div>
+                <pre class=" language-markup"><code class="govuk-!-font-size-16  language-markup">{{ exampleComponentHtml }}</code></pre>
+            </div>
+
+            <div class="govuk-grid-column-full">
+                <h3 class="govuk-heading-m" id="card-profile-vertical">Profilová kartička - vertikálna</h3>
+                <p class="govuk-body">
+                    Kartičku použite, keď chcete umiestniť viacero profilových kartičiek vedľa seba. Po kliknutí na meno sa zobrazí stránka so životopisom. Po kliknutí na rolu/post/funkciu sa zobrazí stránka so všeobecným popisom povinností a kompetencií danej funkcie.
+                </p>
+                <div class="example example-error">
+                    {% set exampleComponentHtml %}
+                        {{ idskCard({ 
+                            "type": "profile-vertical",
+                            "link": "#", 
+                            "imgSrc": "/public/assets/images/examples/the-pooh-bear.jpg", 
+                            "heading": "Macko Pú",
+                            "description": "Štátny tajomník medu a radosti"
+                        }) }}
+                    {% endset %}
+                    {{exampleComponentHtml | safe}}
+                </div>
+                <pre class=" language-markup"><code class="govuk-!-font-size-16  language-markup">{{ exampleComponentHtml }}</code></pre>
+            </div>
+
+            <div class="govuk-grid-column-full">
+                <h3 class="govuk-heading-m" id="card-profile-horizontal">Profilová kartička - horizontálna</h3>
+                <p class="govuk-body">
+                    Kartičku použite, keď chcete zvýrazniť osobu alebo post, ktorý je zastavaný. Napríklad pri ministroch, výkonných riaditeľoch podnikov a pod. Pri tejto kartičke sa môže použiť aj motto.
+                </p>
+                <div class="example example-error">
+                    {% set exampleComponentHtml %}
+                        {{ idskCard({ 
+                            "type": "profile-horizontal", 
+                            "link": "#",
+                            "imgSrc": "/public/assets/images/examples/the-pooh-bear.jpg", 
+                            "heading": "Macko Pú",
+                            "description": "Štátny tajomník medu a radosti",
+                            "quote": "“Aký je deň?” spýtal sa Pú. “Je dnes,” odpovedalo prasiatko. “Môj najobľúbenejší deň,” povedal Pú."
+                        }) }}
+                    {% endset %}
+                    {{exampleComponentHtml | safe}}
+                </div>
+                <pre class=" language-markup"><code class="govuk-!-font-size-16  language-markup">{{ exampleComponentHtml }}</code></pre>
+            </div>
+
+      </div>
+    </div>
+{% endblock %}

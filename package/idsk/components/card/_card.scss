@@ -1,0 +1,160 @@
+@import "../../../govuk/settings/all";
+@import "../../../govuk/tools/all";
+@import "../../../govuk/helpers/all";
+
+@import "../../../govuk/helpers/typography";
+
+@include govuk-exports("idsk/component/card") {
+  .idsk-card {
+    &-basic,
+    &-basic-variant,
+    &-hero,
+    &-secondary-horizontal,
+    &-profile-horizontal {
+      @include govuk-grid-column("full");
+    }
+
+    &-simple,
+    &-secondary-vertical,
+    &-profile-vertical {
+      @include govuk-grid-column("one-third");
+    }
+
+    &-profile-horizontal {
+      padding: 0;
+      padding-bottom: 60px;
+      border-bottom: 3px solid #bfc1c3;
+
+      @include mq($from: tablet) {
+        padding-bottom: 30px;
+      }
+    }
+  }
+
+  .idsk-card-img {
+    @include govuk-responsive-padding(2, "bottom");
+
+    &-hero {
+      @include govuk-grid-column("one-half");
+    }
+
+    &-secondary-horizontal,
+    &-profile-horizontal {
+      @include govuk-grid-column("one-third");
+    }
+
+    &-profile-horizontal {
+      padding: 0 15px 0 0;
+    }
+  }
+
+  .idsk-card-underline {
+    text-decoration: underline;
+  }
+
+  .idsk-card-meta {
+    @include govuk-font($size: 16);
+    color: govuk-colour("grey-1");
+    display: inline;
+    text-decoration: none;
+
+    &-date {
+      &:after {
+        content: "\00a0-\00a0";
+      }
+    }
+
+    &-tag {
+      &:after {
+        content: "\00a0|\00a0";
+      }
+    }
+  }
+
+  .idsk-card-meta-container a:last-child {
+    &:after {
+      content: "";
+    }
+  }
+
+  .idsk-card-content {
+    &-hero {
+      @include govuk-grid-column("one-half");
+    }
+
+    &-secondary-horizontal,
+    &-profile-horizontal {
+      @include govuk-grid-column("two-thirds");
+    }
+  }
+
+  .idsk-heading {
+    @include govuk-responsive-padding(2, "top");
+    @include govuk-responsive-padding(2, "bottom");
+    display: block;
+    color: #0065b3;
+    cursor: pointer;
+    margin: 0;
+    text-decoration: none;
+
+    &:hover {
+      color: #0b0c0c;
+    }
+
+    &-basic-variant,
+    &-simple,
+    &-secondary-vertical {
+      @include govuk-font($size: 19, $weight: bold);
+    }
+
+    &-basic,
+    &-hero,
+    &-secondary-horizontal {
+      @include govuk-font($size: 24, $weight: bold);
+    }
+
+    &-profile-vertical,
+    &-profile-horizontal {
+      @include govuk-font($size: 36, $weight: bold);
+      text-decoration: underline;
+    }
+  }
+
+  .idsk-body {
+    margin-top: 0;
+
+    &-secondary-vertical {
+      @include govuk-font($size: 16);
+    }
+
+    &-basic,
+    &-basic-variant,
+    &-hero,
+    &-secondary-horizontal {
+      @include govuk-font($size: 19);
+    }
+
+    &-profile-vertical,
+    &-profile-horizontal {
+      @include govuk-font($size: 24);
+      @include govuk-responsive-padding(2, "top");
+      @include govuk-responsive-padding(4, "bottom");
+
+      display: block;
+      color: #0065b3;
+      cursor: pointer;
+      text-decoration: underline;
+
+      &:hover {
+        color: #0b0c0c;
+      }
+    }
+  }
+
+  .idsk-quote {
+    @include govuk-responsive-padding(8, "right");
+    @include govuk-responsive-padding(8, "left");
+    @include govuk-font($size: 24);
+    margin-top: 0;
+  }
+}

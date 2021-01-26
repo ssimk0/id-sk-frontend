@@ -9,6 +9,7 @@
   },
   "patterns": {
     "adresy": "Adresy",
+    "aktuality": "Aktuality",
     "datumy": "Dátumy",
     "emailove-adresy": "E&ndash;mailové adresy",
     "hesla": "Heslá",
@@ -35,7 +36,10 @@
     "farby": "Farby",
     "formularove-prvky": "Formulárové prvky",
     "hlavicka-paticka": "Hlavička a pätička",
+    "footer-extended": "Patička pre webové sídla a spätná väzba",
+    "informacna-lista-lista-s-varovanim": "Informačná lišta / Lišta s varovaním",
     "icony-a-obrazky": "Ikony a obrázky",
+    "karta": "Karta",
     "oznacenie-verzie-sluzby": "Označenie verzie služby",
     "rozlozenie-stranky": "Rozloženie stránky",
     "tlacidla": "Tlačidlá",

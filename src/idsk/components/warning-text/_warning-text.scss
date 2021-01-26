@@ -1,0 +1,32 @@
+@import "../../../govuk/settings/all";
+@import "../../../govuk/tools/all";
+@import "../../../govuk/helpers/all";
+
+@include govuk-exports("idsk/component/warning-text") {
+  .idsk-warning-text {
+    @include govuk-font($size: 16);
+    @include govuk-text-colour;
+    @include govuk-responsive-margin(6, "bottom");
+
+    background-color: govuk-colour("yellow");
+    padding: govuk-spacing(2) 0;
+
+    &__text {
+      display: block;
+      font-weight: bold;
+
+      a:focus,
+      a:active {
+        @include govuk-focused-text;
+      }
+    }
+
+    &--info {
+      background-color: govuk-colour("light-grey");
+
+      .idsk-warning-text__icon {
+        display: none;
+      }
+    }
+  }
+}
