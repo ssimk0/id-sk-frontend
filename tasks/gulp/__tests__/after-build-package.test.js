@@ -18,11 +18,13 @@ describe('package/', () => {
   it('should contain the expected files', () => {
     // Build an array of the files that are present in the package directory.
     const actualPackageFiles = () => {
+      const replaceFilePath = 'package' + path.sep;
+
       return recursive(configPaths.package).then(
         files => {
           return files
             // Remove /package prefix from filenames
-            .map(file => file.replace(/^package\//, ''))
+            .map(file => file.replace(replaceFilePath, ''))
             // Sort to make comparison easier
             .sort()
         },
@@ -56,10 +58,14 @@ describe('package/', () => {
           let filesNotInSrc = files
           // Use glob to generate an array of files that accounts for wildcards in filenames
           filesNotInSrc = glob.sync('{' + additionalFilesNotInSrc.join(',') + '}', { cwd: 'package' })
+          // replace dir separator based on platform
+          filesNotInSrc = filesNotInSrc.map(file => file.replace(/\//g, path.sep))
+
+          const replaceFilePath = 'src' + path.sep;
 
           return files
             // Remove /src prefix from filenames
-            .map(file => file.replace(/^src\//, ''))
+            .map(file => file.replace(replaceFilePath, ''))
             // Allow for additional files that are not in src
             .concat(filesNotInSrc)
             // Sort to make comparison easier
