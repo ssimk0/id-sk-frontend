@@ -1188,6 +1188,8 @@ CharacterCount.prototype.updateCountMessage = function () {
   }
 
   displayNumber = Math.abs(remainingNumber);
+  if (remainingNumber < 0)
+    displayNumber = '-' + displayNumber;
 
   countMessage.innerHTML = 'Zostáva Vám ' + displayNumber + ' ' + charNoun + ' ';
 };

@@ -6,10 +6,34 @@
         "description": "Url address for design page."
     },
     {
+        "name": "showFeedback",
+        "type": "string",
+        "required": false,
+        "description": "Determines whether feedback bar should be displayed."
+    },
+    {
+        "name": "upButtonEnabled",
+        "type": "string",
+        "required": false,
+        "description": "Determines whether up button should be displayed."
+    },
+    {
         "name": "feedbackButtonAddress",
         "type": "html",
         "required": false,
         "description": "Url address for feedback button."
+    },
+    {
+        "name": "logo",
+        "type": "svg",
+        "required": false,
+        "description": "Name of svg file for logo in footer."
+    },
+    {
+        "name": "assetsPath",
+        "type": "string",
+        "required": false,
+        "description": "Relative path for assets folder."
     },
     {
         "name": "firstColumn",

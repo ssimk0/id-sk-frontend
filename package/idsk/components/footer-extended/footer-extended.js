@@ -690,30 +690,25 @@ function FooterExtended($module) {
 }
 
 FooterExtended.prototype.init = function () {
-    let $module = this.$module;
+    var $module = this.$module;
     // check for module
     if (!$module) {
         return;
     }
 
-    let $yesButton = $module.querySelector('#idsk-footer-extended-feedback-yes-button');
-    let $noButton = $module.querySelector('#idsk-footer-extended-feedback-no-button');
-    let $errorButton = $module.querySelector('#idsk-footer-extended-error-button');
-    let $closeErrorFormButton = $module.querySelector('#idsk-footer-extended-close-error-form-button');
-    let $closeHelpFormButton = $module.querySelector('#idsk-footer-extended-close-help-form-button');
+    var $yesButton = $module.querySelector('#idsk-footer-extended-feedback-yes-button');
+    var $noButton = $module.querySelector('#idsk-footer-extended-feedback-no-button');
+    var $errorButton = $module.querySelector('#idsk-footer-extended-error-button');
+    var $closeErrorFormButton = $module.querySelector('#idsk-footer-extended-close-error-form-button');
+    var $closeHelpFormButton = $module.querySelector('#idsk-footer-extended-close-help-form-button');
+
+    var $textAreaCharacterCount = $module.querySelector('#idsk-footer-extended-error-form #with-hint');
+
+    var $fillFeedbackButton = $module.querySelector('#fill-feedback-help-form');
+    var $submitErrorButton = $module.querySelector('#submit-button-error-form');
 
 
-    let $closeErrorFormButtonTablet = $module.querySelector('#idsk-footer-extended-close-error-form-button-tablet');
-    let $closeHelpFormButtonTablet = $module.querySelector('#idsk-footer-extended-close-help-form-button-tablet');
-
-
-    let $textAreaCharacterCount = $module.querySelector('#idsk-footer-extended-error-form #with-hint');
-
-    let $fillFeedbackButton = $module.querySelector('#fill-feedback-help-form');
-    let $submitErrorButton = $module.querySelector('#submit-button-error-form');
-
-
-    let $writeUsButton = this.$module.querySelector('#idsk-footer-extended-write-us-button');
+    var $writeUsButton = this.$module.querySelector('#idsk-footer-extended-write-us-button');
 
     if ($yesButton && $noButton && $errorButton) {
         $yesButton.addEventListener('click', this.handleYesButtonClick.bind(this));
@@ -733,14 +728,6 @@ FooterExtended.prototype.init = function () {
         $closeErrorFormButton.addEventListener('click', this.handleCloseErrorFormButtonClick.bind(this));
     }
 
-    if ($closeErrorFormButtonTablet) {
-        $closeErrorFormButtonTablet.addEventListener('click', this.handleCloseErrorFormButtonClick.bind(this));
-    }
-
-    if ($closeHelpFormButtonTablet) {
-        $closeHelpFormButtonTablet.addEventListener('click', this.handleCloseHelpFormButtonClick.bind(this));
-    }
-
     if ($fillFeedbackButton) {
         $fillFeedbackButton.addEventListener('click', this.handleSubmitButtonClick.bind(this));
     }
@@ -756,12 +743,12 @@ FooterExtended.prototype.init = function () {
 
 
 FooterExtended.prototype.handleSubmitButtonClick = function (e) {
-    let $noOption = this.$module.querySelector('#idsk-footer-extended-help-form');
-    let $errorOption = this.$module.querySelector('#idsk-footer-extended-error-form');
-    let $infoQuestion = this.$module.querySelector('#idsk-footer-extended-info-question');
-    let $heartSymbol = this.$module.querySelector('#idsk-footer-extended-heart');
-    let $feedbackQuestion = this.$module.querySelector('#idsk-footer-extended-feedback');
-    let $helpAndErrorContainer = this.$module.querySelector('#idsk-footer-extended-feedback-content');
+    var $noOption = this.$module.querySelector('#idsk-footer-extended-help-form');
+    var $errorOption = this.$module.querySelector('#idsk-footer-extended-error-form');
+    var $infoQuestion = this.$module.querySelector('#idsk-footer-extended-info-question');
+    var $heartSymbol = this.$module.querySelector('#idsk-footer-extended-heart');
+    var $feedbackQuestion = this.$module.querySelector('#idsk-footer-extended-feedback');
+    var $helpAndErrorContainer = this.$module.querySelector('#idsk-footer-extended-feedback-content');
 
     toggleClass($helpAndErrorContainer, 'idsk-footer-extended-feedback-content');
     $noOption.classList.add('idsk-footer-extended-display-hidden');
@@ -775,18 +762,16 @@ FooterExtended.prototype.handleSubmitButtonClick = function (e) {
 };
 
 FooterExtended.prototype.handleStatusOfCharacterCountButton = function (e) {
-    let $textAreaCharacterCount = this.$module.querySelector('#with-hint');
-    let $remainingCharacterCountMessage = this.$module.querySelector('#with-hint-info');
+    var $textAreaCharacterCount = this.$module.querySelector('#with-hint');
+    var $remainingCharacterCountMessage = this.$module.querySelector('#with-hint-info');
 
-    let $submitButton = this.$module.querySelector('#submit-button-error-form');
+    var $submitButton = this.$module.querySelector('#submit-button-error-form');
 
     setTimeout(function () {
         if ($textAreaCharacterCount.classList.contains('govuk-textarea--error') || $remainingCharacterCountMessage.classList.contains('govuk-error-message')) {
-            console.log('yes');
             console.log($textAreaCharacterCount.classList);
             $submitButton.disabled = true;
         } else {
-            console.log('no');
             console.log($textAreaCharacterCount.classList);
             $submitButton.disabled = false;
         }
@@ -796,10 +781,10 @@ FooterExtended.prototype.handleStatusOfCharacterCountButton = function (e) {
 
 //Hiding feedback question text and showing thank notice with heart
 FooterExtended.prototype.handleYesButtonClick = function (e) {
-    let $noOption = this.$module.querySelector('#idsk-footer-extended-help-form');
-    let $errorOption = this.$module.querySelector('#idsk-footer-extended-error-form');
-    let $infoQuestion = this.$module.querySelector('#idsk-footer-extended-info-question');
-    let $heartSymbol = this.$module.querySelector('#idsk-footer-extended-heart');
+    var $noOption = this.$module.querySelector('#idsk-footer-extended-help-form');
+    var $errorOption = this.$module.querySelector('#idsk-footer-extended-error-form');
+    var $infoQuestion = this.$module.querySelector('#idsk-footer-extended-info-question');
+    var $heartSymbol = this.$module.querySelector('#idsk-footer-extended-heart');
 
     $noOption.classList.add('idsk-footer-extended-display-hidden');
     $errorOption.classList.add('idsk-footer-extended-display-hidden');
@@ -811,10 +796,10 @@ FooterExtended.prototype.handleYesButtonClick = function (e) {
 
 //Hiding feedback question element and showing help form with animation
 FooterExtended.prototype.handleNoButtonClick = function (e) {
-    let $helpOption = this.$module.querySelector('#idsk-footer-extended-help-form');
-    let $feedbackQuestion = this.$module.querySelector('#idsk-footer-extended-feedback');
+    var $helpOption = this.$module.querySelector('#idsk-footer-extended-help-form');
+    var $feedbackQuestion = this.$module.querySelector('#idsk-footer-extended-feedback');
 
-    let $helpAndErrorContainer = this.$module.querySelector('#idsk-footer-extended-feedback-content');
+    var $helpAndErrorContainer = this.$module.querySelector('#idsk-footer-extended-feedback-content');
 
     toggleClass($helpAndErrorContainer, 'idsk-footer-extended-feedback-content');
     toggleClass($feedbackQuestion, 'idsk-footer-extended-display-none');
@@ -824,11 +809,11 @@ FooterExtended.prototype.handleNoButtonClick = function (e) {
 
 //Hiding feedback question element and showing error form with animation
 FooterExtended.prototype.handleErrorButtonClick = function (e) {
-    let $errorOption = this.$module.querySelector('#idsk-footer-extended-error-form');
-    let $helpOption = this.$module.querySelector('#idsk-footer-extended-help-form');
-    let $feedbackQuestion = this.$module.querySelector('#idsk-footer-extended-feedback');
+    var $errorOption = this.$module.querySelector('#idsk-footer-extended-error-form');
+    var $helpOption = this.$module.querySelector('#idsk-footer-extended-help-form');
+    var $feedbackQuestion = this.$module.querySelector('#idsk-footer-extended-feedback');
 
-    let $helpAndErrorContainer = this.$module.querySelector('#idsk-footer-extended-feedback-content');
+    var $helpAndErrorContainer = this.$module.querySelector('#idsk-footer-extended-feedback-content');
 
     toggleClass($helpAndErrorContainer, 'idsk-footer-extended-feedback-content');
     toggleClass($feedbackQuestion, 'idsk-footer-extended-display-none');
@@ -840,9 +825,9 @@ FooterExtended.prototype.handleErrorButtonClick = function (e) {
 
 //Hiding error form with animation and showing feedback question element
 FooterExtended.prototype.handleCloseErrorFormButtonClick = function (e) {
-    let $errorOption = this.$module.querySelector('#idsk-footer-extended-error-form');
-    let $feedbackQuestion = this.$module.querySelector('#idsk-footer-extended-feedback');
-    let $helpAndErrorContainer = this.$module.querySelector('#idsk-footer-extended-feedback-content');
+    var $errorOption = this.$module.querySelector('#idsk-footer-extended-error-form');
+    var $feedbackQuestion = this.$module.querySelector('#idsk-footer-extended-feedback');
+    var $helpAndErrorContainer = this.$module.querySelector('#idsk-footer-extended-feedback-content');
 
     toggleClass($helpAndErrorContainer, 'idsk-footer-extended-feedback-content');
     toggleClass($feedbackQuestion, 'idsk-footer-extended-display-none');
@@ -852,15 +837,33 @@ FooterExtended.prototype.handleCloseErrorFormButtonClick = function (e) {
 
 //Hiding help form with animation and showing feedback question element
 FooterExtended.prototype.handleCloseHelpFormButtonClick = function () {
-    let $helpOption = this.$module.querySelector('#idsk-footer-extended-help-form');
-    let $feedbackQuestion = this.$module.querySelector('#idsk-footer-extended-feedback');
-    let $helpAndErrorContainer = this.$module.querySelector('#idsk-footer-extended-feedback-content');
+    var $helpOption = this.$module.querySelector('#idsk-footer-extended-help-form');
+    var $feedbackQuestion = this.$module.querySelector('#idsk-footer-extended-feedback');
+    var $helpAndErrorContainer = this.$module.querySelector('#idsk-footer-extended-feedback-content');
 
     toggleClass($helpAndErrorContainer, 'idsk-footer-extended-feedback-content');
     toggleClass($feedbackQuestion, 'idsk-footer-extended-display-none');
     toggleClass($helpOption, 'idsk-footer-extended-open');
     toggleClass($helpOption, 'idsk-footer-extended-display-hidden');
 };
+
+//Get the button
+var mybutton = document.getElementById("footer-extended-up-button");
+
+// When the user scrolls down window screen heiht From the top of the document, show the button
+if (mybutton != null) {
+    window.onscroll = function () {
+        scrollFunction();
+    };
+}
+
+function scrollFunction() {
+    if (window.screen.width > 992 && (document.body.scrollTop > window.screen.height || document.documentElement.scrollTop > window.screen.height)) {
+        mybutton.style.display = "block";
+    } else {
+        mybutton.style.display = "none";
+    }
+}
 
 return FooterExtended;
 
