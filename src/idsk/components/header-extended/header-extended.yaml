@@ -1,0 +1,333 @@
+params:
+- name: classes
+  type: string
+  required: false
+  description: Classes to add to the header container.
+- name: attributes
+  type: object
+  required: false
+  description: HTML attributes (for example data attributes) to add to the header container.
+- name: containerClasses
+  type: string
+  required: false
+  description: Classes for the container, useful if you want to make the header fixed width.
+- name: homepageUrl
+  type: string
+  required: false
+  description: The url of the homepage. Defaults to /
+- name: headerTitle
+  type: string
+  required: false
+  description: The title of logo. It shows after hover the logo element
+- name: assetsPath
+  type: string
+  required: false
+  description: The public path for the assets folder. If not provided it defaults to /assets/images
+- name: logoGrid
+  type: string
+  required: false
+  description: special class for logo part
+- name: logo
+  type: string
+  required: true
+  description: main logo
+- name: logoSmall
+  type: string
+  required: true
+  description: if you scroll down on smaller devices, the logo be changed for smaller one
+- name: logoWhite
+  type: string
+  required: true
+  description: this logo will be shown on mobile/tablet after you click on menu button 
+- name: logoSmallWhite
+  type: string
+  required: true
+  description: this logo will be shown on mobile/tablet after you click on menu button and if you are not on top of the page
+- name: search
+  type: boolean
+  required: false
+  description: Display or not the search bar
+  params:
+  - name: text
+    type: string
+    required: false
+    description: title of search bar
+  - name: placeholder
+    type: string
+    required: false
+    description: text in placeholder
+- name: language
+  type: object
+  reguired: false
+  description: current language information and available language choices
+  params:
+  - name: current
+    type: object
+    required: true
+    description: information about current language
+    params:
+    - name: text
+      type: string
+      required: true
+      decription: The name of current/selected language
+    - name: flag
+      type: string
+      required: true
+      description: The flag of current/selected language
+  - name: choices
+    type: array
+    required: true
+    description: available language choices
+    params: 
+    - name: text
+      type: string
+      required: true
+      description: Name of language
+    - name: flag
+      type: string
+      required: true
+      description: Name of flag image of language
+    - name: link
+      type: string
+      required: false
+      description: link to english mutation
+- name: socials
+  type: array
+  required: false
+  description: array of social links
+  params:
+  - name: text
+    type: string
+    required: true
+    description: Name of social network
+  - name: link
+    type: string
+    required: true
+    description: Link to social network
+  - name: icon
+    type: string
+    required: true
+    description: Icon of social network
+- name: navigationClasses
+  type: string
+  required: false
+  description: Classes for the navigation section of the header.
+- name: navigation
+  type: array
+  required: false
+  description: list of navigation items
+  params:
+  - name: text
+    type: string
+    required: true
+    description: Text of the navigation item
+  - name: link
+    type: string
+    required: true
+    description: Url of the navigation item anchor. Both `href` and `text` attributes for navigation items need to be provided to create an item.
+  - name: active
+    type: boolean
+    required: false
+    description: Flag to mark the navigation item as active or not.
+  - name: attributes
+    type: object
+    required: false
+    description: HTML attributes (for example data attributes) to add to the navigation item anchor.
+  - name: submenu
+    type: array
+    required: false
+    description: array of submenu items
+    params:
+    - name: text
+      type: string
+      required: true
+      description: Text of the submenu item
+    - name: link
+      type: string
+      required: true
+      description: Url of the submenu item anchor
+    - name: icon
+      type: string
+      required: false
+      description: Additional icon for visual description of the submenu item
+- name: notifications
+  type: array
+  required: false
+  params:
+  - name: type
+    type: string
+    required: false
+    description: You can modify the notification type message
+  - name: iconFallbackText
+    type: string
+    required: true
+    dexription: The fallback text for the icon.
+  - name: html
+    type: string
+    required: true
+    description: If `text` is set, this is not required. HTML to use within the warning text component. If `html` is provided, the `text` argument will be ignored.
+
+previewLayout: full-width
+
+examples:
+- name: s výberom jazyka a sociálnymi sieťami a navigáciou
+  data:
+    logo: logo-mirri-farebne.svg
+    logoSmall: logo-mirri-small-farebne.svg
+    logoWhite: logo-mirri-biele.svg
+    logoSmallWhite: logo-mirri-small-biele.svg
+    logoGrid: govuk-grid-column-three-quarters govuk-grid-column-one-half-from-desktop
+    navigation: 
+      - link: '#1'
+        text: Ministerstvo
+      - link: '#2'
+        text: Sekcie
+      - link: '#3'
+        text: Programy EŠIF
+      - link: '#4'
+        text: Aktuality
+      - link: '#5'
+        text: Kontakt
+    language: 
+      current:
+        text: slovenčina
+        flag: slovakia-flag-icon-16.png
+      choices:
+        - flag: united-states-of-america-flag-icon-16.png
+          text: english
+          link: '#'
+        - flag: germany-flag-icon-16.png
+          text: german
+          link: '#'
+    socials:
+      - icon: fab fa-instagram
+        link: '#'
+        text: Instagram
+      - icon: fab fa-linkedin-in
+        link: '#'
+        text: Linkedin
+      - icon: fab fa-facebook-f
+        link: '#'
+        text: Facebook
+      - icon: fab fa-twitter
+        link: '#'
+        text: Twitter
+
+- name: s navigáciou a informačnou a výstražnou hláškou
+  data:
+    logo: logo-mirri-farebne.svg
+    logoSmall: logo-mirri-small-farebne.svg
+    logoWhite: logo-mirri-biele.svg
+    logoSmallWhite: logo-mirri-small-biele.svg
+    logoGrid: govuk-grid-column-three-quarters govuk-grid-column-one-half-from-desktop
+    navigation: 
+      - link: '#1'
+        text: Ministerstvo
+      - link: '#2'
+        text: Sekcie
+      - link: '#3'
+        text: Programy EŠIF
+      - link: '#4'
+        text: Aktuality
+      - link: '#5'
+        text: Kontakt
+    language: 
+      current:
+        text: slovenčina
+        flag: slovakia-flag-icon-16.png
+      choices:
+        - flag: united-states-of-america-flag-icon-16.png
+          text: english
+          link: '#'
+        - flag: germany-flag-icon-16.png
+          text: german
+          link: '#'
+    socials:
+      - icon: fab fa-instagram
+        link: '#'
+        text: Instagram
+      - icon: fab fa-linkedin-in
+        link: '#'
+        text: Linkedin
+      - icon: fab fa-facebook-f
+        link: '#'
+        text: Facebook
+      - icon: fab fa-twitter
+        link: '#'
+        text: Twitter
+    notifications:
+      - type: info
+        iconFallbackText: info
+        html: Ak prichádzate z rizikovej krajiny, musíte vyplniť <a href='#' title='formulár'>formulár</a>.
+      - iconFallbackText: warning
+        html: Ak prichádzate z rizikovej krajiny, musíte vyplniť <a href='#' title='formulár'>formulár</a>.
+
+- name: Ukážka podsekcií po kliknutí na "Programy EŠIF", vyhľadávanie
+  data:
+    logo: logo-mirri-farebne.svg
+    logoSmall: logo-mirri-small-farebne.svg
+    logoWhite: logo-mirri-biele.svg
+    logoSmallWhite: logo-mirri-small-biele.svg
+    logoGrid: govuk-grid-column-one-half govuk-grid-column-one-third-from-desktop
+    navigation: 
+      - link: '#1'
+        text: Ministerstvo
+      - link: '#2'
+        text: Sekcie
+      - link: '#3'
+        text: Programy EŠIF
+        submenu: 
+          - link: '#3.1'
+            text: Domov dôchodcov
+            icon: fas fa-home
+          - link: '#3.2'
+            text: Zoznam úloh
+            icon: fas fa-tasks
+          - link: '#3.3'
+            text: Zabezpečenie dát
+            icon: fas fa-unlock
+          - link: '#3.4'
+            text: Ochrana práv
+            icon: fas fa-user-shield
+          - link: '#3.5'
+            text: Kvapka nádeje
+            icon: fas fa-hand-holding-water
+          - link: '#3.6'
+            text: Programy 6
+          - link: '#3.7'
+            text: Programy 7
+          - link: '#3.8'
+            text: Programy 8
+          - link: '#3.9'
+            text: Programy 9
+          - link: '#3.10'
+            text: Programy 10
+      - link: '#4'
+        text: Aktuality
+      - link: '#5'
+        text: Kontakt
+    search: true
+    language: 
+      current:
+        text: slovenčina
+        flag: slovakia-flag-icon-16.png
+      choices:
+        - flag: united-states-of-america-flag-icon-16.png
+          text: english
+          link: '#'
+        - flag: germany-flag-icon-16.png
+          text: german
+          link: '#'
+    socials:
+      - icon: fab fa-instagram
+        link: '#'
+        text: Instagram
+      - icon: fab fa-linkedin-in
+        link: '#'
+        text: Linkedin
+      - icon: fab fa-facebook-f
+        link: '#'
+        text: Facebook
+      - icon: fab fa-twitter
+        link: '#'
+        text: Twitter
