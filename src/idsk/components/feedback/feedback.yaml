@@ -43,4 +43,7 @@ examples:
           - name: Spokojný
 
           - name: Veľmi spokojný
+          
+      characterLength : 200
+      counter : 0
             

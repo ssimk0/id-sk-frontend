@@ -1,6 +1,7 @@
 import { nodeListForEach } from "./common";
 import { initAll as initAllGOVUKjs } from "../govuk/all";
 import Button from "./components/button/button";
+import Feedback from "./components/feedback/feedback";
 import FooterExtended from "./components/footer-extended/footer-extended";
 import CharacterCount from "./components/character-count/character-count";
 import Crossroad from "./components/crossroad/crossroad";
@@ -19,6 +20,12 @@ function initAll(options) {
     new Button($button).init()
   })
 
+  const $feedback = scope.querySelectorAll(
+    '[data-module="feedback"]'
+  );
+  nodeListForEach($feedback, function ($feedback) {
+    new Feedback($feedback).init();
+  });
   // Find first Footer-extended module to enhance.
   const $footerExtended = scope.querySelectorAll(
     '[data-module="idsk-footer-extended"]'
@@ -54,6 +61,7 @@ export {
   Button,
   CharacterCount,
   Crossroad,
+  Feedback,
   FooterExtended,
-  HeaderExtended  
+  HeaderExtended
 }

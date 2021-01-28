@@ -25,4 +25,24 @@
     .idsk-feedback-send-button {
         margin-right: govuk-spacing(4);
     }
+
+    .idsk-feedback-display-none {
+        display: none;
+    }
+
+    .idsk-feedback-display-hidden {
+        visibility: hidden;
+    }
+
+    .idsk-feedback-hidden {
+        max-height: 0;
+        transition: max-height 0.7s ease-out;
+    }
+
+    .idsk-feedback-open {
+        max-height: 619px;
+        height: auto;
+        transition: max-height 0.7s ease-in;
+        overflow: hidden;
+    }
 }
