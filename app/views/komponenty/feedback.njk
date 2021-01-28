@@ -1,0 +1,62 @@
+{% extends "layout.njk" %}
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+
+{% set pageName = "Pätička pre webové sídla a spätná väzba" %}
+
+{% block beforeContent %}
+    {{ govukBreadcrumbs({
+    "items": [
+    { text: 'ID-SK frontend', href: '/' + legacyQuery },
+    { text: pageName }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-width-container">
+
+        <span class="govuk-caption-xl">Webové komponenty</span>
+        <h1 class="govuk-heading-xl">{{pageName}}</h1>
+        <p class="govuk-body-l">Spätná väzba
+        </p>
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <h2 class="govuk-heading-s">Obsah:</h2>
+                <ul class="govuk-list">
+                    <li>
+                        <a href="#ukazka-zakladna-paticka">Príklad základnej pätičky bez navigácie</a>
+                    </li>
+                    <li>
+                        <a href="#ukazka-zakladna-paticka-feedback">Príklad základnej pätičky bez navigácie + spätná väzba</a>
+                    </li>
+                    <li>
+                        <a href="#ukazka-rozsirena-paticka-1">Príklad pätičky s jednoduchou navigáciou</a>
+                    </li>
+                    <li>
+                        <a href="#ukazka-rozsirena-paticka-2">Príklad pätičky s rozšírenou navigáciou vo viac. riadkoch</a>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="govuk-grid-column-full">
+                <h3 class="govuk-heading-m" id="ukazka-rozsirena-paticka-2">Príklad pätičky s rozšírenou navigáciou vo viac. riadkoch</h3>
+                <div class="example">
+                    {% set exampleComponentHtml %}
+                    {% include "../komponenty/examples/exampleFeedback.njk" %}
+                    {% endset %}
+                    {{exampleComponentHtml | safe}}
+                </div>
+            </div>
+
+            <div class="govuk-grid-column-two-thirds">
+                <h2 class="govuk-heading-l" id="priklady">Rozšírené príklady pre spätnú väzbu</h2>
+                <ul class="govuk-list">
+                    <li>
+                        <a href="/custom-components/feedback">Rozšírené príklady spätnej väzby</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

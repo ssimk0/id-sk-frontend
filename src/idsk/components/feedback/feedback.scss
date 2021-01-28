@@ -1,0 +1,28 @@
+@import "../../../govuk/settings/all";
+@import "../../../govuk/tools/all";
+@import "../../../govuk/helpers/all";
+@import "../../../govuk/helpers/typography";
+@import "../../../govuk/objects/grid";
+
+@include govuk-exports("idsk/component/feedback") {
+    .idsk-feedback-options-ul {
+        padding-inline-start: govuk-spacing(1);
+    }
+
+    .idsk-feedback-options-li {
+        display: block;
+        @include mq(desktop) {
+            @include govuk-font($size: 19);
+        }
+    }
+
+    .idsk-feedback-radio-button {
+        transform: scale(2.5);
+        margin-bottom: govuk-spacing(6);
+        margin-right: govuk-spacing(3);
+    }
+
+    .idsk-feedback-send-button {
+        margin-right: govuk-spacing(4);
+    }
+}

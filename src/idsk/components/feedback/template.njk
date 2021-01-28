@@ -1,0 +1,30 @@
+{% from "details/macro.njk" import govukDetails %}
+<div data-module="idsk-feedback">
+    <div class="govuk-width-container">
+        <h2 class="govuk-heading-l">
+            Spätná väzba na službu Podávanie žiadosti o nenávratný príspevok na opravu bickyla
+        </h2>
+
+        <h3 class="govuk-heading-m">Ako ste spokojný so službou, ktorú ste práve využili?
+        </h3>
+
+        <ul class="idsk-feedback-options-ul">
+            {% for item in params.feedbackOptions -%}
+                <li class="idsk-feedback-options-li ">
+                    <input type="radio" class="idsk-feedback-radio-button" value=" {{ item.name }} " name="group1">
+                    <label for="{{ item.name }}">
+                        {{ item.name }}
+                    </label><br>
+                </li>
+            {%- endfor %}
+        </ul>
+
+        <button class="govuk-button idsk-feedback-send-button">
+            Odoslať
+        </button>
+
+        <button class="govuk-button govuk-button--secondary">
+            Odísť
+        </button>
+    </div>
+</div>
