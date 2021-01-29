@@ -17,36 +17,34 @@
 
     <span class="govuk-caption-xl">Webové komponenty</span>
     <h1 class="govuk-heading-xl">{{pageName}}</h1>
+    <p class="govuk-body-l">Komponent hlavička je jedným zo základných komponentov pre webové sídla, ktorý je používateľom prístupný takmer na celej webovej stránke. Jednou z najdôležitejších úloh hlavičky je navigovanie používateľa k obsahu, ktorý hľadá. Položky v menu a podmenu vytvárajte za pomoci používateľských prieskumov. Znížite tým riziko, že do hlavičky zakomponujete niečo, čo používateľov nezaujíma.</p>
 
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
 
           <h2 class="govuk-heading-s">Obsah:</h2>
           <ul class="govuk-list">
-              <li><a href="#pouzitie-hlavicky-na-homepage-desktop">Použitie hlavičky na Homepage desktop</a></li>
-              <li><a href="#homepage">Homepage</a></li>
+              <li><a href="#vlastnosti-hlavicky">Vlastnosti hlavičky</a></li>
+              <li><a href="#hlavicka-pre-mobily-sa-od-desktopovej-verzie-lisi">Hlavčika pre mobily sa od desktopovej verzie líši</a></li>
+              <li><a href="#specificke-pouzitie-hlavicky">Špecifické použitie hlavičky</a></li>
               <li><a href="#polozky-menu">Položky menu</a></li>
               <li><a href="#polozky-v-podmenu">Položky v podmenu</a></li>
-              <li><a href="#subhomepage">Subhomepage</a></li>
-              <li><a href="#pouzite-hlavicky-na-stranke-inej-ako-homepage">Použite hlavičky na stránke inej ako homepage</a></li>
-              <li><a href="#hlavicka-mobilne-zariadenia">Hlavička mobilné zariadenia</a></li>
-              <li><a href="#zmensena-hlavicka-mobilne-zariadenia">Zmenšená hlavička mobilné zariadenia</a></li>
               <li><a href="#priklady">Rozšírené príklady pre hlavičku a pätičku</a></li>
           </ul>
 
-          <h3 class="govuk-heading-m" id="#pouzitie-hlavicky-na-homepage-desktop">Použitie hlavičky na Homepage desktop</h3>
+          <h3 class="govuk-heading-m" id="vlastnosti-hlavicky">Vlastnosti hlavičky</h3>
           <p class="govuk-body">
-            Na homepage použite iba hlavičku "Header extended s výberom jazyka a sociálnymi sieťami a navigáciou. Logo vašej organizácie použite logo podľa logotypu štátnej správy vo vektorom formáte, optimálne SVG (Scalable Vector Graphics). Výber jazykovej mutácie je povinný a musí byť k dispozícii minimálne anglická mutácia, pričom sa nemôže nachádzať slovenský obsah v anglickej mutácii a naopak. Odkazy na sociálne sieťe sú voliteľné. Hlavička sa skladá z položiek hlavného Menu a oddelovacej čiary.
-          </p>
-          <h3 class="govuk-heading-m" id="homepage">Homepage</h3>
-          <p class="govuk-body">
-            Homepage je domovská stránka, ktorá sa zobrazí používateľovi po príchode na webové sídlo. "Prvá" navigácia sa nachádza v hlavičke v menu. Ďaľšia sa nachádza na samotnej homepagei. Homepage rozvrhnite tak, aby sa používateľ dostal aj na témy, ktoré máte v menu. Predstavte si, že homepage je stránka, dlhý list, na ktorom poukladáte odkazy na vaše dôležité témy, je to akoby rozcestník na témy, ktoré máte zadefinované v menu. "Posledná" navigácia je v pätičke v podobe zoznamov odkazov.
+            Hlavička sa skladá z:
+            <ul class="govuk-list govuk-list--bullet">
+              <li>loga inštitúcie (podľa logotypu a vo vektorom formáte, optimálne SVG)</li>
+              <li>vyhľadávacieho poľa </li>
+              <li>komponentu na výber jazykovej mutácie (min. možnosti: slovenčina + angličtina)</li>
+              <li>ikonkových odkazov na sociálne siete (voliteľné)</li>
+              <li>menu položiek (pre zachovanie intuitívnosti navigácie odporúčame použiť max. 5 položiek v menu, po kliknutí na jednotlivé položky sa zobrazí podúroveň menu pre danú položku)</li>
+              <li>oddelovacej čiary</li>
+            </ul>
           </p>
 
-          <h3 class="govuk-heading-m" id="polozky-menu">Položky menu</h3>
-          <p class="govuk-body">
-            Nepoužívajte viac ako 5 položiek menu. Rozumieme, že veľa organizácií ma naozaj veľmi veľa a rôznorodého obsahu, no pre používateľa je pri veľkom počte položiek menu ťažké rozhodnúť sa, na ktorú položku má kliknúť, aby našiel to, čo práve hľadá. V menu nepoužívajte napríklad "Aktuality", "o ministerstve/úrade" alebo "Kontakty" - sú to témy, ktoré viete zakomponovať na homepagei alebo v pätičke. Namiesto toho radšej použite takú položku, ktorá odzrkadľuje to čo robíte alebo je to téma/oblasť, ktorú chcete používateľovi prezentovať. Pre rýchlejšie nájdenie toho čo potrebuje bude hneď pod hlavičkou veľké vyhladávacie pole, preto dobre štruktúrujte metaúdaje vašich stránok, aby bolo vyhľadávanie pre používateľov čo najefektívnejšie. Používateľ ocení, že si dáte námahu a zreorganizujete obsah, ktorý teraz publikujete a ponúknete mu jasnejšie východzie body. Položky v menu sú len jednou z navigácií, ako sa používateľ dostane k tomu čo hľadá. Po kliknutí na položku menu sa otvorí podmenu s položkami.
-          </p>          
           <div class="example example-overflowed">
             <h2 class="govuk-heading-s">Hlavička s navigáciou, výberom jazykovej mutácie a sociálnymi sieťami pre domovskú stránku</h2>
             {% set exampleComponentHtml %}
@@ -54,30 +52,16 @@
             {% endset %}
             {{exampleComponentHtml | safe}}
           </div>
-          <h3 class="govuk-heading-m" id="polozky-v-podmenu">Položky v podmenu</h3>
-          <p class="govuk-body">
-            Položky v podmenu môžu byť obsiahlejšie ako samotné položky v menu. Nepoužívajte však viac ako 12 položiek. V položkách v podmenu môžete použiť pred odkazom aj ikonu. Ako prvú položku podmenu odporúčame dať tzv. "O téme". Ak bude položka v menu "Polícia", tak prvá pod položka "O polícii", ktorá zavedie používateľa na <strong>subhomepage</strong>.
-          </p>
-          <h3 class="govuk-heading-m" id="subhomepage">Subhomepage</h3>
-          <p class="govuk-body">
-            Vytvárajte stránky, kde používateľ nájde iba obsah z danej témy. Napríklad ak klikne na subhomepage "Eurofondy" tak by sa tu mal nachádzať obsah od A po Z ohľadne eurofondov. Ako ich čerpať, aké sú aktuálne programy, otvorené výzvy, pomoc ohľadne eurofondov až po aktuálne štatistiky čerpania a podobne. Takto zhutnený obsah pomôže používateľovi rýchlo sa zorientovať v tom, čo mu ponúkate, a ak nájde to čo hľadá, pripravte mu ďalšiu úroveň obsahu, kde nájde podrobné informácie. Ak je používateľ na subhomepage "Eurofondy" a nájde na nej "OP EVS" ( operačný program efektívna verejná správa) tak po kliknutí sa mu zobrazí podrobný obsah ohľadne EVS, napríklad metodiky spojené s EVS, možnosti čerpania a podobne.
-          </p>
-          <h3 class="govuk-heading-m" id="pouzite-hlavicky-na-stranke-inej-ako-homepage">Použite hlavičky na stránke inej ako homepage</h3>
-          <p class="govuk-body">
-            Na homepage použite úvodný blok s vyhľadávaním. Aby mal používateľ kedykoľvek možnosť vyhľadávať to, čo potrebuje, na stránkach iných ako homepage použite hlavičku s vyhľadávaním. Po zadaní výrazu sa zobrazí používateľovi stránka s výsledkami vyhľadávania.
-          </p>
-          <div class="example example-overflowed">
-            <h2 class="govuk-heading-s">Hlavička s navigáciou, vyhľadávaním, výberom jazykovej mutácie a sociálnymi sieťami pre ostatné podstránky</h2>
-            {% set exampleComponentHtml %}
-                {% include "../komponenty/examples/hlavickaWeboveSidla3.njk" %}
-            {% endset %}
-            {{exampleComponentHtml | safe}}
-          </div>
 
-          <h3 class="govuk-heading-m" id="hlavicka-mobilne-zariadenia">Hlavička mobilné zariadenia</h3>
+          <h3 class="govuk-heading-m" id="hlavicka-pre-mobily-sa-od-desktopovej-verzie-lisi">Hlavčika pre mobily sa od desktopovej verzie líši</h3>
           <p class="govuk-body">
-            Hlavička pre mobilné zariadenia je zložená z loga, menu a oddelovacej čiary. Pri mobilných zariadeniach sa menu objaví po kliknutí na "menu". Logo vašej organizácie v menu použite biele podľa logotypu štátnej správy (správne s bielym trojvŕším).  Hlavička je responzívna, to čo nastavíte pre desktop sa premietne aj pre mobilné zariadenia. 
+            <ul class="govuk-list govuk-list--bullet">
+              <li>hlavička sa po scrollnutí webom zmenší, čomu sa prispôsobí aj logo, ktoré bude obsahoať už len štátny znak a názov domény inštitúcie</li>
+              <li>inverzným použitím farieb (biely text + biele logo + biely oddelovač na farebnom pozadí)</li>
+              <li>vyhľadávacie pole, komponent na výber jazykovej mutácie a ikonkvé odkazy na soc. siete sa zobrazia až po otvorení menu</li>
+            </ul>
           </p>
+
           <div class="govuk-grid-row">
             <div class="govuk-grid-column-one-half">
               <div class="example example-mobile example-mobile-scroll">
@@ -89,21 +73,11 @@
                 {% set exampleComponentHtml %}
                     {% include "../komponenty/examples/hlavickaWeboveSidla1.njk" %}
                 {% endset %}
-                {# {{exampleComponentHtml | safe}} #}
-                {# {% set exampleComponentHtml %}
-                  {% include "../komponenty/examples/hlavickaWeboveSidla1.njk" %}
-                {% endset %}
-                {{exampleComponentHtml | safe}} #}
                 <iframe srcdoc="{{ exampleComponentHtml }}">
                 </iframe>
               </div>
             </div>
           </div>
-          
-          <h3 class="govuk-heading-m" id="zmensena-hlavicka-mobilne-zariadenia">Zmenšená hlavička mobilné zariadenia</h3>
-          <p class="govuk-body">
-            Aby mal používateľ väčšiu zobrazovaciu plochu, pri odscrollovaní zo začiatku stránky sa hlavička s logom zmenšia. Logo sa zmení na doménové meno, napríklad "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky" na "mirri.gov.sk", alebo "Ministerstvo zdravotníctva Slovenskej republiky" na "health.gov.sk". V súčastnosti sú domenové mena veľmi nekonzistentné a rôznorodé. Pri tvorbe vašej stránky nás kontaktujte, aby sme zjednotili toto názvoslovie. Ministerstvá používajú pod doménovým menom trikolóru podľa logotypu štátnej správy, úrady zase vertikálnu trikolóru podľa logotypu štátnej správy medzi štátnym znakom a doménovým menom.
-          </p>
           <div class="govuk-grid-row">
             <div class="govuk-grid-column-one-half">
               <div class="example example-mobile example-mobile-scroll">
@@ -124,6 +98,50 @@
               </div>
             </div>
           </div>
+
+          <h3 class="govuk-heading-m" id="specificke-pouzitie-hlavicky">Špecifické použitie hlavičky</h3>
+          <p class="govuk-body">
+            Hlavička na domovskej stránke (Desktop) nemusí obsahovať vyhľadávacie pole, pokial je vyhľadávacie pole dominatnou súčasťou úvodného bloku domovskej stránky. Vyhľadávacie pole by malo byť v hlavičke použité vždy, keď na stránke nie je alternatívne vyhľadávacie pole. Je však v poriadku použiť v hlavičke toto pole aj v prípade, kedy sa na stránke už iné vyhľadávanie nachádza. Používatelom spravidla pomôže mať viacero možností, ak sa pokúsiť nájsť to, čo hladajú.
+          </p>
+
+          <div class="example example-overflowed">
+            <h2 class="govuk-heading-s">Hlavička s navigáciou, vyhľadávaním, výberom jazykovej mutácie a sociálnymi sieťami pre ostatné podstránky</h2>
+            {% set exampleComponentHtml %}
+                {% include "../komponenty/examples/hlavickaWeboveSidla3.njk" %}
+            {% endset %}
+            {{exampleComponentHtml | safe}}
+          </div>
+
+          <h3 class="govuk-heading-m" id="polozky-menu">Položky menu</h3>
+          <p class="govuk-body">
+            Menu v hlavičke je jednou z hlavných foriem navigácie, ktoré používatelia pri návšteve vášho webu využívajú. Odporúčame nepoužívať viac ako 5 položiek v prvej úrovni menu. Čím viac položiek použijete, tým väčšia pravdepodobnosť, že sa používateľ pri hľadaní informácie prostredníctvom menu pomýli. Menu položky vytvárajte za pomoci používateľských prieskumov.
+          </p>
+          <p class="govuk-body">
+            Do prvej úrovne menu navigácie nepožívajte napríklad "Aktuality", "o ministerstve/úrade" alebo "Kontakty" - sú to témy, ktoré viete zakomponovať na domovskej stránke alebo v pätičke. Namiesto toho menu využitie na nasmerovanie ku vecným oblastiam / témam, na ktoré sa vaša inštitúcia špecializuje. 
+          </p>
+
+          <h3 class="govuk-heading-m" id="polozky-v-podmenu">Položky v podmenu</h3>
+          <p class="govuk-body">
+            Nepoužívajte viac ako 12 položiek. V položkách v podmenu môžete použiť namiesto odrážky ikonu. Ak jednotlivé témy, ktoré ste rozhodli zaradiť do prvej úrovne menu majú vlastné podstránku, ako prvú položku podmenu odporúčame použiť odkaz práve na túto podstránku (napr. v tvare "O téme").
+          </p>
+
+          <div class="example example-overflowed" id="xxx">
+            <h2 class="govuk-heading-s">Hlavička s navigáciou, vyhľadávaním, výberom jazykovej mutácie a sociálnymi sieťami pre ostatné podstránky</h2>
+            {% set exampleComponentHtml %}
+                {% include "../komponenty/examples/hlavickaWeboveSidla4.njk" %}
+            {% endset %}
+            {{exampleComponentHtml | safe}}
+            <div class="">
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+            </div>
+          </div>
+
         </div>
 
         <div class="govuk-grid-column-two-thirds">

@@ -14,6 +14,7 @@ module.exports = {
   },
   server: {
     command: `PORT=${PORT} node app/start.js`,
+    // command: `SET PORT=${PORT} && node app/start.js`, // WIN version
     launchTimeout: 30000, // Allow time for application to start
     port: PORT
   }

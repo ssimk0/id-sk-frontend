@@ -34,20 +34,26 @@
             </div>
 
             <div class="govuk-grid-column-full">
+                <p class="govuk-body">
+                    Pozrite si <a href="/vzory/aktuality" title="Aktuality"> vzor použitia kartičiek</a>.
+                </p>
+            </div>
+
+            <div class="govuk-grid-column-full">
                 <h3 class="govuk-heading-m" id="card-basic">Základná kartička</h3>
                 <p class="govuk-body">
-                    Základná kartička: Základnú kartičku použite ako hlavnú kartičku. Môžete ju použiť ako najaktuálnejší obsah v aktualitách alebo ako dôležitý obsah, ktorý chcete, aby používateľ našiel. Použite iba 1 základnú kartičku v jednom bloku.
+                    Základnú kartičku použite ako hlavnú kartičku (primárnu kartičku). Môžete ju použiť ako najaktuálnejší obsah v aktualitách alebo ako dôležitý obsah, ktorý chcete, aby používateľ videl/našiel. Použite iba 1 základnú kartičku v jednom bloku. Použite maximálne 2 tagy.
                 </p>
                 <div class="example example-error">
                     {% set exampleComponentHtml %}
                         {{ idskCard({ 
                             "type": "basic", 
-                            "imgSrc": "/public/assets/images/examples/card-1.jpg", 
+                            "imgSrc": "/public/assets/images/examples/ministerstvo-aktuality-cover.png", 
                             "link": "#",
-                            "heading": "Podpora najmenej rozvinutých okresov: Nové výzvy po novom!",
-                            "description": "Regióny sú pre vládu prioritou, preto podpredsedníčka vlády a ministerka investícií, regionálneho rozvoja a informatizácie Veronika Remišová.",
+                            "heading": "Lorem ipsum dolor sit amet: consectetur adipiscing elit!",
+                            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                             "date": { "date": "1.7.2020", "link": "#" },
-                            "tags": [ { "tag": "Ministerka", "link": "#" }, { "tag": "COVID-19", "link": "#" }, { "tag": "Eurofondy", "link": "#" } ]
+                            "tags": [ { "tag": "Tag 1", "link": "#" }, { "tag": "Tag 2", "link": "#" } ]
                         }) }}
                     {% endset %}
                     {{exampleComponentHtml | safe}}
@@ -58,18 +64,18 @@
             <div class="govuk-grid-column-full">
                 <h3 class="govuk-heading-m" id="card-hero-secondary">Sekundárna kartička</h3>
                 <p class="govuk-body">
-                    Sekundárnu kartičku použite v jednom bloku spolu so základnou kartičkou. Sekundárna kartička nasleduje po primárnej kartičke. Názov článku musí byť výstižný, maximálne na 3 riadky alebo do 70 znakov. Popis článku maximálne na 6 riadkov alebo do 240 znakov. Použite 2 alebo 3 tagy tak, aby sa zmestili do 1 riadku spolu s dátumom publikovania článku. 
+                    Sekundárnu kartičku použite v jednom bloku spolu so základnou kartičkou alebo s hero kartičkou. V jednom bloku môžete  aj iba sekundárne kartičky no odporúčame ich používať po základnej, alebo po hero kartičke. Názov článku musí byť výstižný, maximálne na 4 riadky. Popis článku maximálne na 6 riadkov. Použite maximálne 2 tagy tak, aby sa zmestili do jedného riadku spolu s dátum publikovania článku.
                 </p>
                 <div class="example example-error">
                     {% set exampleComponentHtml %}
                         {{ idskCard({ 
                             "type": "secondary", 
-                            "imgSrc": "/public/assets/images/examples/card-2.jpg", 
+                            "imgSrc": "/public/assets/images/examples/ministerstvo-aktuality-cover.png", 
                             "link": "#",
-                            "heading": "V. Remišová rokovala s ministrami V4",
-                            "description": "Podpredsedníčka vlády SR pre investície a informatizáciu Veronika Remišová sa spoločne s ministrami krajín Visegrádskej štvorky (V4) zodpovednými za politiku súdržnosti zúčastnila videokonferencie",
+                            "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do",
+                            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
                             "date": { "date": "1.7.2020", "link": "#" },
-                            "tags": [ { "tag": "Ministerka", "link": "#" }, { "tag": "Eurofondy", "link": "#" } ]
+                            "tags": [ { "tag": "Tag 1", "link": "#" }, { "tag": "Tag 2", "link": "#" } ]
                         }) }}
                     {% endset %}
                     {{exampleComponentHtml | safe}}
@@ -80,17 +86,17 @@
             <div class="govuk-grid-column-full">
                 <h3 class="govuk-heading-m" id="card-simple">Jednoduchá kartička</h3>
                 <p class="govuk-body">
-                     Jednoduchú kartičku použite, keď nepotrebujete pridať bližší popis. Názov musí byť výstižný, maximálne na 3 riadky alebo do 70 znakov.
+                    Jednoduchú kartičku použite, keď nepotrebujete pridať bližší popis. Názov musí byť výstižný, maximálne na 4 riadky. Použite maximálne 2 tagy.
                 </p>
                 <div class="example example-error">
                     {% set exampleComponentHtml %}
                         {{ idskCard({ 
                             "type": "simple", 
-                            "imgSrc": "/public/assets/images/examples/card-2.jpg", 
+                            "imgSrc": "/public/assets/images/examples/ministerstvo-aktuality-cover.png", 
                             "link": "#",
-                            "heading": "V. Remišová rokovala s ministrami V4",
+                            "heading": "Lorem ipsum dolor sit amet",
                             "date": { "date": "1.7.2020", "link": "#" },
-                            "tags": [ { "tag": "Ministerka", "link": "#" }, { "tag": "COVID-19", "link": "#" } ]
+                            "tags": [ { "tag": "Tag 1", "link": "#" }, { "tag": "Tag 2", "link": "#" } ]
                         }) }}
                     {% endset %}
                     {{exampleComponentHtml | safe}}
@@ -101,18 +107,18 @@
             <div class="govuk-grid-column-full">
                 <h3 class="govuk-heading-m" id="card-hero">Hero kartička</h3>
                 <p class="govuk-body">
-                    Hero kartičku môžete použiť ako ekvivalent základnej kartičky (teda ako prvú primárnu kartičku). Názov kartičky musí byť výstižný, maximálne na 3 riadky. Popis kartičky nesmie presahovať pod fotografiu. 
+                    Hero kartičku môžete použiť ako ekvivalent základnej kartičky (teda ako primárnu kartičku). Názov kartičky musí byť výstižný. Popis kartičky nesmie presahovať pod fotografiu.
                 </p>
                 <div class="example example-error">
                     {% set exampleComponentHtml %}
                         {{ idskCard({ 
                             "type": "hero", 
-                            "imgSrc": "/public/assets/images/examples/card-1.jpg", 
+                            "imgSrc": "/public/assets/images/examples/ministerstvo-aktuality-cover.png", 
                             "link": "#",
-                            "heading": "Podpora najmenej rozvinutých okresov: Nové výzvy po novom!",
-                            "description": "Regióny sú pre vládu prioritou, preto podpredsedníčka vlády a ministerka investícií, regionálneho rozvoja a informatizácie Veronika Remišová.",
+                            "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed fo eiusmod tempor",
+                            "description": "Lorem ipsum dolor sit amet, consenctetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                             "date": { "date": "1.7.2020", "link": "#" },
-                            "tags": [ { "tag": "Ministerka", "link": "#" }, { "tag": "COVID-19", "link": "#" }, { "tag": "Eurofondy", "link": "#" } ]
+                            "tags": [ { "tag": "Tag 1", "link": "#" }, { "tag": "Tag 2", "link": "#" } ]
                         }) }}
                     {% endset %}
                     {{exampleComponentHtml | safe}}
@@ -123,17 +129,17 @@
             <div class="govuk-grid-column-full">
                 <h3 class="govuk-heading-m" id="card-basic-no-image">Základná kartička bez obrázka</h3>
                 <p class="govuk-body">
-                    Kartičku použite, ak chcete zobraziť viacero článkov na menšom priestore. Základná kartička bez obrázka je vhodná pre použitie pre RSS kanál. 
+                    Kartičku použite, ak chcete zobraziť viacero článkov na menšom priestore.  Použite maximálne 2 tagy.
                 </p>
                 <div class="example example-error">
                     {% set exampleComponentHtml %}
                         {{ idskCard({ 
                             "type": "basic-variant", 
                             "link": "#",
-                            "heading": "Pandémia COVID-19 ešte viac zvýraznila potrebu urýchliť digitálnu transformáciu v Európe",
-                            "description": "Závery Európskej rady (ER) o jednotnom trhu, priemyselnej politike a digitálnej transformácii hovoria o zvýšení globálnej konkurencieschopnosti, autonómie priemyselných odvetví EÚ a urýchlenie digitálnej transformácie.",
+                            "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut",
+                            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua/ Ut enim ad minim veniam, quis nonstrud exercitation ullamc Lorem ipsum dolor.",
                             "date": { "date": "1.7.2020", "link": "#" },
-                            "tags": [ { "tag": "Ministerka", "link": "#" }, { "tag": "COVID-19", "link": "#" }, { "tag": "Eurofondy", "link": "#" } ]
+                            "tags": [ { "tag": "Tag 1", "link": "#" }, { "tag": "Tag 2", "link": "#" } ]
                         }) }}
                     {% endset %}
                     {{exampleComponentHtml | safe}}
@@ -144,16 +150,16 @@
             <div class="govuk-grid-column-full">
                 <h3 class="govuk-heading-m" id="card-basic-no-image-no-desc">Základná kartička bez obrázka a popisu</h3>
                 <p class="govuk-body">
-                    Kartičku použite, ak chcete zobraziť viacero článkov na menšom priestore. Základná kartička bez obrázka a popisu je vhodná pre použitie pre RSS kanál.
+                    Kartičku použite, ak chcete zobraziť viacero článkov na menšom priestore. Použite maximálne 2 tagy.
                 </p>
                 <div class="example example-error">
                     {% set exampleComponentHtml %}
                         {{ idskCard({ 
                             "type": "basic-variant", 
                             "link": "#",
-                            "heading": "Pandémia COVID-19 ešte viac zvýraznila potrebu urýchliť digitálnu transformáciu v Európe",
+                            "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolor magna aliqua",
                             "date": { "date": "1.7.2020", "link": "#" },
-                            "tags": [ { "tag": "Ministerka", "link": "#" }, { "tag": "COVID-19", "link": "#" }, { "tag": "Eurofondy", "link": "#" } ]
+                            "tags": [ { "tag": "Tag 1", "link": "#" }, { "tag": "Tag 2", "link": "#" } ]
                         }) }}
                     {% endset %}
                     {{exampleComponentHtml | safe}}
@@ -171,9 +177,9 @@
                         {{ idskCard({ 
                             "type": "profile-vertical",
                             "link": "#", 
-                            "imgSrc": "/public/assets/images/examples/card-3.jpg", 
-                            "heading": "Vladimír Ledecký",
-                            "description": "Štátny tajomník pre riadenie investícií a regionálny rozvoj"
+                            "imgSrc": "/public/assets/images/examples/the-pooh-bear.jpg", 
+                            "heading": "Macko Pú",
+                            "description": "Štátny tajomník medu a radosti"
                         }) }}
                     {% endset %}
                     {{exampleComponentHtml | safe}}
@@ -184,17 +190,17 @@
             <div class="govuk-grid-column-full">
                 <h3 class="govuk-heading-m" id="card-profile-horizontal">Profilová kartička - horizontálna</h3>
                 <p class="govuk-body">
-                    Kartičku použite, keď chcete zvýrazniť osobu alebo post, ktorý je zastávaný. Napríklad pri ministroch, výkonných riaditeľoch podnikov apod. Pri tejto kartičke sa môže použiť aj motto.					
+                    Kartičku použite, keď chcete zvýrazniť osobu alebo post, ktorý je zastavaný. Napríklad pri ministroch, výkonných riaditeľoch podnikov a pod. Pri tejto kartičke sa môže použiť aj motto.
                 </p>
                 <div class="example example-error">
                     {% set exampleComponentHtml %}
                         {{ idskCard({ 
                             "type": "profile-horizontal", 
                             "link": "#",
-                            "imgSrc": "/public/assets/images/examples/card-4.jpg", 
-                            "heading": "Veronika Remišová",
-                            "description": "Ministerka investícií, regionálneho rozvoja a informatizácie",
-                            "quote": "Služby orientované na občana, podpora eurofondov a boj proti korupcii."
+                            "imgSrc": "/public/assets/images/examples/the-pooh-bear.jpg", 
+                            "heading": "Macko Pú",
+                            "description": "Štátny tajomník medu a radosti",
+                            "quote": "“Aký je deň?” spýtal sa Pú. “Je dnes,” odpovedalo prasiatko. “Môj najobľúbenejší deň,” povedal Pú."
                         }) }}
                     {% endset %}
                     {{exampleComponentHtml | safe}}

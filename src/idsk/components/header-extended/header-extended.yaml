@@ -171,7 +171,6 @@ previewLayout: full-width
 
 examples:
 - name: s výberom jazyka a sociálnymi sieťami a navigáciou
-  description: možnosť zvolenia jazykovej mutácia a pridania odkazov na sociálne siete a navigáciou
   data:
     logo: logo-mirri-farebne.svg
     logoSmall: logo-mirri-small-farebne.svg
@@ -183,7 +182,6 @@ examples:
         text: Ministerstvo
       - link: '#2'
         text: Sekcie
-        active: true
       - link: '#3'
         text: Programy EŠIF
       - link: '#4'

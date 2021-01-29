@@ -13,35 +13,35 @@ function initAll(options) {
 
   // Allow the user to initialise ID-SK Frontend in only certain sections of the page
   // Defaults to the entire document if nothing is set.
-  const scope = typeof options.scope !== 'undefined' ? options.scope : document
+  var scope = typeof options.scope !== 'undefined' ? options.scope : document
 
-  const $buttons = scope.querySelectorAll('[data-module="idsk-button"]')
+  var $buttons = scope.querySelectorAll('[data-module="idsk-button"]')
   nodeListForEach($buttons, function ($button) {
     new Button($button).init()
   })
 
   // Find first Footer-extended module to enhance.
-  const $footerExtended = scope.querySelectorAll(
+  var $footerExtended = scope.querySelectorAll(
     '[data-module="idsk-footer-extended"]'
   );
   nodeListForEach($footerExtended, function ($footerExtended) {
     new FooterExtended($footerExtended).init();
   });
 
-  const $characterCounts = scope.querySelectorAll(
+  var $characterCounts = scope.querySelectorAll(
     '[data-module="idsk-character-count"]'
   );
   nodeListForEach($characterCounts, function ($characterCount) {
     new CharacterCount($characterCount).init();
   });
 
-  const $crossroad = scope.querySelectorAll('[data-module="idsk-crossroad"]');
+  var $crossroad = scope.querySelectorAll('[data-module="idsk-crossroad"]');
   nodeListForEach($crossroad, function ($crossroad) {
     new Crossroad($crossroad).init();
   });
 
   // Find first Header-extended module to enhance.
-  const $headersExtended = scope.querySelectorAll('[data-module="idsk-header-extended"]')
+  var $headersExtended = scope.querySelectorAll('[data-module="idsk-header-extended"]')
   nodeListForEach($headersExtended, function ($headerExtended) {
     new HeaderExtended($headerExtended).init()
   })

@@ -14,11 +14,12 @@ describe('dist/', () => {
         const filesToIgnore = [
           '.DS_Store'
         ]
+        const replaceFilePath = 'src' + path.sep + 'idsk' + path.sep + 'assets' + path.sep;
         return recursive(path.join(configPaths.idsk_src, 'assets'), filesToIgnore).then(
           files => {
             return files
               // Remove /package prefix from filenames
-              .map(file => file.replace(/^src\/idsk\/assets\//, ''))
+              .map(file => file.replace(replaceFilePath, ''))
               // Sort to make comparison easier
               .sort()
           },
@@ -29,11 +30,12 @@ describe('dist/', () => {
       }
 
       const actualDistAssets = () => {
+        const replaceFilePath = 'dist' + path.sep + 'assets' + path.sep;
         return recursive(path.join(configPaths.dist, 'assets')).then(
           files => {
             return files
               // Remove /package prefix from filenames
-              .map(file => file.replace(/^dist\/assets\//, ''))
+              .map(file => file.replace(replaceFilePath, ''))
               // Sort to make comparison easier
               .sort()
           },

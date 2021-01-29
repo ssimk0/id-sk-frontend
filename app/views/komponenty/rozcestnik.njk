@@ -18,42 +18,30 @@
         <span class="govuk-caption-xl">Webové komponenty</span>
         <h1 class="govuk-heading-xl">{{pageName}}</h1>
         <p class="govuk-body-l">
-            Rázcestník použite vtedy, keď chcete odkázať používateľa na konkrétny obsah na vašej stránke.
-        </p>
-        <p class="govuk-body-l">
-            Môžete ho použiť v rozložení v 1 stĺpci alebo v 2 stĺpcoch. Ráscestník používajte s nadpisom, ktorý zastrešuje jeho obsah. Ku každému odkazu môžete napísať výstižný, krátky popis, aby používateľ vedel, aký obsah nájde na danom odkaze. 
+            Rázcestník má formu jednoduchej dlaždice, zloženej z nadpisu, popisku a oddelovacej čiary. Jeho účelom je prehľadne a jednoducho zoskupiť resp. usporiadať pre používateľa odkazy na súvisiaci obsah, ktorý je rozmiestnený na rôznych, samostatných podstránkach.         </p>
         </p>
 
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                 <h2 class="govuk-heading-s">Obsah:</h2>
                 <ul class="govuk-list">
-                    <li><a href="#crossroad-one">Rozcestník v rozložení v 1 stĺpci</a></li>
-                    <li><a href="#crossroad-two">Rozcestník v rozložení v 2 stĺpcoch</a></li>
+                    <li><a href="#vlastnosti-razcestnika-desktop">Vlastnosti rázcestníka (desktop)</a></li>
+                    <li><a href="#pouzitie-razcestnika">Použitie rázcestníka</a></li>
                 </ul>
             </div>
         </div>
 
-        <p class="govuk-body">
-            <strong>Príklad:</strong><br><br>
-            Elektronické služby<br><br>
-
-            - Elektronická služba 1<br>
-            - Elektornická služba 2<br>
-            - Elektronická služba 3 ..
-        </p>
-
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-full">
+                <h3 class="govuk-heading-m" id="vlastnosti-razcestnika-desktop">Vlastnosti rázcestníka (desktop)</h3>
                 <p class="govuk-body">
-                    Pri rázcestníku môžete okrem nadpisu používateľovi pomôcť krátkym podnadpisom. V rámci neho môžete jednou vetou zhrnúť, akej témy sa jednotlivé dlaždice rázcestníku týkajú a môžete v nej súčasne použiť aj odkaz, ktorým sa dostane používateľ k všetkému obsahu na danú tému - napríklad "viac o elektronických službách". Môže to byť samostatná stránka, kde máte zobrazený obsah alebo to môže byť stránka s výsledkami vyhľadávania podľa danej témy. 
-                </p>
-                <p class="govuk-body">
-                    Rázcestník nepoužívajte pre odkazy, ktoré medzi sebou zjavne nemajú nič spoločné.	
-                </p>
+                    <ul class="govuk-list govuk-list--bullet">
+                        <li>Hyprlinkovýc text  - použite max. 50znakov (Vrátanie medzier)</li>
+                        <li>Popiska hyperlinku - použite max. 120 znakov (vrátane medzier)</li>
+                    </ul>
+                </p>    
             </div>
             <div class="govuk-grid-column-full">
-                <h3 class="govuk-heading-m" id="crossroad-one">Rozcestník v rozložení v 1 stĺpci</h3>
                 <div class="example example-error">
                     {% set exampleComponentHtml %}
                         {{ idskCrossroad({
@@ -74,7 +62,17 @@
             </div>
 
             <div class="govuk-grid-column-full">
-                <h3 class="govuk-heading-m" id="crossroad-two">Rozcestník v rozložení v 2 stĺpcoch</h3>
+                <h3 class="govuk-heading-m" id="pouzitie-razcestnika">Použitie rázcestníka</h3>
+                <p class="govuk-body">
+                    <strong>S nadpisom a podnadpisom:</strong> Rázcestník je jedným z komponentov, ktoré navigujú používateľa k obsahu vašej stránky. Použitím rázcestníka spolu s nadpis a podnadpisom dáte používateľovi najavo, ktorý obsah (a ako) spolu na stránke súvisí.
+                </p>
+                <p class="govuk-body">
+                    V prípade použitia nadpisu a podnadpisu buďte struční a vecní. Ak rázcestník zoskupuje obsah, ktorí má vlastnú domovskú podstránku, v podnadpise použite na ňu odkážte s použitím hyperlinu. (napr. všetok obsah k téme Informatizácia je zoskupený na hlavnej, domovskej stránke ale má aj k téme delgovanú podstránku). ten istý hyperlink (ak to dáva zmysel) môže byť vložený aj do nadpisu rázcestníka.
+                </p>
+                <p class="govuk-body">
+                    <strong>V jednom alebo viacerých stĺpcoch:</strong> Rázcestník môžete štrukturovať do jedného alebo viacerých stĺpcov, musíte však dodržať IDSK pravidlá rozloženia stránky (grid).
+                </p>
+
                 <div class="example example-error">
                     {% set exampleComponentHtml %}
                         {{ idskCrossroad({
@@ -92,6 +90,11 @@
                     {{exampleComponentHtml | safe}}
                 </div>
                 <pre class=" language-markup"><code class="govuk-!-font-size-16  language-markup">{{ exampleComponentHtml }}</code></pre>
+
+                <p class="govuk-body">
+                    <strong>Rázcestník len s 5 dlaždicami v jednom stĺpci:</strong> Rázcestník nepoužívajte s viac ako 5 dlaždicami v jednom stĺpci. Ak potrebujete použiť viac dlaždíc, použite komponent "rozbalovací rázcestník".
+                </p>
+
             </div>
 
         </div>
