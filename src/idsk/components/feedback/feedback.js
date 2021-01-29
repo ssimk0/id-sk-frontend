@@ -1,6 +1,7 @@
 import '../../../govuk/vendor/polyfills/Function/prototype/bind'
 import '../../../govuk/vendor/polyfills/Event' // addEventListener and event.target normaliziation
 import { toggleClass } from '../../common'
+import { nodeListForEach } from '../../../govuk/common'
 
 /**
  * Footer for extended websites
@@ -16,34 +17,21 @@ Feedback.prototype.init = function () {
         return;
     }
 
-    //let $radioButton = $module.querySelector('input[name=group1]');
     let $textAreaCharacterCount = $module.querySelector('#idsk-feedback-improove-question-bar #with-hint');
     let $sendButton = $module.querySelector('#idsk-feedback-send-button');
+    let $radioButtons = $module.querySelectorAll('.idsk-feedback-radio-button');
 
-    let $radioButton1 = $module.querySelector('#idsk-feedback-radio-button-1');
-    let $radioButton2 = $module.querySelector('#idsk-feedback-radio-button-2');
-    let $radioButton3 = $module.querySelector('#idsk-feedback-radio-button-3');
-    let $radioButton4 = $module.querySelector('#idsk-feedback-radio-button-4');
-    let $radioButton5 = $module.querySelector('#idsk-feedback-radio-button-5');
-
-    if ($radioButton1 || $radioButton2 || $radioButton3) {
-         $radioButton1.addEventListener('click', this.handleRadioButtonQuestionClick.bind(this));
-        $radioButton2.addEventListener('click', this.handleRadioButtonQuestionClick.bind(this));
-        $radioButton3.addEventListener('click', this.handleRadioButtonQuestionClick.bind(this));
-    }
-
-    if ($radioButton4 || $radioButton5) {
-        $radioButton4.addEventListener('click', this.handleRadioButtonClick.bind(this));
-        $radioButton5.addEventListener('click', this.handleRadioButtonClick.bind(this));
+    if ($radioButtons) {
+        let $self = this;
+        // Handle $radioButtons click events
+        nodeListForEach($radioButtons, function ($radioButton) {
+            $radioButton.addEventListener('click', $self.handleRadioButtonClick.bind($self));
+        })
     }
 
     if ($sendButton) {
         $sendButton.addEventListener('click', this.handleSendButtonClick.bind(this));
     }
-
-    //  if ($radioButton) {
-    //     $radioButton.addEventListener('click', this.handleRadioButtonClick.bind(this));
-    //  }
 
     if ($textAreaCharacterCount) {
         $textAreaCharacterCount.addEventListener('input', this.handleStatusOfCharacterCountButton.bind(this));
@@ -61,15 +49,13 @@ Feedback.prototype.handleSendButtonClick = function (e) {
 Feedback.prototype.handleRadioButtonClick = function (e) {
     let $improoveQuestionBar = this.$module.querySelector('#idsk-feedback-improove-question-bar');
 
-    $improoveQuestionBar.classList.remove('idsk-feedback-open');
-    $improoveQuestionBar.classList.add('idsk-feedback-display-hidden');
-}
-
-Feedback.prototype.handleRadioButtonQuestionClick = function (e) {
-    let $improoveQuestionBar = this.$module.querySelector('#idsk-feedback-improove-question-bar');
-
-    $improoveQuestionBar.classList.add('idsk-feedback-open');
-    $improoveQuestionBar.classList.remove('idsk-feedback-display-hidden');
+    if (e.srcElement.classList.contains('idsk-feedback-textarea--show')) {
+        $improoveQuestionBar.classList.add('idsk-feedback-open');
+        $improoveQuestionBar.classList.remove('idsk-feedback-display-hidden');
+    } else {
+        $improoveQuestionBar.classList.remove('idsk-feedback-open');
+        $improoveQuestionBar.classList.add('idsk-feedback-display-hidden');
+    }
 }
 
 Feedback.prototype.handleStatusOfCharacterCountButton = function (e) {
@@ -80,7 +66,7 @@ Feedback.prototype.handleStatusOfCharacterCountButton = function (e) {
 
     setTimeout(function () {
         if ($textAreaCharacterCount.classList.contains('govuk-textarea--error') || $remainingCharacterCountMessage.classList.contains('govuk-error-message')) {
-             $submitButton.disabled = true;
+            $submitButton.disabled = true;
         } else {
             $submitButton.disabled = false;
         }

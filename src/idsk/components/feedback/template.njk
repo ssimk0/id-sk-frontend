@@ -1,28 +1,26 @@
 {% from "details/macro.njk" import govukDetails %}
-<div data-module="feedback">
+<div data-module="idsk-feedback">
     <div class="govuk-width-container">
         <div id="idsk-feedback-content">
             <h2 class="govuk-heading-l">
-                Spätná väzba na službu Podávanie žiadosti o nenávratný príspevok na opravu bicykla
+                {{ params.mainTitle if params.mainTitle else 'Spätná väzba na službu Podávanie žiadosti o nenávratný príspevok na opravu bicykla'  }}
             </h2>
-            <h3 class="govuk-heading-m idsk-feedback-subtitle">Ako ste spokojný so službou, ktorú ste práve využili?
+            <h3 class="govuk-heading-m idsk-feedback-subtitle">
+                {{ params.feedbackQuestion if params.feedbackQuestion else 'Ako ste spokojný so službou, ktorú ste práve využili?'  }}
             </h3>
             <ul class="idsk-feedback-options-ul">
-                {% set counter = params.counter %}
                 {% for item in params.feedbackOptions -%}
-                    {% set counter = counter + 1 %}
                     <li class="idsk-feedback-options-li ">
-                        <input type="radio" id="idsk-feedback-radio-button-{{counter }}" class="idsk-feedback-radio-button" value=" {{ item.name }} " name="group1">
+                        <input type="radio" class="idsk-feedback-radio-button {{ 'idsk-feedback-textarea--show' if item.textArea }}" value=" {{ item.name }} " name="group1">
                         <label for="{{ item.name }}">
                             {{ item.name }}
                         </label><br>
                     </li>
-
                 {%- endfor %}
             </ul>
             <div id="idsk-feedback-improove-question-bar" class="idsk-feedback-hidden idsk-feedback-display-hidden">
                 <h3 class="govuk-heading-m">
-                    Ako by sme mohli túto službu zlepšiť?
+                    {{ params.feedbackQuestionForTextArea if params.feedbackQuestionForTextArea else ' Ako by sme mohli túto službu zlepšiť?' }}
                 </h3>
                 <div>
                     <br>
@@ -57,7 +55,7 @@
         </div>
         <div id="idsk-feedback-thanks-for-feedback" class="idsk-feedback-display-none">
             <h2 class="govuk-heading-l">
-                Ďakujeme za spätnú väzbu .
+                {{ params.feedbackThankNote if params.feedbackThankNote else 'Ďakujeme za spätnú väzbu.' }}
             </h2>
         </div>
     </div>

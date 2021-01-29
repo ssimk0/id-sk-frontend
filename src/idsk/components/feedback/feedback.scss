@@ -5,6 +5,10 @@
 @import "../../../govuk/objects/grid";
 
 @include govuk-exports("idsk/component/feedback") {
+    #idsk-feedback-content {
+        @include govuk-font($size: 19);
+    }
+
     .idsk-feedback-options-ul {
         padding-inline-start: govuk-spacing(1);
         margin-bottom: 0px;
@@ -12,6 +16,8 @@
 
     .idsk-feedback-options-li {
         display: block;
+        @include govuk-font($size: 24);
+        
         @include mq(desktop) {
             @include govuk-font($size: 19);
         }

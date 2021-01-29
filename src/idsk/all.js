@@ -21,7 +21,7 @@ function initAll(options) {
   })
 
   const $feedback = scope.querySelectorAll(
-    '[data-module="feedback"]'
+    '[data-module="idsk-feedback"]'
   );
   nodeListForEach($feedback, function ($feedback) {
     new Feedback($feedback).init();
