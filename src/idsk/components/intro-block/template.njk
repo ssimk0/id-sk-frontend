@@ -5,11 +5,11 @@
                 <h1 class="govuk-heading-xl">
                     {{ params.headline if params.headline else "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky"}}
                 </h1>
-                <p class="idsk-intro-block-subtitle govuk-caption-l">Vitajte na stránke Ministerstva investícií, regionálneho rozvoja a informatizácie. Dozvedieť sa
+                <p class="idsk-intro-block-subtitle govuk-caption-l">{{ params.mainTitle if params.mainTitle else "Vitajte na stránke Ministerstva investícií, regionálneho rozvoja a informatizácie. Dozvedieť sa"}}
                     <a class="govuk-link" href="{{ params.moreInfoAboutMinistryLink if params.moreInfoAboutMinistryLink else '#'  }}">
-                        viac o ministerstve.</a>
+                        {{ params.mainTitleLinkLabel if params.mainTitleLinkLabel else "viac o ministerstve."}}</a>
                 </p>
-                {% if params.searchEnabled == "true" %}
+                {% if params.searchEnabled %}
                     <div class="idsk-intro-block-search-input-with-button">
                         <input class="govuk-input govuk-input--width-30 idsk-intro-block-search-input" name="test-width-30" type="text" placeholder="Zadajte hľadaný výraz" aria-describedby="input-width-30-hint">
                         <button type="submit" class="govuk-button idsk-intro-block-search-button">
@@ -40,7 +40,7 @@
                 {% if params.classBackground=="app-pane-blue" %}
                     <div id="idsk-intro-block-top-content-container-blue-background" class="govuk-grid-column-full govuk-grid-column-one-third-from-desktop app-pane-blue idsk-intro-block-text-colour">
                         <h2>
-                            POPULÁRNY OBSAH
+                            {{ params.sideMenuTitle if params.sideMenuTitle else "Populárny obsah"}}
                         </h2>
                         <div class="idsk-intro-block-top-content-menu-blue-background-div">
                             <ul class="idsk-intro-block-top-content-menu-item-blue-background">
@@ -63,7 +63,7 @@
                 {% else %}
                     <div id="idsk-intro-block-top-content-container-desktop" class='govuk-grid-column-full govuk-grid-column-one-third-from-desktop {{ params.classBackground if params.classBackground }} '>
                         <h2>
-                            POPULÁRNY OBSAH
+                            {{ params.sideMenuTitle if params.sideMenuTitle else "Populárny obsah"}}
                         </h2>
                         <div class="idsk-intro-block-popular-content-div">
                             <ul class="idsk-intro-block-top-content-menu">

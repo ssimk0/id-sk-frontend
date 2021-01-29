@@ -20,15 +20,15 @@
     }
 
     .idsk-intro-block-search-input {
+        @include govuk-font($size: 19);
+
         height: 53px;
         border: none;
         background: govuk-colour("grey-4");
         margin-right: -3px;
         font-style: normal;
         font-weight: normal;
-        font-size: 21px;
-        line-height: 26px;
-        color: #6f777b;
+        color: govuk-colour("dark-grey");
 
         @include mq($from: desktop) {
             height: 68px;
@@ -36,7 +36,7 @@
     }
 
     .idsk-intro-block-search-input:focus {
-        border: 2px solid #0b0c0c;
+        border: 2px solid govuk-colour("black");
     }
 
     .idsk-intro-block-search-input-with-button .govuk-input:focus {
@@ -155,7 +155,7 @@
         float: unset;
         margin-bottom: -15px;
 
-        @media screen and (min-width: 769px) {
+        @include mq($from: desktop) {
             text-align: right;
             margin: 0 0 -30px 0px;
         }
@@ -174,7 +174,7 @@
         padding-top: govuk-spacing(3);
         margin-bottom: 0;
 
-        @media screen and (min-width: 641px) {
+        @include mq($from: tablet) {
             padding-top: 0;
             margin-top: govuk-spacing(2);
             margin-bottom: -5px;
@@ -217,9 +217,9 @@
     }
 
     .idsk-intro-block-top-content-container-default {
-        margin: 0 -15px;
+        margin: 0 -30px;
 
-        @media screen and (min-width: 641px) {
+        @include mq($from: tablet) {
             margin: 0 govuk-spacing(3);
         }
     }
@@ -247,9 +247,14 @@
         padding-left: govuk-spacing(6);
         padding-top: govuk-spacing(2);
 
-        @media screen and (min-width: 641px) {
+        @include mq($from: tablet) {
             padding-left: govuk-spacing(3);
             padding-bottom: govuk-spacing(3);
         }
+    }
+
+    #idsk-intro-block-top-content-container-desktop h2,
+    #idsk-intro-block-top-content-container-blue-background h2 {
+        text-transform: uppercase;
     }
 }
