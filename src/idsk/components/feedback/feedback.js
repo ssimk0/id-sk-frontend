@@ -27,14 +27,12 @@ Feedback.prototype.init = function () {
     let $radioButton5 = $module.querySelector('#idsk-feedback-radio-button-5');
 
     if ($radioButton1 || $radioButton2 || $radioButton3) {
-        console.log('here');
-        $radioButton1.addEventListener('click', this.handleRadioButtonQuestionClick.bind(this));
+         $radioButton1.addEventListener('click', this.handleRadioButtonQuestionClick.bind(this));
         $radioButton2.addEventListener('click', this.handleRadioButtonQuestionClick.bind(this));
         $radioButton3.addEventListener('click', this.handleRadioButtonQuestionClick.bind(this));
     }
 
     if ($radioButton4 || $radioButton5) {
-        console.log('here');
         $radioButton4.addEventListener('click', this.handleRadioButtonClick.bind(this));
         $radioButton5.addEventListener('click', this.handleRadioButtonClick.bind(this));
     }
@@ -42,7 +40,6 @@ Feedback.prototype.init = function () {
     if ($sendButton) {
         $sendButton.addEventListener('click', this.handleSendButtonClick.bind(this));
     }
-
 
     //  if ($radioButton) {
     //     $radioButton.addEventListener('click', this.handleRadioButtonClick.bind(this));
