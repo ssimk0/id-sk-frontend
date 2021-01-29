@@ -17,7 +17,7 @@ Feedback.prototype.init = function () {
     }
 
     //let $radioButton = $module.querySelector('input[name=group1]');
-    let $textAreaCharacterCount = $module.querySelector('#idsk-feedback-error-form #with-hint');
+    let $textAreaCharacterCount = $module.querySelector('#idsk-feedback-improove-question-bar #with-hint');
     let $sendButton = $module.querySelector('#idsk-feedback-send-button');
 
     let $radioButton1 = $module.querySelector('#idsk-feedback-radio-button-1');
@@ -75,19 +75,16 @@ Feedback.prototype.handleRadioButtonQuestionClick = function (e) {
     $improoveQuestionBar.classList.remove('idsk-feedback-display-hidden');
 }
 
-
 Feedback.prototype.handleStatusOfCharacterCountButton = function (e) {
     let $textAreaCharacterCount = this.$module.querySelector('#with-hint');
     let $remainingCharacterCountMessage = this.$module.querySelector('#with-hint-info');
 
-    let $submitButton = this.$module.querySelector('#submit-button-error-form');
+    let $submitButton = this.$module.querySelector('#idsk-feedback-send-button');
 
     setTimeout(function () {
         if ($textAreaCharacterCount.classList.contains('govuk-textarea--error') || $remainingCharacterCountMessage.classList.contains('govuk-error-message')) {
-            console.log($textAreaCharacterCount.classList);
-            $submitButton.disabled = true;
+             $submitButton.disabled = true;
         } else {
-            console.log($textAreaCharacterCount.classList);
             $submitButton.disabled = false;
         }
     }, 300);

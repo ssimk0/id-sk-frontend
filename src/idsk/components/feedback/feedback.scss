@@ -7,6 +7,7 @@
 @include govuk-exports("idsk/component/feedback") {
     .idsk-feedback-options-ul {
         padding-inline-start: govuk-spacing(1);
+        margin-bottom: 0px;
     }
 
     .idsk-feedback-options-li {
@@ -20,6 +21,18 @@
         transform: scale(2.5);
         margin-bottom: govuk-spacing(6);
         margin-right: govuk-spacing(3);
+    }
+
+    .idsk-feedback-buttons .govuk-button {
+        width: auto;
+    }
+
+    #idsk-feedback-improove-question-bar .govuk-heading-m {
+        margin-bottom: -10px;
+    }
+
+    .idsk-feedback-subtitle {
+        margin-bottom: govuk-spacing(6);
     }
 
     .idsk-feedback-send-button {
@@ -37,6 +50,11 @@
     .idsk-feedback-hidden {
         max-height: 0;
         transition: max-height 0.7s ease-out;
+    }
+
+    #idsk-feedback-improove-question-bar .govuk-textarea:focus {
+        width: 98%;
+        margin-left: 3px;
     }
 
     .idsk-feedback-open {

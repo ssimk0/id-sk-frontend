@@ -3,14 +3,13 @@
     <div class="govuk-width-container">
         <div id="idsk-feedback-content">
             <h2 class="govuk-heading-l">
-                Spätná väzba na službu Podávanie žiadosti o nenávratný príspevok na opravu bickyla
+                Spätná väzba na službu Podávanie žiadosti o nenávratný príspevok na opravu bicykla
             </h2>
-            <h3 class="govuk-heading-m">Ako ste spokojný so službou, ktorú ste práve využili?
+            <h3 class="govuk-heading-m idsk-feedback-subtitle">Ako ste spokojný so službou, ktorú ste práve využili?
             </h3>
             <ul class="idsk-feedback-options-ul">
                 {% set counter = params.counter %}
                 {% for item in params.feedbackOptions -%}
-
                     {% set counter = counter + 1 %}
                     <li class="idsk-feedback-options-li ">
                         <input type="radio" id="idsk-feedback-radio-button-{{counter }}" class="idsk-feedback-radio-button" value=" {{ item.name }} " name="group1">
