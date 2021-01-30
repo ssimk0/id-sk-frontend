@@ -81,16 +81,18 @@ examples:
 - name: default
   description: The standard header as used on information pages on ID-SK
   data:
-    {}
+    logo: true
 
 - name: with service name
   description: If your service is more than a few pages long, you can help users understand where they are by adding the service name.
   data:
+    logo: true,
     serviceName: Service Name
     serviceUrl: '/components/header'
 
 - name: with navigation
   data:
+    logo: true,
     navigation:
       - href: '#1'
         text: Navigation item 1
@@ -105,6 +107,7 @@ examples:
 - name: with service name and navigation
   description: If you need to include basic navigation, contact or account management links.
   data:
+    logo: true,
     serviceName: Service Name
     serviceUrl: '/components/header'
     navigation:
@@ -121,6 +124,7 @@ examples:
 - name: with large navigation
   description: An edge case example with a large number of navitation items with long names used to test wrapping
   data:
+    logo: true,
     navigation:
       - href: '/browse/benefits'
         text: Benefits
@@ -157,17 +161,20 @@ examples:
 
 - name: with product name
   data:
+    logo: true,
     navigationClasses: govuk-header__navigation--end
     productName: Product Name
 
 - name: full width
   data:
+    logo: true,
     containerClasses: govuk-header__container--full-width
     navigationClasses: govuk-header__navigation--end
     productName: Product Name
 
 - name: full width with navigation
   data:
+    logo: true,
     containerClasses: govuk-header__container--full-width
     navigationClasses: govuk-header__navigation--end
     productName: Product Name
@@ -182,6 +189,7 @@ examples:
 
 - name: full width with user
   data:
+    logo: true,
     containerClasses: govuk-header__container--with-user govuk-header__container--full-width
     usersClasses: idsk-header__user--end
     productName: Product Name
@@ -196,6 +204,40 @@ examples:
     headerUser: true
 
 - name: width with user
+  data:
+    logo: true,
+    containerClasses: govuk-header__container--with-user govuk-width-container
+    usersClasses: idsk-header__user--end
+    productName: Product Name
+    serviceName: Service Name
+    navigation:
+      - href: '#1'
+        text: Navigation item 1
+        active: true
+      - href: '#2'
+        text: Navigation item 2
+      - href: '#3'
+        text: Navigation item 3
+    headerUser: true
+
+- name: width with user
+  data:
+    logo: true,
+    containerClasses: govuk-header__container--with-user govuk-width-container
+    usersClasses: idsk-header__user--end
+    productName: Product Name
+    serviceName: Service Name
+    navigation:
+      - href: '#1'
+        text: Navigation item 1
+        active: true
+      - href: '#2'
+        text: Navigation item 2
+      - href: '#3'
+        text: Navigation item 3
+    headerUser: true
+
+- name: width without user
   data:
     containerClasses: govuk-header__container--with-user govuk-width-container
     usersClasses: idsk-header__user--end
