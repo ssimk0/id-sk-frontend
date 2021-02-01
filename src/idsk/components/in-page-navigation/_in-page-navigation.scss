@@ -7,9 +7,22 @@
   .idsk-in-page-navigation {
     @include govuk-font($size: 24);
 
-    &.--sticky{
-      position: sticky;
+    @include mq ($until: tablet) {
+      margin-left: -15px;
+      padding: 0;
+      width: calc(100% + 30px);
+    }
+
+    @include mq ($until: desktop) {
+      margin-left: -45px;
+      padding: 0;
+      width: calc(100% + 90px);
+    }
+
+    &--sticky{
+      position: fixed;
       top: 60px;
+      width: 100%;
 
       @include mq ($from: desktop) {
         top: 0;
@@ -63,34 +76,28 @@
 
   @include mq($until: desktop) {
 
-    .idsk-in-page-navigation {
-      margin-left: -15px;
-      padding: 0;
-      width: calc(100% + 30px);
+    .idsk-in-page-navigation--expand {
+      .idsk-in-page-navigation__list {
+        margin-bottom: 15px;
+        max-height: 200px;
+        overflow-y: auto;
+        padding-top: 15px;
+        transition: all 0.2s ease-in;
 
-      &--expand {
-        .idsk-in-page-navigation__list {
-          margin-bottom: 15px;
-          max-height: 200px;
-          overflow-y: auto;
-          padding-top: 15px;
-          transition: all 0.5s ease-in;
-
-          &:before {
-            box-shadow: inset 0 -60px 20px -15px #fff, inset 0 60px 20px -15px #fff;
-            position: absolute;
-            width: 100%;
-            height: calc(100% - 40px);
-            display: block;
-            content: "";
-            margin-top: -15px;
-          }
+        &:before {
+          box-shadow: inset 0 -60px 20px -15px #fff, inset 0 60px 20px -15px #fff;
+          position: absolute;
+          width: 100%;
+          height: calc(100% - 40px);
+          display: block;
+          content: "";
+          margin-top: -15px;
         }
-        .idsk-in-page-navigation__link-panel::before {
-          top: 15px;
-          transform: rotate(-45deg);
-          transition: all 0.5s ease-in;
-        }
+      }
+      .idsk-in-page-navigation__link-panel::before {
+        top: 15px;
+        transform: rotate(-45deg);
+        transition: all 0.2s ease-in;
       }
     }
 
@@ -136,7 +143,7 @@
         position: absolute;
         top: 10px;
         transform: rotate(135deg);
-        transition: all 0.5s ease-out;
+        transition: all 0.2s ease-out;
         vertical-align: top;
         width: 0.45em;
       }
@@ -159,7 +166,7 @@
       border-bottom: 4px solid govuk-colour("dark-blue");
       padding-top: 0;
       max-height: 0;
-      transition: all 0.5s ease-out;
+      transition: all 0.2s ease-out;
       overflow-y: hidden;
     }
 

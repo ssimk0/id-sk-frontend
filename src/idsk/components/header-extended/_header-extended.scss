@@ -608,7 +608,7 @@
       }
     }
 
-    .mobile-only {
+    &--mobile-only {
       display: none;
     }
 
@@ -645,11 +645,12 @@
       }
     }
 
-    &.show-mobile-menu {
+    &.idsk-header-extended--show-mobile-menu {
       @include mq($until: desktop) {
         height: 100%;
         overflow-y: scroll;
         display: inline-block;
+        z-index: 1;
 
         .idsk-header-extended-overlay {
           width: 100%;

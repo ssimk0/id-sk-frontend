@@ -31,8 +31,7 @@ InPageNavigation.prototype.init = function () {
     $linkPanelButton.addEventListener('click', this.handleClickLinkPanel.bind(this))
 
     // Handle floating navigation
-    this.$navTopPosition = (this.$module).offsetTop
-    this.$navWidth = (this.$module).offsetWidth
+    this.$navTopPosition = (this.$module).offsetTop - (this.$module).offsetHeight
     window.addEventListener('scroll', this.scrollFunction.bind(this));
 }
 
@@ -69,19 +68,12 @@ InPageNavigation.prototype.handleClickLinkPanel = function (event) {
  */
 InPageNavigation.prototype.scrollFunction = function () {
     let $module = this.$module
-    let $inPageNavigationWrapper = $module.querySelector(".idsk-in-page-navigation-wrapper")
 
     if (window.pageYOffset >= this.$navTopPosition) {
-        $module.classList.add("--sticky")
+        $module.classList.add("idsk-in-page-navigation--sticky")
     } else {
-        $module.classList.remove("--sticky");
+        $module.classList.remove("idsk-in-page-navigation--sticky");
     }
-
-    // if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-    //     $module.classList.add('idsk-header-extended--shrink');
-    // } else if (document.body.scrollTop < 10 && document.documentElement.scrollTop < 10) {
-    //     $module.classList.remove('idsk-header-extended--shrink');
-    // }
 }
 
 export default InPageNavigation
