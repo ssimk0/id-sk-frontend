@@ -11,19 +11,18 @@
 {% endblock %}
 
 {% block beforeContent %}
-  <div class="govuk-!-margin-left-3">
-    {{ govukBreadcrumbs({
+  {{ govukBreadcrumbs({
     "items": [
     { text: ' ID-SK frontend', href: '/' + legacyQuery },
     { text: pageName }
     ]
   }) }}
-  </div>
 {% endblock %}
 
 {% block content %}
   <div class="govuk-width-container">
-    {{ idskFeedback({
+    <div class="govuk-grid-row">
+      {{ idskFeedback({
         counter : 0,
         characterLength : 200,
         feedbackOptions: [
@@ -46,6 +45,7 @@
           name:"Veľmi spokojný"
         }
       ]}) }}
+    </div>
   </div>
 {% endblock %}
 
