@@ -24,17 +24,20 @@
 {% block content %}
   <div class="govuk-width-container">
     {{ idskFeedback({
-counter : 0,
-characterLength : 200,
-feedbackOptions: [
+        counter : 0,
+        characterLength : 200,
+        feedbackOptions: [
         {
-          name:"Veľmi nespokojný"  
+          name:"Veľmi nespokojný",
+          textArea:true
         },
         {
-          name:"Nespokojný"
+          name:"Nespokojný",
+          textArea:true
         },
         {
-          name:"Ani spokojný ani nespokojný"
+          name:"Ani spokojný ani nespokojný",
+          textArea:true
         },
         {
           name:"Spokojný"

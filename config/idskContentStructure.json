@@ -19,9 +19,9 @@
     "platobna-stranka": "Platobná stránka",
     "pomocny-text": "Pomocný text",
     "pouzivatelske-mena": "Používateľské mená",
-    "spatna-vazba-s-hlavickou" : "Spätná väzba",
     "prihlasenie-a-ucty": "Prihlásenie a používateľské účty",
     "proces-overenia-emailovej-adresy": "Proces overenia e&ndash;mailovej adresy",
+    "spatna-vazba-s-hlavickou" : "Spätná väzba",
     "stranky-dokoncenia-procesu": "Stránky dokončenia procesu",
     "stranky-s-otazkami": "Stránky s otázkami",
     "stranky-so-spatnou-vazbou": "Stránky so spätnou väzbou",
@@ -38,7 +38,6 @@
     "formularove-prvky": "Formulárové prvky",
     "hlavicka-paticka": "Hlavička a pätička",
     "hlavicka-webove-sidla": "Hlavička pre webové sídla",
-    "feedback" : "Spätná väzba",
     "footer-extended": "Patička pre webové sídla a spätná väzba",
     "informacna-lista-lista-s-varovanim": "Informačná lišta / Lišta s varovaním",
     "icony-a-obrazky": "Ikony a obrázky",
@@ -46,6 +45,7 @@
     "oznacenie-verzie-sluzby": "Označenie verzie služby",
     "rozcestnik": "Rozcestník",
     "rozlozenie-stranky": "Rozloženie stránky",
+    "feedback" : "Spätná väzba",
     "tlacidla": "Tlačidlá",
     "typografia": "Typografia"
   }

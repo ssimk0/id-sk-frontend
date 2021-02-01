@@ -1,7 +1,7 @@
 {% extends "layout.njk" %}
 {% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
 
-{% set pageName = "Pätička pre webové sídla a spätná väzba" %}
+{% set pageName = "Spätná väzba" %}
 
 {% block beforeContent %}
     {{ govukBreadcrumbs({
@@ -24,22 +24,13 @@
                 <h2 class="govuk-heading-s">Obsah:</h2>
                 <ul class="govuk-list">
                     <li>
-                        <a href="#ukazka-zakladna-paticka">Príklad základnej pätičky bez navigácie</a>
-                    </li>
-                    <li>
-                        <a href="#ukazka-zakladna-paticka-feedback">Príklad základnej pätičky bez navigácie + spätná väzba</a>
-                    </li>
-                    <li>
-                        <a href="#ukazka-rozsirena-paticka-1">Príklad pätičky s jednoduchou navigáciou</a>
-                    </li>
-                    <li>
-                        <a href="#ukazka-rozsirena-paticka-2">Príklad pätičky s rozšírenou navigáciou vo viac. riadkoch</a>
+                        <a href="#ukazka-spatna-vazba">Príklad spätnej väzby</a>
                     </li>
                 </ul>
             </div>
             
             <div class="govuk-grid-column-full">
-                <h3 class="govuk-heading-m" id="ukazka-rozsirena-paticka-2">Príklad pätičky s rozšírenou navigáciou vo viac. riadkoch</h3>
+                <h3 class="govuk-heading-m" id="ukazka-spatna-vazba">Príklad spätnej väzby</h3>
                 <div class="example">
                     {% set exampleComponentHtml %}
                     {% include "../komponenty/examples/exampleFeedback.njk" %}

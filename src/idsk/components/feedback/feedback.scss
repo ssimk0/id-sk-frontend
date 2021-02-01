@@ -17,20 +17,18 @@
     .idsk-feedback-options-li {
         display: block;
         @include govuk-font($size: 24);
-        
+
         @include mq(desktop) {
             @include govuk-font($size: 19);
         }
     }
 
-    .idsk-feedback-radio-button {
-        transform: scale(2.5);
-        margin-bottom: govuk-spacing(6);
-        margin-right: govuk-spacing(3);
-    }
-
     .idsk-feedback-buttons .govuk-button {
         width: auto;
+    }
+
+    #idsk-feedback-thanks-for-feedback {
+        padding-left: 13px;
     }
 
     #idsk-feedback-improove-question-bar .govuk-heading-m {
