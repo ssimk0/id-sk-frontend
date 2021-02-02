@@ -2861,8 +2861,164 @@ CharacterCount$1.prototype.handleBlur = function () {
   clearInterval(this.valueChecker);
 };
 
-// import Crossroad from "./components/crossroad/crossroad";
-// import HeaderExtended from './components/header-extended/header-extended';
+/**
+ * Crossroad Component
+ */
+function Crossroad($module) {
+  this.$module = $module;
+  this.$items = $module.querySelectorAll(".idsk-crossroad-title");
+}
+
+Crossroad.prototype.init = function () {
+  var $module = this.$module;
+  var $items = this.$items;
+
+  if (!$module || !$items) {
+    return;
+  }
+
+  nodeListForEach(
+    $items,
+    function ($item) {
+      $item.addEventListener("click", this.handleItemClick.bind(this));
+    }.bind(this)
+  );
+};
+
+Crossroad.prototype.handleItemClick = function (e) {
+  var $item = e.target;
+  $item.setAttribute("aria-current", "true");
+};
+
+/**
+ * Header for extended websites
+ */
+function HeaderExtended($module) {
+    this.$module = $module;
+}
+
+HeaderExtended.prototype.init = function () {
+
+    var $module = this.$module;
+    // check for module
+    if (!$module) {
+        return;
+    }
+
+    // check for search component
+    var $toggleSearchComponent = $module.querySelector('.idsk-header-extended__search');
+    var $toggleSearchInputComponent = $module.querySelector('.idsk-header-extended__search-form input');
+    if ($toggleSearchComponent && $toggleSearchInputComponent) {
+        // Handle $toggleSearchComponent click and blur events
+        $toggleSearchComponent.addEventListener('focus', this.handleSearchComponentClick.bind(this));
+        // both blur events needed
+        // if form is shown, but has not been focused, inputs blur won't be fired, then trigger this one
+        $toggleSearchComponent.addEventListener('focusout', this.handleSearchComponentClick.bind(this));
+        // if form is shown, and has been focused, trigger this one
+        $toggleSearchInputComponent.addEventListener('focusout', this.handleSearchComponentClick.bind(this));
+    }
+
+    // check for language selector
+    var $toggleLanguageSelector = $module.querySelector('.idsk-js-header-extended-language-toggle');
+    if ($toggleLanguageSelector) {
+        // Handle $toggleLanguageSelect click events
+        $toggleLanguageSelector.addEventListener('focus', this.handleLanguageSelectorClick.bind(this));
+        $toggleLanguageSelector.addEventListener('blur', this.handleLanguageSelectorClick.bind(this));
+    }
+
+    // check for submenu
+    var $toggleSubmenus = $module.querySelectorAll('.idsk-header-extended__link');
+    if ($toggleSubmenus) {
+        var $self = this;
+        // Handle $toggleSubmenu click events
+        nodeListForEach$1($toggleSubmenus, function ($toggleSubmenu) {
+            $toggleSubmenu.addEventListener('focus', $self.handleSubmenuClick2.bind($self));
+            $toggleSubmenu.addEventListener('blur', $self.handleSubmenuClick.bind($self));
+        });
+    }
+
+    // check for menu button and x-mark button
+    var $hamburgerMenuButton = $module.querySelector('.idsk-js-header-extended-side-menu');
+    var $xMarkMenuButton = $module.querySelector('.idsk-header-extended-x-mark');
+    if ($hamburgerMenuButton && $xMarkMenuButton) {
+        $hamburgerMenuButton.addEventListener('click', this.handleMobilMenu.bind(this));
+        $xMarkMenuButton.addEventListener('click', this.handleMobilMenu.bind(this));
+    }
+
+    window.addEventListener('scroll', this.scrollFunction.bind(this));
+};
+
+/**
+ * Handle focus/blur on search component - show/hide search form, hide/show search text wrapper
+ * @param {object} e 
+ */
+HeaderExtended.prototype.handleSearchComponentClick = function (e) {
+    var $el = e.target || e.srcElement;
+    var $target = $el.closest('.idsk-header-extended__search');
+    var $relatedTarget = e.relatedTarget ? (e.relatedTarget).closest('.idsk-header-extended__search-form') : e.relatedTarget;
+    var $searchForm = $target.querySelector('.idsk-header-extended__search-form');
+    if (e.type === 'focus') {
+        $target.classList.add('idsk-header-extended__search--active');
+    } else if (e.type === 'focusout' && $relatedTarget !== $searchForm) {
+        $target.classList.remove('idsk-header-extended__search--active');
+    }
+};
+
+/**
+ * Handle open/hide language switcher
+ * @param {object} e 
+ */
+HeaderExtended.prototype.handleLanguageSelectorClick = function (e) {
+    var $toggleButton = e.target || e.srcElement;
+    var $target = $toggleButton.closest('.idsk-header-extended__language');
+    toggleClass($target, 'idsk-header-extended__language--active');
+};
+
+/**
+ * Handle open/hide submenu
+ * @param {object} e 
+ */
+HeaderExtended.prototype.handleSubmenuClick = function (e) {
+    var $srcEl = e.target || e.srcElement;
+    var $toggleButton = $srcEl.closest('.idsk-header-extended__navigation-item');
+    toggleClass($toggleButton, 'idsk-header-extended__navigation-item--active');
+};/**
+ * Handle open/hide submenu
+ * @param {object} e 
+ */
+
+HeaderExtended.prototype.handleSubmenuClick2 = function (e) {
+    var $srcEl = e.target || e.srcElement;
+    var $toggleButton = $srcEl.closest('.idsk-header-extended__navigation-item');
+    var $currActiveList = this.$module.querySelectorAll('.idsk-header-extended__navigation-item--active');
+
+    if ($currActiveList.length > 0) {
+        $currActiveList[0].classList.remove('idsk-header-extended__navigation-item--active');
+    }
+    
+    toggleClass($toggleButton, 'idsk-header-extended__navigation-item--active');
+};
+
+/**
+ * Show/hide mobil menu
+ * @param {object} e
+ */
+HeaderExtended.prototype.handleMobilMenu = function (e) {
+    toggleClass(this.$module, "show-mobile-menu");
+};
+
+/**
+ * When the user scrolls down from the top of the document, resize the navbar's padding and the logo
+ */
+HeaderExtended.prototype.scrollFunction = function () {
+    var $module = this.$module;
+
+    if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+        $module.classList.add('idsk-header-extended--shrink');
+    } else if (document.body.scrollTop < 10 && document.documentElement.scrollTop < 10) {
+        $module.classList.remove('idsk-header-extended--shrink');
+    }
+};
 
 function initAll$1(options) {
   // Set the options to an empty object by default if no options are passed.
@@ -2892,16 +3048,16 @@ function initAll$1(options) {
     new CharacterCount$1($characterCount).init();
   });
 
-  // var $crossroad = scope.querySelectorAll('[data-module="idsk-crossroad"]');
-  // nodeListForEach($crossroad, function ($crossroad) {
-  //   new Crossroad($crossroad).init();
-  // });
+  var $crossroad = scope.querySelectorAll('[data-module="idsk-crossroad"]');
+  nodeListForEach($crossroad, function ($crossroad) {
+    new Crossroad($crossroad).init();
+  });
 
-  // // Find first Header-extended module to enhance.
-  // var $headersExtended = scope.querySelectorAll('[data-module="idsk-header-extended"]')
-  // nodeListForEach($headersExtended, function ($headerExtended) {
-  //   new HeaderExtended($headerExtended).init()
-  // })
+  // Find first Header-extended module to enhance.
+  var $headersExtended = scope.querySelectorAll('[data-module="idsk-header-extended"]');
+  nodeListForEach($headersExtended, function ($headerExtended) {
+    new HeaderExtended($headerExtended).init();
+  });
 
   // Init all GOVUK components js
   initAll(options);
@@ -2910,6 +3066,8 @@ function initAll$1(options) {
 exports.initAll = initAll$1;
 exports.Button = Button$1;
 exports.CharacterCount = CharacterCount$1;
+exports.Crossroad = Crossroad;
 exports.FooterExtended = FooterExtended;
+exports.HeaderExtended = HeaderExtended;
 
 })));

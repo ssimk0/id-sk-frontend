@@ -1,5 +1,17 @@
 [
     {
+        "name": "logo",
+        "type": "string",
+        "required": false,
+        "description": "Allows you to hide the logo"
+    },
+    {
+        "name": "footerLogoSrc",
+        "type": "string",
+        "required": false,
+        "description": "Allows you to overwrite the MIRRI logo"
+    },
+    {
         "name": "meta",
         "type": "object",
         "required": false,

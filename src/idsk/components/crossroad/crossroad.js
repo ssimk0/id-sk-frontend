@@ -11,8 +11,8 @@ function Crossroad($module) {
 }
 
 Crossroad.prototype.init = function () {
-  let $module = this.$module;
-  let $items = this.$items;
+  var $module = this.$module;
+  var $items = this.$items;
 
   if (!$module || !$items) {
     return;
