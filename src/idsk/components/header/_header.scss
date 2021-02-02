@@ -15,6 +15,9 @@
   $idsk-header-link-active: #1d8feb;
   $idsk-header-nav-item-border-color: #2e3133;
 
+  $idsk-header-logo-width: 186px;
+  $idsk-header-logo-height: 30px;
+
   .idsk-header {
     @include govuk-font($size: 16);
 
@@ -50,22 +53,13 @@
   }
 
   .idsk-header__logotype {
+    display: inline-block;
     margin-right: govuk-spacing(1);
-  }
 
-  .idsk-header__logotype-crown {
-    position: relative;
-    top: -1px;
-    margin-right: 1px;
-    fill: currentColor;
-    vertical-align: top;
-  }
-
-  .idsk-header__logotype-crown-fallback-image {
-    width: 36px;
-    height: 32px;
-    border: 0;
-    vertical-align: middle;
+    & > * {
+      width: $idsk-header-logo-width;
+      height: $idsk-header-logo-height;
+    }
   }
 
   .idsk-header__product-name {
@@ -348,11 +342,6 @@
       background: transparent;
     }
 
-    // Hide the inverted crown when printing in browsers that don't support SVG.
-    .idsk-header__logotype-crown-fallback-image {
-      display: none;
-    }
-
     .idsk-header__link {
       &:link,
       &:visited {
@@ -367,15 +356,6 @@
   }
 
   @if $govuk-use-legacy-font {
-    // Begin adjustments for font baseline offset
-    // These should be removed when the font is updated with the correct baseline
-    .idsk-header__logotype-crown,
-    .idsk-header__logotype-crown-fallback-image {
-      position: relative;
-      top: -4px;
-      vertical-align: middle;
-    }
-
     .idsk-header {
       $offset: 3px;
       padding-top: $offset;

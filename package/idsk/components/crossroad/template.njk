@@ -1,0 +1,15 @@
+{% set numberOfCols = params.columns %}
+
+<div data-module="idsk-crossroad {{ params.classes if params.classes }}">
+{% for colIndex in range(0, numberOfCols) %}
+    <div class="idsk-crossroad idsk-crossroad-{{ numberOfCols }}">
+    {% for item in params.items %}
+        {% if (loop.index0 // (loop.length / numberOfCols)) == colIndex %}
+        <a href="{{item.link}}" class="idsk-crossroad-title">{{ item.title }}</a>
+        <p class="idsk-crossroad-subtitle">{{ item.subtitle }}</p>
+        <hr class="idsk-crossroad-line" aria-hidden="true" />
+        {% endif %}
+    {% endfor %}
+    </div>
+{% endfor %}
+</div>
