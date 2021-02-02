@@ -3,6 +3,14 @@ params:
   type: string
   required: false
   description: The url of the homepage. Defaults to /
+- name: logo
+  type: string
+  required: true
+  description: Allows you to hide the logo
+- name: headerLogoSrc
+  type: string
+  required: false
+  description: Allows you to overwrite the slovensko.sk logo
 - name: assetsPath
   type: string
   required: false
@@ -237,7 +245,7 @@ examples:
         text: Navigation item 3
     headerUser: true
 
-- name: width without user
+- name: width without logo
   data:
     containerClasses: govuk-header__container--with-user govuk-width-container
     usersClasses: idsk-header__user--end
