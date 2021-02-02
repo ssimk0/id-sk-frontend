@@ -15,7 +15,9 @@
 <div class="idsk-card idsk-card-{{ type }}">
 
     {% if params.imgSrc %}
-    <img class="idsk-card-img idsk-card-img-{{type}}" width="100%" src="{{ params.imgSrc }}" alt="{{ params.heading }}" aria-hidden="true" />
+    <a href="{{params.link}}">
+        <img class="idsk-card-img idsk-card-img-{{type}}" width="100%" src="{{ params.imgSrc }}" alt="{{ params.heading }}" aria-hidden="true" />
+    </a>
     {% endif %}
     
     <div class="idsk-card-content idsk-card-content-{{ type }}">
