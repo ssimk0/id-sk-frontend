@@ -160,14 +160,16 @@
   /// search bar
   .idsk-header-extended__search {
     @include govuk-font($size: 19);
-    order: 2;
-    width: 220px;
-    text-align: right;
+
     cursor: pointer;
+    margin-left: auto;
+    order: 2;
     outline: none;
+    text-align: right;
+    width: 205px;
 
     &-text {
-      margin-left: 85px;
+      margin-left: 75px;
       width: fit-content;
 
       i {
@@ -215,11 +217,11 @@
   .idsk-header-extended__language {
     @include govuk-font($size: 19);
 
+    cursor: pointer;
+    outline: none;
     order: 3;
     position: relative;
     vertical-align: text-top;
-    cursor: pointer;
-    outline: none;
 
     &-input {
       display: none;
@@ -325,6 +327,10 @@
       }
 
     }
+  }
+
+  .idsk-header-extended--left {
+    margin-left: auto;
   }
 
   /// navigation

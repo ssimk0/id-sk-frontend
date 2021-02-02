@@ -95,7 +95,6 @@ examples:
         - href: "#"
           item: Dokumenty
 
-      classContainer: "govuk-width-container"
       searchEnabled: true
 
   - name: extended
@@ -125,7 +124,6 @@ examples:
         - href: "#"
           item: Dokumenty
 
-      classContainer: "govuk-width-container"
       classBackground: "app-pane-grey"
       searchEnabled: true
 
@@ -156,7 +154,6 @@ examples:
         - href: "#"
           item: Pracovná skupina Lepšie služby
 
-      classContainer: "govuk-width-container"
       searchEnabled: false
       classBackground: "app-pane-blue"
       headline: "Informatizácia"

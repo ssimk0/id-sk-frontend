@@ -5,30 +5,39 @@
 @import "../../../govuk/helpers/typography";
 
 @include govuk-exports("idsk/component/card") {
+
   .idsk-card {
     &-basic,
     &-basic-variant,
     &-hero,
-    &-secondary-horizontal,
     &-profile-horizontal {
       @include govuk-grid-column("full");
     }
 
+    &-secondary {
+      @include govuk-grid-column("full");
+
+      @include mq($from: tablet) {
+        @include govuk-grid-column("one-third");
+      }
+    }
+
     &-simple,
-    &-secondary-vertical,
     &-profile-vertical {
       @include govuk-grid-column("one-third");
     }
+  }
+  
+  .idsk-card-title {
+    cursor: pointer;
+    margin: 0;
+    text-decoration: none;
 
-    &-profile-horizontal {
-      padding: 0;
-      padding-bottom: 60px;
-      border-bottom: 3px solid #bfc1c3;
-
-      @include mq($from: tablet) {
-        padding-bottom: 30px;
-      }
+    &:hover {
+      color: govuk-colour("black");
+      text-decoration: underline;
     }
+    
   }
 
   .idsk-card-img {
@@ -36,15 +45,26 @@
 
     &-hero {
       @include govuk-grid-column("one-half");
+      padding: 0;
+
+      @include mq($from: tablet) {
+        padding: 0 govuk-spacing(3) 0 0;
+      }
     }
 
-    &-secondary-horizontal,
+    &-secondary {
+      width: 33.3%;
+      float: left;
+
+      @include mq($from: tablet) {
+        @include govuk-grid-column("full");
+        padding: 0 0 govuk-spacing(2) 0;
+      }
+    }
+
     &-profile-horizontal {
       @include govuk-grid-column("one-third");
-    }
-
-    &-profile-horizontal {
-      padding: 0 15px 0 0;
+      padding: 0 govuk-spacing(3) 0 0;
     }
   }
 
@@ -71,7 +91,16 @@
     }
   }
 
-  .idsk-card-meta-container a:last-child {
+  .idsk-card-meta .govuk-link {
+    @include govuk-font($size: 16);
+    color: govuk-colour("grey-1");
+
+    &:visited {
+      color: $govuk-link-visited-colour;
+    }
+  }
+
+  .idsk-card-meta-container span:last-child {
     &:after {
       content: "";
     }
@@ -80,37 +109,50 @@
   .idsk-card-content {
     &-hero {
       @include govuk-grid-column("one-half");
+      padding: 0;
+
+      @include mq($from: tablet) {
+        padding: 0 govuk-spacing(3) 0 0;
+      }
     }
 
-    &-secondary-horizontal,
     &-profile-horizontal {
       @include govuk-grid-column("two-thirds");
+    }
+
+    &-secondary {
+      width: 66.6%;
+      box-sizing: border-box;
+      padding-left: govuk-spacing(2);
+      float: left;
+
+      @include mq($from: tablet) {
+        @include govuk-grid-column("full");
+        padding: 0;
+      }
     }
   }
 
   .idsk-heading {
     @include govuk-responsive-padding(2, "top");
     @include govuk-responsive-padding(2, "bottom");
-    display: block;
-    color: #0065b3;
-    cursor: pointer;
-    margin: 0;
-    text-decoration: none;
-
-    &:hover {
-      color: #0b0c0c;
-    }
 
     &-basic-variant,
-    &-simple,
-    &-secondary-vertical {
+    &-simple {
       @include govuk-font($size: 19, $weight: bold);
     }
 
     &-basic,
-    &-hero,
-    &-secondary-horizontal {
+    &-hero {
       @include govuk-font($size: 24, $weight: bold);
+    }
+
+    &-secondary {
+      @include govuk-font($size: 19, $weight: bold);
+
+      @include mq($until: desktop) {
+        @include govuk-font($size: 24, $weight: bold);
+      }
     }
 
     &-profile-vertical,
@@ -123,15 +165,18 @@
   .idsk-body {
     margin-top: 0;
 
-    &-secondary-vertical {
-      @include govuk-font($size: 16);
-    }
-
     &-basic,
     &-basic-variant,
-    &-hero,
-    &-secondary-horizontal {
+    &-hero {
       @include govuk-font($size: 19);
+    }
+
+    &-secondary {
+      @include govuk-font($size: 16);
+
+      @include mq($until: desktop) {
+        @include govuk-font($size: 19);
+      }
     }
 
     &-profile-vertical,
@@ -139,15 +184,6 @@
       @include govuk-font($size: 24);
       @include govuk-responsive-padding(2, "top");
       @include govuk-responsive-padding(4, "bottom");
-
-      display: block;
-      color: #0065b3;
-      cursor: pointer;
-      text-decoration: underline;
-
-      &:hover {
-        color: #0b0c0c;
-      }
     }
   }
 
@@ -156,5 +192,9 @@
     @include govuk-responsive-padding(8, "left");
     @include govuk-font($size: 24);
     margin-top: 0;
+
+    &-right {
+      float: right;
+    }
   }
 }

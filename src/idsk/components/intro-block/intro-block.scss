@@ -208,11 +208,16 @@
 
     #idsk-intro-block-top-content-container-blue-background {
         padding-bottom: govuk-spacing(5);
-        padding-left: govuk-spacing(4);
+        padding-left: govuk-spacing(7);
+
+        @include mq($from: tablet) {
+            padding-left: govuk-spacing(4);
+        }
 
         @include mq($from: desktop) {
             margin-left: govuk-spacing(7);
             width: 26%;
+            float: right;
         }
     }
 
@@ -224,8 +229,9 @@
         }
     }
 
-    .app-pane-grey {
+    .idsk-intro-block .app-pane-grey {
         background-color: govuk-colour("light-grey");
+        padding-left: 43px;
     }
 
     .app-pane-blue {
@@ -244,13 +250,22 @@
     }
 
     .idsk-intro-block-top-content-container-default #idsk-intro-block-top-content-container-desktop {
-        padding-left: govuk-spacing(6);
         padding-top: govuk-spacing(2);
 
         @include mq($from: tablet) {
             padding-left: govuk-spacing(3);
             padding-bottom: govuk-spacing(3);
         }
+    }
+
+    .idsk-intro-block .govuk-heading-l {
+        @include mq($from: tablet) {
+            @include govuk-font($size: 24, $weight: bold);
+        }
+    }
+
+    #idsk-intro-block-top-content-container-blue-background .govuk-heading-l {
+        color: govuk-colour("white");
     }
 
     #idsk-intro-block-top-content-container-desktop h2,
