@@ -1,0 +1,88 @@
+{% extends "layout.njk" %}
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+
+{% set pageName = "Úvodný blok pre webové sídla" %}
+
+{% block beforeContent %}
+    {{ govukBreadcrumbs({
+    "items": [
+    { text: 'ID-SK frontend', href: '/' + legacyQuery },
+    { text: pageName }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+ 
+        <span class="govuk-caption-xl">Webové komponenty</span>
+        <h1 class="govuk-heading-xl">{{pageName}}</h1>
+        <p class="govuk-body-l">Odporúčame pridať na stránku svojej služby úvodný blok podľa tohto manuálu. Je dôležité, aby všetky online služby Slovenskej republiky vyzerali pre používateľa rovnako.</p>
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <h2 class="govuk-heading-s">Obsah:</h2>
+                <ul class="govuk-list">
+                    <li>
+                        <a href="#kratky-popis">Krátky popis</a>
+                    </li>
+                    <li>
+                        <a href="#ukazka-uvodny-block-homepage">Úvodný blok homepage</a>
+                    </li>
+                    <li>
+                        <a href="#ukazka-uvodny-block-grey">Úvodný blok so sivým pozadím</a>
+                    </li>
+                    <li>
+                        <a href="#ukazka-uvodny-block-blue">Úvodný blok s modrým pozadím</a>
+                    </li>
+                </ul>
+                <h3 class="govuk-heading-m" id="kratky-popis">Krátky popis</h3>
+                <p class="govuk-body">
+                    Všetky služby musia používať základný úvodný blok stránky, ktorá obsahuje najmä textové informácie o prevádzkovateľovi služby a textové odkazy na:
+                </p>
+            </div>
+        </div>
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+                <h3 class="govuk-heading-m" id="ukazka-uvodny-block-homepage">Úvodný blok homepage</h3>
+                <p class="govuk-body">V nasledujúcej ukážke sú použité vstupné parametre.</p>
+                <div class="example">
+                    {% set exampleComponentHtml %}
+                    {% include "../komponenty/examples/exampleIntroBlock.njk" %}
+                    {% endset %}
+                    {{exampleComponentHtml | safe}}
+                </div>
+            </div>
+            <div class="govuk-grid-column-full">
+                <h3 class="govuk-heading-m" id="ukazka-uvodny-block-grey">Úvodný blok so sivým pozadím</h3>
+                <p class="govuk-body">V nasledujúcej ukážke sú použité vstupné parametre.</p>
+                <div class="example">
+                    {% set exampleComponentHtml %}
+                    {% include "../komponenty/examples/exampleIntroBlock1.njk" %}
+                    {% endset %}
+                    {{exampleComponentHtml | safe}}
+                </div>
+            </div>
+            <div class="govuk-grid-column-full">
+                <h3 class="govuk-heading-m" id="ukazka-uvodny-block-blue">Úvodný blok s modrým pozadím</h3>
+                <p class="govuk-body">V nasledujúcej ukážke sú použité vstupné parametre.</p>
+                <div class="example">
+                    {% set exampleComponentHtml %}
+                    {% include "../komponenty/examples/exampleIntroBlock2.njk" %}
+                    {% endset %}
+                    {{exampleComponentHtml | safe}}
+                </div>
+            </div>
+        </div>
+        
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-full">
+                    <h2 class="govuk-heading-l" id="priklady">Rozšírené príklady pre úvodný blok</h2>
+                    <ul class="govuk-list">
+                        <li>
+                            <a href="/custom-components/intro-block">Rozšírené príklady úvodného bloku</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+    
+    
+{% endblock %}
