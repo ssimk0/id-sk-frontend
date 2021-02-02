@@ -39,7 +39,7 @@
             <div class="{{ 'idsk-intro-block-top-content-container-default' if params.classBackground=='app-pane-blue' or params.classBackground=='app-pane-grey'}}">
                 {% if params.classBackground=="app-pane-blue" %}
                     <div id="idsk-intro-block-top-content-container-blue-background" class="govuk-grid-column-full govuk-grid-column-one-third-from-desktop app-pane-blue idsk-intro-block-text-colour">
-                        <h2>
+                        <h2 class="govuk-heading-l">
                             {{ params.sideMenuTitle if params.sideMenuTitle else "Populárny obsah"}}
                         </h2>
                         <div class="idsk-intro-block-top-content-menu-blue-background-div">
@@ -62,7 +62,7 @@
                     </div>
                 {% else %}
                     <div id="idsk-intro-block-top-content-container-desktop" class='govuk-grid-column-full govuk-grid-column-one-third-from-desktop {{ params.classBackground if params.classBackground }} '>
-                        <h2>
+                        <h2 class="govuk-heading-l">
                             {{ params.sideMenuTitle if params.sideMenuTitle else "Populárny obsah"}}
                         </h2>
                         <div class="idsk-intro-block-popular-content-div">
