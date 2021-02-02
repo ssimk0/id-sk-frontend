@@ -15,6 +15,10 @@
   $govuk-footer-link: $govuk-link-colour;
   $govuk-footer-link-hover: $govuk-focus-text-colour;
 
+  // Footer logo size
+  $idsk-footer-logo-width: 218px;
+  $idsk-footer-logo-height: 47px;
+
   @if ($govuk-use-legacy-palette) {
     // sass-lint:disable no-color-literals
     $govuk-footer-border-top: #a1acb2;
@@ -126,6 +130,11 @@
       margin-bottom: govuk-spacing(3);
     }
     vertical-align: top;
+
+    & > * {
+      width: $idsk-footer-logo-width;
+      height: $idsk-footer-logo-height;
+    }
   }
 
   .idsk-footer__licence-description {
