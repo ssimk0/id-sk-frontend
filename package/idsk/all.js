@@ -2428,6 +2428,66 @@ function initAll(options) {
   });
 }
 
+var KEY_SPACE$2 = 32;
+var DEBOUNCE_TIMEOUT_IN_SECONDS$1 = 1;
+
+function Button$1 ($module) {
+  this.$module = $module;
+  this.debounceFormSubmitTimer = null;
+}
+
+/**
+* JavaScript 'shim' to trigger the click event of element(s) when the space key is pressed.
+*
+* Created since some Assistive Technologies (for example some Screenreaders)
+* will tell a user to press space on a 'button', so this functionality needs to be shimmed
+* See https://github.com/alphagov/govuk_elements/pull/272#issuecomment-233028270
+*
+* @param {object} event event
+*/
+Button$1.prototype.handleKeyDown = function (event) {
+  // get the target element
+  var target = event.target;
+  // if the element has a role='button' and the pressed key is a space, we'll simulate a click
+  if (target.getAttribute('role') === 'button' && event.keyCode === KEY_SPACE$2) {
+    event.preventDefault();
+    // trigger the target's click event
+    target.click();
+  }
+};
+
+/**
+* If the click quickly succeeds a previous click then nothing will happen.
+* This stops people accidentally causing multiple form submissions by
+* double clicking buttons.
+*/
+Button$1.prototype.debounce = function (event) {
+  var target = event.target;
+  // Check the button that is clicked on has the preventDoubleClick feature enabled
+  if (target.getAttribute('data-prevent-double-click') !== 'true') {
+    return
+  }
+
+  // If the timer is still running then we want to prevent the click from submitting the form
+  if (this.debounceFormSubmitTimer) {
+    event.preventDefault();
+    return false
+  }
+
+  this.debounceFormSubmitTimer = setTimeout(function () {
+    this.debounceFormSubmitTimer = null;
+  }.bind(this), DEBOUNCE_TIMEOUT_IN_SECONDS$1 * 1000);
+};
+
+/**
+* Initialise an event listener for keydown at document level
+* this will help listening for later inserted elements with a role="button"
+*/
+Button$1.prototype.init = function () {
+  this.$module.addEventListener('keydown', this.handleKeyDown);
+  this.$module.addEventListener('click', this.debounce);
+};
+
 /**
  * Footer for extended websites
  */
@@ -2436,30 +2496,25 @@ function FooterExtended($module) {
 }
 
 FooterExtended.prototype.init = function () {
-    let $module = this.$module;
+    var $module = this.$module;
     // check for module
     if (!$module) {
         return;
     }
 
-    let $yesButton = $module.querySelector('#idsk-footer-extended-feedback-yes-button');
-    let $noButton = $module.querySelector('#idsk-footer-extended-feedback-no-button');
-    let $errorButton = $module.querySelector('#idsk-footer-extended-error-button');
-    let $closeErrorFormButton = $module.querySelector('#idsk-footer-extended-close-error-form-button');
-    let $closeHelpFormButton = $module.querySelector('#idsk-footer-extended-close-help-form-button');
+    var $yesButton = $module.querySelector('#idsk-footer-extended-feedback-yes-button');
+    var $noButton = $module.querySelector('#idsk-footer-extended-feedback-no-button');
+    var $errorButton = $module.querySelector('#idsk-footer-extended-error-button');
+    var $closeErrorFormButton = $module.querySelector('#idsk-footer-extended-close-error-form-button');
+    var $closeHelpFormButton = $module.querySelector('#idsk-footer-extended-close-help-form-button');
+
+    var $textAreaCharacterCount = $module.querySelector('#idsk-footer-extended-error-form #with-hint');
+
+    var $fillFeedbackButton = $module.querySelector('#fill-feedback-help-form');
+    var $submitErrorButton = $module.querySelector('#submit-button-error-form');
 
 
-    let $closeErrorFormButtonTablet = $module.querySelector('#idsk-footer-extended-close-error-form-button-tablet');
-    let $closeHelpFormButtonTablet = $module.querySelector('#idsk-footer-extended-close-help-form-button-tablet');
-
-
-    let $textAreaCharacterCount = $module.querySelector('#idsk-footer-extended-error-form #with-hint');
-
-    let $fillFeedbackButton = $module.querySelector('#fill-feedback-help-form');
-    let $submitErrorButton = $module.querySelector('#submit-button-error-form');
-
-
-    let $writeUsButton = this.$module.querySelector('#idsk-footer-extended-write-us-button');
+    var $writeUsButton = this.$module.querySelector('#idsk-footer-extended-write-us-button');
 
     if ($yesButton && $noButton && $errorButton) {
         $yesButton.addEventListener('click', this.handleYesButtonClick.bind(this));
@@ -2479,14 +2534,6 @@ FooterExtended.prototype.init = function () {
         $closeErrorFormButton.addEventListener('click', this.handleCloseErrorFormButtonClick.bind(this));
     }
 
-    if ($closeErrorFormButtonTablet) {
-        $closeErrorFormButtonTablet.addEventListener('click', this.handleCloseErrorFormButtonClick.bind(this));
-    }
-
-    if ($closeHelpFormButtonTablet) {
-        $closeHelpFormButtonTablet.addEventListener('click', this.handleCloseHelpFormButtonClick.bind(this));
-    }
-
     if ($fillFeedbackButton) {
         $fillFeedbackButton.addEventListener('click', this.handleSubmitButtonClick.bind(this));
     }
@@ -2502,12 +2549,12 @@ FooterExtended.prototype.init = function () {
 
 
 FooterExtended.prototype.handleSubmitButtonClick = function (e) {
-    let $noOption = this.$module.querySelector('#idsk-footer-extended-help-form');
-    let $errorOption = this.$module.querySelector('#idsk-footer-extended-error-form');
-    let $infoQuestion = this.$module.querySelector('#idsk-footer-extended-info-question');
-    let $heartSymbol = this.$module.querySelector('#idsk-footer-extended-heart');
-    let $feedbackQuestion = this.$module.querySelector('#idsk-footer-extended-feedback');
-    let $helpAndErrorContainer = this.$module.querySelector('#idsk-footer-extended-feedback-content');
+    var $noOption = this.$module.querySelector('#idsk-footer-extended-help-form');
+    var $errorOption = this.$module.querySelector('#idsk-footer-extended-error-form');
+    var $infoQuestion = this.$module.querySelector('#idsk-footer-extended-info-question');
+    var $heartSymbol = this.$module.querySelector('#idsk-footer-extended-heart');
+    var $feedbackQuestion = this.$module.querySelector('#idsk-footer-extended-feedback');
+    var $helpAndErrorContainer = this.$module.querySelector('#idsk-footer-extended-feedback-content');
 
     toggleClass($helpAndErrorContainer, 'idsk-footer-extended-feedback-content');
     $noOption.classList.add('idsk-footer-extended-display-hidden');
@@ -2521,18 +2568,16 @@ FooterExtended.prototype.handleSubmitButtonClick = function (e) {
 };
 
 FooterExtended.prototype.handleStatusOfCharacterCountButton = function (e) {
-    let $textAreaCharacterCount = this.$module.querySelector('#with-hint');
-    let $remainingCharacterCountMessage = this.$module.querySelector('#with-hint-info');
+    var $textAreaCharacterCount = this.$module.querySelector('#with-hint');
+    var $remainingCharacterCountMessage = this.$module.querySelector('#with-hint-info');
 
-    let $submitButton = this.$module.querySelector('#submit-button-error-form');
+    var $submitButton = this.$module.querySelector('#submit-button-error-form');
 
     setTimeout(function () {
         if ($textAreaCharacterCount.classList.contains('govuk-textarea--error') || $remainingCharacterCountMessage.classList.contains('govuk-error-message')) {
-            console.log('yes');
             console.log($textAreaCharacterCount.classList);
             $submitButton.disabled = true;
         } else {
-            console.log('no');
             console.log($textAreaCharacterCount.classList);
             $submitButton.disabled = false;
         }
@@ -2542,10 +2587,10 @@ FooterExtended.prototype.handleStatusOfCharacterCountButton = function (e) {
 
 //Hiding feedback question text and showing thank notice with heart
 FooterExtended.prototype.handleYesButtonClick = function (e) {
-    let $noOption = this.$module.querySelector('#idsk-footer-extended-help-form');
-    let $errorOption = this.$module.querySelector('#idsk-footer-extended-error-form');
-    let $infoQuestion = this.$module.querySelector('#idsk-footer-extended-info-question');
-    let $heartSymbol = this.$module.querySelector('#idsk-footer-extended-heart');
+    var $noOption = this.$module.querySelector('#idsk-footer-extended-help-form');
+    var $errorOption = this.$module.querySelector('#idsk-footer-extended-error-form');
+    var $infoQuestion = this.$module.querySelector('#idsk-footer-extended-info-question');
+    var $heartSymbol = this.$module.querySelector('#idsk-footer-extended-heart');
 
     $noOption.classList.add('idsk-footer-extended-display-hidden');
     $errorOption.classList.add('idsk-footer-extended-display-hidden');
@@ -2557,10 +2602,10 @@ FooterExtended.prototype.handleYesButtonClick = function (e) {
 
 //Hiding feedback question element and showing help form with animation
 FooterExtended.prototype.handleNoButtonClick = function (e) {
-    let $helpOption = this.$module.querySelector('#idsk-footer-extended-help-form');
-    let $feedbackQuestion = this.$module.querySelector('#idsk-footer-extended-feedback');
+    var $helpOption = this.$module.querySelector('#idsk-footer-extended-help-form');
+    var $feedbackQuestion = this.$module.querySelector('#idsk-footer-extended-feedback');
 
-    let $helpAndErrorContainer = this.$module.querySelector('#idsk-footer-extended-feedback-content');
+    var $helpAndErrorContainer = this.$module.querySelector('#idsk-footer-extended-feedback-content');
 
     toggleClass($helpAndErrorContainer, 'idsk-footer-extended-feedback-content');
     toggleClass($feedbackQuestion, 'idsk-footer-extended-display-none');
@@ -2570,11 +2615,11 @@ FooterExtended.prototype.handleNoButtonClick = function (e) {
 
 //Hiding feedback question element and showing error form with animation
 FooterExtended.prototype.handleErrorButtonClick = function (e) {
-    let $errorOption = this.$module.querySelector('#idsk-footer-extended-error-form');
-    let $helpOption = this.$module.querySelector('#idsk-footer-extended-help-form');
-    let $feedbackQuestion = this.$module.querySelector('#idsk-footer-extended-feedback');
+    var $errorOption = this.$module.querySelector('#idsk-footer-extended-error-form');
+    var $helpOption = this.$module.querySelector('#idsk-footer-extended-help-form');
+    var $feedbackQuestion = this.$module.querySelector('#idsk-footer-extended-feedback');
 
-    let $helpAndErrorContainer = this.$module.querySelector('#idsk-footer-extended-feedback-content');
+    var $helpAndErrorContainer = this.$module.querySelector('#idsk-footer-extended-feedback-content');
 
     toggleClass($helpAndErrorContainer, 'idsk-footer-extended-feedback-content');
     toggleClass($feedbackQuestion, 'idsk-footer-extended-display-none');
@@ -2586,9 +2631,9 @@ FooterExtended.prototype.handleErrorButtonClick = function (e) {
 
 //Hiding error form with animation and showing feedback question element
 FooterExtended.prototype.handleCloseErrorFormButtonClick = function (e) {
-    let $errorOption = this.$module.querySelector('#idsk-footer-extended-error-form');
-    let $feedbackQuestion = this.$module.querySelector('#idsk-footer-extended-feedback');
-    let $helpAndErrorContainer = this.$module.querySelector('#idsk-footer-extended-feedback-content');
+    var $errorOption = this.$module.querySelector('#idsk-footer-extended-error-form');
+    var $feedbackQuestion = this.$module.querySelector('#idsk-footer-extended-feedback');
+    var $helpAndErrorContainer = this.$module.querySelector('#idsk-footer-extended-feedback-content');
 
     toggleClass($helpAndErrorContainer, 'idsk-footer-extended-feedback-content');
     toggleClass($feedbackQuestion, 'idsk-footer-extended-display-none');
@@ -2598,15 +2643,33 @@ FooterExtended.prototype.handleCloseErrorFormButtonClick = function (e) {
 
 //Hiding help form with animation and showing feedback question element
 FooterExtended.prototype.handleCloseHelpFormButtonClick = function () {
-    let $helpOption = this.$module.querySelector('#idsk-footer-extended-help-form');
-    let $feedbackQuestion = this.$module.querySelector('#idsk-footer-extended-feedback');
-    let $helpAndErrorContainer = this.$module.querySelector('#idsk-footer-extended-feedback-content');
+    var $helpOption = this.$module.querySelector('#idsk-footer-extended-help-form');
+    var $feedbackQuestion = this.$module.querySelector('#idsk-footer-extended-feedback');
+    var $helpAndErrorContainer = this.$module.querySelector('#idsk-footer-extended-feedback-content');
 
     toggleClass($helpAndErrorContainer, 'idsk-footer-extended-feedback-content');
     toggleClass($feedbackQuestion, 'idsk-footer-extended-display-none');
     toggleClass($helpOption, 'idsk-footer-extended-open');
     toggleClass($helpOption, 'idsk-footer-extended-display-hidden');
 };
+
+//Get the button
+var mybutton = document.getElementById("footer-extended-up-button");
+
+// When the user scrolls down window screen heiht From the top of the document, show the button
+if (mybutton != null) {
+    window.onscroll = function () {
+        scrollFunction();
+    };
+}
+
+function scrollFunction() {
+    if (window.screen.width > 992 && (document.body.scrollTop > window.screen.height || document.documentElement.scrollTop > window.screen.height)) {
+        mybutton.style.display = "block";
+    } else {
+        mybutton.style.display = "none";
+    }
+}
 
 function CharacterCount$1($module) {
   this.$module = $module;
@@ -2782,6 +2845,8 @@ CharacterCount$1.prototype.updateCountMessage = function () {
   }
 
   displayNumber = Math.abs(remainingNumber);
+  if (remainingNumber < 0)
+    displayNumber = '-' + displayNumber;
 
   countMessage.innerHTML = 'Zostáva Vám ' + displayNumber + ' ' + charNoun + ' ';
 };
@@ -2796,155 +2861,8 @@ CharacterCount$1.prototype.handleBlur = function () {
   clearInterval(this.valueChecker);
 };
 
-/**
- * Crossroad Component
- */
-function Crossroad($module) {
-  this.$module = $module;
-  this.$items = $module.querySelectorAll(".idsk-crossroad-title");
-}
-
-Crossroad.prototype.init = function () {
-  let $module = this.$module;
-  let $items = this.$items;
-
-  if (!$module || !$items) {
-    return;
-  }
-
-  nodeListForEach(
-    $items,
-    function ($item) {
-      $item.addEventListener("click", this.handleItemClick.bind(this));
-    }.bind(this)
-  );
-};
-
-Crossroad.prototype.handleItemClick = function (e) {
-  var $item = e.target;
-  $item.setAttribute("aria-current", "true");
-};
-
-/**
- * Header for extended websites
- */
-function HeaderExtended($module) {
-    this.$module = $module;
-}
-
-HeaderExtended.prototype.init = function () {
-
-    let $module = this.$module;
-    // check for module
-    if (!$module) {
-        return;
-    }
-
-    // check for search component
-    let $toggleSearchComponent = $module.querySelector('.idsk-header-extended__search');
-    let $toggleSearchInputComponent = $module.querySelector('.idsk-header-extended__search-form input');
-    if ($toggleSearchComponent && $toggleSearchInputComponent) {
-        // Handle $toggleSearchComponent click and blur events
-        $toggleSearchComponent.addEventListener('focus', this.handleSearchComponentClick.bind(this));
-        // both blur events needed
-        // if form is shown, but has not been focused, inputs blur won't be fired, then trigger this one
-        $toggleSearchComponent.addEventListener('focusout', this.handleSearchComponentClick.bind(this));
-        // if form is shown, and has been focused, trigger this one
-        $toggleSearchInputComponent.addEventListener('focusout', this.handleSearchComponentClick.bind(this));
-    }
-
-    // check for language selector
-    let $toggleLanguageSelector = $module.querySelector('.idsk-js-header-extended-language-toggle');
-    if ($toggleLanguageSelector) {
-        // Handle $toggleLanguageSelect click events
-        $toggleLanguageSelector.addEventListener('focus', this.handleLanguageSelectorClick.bind(this));
-        $toggleLanguageSelector.addEventListener('blur', this.handleLanguageSelectorClick.bind(this));
-    }
-
-    // check for submenu
-    let $toggleSubmenus = $module.querySelectorAll('.idsk-header-extended__link');
-    if ($toggleSubmenus) {
-        let $self = this;
-        // Handle $toggleSubmenu click events
-        nodeListForEach$1($toggleSubmenus, function ($toggleSubmenu) {
-            $toggleSubmenu.addEventListener('focus', $self.handleSubmenuClick.bind($self));
-            $toggleSubmenu.addEventListener('blur', $self.handleSubmenuClick.bind($self));
-        });
-    }
-
-    // check for menu button and x-mark button
-    let $hamburgerMenuButton = $module.querySelector('.idsk-js-header-extended-side-menu');
-    let $xMarkMenuButton = $module.querySelector('.idsk-header-extended-x-mark');
-    if ($hamburgerMenuButton && $xMarkMenuButton) {
-        $hamburgerMenuButton.addEventListener('click', this.handleMobilMenu.bind(this));
-        $xMarkMenuButton.addEventListener('click', this.handleMobilMenu.bind(this));
-    }
-
-    window.addEventListener('scroll', this.scrollFunction.bind(this));
-};
-
-/**
- * Handle focus/blur on search component - show/hide search form, hide/show search text wrapper
- * @param {object} e 
- */
-HeaderExtended.prototype.handleSearchComponentClick = function (e) {
-    let $el = e.target || e.srcElement;
-    let $target = $el.closest('.idsk-header-extended__search');
-    let $relatedTarget = e.relatedTarget ? (e.relatedTarget).closest('.idsk-header-extended__search-form') : e.relatedTarget;
-    let $searchForm = $target.querySelector('.idsk-header-extended__search-form');
-    if (e.type === 'focus') {
-        $target.classList.add('idsk-header-extended__search--active');
-    } else if (e.type === 'focusout' && $relatedTarget !== $searchForm) {
-        $target.classList.remove('idsk-header-extended__search--active');
-    }
-};
-
-/**
- * Handle open/hide language switcher
- * @param {object} e 
- */
-HeaderExtended.prototype.handleLanguageSelectorClick = function (e) {
-    let $toggleButton = e.target || e.srcElement;
-    let $target = $toggleButton.closest('.idsk-header-extended__language');
-    toggleClass($target, 'idsk-header-extended__language--active');
-};
-
-/**
- * Handle open/hide submenu
- * @param {object} e 
- */
-HeaderExtended.prototype.handleSubmenuClick = function (e) {
-    let $srcEl = e.target || e.srcElement;
-    let $toggleButton = $srcEl.closest('.idsk-header-extended__navigation-item');
-    toggleClass($toggleButton, 'idsk-header-extended__navigation-item--active');
-};
-
-/**
- * Show/hide mobil menu
- * @param {object} e
- */
-HeaderExtended.prototype.handleMobilMenu = function (e) {
-    toggleClass(this.$module, "show-mobile-menu");
-};
-
-/**
- * When the user scrolls down from the top of the document, resize the navbar's padding and the logo
- */
-HeaderExtended.prototype.scrollFunction = function () {
-    let $module = this.$module;
-    let $headerComputedStyle = getComputedStyle($module);
-    let $headerPosition = $headerComputedStyle.getPropertyValue('position');
-    // skip if it's not a mobile view
-    if (['sticky', 'fixed'].indexOf($headerPosition) < 0) {
-        return;
-    }
-
-    if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-        $module.classList.add('idsk-header-extended--shrink');
-    } else if (document.body.scrollTop < 10 && document.documentElement.scrollTop < 10) {
-        $module.classList.remove('idsk-header-extended--shrink');
-    }
-};
+// import Crossroad from "./components/crossroad/crossroad";
+// import HeaderExtended from './components/header-extended/header-extended';
 
 function initAll$1(options) {
   // Set the options to an empty object by default if no options are passed.
@@ -2952,10 +2870,15 @@ function initAll$1(options) {
 
   // Allow the user to initialise ID-SK Frontend in only certain sections of the page
   // Defaults to the entire document if nothing is set.
-  let scope = typeof options.scope !== 'undefined' ? options.scope : document;
+  var scope = typeof options.scope !== 'undefined' ? options.scope : document;
+
+  var $buttons = scope.querySelectorAll('[data-module="idsk-button"]');
+  nodeListForEach($buttons, function ($button) {
+    new Button$1($button).init();
+  });
 
   // Find first Footer-extended module to enhance.
-  let $footerExtended = scope.querySelectorAll(
+  var $footerExtended = scope.querySelectorAll(
     '[data-module="idsk-footer-extended"]'
   );
   nodeListForEach($footerExtended, function ($footerExtended) {
@@ -2969,25 +2892,24 @@ function initAll$1(options) {
     new CharacterCount$1($characterCount).init();
   });
 
-  var $crossroad = scope.querySelectorAll('[data-module="idsk-crossroad"]');
-  nodeListForEach($crossroad, function ($crossroad) {
-    new Crossroad($crossroad).init();
-  });
+  // var $crossroad = scope.querySelectorAll('[data-module="idsk-crossroad"]');
+  // nodeListForEach($crossroad, function ($crossroad) {
+  //   new Crossroad($crossroad).init();
+  // });
 
-  // Find first Header-extended module to enhance.
-  let $headersExtended = scope.querySelectorAll('[data-module="idsk-header-extended"]');
-  nodeListForEach($headersExtended, function ($headerExtended) {
-    new HeaderExtended($headerExtended).init();
-  });
+  // // Find first Header-extended module to enhance.
+  // var $headersExtended = scope.querySelectorAll('[data-module="idsk-header-extended"]')
+  // nodeListForEach($headersExtended, function ($headerExtended) {
+  //   new HeaderExtended($headerExtended).init()
+  // })
 
   // Init all GOVUK components js
   initAll(options);
 }
 
 exports.initAll = initAll$1;
+exports.Button = Button$1;
 exports.CharacterCount = CharacterCount$1;
-exports.Crossroad = Crossroad;
 exports.FooterExtended = FooterExtended;
-exports.HeaderExtended = HeaderExtended;
 
 })));

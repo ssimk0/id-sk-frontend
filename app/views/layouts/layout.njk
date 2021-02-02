@@ -9,7 +9,7 @@
 {% block header %}
   {# {% include "../partials/banner.njk" %} #}
   {% from "../../../src/idsk/components/header/macro.njk" import idskHeader %}
-  {{ idskHeader({"serviceName": "Jednotný dizajn manuál elektronických služieb"}) }}
+  {{ idskHeader({"logo": true, "serviceName": "Jednotný dizajn manuál elektronických služieb"}) }}
   
   {% from "phase-banner/macro.njk" import govukPhaseBanner %}
   <div class="govuk-width-container">
