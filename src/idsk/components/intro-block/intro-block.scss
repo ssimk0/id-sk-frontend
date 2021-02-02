@@ -213,6 +213,7 @@
         @include mq($from: desktop) {
             margin-left: govuk-spacing(7);
             width: 26%;
+            float: right;
         }
     }
 
