@@ -41,7 +41,7 @@
     {% if params.language %}
       <div
         tabindex="1"
-        class="idsk-header-extended__language idsk-js-header-extended-language-toggle" 
+        class="idsk-header-extended__language idsk-js-header-extended-language-toggle {{ 'idsk-header-extended--left' if not params.search }}" 
         aria-controls="idsk-header-extended__language-list" 
       >
         <div class="idsk-header-extended__language-wrapper">

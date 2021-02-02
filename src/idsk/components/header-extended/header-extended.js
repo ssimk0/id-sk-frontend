@@ -45,7 +45,7 @@ HeaderExtended.prototype.init = function () {
         let $self = this;
         // Handle $toggleSubmenu click events
         nodeListForEach($toggleSubmenus, function ($toggleSubmenu) {
-            $toggleSubmenu.addEventListener('focus', $self.handleSubmenuClick.bind($self));
+            $toggleSubmenu.addEventListener('focus', $self.handleSubmenuClick2.bind($self));
             $toggleSubmenu.addEventListener('blur', $self.handleSubmenuClick.bind($self));
         })
     }
@@ -94,6 +94,21 @@ HeaderExtended.prototype.handleLanguageSelectorClick = function (e) {
 HeaderExtended.prototype.handleSubmenuClick = function (e) {
     let $srcEl = e.target || e.srcElement;
     let $toggleButton = $srcEl.closest('.idsk-header-extended__navigation-item');
+    toggleClass($toggleButton, 'idsk-header-extended__navigation-item--active');
+}/**
+ * Handle open/hide submenu
+ * @param {object} e 
+ */
+
+HeaderExtended.prototype.handleSubmenuClick2 = function (e) {
+    let $srcEl = e.target || e.srcElement;
+    let $toggleButton = $srcEl.closest('.idsk-header-extended__navigation-item');
+    let $currActiveList = this.$module.querySelectorAll('.idsk-header-extended__navigation-item--active');
+
+    if ($currActiveList.length > 0) {
+        $currActiveList[0].classList.remove('idsk-header-extended__navigation-item--active');
+    }
+    
     toggleClass($toggleButton, 'idsk-header-extended__navigation-item--active');
 }
 

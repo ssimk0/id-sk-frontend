@@ -171,7 +171,6 @@ previewLayout: full-width
 
 examples:
 - name: s výberom jazyka a sociálnymi sieťami a navigáciou
-  description: možnosť zvolenia jazykovej mutácia a pridania odkazov na sociálne siete a navigáciou
   data:
     logo: logo-mirri-farebne.svg
     logoSmall: logo-mirri-small-farebne.svg
@@ -180,15 +179,15 @@ examples:
     logoGrid: govuk-grid-column-three-quarters govuk-grid-column-one-half-from-desktop
     navigation: 
       - link: '#1'
-        text: Ministerstvo
+        text: Eurofondy
       - link: '#2'
-        text: Sekcie
+        text: Informatizácia
       - link: '#3'
-        text: Programy EŠIF
+        text: Regionánly rozvoj
       - link: '#4'
-        text: Aktuality
+        text: Inovácie
       - link: '#5'
-        text: Kontakt
+        text: Investície
     language: 
       current:
         text: slovenčina
@@ -221,17 +220,17 @@ examples:
     logoWhite: logo-mirri-biele.svg
     logoSmallWhite: logo-mirri-small-biele.svg
     logoGrid: govuk-grid-column-three-quarters govuk-grid-column-one-half-from-desktop
-    navigation: 
+    navigation:
       - link: '#1'
-        text: Ministerstvo
+        text: Eurofondy
       - link: '#2'
-        text: Sekcie
+        text: Informatizácia
       - link: '#3'
-        text: Programy EŠIF
+        text: Regionánly rozvoj
       - link: '#4'
-        text: Aktuality
+        text: Inovácie
       - link: '#5'
-        text: Kontakt
+        text: Investície
     language: 
       current:
         text: slovenčina
@@ -270,29 +269,24 @@ examples:
     logoWhite: logo-mirri-biele.svg
     logoSmallWhite: logo-mirri-small-biele.svg
     logoGrid: govuk-grid-column-one-half govuk-grid-column-one-third-from-desktop
-    navigation: 
+    navigation:
       - link: '#1'
-        text: Ministerstvo
+        text: Eurofondy
       - link: '#2'
-        text: Sekcie
+        text: Informatizácia
       - link: '#3'
-        text: Programy EŠIF
+        text: Regionánly rozvoj
         submenu: 
           - link: '#3.1'
-            text: Domov dôchodcov
-            icon: fas fa-home
+            text: O regionálnom rozvoji
           - link: '#3.2'
             text: Zoznam úloh
-            icon: fas fa-tasks
           - link: '#3.3'
             text: Zabezpečenie dát
-            icon: fas fa-unlock
           - link: '#3.4'
             text: Ochrana práv
-            icon: fas fa-user-shield
           - link: '#3.5'
             text: Kvapka nádeje
-            icon: fas fa-hand-holding-water
           - link: '#3.6'
             text: Programy 6
           - link: '#3.7'
@@ -304,9 +298,9 @@ examples:
           - link: '#3.10'
             text: Programy 10
       - link: '#4'
-        text: Aktuality
+        text: Inovácie
       - link: '#5'
-        text: Kontakt
+        text: Investície
     search: true
     language: 
       current:
