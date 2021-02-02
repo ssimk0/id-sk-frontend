@@ -7,7 +7,7 @@
 {% set pageName = "Spätná väzba" %}
 
 {% block header %}
-  {{ idskHeader({containerClasses: 'idsk-header__container--full-width '}) }}
+  {{ idskHeader({containerClasses: 'idsk-header__container--full-width govuk-width-container'}) }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -20,7 +20,6 @@
 {% endblock %}
 
 {% block content %}
-  <div class="govuk-width-container">
     <div class="govuk-grid-row">
       {{ idskFeedback({
         counter : 0,
@@ -46,7 +45,6 @@
         }
       ]}) }}
     </div>
-  </div>
 {% endblock %}
 
 {% block footer %}
