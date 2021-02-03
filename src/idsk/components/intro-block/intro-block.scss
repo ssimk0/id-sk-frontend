@@ -249,6 +249,22 @@
         padding-right: govuk-spacing(1);
     }
 
+    .app-pane-grey .idsk-intro-block-side-menu-circle svg circle {
+        fill: govuk-colour("black");
+    }
+
+    .app-pane-grey {
+        h2.govuk-heading-l,
+        a,
+        li {
+            color: govuk-colour("black");
+        }
+    }
+
+    .app-pane-blue .idsk-intro-block-side-menu-circle svg circle {
+        fill: govuk-colour("white");
+    }
+
     .idsk-intro-block-top-content-container-default #idsk-intro-block-top-content-container-desktop {
         padding-top: govuk-spacing(2);
 
@@ -264,7 +280,7 @@
         }
     }
 
-    #idsk-intro-block-top-content-container-blue-background .govuk-heading-l {
+    .app-pane-blue .govuk-heading-l {
         color: govuk-colour("white");
     }
 

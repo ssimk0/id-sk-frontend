@@ -37,8 +37,8 @@
                 </div>
             </div>
             <div class="{{ 'idsk-intro-block-top-content-container-default' if params.classBackground=='app-pane-blue' or params.classBackground=='app-pane-grey'}}">
-                {% if params.classBackground=="app-pane-blue" %}
-                    <div id="idsk-intro-block-top-content-container-blue-background" class="govuk-grid-column-full govuk-grid-column-one-third-from-desktop app-pane-blue idsk-intro-block-text-colour">
+                {% if params.classBackground=="app-pane-blue" or params.classBackground=="app-pane-grey" %}
+                    <div id="idsk-intro-block-top-content-container-blue-background" class="govuk-grid-column-full govuk-grid-column-one-third-from-desktop {{ params.classBackground }} idsk-intro-block-text-colour">
                         <h2 class="govuk-heading-l">
                             {{ params.sideMenuTitle if params.sideMenuTitle else "Populárny obsah"}}
                         </h2>
@@ -48,9 +48,10 @@
                                     <li>
                                         <span class="idsk-intro-block-side-menu-circle">
                                             <svg width="10" height="10" viewbox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <circle cx="5" cy="5" r="5" fill="white"/>
+                                                <circle cx="5" cy="5" r="5"/>
                                             </svg>
                                         </span>
+                                        
                                         <p>
                                             <a class="idsk-intro-block-text-colour" href="{{sideMenu.href}}">
                                                 {{ sideMenu.item }}</a>
