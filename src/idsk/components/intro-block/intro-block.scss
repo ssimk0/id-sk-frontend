@@ -216,6 +216,7 @@
 
         @include mq($from: desktop) {
             margin-left: govuk-spacing(7);
+            margin-top: govuk-spacing(1);
             width: 26%;
             float: right;
         }
@@ -255,6 +256,9 @@
         a,
         li {
             color: govuk-colour("black");
+        }
+        p {
+            margin-top: govuk-spacing(3);
         }
     }
 
