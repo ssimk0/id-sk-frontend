@@ -38,12 +38,12 @@
             </div>
             <div class="{{ 'idsk-intro-block-top-content-container-default' if params.classBackground=='app-pane-blue' or params.classBackground=='app-pane-grey'}}">
                 {% if params.classBackground=="app-pane-blue" or params.classBackground=="app-pane-grey" %}
-                    <div id="idsk-intro-block-top-content-container-blue-background" class="govuk-grid-column-full govuk-grid-column-one-third-from-desktop {{ params.classBackground }} idsk-intro-block-text-colour">
+                    <div id="idsk-intro-block-top-content-container-coloured-background" class="govuk-grid-column-full govuk-grid-column-one-third-from-desktop {{ params.classBackground }} ">
                         <h2 class="govuk-heading-l">
                             {{ params.sideMenuTitle if params.sideMenuTitle else "Populárny obsah"}}
                         </h2>
-                        <div class="idsk-intro-block-top-content-menu-blue-background-div">
-                            <ul class="idsk-intro-block-top-content-menu-item-blue-background">
+                        <div>
+                            <ul class="idsk-intro-block-top-content-menu-item-coloured-background">
                                 {% for sideMenu in params.sideMenu %}
                                     <li>
                                         <span class="idsk-intro-block-side-menu-circle">
@@ -51,9 +51,8 @@
                                                 <circle cx="5" cy="5" r="5"/>
                                             </svg>
                                         </span>
-                                        
                                         <p>
-                                            <a class="idsk-intro-block-text-colour" href="{{sideMenu.href}}">
+                                            <a class="" href="{{sideMenu.href}}">
                                                 {{ sideMenu.item }}</a>
                                         </p>
                                     </li>
