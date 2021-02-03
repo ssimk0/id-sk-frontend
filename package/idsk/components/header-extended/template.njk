@@ -1,0 +1,167 @@
+<header 
+  class="idsk-header-extended {{ params.classes if params.classes }}" 
+  role="banner" 
+  data-module="idsk-header-extended"
+  {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}
+>
+  <div class="idsk-header-extended__container {{ params.containerClasses | default('govuk-width-container') }}">
+    
+    <div class="idsk-header-extended__logo {{ params.logoGrid if params.logoGrid else 'govuk-grid-column-three-quarters' }}">
+      <a href="{{ params.homepageUrl | default('/') }}" title="{{ params.headerTitle if params.headerTitle }}">
+        <div class="idsk-header-extended__logotype-crown">
+          {% include params.assetsPath | default('../../assets/images/header-extended/') + params.logo %}
+        </div>
+        <div class="idsk-header-extended__logotype-crown-mobile">
+          {% include params.assetsPath | default('../../assets/images/header-extended/') + params.logoSmall %}
+        </div>
+        <div class="idsk-header-extended__logotype-crown-mobile-navigation">
+          {% include params.assetsPath | default('../../assets/images/header-extended/') + params.logoWhite %}
+        </div>
+        <div class="idsk-header-extended__logotype-crown-mobile-small-navigation">
+          {% include params.assetsPath | default('../../assets/images/header-extended/') + params.logoSmallWhite %}
+        </div>
+      </a>
+      <div class="idsk-header-extended-x-mark"></div>
+    </div>
+
+    <div tabindex="0" class="idsk-header-extended__search {{ 'mobile-only' if not params.search }}">
+      <div class="idsk-header-extended__search-text">
+        <span><i class="fas fa-search"></i>{{ params.search.text if params.search.text else "Vyhľadávanie" }}</span>
+      </div>
+      <div class="idsk-header-extended__search-form">
+        <form>
+          <input type="text" name="search" placeholder="{{ params.search.placeholder if params.search.placeholder else 'Zadajte hľadaný výraz' }}">
+          <a href="#" role="button" draggable="false" class="idsk-button idsk-button--start" data-module="idsk-button">
+            <i class="fas fa-search"></i>
+          </a>
+        </form>
+      </div>
+    </div>
+
+    {% if params.language %}
+      <div
+        tabindex="1"
+        class="idsk-header-extended__language idsk-js-header-extended-language-toggle {{ 'idsk-header-extended--left' if not params.search }}" 
+        aria-controls="idsk-header-extended__language-list" 
+      >
+        <div class="idsk-header-extended__language-wrapper">
+          <div class="idsk-header-extended__language--current">
+            <input name="locale-language" type="text" autocomplete="off" placeholder="Language" class="idsk-header-extended__language-input">
+            <span class="idsk-header-extended__language--current-text">
+              <img 
+                src="{{ params.assetsPath | default('/assets/images/flags/') + params.language.current.flag }}"
+                alt="{{ params.language.current.text }}"
+                >
+              <span>{{ params.language.current.text }}</span>
+            </span>
+          </div>
+          <div class="idsk-header-extended__language-list">
+            <ul>
+              {% for language in params.language.choices %}
+                <li>
+                  <a title="{{ language.text }}" href="{{ language.link }}">
+                    <img src="{{ params.assetsPath | default('/assets/images/flags/') + language.flag }}" alt="{{ language.text }}">
+                    {{ language.text }}
+                  </a> 
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+    {% if params.socials %}
+      <div class="idsk-header-extended__social">
+        <ul>
+          {% for social in params.socials %}
+            <li class="idsk-header-extended__social_item">
+              <a href="{{ social.link }}" title="{{ social.text }}" target="_blank">
+                <i class="{{ social.icon }}" aria-hidden="true"></i>
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+
+    <div class="idsk-header-extended__content">
+      <button 
+        type="button" 
+        role="button"
+        class="idsk-header-extended__menu-button idsk-js-header-extended-side-menu"
+        aria-controls="navigation"
+        aria-label="Show or hide Top Level Navigation"
+        >Menu 
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="5" y1="19.8752" x2="35" y2="19.8752" stroke="#003078" stroke-width="3"/>
+          <line x1="5" y1="29.2507" x2="30.5009" y2="29.2507" stroke="#003078" stroke-width="3"/>
+          <line x1="5.00177" y1="10.5" x2="30.5027" y2="10.5" stroke="#003078" stroke-width="3" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      {% if params.navigation %}
+        <nav>
+          <ul
+            id="navigation"
+            class="idsk-header-extended__navigation {{ params.navigationClasses if params.navigationClasses }}"
+            aria-label="Top Level Navigation"
+            >
+            {% for item in params.navigation %}
+              <li class="idsk-header-extended__navigation-item
+                {{ ' idsk-header-extended__navigation-item--active' if item.active }}"
+              >
+                <a 
+                  tabindex="{{loop.index + 1}}"
+                  class="idsk-header-extended__link
+                    {{ ' idsk-js-header-extended-submenu-toggle' if item.submenu }}
+                    {{ ' idsk-header-extended__arrow' if item.submenu }}"
+                  href="{{ item.link }}"{% for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %}
+                  title="{{ item.text }}"
+                  >
+                  {{ item.text }}
+                </a>
+                {% if item.submenu %}
+                  <div class="idsk-header-extended__navigation-submenu">
+                    <ul class="govuk-width-container">
+                      {% for subItem in item.submenu%}
+                        <li>
+                          <span>
+                            <a href="{{ subItem.link }}" title="{{ subItem.text }}">
+                              {% if subItem.icon %}
+                              <i class="{{ subItem.icon }}" aria-hidden="true"></i>
+                              {% endif %}
+                              {{ subItem.text }}
+                            </a>
+                          <span>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        </nav>
+      {% endif %}
+    </div>
+
+  </div>
+  
+  <div class="idsk-header-extended-overlay"></div>
+
+</header>
+
+<div class="idsk-header-extended-ie-fix"></div>
+
+<div class="idsk-header-extended-notifications">
+  {% if params.notifications %}
+    {% from "../warning-text/macro.njk" import idskWarningText %}
+    {% for notification in params.notifications %}
+      {{ idskWarningText({
+        "type": notification.type,
+        "html": notification.html,
+        "iconFallbackText": notification.iconFallbackText
+      }) }}
+    {% endfor %}
+  {% endif %}
+</div>

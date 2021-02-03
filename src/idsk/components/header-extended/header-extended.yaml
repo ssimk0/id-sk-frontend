@@ -183,7 +183,7 @@ examples:
       - link: '#2'
         text: Informatizácia
       - link: '#3'
-        text: Regionánly rozvoj
+        text: Regionálny rozvoj
       - link: '#4'
         text: Inovácie
       - link: '#5'
@@ -226,7 +226,7 @@ examples:
       - link: '#2'
         text: Informatizácia
       - link: '#3'
-        text: Regionánly rozvoj
+        text: Regionálny rozvoj
       - link: '#4'
         text: Inovácie
       - link: '#5'
@@ -275,7 +275,7 @@ examples:
       - link: '#2'
         text: Informatizácia
       - link: '#3'
-        text: Regionánly rozvoj
+        text: Regionálny rozvoj
         submenu: 
           - link: '#3.1'
             text: O regionálnom rozvoji
