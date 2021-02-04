@@ -1,18 +1,31 @@
-{% from "../../../../src/idsk/components/in-page-navigation/macro.njk" import idskInPageNavigation %}
-{{ idskInPageNavigation({
-    items: [
-        {
-            text: "Úvod",
-            link: "#uvod",
-            active: true
-        },
-        {
-            text: "Počet subjektov aktuálne",
-            link: "#pocet-subjektov-aktualne"
-        },
-        {
-            text: "Odklad povinnej aktivácie",
-            link: "#odklad-povinnej-aktivacie"
-        }
-    ]
-}) }}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/public/app.css" />
+  </head>
+  <body class="js-enabled">
+
+    {% from "../../../../src/idsk/components/in-page-navigation/macro.njk" import idskInPageNavigation %}
+    {{ idskInPageNavigation({
+        items: [
+            {
+                text: "Úvod",
+                link: "#uvod",
+                active: true
+            },
+            {
+                text: "Počet subjektov aktuálne",
+                link: "#pocet-subjektov-aktualne"
+            },
+            {
+                text: "Odklad povinnej aktivácie",
+                link: "#odklad-povinnej-aktivacie"
+            }
+        ]
+    }) }}
+    <script src="/public/all.js"></script>
+    <script>window.GOVUKFrontend.initAll()</script>
+    
+  </body>
+</html>

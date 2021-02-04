@@ -27,6 +27,7 @@
                 <li><a href="#info">Popis</a></li>
                 <li><a href="#ukazka1">Ukážka 1</a></li>
                 <li><a href="#ukazka2">Ukážka 2</a></li>
+                <li><a href="/vzory/stranka-s-obsahom">Stránka s obsahom</a></li>
             </ul>
 
             <h3 class="govuk-heading-m" id="info">Popis</h3>
@@ -39,11 +40,15 @@
           <h3 class="govuk-heading-m" id="ukazka1">Ukážka 1</h3>
           <div class="govuk-grid-row">
             <div class="govuk-grid-column-full">
-              <div class="example">
+              <div class="example example-mobile example-mobile-scroll">
                 {% set exampleComponentHtml %}
                     {% include "../komponenty/examples/inPageNavigation.njk" %}
                 {% endset %}
-                {{exampleComponentHtml | safe}}
+                <iframe 
+                  srcdoc="{{ exampleComponentHtml }}"
+                  height="270px"
+                >
+                </iframe>
               </div>
             </div>
           </div>
