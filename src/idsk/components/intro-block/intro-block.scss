@@ -9,7 +9,7 @@
         @include govuk-font($size: 16);
     }
 
-    .idsk-intro-block-search-button {
+    .idsk-intro-block--search__button {
         width: 55px;
         height: 53px;
 
@@ -19,7 +19,7 @@
         }
     }
 
-    .idsk-intro-block-search-input {
+    .idsk-intro-block__input {
         @include govuk-font($size: 19);
 
         height: 53px;
@@ -35,26 +35,26 @@
         }
     }
 
-    .idsk-intro-block-search-input:focus {
+    .idsk-intro-block__input:focus {
         border: 2px solid govuk-colour("black");
     }
 
-    .idsk-intro-block-search-input-with-button .govuk-input:focus {
+    .idsk-intro-block__search .govuk-input:focus {
         margin-right: 3px;
     }
 
-    .idsk-intro-block-search-input-with-button {
+    .idsk-intro-block__search {
         display: flex;
     }
 
-    .idsk-intro-block-inline-list {
+    .idsk-intro-block__list__ul {
         margin-top: 0;
         margin-bottom: govuk-spacing(3);
         padding-left: 0;
         display: table;
     }
 
-    .idsk-intro-block-subtitle {
+    .idsk-intro-block__subtitle {
         color: govuk-colour("black");
         padding-bottom: govuk-spacing(5);
 
@@ -63,16 +63,7 @@
         }
     }
 
-    .idsk-intro-block-inline-text-item {
-        @include govuk-font($size: 19);
-
-        display: inline;
-        width: 60px;
-        margin-right: govuk-spacing(3);
-        margin-bottom: govuk-spacing(1);
-    }
-
-    .idsk-intro-block-inline-list-item {
+    .idsk-intro-block__list__li {
         @include govuk-font($size: 16);
 
         display: inline-block;
@@ -85,16 +76,16 @@
         }
     }
 
-    .idsk-intro-block-inline-list-item-a {
+    .idsk-intro-block__list__a {
         white-space: nowrap;
     }
 
-    .idsk-intro-block-inline-list-item .govuk-link:active,
-    .idsk-intro-block-inline-list-item .govuk-link:link {
+    .idsk-intro-block__list__li .govuk-link:active,
+    .idsk-intro-block__list__li .govuk-link:link {
         color: govuk-colour("dark-grey");
     }
 
-    .idsk-intro-block-top-content-menu {
+    .idsk-intro-block__side-menu__default__ul {
         @include govuk-font($size: 19);
 
         display: contents;
@@ -107,7 +98,7 @@
         color: govuk-colour("blue");
     }
 
-    .idsk-intro-block-top-content-menu-item-coloured-background {
+    .idsk-intro-block__side-menu__ul {
         float: none;
         padding-bottom: govuk-spacing(4);
         display: contents;
@@ -118,20 +109,15 @@
         }
     }
 
-    .idsk-intro-block-top-content-menu-item-coloured-background li {
+    .idsk-intro-block__side-menu__ul .idsk-intro-block__side-menu__li {
         display: flex;
     }
 
-    .idsk-intro-block-top-content-menu-item-coloured-background p {
+    .idsk-intro-block__side-menu__ul .idsk-intro-block__side-menu__text {
         margin-bottom: -5px;
     }
 
-    #idsk-intro-block-side-menu-div {
-        padding-top: govuk-spacing(2);
-        padding-bottom: govuk-spacing(3);
-    }
-
-    .idsk-intro-block-top-content-menu-item {
+    .idsk-intro-block__side-menu__default__li {
         display: table;
         float: none;
         margin: -20px 0;
@@ -143,19 +129,8 @@
         }
     }
 
-    .idsk-intro-block-top-content-menu-blue-background {
-        padding-inline-start: 0;
-    }
 
-    .idsk-intro-block-top-content-menu-blue-background-div {
-        padding-left: govuk-spacing(2);
-
-        @include mq($from: desktop) {
-            padding-left: govuk-spacing(1);
-        }
-    }
-
-    #idsk-intro-block-top-content-container-desktop h2 {
+    #idsk-intro-block__side-menu__default .govuk-heading-l {
         margin: 0;
         float: unset;
         margin-bottom: -15px;
@@ -166,7 +141,7 @@
         }
     }
 
-    #idsk-intro-block-top-content-container-desktop {
+    #idsk-intro-block__side-menu__default {
         width: auto;
 
         @include mq($from: desktop) {
@@ -175,7 +150,7 @@
         }
     }
 
-    #idsk-intro-block-top-content-container-coloured-background h2 {
+    #idsk-intro-block__side-menu__title .govuk-heading-l {
         padding-top: govuk-spacing(3);
         margin-bottom: 0;
 
@@ -186,7 +161,7 @@
         }
     }
 
-    .idsk-intro-block-bottom-menu-caption {
+    .idsk-intro-block__bottom-menu__li {
         display: block;
         color: govuk-colour("black");
         padding-bottom: govuk-spacing(2);
@@ -207,11 +182,11 @@
         }
     }
 
-    .idsk-intro-block-popular-content-div {
+    .idsk-intro-block__side-menu__default__subtitle {
         padding-top: govuk-spacing(5);
     }
 
-    #idsk-intro-block-top-content-container-coloured-background {
+    #idsk-intro-block__side-menu__title {
         padding-bottom: govuk-spacing(5);
 
         @include mq($from: desktop) {
@@ -222,7 +197,7 @@
         }
     }
 
-    .idsk-intro-block-top-content-container-default {
+    .idsk-intro-block__side-menu {
         @include mq($from: tablet) {
             margin: 0 govuk-spacing(3);
         }
@@ -236,45 +211,39 @@
         background-color: govuk-colour("blue");
     }
 
-    .idsk-intro-block-text-colour {
-        color: govuk-colour("white");
-        width: auto;
-        line-break: normal;
-    }
-
-    .idsk-intro-block-side-menu-circle {
+    .idsk-intro-block__side-menu__span {
         padding-top: govuk-spacing(3);
         padding-right: govuk-spacing(1);
     }
 
-    .app-pane-grey .idsk-intro-block-side-menu-circle svg circle {
+    .app-pane-grey .idsk-intro-block__side-menu__span svg circle {
         fill: govuk-colour("black");
     }
 
     .app-pane-grey {
         .govuk-heading-l,
-        a,
-        li {
+        .idsk-intro-block__side-menu__a,
+        .idsk-intro-block__side-menu__li {
             color: govuk-colour("black");
         }
-        p {
+        .idsk-intro-block__side-menu__text {
             margin-top: govuk-spacing(3);
         }
     }
 
-    .app-pane-blue .idsk-intro-block-side-menu-circle svg circle {
+    .app-pane-blue .idsk-intro-block__side-menu__span svg circle {
         fill: govuk-colour("white");
     }
 
     .app-pane-blue {
         .govuk-heading-l,
-        a,
-        li {
+        .idsk-intro-block__side-menu__a,
+        .idsk-intro-block__side-menu__li {
             color: govuk-colour("white");
         }
     }
 
-    .idsk-intro-block-top-content-container-default #idsk-intro-block-top-content-container-desktop {
+    .idsk-intro-block__side-menu #idsk-intro-block__side-menu__default {
         padding-top: govuk-spacing(2);
 
         @include mq($from: tablet) {
@@ -295,8 +264,8 @@
         color: govuk-colour("white");
     }
 
-    #idsk-intro-block-top-content-container-desktop h2,
-    .idsk-intro-block-top-content-container-default h2 {
+    #idsk-intro-block__side-menu__default .govuk-heading-l,
+    .idsk-intro-block__side-menu .govuk-heading-l {
         text-transform: uppercase;
     }
 }
