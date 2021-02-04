@@ -9,6 +9,25 @@
         @include govuk-font($size: 16);
     }
 
+    .idsk-intro-block .govuk-heading-xl {
+        margin-bottom: 0;
+        @include mq($from: desktop) {
+            @include govuk-font($size: 36, $weight: bold);
+        }
+    }
+
+    .idsk-intro-block .govuk-heading-l {
+        margin-bottom: 0;
+
+        @include mq($from: tablet) {
+            @include govuk-font($size: 24, $weight: bold);
+        }
+    }
+
+    .idsk-intro-block .app-pane-grey {
+        background-color: govuk-colour("light-grey");
+    }
+
     .idsk-intro-block--search__button {
         width: 55px;
         height: 53px;
@@ -47,13 +66,6 @@
         display: flex;
     }
 
-    .idsk-intro-block__list__ul {
-        margin-top: 0;
-        margin-bottom: govuk-spacing(3);
-        padding-left: 0;
-        display: table;
-    }
-
     .idsk-intro-block__subtitle {
         color: govuk-colour("black");
         padding-bottom: govuk-spacing(5);
@@ -61,6 +73,13 @@
         @include mq($from: desktop) {
             @include govuk-font($size: 19);
         }
+    }
+
+    .idsk-intro-block__list__ul {
+        margin-top: 0;
+        margin-bottom: govuk-spacing(3);
+        padding-left: 0;
+        display: table;
     }
 
     .idsk-intro-block__list__li {
@@ -129,7 +148,6 @@
         }
     }
 
-
     #idsk-intro-block__side-menu__default .govuk-heading-l {
         margin: 0;
         float: unset;
@@ -161,27 +179,6 @@
         }
     }
 
-    .idsk-intro-block__bottom-menu__li {
-        display: block;
-        color: govuk-colour("black");
-        padding-bottom: govuk-spacing(2);
-
-        @include mq($from: desktop) {
-            @include govuk-font($size: 19);
-
-            display: inline-grid;
-            padding-bottom: 0;
-            padding-right: govuk-spacing(4);
-        }
-    }
-
-    .idsk-intro-block .govuk-heading-xl {
-        margin-bottom: 0;
-        @include mq($from: desktop) {
-            @include govuk-font($size: 36, $weight: bold);
-        }
-    }
-
     .idsk-intro-block__side-menu__default__subtitle {
         padding-top: govuk-spacing(5);
     }
@@ -203,17 +200,37 @@
         }
     }
 
-    .idsk-intro-block .app-pane-grey {
-        background-color: govuk-colour("light-grey");
-    }
-
-    .app-pane-blue {
-        background-color: govuk-colour("blue");
-    }
-
     .idsk-intro-block__side-menu__span {
         padding-top: govuk-spacing(3);
         padding-right: govuk-spacing(1);
+    }
+
+    #idsk-intro-block__side-menu__default .govuk-heading-l,
+    .idsk-intro-block__side-menu .govuk-heading-l {
+        text-transform: uppercase;
+    }
+
+    .idsk-intro-block__side-menu #idsk-intro-block__side-menu__default {
+        padding-top: govuk-spacing(2);
+
+        @include mq($from: tablet) {
+            padding-left: govuk-spacing(3);
+            padding-bottom: govuk-spacing(3);
+        }
+    }
+
+    .idsk-intro-block__bottom-menu__li {
+        display: block;
+        color: govuk-colour("black");
+        padding-bottom: govuk-spacing(2);
+
+        @include mq($from: desktop) {
+            @include govuk-font($size: 19);
+
+            display: inline-grid;
+            padding-bottom: 0;
+            padding-right: govuk-spacing(4);
+        }
     }
 
     .app-pane-grey .idsk-intro-block__side-menu__span svg circle {
@@ -231,6 +248,10 @@
         }
     }
 
+    .app-pane-blue {
+        background-color: govuk-colour("blue");
+    }
+
     .app-pane-blue .idsk-intro-block__side-menu__span svg circle {
         fill: govuk-colour("white");
     }
@@ -243,29 +264,7 @@
         }
     }
 
-    .idsk-intro-block__side-menu #idsk-intro-block__side-menu__default {
-        padding-top: govuk-spacing(2);
-
-        @include mq($from: tablet) {
-            padding-left: govuk-spacing(3);
-            padding-bottom: govuk-spacing(3);
-        }
-    }
-
-    .idsk-intro-block .govuk-heading-l {
-        margin-bottom: 0;
-
-        @include mq($from: tablet) {
-            @include govuk-font($size: 24, $weight: bold);
-        }
-    }
-
     .app-pane-blue .govuk-heading-l {
         color: govuk-colour("white");
-    }
-
-    #idsk-intro-block__side-menu__default .govuk-heading-l,
-    .idsk-intro-block__side-menu .govuk-heading-l {
-        text-transform: uppercase;
     }
 }
