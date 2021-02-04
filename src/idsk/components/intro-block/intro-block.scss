@@ -184,10 +184,9 @@
     }
 
     #idsk-intro-block__side-menu__title {
-        padding-bottom: govuk-spacing(5);
+        padding-bottom: govuk-spacing(3);
 
         @include mq($from: desktop) {
-            margin-left: govuk-spacing(7);
             margin-top: govuk-spacing(1);
             width: 26%;
             float: right;
