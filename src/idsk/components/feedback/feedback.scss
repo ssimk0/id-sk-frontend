@@ -5,63 +5,49 @@
 @import "../../../govuk/objects/grid";
 
 @include govuk-exports("idsk/component/feedback") {
-    #idsk-feedback-content {
+    #idsk-feedback__content {
         @include govuk-font($size: 19);
     }
 
-    .idsk-feedback-options-ul {
-        padding-inline-start: govuk-spacing(1);
-        margin-bottom: 0px;
-    }
-
-    .idsk-feedback-options-li {
-        display: block;
-        @include govuk-font($size: 24);
-
-        @include mq(desktop) {
-            @include govuk-font($size: 19);
-        }
-    }
-
-    .idsk-feedback-buttons .govuk-button {
+    .idsk-feedback__buttons .govuk-button {
         width: auto;
     }
 
-    #idsk-feedback-thanks-for-feedback {
+    #idsk-feedback__thanks {
         padding-left: 13px;
     }
 
-    #idsk-feedback-improove-question-bar .govuk-heading-m {
+    #idsk-feedback__question-bar .govuk-heading-m {
         margin-bottom: -10px;
     }
 
-    .idsk-feedback-subtitle {
+    .idsk-feedback__subtitle {
         margin-bottom: govuk-spacing(6);
     }
 
-    .idsk-feedback-send-button {
+    #idsk-feedback__send-button {
         margin-right: govuk-spacing(4);
     }
 
-    .idsk-feedback-display-none {
+    .idsk-feedback--hidden {
         display: none;
     }
 
-    .idsk-feedback-display-hidden {
+    .idsk-feedback--invisible {
         visibility: hidden;
     }
 
-    .idsk-feedback-hidden {
+    .idsk-feedback--animation {
         max-height: 0;
         transition: max-height 0.7s ease-out;
     }
 
-    #idsk-feedback-improove-question-bar .govuk-textarea:focus {
+    #idsk-feedback__question-bar .govuk-textarea:focus {
         width: 98%;
         margin-left: 3px;
     }
 
-    .idsk-feedback-open {
+    .idsk-feedback--open {
         max-height: 619px;
         height: auto;
         transition: max-height 0.7s ease-in;
