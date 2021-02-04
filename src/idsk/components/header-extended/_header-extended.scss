@@ -533,6 +533,7 @@
       width: 100vw;
       display: table;
       overflow-y: scroll;
+      z-index: 1;
     }
 
     &-overlay {

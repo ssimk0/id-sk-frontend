@@ -5,18 +5,22 @@
 @include govuk-exports("idsk/component/in-page-navigation") {
 
   .idsk-in-page-navigation {
-    @include govuk-font($size: 24);
+    @include govuk-font($size: 19);
 
-    @include mq ($until: tablet) {
+    margin-bottom: govuk-spacing(3);
+    padding: 0;
+    width: 100%;
+
+    @include mq ($from: tablet) {
+      margin-bottom: govuk-spacing(6);
       margin-left: -15px;
       padding: 0;
       width: calc(100% + 30px);
     }
 
-    @include mq ($until: desktop) {
-      margin-left: -45px;
-      padding: 0;
-      width: calc(100% + 90px);
+    @include mq ($from: desktop) {
+      width: govuk-grid-width(one-quarter);
+      padding-left: govuk-spacing(6);
     }
 
     &--sticky{
@@ -25,7 +29,9 @@
       width: 100%;
 
       @include mq ($from: desktop) {
+        position: sticky;
         top: 0;
+        width: govuk-grid-width(one-quarter);
       }
     }
   }
@@ -85,13 +91,13 @@
         transition: all 0.2s ease-in;
 
         &:before {
-          box-shadow: inset 0 -60px 20px -15px #fff, inset 0 60px 20px -15px #fff;
-          position: absolute;
-          width: 100%;
-          height: calc(100% - 40px);
-          display: block;
-          content: "";
-          margin-top: -15px;
+          // box-shadow: 0 40px 20px -5px #fff;
+          // content: "";
+          // display: block;
+          // height: 45px;
+          // position: absolute;
+          // top: 15px;
+          // width: 100%;
         }
       }
       .idsk-in-page-navigation__link-panel::before {
@@ -119,13 +125,17 @@
         border: none;
         color: govuk-colour("white");
         font-weight: bold;
-        padding: 10px 50px 10px 15px;
+        padding: govuk-spacing(3) 50px govuk-spacing(3) 15px;
         text-align: left;
         width: 100%;
         background: govuk-colour("dark-blue");
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
+
+        @include mq (tablet) {
+          padding: govuk-spacing(3) 80px govuk-spacing(3) govuk-spacing(6);
+        }
 
         &:focus {
           @include govuk-focused-text;
@@ -139,13 +149,17 @@
         content: "";
         display: inline-block;
         height: 0.45em;
-        right: 15px;
+        right: 25px;
         position: absolute;
         top: 10px;
         transform: rotate(135deg);
         transition: all 0.2s ease-out;
         vertical-align: top;
         width: 0.45em;
+
+        @include mq (tablet) {
+          right: 50px;
+        }
       }
     }
 

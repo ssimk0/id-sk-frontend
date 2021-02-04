@@ -1,6 +1,6 @@
 import '../../../govuk/vendor/polyfills/Function/prototype/bind'
 import '../../../govuk/vendor/polyfills/Event' // addEventListener and event.target normaliziation
-import { toggleClass } from '../../common'
+import { nodeListForEach, toggleClass } from '../../common'
 
 function InPageNavigation($module) {
     this.$module = $module
@@ -8,30 +8,34 @@ function InPageNavigation($module) {
 
 InPageNavigation.prototype.init = function () {
     // Check for module
-    let $module = this.$module
+    var $module = this.$module
     if (!$module) {
         return
     }
 
     // Check for button
-    let $links = $module.querySelectorAll('.idsk-in-page-navigation__link')
+    var $links = $module.querySelectorAll('.idsk-in-page-navigation__link')
     if (!$links) {
         return
     }
 
+    // list of all ids and titles
+    this.$arrTitlesAndElems = []
     // Handle $link click events
     $links.forEach($link => {
+        var $item = {}
+        $item.el = document.getElementById($link.href.split('#')[1])
+        this.$arrTitlesAndElems.push($item)
         $link.addEventListener('click', this.handleClickLink.bind(this))
     })
 
-    let $linkPanelButton = $module.querySelector('.idsk-in-page-navigation__link-panel')
+    var $linkPanelButton = $module.querySelector('.idsk-in-page-navigation__link-panel')
     if (!$linkPanelButton) {
         return
     }
     $linkPanelButton.addEventListener('click', this.handleClickLinkPanel.bind(this))
 
     // Handle floating navigation
-    this.$navTopPosition = (this.$module).offsetTop - (this.$module).offsetHeight
     window.addEventListener('scroll', this.scrollFunction.bind(this));
 }
 
@@ -40,17 +44,8 @@ InPageNavigation.prototype.init = function () {
 * @param {object} event event
 */
 InPageNavigation.prototype.handleClickLink = function (event) {
-
-    let $module = this.$module
     let $link = event.target || event.srcElement
-    let $items = $module.querySelectorAll('.idsk-in-page-navigation__list-item')
-    let $linkPanelText = $module.querySelector('.idsk-in-page-navigation__link-panel-button')
-
-    $items.forEach($item => {
-        $item.classList.remove('idsk-in-page-navigation__list-item--active')
-    })
-    $link.closest('li.idsk-in-page-navigation__list-item').classList.add('idsk-in-page-navigation__list-item--active')
-    $linkPanelText.innerText = $link.innerText;
+    this.changeCurrentLink($link.closest('.idsk-in-page-navigation__list-item'))
 }
 
 /**
@@ -58,8 +53,7 @@ InPageNavigation.prototype.handleClickLink = function (event) {
  * @param {object} event 
  */
 InPageNavigation.prototype.handleClickLinkPanel = function (event) {
-
-    let $module = this.$module
+    var $module = this.$module
     toggleClass($module, 'idsk-in-page-navigation--expand')
 }
 
@@ -67,13 +61,42 @@ InPageNavigation.prototype.handleClickLinkPanel = function (event) {
  * When the user scrolls down from the top of the document, set position to fixed
  */
 InPageNavigation.prototype.scrollFunction = function () {
-    let $module = this.$module
+    var $module = this.$module
+    var $arrTitlesAndElems = this.$arrTitlesAndElems
+    var $parentModule = $module.parentElement
+    var $navTopPosition = $parentModule.offsetTop - 55 // padding
+    let $links = $module.querySelectorAll('.idsk-in-page-navigation__list-item')
 
-    if (window.pageYOffset >= this.$navTopPosition) {
-        $module.classList.add("idsk-in-page-navigation--sticky")
+    if (window.pageYOffset <= $navTopPosition) {
+        $module.classList.remove("idsk-in-page-navigation--sticky")
     } else {
-        $module.classList.remove("idsk-in-page-navigation--sticky");
+        $module.classList.add("idsk-in-page-navigation--sticky")
     }
+
+    if ($module.classList.contains("idsk-in-page-navigation--sticky")) {
+        var $self = this;
+        $arrTitlesAndElems.some(function($item, $index) {
+            if ($item.el.offsetTop >= window.scrollY && $item.el.offsetTop <= (window.scrollY + window.innerHeight)) {
+                $self.changeCurrentLink($links[$index])
+
+                return true
+            }
+        })
+    } else {
+        this.changeCurrentLink($links[0])
+    }
+}
+
+InPageNavigation.prototype.changeCurrentLink = function (el) {
+    var $module = this.$module
+    var $items = $module.querySelectorAll('.idsk-in-page-navigation__list-item')
+    var $linkPanelText = $module.querySelector('.idsk-in-page-navigation__link-panel-button')
+
+    $items.forEach($item => {
+        $item.classList.remove('idsk-in-page-navigation__list-item--active')
+    })
+    el.classList.add('idsk-in-page-navigation__list-item--active')
+    $linkPanelText.innerText = el.querySelector('.idsk-in-page-navigation__link-title').innerText;
 }
 
 export default InPageNavigation
