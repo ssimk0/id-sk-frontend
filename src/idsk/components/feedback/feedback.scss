@@ -13,6 +13,11 @@
         line-height: 0;
     }
 
+    #idsk-feedback__content .govuk-heading-l {
+        padding-bottom: govuk-spacing(8);
+        margin-bottom: 0;
+    }
+
     .idsk-feedback__buttons {
         padding-top: govuk-spacing(2);
     }
