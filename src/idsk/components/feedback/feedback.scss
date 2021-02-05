@@ -9,12 +9,21 @@
         @include govuk-font($size: 19);
     }
 
+    #idsk-feedback__content .govuk-radios {
+        line-height: 0;
+    }
+
     .idsk-feedback__buttons {
         padding-top: 30px;
     }
+
     @include mq($from: desktop) {
         .govuk-radios .govuk-radios__item:hover .govuk-radios__input:not(:disabled) + .govuk-radios__label::before {
             box-shadow: 0 0 0 10px govuk-colour("mid-grey");
+        }
+
+        .govuk-radios .govuk-radios__item:hover .govuk-radios__input:focus + .govuk-radios__label::before {
+            box-shadow: 0 0 0 4px govuk-colour("yellow"), 0 0 0 10px govuk-colour("mid-grey");
         }
 
         .govuk-radios__label {
@@ -36,10 +45,6 @@
 
     .idsk-feedback__buttons .govuk-button {
         width: auto;
-    }
-
-    #idsk-feedback__thanks {
-        padding-left: 13px;
     }
 
     #idsk-feedback__question-bar .govuk-heading-m {
