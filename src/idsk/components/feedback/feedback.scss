@@ -13,6 +13,10 @@
         padding-top: 30px;
     }
     @include mq($from: desktop) {
+        .govuk-radios .govuk-radios__item:hover .govuk-radios__input:not(:disabled) + .govuk-radios__label::before {
+            box-shadow: 0 0 0 10px govuk-colour("mid-grey");
+        }
+
         .govuk-radios__label {
             padding-left: 0;
         }
