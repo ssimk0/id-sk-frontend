@@ -14,7 +14,7 @@
     }
 
     .idsk-feedback__buttons {
-        padding-top: 30px;
+        padding-top: govuk-spacing(7);
     }
 
     @include mq($from: desktop) {
