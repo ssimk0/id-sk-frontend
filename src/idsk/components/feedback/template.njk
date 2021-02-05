@@ -11,7 +11,7 @@
             <div class="govuk-radios">
                 {% for item in params.feedbackOptions -%}
                     <div class="govuk-radios__item">
-                        <input class="govuk-radios__input idsk-feedback__radio-button {{ 'idsk-feedback-textarea--show' if item.textArea }}" id="{{ item.value }}" name="{{ item.name }}" type="radio" value="{{ item.value }}">
+                        <input class="govuk-radios__input idsk-feedback__radio-button {{ 'idsk-feedback-textarea--show' if item.textArea }}" id="{{ item.value }}" name="example" type="radio" value="{{ item.value }}">
                         <label class="govuk-label govuk-radios__label" for="{{ item.value }}">
                             {{ item.name }}
                         </label>
