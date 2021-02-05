@@ -55,11 +55,13 @@
     }
 
     .idsk-intro-block__input:focus {
-        border: 2px solid govuk-colour("black");
+        border: 4px solid govuk-colour("black");
     }
 
     .idsk-intro-block__search .govuk-input:focus {
         margin-right: 3px;
+        margin-top: 1px;
+        box-shadow: none;
     }
 
     .idsk-intro-block__search {
@@ -241,6 +243,7 @@
         .idsk-intro-block__side-menu__a,
         .idsk-intro-block__side-menu__li {
             color: govuk-colour("black");
+            font-weight: bold;
         }
         .idsk-intro-block__side-menu__text {
             margin-top: govuk-spacing(3);
@@ -260,6 +263,7 @@
         .idsk-intro-block__side-menu__a,
         .idsk-intro-block__side-menu__li {
             color: govuk-colour("white");
+            font-weight: bold;
         }
     }
 
