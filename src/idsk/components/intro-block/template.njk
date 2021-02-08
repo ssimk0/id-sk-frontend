@@ -19,22 +19,23 @@
                             </svg>
                         </button>
                     </div>
-                {% endif %}
-                <div>
-                    <ul class="idsk-intro-block__list__ul">
-                        <li class="idsk-intro-block__bottom-menu__li govuk-caption-l">
-                            <a>Hľadáte toto?
-                            </a>
-                        </li>
-                        {% for bottomMenu in params.bottomMenu %}
-                            <li class="idsk-intro-block__list__li">
-                                <a class="govuk-link idsk-intro-block__list__a" href="{{bottomMenu.href}}">
-                                    {{ bottomMenu.item }}
+
+                    <div>
+                        <ul class="idsk-intro-block__list__ul">
+                            <li class="idsk-intro-block__bottom-menu__li govuk-caption-l">
+                                <a>Hľadáte toto?
                                 </a>
                             </li>
-                        {% endfor %}
-                    </ul>
-                </div>
+                            {% for bottomMenu in params.bottomMenu %}
+                                <li class="idsk-intro-block__list__li">
+                                    <a class="govuk-link idsk-intro-block__list__a" href="{{bottomMenu.href}}">
+                                        {{ bottomMenu.item }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
             </div>
             <div class="{{ 'idsk-intro-block__side-menu' if params.classBackground=='app-pane-blue' or params.classBackground=='app-pane-grey'}}">
                 {% if params.classBackground=="app-pane-blue" or params.classBackground=="app-pane-grey" %}
