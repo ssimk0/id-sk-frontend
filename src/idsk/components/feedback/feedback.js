@@ -3,7 +3,7 @@ import '../../../govuk/vendor/polyfills/Event' // addEventListener and event.tar
 import { nodeListForEach } from '../../../govuk/common'
 
 /**
- * Footer for extended websites
+ * Feedback for extended websites
  */
 function Feedback($module) {
     this.$module = $module;
