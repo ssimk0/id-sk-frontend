@@ -87,6 +87,10 @@
 
     #idsk-feedback__question-bar .govuk-textarea {
         height: 150px;
+
+        @include mq($from: desktop) {
+            height: 115px;
+        }
     }
 
     #idsk-feedback__question-bar .govuk-textarea:focus {
