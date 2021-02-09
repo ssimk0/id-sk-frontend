@@ -1,6 +1,6 @@
 import '../../../govuk/vendor/polyfills/Function/prototype/bind'
 import '../../../govuk/vendor/polyfills/Event' // addEventListener and event.target normaliziation
-import { nodeListForEach, toggleClass } from '../../common'
+import { toggleClass } from '../../common'
 
 function InPageNavigation($module) {
     this.$module = $module
@@ -33,28 +33,57 @@ InPageNavigation.prototype.init = function () {
     if (!$linkPanelButton) {
         return
     }
-    $linkPanelButton.addEventListener('click', this.handleClickLinkPanel.bind(this))
+    $module.boundCheckCloseClick = this.checkCloseClick.bind(this)
+    $module.boundHandleClickLinkPanel = this.handleClickLinkPanel.bind(this)
+    $linkPanelButton.addEventListener('click', $module.boundHandleClickLinkPanel, true)
 
     // Handle floating navigation
     window.addEventListener('scroll', this.scrollFunction.bind(this));
 }
 
 /**
-* An event handler for click event on $link - add actual title to link panel
-* @param {object} event event
-*/
-InPageNavigation.prototype.handleClickLink = function (event) {
-    let $link = event.target || event.srcElement
-    this.changeCurrentLink($link.closest('.idsk-in-page-navigation__list-item'))
+ * An event handler for click event on $link - add actual title to link panel
+ * @param {object} e
+ */
+InPageNavigation.prototype.handleClickLink = function (e) {
+    var $link = e.target || e.srcElement
+    var $id = $link.closest('.idsk-in-page-navigation__link').href.split('#')[1]
+    var $panelHeight = this.$module.getElementsByClassName('idsk-in-page-navigation__link-panel')[0].offsetHeight
+
+    setTimeout(function(){
+        window.scrollTo(0, document.getElementById($id).offsetTop - ($panelHeight*2.5))
+    }.bind(this), 10)
 }
 
 /**
-* An event handler for click event on $linkPanel - collapse or expand in page navigation menu
- * @param {object} event 
+ * An event handler for click event on $linkPanel - collapse or expand in page navigation menu
+ * @param {object} e 
  */
-InPageNavigation.prototype.handleClickLinkPanel = function (event) {
+InPageNavigation.prototype.handleClickLinkPanel = function (e) {
     var $module = this.$module
-    toggleClass($module, 'idsk-in-page-navigation--expand')
+    var $linkPanelButton = $module.querySelector('.idsk-in-page-navigation__link-panel')
+
+    $module.classList.add("idsk-in-page-navigation--expand")
+    $linkPanelButton.removeEventListener('click', $module.boundHandleClickLinkPanel, true)
+    document.addEventListener('click', $module.boundCheckCloseClick, true)
+}
+
+/**
+ * close navigation if the user click outside navigation
+ * @param {object} e 
+ */
+InPageNavigation.prototype.checkCloseClick = function (e) {
+    var $el = e.target || e.srcElement
+    var $navigationList = $el.closest(".idsk-in-page-navigation__list")
+    var $module = this.$module
+    var $linkPanelButton = $module.querySelector('.idsk-in-page-navigation__link-panel')
+
+    if ($navigationList == null) {
+        e.stopPropagation() // prevent bubbling
+        $module.classList.remove("idsk-in-page-navigation--expand")
+        $linkPanelButton.addEventListener('click', $module.boundHandleClickLinkPanel, true)
+        document.removeEventListener("click", $module.boundCheckCloseClick, true);
+    }
 }
 
 /**
@@ -65,14 +94,14 @@ InPageNavigation.prototype.scrollFunction = function () {
     var $arrTitlesAndElems = this.$arrTitlesAndElems
     var $parentModule = $module.parentElement
     var $navTopPosition = $parentModule.offsetTop - 55 // padding
-    let $links = $module.querySelectorAll('.idsk-in-page-navigation__list-item')
+    var $links = $module.querySelectorAll('.idsk-in-page-navigation__list-item')
 
     if (window.pageYOffset <= $navTopPosition) {
         $module.classList.remove("idsk-in-page-navigation--sticky")
     } else {
         $module.classList.add("idsk-in-page-navigation--sticky")
     }
-
+    
     if ($module.classList.contains("idsk-in-page-navigation--sticky")) {
         var $self = this;
         $arrTitlesAndElems.some(function($item, $index) {
