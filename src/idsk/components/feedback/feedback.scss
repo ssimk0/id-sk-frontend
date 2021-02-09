@@ -27,7 +27,11 @@
             box-shadow: 0 0 0 10px govuk-colour("mid-grey");
         }
 
-        #idsk-feedback__content .govuk-radios .govuk-radios__item:hover .govuk-radios__input:focus + .govuk-radios__label::before {
+        #idsk-feedback__content
+            .govuk-radios
+            .govuk-radios__item:hover
+            .govuk-radios__input:focus
+            + .govuk-radios__label::before {
             box-shadow: 0 0 0 4px govuk-colour("yellow"), 0 0 0 10px govuk-colour("mid-grey");
         }
 
@@ -53,7 +57,7 @@
     }
 
     #idsk-feedback__question-bar {
-        padding-top:govuk-spacing(6);
+        padding-top: govuk-spacing(6);
     }
 
     #idsk-feedback__question-bar .govuk-heading-m {
@@ -79,6 +83,10 @@
     .idsk-feedback--animation {
         max-height: 0;
         transition: max-height 0.7s ease-out;
+    }
+
+    #idsk-feedback__question-bar .govuk-textarea {
+        height: 150px;
     }
 
     #idsk-feedback__question-bar .govuk-textarea:focus {
