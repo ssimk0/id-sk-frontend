@@ -503,6 +503,10 @@
         float: right;
     }
 
+    .idsk-footer-extended__up-button-svg {
+        padding: govuk-spacing(1) govuk-spacing(1) 0 0;
+    }
+
     .idsk-footer-extended .govuk-link {
         &:link {
             color: govuk-colour("black");

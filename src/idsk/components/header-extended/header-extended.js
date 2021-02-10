@@ -117,7 +117,7 @@ HeaderExtended.prototype.handleSubmenuClick2 = function (e) {
  * @param {object} e
  */
 HeaderExtended.prototype.handleMobilMenu = function (e) {
-    toggleClass(this.$module, "show-mobile-menu")
+    toggleClass(this.$module, "idsk-header-extended--show-mobile-menu")
 }
 
 /**
