@@ -96,6 +96,10 @@
     #idsk-feedback__question-bar .govuk-textarea:focus {
         width: 97%;
         margin-left: 3px;
+
+        @include mq($from: desktop) {
+            width: 99%;
+        }
     }
 
     .idsk-feedback--open {
