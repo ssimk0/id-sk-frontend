@@ -8,16 +8,16 @@
     <div class="idsk-header-extended__logo {{ params.logoGrid if params.logoGrid else 'govuk-grid-column-three-quarters' }}">
       <a href="{{ params.homepageUrl | default('/') }}" title="{{ params.headerTitle if params.headerTitle }}">
         <div class="idsk-header-extended__logotype-crown">
-          {% include params.assetsPath | default('../../assets/images/header-extended/') + params.logo %}
+          {% include params.assetsPathLogo | default('../../assets/images/header-extended/') + params.logo %}
         </div>
         <div class="idsk-header-extended__logotype-crown-mobile">
-          {% include params.assetsPath | default('../../assets/images/header-extended/') + params.logoSmall %}
+          {% include params.assetsPathLogo | default('../../assets/images/header-extended/') + params.logoSmall %}
         </div>
         <div class="idsk-header-extended__logotype-crown-mobile-navigation">
-          {% include params.assetsPath | default('../../assets/images/header-extended/') + params.logoWhite %}
+          {% include params.assetsPathLogo | default('../../assets/images/header-extended/') + params.logoWhite %}
         </div>
         <div class="idsk-header-extended__logotype-crown-mobile-small-navigation">
-          {% include params.assetsPath | default('../../assets/images/header-extended/') + params.logoSmallWhite %}
+          {% include params.assetsPathLogo | default('../../assets/images/header-extended/') + params.logoSmallWhite %}
         </div>
       </a>
       <div class="idsk-header-extended-x-mark"></div>
@@ -119,14 +119,12 @@
                     <ul class="govuk-width-container">
                       {% for subItem in item.submenu%}
                         <li>
-                          <span>
-                            <a href="{{ subItem.link }}" title="{{ subItem.text }}">
-                              {% if subItem.icon %}
-                              <i class="{{ subItem.icon }}" aria-hidden="true"></i>
-                              {% endif %}
-                              {{ subItem.text }}
-                            </a>
-                          </span>
+                          <a href="{{ subItem.link }}" title="{{ subItem.text }}">
+                            {% if subItem.icon %}
+                            <i class="{{ subItem.icon }}" aria-hidden="true"></i>
+                            {% endif %}
+                            {{ subItem.text }}
+                          </a>
                         </li>
                       {% endfor %}
                     </ul>
