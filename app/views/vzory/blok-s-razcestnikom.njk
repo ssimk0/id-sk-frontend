@@ -1,0 +1,67 @@
+{% extends "layout.njk" %}
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "../../../src/idsk/components/crossroad/macro.njk" import idskCrossroad %}
+
+{% set pageName = "Blok s rázcestníkom" %}
+{% set headline = "Informatizácia" %}
+{% set secondHeadline = "Eurofondy" %}
+
+{% block beforeContent %}
+    {{ govukBreadcrumbs({
+    "items": [
+    { text: 'ID-SK frontend', href: '/' + legacyQuery },
+    { text: pageName }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+    <h1 class="govuk-heading-xl">{{pageName}}</h1>
+    <div class="govuk-grid-row">
+        <div class="example example-error">
+            {% set exampleComponentHtml %}
+            <h1 class="govuk-heading-l">{{headline}}</h1>
+            <span class="govuk-caption-l">Slovensko je neodlučnou súčasťou európskeho digitálneho priestoru, ktorý pomáha formovať strategické smerovanie digitalizácie u nás. Viac informácií nájdete
+                <a class="govuk-link" href="#">na podstránke Informatizácia.
+                </a>
+            </span>
+            <br>
+            {{ idskCrossroad({
+                            "columns": 2,
+                            "items": [
+                                { "title": 'Title for 1st element', "subtitle": 'Subtitle for 1st element', "link": '#crossroad-one' },
+                                { "title": 'Title for 2nd element', "subtitle": 'Subtitle for 2nd element', "link": '#' },
+                                { "title": 'Title for 3rd element', "subtitle": 'Subtitle for 3rd element', "link": '#' },
+                                { "title": 'Title for 4th element', "subtitle": 'Subtitle for 4th element', "link": '#' },
+                                { "title": 'Title for 5th element', "subtitle": 'Subtitle for 5th element', "link": '#' },
+                                { "title": 'Title for 6th element', "subtitle": 'Subtitle for 6th element', "link": '#' }
+                            ]
+                        }) }}
+            {% endset %}
+            {{exampleComponentHtml | safe}}
+        </div>
+    </div>
+    <div class="govuk-grid-row">
+        <div class="example example-error">
+            {% set exampleComponentHtml %}
+            <h1 class="govuk-heading-l">{{secondHeadline}}</h1>
+            <span class="govuk-caption-l">Slovensko je neodlučnou súčasťou európskeho digitálneho priestoru, ktorý pomáha formovať strategické smerovanie digitalizácie u nás. Viac informácií nájdete na podstránke Informatizácia.</span>
+            <br>
+            {{ idskCrossroad({
+                            "columns": 1,
+                            "items": [
+                                { "title": 'Title for 1st element', "subtitle": 'Subtitle for 1st element', "link": '#' },
+                                { "title": 'Title for 2nd element', "subtitle": 'Subtitle for 2nd element', "link": '#' },
+                                { "title": 'Title for 3rd element', "subtitle": 'Subtitle for 3rd element', "link": '#' },
+                                { "title": 'Title for 4th element', "subtitle": 'Subtitle for 4th element', "link": '#' },
+                                { "title": 'Title for 5th element', "subtitle": 'Subtitle for 5th element', "link": '#' },
+                                { "title": 'Title for 6th element', "subtitle": 'Subtitle for 6th element', "link": '#' }
+                            ]
+                        }) }}
+            {% endset %}
+            {{exampleComponentHtml | safe}}
+        </div>
+
+    </div>
+{% endblock %}
