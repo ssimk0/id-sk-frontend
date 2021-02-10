@@ -1,5 +1,6 @@
 {% extends "layout.njk" %}
 {% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "../../../src/idsk/components/feedback/macro.njk" import idskFeedback %}
 
 {% set pageName = "Stránky so spätnou väzbou" %}
 
@@ -10,51 +11,87 @@
     { text: pageName }
     ]
   }) }}
-{% endblock %}  
+{% endblock %}
 
 {% block content %}
   <div class="govuk-width-container">
 
     <span class="govuk-caption-xl">Vzory</span>
     <h1 class="govuk-heading-xl">{{pageName}}</h1>
-    <p class="govuk-body-l">Pri vytváraní digitálnej služby budete potrebovať zabezpečiť používateľom spôsob, ktorým vám k nej poskytnú svoju spätnú väzbu.</p>
+    <p class="govuk-body-l">Stránka so spätnou väzbou sa musí zobraziť používateľovi vždy po použití služby. Slúži na to, aby ste získali jednoduchú a rýchlu spätnú väzbu od používateľov vašej služby a zároveň, aby ste mohli vyhodnocovať spokojnosť používateľov s vašou službou.</p>
+
+    <h2 class="govuk-heading-s">Obsah:</h2>
+    <ul class="govuk-list">
+      <li>
+        <a href="#skladba">
+          Z čoho sa skladá stránka so spätnou väzbou?</a>
+      </li>
+      <li>
+        <a href="#priklad">Vzor stránky so spätnou väzbou</a>
+      </li>
+    </ul>
+
+    <p class="govuk-body-l">Na kvantitatívne vyhodnocovanie využívajte metodiku miery spokojnosti zákazníkov (Customer Satisfaction Score, CSAT).</p>
+
+    <p class="govuk-body-l">Na kvalitatívne vyhodnocovanie využívajte otvorenú otázku, kde bude mať používateľ možnosť doplniť svoj názor. Táto otázka bude dostupná iba pre negatívne odpovede a neutrálnu odpoveď.</p>
+
+    <h2 class="govuk-heading-m" id="skladba">Z čoho sa skladá stránka so spätnou väzbou?
+    </h2>
 
     <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-grid-column-two-thirds">
 
-            <h2 class="govuk-heading-s">Obsah:</h2>
-            <ul class="govuk-list">
-                <li><a href="#priklad">Príklad</a></li>
-                <li><a href="#preco">Prečo musí mať vaša služba stránku so spätnou väzbou</a></li>
-            </ul>
+        <p class="govuk-body-l">Skladá sa z:</p>
+        <ul class="govuk-list">
+          <li>
+            <a >a) názvu použitej služby (aby používateľ vedel, ku ktorej službe zasiela spätnú väzbu),
+            </a>
+          </li>
+          <li>
+            <a >b) otázky: “Ako ste spokojný/á so službou, ktorú ste práve využili?”,</a>
+          </li>
+          <li>
+            <a >c) prepínačov s možnosťami: Veľmi spokojný/á, Nespokojný/á, Ani spokojný/á ani nespokojný/á, Spokojný/á a Veľmi spokojný/á.
+            </a>
+          </li>
+          <li>
+            <a >d) textového poľa s otázkou “Ako by sme mohli túto službu zlepšiť?”, ktoré sa zobrazí pri výbere jednej z nasledujúcich možností: Veľmi spokojný/á, Nespokojný/á a Ani spokojný/á ani nespokojný/á.</a>
+          </li>
+        </ul>
 
-            <h3 class="govuk-heading-m" id="priklad">Príklad</h3>
-            <img src="/public/assets/images/patterns/feedback-page.png" alt="feedback">
-
-            <h3 class="govuk-heading-m" id="preco">Prečo musí mať vaša služba stránku so spätnou väzbou</h3>
-            <p class="govuk-body">
-                Všetky služby v testovacej alebo ostrej verzii musia mať stránku so spätnou väzbou, aby ste mohli zozbierať komentáre a vyhodnocovať spokojnosť používateľov.
-            </p>
-            <p class="govuk-body">
-                K poskytnutiu spätnej väzby prichádza po tom, ako používateľ dokončí podanie a po úplnom vybavení služby, o ktorú používateľ žiadal. Na meranie spokojnosti používateľov sa využíva koncept Net Promoter Score (NPS).
-            </p>
-            <p class="govuk-body">
-                NPS je kvantitatívny údaj, ktorý bude doplnený kvalitatívnym vysvetlením používateľa. Používateľ odpovedá na škále od 1 po 10, na otázku v nasledovnej formulácii:
-                “Ako veľmi je pravdepodobné, že by ste službu X odporučili svojim priateľom a známym?”
-            </p>
-            <p class="govuk-body">
-                Likertova škála, na ktorej sa pohybujú odpovede používateľa, reprezentuje mieru jeho súhlasu:
-            </p>
-
-            <ul class="govuk-list govuk-list--bullet">
-                <li>Hodnota 1 - Určite nie</li>
-                <li>Hodnota 5 - Neutrálny postoj</li>
-                <li>Hodnota 10 - Určite áno</li>
-            </ul>
-            <p class="govuk-body">Kvalitatívny údaj predstavuje otvorená otázka, kde bude mať používateľ možnosť doplniť svoj názor. Táto otázka bude dostupná pre všetky odpovede s hodnotou od 1 po 6. Otázka bude v znení: “Ako by sme mohli túto službu zlepšiť?”
-            </p>
-
+        <h3 class="govuk-heading-m" id="priklad">Vzor stránky so spätnou väzbou
+        </h3>
+        <div class="example">
+          {{ idskFeedback({
+              counter : 0,
+              characterLength : 200,
+              feedbackOptions: [
+              {
+                name:"Veľmi nespokojný",
+                textArea:true,
+                value: 1
+              },
+              {
+                name:"Nespokojný",
+                textArea:true,
+                value: 2
+              },
+              {
+                name:"Ani spokojný ani nespokojný",
+                textArea:true,
+                value: 3
+              },
+              {
+                name:"Spokojný",
+                value: 4
+              },
+              {
+                name:"Veľmi spokojný",
+                value: 5
+              }
+            ]}) }}
         </div>
+      </div>
     </div>
 
   </div>

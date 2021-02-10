@@ -1,6 +1,5 @@
 <header 
   class="idsk-header-extended {{ params.classes if params.classes }}" 
-  role="banner" 
   data-module="idsk-header-extended"
   {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}
 >
@@ -39,11 +38,7 @@
     </div>
 
     {% if params.language %}
-      <div
-        tabindex="1"
-        class="idsk-header-extended__language idsk-js-header-extended-language-toggle {{ 'idsk-header-extended--left' if not params.search }}" 
-        aria-controls="idsk-header-extended__language-list" 
-      >
+      <div tabindex="1" class="idsk-header-extended__language idsk-js-header-extended-language-toggle {{ 'idsk-header-extended--left' if not params.search }}">
         <div class="idsk-header-extended__language-wrapper">
           <div class="idsk-header-extended__language--current">
             <input name="locale-language" type="text" autocomplete="off" placeholder="Language" class="idsk-header-extended__language-input">
@@ -88,7 +83,6 @@
     <div class="idsk-header-extended__content">
       <button 
         type="button" 
-        role="button"
         class="idsk-header-extended__menu-button idsk-js-header-extended-side-menu"
         aria-controls="navigation"
         aria-label="Show or hide Top Level Navigation"
@@ -132,7 +126,7 @@
                               {% endif %}
                               {{ subItem.text }}
                             </a>
-                          <span>
+                          </span>
                         </li>
                       {% endfor %}
                     </ul>

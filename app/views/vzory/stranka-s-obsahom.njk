@@ -38,28 +38,23 @@
         submenu: [
           {
             link: "#3.1",
-            text: "Domov dôchodcov",
-            icon: "fas fa-home"
+            text: "Domov dôchodcov"
           },
           {
             link: "#3.2",
-            text: "Zoznam úloh",
-            icon: "fas fa-tasks"
+            text: "Zoznam úloh"
           },
           {
             link: "#3.3",
-            text: "Zabezpečenie dát",
-            icon: "fas fa-unlock"
+            text: "Zabezpečenie dát"
           },
           {
             link: "#3.4",
-            text: "Ochrana práv",
-            icon: "fas fa-user-shield"
+            text: "Ochrana práv"
           },
           {
             link: "#3.5",
-            text: "Kvapka nádeje",
-            icon: "fas fa-hand-holding-water"
+            text: "Kvapka nádeje"
           },
           {
             link: "#3.6",
@@ -251,54 +246,54 @@
 {% endblock %}
 
 {% block footer %}
-{{ idskFooterExtended({
-    characterLength : 350,
-    upButtonEnabled : "true",
-    logo: "footer-extended-logo.svg",
-    subtitles: [
-    {
-      item:"Pomoc", 
-      href:"#"}, 
-    {
-      item:"Cookies",
-      href:"#"
-    }, 
-    {
-      item:"Kontakty",
-      href:"#"
-    }, 
-    { 
-      item:"Mapa Stránky",
-      href:"#"
-    }, 
-    {
-      item:"RSS",
-      href:"#"
-    }, 
-    {
-      item:"Vyhlásenie o prístupnosti",
-      href:"#"
-    }
-  ],
-    dropdownItems: [
-    {
-      value: "published",
-      text: "Validačná chyba"
-    },
-    {
-      value: "updated",
-      text: "Gramatická chyba",
-      selected: true
-    },
-    {
-      value: "views",
-      text: "Chyba responzivity"
-    },
-    {
-      value: "comments",
-      text: "Chyba iná"
-    }
-    ]
-  }) 
-}}
+  {{ idskFooterExtended({
+      characterLength : 350,
+      upButtonEnabled : "true",
+      logo: "footer-extended-logo.svg",
+      subtitles: [
+      {
+        item:"Pomoc", 
+        href:"#"}, 
+      {
+        item:"Cookies",
+        href:"#"
+      }, 
+      {
+        item:"Kontakty",
+        href:"#"
+      }, 
+      { 
+        item:"Mapa Stránky",
+        href:"#"
+      }, 
+      {
+        item:"RSS",
+        href:"#"
+      }, 
+      {
+        item:"Vyhlásenie o prístupnosti",
+        href:"#"
+      }
+    ],
+      dropdownItems: [
+      {
+        value: "published",
+        text: "Validačná chyba"
+      },
+      {
+        value: "updated",
+        text: "Gramatická chyba",
+        selected: true
+      },
+      {
+        value: "views",
+        text: "Chyba responzivity"
+      },
+      {
+        value: "comments",
+        text: "Chyba iná"
+      }
+      ]
+    }) 
+  }}
 {% endblock %}
