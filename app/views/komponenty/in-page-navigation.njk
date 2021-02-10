@@ -45,14 +45,10 @@
           <div class="govuk-grid-row">
             <div class="govuk-grid-column-full">
               <div class="example example-mobile example-mobile-scroll">
-                {% set exampleComponentHtml %}
-                    {% include "../komponenty/examples/inPageNavigation.njk" %}
-                {% endset %}
                 <iframe 
-                  srcdoc="{{ exampleComponentHtml }}"
-                  height="270px"
-                >
-                </iframe>
+                  src="/custom-components/in-page-navigation/default/preview"
+                  height="310px"
+                ></iframe>
               </div>
             </div>
           </div>
@@ -78,8 +74,14 @@
             </div>
           </div>
 
+
+          <div class="govuk-grid-column-two-thirds">
           <h3 class="govuk-heading-m" id="vzor-navigacie-na-stranke">Vzor navigácie na stránke</h3>
-              <a href="/vzory/stranka-s-obsahom">rozšírený vzor navigácia na stránke</a>
+              <ul class="govuk-list">
+                  <li><a href="/vzory/vzor-navigacie-na-stranke" title="Rozšírený vzor navigácia na stránke">Rozšírený vzor navigácia na stránke</a></li>
+              </ul>
+          </div>
+              
         </div>
         
     </div>

@@ -39,6 +39,8 @@ InPageNavigation.prototype.init = function () {
 
     // Handle floating navigation
     window.addEventListener('scroll', this.scrollFunction.bind(this));
+    // Handle case if the viewport is shor and there are more than one article - scrolling is not needed, but navigation pointer has to be updated
+    this.$module.labelChanged = false;
 }
 
 /**
@@ -50,8 +52,14 @@ InPageNavigation.prototype.handleClickLink = function (e) {
     var $id = $link.closest('.idsk-in-page-navigation__link').href.split('#')[1]
     var $panelHeight = this.$module.getElementsByClassName('idsk-in-page-navigation__link-panel')[0].offsetHeight
 
-    setTimeout(function(){
-        window.scrollTo(0, document.getElementById($id).offsetTop - ($panelHeight*2.5))
+    setTimeout(function () {
+        if (document.getElementById($id) != null) {
+            this.$module.labelChanged = true
+            this.changeCurrentLink($link)
+            window.scrollTo(0, document.getElementById($id).offsetTop - ($panelHeight * 2.5))
+        } else {
+            this.changeCurrentLink($link)
+        }
     }.bind(this), 10)
 }
 
@@ -63,7 +71,7 @@ InPageNavigation.prototype.handleClickLinkPanel = function (e) {
     var $module = this.$module
     var $linkPanelButton = $module.querySelector('.idsk-in-page-navigation__link-panel')
 
-    $module.classList.add("idsk-in-page-navigation--expand")
+    $module.classList.add('idsk-in-page-navigation--expand')
     $linkPanelButton.removeEventListener('click', $module.boundHandleClickLinkPanel, true)
     document.addEventListener('click', $module.boundCheckCloseClick, true)
 }
@@ -74,15 +82,15 @@ InPageNavigation.prototype.handleClickLinkPanel = function (e) {
  */
 InPageNavigation.prototype.checkCloseClick = function (e) {
     var $el = e.target || e.srcElement
-    var $navigationList = $el.closest(".idsk-in-page-navigation__list")
+    var $navigationList = $el.closest('.idsk-in-page-navigation__list')
     var $module = this.$module
     var $linkPanelButton = $module.querySelector('.idsk-in-page-navigation__link-panel')
 
     if ($navigationList == null) {
         e.stopPropagation() // prevent bubbling
-        $module.classList.remove("idsk-in-page-navigation--expand")
+        $module.classList.remove('idsk-in-page-navigation--expand')
         $linkPanelButton.addEventListener('click', $module.boundHandleClickLinkPanel, true)
-        document.removeEventListener("click", $module.boundCheckCloseClick, true);
+        document.removeEventListener('click', $module.boundCheckCloseClick, true);
     }
 }
 
@@ -97,14 +105,16 @@ InPageNavigation.prototype.scrollFunction = function () {
     var $links = $module.querySelectorAll('.idsk-in-page-navigation__list-item')
 
     if (window.pageYOffset <= $navTopPosition) {
-        $module.classList.remove("idsk-in-page-navigation--sticky")
+        $module.classList.remove('idsk-in-page-navigation--sticky')
     } else {
-        $module.classList.add("idsk-in-page-navigation--sticky")
+        $module.classList.add('idsk-in-page-navigation--sticky')
     }
-    
-    if ($module.classList.contains("idsk-in-page-navigation--sticky")) {
+
+    if (this.$module.labelChanged) {
+        this.$module.labelChanged = false
+    } else if ($module.classList.contains('idsk-in-page-navigation--sticky')) {
         var $self = this;
-        $arrTitlesAndElems.some(function($item, $index) {
+        $arrTitlesAndElems.some(function ($item, $index) {
             if ($item.el.offsetTop >= window.scrollY && $item.el.offsetTop <= (window.scrollY + window.innerHeight)) {
                 $self.changeCurrentLink($links[$index])
 
@@ -118,14 +128,16 @@ InPageNavigation.prototype.scrollFunction = function () {
 
 InPageNavigation.prototype.changeCurrentLink = function (el) {
     var $module = this.$module
+    var $currItem = el.closest('.idsk-in-page-navigation__list-item')
+    var $articleTitle = $currItem.querySelector('.idsk-in-page-navigation__link-title')
     var $items = $module.querySelectorAll('.idsk-in-page-navigation__list-item')
     var $linkPanelText = $module.querySelector('.idsk-in-page-navigation__link-panel-button')
 
     $items.forEach($item => {
         $item.classList.remove('idsk-in-page-navigation__list-item--active')
     })
-    el.classList.add('idsk-in-page-navigation__list-item--active')
-    $linkPanelText.innerText = el.querySelector('.idsk-in-page-navigation__link-title').innerText;
+    $currItem.classList.add('idsk-in-page-navigation__list-item--active')
+    $linkPanelText.innerText = $articleTitle.innerText;
 }
 
 export default InPageNavigation
