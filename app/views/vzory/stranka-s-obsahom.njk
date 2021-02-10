@@ -3,6 +3,7 @@
 {% from "../../../src/idsk/components/header-extended/macro.njk" import idskHeaderExtended %}
 {% from "../../../src/idsk/components/footer-extended/macro.njk" import idskFooterExtended %}
 {% from "../../../src/idsk/components/in-page-navigation/macro.njk" import idskInPageNavigation %}
+{% from "../../../src/idsk/components/footer-extended/macro.njk" import idskFooterExtended %}
 
 {% set pageName = "Ukážka webových komponentov" %}
 
@@ -250,4 +251,54 @@
 {% endblock %}
 
 {% block footer %}
+{{ idskFooterExtended({
+    characterLength : 350,
+    upButtonEnabled : "true",
+    logo: "footer-extended-logo.svg",
+    subtitles: [
+    {
+      item:"Pomoc", 
+      href:"#"}, 
+    {
+      item:"Cookies",
+      href:"#"
+    }, 
+    {
+      item:"Kontakty",
+      href:"#"
+    }, 
+    { 
+      item:"Mapa Stránky",
+      href:"#"
+    }, 
+    {
+      item:"RSS",
+      href:"#"
+    }, 
+    {
+      item:"Vyhlásenie o prístupnosti",
+      href:"#"
+    }
+  ],
+    dropdownItems: [
+    {
+      value: "published",
+      text: "Validačná chyba"
+    },
+    {
+      value: "updated",
+      text: "Gramatická chyba",
+      selected: true
+    },
+    {
+      value: "views",
+      text: "Chyba responzivity"
+    },
+    {
+      value: "comments",
+      text: "Chyba iná"
+    }
+    ]
+  }) 
+}}
 {% endblock %}
