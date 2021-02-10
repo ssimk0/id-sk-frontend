@@ -19,15 +19,19 @@
 
     <h1 class="govuk-heading-xl">{{pageName}}</h1>
     <div class="govuk-grid-row">
-        <div class="example example-error">
-            {% set exampleComponentHtml %}
-            <h1 class="govuk-heading-l">{{headline}}</h1>
-            <span class="govuk-caption-l">Slovensko je neodlučnou súčasťou európskeho digitálneho priestoru, ktorý pomáha formovať strategické smerovanie digitalizácie u nás. Viac informácií nájdete
-                <a class="govuk-link" href="#">na podstránke Informatizácia.
-                </a>
-            </span>
-            <br>
-            {{ idskCrossroad({
+        <div class="govuk-grid-column-full">
+            <div class="example example-error">
+                {% set exampleComponentHtml %}
+                <h1 class="govuk-heading-l">
+                    <a class="govuk-link" href="#">{{headline}}
+                    </a>
+                </h1>
+                <span class="govuk-caption-l">Slovensko je neodlučnou súčasťou európskeho digitálneho priestoru, ktorý pomáha formovať strategické smerovanie digitalizácie u nás. Viac informácií nájdete
+                    <a class="govuk-link" href="#">na podstránke Informatizácia.
+                    </a>
+                </span>
+                <br>
+                {{ idskCrossroad({
                             "columns": 2,
                             "items": [
                                 { "title": 'Title for 1st element', "subtitle": 'Subtitle for 1st element', "link": '#crossroad-one' },
@@ -38,17 +42,19 @@
                                 { "title": 'Title for 6th element', "subtitle": 'Subtitle for 6th element', "link": '#' }
                             ]
                         }) }}
-            {% endset %}
-            {{exampleComponentHtml | safe}}
+                {% endset %}
+                {{exampleComponentHtml | safe}}
+            </div>
         </div>
     </div>
     <div class="govuk-grid-row">
-        <div class="example example-error">
-            {% set exampleComponentHtml %}
-            <h1 class="govuk-heading-l">{{secondHeadline}}</h1>
-            <span class="govuk-caption-l">Slovensko je neodlučnou súčasťou európskeho digitálneho priestoru, ktorý pomáha formovať strategické smerovanie digitalizácie u nás. Viac informácií nájdete na podstránke Informatizácia.</span>
-            <br>
-            {{ idskCrossroad({
+        <div class="govuk-grid-column-full">
+            <div class="example example-error">
+                {% set exampleComponentHtml %}
+                <h1 class="govuk-heading-l">{{secondHeadline}}</h1>
+                <span class="govuk-caption-l">Slovensko je neodlučnou súčasťou európskeho digitálneho priestoru, ktorý pomáha formovať strategické smerovanie digitalizácie u nás. Viac informácií nájdete na podstránke Informatizácia.</span>
+                <br>
+                {{ idskCrossroad({
                             "columns": 1,
                             "items": [
                                 { "title": 'Title for 1st element', "subtitle": 'Subtitle for 1st element', "link": '#' },
@@ -59,9 +65,9 @@
                                 { "title": 'Title for 6th element', "subtitle": 'Subtitle for 6th element', "link": '#' }
                             ]
                         }) }}
-            {% endset %}
-            {{exampleComponentHtml | safe}}
+                {% endset %}
+                {{exampleComponentHtml | safe}}
+            </div>
         </div>
-
     </div>
 {% endblock %}
