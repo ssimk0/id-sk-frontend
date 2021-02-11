@@ -16,12 +16,11 @@
 {% endblock %}
 
 {% block content %}
-
-    <h1 class="govuk-heading-xl">{{pageName}}</h1>
-    <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full">
-            <div class="example example-error">
-                {% set exampleComponentHtml %}
+    <div class="govuk-width-cotainer">
+        <h1 class="govuk-heading-xl">{{pageName}}</h1>
+        <div class="example example-error">
+            {% set exampleComponentHtml %}
+            <div class="govuk-grid-column-full">
                 <h1 class="govuk-heading-l">
                     <a class="govuk-link" href="#">{{headline}}
                     </a>
@@ -31,43 +30,42 @@
                     </a>
                 </span>
                 <br>
-                {{ idskCrossroad({
+            </div>
+            {{ idskCrossroad({
                             "columns": 2,
                             "items": [
-                                { "title": 'Title for 1st element', "subtitle": 'Subtitle for 1st element', "link": '#crossroad-one' },
-                                { "title": 'Title for 2nd element', "subtitle": 'Subtitle for 2nd element', "link": '#' },
-                                { "title": 'Title for 3rd element', "subtitle": 'Subtitle for 3rd element', "link": '#' },
-                                { "title": 'Title for 4th element', "subtitle": 'Subtitle for 4th element', "link": '#' },
-                                { "title": 'Title for 5th element', "subtitle": 'Subtitle for 5th element', "link": '#' },
-                                { "title": 'Title for 6th element', "subtitle": 'Subtitle for 6th element', "link": '#' }
+                                { "title": 'Financovanie ITVS', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#crossroad-one' },
+                                { "title": 'Prevádzka a rozvoj ITVS', "subtitle": 'Inteligentné mesto, zdravá budúcnosť. Inšpirujte sa.', "link": '#' },
+                                { "title": 'Strategické dokumenty', "subtitle": 'Subtitle for 3rd element', "link": '#' },
+                                { "title": 'Aktuality z informatizácie', "subtitle": 'Subtitle for 4th element', "link": '#' },
+                                { "title": 'G2G služby', "subtitle": 'Subtitle for 5th element', "link": '#' },
+                                { "title": 'Manažment údajov', "subtitle": 'Zistite, ako Vám moderný štát môže ušetriť čas a peniaze.', "link": '#' },
+                                { "title": 'MIRRI digitálne projekty', "subtitle": 'Zistite, ako Vám moderný štát môže ušetriť čas a peniaze.', "link": '#' },
+                                { "title": 'Informatizácia v európskom kontexte ', "subtitle": 'Zistite, ako Vám moderný štát môže ušetriť čas a peniaze.', "link": '#' },
+                                { "title": 'Pracovné skupiny', "subtitle": 'Zistite, ako Vám moderný štát môže ušetriť čas a peniaze.', "link": '#' }
                             ]
                         }) }}
-                {% endset %}
-                {{exampleComponentHtml | safe}}
-            </div>
+            {% endset %}
+            {{exampleComponentHtml | safe}}
         </div>
-    </div>
-    <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full">
-            <div class="example example-error">
-                {% set exampleComponentHtml %}
+        <div class="example example-error">
+            {% set exampleComponentHtml %}
+            <div class="govuk-grid-column-full">
                 <h1 class="govuk-heading-l">{{secondHeadline}}</h1>
                 <span class="govuk-caption-l">Slovensko je neodlučnou súčasťou európskeho digitálneho priestoru, ktorý pomáha formovať strategické smerovanie digitalizácie u nás. Viac informácií nájdete na podstránke Informatizácia.</span>
                 <br>
-                {{ idskCrossroad({
+            </div>
+            {{ idskCrossroad({
                             "columns": 1,
                             "items": [
-                                { "title": 'Title for 1st element', "subtitle": 'Subtitle for 1st element', "link": '#' },
-                                { "title": 'Title for 2nd element', "subtitle": 'Subtitle for 2nd element', "link": '#' },
-                                { "title": 'Title for 3rd element', "subtitle": 'Subtitle for 3rd element', "link": '#' },
-                                { "title": 'Title for 4th element', "subtitle": 'Subtitle for 4th element', "link": '#' },
-                                { "title": 'Title for 5th element', "subtitle": 'Subtitle for 5th element', "link": '#' },
-                                { "title": 'Title for 6th element', "subtitle": 'Subtitle for 6th element', "link": '#' }
+                                { "title": 'Financovanie ITVS', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#crossroad-one' },
+                                { "title": 'Prevádzka a rozvoj ITVS', "subtitle": 'Inteligentné mesto, zdravá budúcnosť. Inšpirujte sa.', "link": '#' },
+                                { "title": 'Strategické dokumenty', "subtitle": 'Subtitle for 3rd element', "link": '#' },
+                                { "title": 'Aktuality z informatizácie', "subtitle": 'Subtitle for 4th element', "link": '#' }
                             ]
                         }) }}
-                {% endset %}
-                {{exampleComponentHtml | safe}}
-            </div>
+            {% endset %}
+            {{exampleComponentHtml | safe}}
         </div>
     </div>
 {% endblock %}
