@@ -33,7 +33,7 @@
             {{ idskCrossroad({
                             "columns": 2,
                             "items": [
-                                { "title": 'Financovanie ITVS', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#crossroad-one' },
+                                { "title": 'Financovanie ITVS', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' },
                                 { "title": 'Prevádzka a rozvoj ITVS', "subtitle": 'Inteligentné mesto, zdravá budúcnosť. Inšpirujte sa.', "link": '#' },
                                 { "title": 'Strategické dokumenty', "subtitle": 'Subtitle for 3rd element', "link": '#' },
                                 { "title": 'Aktuality z informatizácie', "subtitle": 'Subtitle for 4th element', "link": '#' },
@@ -51,12 +51,15 @@
             {% set exampleComponentHtml %}
             <div class="govuk-grid-column-full govuk-!-margin-bottom-5">
                 <h1 class="govuk-heading-l">{{secondHeadline}}</h1>
-                <span class="govuk-body-l">Slovensko je neodlučnou súčasťou európskeho digitálneho priestoru, ktorý pomáha formovať strategické smerovanie digitalizácie u nás. Viac informácií nájdete na podstránke Informatizácia.</span>
+                <span class="govuk-body-l">Slovensko je neodlučnou súčasťou európskeho digitálneho priestoru, ktorý pomáha formovať strategické smerovanie digitalizácie u nás. Viac informácií nájdete
+                    <a class="govuk-link" href="#">na podstránke Informatizácia.
+                    </a>
+                </span>
             </div>
             {{ idskCrossroad({
                             "columns": 1,
                             "items": [
-                                { "title": 'Financovanie ITVS', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#crossroad-one' },
+                                { "title": 'Financovanie ITVS', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' },
                                 { "title": 'Prevádzka a rozvoj ITVS', "subtitle": 'Inteligentné mesto, zdravá budúcnosť. Inšpirujte sa.', "link": '#' },
                                 { "title": 'Strategické dokumenty', "subtitle": 'Subtitle for 3rd element', "link": '#' },
                                 { "title": 'Aktuality z informatizácie', "subtitle": 'Subtitle for 4th element', "link": '#' }
