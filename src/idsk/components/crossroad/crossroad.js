@@ -35,7 +35,6 @@ Crossroad.prototype.init = function () {
       $item.addEventListener("click", this.handleItemClick.bind(this));
     }.bind(this)
   );
-
 };
 
 Crossroad.prototype.handleItemClick = function (e) {
@@ -49,20 +48,20 @@ Crossroad.prototype.handleShowItems = function (e) {
 
   $crossroadItems.forEach(crossroadItem => {
     if (crossroadItem.classList.contains('idsk-crossroad__item--two-columns-hide-mobile')) {
-      crossroadItem.classList.add('idsk-crossroad__item--two-columns-show-mobile');
+      crossroadItem.classList.add('idsk-crossroad__item--show');
       crossroadItem.classList.remove('idsk-crossroad__item--two-columns-hide-mobile');
     }
-    if (crossroadItem.classList.contains('idsk-crossroad__item--two-columns-hide')) {
+    if (crossroadItem.classList.contains('idsk-crossroad__element-hide--desktop')) {
       crossroadItem.classList.add('idsk-crossroad__item--two-columns-show');
-      crossroadItem.classList.remove('idsk-crossroad__item--two-columns-hide');
+      crossroadItem.classList.remove('idsk-crossroad__element-hide--desktop');
     }
-    if (crossroadItem.classList.contains('idsk-crossroad__item--one-column-hide')) {
-      crossroadItem.classList.add('idsk-crossroad__item--one-column-show');
-      crossroadItem.classList.remove('idsk-crossroad__item--one-column-hide');
+    if (crossroadItem.classList.contains('idsk-crossroad__element-hide')) {
+      crossroadItem.classList.add('idsk-crossroad__item--show');
+      crossroadItem.classList.remove('idsk-crossroad__element-hide');
     }
   });
-  toggleClass($collapseButton, 'idsk-crossroad__item--one-column-hide');
-  toggleClass(e.srcElement, 'idsk-crossroad__item--one-column-hide');
+  toggleClass($collapseButton, 'idsk-crossroad__element-hide');
+  toggleClass(e.srcElement, 'idsk-crossroad__element-hide');
 };
 
 Crossroad.prototype.handleHideItems = function (e) {
@@ -70,21 +69,21 @@ Crossroad.prototype.handleHideItems = function (e) {
   var $collapseButton = this.$module.querySelector('#idsk-crossroad__uncollapse-button');
 
   $crossroadItems.forEach(crossroadItem => {
-    if (crossroadItem.classList.contains('idsk-crossroad__item--two-columns-show-mobile')) {
-      crossroadItem.classList.remove('idsk-crossroad__item--two-columns-show-mobile');
+    if (crossroadItem.classList.contains('idsk-crossroad__item--show')) {
+      crossroadItem.classList.remove('idsk-crossroad__item--show');
       crossroadItem.classList.add('idsk-crossroad__item--two-columns-hide-mobile');
     }
     if (crossroadItem.classList.contains('idsk-crossroad__item--two-columns-show')) {
       crossroadItem.classList.remove('idsk-crossroad__item--two-columns-show');
-      crossroadItem.classList.add('idsk-crossroad__item--two-columns-hide');
+      crossroadItem.classList.add('idsk-crossroad__element-hide--desktop');
     }
-    if (crossroadItem.classList.contains('idsk-crossroad__item--one-column-show')) {
-      crossroadItem.classList.remove('idsk-crossroad__item--one-column-show');
-      crossroadItem.classList.add('idsk-crossroad__item--one-column-hide');
+    if (crossroadItem.classList.contains('idsk-crossroad__item--show')) {
+      crossroadItem.classList.remove('idsk-crossroad__item--show');
+      crossroadItem.classList.add('idsk-crossroad__element-hide');
     }
   });
-  toggleClass($collapseButton, 'idsk-crossroad__item--one-column-hide');
-  toggleClass(e.srcElement, 'idsk-crossroad__item--one-column-hide');
+  toggleClass($collapseButton, 'idsk-crossroad__element-hide');
+  toggleClass(e.srcElement, 'idsk-crossroad__element-hide');
 };
 
 export default Crossroad;

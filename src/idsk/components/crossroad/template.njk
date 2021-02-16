@@ -5,7 +5,7 @@
         <div class="idsk-crossroad idsk-crossroad-{{ numberOfCols }}">
             {% for item in params.items %}
                 {% if (loop.index0 // (loop.length / numberOfCols)) == colIndex %}
-                    <div id="idsk-crossroad__item" class="idsk-crossroad__item{{' idsk-crossroad__item--one-column-hide' if loop.index > 5 and numberOfCols==1 }} {{' idsk-crossroad__item--two-columns-hide' if loop.index > 10 and numberOfCols == 2 }} {{' idsk-crossroad__item--two-columns-hide-mobile' if loop.index > 5 and numberOfCols == 2 }}">
+                    <div id="idsk-crossroad__item" class="idsk-crossroad__item{{' idsk-crossroad__element-hide' if loop.index > 5 and numberOfCols==1 }} {{' idsk-crossroad__element-hide--desktop' if loop.index > 10 and numberOfCols == 2 }} {{' idsk-crossroad__item--two-columns-hide-mobile' if loop.index > 5 and numberOfCols == 2 }}">
                         <a href="{{item.link}}" class="idsk-crossroad-title">{{ item.title }}</a>
                         <p class="idsk-crossroad-subtitle">{{ item.subtitle }}</p>
                         <hr class="idsk-crossroad-line" aria-hidden="true"/>
@@ -14,7 +14,7 @@
             {% endfor %}
         </div>
     {% endfor %}
-    <div class="{{' idsk-crossroad__uncollapse-hide--desktop' if (params.items.length < 6 and numberOfCols==1) or (params.items.length < 11 and numberOfCols==2)}} {{' idsk-crossroad__uncollapse-hide--mobile' if params.items.length < 6}}">
+    <div class="{{' idsk-crossroad__element-hide--desktop' if (params.items.length < 6 and numberOfCols==1) or (params.items.length < 11 and numberOfCols==2)}} {{' idsk-crossroad__element-hide' if params.items.length < 6}}">
         <a id="idsk-crossroad__uncollapse-button" class="idsk-crossroad__colapse--a idsk-crossroad__link idsk-crossroad__collapse--shadow">
             <span class="idsk-crossroad__colapse-vector">
                 <svg width="25" height="7" viewbox="6 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -30,7 +30,7 @@
         </a>
     </div>
     <div>
-        <a id="idsk-crossroad__collapse-button" class="idsk-crossroad__colapse--a idsk-crossroad__link idsk-crossroad__item--one-column-hide">
+        <a id="idsk-crossroad__collapse-button" class="idsk-crossroad__colapse--a idsk-crossroad__link idsk-crossroad__element-hide">
             <span class="idsk-crossroad__colapse-vector">
                 <svg width="25" height="7" viewbox="6 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1.92198 6.29252L6.27661 2.41251L10.6312 6.29252C11.0689 6.68252 11.776 6.68252 12.2137 6.29252C12.6514 5.90252 12.6514 5.27252 12.2137 4.88252L7.06223 0.292501C6.62453 -0.0975003 5.91746 -0.0975003 5.47975 0.292501L0.328279 4.88252C-0.109429 5.27252 -0.109429 5.90252 0.328279 6.29252C0.765985 6.67252 1.48427 6.68252 1.92198 6.29252Z" fill="#0065B3"/>

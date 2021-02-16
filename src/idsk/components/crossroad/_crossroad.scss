@@ -38,25 +38,11 @@
     }
   }
 
-  .idsk-crossroad__uncollapse-hide--desktop {
-    @include mq($from: desktop) {
-      display: none;
-    }
-  }
-
-  .idsk-crossroad__uncollapse-hide--mobile {
+  .idsk-crossroad__element-hide {
     display: none;
   }
 
-  .idsk-crossroad__item--show {
-    display: block;
-  }
-
-  .idsk-crossroad__item--one-column-hide {
-    display: none;
-  }
-
-  .idsk-crossroad__item--two-columns-hide {
+  .idsk-crossroad__element-hide--desktop {
     @include mq($from: desktop) {
       display: none;
     }
@@ -72,7 +58,7 @@
     }
   }
 
-  .idsk-crossroad__item--one-column-show {
+  .idsk-crossroad__item--show {
     display: block;
   }
 
@@ -80,10 +66,6 @@
     @include mq($from: desktop) {
       display: block;
     }
-  }
-
-  .idsk-crossroad__item--two-columns-show-mobile {
-    display: block;
   }
 
   .idsk-crossroad__link {
