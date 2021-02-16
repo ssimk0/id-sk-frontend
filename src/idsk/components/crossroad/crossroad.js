@@ -8,7 +8,6 @@ import { nodeListForEach, toggleClass } from "../../common";
 function Crossroad($module) {
   this.$module = $module;
   this.$items = $module.querySelectorAll(".idsk-crossroad-title");
-  // console.log(this.$module.querySelectorAll(".idsk-crossroad__item"));
 }
 
 Crossroad.prototype.init = function () {
@@ -42,7 +41,6 @@ Crossroad.prototype.init = function () {
 Crossroad.prototype.handleItemClick = function (e) {
   var $item = e.target;
   $item.setAttribute("aria-current", "true");
-  console.log("dds");
 };
 
 Crossroad.prototype.handleShowItems = function (e) {
