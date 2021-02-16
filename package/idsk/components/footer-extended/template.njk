@@ -284,10 +284,8 @@
                                 </p>
                             </div>
                             <div class="govuk-grid-column-one-third idsk-footer-extended-logo-box">
-                                <a href="/">
-                                    <h2 class="idsk-footer-extended-logo">
-                                        {% include params.assetsPath | default('../../assets/images/') + (params.logo if params.logo else "footer-extended-logo.svg") %}
-                                    </h2>
+                                <a class="idsk-footer-extended-logo" href="/">
+                                    {% include params.assetsPath | default('../../assets/images/') + (params.logo if params.logo else "footer-extended-logo.svg") %}
                                 </a>
                             </div>
                         </div>
