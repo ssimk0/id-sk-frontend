@@ -1,7 +1,6 @@
 @import "../../../govuk/settings/all";
 @import "../../../govuk/tools/all";
 @import "../../../govuk/helpers/all";
-
 @import "../../../govuk/helpers/typography";
 
 @include govuk-exports("idsk/component/crossroad") {
@@ -14,7 +13,6 @@
   }
 
   .idsk-crossroad__colapse--a {
-    /* large screens / link */
     width: -webkit-fill-available;
     float: right;
     font-family: Source Sans Pro;
@@ -22,17 +20,32 @@
     font-weight: normal;
     font-size: 19px;
     line-height: 25px;
-    /* or 132% */
     text-align: center;
     text-decoration-line: underline;
-
     color: govuk-colour("blue");
-
     width: 100%;
     height: 100%;
-    box-shadow: 5px -70px 38px 10px govuk-colour("white");
     z-index: 2;
     cursor: pointer;
+  }
+
+  .idsk-crossroad__collapse--shadow {
+    position: relative;
+    box-shadow: 5px -50px 40px 10px govuk-colour("white");
+
+    @include mq($from: desktop) {
+      box-shadow: 5px -70px 40px 10px govuk-colour("white");
+    }
+  }
+
+  .idsk-crossroad__uncollapse-hide--desktop {
+    @include mq($from: desktop) {
+      display: none;
+    }
+  }
+
+  .idsk-crossroad__uncollapse-hide--mobile {
+    display: none;
   }
 
   .idsk-crossroad__item--show {
@@ -65,18 +78,12 @@
 
   .idsk-crossroad__item--two-columns-show {
     @include mq($from: desktop) {
-      display: show;
+      display: block;
     }
   }
 
   .idsk-crossroad__item--two-columns-show-mobile {
-    @include mq(mobile) {
-      display: block;
-    }
-
-    @include mq($from: desktop) {
-      display: block;
-    }
+    display: block;
   }
 
   .idsk-crossroad__link {

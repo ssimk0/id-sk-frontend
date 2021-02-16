@@ -14,9 +14,8 @@
             {% endfor %}
         </div>
     {% endfor %}
-    <div>
-
-        <a id="idsk-crossroad__uncollapse-button" class="idsk-crossroad__colapse--a idsk-crossroad__link">
+    <div class="{{' idsk-crossroad__uncollapse-hide--desktop' if (params.items.length < 6 and numberOfCols==1) or (params.items.length < 11 and numberOfCols==2)}} {{' idsk-crossroad__uncollapse-hide--mobile' if params.items.length < 6}}">
+        <a id="idsk-crossroad__uncollapse-button" class="idsk-crossroad__colapse--a idsk-crossroad__link idsk-crossroad__collapse--shadow">
             <span class="idsk-crossroad__colapse-vector">
                 <svg width="25" height="7" viewbox="6 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M9.42869 0.293417L5.56255 4.17343L1.69642 0.293417C1.30781 -0.0965848 0.680061 -0.0965848 0.291455 0.293417C-0.0971516 0.683418 -0.0971516 1.31342 0.291455 1.70342L4.86506 6.29344C5.25366 6.68344 5.88141 6.68344 6.27002 6.29344L10.8436 1.70342C11.2322 1.31342 11.2322 0.683418 10.8436 0.293417C10.455 -0.0865846 9.8173 -0.0965848 9.42869 0.293417Z" fill="#0065B3"></path>
@@ -30,7 +29,6 @@
             </span>
         </a>
     </div>
-
     <div>
         <a id="idsk-crossroad__collapse-button" class="idsk-crossroad__colapse--a idsk-crossroad__link idsk-crossroad__item--one-column-hide">
             <span class="idsk-crossroad__colapse-vector">
