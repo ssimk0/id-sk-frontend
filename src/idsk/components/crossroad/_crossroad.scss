@@ -12,86 +12,6 @@
     @include govuk-grid-column("one-half");
   }
 
-  .idsk-crossroad__colapse--a {
-    width: -webkit-fill-available;
-    float: right;
-    font-family: Source Sans Pro;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 19px;
-    line-height: 25px;
-    text-align: center;
-    text-decoration-line: underline;
-    color: govuk-colour("blue");
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-    cursor: pointer;
-  }
-
-  .idsk-crossroad__collapse--shadow {
-    position: relative;
-    box-shadow: 5px -50px 40px 10px govuk-colour("white");
-
-    @include mq($from: desktop) {
-      box-shadow: 5px -70px 40px 10px govuk-colour("white");
-    }
-  }
-
-  .idsk-crossroad__uncollapse-hide--desktop {
-    @include mq($from: desktop) {
-      display: none;
-    }
-  }
-
-  .idsk-crossroad__uncollapse-hide--mobile {
-    display: none;
-  }
-
-  .idsk-crossroad__item--show {
-    display: block;
-  }
-
-  .idsk-crossroad__item--one-column-hide {
-    display: none;
-  }
-
-  .idsk-crossroad__item--two-columns-hide {
-    @include mq($from: desktop) {
-      display: none;
-    }
-  }
-
-  .idsk-crossroad__item--two-columns-hide-mobile {
-    @include mq(mobile) {
-      display: none;
-    }
-
-    @include mq($from: desktop) {
-      display: block;
-    }
-  }
-
-  .idsk-crossroad__item--one-column-show {
-    display: block;
-  }
-
-  .idsk-crossroad__item--two-columns-show {
-    @include mq($from: desktop) {
-      display: block;
-    }
-  }
-
-  .idsk-crossroad__item--two-columns-show-mobile {
-    display: block;
-  }
-
-  .idsk-crossroad__link {
-    color: govuk-colour("blue");
-    text-decoration: underline;
-    cursor: pointer;
-  }
-
   .idsk-crossroad {
     &-title {
       @include govuk-font($size: 19, $weight: bold);
@@ -128,6 +48,67 @@
       border: 0;
       border-top: 1px;
       margin-bottom: 10px;
+    }
+  }
+
+  .idsk-crossroad__colapse--a {
+    width: -webkit-fill-available;
+    float: right;
+    font-family: Source Sans Pro;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 19px;
+    line-height: 25px;
+    text-align: center;
+    text-decoration-line: underline;
+    color: govuk-colour("blue");
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    cursor: pointer;
+  }
+
+  .idsk-crossroad__link {
+    color: govuk-colour("blue");
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .idsk-crossroad__collapse--shadow {
+    position: relative;
+    box-shadow: 5px -10px 70px 40px govuk-colour("white");
+  }
+
+  .idsk-crossroad__uncollapse-hide--mobile,
+  .idsk-crossroad__item--one-column-hide {
+    display: none;
+  }
+
+  .idsk-crossroad__item--show,
+  .idsk-crossroad__item--one-column-show,
+  .idsk-crossroad__item--two-columns-show-mobile {
+    display: block;
+  }
+
+  .idsk-crossroad__item--two-columns-hide,
+  .idsk-crossroad__uncollapse-hide--desktop {
+    @include mq($from: desktop) {
+      display: none !important;
+    }
+  }
+
+  .idsk-crossroad__item--two-columns-hide-mobile {
+    @include mq(mobile) {
+      display: none;
+    }
+    @include mq($from: desktop) {
+      display: unset;
+    }
+  }
+
+  .idsk-crossroad__item--two-columns-show {
+    @include mq($from: desktop) {
+      display: block;
     }
   }
 }

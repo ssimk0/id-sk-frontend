@@ -49,16 +49,10 @@ Crossroad.prototype.handleShowItems = function (e) {
 
   $crossroadItems.forEach(crossroadItem => {
     if (crossroadItem.classList.contains('idsk-crossroad__item--two-columns-hide-mobile')) {
-      crossroadItem.classList.add('idsk-crossroad__item--two-columns-show-mobile');
-      crossroadItem.classList.remove('idsk-crossroad__item--two-columns-hide-mobile');
+      crossroadItem.classList.replace('idsk-crossroad__item--two-columns-hide-mobile', 'idsk-crossroad__item--two-columns-show-mobile');
     }
     if (crossroadItem.classList.contains('idsk-crossroad__item--two-columns-hide')) {
-      crossroadItem.classList.add('idsk-crossroad__item--two-columns-show');
-      crossroadItem.classList.remove('idsk-crossroad__item--two-columns-hide');
-    }
-    if (crossroadItem.classList.contains('idsk-crossroad__item--one-column-hide')) {
-      crossroadItem.classList.add('idsk-crossroad__item--one-column-show');
-      crossroadItem.classList.remove('idsk-crossroad__item--one-column-hide');
+      crossroadItem.classList.replace('idsk-crossroad__item--two-columns-hide', 'idsk-crossroad__item--two-columns-show');
     }
   });
   toggleClass($collapseButton, 'idsk-crossroad__item--one-column-hide');
@@ -71,16 +65,10 @@ Crossroad.prototype.handleHideItems = function (e) {
 
   $crossroadItems.forEach(crossroadItem => {
     if (crossroadItem.classList.contains('idsk-crossroad__item--two-columns-show-mobile')) {
-      crossroadItem.classList.remove('idsk-crossroad__item--two-columns-show-mobile');
-      crossroadItem.classList.add('idsk-crossroad__item--two-columns-hide-mobile');
+      crossroadItem.classList.replace('idsk-crossroad__item--two-columns-show-mobile', 'idsk-crossroad__item--two-columns-hide-mobile');
     }
     if (crossroadItem.classList.contains('idsk-crossroad__item--two-columns-show')) {
-      crossroadItem.classList.remove('idsk-crossroad__item--two-columns-show');
-      crossroadItem.classList.add('idsk-crossroad__item--two-columns-hide');
-    }
-    if (crossroadItem.classList.contains('idsk-crossroad__item--one-column-show')) {
-      crossroadItem.classList.remove('idsk-crossroad__item--one-column-show');
-      crossroadItem.classList.add('idsk-crossroad__item--one-column-hide');
+      crossroadItem.classList.replace('idsk-crossroad__item--two-columns-show', 'idsk-crossroad__item--two-columns-hide');
     }
   });
   toggleClass($collapseButton, 'idsk-crossroad__item--one-column-hide');

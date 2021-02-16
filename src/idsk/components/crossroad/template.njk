@@ -5,7 +5,9 @@
         <div class="idsk-crossroad idsk-crossroad-{{ numberOfCols }}">
             {% for item in params.items %}
                 {% if (loop.index0 // (loop.length / numberOfCols)) == colIndex %}
-                    <div id="idsk-crossroad__item" class="idsk-crossroad__item{{' idsk-crossroad__item--one-column-hide' if loop.index > 5 and numberOfCols==1 }} {{' idsk-crossroad__item--two-columns-hide' if loop.index > 10 and numberOfCols == 2 }} {{' idsk-crossroad__item--two-columns-hide-mobile' if loop.index > 5 and numberOfCols == 2 }}">
+                    <div id="idsk-crossroad__item" class="idsk-crossroad__item{{' idsk-crossroad__item--two-columns-hide-mobile' if loop.index > 5 }}
+                        {{' idsk-crossroad__item--two-columns-hide' if (loop.index > 5 and numberOfCols == 2 and colIndex == 0)
+                        or (loop.index > (loop.length / numberOfCols) + 6 and numberOfCols == 2 and colIndex == 1) or (loop.index > 5 and numberOfCols == 1)}} ">
                         <a href="{{item.link}}" class="idsk-crossroad-title">{{ item.title }}</a>
                         <p class="idsk-crossroad-subtitle">{{ item.subtitle }}</p>
                         <hr class="idsk-crossroad-line" aria-hidden="true"/>
