@@ -1,10 +1,12 @@
 import { nodeListForEach } from "./common";
 import { initAll as initAllGOVUKjs } from "../govuk/all";
 import Button from "./components/button/button";
+import Feedback from "./components/feedback/feedback";
 import FooterExtended from "./components/footer-extended/footer-extended";
 import CharacterCount from "./components/character-count/character-count";
 import Crossroad from "./components/crossroad/crossroad";
 import HeaderExtended from './components/header-extended/header-extended';
+import InPageNavigation from './components/in-page-navigation/in-page-navigation';
 
 function initAll(options) {
   // Set the options to an empty object by default if no options are passed.
@@ -19,6 +21,12 @@ function initAll(options) {
     new Button($button).init()
   })
 
+  var $feedback = scope.querySelectorAll(
+    '[data-module="idsk-feedback"]'
+  );
+  nodeListForEach($feedback, function ($feedback) {
+    new Feedback($feedback).init();
+  });
   // Find first Footer-extended module to enhance.
   var $footerExtended = scope.querySelectorAll(
     '[data-module="idsk-footer-extended"]'
@@ -45,6 +53,9 @@ function initAll(options) {
     new HeaderExtended($headerExtended).init()
   })
 
+  let $inPageNavigation = scope.querySelector('[data-module="idsk-in-page-navigation"]')
+  new InPageNavigation($inPageNavigation).init()
+
   // Init all GOVUK components js
   initAllGOVUKjs(options);
 }
@@ -54,6 +65,8 @@ export {
   Button,
   CharacterCount,
   Crossroad,
+  Feedback,
   FooterExtended,
-  HeaderExtended  
+  HeaderExtended,
+  InPageNavigation
 }

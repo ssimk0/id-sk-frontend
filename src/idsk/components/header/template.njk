@@ -1,4 +1,4 @@
-<header class="idsk-header {{ params.classes if params.classes }}" role="banner" data-module="idsk-header"
+<header class="idsk-header {{ params.classes if params.classes }}" data-module="idsk-header"
         {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
   <div class="idsk-header__container {{ params.containerClasses | default('govuk-width-container') }}">
     <div class="idsk-header__logo">
@@ -25,7 +25,7 @@
     {% endif %}
     
     {% if params.navigation %}
-    <button type="button" role="button" class="idsk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
+    <button type="button" class="idsk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
     <nav>
       <ul id="navigation" class="idsk-header__navigation {{ params.navigationClasses if params.navigationClasses }}" aria-label="Top Level Navigation">
         {% for item in params.navigation %}

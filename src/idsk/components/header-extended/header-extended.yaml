@@ -23,6 +23,10 @@ params:
   type: string
   required: false
   description: The public path for the assets folder. If not provided it defaults to /assets/images
+- name: assetsPathLogo
+  type: string
+  required: false
+  description: The public path for the assets folder for logo. If not provided it defaults to /assets/images
 - name: logoGrid
   type: string
   required: false
