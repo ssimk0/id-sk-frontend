@@ -1,6 +1,5 @@
 <header 
   class="idsk-header-extended {{ params.classes if params.classes }}" 
-  role="banner" 
   data-module="idsk-header-extended"
   {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}
 >
@@ -9,22 +8,22 @@
     <div class="idsk-header-extended__logo {{ params.logoGrid if params.logoGrid else 'govuk-grid-column-three-quarters' }}">
       <a href="{{ params.homepageUrl | default('/') }}" title="{{ params.headerTitle if params.headerTitle }}">
         <div class="idsk-header-extended__logotype-crown">
-          {% include params.assetsPath | default('../../assets/images/header-extended/') + params.logo %}
+          {% include params.assetsPathLogo | default('../../assets/images/header-extended/') + params.logo %}
         </div>
         <div class="idsk-header-extended__logotype-crown-mobile">
-          {% include params.assetsPath | default('../../assets/images/header-extended/') + params.logoSmall %}
+          {% include params.assetsPathLogo | default('../../assets/images/header-extended/') + params.logoSmall %}
         </div>
         <div class="idsk-header-extended__logotype-crown-mobile-navigation">
-          {% include params.assetsPath | default('../../assets/images/header-extended/') + params.logoWhite %}
+          {% include params.assetsPathLogo | default('../../assets/images/header-extended/') + params.logoWhite %}
         </div>
         <div class="idsk-header-extended__logotype-crown-mobile-small-navigation">
-          {% include params.assetsPath | default('../../assets/images/header-extended/') + params.logoSmallWhite %}
+          {% include params.assetsPathLogo | default('../../assets/images/header-extended/') + params.logoSmallWhite %}
         </div>
       </a>
       <div class="idsk-header-extended-x-mark"></div>
     </div>
 
-    <div tabindex="0" class="idsk-header-extended__search {{ 'mobile-only' if not params.search }}">
+    <div tabindex="0" class="idsk-header-extended__search {{ 'idsk-header-extended--mobile-only' if not params.search }}">
       <div class="idsk-header-extended__search-text">
         <span><i class="fas fa-search"></i>{{ params.search.text if params.search.text else "Vyhľadávanie" }}</span>
       </div>
@@ -39,11 +38,7 @@
     </div>
 
     {% if params.language %}
-      <div
-        tabindex="1"
-        class="idsk-header-extended__language idsk-js-header-extended-language-toggle {{ 'idsk-header-extended--left' if not params.search }}" 
-        aria-controls="idsk-header-extended__language-list" 
-      >
+      <div tabindex="1" class="idsk-header-extended__language idsk-js-header-extended-language-toggle {{ 'idsk-header-extended--left' if not params.search }}">
         <div class="idsk-header-extended__language-wrapper">
           <div class="idsk-header-extended__language--current">
             <input name="locale-language" type="text" autocomplete="off" placeholder="Language" class="idsk-header-extended__language-input">
@@ -88,7 +83,6 @@
     <div class="idsk-header-extended__content">
       <button 
         type="button" 
-        role="button"
         class="idsk-header-extended__menu-button idsk-js-header-extended-side-menu"
         aria-controls="navigation"
         aria-label="Show or hide Top Level Navigation"
@@ -125,14 +119,12 @@
                     <ul class="govuk-width-container">
                       {% for subItem in item.submenu%}
                         <li>
-                          <span>
-                            <a href="{{ subItem.link }}" title="{{ subItem.text }}">
-                              {% if subItem.icon %}
-                              <i class="{{ subItem.icon }}" aria-hidden="true"></i>
-                              {% endif %}
-                              {{ subItem.text }}
-                            </a>
-                          <span>
+                          <a href="{{ subItem.link }}" title="{{ subItem.text }}">
+                            {% if subItem.icon %}
+                            <i class="{{ subItem.icon }}" aria-hidden="true"></i>
+                            {% endif %}
+                            {{ subItem.text }}
+                          </a>
                         </li>
                       {% endfor %}
                     </ul>
