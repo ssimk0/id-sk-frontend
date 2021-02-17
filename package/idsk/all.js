@@ -2489,6 +2489,76 @@ Button$1.prototype.init = function () {
 };
 
 /**
+ * Feedback for extended websites
+ */
+function Feedback($module) {
+    this.$module = $module;
+}
+
+Feedback.prototype.init = function () {
+    var $module = this.$module;
+    // check for module
+    if (!$module) {
+        return;
+    }
+
+    var $textAreaCharacterCount = $module.querySelector('#idsk-feedback__question-bar #with-hint');
+    var $sendButton = $module.querySelector('#idsk-feedback__send-button');
+    var $radioButtons = $module.querySelectorAll('.idsk-feedback__radio-button');
+
+    if ($radioButtons) {
+        var $self = this;
+        // Handle $radioButtons click events
+        nodeListForEach$1($radioButtons, function ($radioButton) {
+            $radioButton.addEventListener('click', $self.handleRadioButtonClick.bind($self));
+        });
+    }
+
+    if ($sendButton) {
+        $sendButton.addEventListener('click', this.handleSendButtonClick.bind(this));
+    }
+
+    if ($textAreaCharacterCount) {
+        $textAreaCharacterCount.addEventListener('input', this.handleStatusOfCharacterCountButton.bind(this));
+    }
+};
+
+Feedback.prototype.handleSendButtonClick = function (e) {
+    var $thanksForFeedbackBar = this.$module.querySelector('#idsk-feedback__thanks');
+    var $feedbackContent = this.$module.querySelector('#idsk-feedback__content');
+
+    $feedbackContent.classList.add('idsk-feedback--hidden');
+    $thanksForFeedbackBar.classList.remove('idsk-feedback--hidden');
+};
+
+Feedback.prototype.handleRadioButtonClick = function (e) {
+    var $improoveQuestionBar = this.$module.querySelector('#idsk-feedback__question-bar');
+
+    if (e.srcElement.classList.contains('idsk-feedback-textarea--show')) {
+        $improoveQuestionBar.classList.add('idsk-feedback--open');
+        $improoveQuestionBar.classList.remove('idsk-feedback--invisible');
+    } else {
+        $improoveQuestionBar.classList.remove('idsk-feedback--open');
+        $improoveQuestionBar.classList.add('idsk-feedback--invisible');
+    }
+};
+
+Feedback.prototype.handleStatusOfCharacterCountButton = function (e) {
+    var $textAreaCharacterCount = this.$module.querySelector('#with-hint');
+    var $remainingCharacterCountMessage = this.$module.querySelector('#with-hint-info');
+
+    var $submitButton = this.$module.querySelector('#idsk-feedback__send-button');
+
+    setTimeout(function () {
+        if ($textAreaCharacterCount.classList.contains('govuk-textarea--error') || $remainingCharacterCountMessage.classList.contains('govuk-error-message')) {
+            $submitButton.disabled = true;
+        } else {
+            $submitButton.disabled = false;
+        }
+    }, 300);
+};
+
+/**
  * Footer for extended websites
  */
 function FooterExtended($module) {
@@ -2507,14 +2577,11 @@ FooterExtended.prototype.init = function () {
     var $errorButton = $module.querySelector('#idsk-footer-extended-error-button');
     var $closeErrorFormButton = $module.querySelector('#idsk-footer-extended-close-error-form-button');
     var $closeHelpFormButton = $module.querySelector('#idsk-footer-extended-close-help-form-button');
-
     var $textAreaCharacterCount = $module.querySelector('#idsk-footer-extended-error-form #with-hint');
-
     var $fillFeedbackButton = $module.querySelector('#fill-feedback-help-form');
     var $submitErrorButton = $module.querySelector('#submit-button-error-form');
-
-
-    var $writeUsButton = this.$module.querySelector('#idsk-footer-extended-write-us-button');
+    var $writeUsButton = $module.querySelector('#idsk-footer-extended-write-us-button');
+    var $upButton = $module.querySelector("#footer-extended-up-button");
 
     if ($yesButton && $noButton && $errorButton) {
         $yesButton.addEventListener('click', this.handleYesButtonClick.bind(this));
@@ -2545,6 +2612,14 @@ FooterExtended.prototype.init = function () {
     if ($textAreaCharacterCount) {
         $textAreaCharacterCount.addEventListener('input', this.handleStatusOfCharacterCountButton.bind(this));
     }
+
+    //Get the button
+    // When the user scrolls down window screen heiht From the top of the document, show the button
+    if ($upButton != null) {
+        window.addEventListener('scroll', this.scrollFunction.bind(this));
+    }
+
+
 };
 
 
@@ -2575,10 +2650,8 @@ FooterExtended.prototype.handleStatusOfCharacterCountButton = function (e) {
 
     setTimeout(function () {
         if ($textAreaCharacterCount.classList.contains('govuk-textarea--error') || $remainingCharacterCountMessage.classList.contains('govuk-error-message')) {
-            console.log($textAreaCharacterCount.classList);
             $submitButton.disabled = true;
         } else {
-            console.log($textAreaCharacterCount.classList);
             $submitButton.disabled = false;
         }
     }, 300);
@@ -2653,23 +2726,15 @@ FooterExtended.prototype.handleCloseHelpFormButtonClick = function () {
     toggleClass($helpOption, 'idsk-footer-extended-display-hidden');
 };
 
-//Get the button
-var mybutton = document.getElementById("footer-extended-up-button");
+FooterExtended.prototype.scrollFunction = function () {
+    var $upButton = this.$module.querySelector("#footer-extended-up-button");
 
-// When the user scrolls down window screen heiht From the top of the document, show the button
-if (mybutton != null) {
-    window.onscroll = function () {
-        scrollFunction();
-    };
-}
-
-function scrollFunction() {
-    if (window.screen.width > 992 && (document.body.scrollTop > window.screen.height || document.documentElement.scrollTop > window.screen.height)) {
-        mybutton.style.display = "block";
+    if (window.innerWidth > 768 && (document.body.scrollTop > window.screen.height || document.documentElement.scrollTop > window.screen.height)) {
+        $upButton.style.display = "block";
     } else {
-        mybutton.style.display = "none";
+        $upButton.style.display = "none";
     }
-}
+};
 
 function CharacterCount$1($module) {
   this.$module = $module;
@@ -2836,8 +2901,7 @@ CharacterCount$1.prototype.updateCountMessage = function () {
   if (options.maxwords) {
     charNoun = 'slov';
   }
-  //charNoun = charNoun + ((remainingNumber === -1 || remainingNumber === 1) ? '' : 'ov')
-
+ 
   if ((remainingNumber > 1 && remainingNumber < 5) || (remainingNumber > -5 && remainingNumber < -1)) {
     charNoun = charNoun + 'y';
   } else if (remainingNumber == 1 || remainingNumber == -1) { } else {
@@ -2845,10 +2909,12 @@ CharacterCount$1.prototype.updateCountMessage = function () {
   }
 
   displayNumber = Math.abs(remainingNumber);
-  if (remainingNumber < 0)
+  if (remainingNumber < 0) {
     displayNumber = '-' + displayNumber;
-
-  countMessage.innerHTML = 'Zostáva Vám ' + displayNumber + ' ' + charNoun + ' ';
+    countMessage.innerHTML = 'Prekročili ste maximálny počet znakov';
+  } else {
+    countMessage.innerHTML = 'Zostáva Vám ' + displayNumber + ' ' + charNoun + ' ';
+  }
 };
 
 CharacterCount$1.prototype.handleFocus = function () {
@@ -3004,7 +3070,7 @@ HeaderExtended.prototype.handleSubmenuClick2 = function (e) {
  * @param {object} e
  */
 HeaderExtended.prototype.handleMobilMenu = function (e) {
-    toggleClass(this.$module, "show-mobile-menu");
+    toggleClass(this.$module, "idsk-header-extended--show-mobile-menu");
 };
 
 /**
@@ -3020,6 +3086,144 @@ HeaderExtended.prototype.scrollFunction = function () {
     }
 };
 
+function InPageNavigation($module) {
+    this.$module = $module;
+}
+
+InPageNavigation.prototype.init = function () {
+    // Check for module
+    var $module = this.$module;
+    if (!$module) {
+        return
+    }
+
+    // Check for button
+    var $links = $module.querySelectorAll('.idsk-in-page-navigation__link');
+    if (!$links) {
+        return
+    }
+
+    // list of all ids and titles
+    this.$arrTitlesAndElems = [];
+    // Handle $link click events
+    $links.forEach(function ($link) {
+        var $item = {};
+        $item.el = document.getElementById($link.href.split('#')[1]);
+        this.$arrTitlesAndElems.push($item);
+        $link.addEventListener('click', this.handleClickLink.bind(this));
+    }.bind(this));
+
+    var $linkPanelButton = $module.querySelector('.idsk-in-page-navigation__link-panel');
+    if (!$linkPanelButton) {
+        return
+    }
+    $module.boundCheckCloseClick = this.checkCloseClick.bind(this);
+    $module.boundHandleClickLinkPanel = this.handleClickLinkPanel.bind(this);
+    $linkPanelButton.addEventListener('click', $module.boundHandleClickLinkPanel, true);
+
+    // Handle floating navigation
+    window.addEventListener('scroll', this.scrollFunction.bind(this));
+    // Handle case if the viewport is shor and there are more than one article - scrolling is not needed, but navigation pointer has to be updated
+    this.$module.labelChanged = false;
+};
+
+/**
+ * An event handler for click event on $link - add actual title to link panel
+ * @param {object} e
+ */
+InPageNavigation.prototype.handleClickLink = function (e) {
+    var $link = e.target || e.srcElement;
+    var $id = $link.closest('.idsk-in-page-navigation__link').href.split('#')[1];
+    var $panelHeight = this.$module.getElementsByClassName('idsk-in-page-navigation__link-panel')[0].offsetHeight;
+
+    setTimeout(function () {
+        if (document.getElementById($id) != null) {
+            this.$module.labelChanged = true;
+            this.changeCurrentLink($link);
+            window.scrollTo(0, document.getElementById($id).offsetTop - ($panelHeight * 2.5));
+        } else {
+            this.changeCurrentLink($link);
+        }
+    }.bind(this), 10);
+};
+
+/**
+ * An event handler for click event on $linkPanel - collapse or expand in page navigation menu
+ * @param {object} e 
+ */
+InPageNavigation.prototype.handleClickLinkPanel = function (e) {
+    var $module = this.$module;
+    var $linkPanelButton = $module.querySelector('.idsk-in-page-navigation__link-panel');
+
+    $module.classList.add('idsk-in-page-navigation--expand');
+    $linkPanelButton.removeEventListener('click', $module.boundHandleClickLinkPanel, true);
+    document.addEventListener('click', $module.boundCheckCloseClick, true);
+};
+
+/**
+ * close navigation if the user click outside navigation
+ * @param {object} e 
+ */
+InPageNavigation.prototype.checkCloseClick = function (e) {
+    var $el = e.target || e.srcElement;
+    var $navigationList = $el.closest('.idsk-in-page-navigation__list');
+    var $module = this.$module;
+    var $linkPanelButton = $module.querySelector('.idsk-in-page-navigation__link-panel');
+
+    if ($navigationList == null) {
+        e.stopPropagation(); // prevent bubbling
+        $module.classList.remove('idsk-in-page-navigation--expand');
+        $linkPanelButton.addEventListener('click', $module.boundHandleClickLinkPanel, true);
+        document.removeEventListener('click', $module.boundCheckCloseClick, true);
+    }
+};
+
+/**
+ * When the user scrolls down from the top of the document, set position to fixed
+ */
+InPageNavigation.prototype.scrollFunction = function () {
+    var $module = this.$module;
+    var $arrTitlesAndElems = this.$arrTitlesAndElems;
+    var $parentModule = $module.parentElement;
+    var $navTopPosition = $parentModule.offsetTop - 55; // padding
+    var $links = $module.querySelectorAll('.idsk-in-page-navigation__list-item');
+
+    if (window.pageYOffset <= $navTopPosition) {
+        $module.classList.remove('idsk-in-page-navigation--sticky');
+    } else {
+        $module.classList.add('idsk-in-page-navigation--sticky');
+    }
+
+    if (this.$module.labelChanged) {
+        this.$module.labelChanged = false;
+    } else if ($module.classList.contains('idsk-in-page-navigation--sticky')) {
+        var $self = this;
+        $arrTitlesAndElems.some(function ($item, $index) {
+            if ($item.el.offsetTop >= window.scrollY && $item.el.offsetTop <= (window.scrollY + window.innerHeight)) {
+                $self.changeCurrentLink($links[$index]);
+
+                return true
+            }
+        });
+    } else {
+        this.changeCurrentLink($links[0]);
+    }
+};
+
+InPageNavigation.prototype.changeCurrentLink = function (el) {
+    var $module = this.$module;
+    var $currItem = el.closest('.idsk-in-page-navigation__list-item');
+    var $articleTitle = $currItem.querySelector('.idsk-in-page-navigation__link-title');
+    var $items = $module.querySelectorAll('.idsk-in-page-navigation__list-item');
+    var $linkPanelText = $module.querySelector('.idsk-in-page-navigation__link-panel-button');
+
+    $items.forEach(function ($item) {
+        $item.classList.remove('idsk-in-page-navigation__list-item--active');
+    });
+    $currItem.classList.add('idsk-in-page-navigation__list-item--active');
+    $linkPanelText.innerText = $articleTitle.innerText;
+};
+
 function initAll$1(options) {
   // Set the options to an empty object by default if no options are passed.
   options = typeof options !== "undefined" ? options : {};
@@ -3033,6 +3237,12 @@ function initAll$1(options) {
     new Button$1($button).init();
   });
 
+  var $feedback = scope.querySelectorAll(
+    '[data-module="idsk-feedback"]'
+  );
+  nodeListForEach($feedback, function ($feedback) {
+    new Feedback($feedback).init();
+  });
   // Find first Footer-extended module to enhance.
   var $footerExtended = scope.querySelectorAll(
     '[data-module="idsk-footer-extended"]'
@@ -3059,6 +3269,9 @@ function initAll$1(options) {
     new HeaderExtended($headerExtended).init();
   });
 
+  var $inPageNavigation = scope.querySelector('[data-module="idsk-in-page-navigation"]');
+  new InPageNavigation($inPageNavigation).init();
+
   // Init all GOVUK components js
   initAll(options);
 }
@@ -3067,7 +3280,9 @@ exports.initAll = initAll$1;
 exports.Button = Button$1;
 exports.CharacterCount = CharacterCount$1;
 exports.Crossroad = Crossroad;
+exports.Feedback = Feedback;
 exports.FooterExtended = FooterExtended;
 exports.HeaderExtended = HeaderExtended;
+exports.InPageNavigation = InPageNavigation;
 
 })));

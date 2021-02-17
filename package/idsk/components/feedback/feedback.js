@@ -674,158 +674,75 @@ function nodeListForEach(nodes, callback) {
 }
 
 /**
- * TODO: Ideally this would be a NodeList.prototype.forEach polyfill
- * This seems to fail in IE8, requires more investigation.
- * See: https://github.com/imagitama/nodelist-foreach-polyfill
+ * Feedback for extended websites
  */
-
-/**
- * Toggle class
- * @param {object} node element
- * @param {string} className to toggle
- */
-function toggleClass(node, className) {
-    if (node === null) {
-        return;
-    }
-
-    if (node.className.indexOf(className) > 0) {
-        node.className = node.className.replace(' ' + className, '');
-    } else {
-        node.className += ' ' + className;
-    }
-}
-
-/**
- * Header for extended websites
- */
-function HeaderExtended($module) {
+function Feedback($module) {
     this.$module = $module;
 }
 
-HeaderExtended.prototype.init = function () {
-
+Feedback.prototype.init = function () {
     var $module = this.$module;
     // check for module
     if (!$module) {
         return;
     }
 
-    // check for search component
-    var $toggleSearchComponent = $module.querySelector('.idsk-header-extended__search');
-    var $toggleSearchInputComponent = $module.querySelector('.idsk-header-extended__search-form input');
-    if ($toggleSearchComponent && $toggleSearchInputComponent) {
-        // Handle $toggleSearchComponent click and blur events
-        $toggleSearchComponent.addEventListener('focus', this.handleSearchComponentClick.bind(this));
-        // both blur events needed
-        // if form is shown, but has not been focused, inputs blur won't be fired, then trigger this one
-        $toggleSearchComponent.addEventListener('focusout', this.handleSearchComponentClick.bind(this));
-        // if form is shown, and has been focused, trigger this one
-        $toggleSearchInputComponent.addEventListener('focusout', this.handleSearchComponentClick.bind(this));
-    }
+    var $textAreaCharacterCount = $module.querySelector('#idsk-feedback__question-bar #with-hint');
+    var $sendButton = $module.querySelector('#idsk-feedback__send-button');
+    var $radioButtons = $module.querySelectorAll('.idsk-feedback__radio-button');
 
-    // check for language selector
-    var $toggleLanguageSelector = $module.querySelector('.idsk-js-header-extended-language-toggle');
-    if ($toggleLanguageSelector) {
-        // Handle $toggleLanguageSelect click events
-        $toggleLanguageSelector.addEventListener('focus', this.handleLanguageSelectorClick.bind(this));
-        $toggleLanguageSelector.addEventListener('blur', this.handleLanguageSelectorClick.bind(this));
-    }
-
-    // check for submenu
-    var $toggleSubmenus = $module.querySelectorAll('.idsk-header-extended__link');
-    if ($toggleSubmenus) {
+    if ($radioButtons) {
         var $self = this;
-        // Handle $toggleSubmenu click events
-        nodeListForEach($toggleSubmenus, function ($toggleSubmenu) {
-            $toggleSubmenu.addEventListener('focus', $self.handleSubmenuClick2.bind($self));
-            $toggleSubmenu.addEventListener('blur', $self.handleSubmenuClick.bind($self));
+        // Handle $radioButtons click events
+        nodeListForEach($radioButtons, function ($radioButton) {
+            $radioButton.addEventListener('click', $self.handleRadioButtonClick.bind($self));
         });
     }
 
-    // check for menu button and x-mark button
-    var $hamburgerMenuButton = $module.querySelector('.idsk-js-header-extended-side-menu');
-    var $xMarkMenuButton = $module.querySelector('.idsk-header-extended-x-mark');
-    if ($hamburgerMenuButton && $xMarkMenuButton) {
-        $hamburgerMenuButton.addEventListener('click', this.handleMobilMenu.bind(this));
-        $xMarkMenuButton.addEventListener('click', this.handleMobilMenu.bind(this));
+    if ($sendButton) {
+        $sendButton.addEventListener('click', this.handleSendButtonClick.bind(this));
     }
 
-    window.addEventListener('scroll', this.scrollFunction.bind(this));
-};
-
-/**
- * Handle focus/blur on search component - show/hide search form, hide/show search text wrapper
- * @param {object} e 
- */
-HeaderExtended.prototype.handleSearchComponentClick = function (e) {
-    var $el = e.target || e.srcElement;
-    var $target = $el.closest('.idsk-header-extended__search');
-    var $relatedTarget = e.relatedTarget ? (e.relatedTarget).closest('.idsk-header-extended__search-form') : e.relatedTarget;
-    var $searchForm = $target.querySelector('.idsk-header-extended__search-form');
-    if (e.type === 'focus') {
-        $target.classList.add('idsk-header-extended__search--active');
-    } else if (e.type === 'focusout' && $relatedTarget !== $searchForm) {
-        $target.classList.remove('idsk-header-extended__search--active');
+    if ($textAreaCharacterCount) {
+        $textAreaCharacterCount.addEventListener('input', this.handleStatusOfCharacterCountButton.bind(this));
     }
 };
 
-/**
- * Handle open/hide language switcher
- * @param {object} e 
- */
-HeaderExtended.prototype.handleLanguageSelectorClick = function (e) {
-    var $toggleButton = e.target || e.srcElement;
-    var $target = $toggleButton.closest('.idsk-header-extended__language');
-    toggleClass($target, 'idsk-header-extended__language--active');
+Feedback.prototype.handleSendButtonClick = function (e) {
+    var $thanksForFeedbackBar = this.$module.querySelector('#idsk-feedback__thanks');
+    var $feedbackContent = this.$module.querySelector('#idsk-feedback__content');
+
+    $feedbackContent.classList.add('idsk-feedback--hidden');
+    $thanksForFeedbackBar.classList.remove('idsk-feedback--hidden');
 };
 
-/**
- * Handle open/hide submenu
- * @param {object} e 
- */
-HeaderExtended.prototype.handleSubmenuClick = function (e) {
-    var $srcEl = e.target || e.srcElement;
-    var $toggleButton = $srcEl.closest('.idsk-header-extended__navigation-item');
-    toggleClass($toggleButton, 'idsk-header-extended__navigation-item--active');
-};/**
- * Handle open/hide submenu
- * @param {object} e 
- */
+Feedback.prototype.handleRadioButtonClick = function (e) {
+    var $improoveQuestionBar = this.$module.querySelector('#idsk-feedback__question-bar');
 
-HeaderExtended.prototype.handleSubmenuClick2 = function (e) {
-    var $srcEl = e.target || e.srcElement;
-    var $toggleButton = $srcEl.closest('.idsk-header-extended__navigation-item');
-    var $currActiveList = this.$module.querySelectorAll('.idsk-header-extended__navigation-item--active');
-
-    if ($currActiveList.length > 0) {
-        $currActiveList[0].classList.remove('idsk-header-extended__navigation-item--active');
-    }
-    
-    toggleClass($toggleButton, 'idsk-header-extended__navigation-item--active');
-};
-
-/**
- * Show/hide mobil menu
- * @param {object} e
- */
-HeaderExtended.prototype.handleMobilMenu = function (e) {
-    toggleClass(this.$module, "idsk-header-extended--show-mobile-menu");
-};
-
-/**
- * When the user scrolls down from the top of the document, resize the navbar's padding and the logo
- */
-HeaderExtended.prototype.scrollFunction = function () {
-    var $module = this.$module;
-
-    if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-        $module.classList.add('idsk-header-extended--shrink');
-    } else if (document.body.scrollTop < 10 && document.documentElement.scrollTop < 10) {
-        $module.classList.remove('idsk-header-extended--shrink');
+    if (e.srcElement.classList.contains('idsk-feedback-textarea--show')) {
+        $improoveQuestionBar.classList.add('idsk-feedback--open');
+        $improoveQuestionBar.classList.remove('idsk-feedback--invisible');
+    } else {
+        $improoveQuestionBar.classList.remove('idsk-feedback--open');
+        $improoveQuestionBar.classList.add('idsk-feedback--invisible');
     }
 };
 
-return HeaderExtended;
+Feedback.prototype.handleStatusOfCharacterCountButton = function (e) {
+    var $textAreaCharacterCount = this.$module.querySelector('#with-hint');
+    var $remainingCharacterCountMessage = this.$module.querySelector('#with-hint-info');
+
+    var $submitButton = this.$module.querySelector('#idsk-feedback__send-button');
+
+    setTimeout(function () {
+        if ($textAreaCharacterCount.classList.contains('govuk-textarea--error') || $remainingCharacterCountMessage.classList.contains('govuk-error-message')) {
+            $submitButton.disabled = true;
+        } else {
+            $submitButton.disabled = false;
+        }
+    }, 300);
+};
+
+return Feedback;
 
 })));

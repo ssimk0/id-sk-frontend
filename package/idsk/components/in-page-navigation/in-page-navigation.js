@@ -664,168 +664,145 @@ if (detect) return
  * This seems to fail in IE8, requires more investigation.
  * See: https://github.com/imagitama/nodelist-foreach-polyfill
  */
-function nodeListForEach(nodes, callback) {
-  if (window.NodeList.prototype.forEach) {
-    return nodes.forEach(callback)
-  }
-  for (var i = 0; i < nodes.length; i++) {
-    callback.call(window, nodes[i], i, nodes);
-  }
-}
 
-/**
- * TODO: Ideally this would be a NodeList.prototype.forEach polyfill
- * This seems to fail in IE8, requires more investigation.
- * See: https://github.com/imagitama/nodelist-foreach-polyfill
- */
-
-/**
- * Toggle class
- * @param {object} node element
- * @param {string} className to toggle
- */
-function toggleClass(node, className) {
-    if (node === null) {
-        return;
-    }
-
-    if (node.className.indexOf(className) > 0) {
-        node.className = node.className.replace(' ' + className, '');
-    } else {
-        node.className += ' ' + className;
-    }
-}
-
-/**
- * Header for extended websites
- */
-function HeaderExtended($module) {
+function InPageNavigation($module) {
     this.$module = $module;
 }
 
-HeaderExtended.prototype.init = function () {
-
+InPageNavigation.prototype.init = function () {
+    // Check for module
     var $module = this.$module;
-    // check for module
     if (!$module) {
-        return;
+        return
     }
 
-    // check for search component
-    var $toggleSearchComponent = $module.querySelector('.idsk-header-extended__search');
-    var $toggleSearchInputComponent = $module.querySelector('.idsk-header-extended__search-form input');
-    if ($toggleSearchComponent && $toggleSearchInputComponent) {
-        // Handle $toggleSearchComponent click and blur events
-        $toggleSearchComponent.addEventListener('focus', this.handleSearchComponentClick.bind(this));
-        // both blur events needed
-        // if form is shown, but has not been focused, inputs blur won't be fired, then trigger this one
-        $toggleSearchComponent.addEventListener('focusout', this.handleSearchComponentClick.bind(this));
-        // if form is shown, and has been focused, trigger this one
-        $toggleSearchInputComponent.addEventListener('focusout', this.handleSearchComponentClick.bind(this));
+    // Check for button
+    var $links = $module.querySelectorAll('.idsk-in-page-navigation__link');
+    if (!$links) {
+        return
     }
 
-    // check for language selector
-    var $toggleLanguageSelector = $module.querySelector('.idsk-js-header-extended-language-toggle');
-    if ($toggleLanguageSelector) {
-        // Handle $toggleLanguageSelect click events
-        $toggleLanguageSelector.addEventListener('focus', this.handleLanguageSelectorClick.bind(this));
-        $toggleLanguageSelector.addEventListener('blur', this.handleLanguageSelectorClick.bind(this));
-    }
+    // list of all ids and titles
+    this.$arrTitlesAndElems = [];
+    // Handle $link click events
+    $links.forEach(function ($link) {
+        var $item = {};
+        $item.el = document.getElementById($link.href.split('#')[1]);
+        this.$arrTitlesAndElems.push($item);
+        $link.addEventListener('click', this.handleClickLink.bind(this));
+    }.bind(this));
 
-    // check for submenu
-    var $toggleSubmenus = $module.querySelectorAll('.idsk-header-extended__link');
-    if ($toggleSubmenus) {
-        var $self = this;
-        // Handle $toggleSubmenu click events
-        nodeListForEach($toggleSubmenus, function ($toggleSubmenu) {
-            $toggleSubmenu.addEventListener('focus', $self.handleSubmenuClick2.bind($self));
-            $toggleSubmenu.addEventListener('blur', $self.handleSubmenuClick.bind($self));
-        });
+    var $linkPanelButton = $module.querySelector('.idsk-in-page-navigation__link-panel');
+    if (!$linkPanelButton) {
+        return
     }
+    $module.boundCheckCloseClick = this.checkCloseClick.bind(this);
+    $module.boundHandleClickLinkPanel = this.handleClickLinkPanel.bind(this);
+    $linkPanelButton.addEventListener('click', $module.boundHandleClickLinkPanel, true);
 
-    // check for menu button and x-mark button
-    var $hamburgerMenuButton = $module.querySelector('.idsk-js-header-extended-side-menu');
-    var $xMarkMenuButton = $module.querySelector('.idsk-header-extended-x-mark');
-    if ($hamburgerMenuButton && $xMarkMenuButton) {
-        $hamburgerMenuButton.addEventListener('click', this.handleMobilMenu.bind(this));
-        $xMarkMenuButton.addEventListener('click', this.handleMobilMenu.bind(this));
-    }
-
+    // Handle floating navigation
     window.addEventListener('scroll', this.scrollFunction.bind(this));
+    // Handle case if the viewport is shor and there are more than one article - scrolling is not needed, but navigation pointer has to be updated
+    this.$module.labelChanged = false;
 };
 
 /**
- * Handle focus/blur on search component - show/hide search form, hide/show search text wrapper
- * @param {object} e 
- */
-HeaderExtended.prototype.handleSearchComponentClick = function (e) {
-    var $el = e.target || e.srcElement;
-    var $target = $el.closest('.idsk-header-extended__search');
-    var $relatedTarget = e.relatedTarget ? (e.relatedTarget).closest('.idsk-header-extended__search-form') : e.relatedTarget;
-    var $searchForm = $target.querySelector('.idsk-header-extended__search-form');
-    if (e.type === 'focus') {
-        $target.classList.add('idsk-header-extended__search--active');
-    } else if (e.type === 'focusout' && $relatedTarget !== $searchForm) {
-        $target.classList.remove('idsk-header-extended__search--active');
-    }
-};
-
-/**
- * Handle open/hide language switcher
- * @param {object} e 
- */
-HeaderExtended.prototype.handleLanguageSelectorClick = function (e) {
-    var $toggleButton = e.target || e.srcElement;
-    var $target = $toggleButton.closest('.idsk-header-extended__language');
-    toggleClass($target, 'idsk-header-extended__language--active');
-};
-
-/**
- * Handle open/hide submenu
- * @param {object} e 
- */
-HeaderExtended.prototype.handleSubmenuClick = function (e) {
-    var $srcEl = e.target || e.srcElement;
-    var $toggleButton = $srcEl.closest('.idsk-header-extended__navigation-item');
-    toggleClass($toggleButton, 'idsk-header-extended__navigation-item--active');
-};/**
- * Handle open/hide submenu
- * @param {object} e 
- */
-
-HeaderExtended.prototype.handleSubmenuClick2 = function (e) {
-    var $srcEl = e.target || e.srcElement;
-    var $toggleButton = $srcEl.closest('.idsk-header-extended__navigation-item');
-    var $currActiveList = this.$module.querySelectorAll('.idsk-header-extended__navigation-item--active');
-
-    if ($currActiveList.length > 0) {
-        $currActiveList[0].classList.remove('idsk-header-extended__navigation-item--active');
-    }
-    
-    toggleClass($toggleButton, 'idsk-header-extended__navigation-item--active');
-};
-
-/**
- * Show/hide mobil menu
+ * An event handler for click event on $link - add actual title to link panel
  * @param {object} e
  */
-HeaderExtended.prototype.handleMobilMenu = function (e) {
-    toggleClass(this.$module, "idsk-header-extended--show-mobile-menu");
+InPageNavigation.prototype.handleClickLink = function (e) {
+    var $link = e.target || e.srcElement;
+    var $id = $link.closest('.idsk-in-page-navigation__link').href.split('#')[1];
+    var $panelHeight = this.$module.getElementsByClassName('idsk-in-page-navigation__link-panel')[0].offsetHeight;
+
+    setTimeout(function () {
+        if (document.getElementById($id) != null) {
+            this.$module.labelChanged = true;
+            this.changeCurrentLink($link);
+            window.scrollTo(0, document.getElementById($id).offsetTop - ($panelHeight * 2.5));
+        } else {
+            this.changeCurrentLink($link);
+        }
+    }.bind(this), 10);
 };
 
 /**
- * When the user scrolls down from the top of the document, resize the navbar's padding and the logo
+ * An event handler for click event on $linkPanel - collapse or expand in page navigation menu
+ * @param {object} e 
  */
-HeaderExtended.prototype.scrollFunction = function () {
+InPageNavigation.prototype.handleClickLinkPanel = function (e) {
     var $module = this.$module;
+    var $linkPanelButton = $module.querySelector('.idsk-in-page-navigation__link-panel');
 
-    if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-        $module.classList.add('idsk-header-extended--shrink');
-    } else if (document.body.scrollTop < 10 && document.documentElement.scrollTop < 10) {
-        $module.classList.remove('idsk-header-extended--shrink');
+    $module.classList.add('idsk-in-page-navigation--expand');
+    $linkPanelButton.removeEventListener('click', $module.boundHandleClickLinkPanel, true);
+    document.addEventListener('click', $module.boundCheckCloseClick, true);
+};
+
+/**
+ * close navigation if the user click outside navigation
+ * @param {object} e 
+ */
+InPageNavigation.prototype.checkCloseClick = function (e) {
+    var $el = e.target || e.srcElement;
+    var $navigationList = $el.closest('.idsk-in-page-navigation__list');
+    var $module = this.$module;
+    var $linkPanelButton = $module.querySelector('.idsk-in-page-navigation__link-panel');
+
+    if ($navigationList == null) {
+        e.stopPropagation(); // prevent bubbling
+        $module.classList.remove('idsk-in-page-navigation--expand');
+        $linkPanelButton.addEventListener('click', $module.boundHandleClickLinkPanel, true);
+        document.removeEventListener('click', $module.boundCheckCloseClick, true);
     }
 };
 
-return HeaderExtended;
+/**
+ * When the user scrolls down from the top of the document, set position to fixed
+ */
+InPageNavigation.prototype.scrollFunction = function () {
+    var $module = this.$module;
+    var $arrTitlesAndElems = this.$arrTitlesAndElems;
+    var $parentModule = $module.parentElement;
+    var $navTopPosition = $parentModule.offsetTop - 55; // padding
+    var $links = $module.querySelectorAll('.idsk-in-page-navigation__list-item');
+
+    if (window.pageYOffset <= $navTopPosition) {
+        $module.classList.remove('idsk-in-page-navigation--sticky');
+    } else {
+        $module.classList.add('idsk-in-page-navigation--sticky');
+    }
+
+    if (this.$module.labelChanged) {
+        this.$module.labelChanged = false;
+    } else if ($module.classList.contains('idsk-in-page-navigation--sticky')) {
+        var $self = this;
+        $arrTitlesAndElems.some(function ($item, $index) {
+            if ($item.el.offsetTop >= window.scrollY && $item.el.offsetTop <= (window.scrollY + window.innerHeight)) {
+                $self.changeCurrentLink($links[$index]);
+
+                return true
+            }
+        });
+    } else {
+        this.changeCurrentLink($links[0]);
+    }
+};
+
+InPageNavigation.prototype.changeCurrentLink = function (el) {
+    var $module = this.$module;
+    var $currItem = el.closest('.idsk-in-page-navigation__list-item');
+    var $articleTitle = $currItem.querySelector('.idsk-in-page-navigation__link-title');
+    var $items = $module.querySelectorAll('.idsk-in-page-navigation__list-item');
+    var $linkPanelText = $module.querySelector('.idsk-in-page-navigation__link-panel-button');
+
+    $items.forEach(function ($item) {
+        $item.classList.remove('idsk-in-page-navigation__list-item--active');
+    });
+    $currItem.classList.add('idsk-in-page-navigation__list-item--active');
+    $linkPanelText.innerText = $articleTitle.innerText;
+};
+
+return InPageNavigation;
 
 })));

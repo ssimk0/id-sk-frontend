@@ -1179,8 +1179,7 @@ CharacterCount.prototype.updateCountMessage = function () {
   if (options.maxwords) {
     charNoun = 'slov';
   }
-  //charNoun = charNoun + ((remainingNumber === -1 || remainingNumber === 1) ? '' : 'ov')
-
+ 
   if ((remainingNumber > 1 && remainingNumber < 5) || (remainingNumber > -5 && remainingNumber < -1)) {
     charNoun = charNoun + 'y';
   } else if (remainingNumber == 1 || remainingNumber == -1) { } else {
@@ -1188,10 +1187,12 @@ CharacterCount.prototype.updateCountMessage = function () {
   }
 
   displayNumber = Math.abs(remainingNumber);
-  if (remainingNumber < 0)
+  if (remainingNumber < 0) {
     displayNumber = '-' + displayNumber;
-
-  countMessage.innerHTML = 'Zostáva Vám ' + displayNumber + ' ' + charNoun + ' ';
+    countMessage.innerHTML = 'Prekročili ste maximálny počet znakov';
+  } else {
+    countMessage.innerHTML = 'Zostáva Vám ' + displayNumber + ' ' + charNoun + ' ';
+  }
 };
 
 CharacterCount.prototype.handleFocus = function () {
