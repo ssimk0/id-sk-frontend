@@ -5,13 +5,12 @@
 @import "./node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
 
 @include govuk-exports("idsk/component/header-extended") {
-
   $idsk-header-background: govuk-colour("white");
   $idsk-header-border-color: $idsk-brand-colour;
   $idsk-header-dark-blue: govuk-colour("dark-blue");
   $idsk-header-light-blue: govuk-colour("blue");
   $idsk-header-link: govuk-colour("white");
-  
+
   .idsk-header-extended {
     @include govuk-font($size: 16);
     padding-top: govuk-spacing(6);
@@ -30,7 +29,7 @@
     &__container--full-width {
       padding: 0 govuk-spacing(3);
       border-color: $idsk-header-border-color;
-  
+
       .idsk-header-extended__menu,
       .idsk-header-extended-x-mark {
         right: govuk-spacing(3);
@@ -55,17 +54,15 @@
           -ms-flex-order: 3;
               order: 3;
 
-      @include mq ($from: desktop) {
+      @include mq($from: desktop) {
         float: left;
         margin-left: -30px;
         margin-right: -30px;
-        -webkit-box-ordinal-group:6;
-            -ms-flex-order:5;
-                order:5;
-        width: auto;
+        -webkit-box-ordinal-group: 6;
+            -ms-flex-order: 5;
+                order: 5;
       }
     }
-
   }
 
   .idsk-header__link {
@@ -102,17 +99,18 @@
             order: 1;
     padding-left: 0;
     padding-bottom: govuk-spacing(3);
+    margin-right: auto;
 
-    @include mq ($until: mobile){
+    @include mq($until: mobile) {
       width: 70%;
     }
 
-    @include mq ($until: tablet){
+    @include mq($until: tablet) {
       padding-bottom: govuk-spacing(3);
       max-width: 70%;
     }
 
-    @include mq ($from: desktop) {
+    @include mq($from: desktop) {
       padding: 0 0 govuk-spacing(6) 0;
     }
 
@@ -150,7 +148,7 @@
     display: none;
   }
 
-  @include mq ($until: desktop) {
+  @include mq($until: desktop) {
     .idsk-header-extended.idsk-header-extended--shrink {
       .idsk-header-extended__logo {
         padding-bottom: govuk-spacing(1);
@@ -165,7 +163,6 @@
         display: inline-block;
       }
     }
-
   }
 
   /// search bar
@@ -179,7 +176,7 @@
             order: 2;
     outline: none;
     text-align: right;
-    width: 220px;
+    width: 230px;
 
     &-text {
       margin-left: 75px;
@@ -199,8 +196,9 @@
       &.--show {
         display: inline;
       }
-      
-      & input,& input:focus {
+
+      & input,
+      & input:focus {
         padding: govuk-spacing(1);
         border: 3px solid govuk-colour("yellow");
         margin-right: -3px;
@@ -271,16 +269,16 @@
         text-decoration: none;
 
         &:hover {
-          text-decoration: underline
+          text-decoration: underline;
         }
-        
+
         &:focus,
         &:active {
           @include govuk-focused-text;
         }
       }
     }
-    
+
     /// arrow at the end of language switcher
     &--current-text {
       padding-right: govuk-spacing(4);
@@ -303,7 +301,7 @@
       }
     }
 
-    &--active .idsk-header-extended__language--current-text{
+    &--active .idsk-header-extended__language--current-text {
       @include govuk-focused-text;
     }
 
@@ -342,8 +340,8 @@
         @include govuk-font($size: 19);
 
         color: $idsk-header-dark-blue;
-        
-        @include mq ($until: desktop){
+
+        @include mq($until: desktop) {
           color: $idsk-header-link;
         }
 
@@ -352,7 +350,6 @@
           @include govuk-focused-text;
         }
       }
-
     }
   }
 
@@ -369,13 +366,13 @@
 
     &-item {
       padding: govuk-spacing(3) 0;
-  
-      @include mq ($from: desktop) {
+
+      @include mq($from: desktop) {
         display: inline-block;
         border: none;
         padding: govuk-spacing(3) govuk-spacing(6);
       }
-  
+
       & > a {
         @include govuk-font($size: 19, $weight: bold);
         white-space: nowrap;
@@ -383,7 +380,7 @@
 
         &:link,
         &:hover,
-        &:visited  {
+        &:visited {
           color: $idsk-header-dark-blue;
         }
 
@@ -405,14 +402,14 @@
         transition: transform 0.2s;
         transition: transform 0.2s, -webkit-transform 0.2s;
 
-        @include mq ($from: desktop){
+        @include mq($from: desktop) {
           display: none;
         }
       }
 
       &--active {
         background-color: $idsk-header-dark-blue;
-    
+
         a {
           &:link,
           &:hover,
@@ -453,7 +450,7 @@
     padding: 0;
     z-index: 10;
 
-    @include mq ($from: desktop){
+    @include mq($from: desktop) {
       position: absolute;
       padding: govuk-spacing(4) 0;
       margin-top: govuk-spacing(3);
@@ -481,7 +478,7 @@
 
     ul {
       display: block;
-      padding-left:govuk-spacing(1);
+      padding-left: govuk-spacing(1);
 
       li {
         display: inline-block;
@@ -489,7 +486,7 @@
         width: 20%;
         color: $idsk-header-link;
 
-        @include mq ($until: desktop) {
+        @include mq($until: desktop) {
           width: 100%;
           padding: 0;
           padding-bottom: govuk-spacing(2);
@@ -534,7 +531,7 @@
       @include govuk-focused-text;
     }
   }
- 
+
   @include govuk-media-query($media-type: print) {
     .idsk-header-extended {
       border-bottom-width: 0;
@@ -561,8 +558,7 @@
   }
 
   .js-enabled .idsk-header-extended {
-
-    @include mq ($until: desktop){
+    @include mq($until: desktop) {
       position: fixed;
       position: -webkit-sticky;
       position: sticky;
@@ -571,6 +567,7 @@
       width: 100vw;
       display: table;
       overflow-y: scroll;
+      z-index: 1;
     }
 
     &-overlay {
@@ -609,7 +606,7 @@
         @include govuk-focused-text;
       }
 
-      @include mq ($from: tablet) {
+      @include mq($from: tablet) {
         right: 50px;
       }
     }
@@ -619,11 +616,11 @@
       display: -ms-inline-flexbox;
       display: inline-flex;
 
-      @include mq ($from: tablet) {
+      @include mq($from: tablet) {
         right: 40px;
       }
 
-      @include mq ($from: desktop) {
+      @include mq($from: desktop) {
         display: none;
       }
     }
@@ -631,12 +628,13 @@
     &__navigation {
       display: none;
 
-      @include mq ($from: desktop) {
+      @include mq($from: desktop) {
         display: block;
       }
     }
 
-    &__language, &__social {
+    &__language,
+    &__social {
       display: block;
       position: relative;
       z-index: 2;
@@ -649,7 +647,7 @@
       color: $idsk-header-link;
       display: none;
 
-      @include mq ($from: desktop) {
+      @include mq($from: desktop) {
         display: block;
         color: $idsk-header-dark-blue;
         height: -webkit-fit-content;
@@ -658,7 +656,7 @@
       }
     }
 
-    .mobile-only {
+    &--mobile-only {
       display: none;
     }
 
@@ -671,20 +669,19 @@
       display: none;
 
       &-wrapper {
-          @include mq ($until: desktop){
+        @include mq($until: desktop) {
           padding: govuk-spacing(4) 0;
           border-top: 1px solid;
           margin-left: 0;
         }
       }
 
-      @include mq ($from: desktop) {
+      @include mq($from: desktop) {
         display: block;
         width: 155px;
         height: 30px;
         color: $idsk-header-dark-blue;
       }
-
     }
 
     &__social {
@@ -693,17 +690,18 @@
               order: 5;
       color: $idsk-header-link;
       display: none;
-      
-      @include mq ($from: desktop) {
+
+      @include mq($from: desktop) {
         display: block;
       }
     }
 
-    &.show-mobile-menu {
+    &.idsk-header-extended--show-mobile-menu {
       @include mq($until: desktop) {
         height: 100%;
         overflow-y: scroll;
         display: inline-block;
+        z-index: 1;
 
         .idsk-header-extended-overlay {
           width: 100%;
@@ -735,7 +733,7 @@
           z-index: 2;
           width: 100%;
           margin: govuk-spacing(3) 0;
-  
+
           .idsk-header-extended__search-text {
             display: none;
           }
@@ -753,14 +751,14 @@
 
             &:focus-within {
               outline: 3px solid govuk-colour("yellow");
-              
+
               .idsk-button:focus {
                 box-shadow: none;
                 border: transparent;
               }
             }
           }
-          
+
           input {
             @include govuk-font($size: 27);
 
@@ -792,7 +790,7 @@
 
         .idsk-header-extended__language {
           @include govuk-font($size: 36);
-          
+
           display: inline-block;
           margin-top: govuk-spacing(6);
           text-transform: capitalize;
@@ -818,7 +816,7 @@
         .idsk-header-extended__social {
           display: inline-block;
           margin-top: govuk-spacing(2);
-  
+
           .idsk-header-extended__social_item {
             @include govuk-font($size: 36);
 
@@ -840,7 +838,7 @@
           }
 
           &-item--active .idsk-header-extended__link {
-            @include govuk-focused-text
+            @include govuk-focused-text;
           }
 
           .idsk-js-header-extended-submenu-toggle {
@@ -855,18 +853,18 @@
             padding-left: 0;
             margin-left: 0;
           }
-          
+
           li a {
             @include govuk-font($size: 27);
 
             &:hover,
             &:active {
-              background: #FFDF0F;
+              background: #ffdf0f;
               color: $idsk-header-dark-blue;
               font-weight: 600;
               text-decoration: none;
             }
-    
+
             &.active {
               font-weight: 600;
             }
@@ -880,16 +878,14 @@
           .idsk-header-extended__logotype-crown-mobile-navigation {
             display: none;
           }
-    
+
           .idsk-header-extended__logotype-crown-mobile-small-navigation {
             display: inline-block;
           }
         }
       }
     }
-    
   }
-
 }
 
 /// IE10+ CSS styles
@@ -898,7 +894,7 @@
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
   .idsk-header-extended-ie-fix {
     height: 55px;
-    @include mq ($from: desktop){
+    @include mq($from: desktop) {
       height: 0;
     }
   }

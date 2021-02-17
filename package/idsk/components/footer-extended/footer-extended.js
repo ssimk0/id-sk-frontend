@@ -701,14 +701,11 @@ FooterExtended.prototype.init = function () {
     var $errorButton = $module.querySelector('#idsk-footer-extended-error-button');
     var $closeErrorFormButton = $module.querySelector('#idsk-footer-extended-close-error-form-button');
     var $closeHelpFormButton = $module.querySelector('#idsk-footer-extended-close-help-form-button');
-
     var $textAreaCharacterCount = $module.querySelector('#idsk-footer-extended-error-form #with-hint');
-
     var $fillFeedbackButton = $module.querySelector('#fill-feedback-help-form');
     var $submitErrorButton = $module.querySelector('#submit-button-error-form');
-
-
-    var $writeUsButton = this.$module.querySelector('#idsk-footer-extended-write-us-button');
+    var $writeUsButton = $module.querySelector('#idsk-footer-extended-write-us-button');
+    var $upButton = $module.querySelector("#footer-extended-up-button");
 
     if ($yesButton && $noButton && $errorButton) {
         $yesButton.addEventListener('click', this.handleYesButtonClick.bind(this));
@@ -739,6 +736,14 @@ FooterExtended.prototype.init = function () {
     if ($textAreaCharacterCount) {
         $textAreaCharacterCount.addEventListener('input', this.handleStatusOfCharacterCountButton.bind(this));
     }
+
+    //Get the button
+    // When the user scrolls down window screen heiht From the top of the document, show the button
+    if ($upButton != null) {
+        window.addEventListener('scroll', this.scrollFunction.bind(this));
+    }
+
+
 };
 
 
@@ -769,10 +774,8 @@ FooterExtended.prototype.handleStatusOfCharacterCountButton = function (e) {
 
     setTimeout(function () {
         if ($textAreaCharacterCount.classList.contains('govuk-textarea--error') || $remainingCharacterCountMessage.classList.contains('govuk-error-message')) {
-            console.log($textAreaCharacterCount.classList);
             $submitButton.disabled = true;
         } else {
-            console.log($textAreaCharacterCount.classList);
             $submitButton.disabled = false;
         }
     }, 300);
@@ -847,23 +850,15 @@ FooterExtended.prototype.handleCloseHelpFormButtonClick = function () {
     toggleClass($helpOption, 'idsk-footer-extended-display-hidden');
 };
 
-//Get the button
-var mybutton = document.getElementById("footer-extended-up-button");
+FooterExtended.prototype.scrollFunction = function () {
+    var $upButton = this.$module.querySelector("#footer-extended-up-button");
 
-// When the user scrolls down window screen heiht From the top of the document, show the button
-if (mybutton != null) {
-    window.onscroll = function () {
-        scrollFunction();
-    };
-}
-
-function scrollFunction() {
-    if (window.screen.width > 992 && (document.body.scrollTop > window.screen.height || document.documentElement.scrollTop > window.screen.height)) {
-        mybutton.style.display = "block";
+    if (window.innerWidth > 768 && (document.body.scrollTop > window.screen.height || document.documentElement.scrollTop > window.screen.height)) {
+        $upButton.style.display = "block";
     } else {
-        mybutton.style.display = "none";
+        $upButton.style.display = "none";
     }
-}
+};
 
 return FooterExtended;
 

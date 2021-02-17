@@ -1,7 +1,7 @@
 {
   "name": "@id-sk/frontend",
   "description": "ID-SK Frontend",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "main": "idsk/all.js",
   "sass": "idsk/all.scss",
   "engines": {
@@ -14,6 +14,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/id-sk/id-sk-frontend.git"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.1"
   },
   "bugs": {
     "url": "https://github.com/id-sk/id-sk-frontend/issues"
