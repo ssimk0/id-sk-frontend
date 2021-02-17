@@ -1,5 +1,7 @@
 {% set numberOfCols = params.columns %}
 {% set classes = '' %}
+{% set numberOfShowedTiles %}
+{{ 5 if (params.items.length % 2 == 0) else 6 }}{% endset %}
 <div data-module="idsk-crossroad" class="{{params.classes if params.classes }}">
     {% for colIndex in range(0, numberOfCols) %}
         <div class="idsk-crossroad idsk-crossroad-{{ numberOfCols }}">
@@ -8,13 +10,14 @@
                     {% if (params.hideTiles) %}
                         {% set classes = 'idsk-crossroad__item--two-columns-hide-mobile' if loop.index > 5 %}
                         {% set classes %}
-                        {{classes}} {{' idsk-crossroad__item--two-columns-hide' if (loop.index > 5 and numberOfCols == 2 and colIndex == 0)
-                        or (loop.index > (loop.length / numberOfCols) + 6 and numberOfCols == 2 and colIndex == 1) or (loop.index > 5 and numberOfCols == 1) }}{% endset %}
+                        {{classes}}
+                        {{' idsk-crossroad__item--two-columns-hide' if (loop.index > 5 and numberOfCols == 2 and colIndex == 0)
+                        or (loop.index > ((loop.length / numberOfCols)) ++ numberOfShowedTiles and numberOfCols == 2 and colIndex == 1) or (loop.index > 5 and numberOfCols == 1) }}{% endset %}
                     {% endif %}
                     <div class="idsk-crossroad__item {{ classes }}">
                         <a href="{{item.link}}" class="idsk-crossroad-title">{{ item.title }}</a>
                         <p class="idsk-crossroad-subtitle">{{ item.subtitle }}</p>
-                        <hr class="idsk-crossroad-line" aria-hidden="true"/>
+                        <hr class="idsk-crossroad-line" aria-hidden="true"/> 
                     </div>
                 {% endif %}
             {% endfor %}
