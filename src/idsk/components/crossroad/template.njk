@@ -8,8 +8,7 @@
                     {% if (params.hideTiles) %}
                         {% set classes = 'idsk-crossroad__item--two-columns-hide-mobile' if loop.index > 5 %}
                         {% set classes %}
-                        {{classes}} +
-                        {{' idsk-crossroad__item--two-columns-hide' if (loop.index > 5 and numberOfCols == 2 and colIndex == 0)
+                        {{classes}} {{' idsk-crossroad__item--two-columns-hide' if (loop.index > 5 and numberOfCols == 2 and colIndex == 0)
                         or (loop.index > (loop.length / numberOfCols) + 6 and numberOfCols == 2 and colIndex == 1) or (loop.index > 5 and numberOfCols == 1) }}{% endset %}
                     {% endif %}
                     <div class="idsk-crossroad__item {{ classes }}">
@@ -22,31 +21,8 @@
         </div>
     {% endfor %}
     {% if (params.hideTiles) %}
-        <div class="{{' idsk-crossroad__uncollapse-hide--desktop' if (params.items.length < 6 and numberOfCols==1) or (params.items.length < 11 and numberOfCols==2)}} {{' idsk-crossroad__uncollapse-hide--mobile' if params.items.length < 6}}">
-            <a id="idsk-crossroad__uncollapse-button" class="idsk-crossroad__colapse--a govuk-link idsk-crossroad__collapse--shadow">
-                <svg class="idsk-crossroad__colapse-vector" width="25" height="7" viewbox="6 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M9.42869 0.293417L5.56255 4.17343L1.69642 0.293417C1.30781 -0.0965848 0.680061 -0.0965848 0.291455 0.293417C-0.0971516 0.683418 -0.0971516 1.31342 0.291455 1.70342L4.86506 6.29344C5.25366 6.68344 5.88141 6.68344 6.27002 6.29344L10.8436 1.70342C11.2322 1.31342 11.2322 0.683418 10.8436 0.293417C10.455 -0.0865846 9.8173 -0.0965848 9.42869 0.293417Z" fill="#0065B3"></path>
-                </svg>
-                Zobraziť viac
-                <svg class="idsk-crossroad__colapse-vector" width="25" height="7" viewbox="-2 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M9.42869 0.293417L5.56255 4.17343L1.69642 0.293417C1.30781 -0.0965848 0.680061 -0.0965848 0.291455 0.293417C-0.0971516 0.683418 -0.0971516 1.31342 0.291455 1.70342L4.86506 6.29344C5.25366 6.68344 5.88141 6.68344 6.27002 6.29344L10.8436 1.70342C11.2322 1.31342 11.2322 0.683418 10.8436 0.293417C10.455 -0.0865846 9.8173 -0.0965848 9.42869 0.293417Z" fill="#0065B3"></path>
-                </svg>
-            </a>
+        <div class="idsk-crossroad__uncollapse-div {{' idsk-crossroad__uncollapse-hide--desktop' if (params.items.length < 6 and numberOfCols==1) or (params.items.length < 11 and numberOfCols==2)}} {{' idsk-crossroad__uncollapse-hide--mobile' if params.items.length < 6}}">
+            <a id="idsk-crossroad__uncollapse-button" class="idsk-crossroad__colapse--a idsk-crossroad__collapse--shadow">Zobraziť viac</a>
         </div>
     {% endif %}
-    <div>
-        <a id="idsk-crossroad__collapse-button" class="idsk-crossroad__colapse--a idsk-crossroad__link idsk-crossroad__item--one-column-hide">
-            <span class="idsk-crossroad__colapse-vector">
-                <svg width="25" height="7" viewbox="6 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1.92198 6.29252L6.27661 2.41251L10.6312 6.29252C11.0689 6.68252 11.776 6.68252 12.2137 6.29252C12.6514 5.90252 12.6514 5.27252 12.2137 4.88252L7.06223 0.292501C6.62453 -0.0975003 5.91746 -0.0975003 5.47975 0.292501L0.328279 4.88252C-0.109429 5.27252 -0.109429 5.90252 0.328279 6.29252C0.765985 6.67252 1.48427 6.68252 1.92198 6.29252Z" fill="#0065B3"/>
-                </svg>
-            </span>
-            Zobraziť menej
-            <span class="idsk-crossroad__colapse-vector">
-                <svg width="25" height="7" viewbox="-2 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1.92198 6.29252L6.27661 2.41251L10.6312 6.29252C11.0689 6.68252 11.776 6.68252 12.2137 6.29252C12.6514 5.90252 12.6514 5.27252 12.2137 4.88252L7.06223 0.292501C6.62453 -0.0975003 5.91746 -0.0975003 5.47975 0.292501L0.328279 4.88252C-0.109429 5.27252 -0.109429 5.90252 0.328279 6.29252C0.765985 6.67252 1.48427 6.68252 1.92198 6.29252Z" fill="#0065B3"/>
-                </svg>
-            </span>
-        </a>
-    </div>
 </div>

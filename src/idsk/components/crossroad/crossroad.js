@@ -13,20 +13,14 @@ function Crossroad($module) {
 Crossroad.prototype.init = function () {
   var $module = this.$module;
   var $items = this.$items;
+  var $uncollapseButton = $module.querySelector('#idsk-crossroad__uncollapse-button');
 
   if (!$module || !$items) {
     return;
   }
 
-  var $uncollapseButton = $module.querySelector('#idsk-crossroad__uncollapse-button');
-  var $collapseButton = $module.querySelector('#idsk-crossroad__collapse-button');
-
   if ($uncollapseButton) {
     $uncollapseButton.addEventListener('click', this.handleShowItems.bind(this));
-  }
-
-  if ($collapseButton) {
-    $collapseButton.addEventListener('click', this.handleHideItems.bind(this));
   }
 
   nodeListForEach(
@@ -45,34 +39,20 @@ Crossroad.prototype.handleItemClick = function (e) {
 
 Crossroad.prototype.handleShowItems = function (e) {
   var $crossroadItems = this.$module.querySelectorAll('.idsk-crossroad__item');
-  var $collapseButton = this.$module.querySelector('#idsk-crossroad__collapse-button');
+  var $uncollapseButton = this.$module.querySelector('#idsk-crossroad__uncollapse-button');
+  var $uncollapseDiv = this.$module.querySelector('.idsk-crossroad__uncollapse-div');
+
 
   $crossroadItems.forEach(crossroadItem => {
-    if (crossroadItem.classList.contains('idsk-crossroad__item--two-columns-hide-mobile')) {
-      crossroadItem.classList.replace('idsk-crossroad__item--two-columns-hide-mobile', 'idsk-crossroad__item--two-columns-show-mobile');
-    }
-    if (crossroadItem.classList.contains('idsk-crossroad__item--two-columns-hide')) {
-      crossroadItem.classList.replace('idsk-crossroad__item--two-columns-hide', 'idsk-crossroad__item--two-columns-show');
-    }
+    toggleClass(crossroadItem, 'idsk-crossroad__item--two-columns-show');
   });
-  toggleClass($collapseButton, 'idsk-crossroad__item--one-column-hide');
-  toggleClass(e.srcElement, 'idsk-crossroad__item--one-column-hide');
-};
 
-Crossroad.prototype.handleHideItems = function (e) {
-  var $crossroadItems = this.$module.querySelectorAll('.idsk-crossroad__item');
-  var $collapseButton = this.$module.querySelector('#idsk-crossroad__uncollapse-button');
+  if ($uncollapseButton.textContent == 'Zobraziť viac') {
+    $uncollapseButton.innerHTML = 'Zobraziť menej';
+  } else $uncollapseButton.innerHTML = 'Zobraziť viac';
 
-  $crossroadItems.forEach(crossroadItem => {
-    if (crossroadItem.classList.contains('idsk-crossroad__item--two-columns-show-mobile')) {
-      crossroadItem.classList.replace('idsk-crossroad__item--two-columns-show-mobile', 'idsk-crossroad__item--two-columns-hide-mobile');
-    }
-    if (crossroadItem.classList.contains('idsk-crossroad__item--two-columns-show')) {
-      crossroadItem.classList.replace('idsk-crossroad__item--two-columns-show', 'idsk-crossroad__item--two-columns-hide');
-    }
-  });
-  toggleClass($collapseButton, 'idsk-crossroad__item--one-column-hide');
-  toggleClass(e.srcElement, 'idsk-crossroad__item--one-column-hide');
+  toggleClass($uncollapseButton, 'idsk-crossroad__collapse--shadow');
+  toggleClass($uncollapseDiv, 'idsk-crossroad__collapse--arrow');
 };
 
 export default Crossroad;
