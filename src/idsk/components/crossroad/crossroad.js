@@ -44,7 +44,7 @@ Crossroad.prototype.handleItemClick = function (e) {
 };
 
 Crossroad.prototype.handleShowItems = function (e) {
-  var $crossroadItems = this.$module.querySelectorAll('#idsk-crossroad__item');
+  var $crossroadItems = this.$module.querySelectorAll('.idsk-crossroad__item');
   var $collapseButton = this.$module.querySelector('#idsk-crossroad__collapse-button');
 
   $crossroadItems.forEach(crossroadItem => {
@@ -60,7 +60,7 @@ Crossroad.prototype.handleShowItems = function (e) {
 };
 
 Crossroad.prototype.handleHideItems = function (e) {
-  var $crossroadItems = this.$module.querySelectorAll('#idsk-crossroad__item');
+  var $crossroadItems = this.$module.querySelectorAll('.idsk-crossroad__item');
   var $collapseButton = this.$module.querySelector('#idsk-crossroad__uncollapse-button');
 
   $crossroadItems.forEach(crossroadItem => {

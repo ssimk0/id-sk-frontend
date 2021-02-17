@@ -68,12 +68,6 @@
     cursor: pointer;
   }
 
-  .idsk-crossroad__link {
-    color: govuk-colour("blue");
-    text-decoration: underline;
-    cursor: pointer;
-  }
-
   .idsk-crossroad__collapse--shadow {
     position: relative;
     box-shadow: 5px -10px 70px 40px govuk-colour("white");
@@ -90,10 +84,10 @@
     display: block;
   }
 
-  .idsk-crossroad__item--two-columns-hide,
+  .idsk-crossroad__item--two-columns-hide-mobile.idsk-crossroad__item--two-columns-hide,
   .idsk-crossroad__uncollapse-hide--desktop {
     @include mq($from: desktop) {
-      display: none !important;
+      display: none;
     }
   }
 
