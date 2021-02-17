@@ -52,7 +52,7 @@
   }
 
   .idsk-crossroad__uncollapse-div {
-    display: inline;
+    text-align: center;
   }
 
   .idsk-crossroad__colapse--a {
@@ -97,12 +97,14 @@
     &:focus,
     &:active {
       @include govuk-focused-text;
+      width: auto;
+      padding: 0 govuk-spacing(2);
     }
   }
 
   .idsk-crossroad__collapse--arrow .idsk-crossroad__colapse--a::before,
   .idsk-crossroad__collapse--arrow .idsk-crossroad__colapse--a::after {
-    margin: 10px 12px 0 12px;
+    margin: govuk-spacing(2) 12px 0 12px;
     transform: rotate(-45deg);
     transition: all 0.2s ease-in;
   }
