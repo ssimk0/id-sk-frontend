@@ -9,11 +9,15 @@
   }
 
   .idsk-crossroad-2 {
-    @include mq(mobile) { 
+    @include mq(mobile) {
       @include govuk-grid-column("full");
     }
-    
-    @include mq($from: desktop, $and: "(orientation: landscape)") {
+
+    @include mq($and: "(orientation: landscape)") {
+      @include govuk-grid-column("one-half");
+    }
+
+    @include mq($from: desktop) {
       @include govuk-grid-column("one-half");
     }
   }
@@ -134,6 +138,10 @@
 
   .idsk-crossroad__item--two-columns-hide-mobile.idsk-crossroad__item--two-columns-hide,
   .idsk-crossroad__uncollapse-hide--desktop {
+    @include mq($and: "(orientation: landscape)") { 
+      display: none;
+    }
+    
     @include mq($from: desktop) {
       display: none;
     }
@@ -147,7 +155,12 @@
     @include mq(mobile) {
       display: none;
     }
-    @include mq($from: desktop, $and: "(orientation: landscape)") {
+
+    @include mq($and: "(orientation: landscape)") { 
+      display: unset;
+    }
+
+    @include mq($from: desktop) {
       display: unset;
     }
   }

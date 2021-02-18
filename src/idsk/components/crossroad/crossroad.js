@@ -29,7 +29,6 @@ Crossroad.prototype.init = function () {
       $item.addEventListener("click", this.handleItemClick.bind(this));
     }.bind(this)
   );
-
 };
 
 Crossroad.prototype.handleItemClick = function (e) {
@@ -41,7 +40,6 @@ Crossroad.prototype.handleShowItems = function (e) {
   var $crossroadItems = this.$module.querySelectorAll('.idsk-crossroad__item');
   var $uncollapseButton = this.$module.querySelector('#idsk-crossroad__uncollapse-button');
   var $uncollapseDiv = this.$module.querySelector('.idsk-crossroad__uncollapse-div');
-
 
   $crossroadItems.forEach(crossroadItem => {
     toggleClass(crossroadItem, 'idsk-crossroad__item--two-columns-show');
