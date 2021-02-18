@@ -48,12 +48,15 @@ Crossroad.prototype.handleShowItems = function (e) {
   });
 
   if ($uncollapseButton.textContent == 'Zobraziť viac') {
-    $uncollapseButton.innerHTML = 'Zobraziť menej';
+    {
+      $uncollapseButton.innerHTML = 'Zobraziť menej';
+    }
   } else {
     $uncollapseButton.innerHTML = 'Zobraziť viac';
   }
 
-  toggleClass($uncollapseButton, 'idsk-crossroad__collapse--shadow');
+  toggleClass(e.srcElement, 'idsk-crossroad__colapse--button');
+  toggleClass($uncollapseDiv, 'idsk-crossroad__collapse--shadow');
   toggleClass($uncollapseDiv, 'idsk-crossroad__collapse--arrow');
 };
 

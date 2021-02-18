@@ -61,7 +61,7 @@
     text-align: center;
     text-decoration-line: underline;
     color: govuk-colour("blue");
-    width: 100%;
+    width: auto;
     height: 100%;
     cursor: pointer;
     display: inline-block;
@@ -99,6 +99,13 @@
       @include govuk-focused-text;
       width: auto;
       padding: 0 govuk-spacing(2);
+    }
+  }
+
+  .idsk-crossroad__colapse--button {
+    &:focus,
+    &:active {
+      padding: 0;
     }
   }
 
