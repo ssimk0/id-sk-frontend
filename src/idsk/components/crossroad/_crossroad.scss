@@ -9,11 +9,11 @@
   }
 
   .idsk-crossroad-2 {
-    @include mq(mobile, $and: "(orientation: landscape)") { 
+    @include mq(mobile) { 
       @include govuk-grid-column("full");
     }
     
-    @include mq($from: desktop) {
+    @include mq($from: desktop, $and: "(orientation: landscape)") {
       @include govuk-grid-column("one-half");
     }
   }
@@ -144,10 +144,10 @@
   }
 
   .idsk-crossroad__item--two-columns-hide-mobile {
-    @include mq(mobile, $and: "(orientation: landscape)") {
+    @include mq(mobile) {
       display: none;
     }
-    @include mq($from: desktop) {
+    @include mq($from: desktop, $and: "(orientation: landscape)") {
       display: unset;
     }
   }
