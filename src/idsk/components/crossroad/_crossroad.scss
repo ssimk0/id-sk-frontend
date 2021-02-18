@@ -9,7 +9,9 @@
   }
 
   .idsk-crossroad-2 {
-    @include govuk-grid-column("one-half");
+    @media screen and (min-width: 1200px) {
+      @include govuk-grid-column("one-half");
+    }
   }
 
   .idsk-crossroad {
@@ -139,7 +141,7 @@
 
   .idsk-crossroad__item--two-columns-hide-mobile {
     display: none;
-    @include mq($from: desktop) {
+    @media screen and (min-width: 1200px) {
       display: unset;
     }
   }
