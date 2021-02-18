@@ -138,9 +138,7 @@
   }
 
   .idsk-crossroad__item--two-columns-hide-mobile {
-    @include mq(mobile) {
-      display: none;
-    }
+    display: none;
     @include mq($from: desktop) {
       display: unset;
     }
