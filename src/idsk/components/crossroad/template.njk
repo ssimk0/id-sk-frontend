@@ -15,7 +15,7 @@
                         or (loop.index > ((loop.length / numberOfCols)) ++ numberOfShowedTiles and numberOfCols == 2 and colIndex == 1) or (loop.index > 5 and numberOfCols == 1) }}{% endset %}
                     {% endif %}
                     <div class="idsk-crossroad__item {{ classes }}">
-                        <a href="{{item.link}}" class="idsk-crossroad-title">{{ item.title }}</a>
+                        <a href="{{item.link}}" class="idsk-crossroad-title" title="{{ item.title }}">{{ item.title }}</a>
                         <p class="idsk-crossroad-subtitle">{{ item.subtitle }}</p>
                         <hr class="idsk-crossroad-line" aria-hidden="true"/>
                     </div>
@@ -25,7 +25,7 @@
     {% endfor %}
     {% if (params.hideTiles) %}
         <div class="govuk-grid-column-full idsk-crossroad__collapse--shadow idsk-crossroad__uncollapse-div {{' idsk-crossroad__uncollapse-hide--desktop' if (params.items.length < 6 and numberOfCols==1) or (params.items.length < 11 and numberOfCols==2)}} {{' idsk-crossroad__uncollapse-hide--mobile' if params.items.length < 6}}">
-            <a id="idsk-crossroad__uncollapse-button" class="idsk-crossroad__colapse--a">Zobraziť viac</a>
+            <button id="idsk-crossroad__uncollapse-button" class="idsk-crossroad__colapse--button" type="button">Zobraziť viac</button>
         </div>
     {% endif %}
 </div>

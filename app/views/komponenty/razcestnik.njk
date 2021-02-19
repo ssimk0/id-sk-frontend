@@ -71,6 +71,28 @@
                     {% set exampleComponentHtml %}
                         {{ idskCrossroad({
                             "columns": 2,
+                            "items": [
+                                { "title": 'Title for 1st element', "subtitle": 'Subtitle for 1st element', "link": '#' },
+                                { "title": 'Title for 2nd element', "subtitle": 'Subtitle for 2nd element', "link": '#' },
+                                { "title": 'Title for 3rd element', "subtitle": 'Subtitle for 3rd element', "link": '#' },
+                                { "title": 'Title for 4th element', "subtitle": 'Subtitle for 4th element', "link": '#' },
+                                { "title": 'Title for 5rd element', "subtitle": 'Subtitle for 3rd element', "link": '#' },
+                                { "title": 'Title for 6th element', "subtitle": 'Subtitle for 4th element', "link": '#' },
+                                { "title": 'Title for 7rd element', "subtitle": 'Subtitle for 3rd element', "link": '#' },
+                                { "title": 'Title for 8th element', "subtitle": 'Subtitle for 4th element', "link": '#' }
+                            ]
+                        }) }}
+                    {% endset %}
+                    {{exampleComponentHtml | safe}}
+                </div>
+                <pre class=" language-markup"><code class="govuk-!-font-size-16  language-markup">{{ exampleComponentHtml }}</code></pre>
+                <p class="govuk-body">
+                    <strong>Rázcestník len s 5 dlaždicami v jednom stĺpci:</strong> Rázcestník nepoužívajte s viac ako 5 dlaždicami v jednom stĺpci. Ak potrebujete použiť viac dlaždíc, použite komponent "rozbalovací rázcestník".
+                </p>
+                <div class="example example-error">
+                    {% set exampleComponentHtml %}
+                        {{ idskCrossroad({
+                            "columns": 2,
                             "hideTiles": true,
                             "items": [
                                 { "title": 'Title for 1st element', "subtitle": 'Subtitle for 1st element', "link": '#' },
@@ -94,10 +116,6 @@
                     {% endset %}
                     {{exampleComponentHtml | safe}}
                 </div>
-                <pre class=" language-markup"><code class="govuk-!-font-size-16  language-markup">{{ exampleComponentHtml }}</code></pre>
-                <p class="govuk-body">
-                    <strong>Rázcestník len s 5 dlaždicami v jednom stĺpci:</strong> Rázcestník nepoužívajte s viac ako 5 dlaždicami v jednom stĺpci. Ak potrebujete použiť viac dlaždíc, použite komponent "rozbalovací rázcestník".
-                </p>
             </div>
         </div>
     </div>

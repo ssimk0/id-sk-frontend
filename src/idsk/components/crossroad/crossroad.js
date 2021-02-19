@@ -47,7 +47,7 @@ Crossroad.prototype.handleShowItems = function (e) {
 
   $uncollapseButton.innerHTML = $uncollapseButton.textContent == 'Zobraziť viac' ? 'Zobraziť menej' : 'Zobraziť viac';
   
-  toggleClass(e.srcElement, 'idsk-crossroad__colapse--button');
+  toggleClass(e.srcElement, 'idsk-crossroad__colapse--button-show');
   toggleClass($uncollapseDiv, 'idsk-crossroad__collapse--shadow');
   toggleClass($uncollapseDiv, 'idsk-crossroad__collapse--arrow');
 };
