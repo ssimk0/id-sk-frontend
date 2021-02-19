@@ -65,8 +65,10 @@
     text-align: center;
   }
 
-  .idsk-crossroad__colapse--a {
+  .idsk-crossroad__colapse--button {
     @include govuk-font($size: 19);
+    background: none;
+    border: none;
     width: -webkit-fill-available;
     text-align: center;
     text-decoration-line: underline;
@@ -112,15 +114,15 @@
     }
   }
 
-  .idsk-crossroad__colapse--button {
+  .idsk-crossroad__colapse--button-show {
     &:focus,
     &:active {
       padding: 0;
     }
   }
 
-  .idsk-crossroad__collapse--arrow .idsk-crossroad__colapse--a::before,
-  .idsk-crossroad__collapse--arrow .idsk-crossroad__colapse--a::after {
+  .idsk-crossroad__collapse--arrow .idsk-crossroad__colapse--button::before,
+  .idsk-crossroad__collapse--arrow .idsk-crossroad__colapse--button::after {
     margin: govuk-spacing(2) 12px 0 12px;
     transform: rotate(-45deg);
     transition: all 0.2s ease-in;
