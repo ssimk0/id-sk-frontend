@@ -450,12 +450,25 @@
     }
 
     .idsk-footer-extended-heart-visible {
+        @include govuk-font($size: 24);
+        font-weight: bold;
         display: block;
-        padding-top: govuk-spacing(1);
         line-height: 40px;
+
         @include mq($from: tablet) {
-            padding-top: 0;
+            @include govuk-font($size: 19);
+            margin-top: -5px;
+            font-weight: bold;
             line-height: 0px;
+        }
+    }
+
+    .idsk-footer-extended-heart--svg {
+        display: none;
+
+        @include mq($from: desktop) {
+            display: unset;
+            margin-bottom: -2px;
         }
     }
 
