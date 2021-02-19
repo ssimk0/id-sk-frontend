@@ -720,6 +720,10 @@
             padding: govuk-spacing(3);
             margin-top: 0;
             margin-bottom: 0;
+
+            @include mq($from: tablet) {
+              height: 29px;
+            }
           }
 
           .idsk-button {
