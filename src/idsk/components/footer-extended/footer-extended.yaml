@@ -19,6 +19,11 @@ params:
     required: false
     description: Url address for feedback button.
 
+  - name: fillFeedbackLink
+    type: html
+    required: false
+    description: Url address for form to fill feedback.
+    
   - name: logo
     type: svg
     required: false

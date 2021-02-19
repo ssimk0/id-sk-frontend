@@ -344,9 +344,14 @@
     }
 
     #idsk-footer-extended-close-help-form-button,
-    #idsk-footer-extended-close-error-form-button,
+    #idsk-footer-extended-close-error-form-button {
+        float: right;
+        margin-top: -3px;
+    }
+
     .idsk-footer-extended-write-us-button {
         float: right;
+        padding-top: govuk-spacing(3);
     }
 
     .idsk-footer-extended-feedback-question-container .govuk-grid-column-one-third {

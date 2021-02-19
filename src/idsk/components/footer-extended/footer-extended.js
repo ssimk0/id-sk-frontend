@@ -22,7 +22,6 @@ FooterExtended.prototype.init = function () {
     var $closeErrorFormButton = $module.querySelector('#idsk-footer-extended-close-error-form-button');
     var $closeHelpFormButton = $module.querySelector('#idsk-footer-extended-close-help-form-button');
     var $textAreaCharacterCount = $module.querySelector('#idsk-footer-extended-error-form #with-hint');
-    var $fillFeedbackButton = $module.querySelector('#fill-feedback-help-form');
     var $submitErrorButton = $module.querySelector('#submit-button-error-form');
     var $writeUsButton = $module.querySelector('#idsk-footer-extended-write-us-button');
     var $upButton = $module.querySelector("#footer-extended-up-button");
@@ -43,10 +42,6 @@ FooterExtended.prototype.init = function () {
 
     if ($closeErrorFormButton) {
         $closeErrorFormButton.addEventListener('click', this.handleCloseErrorFormButtonClick.bind(this));
-    }
-
-    if ($fillFeedbackButton) {
-        $fillFeedbackButton.addEventListener('click', this.handleSubmitButtonClick.bind(this));
     }
 
     if ($submitErrorButton) {
