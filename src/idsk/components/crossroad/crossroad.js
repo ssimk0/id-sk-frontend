@@ -1,6 +1,6 @@
 import "../../../govuk/vendor/polyfills/Function/prototype/bind";
 import "../../../govuk/vendor/polyfills/Event"; // addEventListener and event.target normaliziation
-import { nodeListForEach } from "../../common";
+import { nodeListForEach, toggleClass } from "../../common";
 
 /**
  * Crossroad Component
@@ -13,9 +13,14 @@ function Crossroad($module) {
 Crossroad.prototype.init = function () {
   var $module = this.$module;
   var $items = this.$items;
+  var $uncollapseButton = $module.querySelector('#idsk-crossroad__uncollapse-button');
 
   if (!$module || !$items) {
     return;
+  }
+
+  if ($uncollapseButton) {
+    $uncollapseButton.addEventListener('click', this.handleShowItems.bind(this));
   }
 
   nodeListForEach(
@@ -29,6 +34,22 @@ Crossroad.prototype.init = function () {
 Crossroad.prototype.handleItemClick = function (e) {
   var $item = e.target;
   $item.setAttribute("aria-current", "true");
+};
+
+Crossroad.prototype.handleShowItems = function (e) {
+  var $crossroadItems = this.$module.querySelectorAll('.idsk-crossroad__item');
+  var $uncollapseButton = this.$module.querySelector('#idsk-crossroad__uncollapse-button');
+  var $uncollapseDiv = this.$module.querySelector('.idsk-crossroad__uncollapse-div');
+
+  $crossroadItems.forEach(crossroadItem => {
+    toggleClass(crossroadItem, 'idsk-crossroad__item--two-columns-show');
+  });
+
+  $uncollapseButton.innerHTML = $uncollapseButton.textContent == 'Zobraziť viac' ? 'Zobraziť menej' : 'Zobraziť viac';
+  
+  toggleClass(e.srcElement, 'idsk-crossroad__colapse--button');
+  toggleClass($uncollapseDiv, 'idsk-crossroad__collapse--shadow');
+  toggleClass($uncollapseDiv, 'idsk-crossroad__collapse--arrow');
 };
 
 export default Crossroad;
