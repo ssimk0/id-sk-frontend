@@ -45,14 +45,8 @@ Crossroad.prototype.handleShowItems = function (e) {
     toggleClass(crossroadItem, 'idsk-crossroad__item--two-columns-show');
   });
 
-  if ($uncollapseButton.textContent == 'Zobraziť viac') {
-    {
-      $uncollapseButton.innerHTML = 'Zobraziť menej';
-    }
-  } else {
-    $uncollapseButton.innerHTML = 'Zobraziť viac';
-  }
-
+  $uncollapseButton.innerHTML = $uncollapseButton.textContent == 'Zobraziť viac' ? 'Zobraziť menej' : 'Zobraziť viac';
+  
   toggleClass(e.srcElement, 'idsk-crossroad__colapse--button');
   toggleClass($uncollapseDiv, 'idsk-crossroad__collapse--shadow');
   toggleClass($uncollapseDiv, 'idsk-crossroad__collapse--arrow');

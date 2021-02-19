@@ -57,7 +57,7 @@
       height: 1px;
       border: 0;
       border-top: 1px;
-      margin-bottom: 10px;
+      margin-bottom: govuk-spacing(2);
     }
   }
 
@@ -101,7 +101,7 @@
       margin: 2px 0 0 12px;
     }
     &::before {
-      margin: 2px 12px 0 0px;
+      margin: 2px 12px 0 0;
     }
 
     &:focus,
@@ -138,10 +138,10 @@
 
   .idsk-crossroad__item--two-columns-hide-mobile.idsk-crossroad__item--two-columns-hide,
   .idsk-crossroad__uncollapse-hide--desktop {
-    @include mq($and: "(orientation: landscape)") { 
+    @include mq($and: "(orientation: landscape)") {
       display: none;
     }
-    
+
     @include mq($from: desktop) {
       display: none;
     }
@@ -156,7 +156,7 @@
       display: none;
     }
 
-    @include mq($and: "(orientation: landscape)") { 
+    @include mq($and: "(orientation: landscape)") {
       display: unset;
     }
 
