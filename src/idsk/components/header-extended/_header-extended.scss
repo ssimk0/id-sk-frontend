@@ -5,11 +5,11 @@
 @import "./node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
 
 @include govuk-exports("idsk/component/header-extended") {
-  $idsk-header-background: govuk-colour("white");
-  $idsk-header-border-color: $idsk-brand-colour;
-  $idsk-header-dark-blue: govuk-colour("dark-blue");
-  $idsk-header-light-blue: govuk-colour("blue");
-  $idsk-header-link: govuk-colour("white");
+  $idsk-header-background: govuk-colour("white") !default;
+  $idsk-header-border-color: $idsk-brand-colour !default;
+  $idsk-header-dark-blue: govuk-colour("dark-blue") !default;
+  $idsk-header-light-blue: govuk-colour("blue") !default;
+  $idsk-header-link: govuk-colour("white") !default;
 
   .idsk-header-extended {
     @include govuk-font($size: 16);
