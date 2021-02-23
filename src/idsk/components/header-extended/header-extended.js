@@ -39,15 +39,13 @@ HeaderExtended.prototype.init = function () {
         $toggleLanguageSelector.addEventListener('blur', this.handleLanguageSelectorClick.bind(this));
     }
 
-    // check for submenu
-    var $toggleSubmenus = $module.querySelectorAll('.idsk-header-extended__link');
-    if ($toggleSubmenus) {
-        var $self = this;
-        // Handle $toggleSubmenu click events
-        nodeListForEach($toggleSubmenus, function ($toggleSubmenu) {
-            $toggleSubmenu.addEventListener('focus', $self.handleSubmenuClick2.bind($self));
-            $toggleSubmenu.addEventListener('blur', $self.handleSubmenuClick.bind($self));
-        })
+    // check for menu items
+    var $menuItems = $module.querySelectorAll('.idsk-header-extended__link');
+    if ($menuItems) {
+        // Handle $menuItem click events
+        nodeListForEach($menuItems, function ($menuItem) {
+            $menuItem.addEventListener('click', this.handleSubmenuClick.bind(this));
+        }.bind(this))
     }
 
     // check for menu button and x-mark button
@@ -59,6 +57,8 @@ HeaderExtended.prototype.init = function () {
     }
 
     window.addEventListener('scroll', this.scrollFunction.bind(this));
+
+    $module.boundCheckBlurMenuItemClick = this.checkBlurMenuItemClick.bind(this);
 }
 
 /**
@@ -94,22 +94,23 @@ HeaderExtended.prototype.handleLanguageSelectorClick = function (e) {
 HeaderExtended.prototype.handleSubmenuClick = function (e) {
     var $srcEl = e.target || e.srcElement;
     var $toggleButton = $srcEl.closest('.idsk-header-extended__navigation-item');
-    toggleClass($toggleButton, 'idsk-header-extended__navigation-item--active');
-}/**
- * Handle open/hide submenu
- * @param {object} e 
- */
-
-HeaderExtended.prototype.handleSubmenuClick2 = function (e) {
-    var $srcEl = e.target || e.srcElement;
-    var $toggleButton = $srcEl.closest('.idsk-header-extended__navigation-item');
     var $currActiveList = this.$module.querySelectorAll('.idsk-header-extended__navigation-item--active');
 
     if ($currActiveList.length > 0) {
         $currActiveList[0].classList.remove('idsk-header-extended__navigation-item--active');
     }
-    
     toggleClass($toggleButton, 'idsk-header-extended__navigation-item--active');
+
+    document.addEventListener('click', this.$module.boundCheckBlurMenuItemClick, true);
+}
+
+/**
+ * handle click outside menu or "blur" the item link
+ */
+HeaderExtended.prototype.checkBlurMenuItemClick = function () {
+    var $currActiveList = this.$module.querySelectorAll('.idsk-header-extended__navigation-item--active');
+    $currActiveList[0].classList.remove('idsk-header-extended__navigation-item--active');
+    document.removeEventListener('click', this.$module.boundCheckBlurMenuItemClick, true);
 }
 
 /**
