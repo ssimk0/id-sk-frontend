@@ -107,8 +107,7 @@
                 <a 
                   tabindex="{{loop.index + 1}}"
                   class="idsk-header-extended__link
-                    {{ ' idsk-js-header-extended-submenu-toggle' if item.submenu }}
-                    {{ ' idsk-header-extended__arrow' if item.submenu }}"
+                    {{ ' idsk-js-header-extended-submenu-toggle idsk-header-extended__arrow' if item.submenu }}"
                   href="{{ item.link }}"{% for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %}
                   title="{{ item.text }}"
                   >

@@ -48,13 +48,13 @@ function initAll(options) {
   });
 
   // Find first Header-extended module to enhance.
-  var $headersExtended = scope.querySelectorAll('[data-module="idsk-header-extended"]')
+  var $headersExtended = scope.querySelectorAll('[data-module="idsk-header-extended"]');
   nodeListForEach($headersExtended, function ($headerExtended) {
-    new HeaderExtended($headerExtended).init()
-  })
+    new HeaderExtended($headerExtended).init();
+  });
 
-  let $inPageNavigation = scope.querySelector('[data-module="idsk-in-page-navigation"]')
-  new InPageNavigation($inPageNavigation).init()
+  var $inPageNavigation = scope.querySelector('[data-module="idsk-in-page-navigation"]');
+  new InPageNavigation($inPageNavigation).init();
 
   // Init all GOVUK components js
   initAllGOVUKjs(options);

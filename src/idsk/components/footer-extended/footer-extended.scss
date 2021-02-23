@@ -344,9 +344,14 @@
     }
 
     #idsk-footer-extended-close-help-form-button,
-    #idsk-footer-extended-close-error-form-button,
+    #idsk-footer-extended-close-error-form-button {
+        float: right;
+        margin-top: -3px;
+    }
+
     .idsk-footer-extended-write-us-button {
         float: right;
+        padding-top: govuk-spacing(3);
     }
 
     .idsk-footer-extended-feedback-question-container .govuk-grid-column-one-third {
@@ -450,12 +455,24 @@
     }
 
     .idsk-footer-extended-heart-visible {
+        @include govuk-font($size: 24);
+        font-weight: bold;
         display: block;
-        padding-top: govuk-spacing(1);
         line-height: 40px;
+
         @include mq($from: tablet) {
-            padding-top: 0;
-            line-height: 0px;
+            @include govuk-font($size: 19);
+            margin-top: -5px;
+            font-weight: bold;
+        }
+    }
+
+    .idsk-footer-extended-heart--svg {
+        display: none;
+
+        @include mq($from: desktop) {
+            display: unset;
+            margin-bottom: -2px;
         }
     }
 
