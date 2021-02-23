@@ -1,0 +1,18 @@
+@import "../../../govuk/settings/all";
+@import "../../../govuk/tools/all";
+@import "../../../govuk/helpers/all";
+@import "../../../govuk/helpers/typography";
+
+@include govuk-exports("idsk/component/customer-suerveys") {
+    .idsk-customer-survey--line {
+        border: 1px solid govuk-colour ("black");
+    }
+
+    .idsk-customer-survey__subtitle--text-area {
+        // margin-bottom: -60px;
+    }
+
+    .idsk-customer-survey__caption {
+        margin-top: -10px;
+    }
+}

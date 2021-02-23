@@ -1,0 +1,95 @@
+<div data-module="idsk-customer-surveys">
+    <div class="govuk-width-container">
+        <div id="idsk-feedback__content">
+            {#1st#}
+            <div>
+                <p class="govuk-body-l">
+                    Cieľom tohto dotazníka je zistiť potreby a postrehy používateľov webu Ministerstva investícií, regionálneho rozvoja a informatizácie (Ďalej len "MIRRI).
+                </p>
+                <p class="govuk-body-l">
+                    Ďakujeme za súhlas s účasťou v tomto prieskume, pomáhate nám zlepšovať tento web. Vyplnenie tohto dotazníka Vám zaberie len 3 minúty.
+                </p>
+                <p class="govuk-body-l">
+                    Odpovede na všetky otázky sú dobrovoľné. Vaše odpovede na tento prieskum sú anonymné.
+                </p>
+
+            </div>
+
+            {#2nd#}
+            <div>
+                <hr class="idsk-customer-survey--line">
+                <h3 class="govuk-heading-m idsk-feedback__subtitle">
+                    {{ params.questions[0].name }}
+                </h3>
+
+                {% from "../../components/customer-surveys-radios/macro.njk" import idskCustomerSurveysRadios %}
+                {{ idskCustomerSurveysRadios({
+              showMainTitle : true,
+              counter : 0,
+              characterLength : 200,
+              feedbackOptions: [
+              {
+                name:"z pracovných dôvodov",
+                value: 1
+              },
+              {
+                name:"zo súkromných dôvodov",
+                value: 2
+              }
+            ]}) }}
+            </div>
+            
+
+            {#3rd#}
+            <div>
+                <hr class="idsk-customer-survey--line">
+                <h3 class="govuk-heading-m idsk-customer-survey__subtitle--text-area">
+                    {{ params.questions[1].name }}
+                </h3>
+
+                {% from "../../components/customer-surveys-text-area/macro.njk" import idskCustomerSurveysTextArea %}
+                {{idskCustomerSurveysTextArea
+                ({
+                characterLength: 200
+                })
+            }}
+            </div>
+
+            {#4th#}
+            <div>
+                <hr class="idsk-customer-survey--line">
+                <h3 class="govuk-heading-m idsk-customer-survey__subtitle--text-area">
+                    {{ params.questions[2].name }}
+                </h3>
+                <p class="govuk-caption-m idsk-customer-survey__caption">Prosím neuvádzajte osobné ani finančné informácie, ako napr. svoje rodné číslo alebo údaje o kreditnej karte.
+                </p>
+
+                {% from "../../components/customer-surveys-text-area/macro.njk" import idskCustomerSurveysTextArea %}
+                {{idskCustomerSurveysTextArea
+                ({
+                characterLength: 200
+                })
+            }}
+                <hr class="idsk-customer-survey--line">
+                <h3 class="govuk-heading-m ">
+                    {{ params.questions[3].name }}
+                </h3>
+
+            </div>
+
+            <div class="idsk-feedback__buttons">
+                <button id="idsk-feedback__send-button" class="govuk-button">
+                    Začať
+                </button>
+                <button class="govuk-button govuk-button--secondary" onclick="location.href='/';">
+                    Odísť
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="idsk-feedback__thanks" class="idsk-feedback--hidden">
+        <h2 class="govuk-heading-l">
+            {{ params.feedbackThankNote if params.feedbackThankNote else 'Ďakujeme za spätnú väzbu.' }}
+        </h2>
+    </div>
+</div>
