@@ -8,11 +8,19 @@
         border: 1px solid govuk-colour ("black");
     }
 
-    .idsk-customer-survey__subtitle--text-area {
-        // margin-bottom: -60px;
+    .idsk-customer-surveys--hidden {
+        display: none;
+    }
+
+    .idsk-customer-surveys--show {
+        display: block;
     }
 
     .idsk-customer-survey__caption {
         margin-top: -10px;
+    }
+
+    #idsk-customer-surveys__send-button {
+        margin-right: govuk-spacing(4);
     }
 }
