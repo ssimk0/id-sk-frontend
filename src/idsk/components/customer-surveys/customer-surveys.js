@@ -24,6 +24,10 @@ CustomerSurveys.prototype.handleNextButtonClick = function (e) {
     var $steps = this.$module.querySelectorAll('.idsk-customer-surveys__step');
     var i;
 
+    var $nextButton = $module.querySelector('#idsk-customer-surveys__send-button');
+ 
+    $nextButton.innerHTML = $nextButton.textContent == 'Začať' ? 'Zobraziť menej' : 'Zobraziť viac';
+
     for (i = 0; i < $steps.length-1; i++) {
         if ($steps[i].classList.contains('idsk-customer-surveys--show')) {
             $steps[i].classList.remove('idsk-customer-surveys--show');
