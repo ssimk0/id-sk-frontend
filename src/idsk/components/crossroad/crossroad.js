@@ -42,7 +42,7 @@ Crossroad.prototype.setAriaLabel = function (arr) {
       item.setAttribute("aria-hidden", "true");
       toggleClass(item, 'idsk-crossroad__arria-hidden');
       
-    } else if (item.getAttribute("aria-hidden")) {
+    } else if (item.getAttribute("aria-hidden") == "true") {
       item.setAttribute("aria-hidden", "false");
       toggleClass(item, 'idsk-crossroad__arria-hidden');
     }
