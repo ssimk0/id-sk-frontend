@@ -38,7 +38,6 @@
               }
             ]}) }}
             </div>
-            
 
             {#3rd#}
             <div>
@@ -74,7 +73,59 @@
                 <h3 class="govuk-heading-m ">
                     {{ params.questions[3].name }}
                 </h3>
+                {% from "../../components/customer-surveys-radios/macro.njk" import idskCustomerSurveysRadios %}
+                {{ idskCustomerSurveysRadios({
+              counter : 0,
+              characterLength : 200,
+              feedbackOptions: [
+              {
+                name:"Áno",
+                value: 1
+              },
+              {
+                name:"Nie",
+                value: 2
+              },
+              {
+                name:"Neviem / Zatiaľ nie",
+                value: 3
+              }
+            ]}) }}
+            </div>
 
+            
+            {#5th#}
+            <div>
+                <hr class="idsk-customer-survey--line">
+                <h3 class="govuk-heading-m ">
+                    {{ params.questions[4].name }}
+                </h3>
+                {% from "../../components/customer-surveys-radios/macro.njk" import idskCustomerSurveysRadios %}
+                {{ idskCustomerSurveysRadios({
+              counter : 0,
+              characterLength : 200,
+              feedbackOptions: [
+              {
+                name:"Veľmi nespokojný",
+                value: 1
+              },
+              {
+                name:"Nespokojný",
+                value: 2
+              },
+              {
+                name:"Ani spokojný ani nepsokojný",
+                value: 3
+              },
+              {
+                name:"Spokojný",
+                value: 4
+              },
+              {
+                name:"Veľmi spokojný",
+                value: 5
+              }
+            ]}) }}
             </div>
 
             <div class="idsk-feedback__buttons">
