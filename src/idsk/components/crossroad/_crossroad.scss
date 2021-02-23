@@ -100,17 +100,17 @@
     }
 
     &::after {
-      margin: 5px 0 0 23px;
+      margin: 5px 0 0 20px;
     }
     &::before {
-      margin: 5px 23px 0 0;
+      margin: 5px 22px 0 0;
     }
 
     &:focus,
     &:active {
       @include govuk-focused-text;
       width: auto;
-      padding: 0 govuk-spacing(2);
+      padding: 0 12px;
     }
   }
 
