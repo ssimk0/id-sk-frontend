@@ -93,7 +93,6 @@
             ]}) }}
             </div>
 
-            
             {#5th#}
             <div>
                 <hr class="idsk-customer-survey--line">
@@ -126,6 +125,57 @@
                 value: 5
               }
             ]}) }}
+            </div>
+
+            {#6th#}
+            <div>
+                <hr class="idsk-customer-survey--line">
+                <h3 class="govuk-heading-m ">
+                    {{ params.questions[5].name }}
+                </h3>
+                {% from "../../components/customer-surveys-radios/macro.njk" import idskCustomerSurveysRadios %}
+                {{ idskCustomerSurveysRadios({
+              counter : 0,
+              characterLength : 200,
+              feedbackOptions: [
+              {
+                name:"Áno",
+                value: 1
+              },
+              {
+                name:"Nie",
+                value: 2
+              }
+            ]}) }}
+                <hr class="idsk-customer-survey--line">
+                <h3 class="govuk-heading-m idsk-customer-survey__subtitle--text-area">
+                    {{ params.questions[6].name }}
+                </h3>
+
+                {% from "../../components/customer-surveys-text-area/macro.njk" import idskCustomerSurveysTextArea %}
+                {{idskCustomerSurveysTextArea
+                ({
+                characterLength: 200
+                })
+            }}
+
+            </div>
+
+            {#7th#}
+            <div>
+                <hr class="idsk-customer-survey--line">
+                <h3 class="govuk-heading-m idsk-customer-survey__subtitle--text-area">
+                    {{ params.questions[7].name }}
+                </h3>
+                <p class="govuk-caption-m idsk-customer-survey__caption">Prosím neuvádzajte osobné ani finančné informácie, ako napr. svoje rodné číslo alebo údaje o kreditnej karte.
+                </p>
+
+                {% from "../../components/customer-surveys-text-area/macro.njk" import idskCustomerSurveysTextArea %}
+                {{idskCustomerSurveysTextArea
+                ({
+                characterLength: 200
+                })
+            }}
             </div>
 
             <div class="idsk-feedback__buttons">

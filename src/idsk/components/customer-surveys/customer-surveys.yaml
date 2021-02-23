@@ -93,6 +93,10 @@ examples:
         - name: Kde ste hľadali?
           textArea: true
           value: 3
+        - name: Ak by ste nám chceli niečo odkázať, prosím, napíšte nám to sem.
+          caption: Prosím neuvádzajte osobné ani finančné informácie, ako napr. svoje rodné číslo alebo údaje o kreditnej karte. 
+          textArea: true
+          value: 3
 
       feedbackOptions:
         - name: Veľmi nespokojný
