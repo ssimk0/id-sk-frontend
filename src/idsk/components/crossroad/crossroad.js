@@ -37,11 +37,11 @@ Crossroad.prototype.handleItemClick = function (e) {
 };
 
 Crossroad.prototype.setAriaLabel = function (arr) {
-  arr.forEach(item => {
+  arr.forEach(function (item) {
     if (item.classList.contains('idsk-crossroad__arria-hidden')) {
       item.setAttribute("aria-hidden", "true");
       toggleClass(item, 'idsk-crossroad__arria-hidden');
-      
+
     } else if (item.getAttribute("aria-hidden")) {
       item.setAttribute("aria-hidden", "false");
       toggleClass(item, 'idsk-crossroad__arria-hidden');
@@ -56,7 +56,7 @@ Crossroad.prototype.handleShowItems = function (e) {
   var $crossroadTitles = this.$module.querySelectorAll('.idsk-crossroad-title');
   var $crossroadSubtitles = this.$module.querySelectorAll('.idsk-crossroad-subtitle');
 
-  $crossroadItems.forEach(crossroadItem => {
+  $crossroadItems.forEach(function(crossroadItem) {
     toggleClass(crossroadItem, 'idsk-crossroad__item--two-columns-show');
   });
 
