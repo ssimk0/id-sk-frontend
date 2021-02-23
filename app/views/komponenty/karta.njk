@@ -24,6 +24,7 @@
                 <ul class="govuk-list">
                     <li><a href="#card-basic">Základná kartička</a></li>
                     <li><a href="#card-hero-secondary">Sekundárna kartička</a></li>
+                    <li><a href="#card-hero-secondary-horizontal">Sekundárna kartička horizontálna</a></li>
                     <li><a href="#card-simple">Jednoduchá kartička</a></li>
                     <li><a href="#card-hero">Hero kartička</a></li>
                     <li><a href="#card-basic-no-image">Základná kartička bez obrázka</a></li>
@@ -78,6 +79,28 @@
                             "tags": [ { "tag": "Tag 1", "link": "#" }, { "tag": "Tag 2", "link": "#" } ]
                         }) }}
                     {% endset %}
+                    {{exampleComponentHtml | safe}}
+                </div>
+                <pre class=" language-markup"><code class="govuk-!-font-size-16  language-markup">{{ exampleComponentHtml }}</code></pre>
+            </div>
+
+            <div class="govuk-grid-column-full">
+                <h3 class="govuk-heading-m" id="card-hero-secondary-horizontal">Sekundárna kartička horizontálna</h3>
+                <p class="govuk-body">
+                  Sekundárnu kartičku horizontálnu použite keď chcete zobraziť používateľovi pod článkom súvisiace články. Názov kartičky musí byť výstižný. Popis kartičky nesmie presahovať pod fotografiu. Použite maximálne 2 tagy.
+                </p>
+                <div class="example example-error">
+                    {% set exampleComponentHtml %}
+                        {{ idskCard({
+                            "type": "secondary-horizontal",
+                            "imgSrc": "/public/assets/images/examples/ministerstvo-aktuality-cover.png",
+                            "link": "#",
+                            "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do",
+                            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+                            "date": { "date": "1.7.2020", "link": "#" },
+                            "tags": [ { "tag": "Tag 1", "link": "#" }, { "tag": "Tag 2", "link": "#" } ]
+                        }) }}
+                      {% endset %}
                     {{exampleComponentHtml | safe}}
                 </div>
                 <pre class=" language-markup"><code class="govuk-!-font-size-16  language-markup">{{ exampleComponentHtml }}</code></pre>
