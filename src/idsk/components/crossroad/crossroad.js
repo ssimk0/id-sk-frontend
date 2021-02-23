@@ -36,17 +36,35 @@ Crossroad.prototype.handleItemClick = function (e) {
   $item.setAttribute("aria-current", "true");
 };
 
+Crossroad.prototype.setAriaLabel = function (arr) {
+  arr.forEach(item => {
+    if (item.classList.contains('idsk-crossroad__arria-hidden')) {
+      item.setAttribute("aria-hidden", "true");
+      toggleClass(item, 'idsk-crossroad__arria-hidden');
+      
+    } else if (item.getAttribute("aria-hidden")) {
+      item.setAttribute("aria-hidden", "false");
+      toggleClass(item, 'idsk-crossroad__arria-hidden');
+    }
+  });
+};
+
 Crossroad.prototype.handleShowItems = function (e) {
   var $crossroadItems = this.$module.querySelectorAll('.idsk-crossroad__item');
   var $uncollapseButton = this.$module.querySelector('#idsk-crossroad__uncollapse-button');
   var $uncollapseDiv = this.$module.querySelector('.idsk-crossroad__uncollapse-div');
+  var $crossroadTitles = this.$module.querySelectorAll('.idsk-crossroad-title');
+  var $crossroadSubtitles = this.$module.querySelectorAll('.idsk-crossroad-subtitle');
 
   $crossroadItems.forEach(crossroadItem => {
     toggleClass(crossroadItem, 'idsk-crossroad__item--two-columns-show');
   });
 
+  this.setAriaLabel($crossroadTitles);
+  this.setAriaLabel($crossroadSubtitles);
+
   $uncollapseButton.innerHTML = $uncollapseButton.textContent == 'Zobraziť viac' ? 'Zobraziť menej' : 'Zobraziť viac';
-  
+
   toggleClass(e.srcElement, 'idsk-crossroad__colapse--button-show');
   toggleClass($uncollapseDiv, 'idsk-crossroad__collapse--shadow');
   toggleClass($uncollapseDiv, 'idsk-crossroad__collapse--arrow');
