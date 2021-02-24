@@ -46,7 +46,7 @@
               <img 
                 src="{{ params.assetsPath | default('/assets/images/flags/') + params.language.current.flag }}"
                 alt="{{ params.language.current.text }}"
-                >
+                aria-hidden="true">
               <span>{{ params.language.current.text }}</span>
             </span>
           </div>
@@ -55,7 +55,10 @@
               {% for language in params.language.choices %}
                 <li>
                   <a title="{{ language.text }}" href="{{ language.link }}">
-                    <img src="{{ params.assetsPath | default('/assets/images/flags/') + language.flag }}" alt="{{ language.text }}">
+                    <img 
+                      src="{{ params.assetsPath | default('/assets/images/flags/') + language.flag }}"
+                      alt="{{ language.text }}"
+                      aria-hidden="true">
                     {{ language.text }}
                   </a> 
                 </li>
