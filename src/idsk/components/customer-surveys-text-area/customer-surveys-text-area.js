@@ -1,6 +1,5 @@
 import '../../../govuk/vendor/polyfills/Function/prototype/bind'
 import '../../../govuk/vendor/polyfills/Event' // addEventListener and event.target normaliziation
-import { nodeListForEach } from '../../../govuk/common'
 
 /**
  * Feedback for extended websites

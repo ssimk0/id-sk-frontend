@@ -23,4 +23,12 @@
     #idsk-customer-surveys__send-button {
         margin-right: govuk-spacing(4);
     }
+
+    .idsk-customer-surveys__buttons {
+        padding-top: govuk-spacing(2);
+    }
+
+    .idsk-customer-surveys__buttons .govuk-button {
+        width: auto;
+    }
 }

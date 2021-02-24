@@ -19,163 +19,162 @@
             <div id="idsk-customer-surveys__step--1" class="idsk-customer-surveys--hidden idsk-customer-surveys__step">
                 <div>
                     <hr class="idsk-customer-survey--line">
-                    <h3 class="govuk-heading-m idsk-feedback__subtitle">
+                    <h3 class="govuk-heading-m idsk-customer-surveys--subtitle">
                         {{ params.questions[0].name }}
                     </h3>
 
                     {% from "../../components/customer-surveys-radios/macro.njk" import idskCustomerSurveysRadios %}
                     {{ idskCustomerSurveysRadios({
-              showMainTitle : true,
-              counter : 0,
-              characterLength : 200,
-              feedbackOptions: [
-              {
-                name:"z pracovných dôvodov",
-                value: 1
-              },
-              {
-                name:"zo súkromných dôvodov",
-                value: 2
-              }
-                ]}) }}
+                          showMainTitle : true,
+                          counter : 0,
+                          characterLength : 200,
+                          feedbackOptions: [
+                          {
+                            name:"z pracovných dôvodov",
+                            value: 1,
+                            class: "idsk-customer-survey__radio--work"
+                          },
+                          {
+                            name:"zo súkromných dôvodov",
+                            value: 2,
+                            class: "idsk-customer-survey__radio--private"
+                          }]
+                       })
+                    }}
                 </div>
-                <div>
+                <div class="idsk-customer-survey__text-area--work idsk-customer-surveys--hidden">
                     <hr class="idsk-customer-survey--line">
-                    <h3 class="govuk-heading-m idsk-customer-survey__subtitle--text-area">
+                    <h3 class="govuk-heading-m idsk-customer-survey__subtitle--work">
                         {{ params.questions[1].name }}
                     </h3>
 
                     {% from "../../components/customer-surveys-text-area/macro.njk" import idskCustomerSurveysTextArea %}
-                    {{idskCustomerSurveysTextArea
-                ({
-                characterLength: 200
-                })
-                }}
+                    {{idskCustomerSurveysTextArea ({
+                         characterLength: 200                
+                      })
+                    }}
                 </div>
             </div>
 
             {#3rd#}
             <div id="idsk-customer-surveys__step--2" class="idsk-customer-surveys--hidden idsk-customer-surveys__step">
                 <hr class="idsk-customer-survey--line">
-                <h3 class="govuk-heading-m idsk-customer-survey__subtitle--text-area">
+                <h3 class="govuk-heading-m idsk-customer-surveys--subtitle">
                     {{ params.questions[2].name }}
                 </h3>
                 <p class="govuk-caption-m idsk-customer-survey__caption">Prosím neuvádzajte osobné ani finančné informácie, ako napr. svoje rodné číslo alebo údaje o kreditnej karte.
                 </p>
-
                 {% from "../../components/customer-surveys-text-area/macro.njk" import idskCustomerSurveysTextArea %}
-                {{idskCustomerSurveysTextArea
-                ({
-                characterLength: 200
-                })
+                {{idskCustomerSurveysTextArea ({
+                     characterLength: 200
+                  })
                 }}
                 <hr class="idsk-customer-survey--line">
-                <h3 class="govuk-heading-m ">
+                <h3 class="govuk-heading-m idsk-customer-surveys--subtitle">
                     {{ params.questions[3].name }}
                 </h3>
                 {% from "../../components/customer-surveys-radios/macro.njk" import idskCustomerSurveysRadios %}
-                {{ idskCustomerSurveysRadios({
-              counter : 0,
-              characterLength : 200,
-              feedbackOptions: [
-              {
-                name:"Áno",
-                value: 1
-              },
-              {
-                name:"Nie",
-                value: 2
-              },
-              {
-                name:"Neviem / Zatiaľ nie",
-                value: 3
-              }
-            ]}) }}
+                {{ idskCustomerSurveysRadios ({
+                      counter : 0,
+                      characterLength : 200,
+                      feedbackOptions: [
+                      {
+                        name:"Áno",
+                        value: 1
+                      },
+                      {
+                        name:"Nie",
+                        value: 2
+                      },
+                      {
+                        name:"Neviem / Zatiaľ nie",
+                        value: 3
+                      }]
+                    }) 
+                }}
             </div>
 
             {#4th#}
             <div id="idsk-customer-surveys__step--3" class="idsk-customer-surveys--hidden idsk-customer-surveys__step">
                 <hr class="idsk-customer-survey--line">
-                <h3 class="govuk-heading-m ">
+                <h3 class="govuk-heading-m idsk-customer-surveys--subtitle">
                     {{ params.questions[4].name }}
                 </h3>
                 {% from "../../components/customer-surveys-radios/macro.njk" import idskCustomerSurveysRadios %}
                 {{ idskCustomerSurveysRadios({
-              counter : 0,
-              characterLength : 200,
-              feedbackOptions: [
-              {
-                name:"Veľmi nespokojný",
-                value: 1
-              },
-              {
-                name:"Nespokojný",
-                value: 2
-              },
-              {
-                name:"Ani spokojný ani nepsokojný",
-                value: 3
-              },
-              {
-                name:"Spokojný",
-                value: 4
-              },
-              {
-                name:"Veľmi spokojný",
-                value: 5
-              }
-            ]}) }}
+                      counter : 0,
+                      characterLength : 200,
+                      feedbackOptions: [
+                      {
+                        name:"Veľmi nespokojný",
+                        value: 1
+                      },
+                      {
+                        name:"Nespokojný",
+                        value: 2
+                      },
+                      {
+                        name:"Ani spokojný ani nepsokojný",
+                        value: 3
+                      },
+                      {
+                        name:"Spokojný",
+                        value: 4
+                      },
+                      {
+                        name:"Veľmi spokojný",
+                        value: 5
+                      }]
+                   }) 
+                }}
             </div>
 
             {#5th#}
             <div id="idsk-customer-surveys__step--4" class="idsk-customer-surveys--hidden idsk-customer-surveys__step">
                 <hr class="idsk-customer-survey--line">
-                <h3 class="govuk-heading-m ">
+                <h3 class="govuk-heading-m idsk-customer-surveys--subtitle">
                     {{ params.questions[5].name }}
                 </h3>
                 {% from "../../components/customer-surveys-radios/macro.njk" import idskCustomerSurveysRadios %}
                 {{ idskCustomerSurveysRadios({
-              counter : 0,
-              characterLength : 200,
-              feedbackOptions: [
-              {
-                name:"Áno",
-                value: 1
-              },
-              {
-                name:"Nie",
-                value: 2
-              }
-                ]}) }}
+                      counter : 0,
+                      characterLength : 200,
+                      feedbackOptions: [
+                      {
+                        name:"Áno",
+                        value: 1
+                      },
+                      {
+                        name:"Nie",
+                        value: 2
+                      }]
+                    })
+                 }}
                 <hr class="idsk-customer-survey--line">
-                <h3 class="govuk-heading-m idsk-customer-survey__subtitle--text-area">
+                <h3 class="govuk-heading-m idsk-customer-surveys--subtitle">
                     {{ params.questions[6].name }}
                 </h3>
 
                 {% from "../../components/customer-surveys-text-area/macro.njk" import idskCustomerSurveysTextArea %}
-                {{idskCustomerSurveysTextArea
-                ({
-                characterLength: 200
-                })
-            }}
-
+                {{idskCustomerSurveysTextArea ({
+                     characterLength: 200
+                  })
+                }}
             </div>
 
             {#6th#}
             <div id="idsk-customer-surveys__step--5" class="idsk-customer-surveys--hidden idsk-customer-surveys__step">
                 <hr class="idsk-customer-survey--line">
-                <h3 class="govuk-heading-m idsk-customer-survey__subtitle--text-area">
+                <h3 class="govuk-heading-m idsk-customer-surveys--subtitle">
                     {{ params.questions[7].name }}
                 </h3>
                 <p class="govuk-caption-m idsk-customer-survey__caption">Prosím neuvádzajte osobné ani finančné informácie, ako napr. svoje rodné číslo alebo údaje o kreditnej karte.
                 </p>
-
                 {% from "../../components/customer-surveys-text-area/macro.njk" import idskCustomerSurveysTextArea %}
-                {{idskCustomerSurveysTextArea
-                ({
-                characterLength: 200
-                })
-            }}
+                {{idskCustomerSurveysTextArea ({
+                     characterLength: 200
+                  })
+                }}
             </div>
 
             {#7th#}
@@ -185,13 +184,9 @@
                 </h2>
             </div>
 
-            <div class="idsk-feedback__buttons">
-                <button id="idsk-customer-surveys__send-button" class="govuk-button">
-                    Začať
-                </button>
-                <button class="govuk-button govuk-button--secondary" onclick="location.href='/';">
-                    Odísť
-                </button>
+            <div class="idsk-customer-surveys__buttons">
+                <button id="idsk-customer-surveys__send-button" class="govuk-button">Začať</button>
+                <button id="idsk-customer-surveys__previous-button" class="govuk-button govuk-button--secondary" onclick="location.href='/';">Odísť</button>
             </div>
         </div>
     </div>
