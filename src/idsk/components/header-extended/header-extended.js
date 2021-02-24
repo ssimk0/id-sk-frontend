@@ -31,12 +31,11 @@ HeaderExtended.prototype.init = function () {
         $toggleSearchInputComponent.addEventListener('focusout', this.handleSearchComponentClick.bind(this));
     }
 
-    // check for language selector
-    var $toggleLanguageSelector = $module.querySelector('.idsk-js-header-extended-language-toggle');
-    if ($toggleLanguageSelector) {
-        // Handle $toggleLanguageSelect click events
-        $toggleLanguageSelector.addEventListener('focus', this.handleLanguageSelectorClick.bind(this));
-        $toggleLanguageSelector.addEventListener('blur', this.handleLanguageSelectorClick.bind(this));
+    // check for language switcher
+    var $toggleLanguageSwitcher = $module.querySelector('.idsk-js-header-extended-language-toggle');
+    if ($toggleLanguageSwitcher) {
+        // Handle $toggleLanguageSwitcher click events
+        $toggleLanguageSwitcher.addEventListener('click', this.handleLanguageSwitcherClick.bind(this));
     }
 
     // check for menu items
@@ -59,6 +58,7 @@ HeaderExtended.prototype.init = function () {
     window.addEventListener('scroll', this.scrollFunction.bind(this));
 
     $module.boundCheckBlurMenuItemClick = this.checkBlurMenuItemClick.bind(this);
+    $module.boundCheckBlurLanguageSwitcherClick = this.checkBlurLanguageSwitcherClick.bind(this);
 }
 
 /**
@@ -79,12 +79,22 @@ HeaderExtended.prototype.handleSearchComponentClick = function (e) {
 
 /**
  * Handle open/hide language switcher
- * @param {object} e 
+ * @param {object} e
  */
-HeaderExtended.prototype.handleLanguageSelectorClick = function (e) {
+HeaderExtended.prototype.handleLanguageSwitcherClick = function (e) {
     var $toggleButton = e.target || e.srcElement;
     var $target = $toggleButton.closest('.idsk-header-extended__language');
     toggleClass($target, 'idsk-header-extended__language--active');
+    document.addEventListener('click', this.$module.boundCheckBlurLanguageSwitcherClick, true);
+}
+
+/**
+ * handle click outside language switcher or "blur" the item link
+ */
+HeaderExtended.prototype.checkBlurLanguageSwitcherClick = function () {
+    var $target = this.$module.querySelectorAll('.idsk-header-extended__language');
+    $target[0].classList.remove('idsk-header-extended__language--active');
+    document.removeEventListener('click', this.$module.boundCheckBlurLanguageSwitcherClick, true);
 }
 
 /**
