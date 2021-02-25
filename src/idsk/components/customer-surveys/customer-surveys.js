@@ -161,6 +161,8 @@ CustomerSurveys.prototype.handleNextButtonClick = function (e) {
             toggleClass($steps[i], 'idsk-customer-surveys--hidden');
             toggleClass($steps[i + 1], 'idsk-customer-surveys--hidden');
             $steps[i + 1].classList.add('idsk-customer-surveys--show');
+            window.sessionStorage.setItem(i, $steps[i]);
+
             if (i == 4) {
                 $nextButton.innerHTML = 'Odoslať odpovede';
             }
