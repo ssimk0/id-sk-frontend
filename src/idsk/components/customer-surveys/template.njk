@@ -1,30 +1,30 @@
-<div data-module="idsk-customer-surveys">
-    <div class="govuk-width-container">
-        <div id="idsk-customer-surveys__content">
-            {#1st#}
-            <div id="idsk-customer-surveys__step--0" class="idsk-customer-surveys__step idsk-customer-surveys--show">
-                <p class="govuk-body-l">
-                    Cieľom tohto dotazníka je zistiť potreby a postrehy používateľov webu Ministerstva investícií, regionálneho rozvoja a informatizácie (Ďalej len "MIRRI).
-                </p>
-                <p class="govuk-body-l">
-                    Ďakujeme za súhlas s účasťou v tomto prieskume, pomáhate nám zlepšovať tento web. Vyplnenie tohto dotazníka Vám zaberie len 3 minúty.
-                </p>
-                <p class="govuk-body-l">
-                    Odpovede na všetky otázky sú dobrovoľné. Vaše odpovede na tento prieskum sú anonymné.
-                </p>
+<div data-module="idsk-customer-surveys" class="idsk-customer-surveys">
+  <div class="govuk-width-container">
+    <div id="idsk-customer-surveys__content">
+      {#1st#}
+      <div class="idsk-customer-surveys__step idsk-customer-surveys--show">
+        <p class="govuk-body-l">
+          Cieľom tohto dotazníka je zistiť potreby a postrehy používateľov webu Ministerstva investícií, regionálneho rozvoja a informatizácie (Ďalej len "MIRRI).
+        </p>
+        <p class="govuk-body-l">
+          Ďakujeme za súhlas s účasťou v tomto prieskume, pomáhate nám zlepšovať tento web. Vyplnenie tohto dotazníka Vám zaberie len 3 minúty.
+        </p>
+        <p class="govuk-body-l">
+          Odpovede na všetky otázky sú dobrovoľné. Vaše odpovede na tento prieskum sú anonymné.
+        </p>
 
-            </div>
+      </div>
 
-            {#2nd#}
-            <div id="idsk-customer-surveys__step--1" class="idsk-customer-surveys--hidden idsk-customer-surveys__step">
-                <div>
-                    <hr class="idsk-customer-survey--line">
-                    <h3 class="govuk-heading-m idsk-customer-surveys--subtitle">
-                        {{ params.questions[0].name }}
-                    </h3>
+      {#2nd#}
+      <div class="idsk-customer-surveys--hidden idsk-customer-surveys__step">
+        <div>
+          <hr class="idsk-customer-survey--line">
+          <h3 class="govuk-heading-m idsk-customer-surveys--subtitle">
+            {{ params.questions[0].name }}
+          </h3>
 
-                    {% from "../../components/customer-surveys-radios/macro.njk" import idskCustomerSurveysRadios %}
-                    {{ idskCustomerSurveysRadios({
+          {% from "../../components/customer-surveys-radios/macro.njk" import idskCustomerSurveysRadios %}
+          {{ idskCustomerSurveysRadios({
                           showMainTitle : true,
                           counter : 0,
                           characterLength : 200,
@@ -41,40 +41,41 @@
                           }]
                        })
                     }}
-                </div>
-                <div class="idsk-customer-survey__text-area--work idsk-customer-surveys--hidden">
-                    <hr class="idsk-customer-survey--line">
-                    <h3 class="govuk-heading-m idsk-customer-survey__subtitle--work">
-                        {{ params.questions[1].name }}
-                    </h3>
-
-                    {% from "../../components/customer-surveys-text-area/macro.njk" import idskCustomerSurveysTextArea %}
-                    {{idskCustomerSurveysTextArea ({
-                         characterLength: 200                
+        </div>
+        <div class="idsk-customer-survey__text-area--work idsk-customer-surveys--hidden">
+          <hr class="idsk-customer-survey--line">
+          <h3 class="govuk-heading-m idsk-customer-survey__subtitle--work">
+            {{ params.questions[1].name }}
+          </h3>
+          {% from "../../components/customer-surveys-text-area/macro.njk" import idskCustomerSurveysTextArea %}
+          {{idskCustomerSurveysTextArea ({
+                         characterLength: 200,
+                         id:'first'
                       })
                     }}
-                </div>
-            </div>
+        </div>
+      </div>
 
-            {#3rd#}
-            <div id="idsk-customer-surveys__step--2" class="idsk-customer-surveys--hidden idsk-customer-surveys__step">
-                <hr class="idsk-customer-survey--line">
-                <h3 class="govuk-heading-m idsk-customer-surveys--subtitle">
-                    {{ params.questions[2].name }}
-                </h3>
-                <p class="govuk-caption-m idsk-customer-survey__caption">Prosím neuvádzajte osobné ani finančné informácie, ako napr. svoje rodné číslo alebo údaje o kreditnej karte.
-                </p>
-                {% from "../../components/customer-surveys-text-area/macro.njk" import idskCustomerSurveysTextArea %}
-                {{idskCustomerSurveysTextArea ({
-                     characterLength: 200
+      {#3rd#}
+      <div class="idsk-customer-surveys--hidden idsk-customer-surveys__step">
+        <hr class="idsk-customer-survey--line">
+        <h3 class="govuk-heading-m idsk-customer-surveys--subtitle">
+          {{ params.questions[2].name }}
+        </h3>
+        <p class="govuk-caption-m idsk-customer-survey__caption">Prosím neuvádzajte osobné ani finančné informácie, ako napr. svoje rodné číslo alebo údaje o kreditnej karte.
+        </p>
+        {% from "../../components/customer-surveys-text-area/macro.njk" import idskCustomerSurveysTextArea %}
+        {{idskCustomerSurveysTextArea ({
+                     characterLength: 200,
+                     id:'second'
                   })
                 }}
-                <hr class="idsk-customer-survey--line">
-                <h3 class="govuk-heading-m idsk-customer-surveys--subtitle">
-                    {{ params.questions[3].name }}
-                </h3>
-                {% from "../../components/customer-surveys-radios/macro.njk" import idskCustomerSurveysRadios %}
-                {{ idskCustomerSurveysRadios ({
+        <hr class="idsk-customer-survey--line">
+        <h3 class="govuk-heading-m idsk-customer-surveys--subtitle">
+          {{ params.questions[3].name }}
+        </h3>
+        {% from "../../components/customer-surveys-radios/macro.njk" import idskCustomerSurveysRadios %}
+        {{ idskCustomerSurveysRadios ({
                       counter : 0,
                       characterLength : 200,
                       feedbackOptions: [
@@ -92,16 +93,16 @@
                       }]
                     }) 
                 }}
-            </div>
+      </div>
 
-            {#4th#}
-            <div id="idsk-customer-surveys__step--3" class="idsk-customer-surveys--hidden idsk-customer-surveys__step">
-                <hr class="idsk-customer-survey--line">
-                <h3 class="govuk-heading-m idsk-customer-surveys--subtitle">
-                    {{ params.questions[4].name }}
-                </h3>
-                {% from "../../components/customer-surveys-radios/macro.njk" import idskCustomerSurveysRadios %}
-                {{ idskCustomerSurveysRadios({
+      {#4th#}
+      <div class="idsk-customer-surveys--hidden idsk-customer-surveys__step">
+        <hr class="idsk-customer-survey--line">
+        <h3 class="govuk-heading-m idsk-customer-surveys--subtitle">
+          {{ params.questions[4].name }}
+        </h3>
+        {% from "../../components/customer-surveys-radios/macro.njk" import idskCustomerSurveysRadios %}
+        {{ idskCustomerSurveysRadios({
                       counter : 0,
                       characterLength : 200,
                       feedbackOptions: [
@@ -127,16 +128,16 @@
                       }]
                    }) 
                 }}
-            </div>
+      </div>
 
-            {#5th#}
-            <div id="idsk-customer-surveys__step--4" class="idsk-customer-surveys--hidden idsk-customer-surveys__step">
-                <hr class="idsk-customer-survey--line">
-                <h3 class="govuk-heading-m idsk-customer-surveys--subtitle">
-                    {{ params.questions[5].name }}
-                </h3>
-                {% from "../../components/customer-surveys-radios/macro.njk" import idskCustomerSurveysRadios %}
-                {{ idskCustomerSurveysRadios({
+      {#5th#}
+      <div class="idsk-customer-surveys--hidden idsk-customer-surveys__step">
+        <hr class="idsk-customer-survey--line">
+        <h3 class="govuk-heading-m idsk-customer-surveys--subtitle">
+          {{ params.questions[5].name }}
+        </h3>
+        {% from "../../components/customer-surveys-radios/macro.njk" import idskCustomerSurveysRadios %}
+        {{ idskCustomerSurveysRadios({
                       counter : 0,
                       characterLength : 200,
                       feedbackOptions: [
@@ -150,49 +151,57 @@
                       }]
                     })
                  }}
-                <hr class="idsk-customer-survey--line">
-                <h3 class="govuk-heading-m idsk-customer-surveys--subtitle">
-                    {{ params.questions[6].name }}
-                </h3>
+        <hr class="idsk-customer-survey--line">
+        <h3 class="govuk-heading-m idsk-customer-surveys--subtitle">
+          {{ params.questions[6].name }}
+        </h3>
 
-                {% from "../../components/customer-surveys-text-area/macro.njk" import idskCustomerSurveysTextArea %}
-                {{idskCustomerSurveysTextArea ({
-                     characterLength: 200
+        {% from "../../components/customer-surveys-text-area/macro.njk" import idskCustomerSurveysTextArea %}
+        {{idskCustomerSurveysTextArea ({
+                     characterLength: 200,
+                     id:'third'
                   })
                 }}
-            </div>
+      </div>
 
-            {#6th#}
-            <div id="idsk-customer-surveys__step--5" class="idsk-customer-surveys--hidden idsk-customer-surveys__step">
-                <hr class="idsk-customer-survey--line">
-                <h3 class="govuk-heading-m idsk-customer-surveys--subtitle">
-                    {{ params.questions[7].name }}
-                </h3>
-                <p class="govuk-caption-m idsk-customer-survey__caption">Prosím neuvádzajte osobné ani finančné informácie, ako napr. svoje rodné číslo alebo údaje o kreditnej karte.
-                </p>
-                {% from "../../components/customer-surveys-text-area/macro.njk" import idskCustomerSurveysTextArea %}
-                {{idskCustomerSurveysTextArea ({
-                     characterLength: 200
+      {#6th#}
+      <div class="idsk-customer-surveys--hidden idsk-customer-surveys__step">
+        <hr class="idsk-customer-survey--line">
+        <h3 class="govuk-heading-m idsk-customer-surveys--subtitle">
+          {{ params.questions[7].name }}
+        </h3>
+        <p class="govuk-caption-m idsk-customer-survey__caption">Prosím neuvádzajte osobné ani finančné informácie, ako napr. svoje rodné číslo alebo údaje o kreditnej karte.
+        </p>
+        {% from "../../components/customer-surveys-text-area/macro.njk" import idskCustomerSurveysTextArea %}
+        {{idskCustomerSurveysTextArea ({
+                     characterLength: 200,
+                     id:'fourth'
                   })
                 }}
-            </div>
+      </div>
 
-            {#7th#}
-            <div id="idsk-feedback__thanks" class="idsk-customer-surveys--hidden idsk-customer-surveys__step">
-                <h2 class="govuk-heading-l">
-                    {{ params.feedbackThankNote if params.feedbackThankNote else 'Ďakujeme za spätnú väzbu.' }}
-                </h2>
-            </div>
-
-            <div class="idsk-customer-surveys__buttons">
-                <button id="idsk-customer-surveys__send-button" class="govuk-button">Začať</button>
-                <button id="idsk-customer-surveys__previous-button" class="govuk-button govuk-button--secondary" onclick="location.href='/';">Odísť</button>
-            </div>
-        </div>
-    </div>
-    <div id="idsk-feedback__thanks" class="idsk-feedback--hidden">
+      {#7th#}
+      <div id="idsk-feedback__thanks" class="idsk-customer-surveys--hidden idsk-customer-surveys__step">
+        <hr class="idsk-customer-survey--line">
         <h2 class="govuk-heading-l">
-            {{ params.feedbackThankNote if params.feedbackThankNote else 'Ďakujeme za spätnú väzbu.' }}
+          {{ params.feedbackThankNote if params.feedbackThankNote else 'Ďakujeme za spätnú väzbu.' }}
         </h2>
+        <p class="govuk-body">Späť na stránku
+          <a href="https://www.mirri.gov.sk/">
+            mirri.gov.sk
+          </a>
+        </p>
+      </div>
+
+      <div class="idsk-customer-surveys__buttons">
+        <button id="idsk-customer-surveys__send-button" class="govuk-button">Začať</button>
+        <button id="idsk-customer-surveys__previous-button" class="govuk-button govuk-button--secondary" onclick="location.href='/';">Odísť</button>
+      </div>
     </div>
+  </div>
+  <div id="idsk-feedback__thanks" class="idsk-feedback--hidden">
+    <h2 class="govuk-heading-l">
+      {{ params.feedbackThankNote if params.feedbackThankNote else 'Ďakujeme za spätnú väzbu.' }}
+    </h2>
+  </div>
 </div>

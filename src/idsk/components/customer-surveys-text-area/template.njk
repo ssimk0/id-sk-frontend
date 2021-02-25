@@ -2,12 +2,12 @@
     <div class="govuk-width-container">
         <div id="idsk-feedback__content" class="idsk-customer-surveys-text-area">
             <div id="idsk-feedback__question-bar" > {# class="idsk-feedback--animation idsk-feedback--invisible" #}
-                <div>
+                <div id={{params.id}}>
                     <br>
                     {% from "../../components/character-count/macro.njk" import idskCharacterCount %}
                     {{ idskCharacterCount({
-                        name: "with-hint",
-                        id: "with-hint",
+                        name: params.id,
+                        id: params.id,
                         maxlength: params.characterLength,
                         label: {
                             text: ""

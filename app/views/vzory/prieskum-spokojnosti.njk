@@ -1,0 +1,69 @@
+{% extends "layout.njk" %}
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "../../../src/idsk/components/header-extended/macro.njk" import idskHeaderExtended %}
+{% from "../../../src/idsk/components/customer-surveys/macro.njk" import idskCustomerSurveys %}
+
+{% set pageName = "Prieskum Spokojnosti" %}
+
+{% block beforeContent %}
+    {{ govukBreadcrumbs({
+    "items": [
+    { text: ' ID-SK frontend', href: '/' + legacyQuery },
+    { text: pageName }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+    <div>
+        {% include('../../../src/idsk/assets/images/logo-mirri-farebne-sk-2.svg') %}
+    </div>
+    {{ idskCustomerSurveys({     
+        questions: [ 
+        {
+          name: "Navštevujete web mirri.gov.sk z pracovných alebo súkromných dôvodov?",
+          textArea: true,
+          value: 1        
+        },
+        {
+          name: "Čo je vašou pracovnou náplňou?",
+          textArea: true,
+          value: 1        
+        },
+        {
+          name: "Popíšte, prečo ste dnes prišli na stránku www.mirri.gov.sk",
+          caption: "Prosím neuvádzajte osobné ani finančné informácie, ako napr. svoje rodné číslo alebo údaje o kreditnej karte.",
+          textArea: true,
+          value: 1        
+        },
+        {
+          name: "Našli ste, čo ste hľadali?",
+          textArea: true,
+          value: 1        
+        },
+        {
+          name: "Ako by ste zhodnotil/a Vášu skúsenosť s návštevou stránky www.mirri.gov.sk?",
+          textArea: true,
+          value: 1        
+        },
+        {
+          name: "Hľadali ste už niekde inde to, čo potrebujete, ešte pred tým, ako ste sem prišli?",
+          textArea: true,
+          value: 1        
+        },
+        {
+          name: "Kde ste hľadali?",
+          textArea: true,
+          value: 1        
+        },
+        {
+          name: "Ak by ste nám chceli niečo odkázať, prosím, napíšte nám to sem.",
+          caption: "Prosím neuvádzajte osobné ani finančné informácie, ako napr. svoje rodné číslo alebo údaje o kreditnej karte. ",
+          textArea: true,
+          value: 1        
+        }]  
+    })
+}}
+{% endblock %}
+
+{% block footer %}{% endblock %}

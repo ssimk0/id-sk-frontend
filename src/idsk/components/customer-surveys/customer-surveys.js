@@ -40,11 +40,9 @@ CustomerSurveys.prototype.init = function () {
     if ($previousButton) {
         $previousButton.addEventListener('click', this.handlePreviousButtonClick.bind(this));
     }
-
 };
 
 CustomerSurveys.prototype.handleCounterOfSubtitles = function ($counter) {
-    console.log($counter);
     var $subtitles = this.$module.querySelectorAll('.idsk-customer-surveys--subtitle');
     var i;
 
@@ -141,6 +139,5 @@ CustomerSurveys.prototype.handleNextButtonClick = function (e) {
         }
     };
 }
-
 
 export default CustomerSurveys;

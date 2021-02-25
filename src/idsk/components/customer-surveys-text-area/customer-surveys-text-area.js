@@ -15,11 +15,13 @@ CustomerSurveysTextArea.prototype.init = function () {
         return;
     }
 
-    var $textAreaCharacterCount = $module.querySelector('#idsk-feedback__question-bar #with-hint');
+    // var $textAreaCharacterCount = $module.querySelectorAll('#idsk-feedback__question-bar #with-hint');
+    
+    
 
-    if ($textAreaCharacterCount) {
-        $textAreaCharacterCount.addEventListener('input', this.handleStatusOfCharacterCountButton.bind(this));
-    }
+    // if ($textAreaCharacterCount) {
+    //     $textAreaCharacterCount.addEventListener('input', this.handleStatusOfCharacterCountButton.bind(this));
+    // }
 }
 
 
