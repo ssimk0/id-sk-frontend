@@ -9,8 +9,24 @@
     }
 
     .idsk-customer-surveys-text-area {
-        margin-top: -60px;
+        margin-top: -25px;
+        margin-bottom: govuk-spacing(2);
+    }
+
+    .idsk-customer-surveys-text-area .govuk-textarea {
+        height: 150px;
+
+        @include mq($from: desktop) {
+            height: 115px;
+        }
+    }
+
+    .idsk-customer-surveys-text-area .govuk-textarea:focus {
+        width: 97%;
+        margin-left: 3px;
+
+        @include mq($from: desktop) {
+            width: 99%;
+        }
     }
 }
-
-
