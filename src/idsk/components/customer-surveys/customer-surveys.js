@@ -1,6 +1,6 @@
 import "../../../govuk/vendor/polyfills/Function/prototype/bind";
-import "../../../govuk/vendor/polyfills/Event"; // addEventListener and event.target normaliziation
-import { nodeListForEach, toggleClass } from "../../common";
+import "../../../govuk/vendor/polyfills/Event"; 
+import { toggleClass } from "../../common";
 
 function CustomerSurveys($module) {
     this.$module = $module;
@@ -10,12 +10,10 @@ CustomerSurveys.prototype.init = function () {
     var $module = this.$module;
     var $nextButton = $module.querySelector('#idsk-customer-surveys__send-button');
     var $previousButton = $module.querySelector('#idsk-customer-surveys__previous-button');
-
     var $textAreaFirst = $module.querySelector('.idsk-customer-surveys-text-area #first');
     var $textAreaSecond = $module.querySelector('.idsk-customer-surveys-text-area #second');
     var $textAreaThird = $module.querySelector('.idsk-customer-surveys-text-area #third');
     var $textAreaFourth = $module.querySelector('.idsk-customer-surveys-text-area #fourth');
-
     var $radioButtonWork = $module.querySelector('.idsk-customer-survey__radio--work');
     var $radioButtonPrivate = $module.querySelector('.idsk-customer-survey__radio--private');
     var $counter = 7;
@@ -84,7 +82,8 @@ CustomerSurveys.prototype.handleStatusOfCharacterCountButton = function (e, $nam
             $submitButton.disabled = true;
         } else {
             $submitButton.disabled = false;
-            $module.sendButtonDisabled[$module.textAreaMap.get($name.srcElement.id)] = false;            
+            // changing value of global variable for disabling button, in case of walk through steps and comming back to this textarea.
+            $module.sendButtonDisabled[$module.textAreaMap.get($name.srcElement.id)] = false;
         }
     }, 300);
 }
@@ -93,7 +92,7 @@ CustomerSurveys.prototype.handleCounterOfSubtitles = function ($counter) {
     var $subtitles = this.$module.querySelectorAll('.idsk-customer-surveys--subtitle');
     var i;
 
-    // remove previous indexing
+    // remove previous indexing, cause amount of steps could change
     for (i = 0; i < $counter; i++) {
         $subtitles[i].textContent = $subtitles[i].textContent.substring(3);
     }
@@ -124,12 +123,14 @@ CustomerSurveys.prototype.handleRadioButtonPrivateClick = function (e) {
 
 CustomerSurveys.prototype.handlePreviousButtonClick = function (e) {
     var $module = this.$module;
-    var $steps = this.$module.querySelectorAll('.idsk-customer-surveys__step');
+    var $steps = $module.querySelectorAll('.idsk-customer-surveys__step');
     var i;
-    var $nextButton = this.$module.querySelector('#idsk-customer-surveys__send-button');
-    var $previousButton = this.$module.querySelector('#idsk-customer-surveys__previous-button');
+    var $nextButton = $module.querySelector('#idsk-customer-surveys__send-button');
+    var $previousButton = $module.querySelector('#idsk-customer-surveys__previous-button');
 
     $previousButton.blur();
+    // showing and hiding steps, once step is set to be showed return is called.
+    // changing names of buttons, disabling
     for (i = 2; i < $steps.length - 1; i++) {
         if ($previousButton.textContent == "Predošlá stránka" && $steps[2].classList.contains('idsk-customer-surveys--show')) {
             $previousButton.innerHTML = 'Odísť';
@@ -145,7 +146,6 @@ CustomerSurveys.prototype.handlePreviousButtonClick = function (e) {
                 $module.sendButtonDisabled[i] = true;
                 $nextButton.disabled = false;
             }
-
             $steps[i].classList.remove('idsk-customer-surveys--show');
             toggleClass($steps[i], 'idsk-customer-surveys--hidden');
             toggleClass($steps[i - 1], 'idsk-customer-surveys--hidden');
@@ -166,12 +166,12 @@ CustomerSurveys.prototype.handleNextButtonClick = function (e) {
     $nextButton.blur();
     if ($nextButton.textContent == "Začať") {
         $nextButton.innerHTML = 'Ďalej';
-        //uncheck all radiobuttons 
+        // uncheck all radiobuttons 
         var $radios = $module.querySelectorAll('.govuk-radios__input');
         for (var i = 0; i < $radios.length; i++) {
             $radios[i].checked = false;
         }
-
+        // clear all textAreas
         var $textAreas = $module.querySelectorAll('.govuk-textarea');
         for (var i = 0; i < $textAreas.length; i++) {
             $textAreas[i].value = '';
@@ -182,6 +182,8 @@ CustomerSurveys.prototype.handleNextButtonClick = function (e) {
         $buttonsDiv.classList.add('idsk-customer-surveys--hidden');
     }
 
+    // showing and hiding steps, once step is set to be showed return is called.
+    // changing names of buttons, disabling
     for (i = 0; i < $steps.length - 1; i++) {
         if ($steps[i].classList.contains('idsk-customer-surveys--show')) {
             if ($module.sendButtonDisabled[i + 1]) {
