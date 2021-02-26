@@ -1,46 +1,39 @@
 params:
-  - name: mainTitle
-    type: string
-    required: false
-    description: Main title of page.
-
-  - name: feedbackQuestion
-    type: string
-    required: false
-    description: Question for feedback.
-
-  - name: feedbackQuestionForTextArea
-    type: string
-    required: false
-    description: Question for feedback textarea.
-
-  - name: feedbackThankNote
-    type: string
-    required: false
-    description: Thank note after feedback was send.
-
-  - name: characterLength
-    type: int
-    required: false
-    description: Number of allowed characters in textarea.
-
-  - name: feedbackOptions
+  - name: questions
     type: array
     required: true
-    description: Array of items for radio buttons in feedback form.
+    description: Array of questions in customer surveys form.
     params:
       - name: name
         type: string
         required: false
-        description: Name of radio button item
+        description: Name of question
       - name: textArea
         type: boolean
         required: false
-        description: Determines whether textarea should be showed up after click on radio button.
+        description: Determines whether textarea should be showed up.
       - name: value
         type: string
         required: false
-        description: Value of radio button item
+        description: Value of radio buttons item
+      - name: caption
+        type: string
+        required: false
+        description: Name of caption
+      - name: radioOptions
+        type: array
+        required: true
+        description: Array of radio options in customer surveys form.
+        params:      
+          - name: name
+            type: string
+            required: false
+            description: Name of radio button
+          - name: value
+            type: string
+            required: true
+            description: Value of radio button.  
+
 
 examples:
   - name: basic
