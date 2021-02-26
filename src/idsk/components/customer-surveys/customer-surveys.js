@@ -19,9 +19,15 @@ CustomerSurveys.prototype.init = function () {
     var $radioButtonWork = $module.querySelector('.idsk-customer-survey__radio--work');
     var $radioButtonPrivate = $module.querySelector('.idsk-customer-survey__radio--private');
     var $counter = 7;
+    $module.sendButtonDisabled = new Array(7);
+    $module.textAreaMap = new Map()
 
     if (!$module) {
         return;
+    }
+
+    for (var index = 0; index < $module.sendButtonDisabled.length; index++) {
+        $module.sendButtonDisabled[index] = false;
     }
 
     this.handleCounterOfSubtitles.call(this, $counter);
@@ -47,32 +53,38 @@ CustomerSurveys.prototype.init = function () {
     }
 
     if ($textAreaFirst) {
+        $module.textAreaMap.set('first', 0);
         $textAreaFirst.addEventListener('input', this.handleStatusOfCharacterCountButton.bind(this, 'first'));
     }
 
     if ($textAreaSecond) {
+        $module.textAreaMap.set('second', 1);
         $textAreaSecond.addEventListener('input', this.handleStatusOfCharacterCountButton.bind(this, 'second'));
     }
 
     if ($textAreaThird) {
+        $module.textAreaMap.set('third', 4);
         $textAreaThird.addEventListener('input', this.handleStatusOfCharacterCountButton.bind(this, 'third'));
     }
 
     if ($textAreaFourth) {
+        $module.textAreaMap.set('fourth', 5);
         $textAreaFourth.addEventListener('input', this.handleStatusOfCharacterCountButton.bind(this, 'fourth'));
     }
 };
 
 CustomerSurveys.prototype.handleStatusOfCharacterCountButton = function (e, $name) {
-    var $textAreaCharacterCount = this.$module.querySelector('#' + $name.srcElement.id);
-    var $remainingCharacterCountMessage = this.$module.querySelector('#' + $name.srcElement.id + '-info');
-    var $submitButton = this.$module.querySelector('#idsk-customer-surveys__send-button');
+    var $module = this.$module;
+    var $textAreaCharacterCount = $module.querySelector('#' + $name.srcElement.id);
+    var $remainingCharacterCountMessage = $module.querySelector('#' + $name.srcElement.id + '-info');
+    var $submitButton = $module.querySelector('#idsk-customer-surveys__send-button');
 
     setTimeout(function () {
         if ($textAreaCharacterCount.classList.contains('govuk-textarea--error') || $remainingCharacterCountMessage.classList.contains('govuk-error-message')) {
             $submitButton.disabled = true;
         } else {
             $submitButton.disabled = false;
+            $module.sendButtonDisabled[$module.textAreaMap.get($name.srcElement.id)] = false;            
         }
     }, 300);
 }
@@ -111,6 +123,7 @@ CustomerSurveys.prototype.handleRadioButtonPrivateClick = function (e) {
 }
 
 CustomerSurveys.prototype.handlePreviousButtonClick = function (e) {
+    var $module = this.$module;
     var $steps = this.$module.querySelectorAll('.idsk-customer-surveys__step');
     var i;
     var $nextButton = this.$module.querySelector('#idsk-customer-surveys__send-button');
@@ -124,12 +137,15 @@ CustomerSurveys.prototype.handlePreviousButtonClick = function (e) {
                 location.href = "/";
             };
         }
-
         if ($nextButton.textContent == "Odoslať odpovede") {
             $nextButton.innerHTML = 'Ďalej';
         }
-
         if ($steps[i].classList.contains('idsk-customer-surveys--show')) {
+            if ($nextButton.disabled) {
+                $module.sendButtonDisabled[i] = true;
+                $nextButton.disabled = false;
+            }
+
             $steps[i].classList.remove('idsk-customer-surveys--show');
             toggleClass($steps[i], 'idsk-customer-surveys--hidden');
             toggleClass($steps[i - 1], 'idsk-customer-surveys--hidden');
@@ -140,15 +156,26 @@ CustomerSurveys.prototype.handlePreviousButtonClick = function (e) {
 }
 
 CustomerSurveys.prototype.handleNextButtonClick = function (e) {
-    var $steps = this.$module.querySelectorAll('.idsk-customer-surveys__step');
+    var $module = this.$module;
+    var $steps = $module.querySelectorAll('.idsk-customer-surveys__step');
     var i;
-    var $buttonsDiv = this.$module.querySelector('.idsk-customer-surveys__buttons');
-    var $nextButton = this.$module.querySelector('#idsk-customer-surveys__send-button');
-    var $previousButton = this.$module.querySelector('#idsk-customer-surveys__previous-button');
+    var $buttonsDiv = $module.querySelector('.idsk-customer-surveys__buttons');
+    var $nextButton = $module.querySelector('#idsk-customer-surveys__send-button');
+    var $previousButton = $module.querySelector('#idsk-customer-surveys__previous-button');
 
     $nextButton.blur();
     if ($nextButton.textContent == "Začať") {
         $nextButton.innerHTML = 'Ďalej';
+        //uncheck all radiobuttons 
+        var $radios = $module.querySelectorAll('.govuk-radios__input');
+        for (var i = 0; i < $radios.length; i++) {
+            $radios[i].checked = false;
+        }
+
+        var $textAreas = $module.querySelectorAll('.govuk-textarea');
+        for (var i = 0; i < $textAreas.length; i++) {
+            $textAreas[i].value = '';
+        }
     }
 
     if ($nextButton.textContent == "Odoslať odpovede") {
@@ -157,6 +184,11 @@ CustomerSurveys.prototype.handleNextButtonClick = function (e) {
 
     for (i = 0; i < $steps.length - 1; i++) {
         if ($steps[i].classList.contains('idsk-customer-surveys--show')) {
+            if ($module.sendButtonDisabled[i + 1]) {
+                $nextButton.disabled = true;
+            } else {
+                $nextButton.disabled = false;
+            }
             $steps[i].classList.remove('idsk-customer-surveys--show');
             toggleClass($steps[i], 'idsk-customer-surveys--hidden');
             toggleClass($steps[i + 1], 'idsk-customer-surveys--hidden');
