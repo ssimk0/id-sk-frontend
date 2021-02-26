@@ -53,12 +53,12 @@ CustomerSurveys.prototype.init = function () {
     }
 
     if ($textAreaFirst) {
-        $module.textAreaMap.set('first', 0);
+        $module.textAreaMap.set('first', 1);
         $textAreaFirst.addEventListener('input', this.handleStatusOfCharacterCountButton.bind(this, 'first'));
     }
 
     if ($textAreaSecond) {
-        $module.textAreaMap.set('second', 1);
+        $module.textAreaMap.set('second', 2);
         $textAreaSecond.addEventListener('input', this.handleStatusOfCharacterCountButton.bind(this, 'second'));
     }
 
