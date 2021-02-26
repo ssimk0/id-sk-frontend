@@ -1,29 +1,4 @@
 params:
-  - name: mainTitle
-    type: string
-    required: false
-    description: Main title of page.
-
-  - name: feedbackQuestion
-    type: string
-    required: false
-    description: Question for feedback.
-
-  - name: feedbackQuestionForTextArea
-    type: string
-    required: false
-    description: Question for feedback textarea.
-
-  - name: feedbackThankNote
-    type: string
-    required: false
-    description: Thank note after feedback was send.
-
-  - name: characterLength
-    type: int
-    required: false
-    description: Number of allowed characters in textarea.
-
   - name: feedbackOptions
     type: array
     required: true
@@ -41,23 +16,7 @@ params:
         type: string
         required: false
         description: Value of radio button item
-
-examples:
-  - name: basic
-    data:
-      feedbackOptions:
-        - name: Veľmi nespokojný
-          textArea: true
-          value: 1
-        - name: Nespokojný
-          textArea: true
-          value: 2
-        - name: Ani spokojný ani nespokojný
-          textArea: true
-          value: 3
-        - name: Spokojný
-          value: 4
-        - name: Veľmi spokojný
-          value: 5
-
-      characterLength: 200
+      - name: class
+        type: string
+        required: false
+        description: Value of radio button class

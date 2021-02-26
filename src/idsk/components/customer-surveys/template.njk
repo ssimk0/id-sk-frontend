@@ -1,7 +1,7 @@
 <div data-module="idsk-customer-surveys" class="idsk-customer-surveys">
   <div class="govuk-width-container">
     <div class="idsk-customer-surveys__logo">
-      {% include('../../../idsk/assets/images/logo-mirri-farebne-sk-2.svg') %}
+      {% include params.assetsPathLogo | default('../../assets/images/') + (params.logo if params.logo else 'logo-mirri-farebne-sk-2.svg') %}
     </div>
     <div id="idsk-customer-surveys__content">
       {#1st#}

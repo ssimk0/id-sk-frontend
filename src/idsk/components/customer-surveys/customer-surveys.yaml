@@ -20,6 +20,14 @@ params:
         type: string
         required: false
         description: Name of caption
+      - name: assetsPathLogo
+        type: string
+        required: false
+        description: Name of path for logo
+      - name: logo
+        type: string
+        required: false
+        description: Name of logo file      
       - name: radioOptions
         type: array
         required: true

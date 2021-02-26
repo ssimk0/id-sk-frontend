@@ -6,7 +6,6 @@ import FooterExtended from "./components/footer-extended/footer-extended";
 import CharacterCount from "./components/character-count/character-count";
 import Crossroad from "./components/crossroad/crossroad";
 import CustomerSurveys from "./components/customer-surveys/customer-surveys";
-import CustomerSurveysTextArea from "./components/customer-surveys-text-area/customer-surveys-text-area";
 import HeaderExtended from './components/header-extended/header-extended';
 import InPageNavigation from './components/in-page-navigation/in-page-navigation';
 
@@ -54,11 +53,6 @@ function initAll(options) {
     new CustomerSurveys($customerSurveys).init();
   });
 
-  var $customerSurveysTextArea = scope.querySelectorAll('[data-module="idsk-customer-surveys-text-area"]');
-  nodeListForEach($customerSurveysTextArea, function ($customerSurveysTextArea) {
-    new CustomerSurveysTextArea($customerSurveysTextArea).init();
-  });
-
   // Find first Header-extended module to enhance.
   var $headersExtended = scope.querySelectorAll('[data-module="idsk-header-extended"]');
   nodeListForEach($headersExtended, function ($headerExtended) {
@@ -78,7 +72,6 @@ export {
   CharacterCount,
   Crossroad,
   CustomerSurveys,
-  CustomerSurveysTextArea,
   Feedback,
   FooterExtended,
   HeaderExtended,

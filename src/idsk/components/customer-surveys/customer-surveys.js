@@ -31,15 +31,11 @@ CustomerSurveys.prototype.init = function () {
     this.handleCounterOfSubtitles.call(this, $counter);
 
     if ($radioButtonWork) {
-        var $self = this;
-        // Handle $radioButton click events
-        $radioButtonWork.addEventListener('click', $self.handleRadioButtonWorkClick.bind($self));
+        $radioButtonWork.addEventListener('click', this.handleRadioButtonWorkClick.bind(this));
     }
 
     if ($radioButtonPrivate) {
-        var $self = this;
-        // Handle $radioButton click events
-        $radioButtonPrivate.addEventListener('click', $self.handleRadioButtonPrivateClick.bind($self));
+        $radioButtonPrivate.addEventListener('click', this.handleRadioButtonPrivateClick.bind(this));
     }
 
     if ($nextButton) {
@@ -93,14 +89,11 @@ CustomerSurveys.prototype.handleCounterOfSubtitles = function ($counter) {
     var i;
 
     // remove previous indexing, cause amount of steps could change
-    for (i = 0; i < $counter; i++) {
-        $subtitles[i].textContent = $subtitles[i].textContent.substring(3);
-    }
-
     // adding new indexing
     for (i = 0; i < $counter; i++) {
+        $subtitles[i].textContent = $subtitles[i].textContent.substring(3);
         $subtitles[i].innerHTML = (i + 1) + '. ' + $subtitles[i].textContent;
-    };
+    }    
 }
 
 CustomerSurveys.prototype.handleRadioButtonWorkClick = function (e) {
