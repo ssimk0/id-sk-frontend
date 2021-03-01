@@ -5,6 +5,7 @@ import Feedback from "./components/feedback/feedback";
 import FooterExtended from "./components/footer-extended/footer-extended";
 import CharacterCount from "./components/character-count/character-count";
 import Crossroad from "./components/crossroad/crossroad";
+import CustomerSurveys from "./components/customer-surveys/customer-surveys";
 import HeaderExtended from './components/header-extended/header-extended';
 import InPageNavigation from './components/in-page-navigation/in-page-navigation';
 
@@ -47,6 +48,11 @@ function initAll(options) {
     new Crossroad($crossroad).init();
   });
 
+  var $customerSurveys = scope.querySelectorAll('[data-module="idsk-customer-surveys"]');
+  nodeListForEach($customerSurveys, function ($customerSurveys) {
+    new CustomerSurveys($customerSurveys).init();
+  });
+
   // Find first Header-extended module to enhance.
   var $headersExtended = scope.querySelectorAll('[data-module="idsk-header-extended"]');
   nodeListForEach($headersExtended, function ($headerExtended) {
@@ -65,6 +71,7 @@ export {
   Button,
   CharacterCount,
   Crossroad,
+  CustomerSurveys,
   Feedback,
   FooterExtended,
   HeaderExtended,
