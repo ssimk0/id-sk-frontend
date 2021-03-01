@@ -48,29 +48,30 @@ CustomerSurveys.prototype.init = function () {
 
     if ($textAreaFirst) {
         $module.textAreaMap.set('first', 1);
-        $textAreaFirst.addEventListener('input', this.handleStatusOfCharacterCountButton.bind(this, 'first'));
+        $textAreaFirst.addEventListener('input', this.handleStatusOfCharacterCountButton.bind(this));
     }
 
     if ($textAreaSecond) {
         $module.textAreaMap.set('second', 2);
-        $textAreaSecond.addEventListener('input', this.handleStatusOfCharacterCountButton.bind(this, 'second'));
+        $textAreaSecond.addEventListener('input', this.handleStatusOfCharacterCountButton.bind(this));
     }
 
     if ($textAreaThird) {
         $module.textAreaMap.set('third', 4);
-        $textAreaThird.addEventListener('input', this.handleStatusOfCharacterCountButton.bind(this, 'third'));
+        $textAreaThird.addEventListener('input', this.handleStatusOfCharacterCountButton.bind(this));
     }
 
     if ($textAreaFourth) {
         $module.textAreaMap.set('fourth', 5);
-        $textAreaFourth.addEventListener('input', this.handleStatusOfCharacterCountButton.bind(this, 'fourth'));
+        $textAreaFourth.addEventListener('input', this.handleStatusOfCharacterCountButton.bind(this));
     }
 };
 
-CustomerSurveys.prototype.handleStatusOfCharacterCountButton = function (e, $name) {
+CustomerSurveys.prototype.handleStatusOfCharacterCountButton = function (e) {
     var $module = this.$module;
-    var $textAreaCharacterCount = $module.querySelector('#' + $name.srcElement.id);
-    var $remainingCharacterCountMessage = $module.querySelector('#' + $name.srcElement.id + '-info');
+    var $name = e.srcElement.id;
+    var $textAreaCharacterCount = $module.querySelector('#' + $name);
+    var $remainingCharacterCountMessage = $module.querySelector('#' + $name + '-info');
     var $submitButton = $module.querySelector('#idsk-customer-surveys__send-button');
 
     setTimeout(function () {
@@ -79,7 +80,7 @@ CustomerSurveys.prototype.handleStatusOfCharacterCountButton = function (e, $nam
         } else {
             $submitButton.disabled = false;
             // changing value of global variable for disabling button, in case of walk through steps and comming back to this textarea.
-            $module.sendButtonDisabled[$module.textAreaMap.get($name.srcElement.id)] = false;
+            $module.sendButtonDisabled[$module.textAreaMap.get($name)] = false;
         }
     }, 300);
 }

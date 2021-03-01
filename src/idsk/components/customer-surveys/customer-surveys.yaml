@@ -1,4 +1,14 @@
 params:
+  - name: prologues
+    type: array
+    required: true
+    description: Array of prologues in customer surveys form.
+    params:
+      - name: prolog
+        type: string
+        required: false
+        description: Name of prolog
+
   - name: questions
     type: array
     required: true

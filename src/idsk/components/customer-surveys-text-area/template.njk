@@ -1,11 +1,9 @@
 <div data-module="idsk-customer-surveys-text-area">
-    <div>
-        <div id="idsk-feedback__content" class="idsk-customer-surveys-text-area">
-            <div>
-                <div id={{params.id}}>
-                    <br>
-                    {% from "../../components/character-count/macro.njk" import idskCharacterCount %}
-                    {{ idskCharacterCount({
+    <div id="idsk-feedback__content" class="idsk-customer-surveys-text-area">
+        <div id="{{params.id}}">
+            <br>
+            {% from "../../components/character-count/macro.njk" import idskCharacterCount %}
+            {{ idskCharacterCount({
                         name: params.id,
                         id: params.id,
                         maxlength: params.characterLength,
@@ -17,8 +15,6 @@
                         }
                     }) 
                 }}
-                </div>
-            </div>
         </div>
     </div>
 </div>

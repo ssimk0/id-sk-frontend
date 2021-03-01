@@ -6,16 +6,23 @@
     <div id="idsk-customer-surveys__content">
       {#1st#}
       <div class="idsk-customer-surveys__step idsk-customer-surveys--show">
-        <p class="govuk-body-l">
-          Cieľom tohto dotazníka je zistiť potreby a postrehy používateľov webu Ministerstva investícií, regionálneho rozvoja a informatizácie (Ďalej len "MIRRI).
-        </p>
-        <p class="govuk-body-l">
-          Ďakujeme za súhlas s účasťou v tomto prieskume, pomáhate nám zlepšovať tento web. Vyplnenie tohto dotazníka Vám zaberie len 3 minúty.
-        </p>
-        <p class="govuk-body-l">
-          Odpovede na všetky otázky sú dobrovoľné. Vaše odpovede na tento prieskum sú anonymné.
-        </p>
-
+        {% if (params.hideTiles) %}
+          {% for prolog in params.prologues %}
+            <p class="govuk-body-l">
+              {{prolog}}
+            </p>
+          {% endfor %}
+        {% else %}
+          <p class="govuk-body-l">
+            Cieľom tohto dotazníka je zistiť potreby a postrehy používateľov webu Ministerstva investícií, regionálneho rozvoja a informatizácie (Ďalej len "MIRRI").
+          </p>
+          <p class="govuk-body-l">
+            Ďakujeme za súhlas s účasťou v tomto prieskume, pomáhate nám zlepšovať tento web. Vyplnenie tohto dotazníka Vám zaberie len 3 minúty.
+          </p>
+          <p class="govuk-body-l">
+            Odpovede na všetky otázky sú dobrovoľné. Vaše odpovede na tento prieskum sú anonymné.
+          </p>
+        {% endif %}
       </div>
 
       {#2nd#}
