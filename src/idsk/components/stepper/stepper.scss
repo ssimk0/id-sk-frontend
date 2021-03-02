@@ -46,6 +46,12 @@
     }
   }
 
+  .idsk-stepper__section.idsk-stepper__section--expanded {
+    &::before {
+      border-left: solid 6px govuk-colour("black");
+    }
+  }
+
   .idsk-stepper__section-content .govuk-link:focus {
     &:before {
       content: "";
@@ -102,10 +108,6 @@
         color: govuk-colour("white");
       }
     }
-  }
-
-  .idsk-stepper {
-    //@include govuk-responsive-margin(6, "bottom");
   }
 
   // Borders between accordion sections
