@@ -62,7 +62,7 @@
       @include mq($from: desktop) {
         left: -32px;
       }
-    }    
+    }
   }
 
   .idsk-stepper__section--expanded #pediater {
@@ -88,11 +88,10 @@
     @include govuk-font($size: 24, $weight: bold);
     border-top: 1px solid $govuk-border-colour;
     color: $idsk-stepper-link-colour;
-    padding-top: govuk-spacing(3);
-    padding-bottom: govuk-spacing(3);
+    padding-top: govuk-spacing(6);
   }
 
-  .gem-c-step-nav__circle {
+  .idsk-stepper__circle {
     box-sizing: border-box;
     position: absolute;
     z-index: 5;
@@ -106,26 +105,16 @@
     text-align: center;
   }
 
-  .gem-c-step-nav__circle--letter {
+  .idsk-stepper__circle--letter {
     @include govuk-font($size: 19, $weight: bold);
     border: none;
     padding-top: 4px;
   }
 
-  .gem-c-step-nav__circle--number {
-    // @include step-nav-font(16, $weight: bold, $line-height: 29px);
+  .idsk-stepper__circle--number {
     @include govuk-font($size: 19, $weight: bold);
     border: solid 1px govuk-colour("mid-grey", $legacy: "grey-2");
     padding-top: 4px;
-
-    .gem-c-step-nav__step--active & {
-      background-color: govuk-colour("black");
-
-      .gem-c-step-nav__circle-background {
-        text-shadow: none;
-        color: govuk-colour("white");
-      }
-    }
   }
 
   // Borders between accordion sections

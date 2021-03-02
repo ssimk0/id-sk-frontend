@@ -15,19 +15,19 @@
                         {% if item.heading.hideCount %}
                             {% set counter = counter - 1 %}
                             {% if item.heading.and %}
-                                <span class="gem-c-step-nav__circle gem-c-step-nav__circle--letter gem-c-step-nav--div">
-                                    <span class="gem-c-step-nav__circle-inner">
-                                        <span class="gem-c-step-nav__circle-background">
-                                            <span class="gem-c-step-nav__circle-step-label">a</span>
+                                <span class="idsk-stepper__circle idsk-stepper__circle--letter">
+                                    <span class="idsk-stepper__circle-inner">
+                                        <span class="idsk-stepper__circle-background">
+                                            <span class="idsk-stepper__circle-step-label">a</span>
                                         </span>
                                     </span>
                                 </span>
                             {% endif %}
                         {% else %}
-                            <span class="gem-c-step-nav__circle gem-c-step-nav__circle--number gem-c-step-nav--div">
-                                <span class="gem-c-step-nav__circle-inner">
-                                    <span class="gem-c-step-nav__circle-background">
-                                        <span class="gem-c-step-nav__circle-step-label">{{counter}}</span>
+                            <span class="idsk-stepper__circle idsk-stepper__circle--number">
+                                <span class="idsk-stepper__circle-inner">
+                                    <span class="idsk-stepper__circle-background">
+                                        <span class="idsk-stepper__circle-step-label">{{counter}}</span>
                                     </span>
                                 </span>
                             </span>
