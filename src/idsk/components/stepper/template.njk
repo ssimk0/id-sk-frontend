@@ -1,43 +1,62 @@
 {% set id = params.id %}
 {% set headingLevel = params.headingLevel if params.headingLevel else 
     2 %}
-
+{% set counter = 0 %}
 <div class="idsk-stepper {%- if params.classes %} {{ params.classes }}{% endif -%}" data-module="idsk-stepper" id="{{ id }}" {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}" {% endfor %}>
     {% for item in params.items %}
         {% if item %}
-            <div class="idsk-stepper__section {% if item.expanded %}idsk-stepper__section--expanded{% endif %}">
-                <div class="idsk-stepper__section-header">
-                    <div>
-                        <span class="gem-c-step-nav__circle gem-c-step-nav__circle--number gem-c-step-nav--div">
-                            <span class="gem-c-step-nav__circle-inner">
-                                <span class="gem-c-step-nav__circle-background">
-                                    <span class="gem-c-step-nav__circle-step-label">{{loop.index}}</span>
+            {% if item.heading.isTitle %}
+                <p class="govuk-heading-m idsk-stepper__section-subtitle">{{item.heading.text}}
+                </p>
+            {% else %}
+                {% set counter = counter + 1 %}
+                <div class="idsk-stepper__section {% if item.expanded %}idsk-stepper__section--expanded{% endif %}">
+                    <div class="idsk-stepper__section-header">
+                        {% if item.heading.hideCount %}
+                            {% set counter = counter - 1 %}
+                            {% if item.heading.and %}
+                                <span class="gem-c-step-nav__circle gem-c-step-nav__circle--letter gem-c-step-nav--div">
+                                    <span class="gem-c-step-nav__circle-inner">
+                                        <span class="gem-c-step-nav__circle-background">
+                                            <span class="gem-c-step-nav__circle-step-label">a</span>
+                                        </span>
+                                    </span>
+                                </span>
+                            {% endif %}
+                        {% else %}
+                            <span class="gem-c-step-nav__circle gem-c-step-nav__circle--number gem-c-step-nav--div">
+                                <span class="gem-c-step-nav__circle-inner">
+                                    <span class="gem-c-step-nav__circle-background">
+                                        <span class="gem-c-step-nav__circle-step-label">{{counter}}</span>
+                                    </span>
                                 </span>
                             </span>
-                        </span>
+                        {% endif %}
+                        <h{{ headinglevel }} class="idsk-stepper__section-heading">
+                            <span class="idsk-stepper__section-button" id="{{ id }}-heading-{{ loop.index }}">
+                                {{ item.heading.html | safe if item.heading.html else item.heading.text }}
+                            </span>
+                        </h{{ headinglevel }}>
+                        {% if item.summary.html or item.summary.text %}
+                            <div class="idsk-stepper__section-summary govuk-body" id="{{ id }}-summary-{{ loop.index }}">
+                                {{ item.summary.html | safe if item.summary.html else item.summary.text }}
+                            </div>
+                        {% endif %}
                     </div>
-                    <h{{ headinglevel }} class="idsk-stepper__section-heading">
-                        <span class="idsk-stepper__section-button" id="{{ id }}-heading-{{ loop.index }}">
-                            {{ item.heading.html | safe if item.heading.html else item.heading.text }}
-                        </span>
-                    </h{{ headinglevel }}>
-                    {% if item.summary.html or item.summary.text %}
-                        <div class="idsk-stepper__section-summary govuk-body" id="{{ id }}-summary-{{ loop.index }}">
-                            {{ item.summary.html | safe if item.summary.html else item.summary.text }}
-                        </div>
-                    {% endif %}
+                    <div id="{{ id }}-content-{{ loop.index }}" class="idsk-stepper__section-content" aria-labelledby="{{ id }}-heading-{{ loop.index }}">
+                        {% if item.contents %}
+                            {% for item in item.contents %}
+                                <ul class="govuk-list">
+                                    <li>
+                                        <a class="govuk-link" href="#">
+                                            {{item.subtitle}}</a>
+                                    </li>
+                                </ul>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
                 </div>
-                <div id="{{ id }}-content-{{ loop.index }}" class="idsk-stepper__section-content" aria-labelledby="{{ id }}-heading-{{ loop.index }}">
-                    {% if item.contents %}
-                        {% for item in item.contents %}
-                            <ul class="govuk-list">
-                                <li>
-                                    <a class="govuk-link" href="#">
-                                        {{item.subtitle}}</li>
-                                {% endfor %}
-                            {% endif %}
-                        </div>
-                    </div>
-                {% endif %}
-            {% endfor %}
-        </div>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+</div>

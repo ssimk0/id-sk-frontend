@@ -77,6 +77,10 @@ examples:
             href: "#"
       - heading:
           text: Príspevky pri narodení dieťaťa z Úradu práce, sociálnych vecí a rodiny
+          hideCount: true
+          isTitle: true
+      - heading:
+          text: Výber zdravotnej poistovne a prihlásenie dieťaťa
         contents:
           - subtitle: Pri narodení dieťaťa máte nárok na viacero
             href: "#"
@@ -85,6 +89,13 @@ examples:
           - subtitle: Príspevok pri narodení dieťaťa,Prídavok na dieťa,Rodičovský príspevok pre vlastné dieťa / pre zverené dieťa,
             href: "#"
           - subtitle: Príspevok na starostlivosť o dieťa.
+            href: "#"
+      - heading:
+          text: Výber zdravotnej poistovne a prihlásenie dieťaťa
+        contents:
+          - subtitle: Pri narodení dieťaťa máte nárok na viacero
+            href: "#"
+          - subtitle: Príspevok pre rodičov, ktorým sa narodili súčasne tri alebo viac detí  alebo ktorým sa v priebehu dvoch rokov opakovane narodili dvojčatá,
             href: "#"
       - heading:
           text: Výber zdravotnej poistovne a prihlásenie dieťaťa

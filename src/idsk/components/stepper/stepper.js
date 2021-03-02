@@ -98,6 +98,10 @@ Stepper.prototype.initHeaderAttributes = function ($headerWrapper, index) {
   var $heading = $headerWrapper.querySelector('.' + this.sectionHeadingClass)
   var $summary = $headerWrapper.querySelector('.' + this.sectionSummaryClass)
 
+  if (!$span) {
+    return;
+  }
+
   // Copy existing span element to an actual button element, for improved accessibility.
   var $button = document.createElement('button')
   $button.setAttribute('type', 'button')
@@ -166,6 +170,9 @@ Stepper.prototype.onOpenOrCloseAllToggle = function () {
 // Set section attributes when opened/closed
 Stepper.prototype.setExpanded = function (expanded, $section) {
   var $button = $section.querySelector('.' + this.sectionButtonClass)
+  if (!$button) {
+    return;
+  }
   $button.setAttribute('aria-expanded', expanded)
 
   if (expanded) {
