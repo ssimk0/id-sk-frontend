@@ -1,38 +1,43 @@
+{% set id = params.id %}
+{% set headingLevel = params.headingLevel if params.headingLevel else 
+    2 %}
 
-{% set numberOfCols = params.columns %}
-{% set classes = '' %}
-{% set aria = false %}
-{% set numberOfShowedTiles %}
-{{ 5 if (params.items.length % 2 == 0) else 6 }}{% endset %}
-<div data-module="idsk-crossroad" class="{{params.classes if params.classes }}">
-{% for colIndex in range(0, numberOfCols) %}
-    <div class="idsk-crossroad idsk-crossroad-{{ numberOfCols }}">
+<div class="idsk-stepper {%- if params.classes %} {{ params.classes }}{% endif -%}" data-module="idsk-stepper" id="{{ id }}" {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}" {% endfor %}>
     {% for item in params.items %}
-        {% if (loop.index0 // (loop.length / numberOfCols)) == colIndex %}
-            {% if (params.hideTiles) %}
-                {% set classes = 'idsk-crossroad__item--two-columns-hide-mobile' if loop.index > 5 %}
-                {% set classes %}
-                {{classes}}
-                {{' idsk-crossroad__item--two-columns-hide' if (loop.index > 5 and numberOfCols == 2 and colIndex == 0)
-                or (loop.index > ((loop.length / numberOfCols)) ++ numberOfShowedTiles and numberOfCols == 2 and colIndex == 1) or (loop.index > 5 and numberOfCols == 1) }}{% endset %}
-            {% endif %}
-            {% if (params.hideTiles) %}
-                {% set aria %}{{ true if (loop.index > 4 and numberOfCols == 2 and colIndex == 0)
-                or (loop.index > ((loop.length / numberOfCols)) ++ (numberOfShowedTiles-1) and numberOfCols == 2 and colIndex == 1) or (loop.index > 4 and numberOfCols == 1) else false }}{% endset %}
-            {% endif %}
-            <div class="idsk-crossroad__item {{ classes }}">
-                <a href="{{item.link}}" class="idsk-crossroad-title" title="{{ item.title }}" aria-hidden="{{aria}}">{{ item.title }}
-                </a>
-                <p class="idsk-crossroad-subtitle" aria-hidden="{{aria}}">{{ item.subtitle }}</p>
-                <hr class="idsk-crossroad-line" aria-hidden="true"/>
-            </div>
-        {% endif %}
-    {% endfor %}
-    </div>
-{% endfor %}
-{% if (params.hideTiles) %}
-    <div class="govuk-grid-column-full idsk-crossroad__collapse--shadow idsk-crossroad__uncollapse-div {{' idsk-crossroad__uncollapse-hide--desktop' if (params.items.length < 6 and numberOfCols==1) or (params.items.length < 11 and numberOfCols==2)}} {{' idsk-crossroad__uncollapse-hide--mobile' if params.items.length < 6}}">
-        <button id="idsk-crossroad__uncollapse-button" class="idsk-crossroad__colapse--button" type="button">Zobraziť viac</button>
-    </div>
-{% endif %}
-</div>
+        {% if item %}
+            <div class="idsk-stepper__section {% if item.expanded %}idsk-stepper__section--expanded{% endif %}">
+                <div class="idsk-stepper__section-header">
+                    <div>
+                        <span class="gem-c-step-nav__circle gem-c-step-nav__circle--number gem-c-step-nav--div">
+                            <span class="gem-c-step-nav__circle-inner">
+                                <span class="gem-c-step-nav__circle-background">
+                                    <span class="gem-c-step-nav__circle-step-label">{{loop.index}}</span>
+                                </span>
+                            </span>
+                        </span>
+                    </div>
+                    <h{{ headinglevel }} class="idsk-stepper__section-heading">
+                        <span class="idsk-stepper__section-button" id="{{ id }}-heading-{{ loop.index }}">
+                            {{ item.heading.html | safe if item.heading.html else item.heading.text }}
+                        </span>
+                    </h{{ headinglevel }}>
+                    {% if item.summary.html or item.summary.text %}
+                        <div class="idsk-stepper__section-summary govuk-body" id="{{ id }}-summary-{{ loop.index }}">
+                            {{ item.summary.html | safe if item.summary.html else item.summary.text }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div id="{{ id }}-content-{{ loop.index }}" class="idsk-stepper__section-content" aria-labelledby="{{ id }}-heading-{{ loop.index }}">
+                    {% if item.contents %}
+                        {% for item in item.contents %}
+                            <ul class="govuk-list">
+                                <li>
+                                    <a class="govuk-link" href="#">
+                                        {{item.subtitle}}</li>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>

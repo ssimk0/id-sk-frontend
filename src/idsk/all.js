@@ -8,6 +8,7 @@ import Crossroad from "./components/crossroad/crossroad";
 import CustomerSurveys from "./components/customer-surveys/customer-surveys";
 import HeaderExtended from './components/header-extended/header-extended';
 import InPageNavigation from './components/in-page-navigation/in-page-navigation';
+import Stepper from './components/stepper/stepper';
 
 function initAll(options) {
   // Set the options to an empty object by default if no options are passed.
@@ -62,6 +63,11 @@ function initAll(options) {
   var $inPageNavigation = scope.querySelector('[data-module="idsk-in-page-navigation"]');
   new InPageNavigation($inPageNavigation).init();
 
+  var $stepper = scope.querySelectorAll('[data-module="idsk-stepper"]');
+  nodeListForEach($stepper, function ($stepper) {
+    new Stepper($stepper).init();
+  });
+
   // Init all GOVUK components js
   initAllGOVUKjs(options);
 }
@@ -75,5 +81,6 @@ export {
   Feedback,
   FooterExtended,
   HeaderExtended,
-  InPageNavigation
+  InPageNavigation,
+  Stepper
 }
