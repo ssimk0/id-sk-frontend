@@ -170,7 +170,7 @@
 
     &-profile-vertical,
     &-profile-horizontal {
-      @include govuk-font($size: 36, $weight: bold);
+      @include govuk-font($size: 24, $weight: bold);
       text-decoration: underline;
     }
   }
@@ -195,7 +195,7 @@
 
     &-profile-vertical,
     &-profile-horizontal {
-      @include govuk-font($size: 24);
+      @include govuk-font($size: 19);
       @include govuk-responsive-padding(2, "top");
       @include govuk-responsive-padding(4, "bottom");
     }
