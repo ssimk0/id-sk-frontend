@@ -7,9 +7,9 @@
       {#1st#}
       <div class="idsk-customer-surveys__step idsk-customer-surveys--show">
         {% if (params.prologues) %}
-          {% for prolog in params.prologues %}
+          {% for item in params.prologues %}
             <p class="govuk-body-l">
-              {{prolog}}
+              {{item.prolog}}
             </p>
           {% endfor %}
         {% else %}
