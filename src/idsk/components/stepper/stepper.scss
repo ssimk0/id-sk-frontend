@@ -9,14 +9,21 @@
   $idsk-stepper-border-width: 3px;
 
   .idsk-stepper {
+    margin-left: 45px;
     position: relative;
     &:after {
       content: "";
       position: absolute;
       z-index: 2;
       width: 18px;
-      left: -40px;
+      left: -43px;
       border-bottom: solid 1px govuk-colour("mid-grey", $legacy: "grey-2");
+      @include mq(tablet) {
+        left: -41px;
+      }
+      @include mq($from: desktop) {
+        left: -40px;
+      }
     }
   }
 
@@ -25,13 +32,41 @@
       content: "";
       position: absolute;
       z-index: 2;
-      height: 100%;
+      height: calc(100% - 34px);
       border-left: solid 1px govuk-colour("mid-grey", $legacy: "grey-2");
       background: govuk-colour("white");
       top: 35px;
-      left: -32px;
+      left: -35px;
+      @include mq(tablet) {
+        left: -33px;
+      }
+      @include mq($from: desktop) {
+        left: -32px;
+      }
     }
-    
+  }
+
+  .idsk-stepper__section-content .govuk-link:focus {
+    &:before {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      width: 18px;
+      left: -35px;
+      padding-top: 12px;
+      border-bottom: solid 2px govuk-colour("black");
+      @include mq(tablet) {
+        left: -33px;
+      }
+      @include mq($from: desktop) {
+        left: -32px;
+      }
+    }
+    .idsk-stepper__section {
+      &:before {
+        border-left: solid 2px govuk-colour("black", $legacy: "grey-2");
+      }
+    }
   }
 
   .gem-c-step-nav__circle {
@@ -46,8 +81,6 @@
     background: govuk-colour("white");
     border-radius: 100px;
     text-align: center;
-
-    
   }
 
   .gem-c-step-nav__circle--number {
