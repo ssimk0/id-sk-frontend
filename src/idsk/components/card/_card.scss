@@ -204,7 +204,7 @@
   .idsk-quote {
     @include govuk-responsive-padding(8, "right");
     @include govuk-responsive-padding(8, "left");
-    @include govuk-font($size: 24);
+    @include govuk-font($size: 19);
     margin-top: 0;
 
     &-right {
