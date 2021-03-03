@@ -19,7 +19,7 @@ CustomerSurveys.prototype.init = function () {
     var $counter = 7;
     $module.sendButtonDisabled = new Array(7);
     $module.textAreaMap = new Map()
-
+    
     if (!$module) {
         return;
     }
@@ -121,19 +121,24 @@ CustomerSurveys.prototype.handlePreviousButtonClick = function (e) {
     var i;
     var $nextButton = $module.querySelector('#idsk-customer-surveys__send-button');
     var $previousButton = $module.querySelector('#idsk-customer-surveys__previous-button');
+    var $startIcon = $module.querySelectorAll('.idsk-button__start-icon'); 
+    var $nextButtonText = $module.querySelector('.idsk-customer-surveys__send-button');
 
     $previousButton.blur();
     // showing and hiding steps, once step is set to be showed return is called.
     // changing names of buttons, disabling
-    for (i = 2; i < $steps.length - 1; i++) {
-        if ($previousButton.textContent == "Predošlá stránka" && $steps[2].classList.contains('idsk-customer-surveys--show')) {
+    for (i = 1; i < $steps.length - 1; i++) {
+        if ($previousButton.textContent == "Späť" && $steps[1].classList.contains('idsk-customer-surveys--show')) {
             $previousButton.innerHTML = 'Odísť';
+            $nextButtonText.innerHTML = 'Začať';
+            toggleClass($startIcon[0], 'idsk-customer-surveys__icon--hidden');
             $previousButton.onclick = function () {
                 location.href = "/";
             };
         }
-        if ($nextButton.textContent == "Odoslať odpovede") {
-            $nextButton.innerHTML = 'Ďalej';
+        if ($nextButtonText.textContent.includes("Odoslať odpovede")) {
+            $nextButtonText.innerHTML = 'Ďalej';
+            toggleClass($startIcon[0], 'idsk-customer-surveys__icon--hidden');
         }
         if ($steps[i].classList.contains('idsk-customer-surveys--show')) {
             if ($nextButton.disabled) {
@@ -156,10 +161,13 @@ CustomerSurveys.prototype.handleNextButtonClick = function (e) {
     var $buttonsDiv = $module.querySelector('.idsk-customer-surveys__buttons');
     var $nextButton = $module.querySelector('#idsk-customer-surveys__send-button');
     var $previousButton = $module.querySelector('#idsk-customer-surveys__previous-button');
+    var $startIcon = $module.querySelectorAll('.idsk-button__start-icon'); 
+    var $nextButtonText = $module.querySelector('.idsk-customer-surveys__send-button');
 
     $nextButton.blur();
-    if ($nextButton.textContent == "Začať") {
-        $nextButton.innerHTML = 'Ďalej';
+    if ($nextButtonText.textContent.includes("Začať")) {
+        $nextButtonText.innerHTML = 'Ďalej';;
+        toggleClass($startIcon[0], 'idsk-customer-surveys__icon--hidden');
         // uncheck all radiobuttons 
         var $radios = $module.querySelectorAll('.govuk-radios__input');
         for (var i = 0; i < $radios.length; i++) {
@@ -172,7 +180,7 @@ CustomerSurveys.prototype.handleNextButtonClick = function (e) {
         }
     }
 
-    if ($nextButton.textContent == "Odoslať odpovede") {
+    if ($nextButtonText.textContent.includes("Odoslať odpovede")) {
         $buttonsDiv.classList.add('idsk-customer-surveys--hidden');
     }
 
@@ -190,10 +198,11 @@ CustomerSurveys.prototype.handleNextButtonClick = function (e) {
             toggleClass($steps[i + 1], 'idsk-customer-surveys--hidden');
             $steps[i + 1].classList.add('idsk-customer-surveys--show');
             if (i == 4) {
-                $nextButton.innerHTML = 'Odoslať odpovede';
+                $nextButtonText.innerHTML = 'Odoslať odpovede';
+                toggleClass($startIcon[0], 'idsk-customer-surveys__icon--hidden');
             }
-            if (i == 1) {
-                $previousButton.innerHTML = 'Predošlá stránka';
+            if (i == 0) {
+                $previousButton.innerHTML = 'Späť';
                 $previousButton.onclick = function () {
                     location.href = "#";
                 };
