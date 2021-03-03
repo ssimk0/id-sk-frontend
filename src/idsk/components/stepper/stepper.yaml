@@ -48,12 +48,22 @@ params:
       type: boolean
       required: false
       description: Whether the section should be expanded upon initial load or not. Defaults to `false`.
+    - name: isTitle
+      type: boolean
+      required: false
+      description: Whether the section should be showed as title.
+    - name: showAnd
+      type: boolean
+      required: false
+      description: Whether in stepper at this section should be showed 'a' instead of number.      
 
 examples:
 - name: default
   data:
     id: default-example
     classes: myClass
+    mainTitle: "Narodenie dieťaťa: krok po kroku"
+    subtitle: Pred narodením dieťaťa
     attributes:
       data-attribute: value
     items:
@@ -76,8 +86,7 @@ examples:
           - subtitle: Pri narodení dieťaťa máte nárok na viacero
             href: "#"
       - heading:
-          text: Príspevky pri narodení dieťaťa z Úradu práce, sociálnych vecí a rodiny
-          hideCount: true
+          text: Po narodení dieťaťa
           isTitle: true
       - heading:
           text: Výber zdravotnej poistovne a prihlásenie dieťaťa
@@ -90,6 +99,14 @@ examples:
             href: "#"
           - subtitle: Príspevok na starostlivosť o dieťa.
             href: "#"
+      - heading:
+          text: Príspevky pri narodení dieťaťa z Úradu práce, sociálnych vecí a rodiny
+          showAnd: true 
+        contents:
+          - subtitle: Pri narodení dieťaťa máte nárok na viacero
+            href: "#"
+          - subtitle: Pri narodení dieťaťa máte nárok na viacero alebo viac detí  alebo ktorým sa v priebehu dvoch rokov opakovane narodili dvojčatá,
+            href: "#"         
       - heading:
           text: Výber zdravotnej poistovne a prihlásenie dieťaťa
         contents:

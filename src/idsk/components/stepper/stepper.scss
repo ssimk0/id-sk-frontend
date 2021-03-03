@@ -28,12 +28,13 @@
   }
 
   .idsk-stepper__section {
+    position: relative;
     min-height: 90px;
     &:before {
       content: "";
       position: absolute;
       z-index: 2;
-      height: calc(100% - 34px);
+      height: 100%;
       border-left: solid 1px govuk-colour("mid-grey", $legacy: "grey-2");
       background: govuk-colour("white");
       top: 35px;
@@ -65,31 +66,32 @@
     }
   }
 
-  .idsk-stepper__section--expanded #pediater {
+  .idsk-stepper__section--expanded.idsk-stepper__section {
     &:before {
-      content: "";
-      position: absolute;
-      z-index: 2;
-      height: calc(100% - 34px);
-      border-left: solid 2px govuk-colour("black", $legacy: "grey-2");
-      background: govuk-colour("white");
-      top: 35px;
-      left: -35px;
-      @include mq(tablet) {
-        left: -33px;
-      }
-      @include mq($from: desktop) {
-        left: -32px;
-      }
+      border-color: #0b0c0c;
     }
   }
 
-  .idsk-stepper__section-subtitle {
+  .idsk-stepper__section--expanded.idsk-stepper__section.idsk-stepper__section--last-item {
+    &:before {
+      height: calc(100% - 34px);
+    }
+  }
+
+  .js-enabled .idsk-stepper__section-header.idsk-stepper__section-subtitle {
     @include govuk-font($size: 24, $weight: bold);
-    border-top: 1px solid $govuk-border-colour;
     color: $idsk-stepper-link-colour;
     padding-top: govuk-spacing(6);
+    padding-bottom: 0;
+    cursor: none;
+    cursor: text;
   }
+
+  // .idsk-stepper__section-subtitle--text {
+  //   @include govuk-font($size: 24, $weight: bold);
+  //   color: $idsk-stepper-link-colour;
+  //   padding-top: govuk-spacing(4);
+  // }
 
   .idsk-stepper__circle {
     box-sizing: border-box;
