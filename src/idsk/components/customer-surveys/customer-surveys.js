@@ -1,5 +1,5 @@
 import "../../../govuk/vendor/polyfills/Function/prototype/bind";
-import "../../../govuk/vendor/polyfills/Event"; 
+import "../../../govuk/vendor/polyfills/Event";
 import { toggleClass } from "../../common";
 
 function CustomerSurveys($module) {
@@ -19,6 +19,7 @@ CustomerSurveys.prototype.init = function () {
     var $counter = 7;
     $module.sendButtonDisabled = new Array(7);
     $module.textAreaMap = new Map()
+    $module.iconSvg = '<svg class="idsk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewbox="0 0 33 40" role="presentation" focusable="false"><path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"/></svg>';
 
     if (!$module) {
         return;
@@ -94,7 +95,7 @@ CustomerSurveys.prototype.handleCounterOfSubtitles = function ($counter) {
     for (i = 0; i < $counter; i++) {
         $subtitles[i].textContent = $subtitles[i].textContent.substring(3);
         $subtitles[i].innerHTML = (i + 1) + '. ' + $subtitles[i].textContent;
-    }    
+    }
 }
 
 CustomerSurveys.prototype.handleRadioButtonWorkClick = function (e) {
@@ -125,14 +126,15 @@ CustomerSurveys.prototype.handlePreviousButtonClick = function (e) {
     $previousButton.blur();
     // showing and hiding steps, once step is set to be showed return is called.
     // changing names of buttons, disabling
-    for (i = 2; i < $steps.length - 1; i++) {
-        if ($previousButton.textContent == "Predošlá stránka" && $steps[2].classList.contains('idsk-customer-surveys--show')) {
+    for (i = 1; i < $steps.length - 1; i++) {
+        if ($previousButton.textContent == "Späť" && $steps[1].classList.contains('idsk-customer-surveys--show')) {
             $previousButton.innerHTML = 'Odísť';
+            $nextButton.innerHTML = 'Začať' + $module.iconSvg;
             $previousButton.onclick = function () {
                 location.href = "/";
             };
         }
-        if ($nextButton.textContent == "Odoslať odpovede") {
+        if ($nextButton.textContent.includes("Odoslať odpovede")) {
             $nextButton.innerHTML = 'Ďalej';
         }
         if ($steps[i].classList.contains('idsk-customer-surveys--show')) {
@@ -158,7 +160,7 @@ CustomerSurveys.prototype.handleNextButtonClick = function (e) {
     var $previousButton = $module.querySelector('#idsk-customer-surveys__previous-button');
 
     $nextButton.blur();
-    if ($nextButton.textContent == "Začať") {
+    if ($nextButton.textContent.includes("Začať")) {
         $nextButton.innerHTML = 'Ďalej';
         // uncheck all radiobuttons 
         var $radios = $module.querySelectorAll('.govuk-radios__input');
@@ -172,7 +174,7 @@ CustomerSurveys.prototype.handleNextButtonClick = function (e) {
         }
     }
 
-    if ($nextButton.textContent == "Odoslať odpovede") {
+    if ($nextButton.textContent.includes("Odoslať odpovede")) {
         $buttonsDiv.classList.add('idsk-customer-surveys--hidden');
     }
 
@@ -190,10 +192,10 @@ CustomerSurveys.prototype.handleNextButtonClick = function (e) {
             toggleClass($steps[i + 1], 'idsk-customer-surveys--hidden');
             $steps[i + 1].classList.add('idsk-customer-surveys--show');
             if (i == 4) {
-                $nextButton.innerHTML = 'Odoslať odpovede';
+                $nextButton.innerHTML = 'Odoslať odpovede' + $module.iconSvg;
             }
-            if (i == 1) {
-                $previousButton.innerHTML = 'Predošlá stránka';
+            if (i == 0) {
+                $previousButton.innerHTML = 'Späť';
                 $previousButton.onclick = function () {
                     location.href = "#";
                 };

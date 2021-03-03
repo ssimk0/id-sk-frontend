@@ -10,6 +10,7 @@
           {% for item in params.prologues %}
             <p class="govuk-body-l">
               {{item.prolog}}
+              <a class="idsk-customer-surveys__text--bold">{{item.boldItem}}</a>
             </p>
           {% endfor %}
         {% else %}
@@ -208,8 +209,12 @@
       </div>
 
       <div class="idsk-customer-surveys__buttons">
-        <button id="idsk-customer-surveys__send-button" class="govuk-button">Začať</button>
         <button id="idsk-customer-surveys__previous-button" class="govuk-button govuk-button--secondary" onclick="location.href='/';">Odísť</button>
+        <button id="idsk-customer-surveys__send-button" class="idsk-button idsk-button--start">Začať
+          <svg class="idsk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewbox="0 0 33 40" role="presentation" focusable="false">
+            <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"/>
+          </svg>
+        </button>
       </div>
     </div>
   </div>

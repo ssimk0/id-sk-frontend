@@ -25,8 +25,17 @@
         margin-top: -10px;
     }
 
-    #idsk-customer-surveys__send-button {
+    #idsk-customer-surveys__previous-button.govuk-button--secondary {
+        @include govuk-font($size: 24);
         margin-right: govuk-spacing(4);
+        line-height: 1;
+        width: auto;
+    }
+
+    #idsk-customer-surveys__send-button.idsk-button--start {
+        @include govuk-font($size: 24);
+        font-weight: normal;
+        width: auto;
     }
 
     .idsk-customer-surveys__buttons {
@@ -41,7 +50,19 @@
         @include govuk-font($size: 19);
     }
 
+    .idsk-customer-survey--line {
+        border: 1px solid govuk-colour("black");
+    }
+
     .idsk-customer-surveys__logo {
         margin-bottom: govuk-spacing(6);
+    }
+
+    .idsk-customer-surveys__text--bold {
+        font-weight: bold;
+    }
+
+    .idsk-customer-surveys__icon--hidden {
+        display: none;
     }
 }

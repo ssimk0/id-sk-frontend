@@ -5,7 +5,7 @@
 
 @include govuk-exports("idsk/component/customer-suerveys-text-area") {
     .idsk-customer-survey--line {
-        border: 1px solid govuk-colour ("black");
+        border: 1px solid govuk-colour("black");
     }
 
     .idsk-customer-surveys-text-area {
