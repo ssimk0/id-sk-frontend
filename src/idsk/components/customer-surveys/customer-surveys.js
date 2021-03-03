@@ -1,5 +1,5 @@
 import "../../../govuk/vendor/polyfills/Function/prototype/bind";
-import "../../../govuk/vendor/polyfills/Event";
+import "../../../govuk/vendor/polyfills/Event"; 
 import { toggleClass } from "../../common";
 
 function CustomerSurveys($module) {
@@ -95,7 +95,7 @@ CustomerSurveys.prototype.handleCounterOfSubtitles = function ($counter) {
     for (i = 0; i < $counter; i++) {
         $subtitles[i].textContent = $subtitles[i].textContent.substring(3);
         $subtitles[i].innerHTML = (i + 1) + '. ' + $subtitles[i].textContent;
-    }
+    }    
 }
 
 CustomerSurveys.prototype.handleRadioButtonWorkClick = function (e) {
@@ -122,6 +122,8 @@ CustomerSurveys.prototype.handlePreviousButtonClick = function (e) {
     var i;
     var $nextButton = $module.querySelector('#idsk-customer-surveys__send-button');
     var $previousButton = $module.querySelector('#idsk-customer-surveys__previous-button');
+    var $startIcon = $module.querySelectorAll('.idsk-button__start-icon'); 
+    var $nextButtonText = $module.querySelector('.idsk-customer-surveys__send-button');
 
     $previousButton.blur();
     // showing and hiding steps, once step is set to be showed return is called.
@@ -129,13 +131,15 @@ CustomerSurveys.prototype.handlePreviousButtonClick = function (e) {
     for (i = 1; i < $steps.length - 1; i++) {
         if ($previousButton.textContent == "Späť" && $steps[1].classList.contains('idsk-customer-surveys--show')) {
             $previousButton.innerHTML = 'Odísť';
-            $nextButton.innerHTML = 'Začať' + $module.iconSvg;
+            $nextButtonText.innerHTML = 'Začať';
+            toggleClass($startIcon[0], 'idsk-customer-surveys__icon--hidden');
             $previousButton.onclick = function () {
                 location.href = "/";
             };
         }
-        if ($nextButton.textContent.includes("Odoslať odpovede")) {
-            $nextButton.innerHTML = 'Ďalej';
+        if ($nextButtonText.textContent.includes("Odoslať odpovede")) {
+            $nextButtonText.innerHTML = 'Ďalej';
+            toggleClass($startIcon[0], 'idsk-customer-surveys__icon--hidden');
         }
         if ($steps[i].classList.contains('idsk-customer-surveys--show')) {
             if ($nextButton.disabled) {
@@ -158,10 +162,13 @@ CustomerSurveys.prototype.handleNextButtonClick = function (e) {
     var $buttonsDiv = $module.querySelector('.idsk-customer-surveys__buttons');
     var $nextButton = $module.querySelector('#idsk-customer-surveys__send-button');
     var $previousButton = $module.querySelector('#idsk-customer-surveys__previous-button');
+    var $startIcon = $module.querySelectorAll('.idsk-button__start-icon'); 
+    var $nextButtonText = $module.querySelector('.idsk-customer-surveys__send-button');
 
     $nextButton.blur();
-    if ($nextButton.textContent.includes("Začať")) {
-        $nextButton.innerHTML = 'Ďalej';
+    if ($nextButtonText.textContent.includes("Začať")) {
+        $nextButtonText.innerHTML = 'Ďalej';;
+        toggleClass($startIcon[0], 'idsk-customer-surveys__icon--hidden');
         // uncheck all radiobuttons 
         var $radios = $module.querySelectorAll('.govuk-radios__input');
         for (var i = 0; i < $radios.length; i++) {
@@ -174,7 +181,7 @@ CustomerSurveys.prototype.handleNextButtonClick = function (e) {
         }
     }
 
-    if ($nextButton.textContent.includes("Odoslať odpovede")) {
+    if ($nextButtonText.textContent.includes("Odoslať odpovede")) {
         $buttonsDiv.classList.add('idsk-customer-surveys--hidden');
     }
 
@@ -192,7 +199,8 @@ CustomerSurveys.prototype.handleNextButtonClick = function (e) {
             toggleClass($steps[i + 1], 'idsk-customer-surveys--hidden');
             $steps[i + 1].classList.add('idsk-customer-surveys--show');
             if (i == 4) {
-                $nextButton.innerHTML = 'Odoslať odpovede' + $module.iconSvg;
+                $nextButtonText.innerHTML = 'Odoslať odpovede';
+                toggleClass($startIcon[0], 'idsk-customer-surveys__icon--hidden');
             }
             if (i == 0) {
                 $previousButton.innerHTML = 'Späť';
