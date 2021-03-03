@@ -19,8 +19,7 @@ CustomerSurveys.prototype.init = function () {
     var $counter = 7;
     $module.sendButtonDisabled = new Array(7);
     $module.textAreaMap = new Map()
-    $module.iconSvg = '<svg class="idsk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewbox="0 0 33 40" role="presentation" focusable="false"><path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"/></svg>';
-
+    
     if (!$module) {
         return;
     }
