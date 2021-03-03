@@ -10,7 +10,7 @@
 
     .idsk-customer-surveys {
         &--line {
-            border: 1px solid govuk-colour("black");
+            border-top: 1px solid govuk-colour("black");
             background-color: govuk-colour("black");
         }
         &--hidden {
@@ -51,7 +51,7 @@
     }
 
     .idsk-customer-survey--line {
-        border: 1px solid govuk-colour("black");
+        border-top: 1px solid govuk-colour("black");
     }
 
     .idsk-customer-surveys__logo {
