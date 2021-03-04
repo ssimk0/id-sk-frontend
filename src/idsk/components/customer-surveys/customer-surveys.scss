@@ -38,6 +38,15 @@
         width: auto;
     }
 
+    #idsk-customer-surveys__send-button,
+    #idsk-customer-surveys__previous-button {
+        max-height: 37px;
+
+        @include mq($from: tablet) {
+            max-height: none;
+        }
+    }
+
     .idsk-customer-surveys__buttons {
         padding-top: govuk-spacing(2);
     }
