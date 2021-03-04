@@ -169,6 +169,7 @@ CustomerSurveys.prototype.handleNextButtonClick = function (e) {
         $nextButtonText.innerHTML = 'Ďalej';;
         toggleClass($startIcon[0], 'idsk-customer-surveys__icon--hidden');
         // uncheck all radiobuttons 
+        this.handleRadioButtonPrivateClick.call(this);
         var $radios = $module.querySelectorAll('.govuk-radios__input');
         for (var i = 0; i < $radios.length; i++) {
             $radios[i].checked = false;
