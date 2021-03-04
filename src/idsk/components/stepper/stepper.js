@@ -13,14 +13,15 @@
 
 */
 
-import { nodeListForEach } from '../../common'
+import { nodeListForEach, toggleClass } from '../../common'
 import '../../../govuk/vendor/polyfills/Function/prototype/bind'
 import '../../../govuk/vendor/polyfills/Element/prototype/classList'
 
-function Stepper ($module) {
+function Stepper($module) {
   this.$module = $module
   this.moduleId = $module.getAttribute('id')
   this.$sections = $module.querySelectorAll('.idsk-stepper__section')
+  this.$links = $module.querySelectorAll('.idsk-stepper__section-content .govuk-link')
   this.$openAllButton = ''
   this.browserSupportsSessionStorage = helper.checkForSessionStorage()
 
@@ -44,8 +45,15 @@ Stepper.prototype.init = function () {
   }
 
   this.initControls()
-
   this.initSectionHeaders()
+
+  nodeListForEach(
+    this.$links,
+    function ($link) {
+      $link.addEventListener('focus', this.handleItemLink.bind(this));
+      $link.addEventListener('blur', this.handleItemLink.bind(this));
+    }.bind(this)
+  );
 
   // See if "Zobraziť všetko" button text should be updated
   var areAllSectionsOpen = this.checkIfAllSectionsOpen()
@@ -63,11 +71,9 @@ Stepper.prototype.initControls = function () {
   this.$openAllButton.setAttribute('type', 'button')
 
   // Create control wrapper and add controls to it
-  var accordionControls = document.createElement('div')
-  accordionControls.setAttribute('class', this.controlsClass)
+  var accordionControls = this.$module.querySelector('.idsk-stepper__controls');
   accordionControls.appendChild(this.$openAllButton)
-  this.$module.insertBefore(accordionControls, this.$module.firstChild)
-
+   
   // Handle events for the controls
   this.$openAllButton.addEventListener('click', this.onOpenOrCloseAllToggle.bind(this))
 }
@@ -90,6 +96,13 @@ Stepper.prototype.initSectionHeaders = function () {
     this.setInitialState($section)
   }.bind(this))
 }
+
+Stepper.prototype.handleItemLink = function (e) {
+  var $link = e.target || e.srcElement;
+  var $currentSection = $link.closest('.idsk-stepper__section');
+  toggleClass($currentSection, 'idsk-stepper__bolder-line');
+}
+
 
 // Set individual header attributes
 Stepper.prototype.initHeaderAttributes = function ($headerWrapper, index) {

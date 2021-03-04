@@ -5,11 +5,14 @@
 <h1 class="govuk-heading-xl">{{params.mainTitle}}</h1>
 
 <div class="idsk-stepper {%- if params.classes %} {{ params.classes }}{% endif -%}" data-module="idsk-stepper" id="{{ id }}" {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}" {% endfor %}>
-    {# <h2 class="govuk-heading-m idsk-stepper__section-subtitle">{{params.subtitle}}</h2> #}
+    <div>
+        <h2 class="govuk-heading-m idsk-stepper__section-subtitle">{{params.subtitle}}</h2>
+    </div>
+    <div class="idsk-stepper__controls"></div>
     {% for item in params.items %}
         {% if item %}
             {% if item.heading.isTitle %}
-                <div class="idsk-stepper__section">
+                <div class="idsk-stepper__section-title">
                     <div class="idsk-stepper__section-header idsk-stepper__section-subtitle">
                         <p class="govuk-heading-m">{{item.heading.text}}
                         </p>

@@ -27,7 +27,8 @@
     }
   }
 
-  .idsk-stepper__section {
+  .idsk-stepper__section,
+  .idsk-stepper__section-title {
     position: relative;
     min-height: 90px;
     &:before {
@@ -56,7 +57,7 @@
       width: 18px;
       left: -35px;
       padding-top: 12px;
-      border-bottom: solid 2px govuk-colour("black");
+      border-bottom: solid 1px govuk-colour("black");
       @include mq(tablet) {
         left: -33px;
       }
@@ -66,13 +67,23 @@
     }
   }
 
-  .idsk-stepper__section--expanded.idsk-stepper__section {
+  .idsk-stepper__section-subtitle {
+    margin-bottom: -30px;
+  }
+
+  .idsk-stepper__section-header .govuk-heading-m,
+  .idsk-stepper__section-subtitle.govuk-heading-m {
+    color: govuk-colour("blue");
+    margin-top: govuk-spacing(3);
+  }
+
+  .idsk-stepper__bolder-line.idsk-stepper__section--expanded.idsk-stepper__section {
     &:before {
       border-color: #0b0c0c;
     }
   }
 
-  .idsk-stepper__section--expanded.idsk-stepper__section.idsk-stepper__section--last-item {
+  .idsk-stepper__section--last-item {
     &:before {
       height: calc(100% - 34px);
     }
@@ -178,7 +189,7 @@
 
     // This is styled to look like a link not a button
     .idsk-stepper__open-all {
-      @include govuk-font($size: 16);
+      @include govuk-font($size: 19);
       position: relative;
       z-index: 1;
       margin: 0;
@@ -188,6 +199,7 @@
       background: none;
       cursor: pointer;
       -webkit-appearance: none;
+      text-decoration: underline;
 
       @include govuk-link-common;
       @include govuk-link-style-default;
@@ -267,6 +279,7 @@
 
     .idsk-stepper__controls {
       text-align: right;
+      padding-bottom: 15px;
     }
 
     // Display an icon to the right of each header to indicate open/closed status,
