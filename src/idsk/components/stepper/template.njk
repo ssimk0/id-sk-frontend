@@ -2,7 +2,7 @@
 {% set headingLevel = params.headingLevel if params.headingLevel else 
     2 %}
 {% set counter = 0 %}
-<h1 class="govuk-heading-xl">{{params.mainTitle}}</h1>
+<h1 class="govuk-heading-l">{{params.mainTitle}}</h1>
 
 <div class="idsk-stepper {%- if params.classes %} {{ params.classes }}{% endif -%}" data-module="idsk-stepper" id="{{ id }}" {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}" {% endfor %}>
     <div>
