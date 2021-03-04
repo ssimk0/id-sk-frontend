@@ -1,0 +1,15 @@
+params:
+- name: classes
+- name: heading
+- name: formItems
+  type: array
+  params:
+  - name: label
+  - name: hint
+  - name: tag
+  - name: name
+  - name: type
+  - name: required
+  - name: options
+- name: buttonLabel
+- name: thankYouMsg

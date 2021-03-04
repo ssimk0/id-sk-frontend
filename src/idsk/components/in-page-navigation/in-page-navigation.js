@@ -1,6 +1,5 @@
 import '../../../govuk/vendor/polyfills/Function/prototype/bind'
 import '../../../govuk/vendor/polyfills/Event' // addEventListener and event.target normaliziation
-import { toggleClass } from '../../common'
 
 function InPageNavigation($module) {
     this.$module = $module
