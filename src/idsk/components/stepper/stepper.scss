@@ -79,7 +79,7 @@
 
   .idsk-stepper__bolder-line.idsk-stepper__section--expanded.idsk-stepper__section {
     &:before {
-      border-color: #0b0c0c;
+      border-color: govuk-colour("black");
     }
   }
 
@@ -97,12 +97,6 @@
     cursor: none;
     cursor: text;
   }
-
-  // .idsk-stepper__section-subtitle--text {
-  //   @include govuk-font($size: 24, $weight: bold);
-  //   color: $idsk-stepper-link-colour;
-  //   padding-top: govuk-spacing(4);
-  // }
 
   .idsk-stepper__circle {
     box-sizing: border-box;

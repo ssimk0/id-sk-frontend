@@ -1,0 +1,18 @@
+@import "../../../govuk/settings/all";
+@import "../../../govuk/tools/all";
+@import "../../../govuk/helpers/all";
+@import "../../../govuk/helpers/typography";
+
+@include govuk-exports("idsk/component/banner") {
+    .idsk-banner .app-pane-grey {
+        background-color: govuk-colour("light-grey");
+        border-bottom: 1px solid govuk-colour("dark-blue");
+    }
+    .idsk-banner__content {
+        padding-left: govuk-spacing(3);
+    }
+    .idsk-banner .govuk-heading-s {
+        margin-bottom: 0;
+        padding-top: govuk-spacing(3);
+    }
+}
