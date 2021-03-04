@@ -49,6 +49,8 @@
             <div class="govuk-grid-column-full">
                 <h3 class="govuk-heading-l">Vzor steppera</h3>
             </div>
+        </div>
+        <div class="govuk-grid-row">
             <div class="govuk-grid-column-full">
                 <div class="example example-error">
                     {% set exampleComponentHtml %}
@@ -181,6 +183,8 @@
                 </div>
                 <pre class=" language-markup"><code class="govuk-!-font-size-16  language-markup">{{ examplecomponenthtml }}</code></pre>
             </div>
+        </div>
+        <div class="govuk-grid-row">
             <div class="govuk-grid-column-full">
                 <h3 class="govuk-heading-l">Ako použiť stepper ?</h3>
                 <h4 class="govuk-heading-m">Nadpisy</h4>
@@ -201,18 +205,20 @@
                 <p class="govuk-body">
                     Banner použite na začiatku stránky s konkrétnym obsahom (po kliknutí na odkaz v stepperi), aby používateľ vedel, že tento obsah patrí pod danú životnú situáciu/návod.
                 </p>
-                    <div class="example example-error">
-                        {% set exampleComponentHtml %}
-                        {{ idskBanner({
+                <div class="example example-error">
+                    {% set exampleComponentHtml %}
+                    {{ idskBanner({
                         "classes": "app-pane-grey",
                         "pageName": "Súčasť životnej situácie",
                         "headline": "Narodenie dieťaťa: krok za krokom"
                     }) }}
-                        {% endset %}
-                        {{exampleComponentHtml | safe}}
-                    </div>
-                <pre class=" language-markup"><code class="govuk-!-font-size-16  language-markup">{{ examplecomponenthtml }}</code></pre>
-                
+                    {% endset %}
+                    {{exampleComponentHtml | safe}}
+                </div>
+            </div>
+        </div>
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
                 <h4 class="govuk-heading-m">Zvýraznený krok po kliknutí na odkaz</h4>
                 <p class="govuk-body">
                     Tento prvok sa použije na konci obsahu ku konkrétnemu obsahu, aby používateľ vedel, na ktorý odkaz v stepperi klikol. Slúži to ako dodatočná navigácia v rámci steppera.
@@ -231,5 +237,6 @@
                 <h4 class="govuk-heading-l">Vzor steppera</h4>
             </div>
         </div>
+
     </div>
 {% endblock %}
