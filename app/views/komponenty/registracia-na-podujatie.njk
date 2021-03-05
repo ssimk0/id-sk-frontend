@@ -14,9 +14,48 @@
   <div class="govuk-width-container">
     <span class="govuk-caption-xl">Webové komponenty</span>
     <h1 class="govuk-heading-xl">{{pageName}}</h1>
+    <p class="govuk-body-l">
+      Registračný formulár použite na webovej stránke, keď chcete aby sa používatelia vopred registrovali na podujatie, ktoré organizujete. 
+    </p>
+    <p class="govuk-body-l">
+      V registračnom formulári zbierajte iba tie najnutnejšie informácie ako napríklad meno, organizáciu, kde účastník pracuje alebo email, aby ste ho mohli spätne kontaktovať. 
+    </p>
+
     <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-s">Obsah:</h2>
+        <ul class="govuk-list">
+            <li>
+                <a href="#z-coho-sa-sklada-registracny-formular" title="Z čoho sa skladá registračný formulár?">Z čoho sa skladá registračný formulár?</a>
+            </li>
+            <li>
+                <a href="#ako-pouzit-registraciu-na-podujatie" title="Ako použiť registráciu na podujatie?">Ako použiť registráciu na podujatie?</a>
+            </li>
+            <li>
+                <a href="#vzor-navigacie-na-stranke" title="Vzor navigácie na stránke">Vzor navigácie na stránke</a>
+            </li>
+        </ul>
+
+        <h2 class="govuk-heading-m" id="z-coho-sa-sklada-registracny-formular">Z čoho sa skladá registračný formulár?</h2>
+        <p class="govuk-body">Skladá sa z:</p>
+        <ul class="govuk-list">
+          <li>a) nadpisu,</li>
+          <li>b) údajových polí, </li>
+          <li>c) súhlasu o spracovaní údajov,</li>
+          <li>d) tlačidla odoslať.</li>
+        </ul>
+
+        <h2 class="govuk-heading-m" id="ako-pouzit-registraciu-na-podujatie">Ako použiť registráciu na podujatie?</h2>
+        <p class="govuk-body">
+          Pri desktope tento komponent použite na ⅔ šírky obrazovky, pri mobilných zariadeniach na celú šírku obrazovky.
+        </p>
+        <p class="govuk-body">
+          Pri desktope na zvyšnú voľnú ⅓ obrazovky môžete umiestniť napríklad adresu konania udalosti alebo súvisiace témy.
+        </p>
+      </div>
+ 
       <div class="govuk-grid-column-full">
-        <h3 class="govuk-heading-m" id="vzor-suvisiaceho-obsahu">Vzor súvisiaceho obsahu</h3>
+        <h3 class="govuk-heading-m" id="vzor-navigacie-na-stranke">Vzor navigácie na stránke</h3>
         <div class="example example-error">
           {% set exampleComponentHtml %}
             {{ idskRegistrationForEvent({
