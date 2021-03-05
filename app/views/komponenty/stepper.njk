@@ -3,6 +3,13 @@
 {% from "../../../src/idsk/components/stepper/macro.njk" import idskStepper %}
 {% from "../../../src/idsk/components/banner/macro.njk" import idskBanner %}
 {% set pageName = "Stepper" %}
+{% block styles %}
+  <style>
+    .idsk-stepper__heading {
+      margin-bottom: 30px;
+    }
+  </style>
+{% endblock %}
 {% block beforeContent %}
     {{ govukBreadcrumbs({
      "items": [
@@ -13,7 +20,7 @@
 {% endblock %}
 {% block content %}
     <div class="govuk-width-container">
-        <h1 class="govuk-heading-xl">{{pageName}}</h1>
+        <h1 class="govuk-heading-xl idsk-stepper__heading">{{pageName}}</h1>
         <p class="govuk-body-l">
             Stepper je navrhnutý pre prehľadné a zrozumiteľné zobrazenie procesných krokov, ktoré musí občan alebo podnikateľ vykonať, aby voči štátu vybavil, čo potrebuje v rámci svojej životnej situácie. Stepper však môže slúžiť na intuitívne zobrazenie akéhokoľvek sledu udalostí či procesných úkonov. Členenie do krokov pomôže používateľovi zorientovať sa v zdĺhavejších procesoch a jednoduchšie realizovať čiastkové úkony.
         </p>
@@ -59,6 +66,7 @@
                             "classes": "myClass",
                             "mainTitle": "Narodenie dieťaťa: krok po kroku",
                             "subtitle": "Pred narodením dieťaťa",
+                            "caption": "Čo je potrebné vybaviť a zariadieť keď sa Vám má narodiť dieťa ?",
                             "attributes": {
                             "data-attribute": "value"
                             },
