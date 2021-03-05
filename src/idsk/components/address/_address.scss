@@ -1,0 +1,10 @@
+@import "../../../govuk/settings/all";
+@import "../../../govuk/tools/all";
+@import "../../../govuk/helpers/all";
+
+@include govuk-exports("idsk/component/registration-for-event") {
+    .idsk-address {
+        @include govuk-font($size: 16);
+        @include govuk-text-colour;
+    }
+}

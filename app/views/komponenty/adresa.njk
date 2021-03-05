@@ -1,0 +1,30 @@
+{% extends "layout.njk" %}
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "../../../src/idsk/components/address/macro.njk" import idskAddress %}
+{% set pageName = "Adresa" %}
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    "items": [
+      { text: 'ID-SK frontend', href: '/' + legacyQuery },
+      { text: pageName }
+    ]
+  }) }}
+{% endblock %}
+{% block content %}
+    <span class="govuk-caption-xl">Webové komponenty</span>
+    <h1 class="govuk-heading-xl">{{pageName}}</h1>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <h3 class="govuk-heading-m" id="vzor-suvisiaceho-obsahu">Vzor súvisiaceho obsahu</h3>
+        <div class="example example-error">
+          {% set exampleComponentHtml %}
+            {{ idskAddress({
+            heading: "Adresa podujatia"
+          }) }}
+          {% endset %}
+          {{exampleComponentHtml | safe}}
+        </div>
+        <pre class="language-markup"><code class="govuk-!-font-size-16 language-markup">{{ exampleComponentHtml }}</code></pre>
+      </div>
+    </div>
+{% endblock %}
