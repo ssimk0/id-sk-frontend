@@ -25,7 +25,7 @@ RegistrationForEvent.prototype.init = function () {
 
 RegistrationForEvent.prototype.handleSubmitClick = function (e) {
     e.preventDefault()
-    var $target = e.target || e.scrElement
+
     var $module = this.$module
     var $form = $module.querySelector('.idsk-registration-for-event__form')
     var $thankYouMsg = $module.querySelector('.idsk-registration-for-event__thank-you-msg')
@@ -34,14 +34,17 @@ RegistrationForEvent.prototype.handleSubmitClick = function (e) {
     var emailRegex = /\S+@\S+\.\S+/
 
     $requiredFormItems.forEach(function ($item) {
-        var $errorClassItem = ($item.type === 'checkbox') ? $item.closest('.govuk-form-group') : $item
-        var $className = ($item.type === 'checkbox') ? "govuk-form-group--error" : "govuk-input--error"
+        var $formGroup = $item.closest('.govuk-form-group')
 
-        if (!$item.checkValidity() || $item.type === "email" && !emailRegex.test($item.value)) {
-            $errorClassItem.classList.add($className)
+        if (!$item.checkValidity() || $item.type === 'email' && !emailRegex.test($item.value)) {
+            $formGroup.querySelector('.govuk-error-message').style.display = 'block'
+            $formGroup.classList.add('govuk-form-group--error')
+            $item.classList.add('govuk-input--error')
             $valid = false
         } else {
-            $errorClassItem.classList.remove($className)
+            $formGroup.querySelector('.govuk-error-message').style.display = 'none'
+            $formGroup.classList.remove('govuk-form-group--error')
+            $item.classList.remove('govuk-input--error')
         }
     })
 

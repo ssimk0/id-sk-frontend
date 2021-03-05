@@ -8,8 +8,18 @@
             {% if item.type === "text" or item.type === "email" %}
             <label class="govuk-label" for="{{ item.name }}">{{ item.label }}</label>
             <span class="govuk-hint">{{ item.hint }}</span>
+            {% if item.error %}
+            <span class="govuk-error-message">
+                <span class="govuk-visually-hidden">Chyba:</span>{{ item.error }}
+            </span>
+            {% endif %}
             <input type="{{ item.type }}" class="govuk-input" id="{{ item.name }}" name="{{ item.name }}" {{ "required" if item.required }}>
             {% elif item.type == "checkbox" %}
+            {% if item.error %}
+            <span class="govuk-error-message">
+                <span class="govuk-visually-hidden">Chyba:</span>{{ item.error }}
+            </span>
+            {% endif %}
             <div class="govuk-checkboxes">
                 <div class="govuk-checkboxes__item">
                     <input type="checkbox" class="govuk-checkboxes__input" id="{{ item.name }}" name="{{ item.name }}" {{ "required" if item.required }}>
@@ -19,6 +29,11 @@
             {% endif %}
         {% elif item.tag === "select" %}
             <label class="govuk-label" for="{{ item.name }}">{{ item.label }}</label>
+            {% if item.error %}
+            <span class="govuk-error-message">
+                <span class="govuk-visually-hidden">Chyba:</span>{{ item.error }}
+            </span>
+            {% endif %}
             <select class="govuk-select" id="{{ item.name }}" name="{{ item.name }}">
                 <option></option>
                 {% for option in item.options %}
