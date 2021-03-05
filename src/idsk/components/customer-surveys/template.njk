@@ -6,10 +6,10 @@
     <div id="idsk-customer-surveys__content">
       {#1st#}
       <div class="idsk-customer-surveys__step idsk-customer-surveys--show">
-        {% if (params.hideTiles) %}
-          {% for prolog in params.prologues %}
+        {% if (params.prologues) %}
+          {% for item in params.prologues %}
             <p class="govuk-body-l">
-              {{prolog}}
+              {{item.prolog | safe}}
             </p>
           {% endfor %}
         {% else %}
@@ -17,7 +17,8 @@
             Cieľom tohto dotazníka je zistiť potreby a postrehy používateľov webu Ministerstva investícií, regionálneho rozvoja a informatizácie (Ďalej len "MIRRI").
           </p>
           <p class="govuk-body-l">
-            Ďakujeme za súhlas s účasťou v tomto prieskume, pomáhate nám zlepšovať tento web. Vyplnenie tohto dotazníka Vám zaberie len 3 minúty.
+            Ďakujeme za súhlas s účasťou v tomto prieskume, pomáhate nám zlepšovať tento web. Vyplnenie tohto dotazníka Vám zaberie
+            <strong>len 3 minúty.</strong>
           </p>
           <p class="govuk-body-l">
             Odpovede na všetky otázky sú dobrovoľné. Vaše odpovede na tento prieskum sú anonymné.
@@ -28,7 +29,7 @@
       {#2nd#}
       <div class="idsk-customer-surveys--hidden idsk-customer-surveys__step">
         <div>
-          <hr class="idsk-customer-survey--line">
+          <p class="idsk-customer-survey--line">
           <h3 class="govuk-heading-m idsk-customer-surveys--subtitle">
             {{ params.questions[0].name }}
           </h3>
@@ -54,7 +55,7 @@
                     }}
         </div>
         <div class="idsk-customer-survey__text-area--work idsk-customer-surveys--hidden">
-          <hr class="idsk-customer-survey--line">
+          <p class="idsk-customer-survey--line">
           <h3 class="govuk-heading-m idsk-customer-survey__subtitle--work">
             {{ params.questions[1].name }}
           </h3>
@@ -69,7 +70,7 @@
 
       {#3rd#}
       <div class="idsk-customer-surveys--hidden idsk-customer-surveys__step">
-        <hr class="idsk-customer-survey--line">
+        <p class="idsk-customer-survey--line">
         <h3 class="govuk-heading-m idsk-customer-surveys--subtitle">
           {{ params.questions[2].name }}
         </h3>
@@ -81,7 +82,7 @@
                      id:'second'
                   })
                 }}
-        <hr class="idsk-customer-survey--line">
+        <p class="idsk-customer-survey--line">
         <h3 class="govuk-heading-m idsk-customer-surveys--subtitle">
           {{ params.questions[3].name }}
         </h3>
@@ -109,7 +110,7 @@
 
       {#4th#}
       <div class="idsk-customer-surveys--hidden idsk-customer-surveys__step">
-        <hr class="idsk-customer-survey--line">
+        <p class="idsk-customer-survey--line">
         <h3 class="govuk-heading-m idsk-customer-surveys--subtitle">
           {{ params.questions[4].name }}
         </h3>
@@ -145,7 +146,7 @@
 
       {#5th#}
       <div class="idsk-customer-surveys--hidden idsk-customer-surveys__step">
-        <hr class="idsk-customer-survey--line">
+        <p class="idsk-customer-survey--line">
         <h3 class="govuk-heading-m idsk-customer-surveys--subtitle">
           {{ params.questions[5].name }}
         </h3>
@@ -165,7 +166,7 @@
                       }]
                     })
                  }}
-        <hr class="idsk-customer-survey--line">
+        <p class="idsk-customer-survey--line">
         <h3 class="govuk-heading-m idsk-customer-surveys--subtitle">
           {{ params.questions[6].name }}
         </h3>
@@ -180,7 +181,7 @@
 
       {#6th#}
       <div class="idsk-customer-surveys--hidden idsk-customer-surveys__step">
-        <hr class="idsk-customer-survey--line">
+        <p class="idsk-customer-survey--line">
         <h3 class="govuk-heading-m idsk-customer-surveys--subtitle">
           {{ params.questions[7].name }}
         </h3>
@@ -196,7 +197,7 @@
 
       {#7th#}
       <div id="idsk-feedback__thanks" class="idsk-customer-surveys--hidden idsk-customer-surveys__step">
-        <hr class="idsk-customer-survey--line">
+        <p class="idsk-customer-survey--line">
         <h2 class="govuk-heading-l">
           {{ params.feedbackThankNote if params.feedbackThankNote else 'Ďakujeme za spätnú väzbu.' }}
         </h2>
@@ -208,8 +209,15 @@
       </div>
 
       <div class="idsk-customer-surveys__buttons">
-        <button id="idsk-customer-surveys__send-button" class="govuk-button">Začať</button>
         <button id="idsk-customer-surveys__previous-button" class="govuk-button govuk-button--secondary" onclick="location.href='/';">Odísť</button>
+        <button id="idsk-customer-surveys__send-button" class="idsk-button idsk-button--start">
+          <span class="idsk-customer-surveys__send-button">Začať</span>
+          <span class="idsk-button__start-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewbox="0 0 33 40" role="presentation" focusable="false">
+              <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"/>
+            </svg>
+          </span>
+        </button>
       </div>
     </div>
   </div>

@@ -1,0 +1,11 @@
+@include govuk-exports("idsk/core/general-rules") {
+    .idsk-text-justify {
+        text-align: justify;
+    }
+    .idsk-hr-separator {
+        background: black;
+        height: 5px;
+        margin-top: 30px;
+        margin-bottom: 0;
+    }
+}

@@ -46,6 +46,10 @@
         box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
         font-style: normal;
         font-weight: 400;
+
+        &.idsk-footer-extended--up-button-enabled {
+          box-shadow: none;
+        }
     }
 
     .idsk-footer-extended-inline-list {
@@ -513,7 +517,6 @@
         height: 45px;
         width: 100%;
         background-color: govuk-colour("white");
-        box-shadow: 0 -1px 0 white;
     }
 
     .idsk-footer-extended-up-button-a {

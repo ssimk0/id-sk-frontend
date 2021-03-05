@@ -1,5 +1,5 @@
 <div data-module="idsk-footer-extended">
-    <footer class="idsk-footer-extended {{ params.classes if params.classes }}" role="contentinfo">
+    <footer class="idsk-footer-extended {{ "idsk-footer-extended--up-button-enabled" if params.upButtonEnabled }} {{ params.classes if params.classes }}" role="contentinfo">
         {% if params.upButtonEnabled == "true" %}
             <div class="idsk-footer-extended-up-button-div" id="footer-extended-up-button">
                 <div class="govuk-width-container">

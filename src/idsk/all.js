@@ -9,6 +9,7 @@ import CustomerSurveys from "./components/customer-surveys/customer-surveys";
 import HeaderExtended from './components/header-extended/header-extended';
 import InPageNavigation from './components/in-page-navigation/in-page-navigation';
 import Stepper from './components/stepper/stepper';
+import RegistrationForEvent from './components/registration-for-event/registration-for-event';
 
 function initAll(options) {
   // Set the options to an empty object by default if no options are passed.
@@ -68,6 +69,11 @@ function initAll(options) {
     new Stepper($stepper).init();
   });
 
+  var $registrationForEvents = scope.querySelectorAll('[data-module="idsk-registration-for-event"]');
+  nodeListForEach($registrationForEvents, function ($registrationForEvent) {
+    new RegistrationForEvent($registrationForEvent).init();
+  })
+
   // Init all GOVUK components js
   initAllGOVUKjs(options);
 }
@@ -82,5 +88,6 @@ export {
   FooterExtended,
   HeaderExtended,
   InPageNavigation,
-  Stepper
+  Stepper,
+  RegistrationForEvent
 }

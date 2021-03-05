@@ -29,7 +29,7 @@
       <h1 class="govuk-heading-xl">Podstránka prieskum spokojnosti</h1>
       <p class="govuk-body">Používateľovi by ste mali ponúknuť možnosť vyplniť krátky dotazník pre prípad, že nie je spokojný s obsahom stránky. Prostredníctvom dotazníka vám môže dať užitočnú spätnú väzbu.
       </p>
-      <p class="govuk-body">Prieskum spokojnosti je prepojený na komponent spätná väzba. Používateľ by sa k nemu mal dostať po kliknutí na “NIE” v modrej lište pre spätnú väzbu, ktorá je umiestnená nad pätičkou. K prieskumu spokojnosti môžete samozrejme vytvoriť aj viacero ciest, minimálne však túto.</p>
+      <p class="govuk-body">Prieskum spokojnosti je prepojený na komponent <a href="../komponenty/footer-extended">spätná väzba.</a> Používateľ by sa k nemu mal dostať po kliknutí na “NIE” v modrej lište pre spätnú väzbu, ktorá je umiestnená nad pätičkou. K prieskumu spokojnosti môžete samozrejme vytvoriť aj viacero ciest, minimálne však túto.</p>
       <h2 class="govuk-heading-l">Z čoho sa skladá prieskum spokojnosti</h2>
       <p class="govuk-body">Skladá sa z:
       </p>
@@ -53,7 +53,7 @@
             prolog: 'Cieľom tohto dotazníka je zistiť potreby a postrehy používateľov webu Ministerstva investícií, regionálneho rozvoja a informatizácie (Ďalej len "MIRRI").'
           },
           {
-            prolog: "Ďakujeme za súhlas s účasťou v tomto prieskume, pomáhate nám zlepšovať tento web. Vyplnenie tohto dotazníka Vám zaberie len 3 minúty."
+            prolog: "Ďakujeme za súhlas s účasťou v tomto prieskume, pomáhate nám zlepšovať tento web. Vyplnenie tohto dotazníka Vám zaberie <strong>len 3 minúty.</strong> "
           },
           {
             prolog: "Odpovede na všetky otázky sú dobrovoľné. Vaše odpovede na tento prieskum sú anonymné."
@@ -106,5 +106,8 @@
     {% endset %}
     {{exampleComponentHtml | safe}}
   </div>
+  <h2 class="govuk-heading-s">
+    <a href="/custom-components/customer-surveys/basic/preview">Rozšírený príklad podstránky prieskumu spokojnosti</a>
+  </h2>
 {% endblock %}
 {% block footer %}{% endblock %}
