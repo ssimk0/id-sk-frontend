@@ -8,4 +8,4 @@ Address.prototype.init = function () {
     console.log('jop')
 }
 
-export default address
+export default Address

@@ -19,7 +19,45 @@
         <div class="example example-error">
           {% set exampleComponentHtml %}
             {{ idskAddress({
-            heading: "Adresa podujatia"
+              addressTitle: "Adresa podujatia",
+              addressDescription: [
+                {
+                  text: "Štefánikova 15"
+                },
+                {
+                  text: "811 05 Bratislava"
+                },
+                {
+                  text: "Poschodie 2.B"
+                },
+                {
+                  text: "Zasadačka LONDÝN"
+                }
+              ],
+              googleMapsLink: "https://www.google.com/maps/embed/v1/place?q=place_id:ChIJbej9bFqJbEcR4nXu1en1cJM&key=AIzaSyC8V96sGgzrasorg2xPOlrlp-cpQFPLSxM"
+          }) }}
+          {% endset %}
+          {{exampleComponentHtml | safe}}
+        </div>
+        {# <pre class="language-markup"><code class="govuk-!-font-size-16 language-markup">{{ exampleComponentHtml }}</code></pre> #}
+        <div class="example example-error">
+          {% set exampleComponentHtml %}
+            {{ idskAddress({
+              heading: "Ministerstvo investícií, regionálneho rozvoja a informatizácie SR",
+              addressTitle: "Oddelenie behaviorálnych inovácií",
+              fullWidth: true,
+              addressDescription: [
+                {
+                  text: "Štefánikova 15"
+                },
+                {
+                  text: "811 05 Bratislava"
+                },
+                {
+                  text: "Zasadačka LONDÝN"
+                }
+              ],
+              googleMapsLink: "https://www.google.com/maps/embed/v1/place?q=place_id:ChIJbej9bFqJbEcR4nXu1en1cJM&key=AIzaSyC8V96sGgzrasorg2xPOlrlp-cpQFPLSxM"
           }) }}
           {% endset %}
           {{exampleComponentHtml | safe}}
