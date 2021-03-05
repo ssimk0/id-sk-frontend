@@ -8,8 +8,15 @@
             {% endif %}
             <h3 class="govuk-heading-s">{{ params.addressTitle }}</h3>
             {% for row in params.addressDescription %}
-            <p class="">{{ row.text }}</p>
+            <p class="govuk-body">{{ row.text }}</p>
             {% endfor %}
+            {% if params.additionalLink %}
+            <p class="govuk-body">
+                <a class="govuk-link" href="{{ params.additionalLink.link }}" title="{{ params.additionalLink.text }}">
+                    <span class="idsk-address__link-text">{{ params.additionalLink.text }}</span>
+                </a>
+            <p>
+            {% endif %}
         </div>
         <iframe 
             class="idsk-address__map"
