@@ -14,17 +14,18 @@
       margin-bottom: 0;
     }
 
-    .govuk-error-message {
-      display: none;
+    .govuk-select {
+      width: 100%;
     }
 
-    .govuk-form-group,
-    .govuk-select {
-      width: auto;
-
+    .govuk-form-group {
       @include mq($from: tablet) {
         max-width: 465px;
       }
+    }
+
+    .govuk-error-message {
+      display: none;
     }
 
     .govuk-form-group--error.govuk-form-group,
