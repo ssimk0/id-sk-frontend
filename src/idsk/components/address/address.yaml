@@ -37,3 +37,28 @@ params:
     type: string
     required: false
     description: href link address
+
+examples:
+- name: ukážka 1
+  data:
+    addressTitle: Adresa podujatia
+    addressDescription:
+    - text: Štefánikova 15
+    - text: 811 05 Bratislava
+    - text: Poschodie 2.B
+    - text: Zasadačka LONDÝN
+    googleMapsLink: https://www.google.com/maps/embed/v1/place?q=place_id:ChIJbej9bFqJbEcR4nXu1en1cJM&key=AIzaSyC8V96sGgzrasorg2xPOlrlp-cpQFPLSxM
+
+- name: ukážka 2
+  data:
+    heading: Ministerstvo investícií, regionálneho rozvoja a informatizácie SR
+    addressTitle: Oddelenie behaviorálnych inovácií
+    fullWidth: true
+    addressDescription:
+    - text: Štefánikova 15
+    - text: 811 05 Bratislava
+    - text: Zasadačka LONDÝN
+    googleMapsLink: https://www.google.com/maps/embed/v1/place?q=place_id:ChIJbej9bFqJbEcR4nXu1en1cJM&key=AIzaSyC8V96sGgzrasorg2xPOlrlp-cpQFPLSxM
+    additionalLink:
+      link: "#"
+      text: Zoznam sekcií, odborov a oddelení v tejto budove
