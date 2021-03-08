@@ -25,6 +25,7 @@
   }
 
   .idsk-events-list {
+    font-family: "Source Sans Pro", "Arial", sans-serif;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -52,6 +53,21 @@
     width: 100%;
     bottom: 15px;
    }
+
+  .idsk-blue-banner{
+    background-color: #003078;
+    padding: 30px 0;
+    margin: 30px 0;
+    height: 100%;
+    position: relative;
+    display: inline-block;
+  }
+
+  .idsk-blue-banner .govuk-heading-l,
+  .idsk-blue-banner .govuk-caption-l,
+  .idsk-blue-banner .govuk-link {
+    color: white;
+  }
 </style>
 {% endblock %}
 
@@ -356,11 +372,20 @@
     }) }}
   </div>
   
-  <br>
-  <h1>TU POJDE TO MODRE ONE</h1>
-  <br>
-
-  <hr class="idsk-hr-separator govuk-!-margin-bottom-6">
+  <div class="idsk-blue-banner">
+    <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-l">Inštitút digitálnych a rozvojových politík</h2>
+      <div class="govuk-caption-l">
+        Všetky informácie o príprave, revízii a realizácii Európskych štrukturálnych fondov (EŠIF) v podmienkach SR na jendom mieste.  
+      </div>
+      <br>
+      <a href="#" class="govuk-link" title="Zistiť viac o IDRP">Zistiť viac o IDRP</a>
+      <br>
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <img src="/public/assets/images/examples/eurofound.png" alt="eurofound">
+    </div>
+  </div>
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full govuk-!-margin-bottom-5">
@@ -453,7 +478,7 @@
 {% endblock %}
 
 {% block footer %}
-{{ idskFooterExtended({
+  {{ idskFooterExtended({
     characterLength : 500,
     showFeedback : "true",
     upButtonEnabled : "true",
@@ -616,6 +641,5 @@
         value:"#"
       }
     ]
-  }) 
-}}
+  }) }}
 {% endblock %}
