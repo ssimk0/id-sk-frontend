@@ -50,3 +50,50 @@ params:
   type: string
   required: true
   description: this message will be shown after form submission
+
+examples:
+- name: Ukážka 1
+  data:
+    heading: Registrácia na podujatie
+    formItems:
+    - label: Meno
+      error: Zadajte meno.
+      tag: input
+      name: name
+      type: text
+      required: true
+    - label: Priezvisko
+      error: Zadajte priezvisko.
+      tag: input
+      name: surname
+      type: text
+      required: true
+    - label: Emailová adresa
+      hint: Sem zadajte emailovú adresu v tvare email@email.sk
+      error: Zadajte správnu emailovú adresu.
+      tag: input
+      name: email
+      type: email
+      required: true
+    - label: Organizácia
+      tag: input
+      name: organization
+      type: text
+    - label: Miesto konania podujatia
+      tag: select
+      name: city
+      options:
+      - value: Bardejov
+        name: Bardejov
+      - value: Kosice
+        name: Košice
+      - value: Bratislava
+        name: Bratislava
+    - label: Súhlasím so spracovaním osobných údajov za účelom účasti na&nbsp;podujatí.
+      error: Prosím, akceptujte súhlas so spracovaním osobných údajov.
+      tag: input
+      name: terms
+      type: checkbox
+      required: true
+    buttonLabel: Registrovať na podujatie
+    thankYouMsg: Ďakujeme za registráciu na podujatie.
