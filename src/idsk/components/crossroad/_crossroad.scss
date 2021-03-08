@@ -11,14 +11,26 @@
   .idsk-crossroad-2 {
     @include mq(mobile) {
       @include govuk-grid-column("full");
+
+      &:first-child {
+        padding-left: 0;
+      }
     }
 
     @include mq($and: "(orientation: landscape)") {
       @include govuk-grid-column("one-half");
+
+      &:first-child {
+        padding-left: 0;
+      }
     }
 
     @include mq($from: desktop) {
       @include govuk-grid-column("one-half");
+
+      &:first-child {
+        padding-left: 0;
+      }
     }
   }
 
