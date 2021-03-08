@@ -1,8 +1,18 @@
 params:
-  - name: designAddress
-    type: html
+  - name: classes
+    type: string
     required: false
-    description: Url address for design page.
+    description: Class name for component banner.
+
+  - name: pageName
+    type: string
+    required: false
+    description: Name of page.
+
+  - name: headline
+    type: string
+    required: false
+    description: Name of headline.
 
 previewLayout: full-width
 accessibilityCriteria: |

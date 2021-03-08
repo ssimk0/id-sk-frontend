@@ -4,11 +4,17 @@
 {% from "../../../src/idsk/components/banner/macro.njk" import idskBanner %}
 {% set pageName = "Stepper" %}
 {% block styles %}
-  <style>
-    .idsk-stepper__heading {
-      margin-bottom: 30px;
-    }
-  </style>
+    <style>
+        .idsk-stepper__heading {
+            margin-bottom: 30px;
+        }
+        .idsk-stepper__img {
+            width: inherit;
+        }
+        .idsk-stepper__list {
+            margin-left: -15px;
+        }
+    </style>
 {% endblock %}
 {% block beforeContent %}
     {{ govukBreadcrumbs({
@@ -29,27 +35,26 @@
                 <h3 class="govuk-heading-l">Z čoho sa skladá stepper ?</h3>
                 <p class="govuk-body-l">Stepper sa skladá zo:
                 </p>
-                <br>
-                <ul class="govuk-list">
+                <ol type="a" class="govuk-body-l idsk-stepper__list">
                     <li>
-                        <a>a)&nbsp; základného kroku,</a>
+                        <span>&nbsp; základného kroku,</span>
                     </li>
                     <li>
-                        <a>b)&nbsp; koncového kroku,</a>
+                        <span>&nbsp; koncového kroku,</span>
                     </li>
                     <li>
-                        <a>c)&nbsp; kroku s “a” - spája dva rovnocenné kroky - napr.: vybavenie tabuliek EČV a vybavenie technického preukazu,</a>
+                        <span>&nbsp; kroku s “a” - spája dva rovnocenné kroky - napr.: vybavenie tabuliek EČV a vybavenie technického preukazu,</span>
                     </li>
                     <li>
-                        <a>d)&nbsp; zvýrazneného kroku po kliknutí na odkaz,</a>
+                        <span>&nbsp; zvýrazneného kroku po kliknutí na odkaz,</span>
                     </li>
                     <li>
-                        <a>e)&nbsp; nadpisu (pred začiatkom steppera alebo v stepperi),</a>
+                        <span>&nbsp; nadpisu (pred začiatkom steppera alebo v stepperi),</span>
                     </li>
                     <li>
-                        <a>f)&nbsp; a z baneru, ktorý bude po kliknutí umiestnený na začiatku stránky s obsahom.</a>
+                        <span>&nbsp; a z baneru, ktorý bude po kliknutí umiestnený na začiatku stránky s obsahom.</span>
                     </li>
-                </ul>
+                </ol>
             </div>
         </div>
         <div class="govuk-grid-row">
@@ -231,7 +236,7 @@
                 <p class="govuk-body">
                     Tento prvok sa použije na konci obsahu ku konkrétnemu obsahu, aby používateľ vedel, na ktorý odkaz v stepperi klikol. Slúži to ako dodatočná navigácia v rámci steppera.
                 </p>
-                <img src="/public/assets/images/patterns/stepperSelectedItem.png">
+                <img src="/public/assets/images/patterns/stepperSelectedItem.png" class="idsk-stepper__img">
 
                 <h4 class="govuk-heading-l">Ako použiť stepper pre životnú situáciu ?</h4>
                 <p class="govuk-body">

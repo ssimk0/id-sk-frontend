@@ -1,5 +1,5 @@
 
-<div class="govuk-grid-column-{{ 'one-third' if params.oneThird else 'two-thirds' }}">
+<div class="govuk-grid-column-{{params.customWidthClass if params.customWidthClass else 'two-thirds' }}">
   <div class="idsk-related-content {{ params.classes if params.classes }}" data-module="idsk-related-content">
     <hr class="idsk-related-content__line" aria-hidden="true" />
     <h4 class="idsk-related-content__heading govuk-heading-s">{{ params.heading }}</h4>
