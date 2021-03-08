@@ -34,8 +34,14 @@
                 @include govuk-shape-arrow($direction: right, $base: 13px);
 
                 content: "";
+                display: inline-block;
+                margin-left: -15px;
+                margin-top: 4px;
                 position: absolute;
-                margin-top: govuk-spacing(1);
+
+                @include mq($from: tablet) {
+                    margin-top: 6px;
+                }
             }
         }
     }
