@@ -20,10 +20,17 @@
 
     .govuk-form-group,
     .govuk-select {
-      width: 100%;
+      width: auto;
 
       @include mq($from: tablet) {
         max-width: 465px;
+      }
+    }
+
+    .govuk-form-group--error.govuk-form-group,
+    .govuk-form-group--error.govuk-select {
+      @include mq($from: tablet) {
+        max-width: 450px;
       }
     }
 
