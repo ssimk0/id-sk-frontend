@@ -8,6 +8,10 @@
 
 {% block styles %}
 <style>
+  body {
+    overflow-x: hidden;
+  }
+  
   .idsk-intro-block__side-menu__ul {
     list-style: none;
   }
@@ -68,6 +72,30 @@
   .idsk-blue-banner .govuk-link {
     color: white;
   }
+  .idsk-blue-banner .govuk-grid-column-two-thirds {
+    padding: 0;
+  }
+  .idsk-blue-banner::before {
+    content: "";
+    background: #003078;
+    position: absolute;
+    width: calc((100vw - 100%)/2);
+    height: 100%;
+    left: calc((100vw - 100%)/-2);
+    top: 0;
+    overflow: hidden;
+  }
+  .idsk-blue-banner::after {
+    content: "";
+    background: #003078;
+    position: absolute;
+    width: calc((100vw - 100%)/2);
+    height: 100%;
+    right: calc((100vw - 100%)/-2);
+    top: 0;
+    overflow: hidden;
+  }
+
 </style>
 {% endblock %}
 
@@ -373,17 +401,19 @@
   </div>
   
   <div class="idsk-blue-banner">
-    <div class="govuk-grid-column-two-thirds">
-      <h2 class="govuk-heading-l">Inštitút digitálnych a rozvojových politík</h2>
-      <div class="govuk-caption-l">
-        Všetky informácie o príprave, revízii a realizácii Európskych štrukturálnych fondov (EŠIF) v podmienkach SR na jendom mieste.  
+    <div class="idsk-blue-banner__wrapper">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-l">Inštitút digitálnych a rozvojových politík</h2>
+        <div class="govuk-caption-l">
+          Všetky informácie o príprave, revízii a realizácii Európskych štrukturálnych fondov (EŠIF) v podmienkach SR na jendom mieste.  
+        </div>
+        <br>
+        <a href="#" class="govuk-link" title="Zistiť viac o IDRP">Zistiť viac o IDRP</a>
+        <br>
       </div>
-      <br>
-      <a href="#" class="govuk-link" title="Zistiť viac o IDRP">Zistiť viac o IDRP</a>
-      <br>
-    </div>
-    <div class="govuk-grid-column-one-third">
-      <img src="/public/assets/images/examples/eurofound.png" alt="eurofound">
+      <div class="govuk-grid-column-one-third">
+        <img src="/public/assets/images/examples/eurofound.png" alt="eurofound">
+      </div>
     </div>
   </div>
 
