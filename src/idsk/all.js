@@ -10,6 +10,7 @@ import HeaderExtended from './components/header-extended/header-extended';
 import InPageNavigation from './components/in-page-navigation/in-page-navigation';
 import Stepper from './components/stepper/stepper';
 import RegistrationForEvent from './components/registration-for-event/registration-for-event';
+import Address from './components/address/address';
 
 function initAll(options) {
   // Set the options to an empty object by default if no options are passed.
@@ -74,6 +75,11 @@ function initAll(options) {
     new RegistrationForEvent($registrationForEvent).init();
   })
 
+  var $addresses = scope.querySelectorAll('[data-module="idsk-address"]');
+  nodeListForEach($addresses, function ($address) {
+    new Address($address).init();
+  })
+
   // Init all GOVUK components js
   initAllGOVUKjs(options);
 }
@@ -89,5 +95,6 @@ export {
   HeaderExtended,
   InPageNavigation,
   Stepper,
-  RegistrationForEvent
+  RegistrationForEvent,
+  Address
 }
