@@ -28,7 +28,7 @@
         }
 
         &__link-text {
-            margin-left: govuk-spacing(4);
+            margin-left: govuk-spacing(3);
 
             &:before {
                 @include govuk-shape-arrow($direction: right, $base: 13px);
