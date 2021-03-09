@@ -43,15 +43,13 @@
                         <h2 class="govuk-heading-l">
                             {{ params.sideMenuTitle if params.sideMenuTitle else "Populárny obsah"}}
                         </h2>
-                        <div>
-                            <ul class="idsk-intro-block__side-menu__ul">
-                                {% for sideMenu in params.sideMenu %}
-                                    <li class="idsk-intro-block__side-menu__li">
-                                        <a class="idsk-intro-block__side-menu__a" href="#" title="{{ sideMenu.item }}">{{ sideMenu.item }}</a>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
+                        <ul class="idsk-intro-block__side-menu__ul">
+                        {% for sideMenu in params.sideMenu %}
+                            <li class="idsk-intro-block__side-menu__li">
+                                <a class="idsk-intro-block__side-menu__a" href="#" title="{{ sideMenu.item }}">{{ sideMenu.item }}</a>
+                            </li>
+                        {% endfor %}
+                        </ul>
                     </div>
                 {% else %}
                     <div id="idsk-intro-block__side-menu__default" class='govuk-grid-column-full govuk-grid-column-one-third-from-desktop {{ params.classBackground if params.classBackground }} '>
@@ -64,7 +62,8 @@
                                     <li class="idsk-intro-block__side-menu__default__li">
                                         <p>
                                             <a class="govuk-link" href="{{sideMenu.href}}">
-                                                {{ sideMenu.item }}</a>
+                                                {{ sideMenu.item }}
+                                            </a>
                                         </p>
                                     </li>
                                 {% endfor %}

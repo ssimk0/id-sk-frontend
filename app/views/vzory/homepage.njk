@@ -11,23 +11,17 @@
   body {
     overflow-x: hidden;
   }
-  
-  .idsk-intro-block__side-menu__ul {
-    list-style: none;
-  }
-  .app-pane-blue .idsk-intro-block__side-menu__li {
-    padding: 10px 0;
-  }
-  .idsk-intro-block__side-menu__li:before {
-    content: "\2022";
-    color: white;
-    display: inline-block;
-    margin-left: 0;
-    font-size: 40px;
-    margin-right: 10px;
-    line-height: 20px;
+
+  .idsk-intro-block .app-pane-blue {
+    padding: 20px;
   }
 
+  @media (max-width: 40.0625em) {
+    .govuk-grid-column-one-third.idsk-intro-block {
+      padding: 0;
+    }
+  }
+ 
   .idsk-events-list {
     font-family: "Source Sans Pro", "Arial", sans-serif;
     display: -webkit-box;
@@ -95,6 +89,35 @@
     top: 0;
     overflow: hidden;
   }
+
+  .idsk-blue-banner__wrapper {
+    display: flex;
+    flex-flow: row;
+    text-align: right;
+  }
+  .idsk-blue-banner_description {
+    text-align: left;
+  }
+
+  .idsk-blue-banner__image {
+    align-self: center;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  @media (max-width: 40.0625em) {
+    .idsk-blue-banner__wrapper {
+      flex-flow: column;
+      flex-direction: column-reverse;
+      text-align:center;
+    }
+    
+    .idsk-blue-banner__image {
+      display: block;
+      margin-bottom: 30px;
+    }
+  }
+
 
 </style>
 {% endblock %}
@@ -284,26 +307,48 @@
 
   <div class="govuk-grid-row">
     {{ idskCrossroad({
-      "columns": 2,
-      "classes": "govuk-clearfix",
-      "items": [
-          { "title": 'Implementácia EŠIF', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' },
-          { "title": 'Hodnotenie EŠIF', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' },
-          { "title": 'OP Integrovaná infraštruktúra', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' },
-          { "title": 'OP Technická pomoc', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' },
-          { "title": 'Integrovaný regionálny operačný program', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' },
-          { "title": 'Monitorovanie EŠIF', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' },
-          { "title": 'IT monitorovací systém pre EŠIF', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' },
-          { "title": 'PO7 Informačná spoločnosť', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' },
-          { "title": 'Nórske fondy', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' },
-          { "title": 'IROP', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' }
-      ]
+        "columns": 2,
+        "classes": "govuk-clearfix",
+        "items": [
+            { "title": 'Implementácia EŠIF', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' },
+            { "title": 'Hodnotenie EŠIF', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' },
+            { "title": 'Monitorovanie EŠIF', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' },
+            { "title": 'IT monitorovací systém pre EŠIF', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' }
+        ]
     }) }}
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-half govuk-!-padding-left-0">
+      <h3 class="govuk-heading-m govuk-!-margin-top-2 govuk-!-margin-left-3">Ministerstvo ako prijímateľ EŠIF</h3>
+      {{ idskCrossroad({
+        "columns": 1,
+        "classes": "govuk-clearfix",
+        "items": [
+            { "title": 'OP Integrovaná infraštruktúra', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' },
+            { "title": 'OP Technická pomoc', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' },
+            { "title": 'Integrovaný regionálny operačný program', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' }
+        ]
+      }) }}
+    </div>
+    <div class="govuk-grid-column-one-half govuk-!-padding-left-0">
+      <h3 class="govuk-heading-m govuk-!-margin-top-2 govuk-!-margin-left-3">Ministerstvo ako poskytovateľ EŠIF</h3>
+      {{ idskCrossroad({
+        "columns": 1,
+        "classes": "govuk-clearfix",
+        "items": [
+            { "title": 'PO7 Informačná spoločnosť', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' },
+            { "title": 'Nórske fondy', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' },
+            { "title": 'IROP', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' }
+        ]
+      }) }}
+    </div>
   </div>
 
   <hr class="idsk-hr-separator govuk-!-margin-bottom-6">
 
   <div class="govuk-grid-row">
+    <h2 class="govuk-heading-l govuk-!-margin-left-3">Vedenie ministerstva</h2>
     {{ idskCard({ 
       "type": "profile-horizontal", 
       "link": "#",
@@ -333,32 +378,34 @@
         ]
       }) }}
     </div>
-    <div class="govuk-grid-column-one-third app-pane-blue">
-      <h4 class="govuk-heading-l">G2G služby</h4>
-      <ul class="idsk-intro-block__side-menu__ul">
-        <li class="idsk-intro-block__side-menu__li">
-          <a class="idsk-intro-block__side-menu__a" href="#" title="Centrálny metainformačný systém verejnej správy (MetaIS)">Centrálny metainformačný systém verejnej správy (MetaIS)</a>
-        </li>
-        <li class="idsk-intro-block__side-menu__li">
-          <a class="idsk-intro-block__side-menu__a" href="#" title="Zaručená konverzia">Zaručená konverzia</a>
-        </li>
-        <li class="idsk-intro-block__side-menu__li">
-          <a class="idsk-intro-block__side-menu__a" href="#" title="Alfi.digital">Alfi.digital</a>
-        </li>
-        <li class="idsk-intro-block__side-menu__li">
-          <a class="idsk-intro-block__side-menu__a" href="#" title="Oversi.gov.sk">Oversi.gov.sk</a>
-        </li>
-        <li class="idsk-intro-block__side-menu__li">
-          <a class="idsk-intro-block__side-menu__a" href="#" title="Vládny cloud">Vládny cloud</a>
-        </li>
-        <li class="idsk-intro-block__side-menu__li">
-          <a class="idsk-intro-block__side-menu__a" href="#" title="IOMO">IOMO</a>
-        </li>
-      </ul>
+    <div class="govuk-grid-column-one-third idsk-intro-block">
+      <div class="app-pane-blue">
+        <h4 class="govuk-heading-l govuk-!-margin-bottom-2">G2G služby</h4>
+        <ul class="idsk-intro-block__side-menu__ul">
+          <li class="idsk-intro-block__side-menu__li">
+            <a class="idsk-intro-block__side-menu__a" href="#" title="Centrálny metainformačný systém verejnej správy (MetaIS)">Centrálny metainformačný systém verejnej správy (MetaIS)</a>
+          </li>
+          <li class="idsk-intro-block__side-menu__li">
+            <a class="idsk-intro-block__side-menu__a" href="#" title="Zaručená konverzia">Zaručená konverzia</a>
+          </li>
+          <li class="idsk-intro-block__side-menu__li">
+            <a class="idsk-intro-block__side-menu__a" href="#" title="Alfi.digital">Alfi.digital</a>
+          </li>
+          <li class="idsk-intro-block__side-menu__li">
+            <a class="idsk-intro-block__side-menu__a" href="#" title="Oversi.gov.sk">Oversi.gov.sk</a>
+          </li>
+          <li class="idsk-intro-block__side-menu__li">
+            <a class="idsk-intro-block__side-menu__a" href="#" title="Vládny cloud">Vládny cloud</a>
+          </li>
+          <li class="idsk-intro-block__side-menu__li">
+            <a class="idsk-intro-block__side-menu__a" href="#" title="IOMO">IOMO</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 
-  <hr class="idsk-hr-separator govuk-!-margin-bottom-6">
+  <hr class="idsk-hr-separator-until-tablet govuk-!-margin-bottom-6">
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full govuk-!-margin-bottom-5">
@@ -402,7 +449,7 @@
   
   <div class="idsk-blue-banner">
     <div class="idsk-blue-banner__wrapper">
-      <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6 idsk-blue-banner_description">
         <h2 class="govuk-heading-l">Inštitút digitálnych a rozvojových politík</h2>
         <div class="govuk-caption-l">
           Všetky informácie o príprave, revízii a realizácii Európskych štrukturálnych fondov (EŠIF) v podmienkach SR na jendom mieste.  
@@ -411,7 +458,7 @@
         <a href="#" class="govuk-link" title="Zistiť viac o IDRP">Zistiť viac o IDRP</a>
         <br>
       </div>
-      <div class="govuk-grid-column-one-third">
+      <div class="govuk-grid-column-one-third idsk-blue-banner__image">
         <img src="/public/assets/images/examples/eurofound.png" alt="eurofound">
       </div>
     </div>
