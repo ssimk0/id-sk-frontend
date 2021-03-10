@@ -1,0 +1,10 @@
+@import "../../../govuk/settings/all";
+@import "../../../govuk/tools/all";
+@import "../../../govuk/helpers/all";
+
+@include govuk-exports("idsk/component/interactive-map") {
+    .idsk-interactive-map {
+        @include govuk-font($size: 16);
+        @include govuk-text-colour;
+    }
+}

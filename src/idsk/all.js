@@ -9,6 +9,7 @@ import CustomerSurveys from "./components/customer-surveys/customer-surveys";
 import HeaderExtended from './components/header-extended/header-extended';
 import InPageNavigation from './components/in-page-navigation/in-page-navigation';
 import RegistrationForEvent from './components/registration-for-event/registration-for-event';
+import InteractiveMap from './components/interactive-map/interactive-map';
 
 function initAll(options) {
   // Set the options to an empty object by default if no options are passed.
@@ -68,6 +69,11 @@ function initAll(options) {
     new RegistrationForEvent($registrationForEvent).init();
   })
 
+  var $interactiveMaps = scope.querySelectorAll('[data-module="idsk-interactive-map"]');
+  nodeListForEach($interactiveMaps, function ($interactiveMap) {
+    new InteractiveMap($interactiveMap).init();
+  })
+
   // Init all GOVUK components js
   initAllGOVUKjs(options);
 }
@@ -83,4 +89,5 @@ export {
   HeaderExtended,
   InPageNavigation,
   RegistrationForEvent,
+  InteractiveMap
 }
