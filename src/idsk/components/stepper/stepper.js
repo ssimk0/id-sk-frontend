@@ -19,7 +19,7 @@ import '../../../govuk/vendor/polyfills/Element/prototype/classList'
 
 function Stepper($module) {
   this.$module = $module
-  this.moduleId = $module.getAttribute('id')
+  this.$moduleId = $module.getAttribute('id')
   this.$sections = $module.querySelectorAll('.idsk-stepper__section')
   this.$links = $module.querySelectorAll('.idsk-stepper__section-content .govuk-link')
   this.$openAllButton = ''
@@ -118,8 +118,8 @@ Stepper.prototype.initHeaderAttributes = function ($headerWrapper, index) {
   // Copy existing span element to an actual button element, for improved accessibility.
   var $button = document.createElement('button')
   $button.setAttribute('type', 'button')
-  $button.setAttribute('id', this.moduleId + '-heading-' + (index + 1))
-  $button.setAttribute('aria-controls', this.moduleId + '-content-' + (index + 1))
+  $button.setAttribute('id', this.$moduleId + '-heading-' + (index + 1))
+  $button.setAttribute('aria-controls', this.$moduleId + '-content-' + (index + 1))
 
   // Copy all attributes (https://developer.mozilla.org/en-US/docs/Web/API/Element/attributes) from $span to $button
   for (var i = 0; i < $span.attributes.length; i++) {
@@ -138,7 +138,7 @@ Stepper.prototype.initHeaderAttributes = function ($headerWrapper, index) {
   })
 
   if (typeof ($summary) !== 'undefined' && $summary !== null) {
-    $button.setAttribute('aria-describedby', this.moduleId + '-summary-' + (index + 1))
+    $button.setAttribute('aria-describedby', this.$moduleId + '-summary-' + (index + 1))
   }
 
   // $span could contain HTML elements (see https://www.w3.org/TR/2011/WD-html5-20110525/content-models.html#phrasing-content)
@@ -166,17 +166,17 @@ Stepper.prototype.onSectionToggle = function ($section) {
 
 // When Open/Zatvoriť všetko toggled, set and store state
 Stepper.prototype.onOpenOrCloseAllToggle = function () {
-  var $module = this
+  var $self = this
   var $sections = this.$sections
   var $nowExpanded = !this.checkIfAllSectionsOpen()
 
   nodeListForEach($sections, function ($section) {
-    $module.setExpanded($nowExpanded, $section)
+    $self.setExpanded($nowExpanded, $section)
     // Store the state in sessionStorage when a change is triggered
-    $module.storeState($section)
+    $self.storeState($section)
   })
 
-  $module.updateOpenAllButton($nowExpanded)
+  $self.updateOpenAllButton($nowExpanded)
 }
 
 // Set section attributes when opened/closed
