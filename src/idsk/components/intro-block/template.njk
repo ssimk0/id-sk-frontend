@@ -6,7 +6,7 @@
                     {{ params.headline if params.headline else "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky"}}
                 </h2>
                 <p class="idsk-intro-block__subtitle govuk-caption-l">{{ params.mainTitle if params.mainTitle else "Vitajte na stránke Ministerstva investícií, regionálneho rozvoja a informatizácie. Dozvedieť sa"}}
-                    {% if mainTitleLinkLabel %}
+                    {% if params.mainTitleLinkLabel %}
                     <a class="govuk-link" href="{{ params.moreInfoAboutMinistryLink if params.moreInfoAboutMinistryLink else '#'  }}">
                         {{ params.mainTitleLinkLabel if params.mainTitleLinkLabel else "viac o ministerstve."}}</a>
                     {% endif %}
