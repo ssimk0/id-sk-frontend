@@ -65,8 +65,8 @@ function initAll(options) {
   var $inPageNavigation = scope.querySelector('[data-module="idsk-in-page-navigation"]');
   new InPageNavigation($inPageNavigation).init();
 
-  var $stepper = scope.querySelectorAll('[data-module="idsk-stepper"]');
-  nodeListForEach($stepper, function ($stepper) {
+  var $steppers = scope.querySelectorAll('[data-module="idsk-stepper"]');
+  nodeListForEach($steppers, function ($stepper) {
     new Stepper($stepper).init();
   });
 

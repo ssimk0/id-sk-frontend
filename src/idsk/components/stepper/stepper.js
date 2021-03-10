@@ -23,18 +23,18 @@ function Stepper($module) {
   this.$sections = $module.querySelectorAll('.idsk-stepper__section')
   this.$links = $module.querySelectorAll('.idsk-stepper__section-content .govuk-link')
   this.$openAllButton = ''
-  this.browserSupportsSessionStorage = helper.checkForSessionStorage()
+  this.$browserSupportsSessionStorage = $helper.checkForSessionStorage()
 
-  this.controlsClass = 'idsk-stepper__controls'
-  this.openAllClass = 'idsk-stepper__open-all'
-  this.iconClass = 'idsk-stepper__icon'
+  this.$controlsClass = 'idsk-stepper__controls'
+  this.$openAllClass = 'idsk-stepper__open-all'
+  this.$iconClass = 'idsk-stepper__icon'
 
-  this.sectionHeaderClass = 'idsk-stepper__section-header'
-  this.sectionHeaderFocusedClass = 'idsk-stepper__section-header--focused'
-  this.sectionHeadingClass = 'idsk-stepper__section-heading'
-  this.sectionSummaryClass = 'idsk-stepper__section-summary'
-  this.sectionButtonClass = 'idsk-stepper__section-button'
-  this.sectionExpandedClass = 'idsk-stepper__section--expanded'
+  this.$sectionHeaderClass = 'idsk-stepper__section-header'
+  this.$sectionHeaderFocusedClass = 'idsk-stepper__section-header--focused'
+  this.$sectionHeadingClass = 'idsk-stepper__section-heading'
+  this.$sectionSummaryClass = 'idsk-stepper__section-summary'
+  this.$sectionButtonClass = 'idsk-stepper__section-button'
+  this.$sectionExpandedClass = 'idsk-stepper__section--expanded'
 }
 
 // Initialize component
@@ -56,8 +56,8 @@ Stepper.prototype.init = function () {
   );
 
   // See if "Zobraziť všetko" button text should be updated
-  var areAllSectionsOpen = this.checkIfAllSectionsOpen()
-  this.updateOpenAllButton(areAllSectionsOpen)
+  var $areAllSectionsOpen = this.checkIfAllSectionsOpen()
+  this.updateOpenAllButton($areAllSectionsOpen)
 }
 
 // Initialise controls and set attributes
@@ -66,13 +66,13 @@ Stepper.prototype.initControls = function () {
   this.$openAllButton = document.createElement('button')
   this.$openAllButton.setAttribute('type', 'button')
   this.$openAllButton.innerHTML = 'Zobraziť všetko <span class="govuk-visually-hidden">sections</span>'
-  this.$openAllButton.setAttribute('class', this.openAllClass)
+  this.$openAllButton.setAttribute('class', this.$openAllClass)
   this.$openAllButton.setAttribute('aria-expanded', 'false')
   this.$openAllButton.setAttribute('type', 'button')
 
   // Create control wrapper and add controls to it
-  var accordionControls = this.$module.querySelector('.idsk-stepper__controls');
-  accordionControls.appendChild(this.$openAllButton)
+  var $accordionControls = this.$module.querySelector('.idsk-stepper__controls');
+  $accordionControls.appendChild(this.$openAllButton)
    
   // Handle events for the controls
   this.$openAllButton.addEventListener('click', this.onOpenOrCloseAllToggle.bind(this))
@@ -81,15 +81,15 @@ Stepper.prototype.initControls = function () {
 // Initialise section headers
 Stepper.prototype.initSectionHeaders = function () {
   // Loop through section headers
-  nodeListForEach(this.$sections, function ($section, i) {
+  nodeListForEach(this.$sections, function ($section, $i) {
     // Set header attributes
-    var header = $section.querySelector('.' + this.sectionHeaderClass)
-    this.initHeaderAttributes(header, i)
+    var $header = $section.querySelector('.' + this.$sectionHeaderClass)
+    this.initHeaderAttributes($header, $i)
 
     this.setExpanded(this.isExpanded($section), $section)
 
     // Handle events
-    header.addEventListener('click', this.onSectionToggle.bind(this, $section))
+    $header.addEventListener('click', this.onSectionToggle.bind(this, $section))
 
     // See if there is any state stored in sessionStorage and set the sections to
     // open or closed.
@@ -106,10 +106,10 @@ Stepper.prototype.handleItemLink = function (e) {
 
 // Set individual header attributes
 Stepper.prototype.initHeaderAttributes = function ($headerWrapper, index) {
-  var $module = this
-  var $span = $headerWrapper.querySelector('.' + this.sectionButtonClass)
-  var $heading = $headerWrapper.querySelector('.' + this.sectionHeadingClass)
-  var $summary = $headerWrapper.querySelector('.' + this.sectionSummaryClass)
+  var $module = this.$module
+  var $span = $headerWrapper.querySelector('.' + this.$sectionButtonClass)
+  var $heading = $headerWrapper.querySelector('.' + this.$sectionHeadingClass)
+  var $summary = $headerWrapper.querySelector('.' + this.$sectionSummaryClass)
 
   if (!$span) {
     return;
@@ -123,18 +123,18 @@ Stepper.prototype.initHeaderAttributes = function ($headerWrapper, index) {
 
   // Copy all attributes (https://developer.mozilla.org/en-US/docs/Web/API/Element/attributes) from $span to $button
   for (var i = 0; i < $span.attributes.length; i++) {
-    var attr = $span.attributes.item(i)
-    $button.setAttribute(attr.nodeName, attr.nodeValue)
+    var $attr = $span.attributes.item(i)
+    $button.setAttribute($attr.nodeName, $attr.nodeValue)
   }
 
   $button.addEventListener('focusin', function (e) {
-    if (!$headerWrapper.classList.contains($module.sectionHeaderFocusedClass)) {
-      $headerWrapper.className += ' ' + $module.sectionHeaderFocusedClass
+    if (!$headerWrapper.classList.contains($module.$sectionHeaderFocusedClass)) {
+      $headerWrapper.className += ' ' + $module.$sectionHeaderFocusedClass
     }
   })
 
   $button.addEventListener('blur', function (e) {
-    $headerWrapper.classList.remove($module.sectionHeaderFocusedClass)
+    $headerWrapper.classList.remove($module.$sectionHeaderFocusedClass)
   })
 
   if (typeof ($summary) !== 'undefined' && $summary !== null) {
@@ -148,17 +148,17 @@ Stepper.prototype.initHeaderAttributes = function ($headerWrapper, index) {
   $heading.appendChild($button)
 
   // Add "+/-" icon
-  var icon = document.createElement('span')
-  icon.className = this.iconClass
-  icon.setAttribute('aria-hidden', 'true')
+  var $icon = document.createElement('span')
+  $icon.className = this.$iconClass
+  $icon.setAttribute('aria-hidden', 'true')
 
-  $heading.appendChild(icon)
+  $heading.appendChild($icon)
 }
 
 // When section toggled, set and store state
 Stepper.prototype.onSectionToggle = function ($section) {
-  var expanded = this.isExpanded($section)
-  this.setExpanded(!expanded, $section)
+  var $expanded = this.isExpanded($section)
+  this.setExpanded(!$expanded, $section)
 
   // Store the state in sessionStorage when a change is triggered
   this.storeState($section)
@@ -166,73 +166,73 @@ Stepper.prototype.onSectionToggle = function ($section) {
 
 // When Open/Zatvoriť všetko toggled, set and store state
 Stepper.prototype.onOpenOrCloseAllToggle = function () {
-  var $module = this
+  var $module = this.$module
   var $sections = this.$sections
 
-  var nowExpanded = !this.checkIfAllSectionsOpen()
+  var $nowExpanded = !this.checkIfAllSectionsOpen()
 
   nodeListForEach($sections, function ($section) {
-    $module.setExpanded(nowExpanded, $section)
+    $module.setExpanded($nowExpanded, $section)
     // Store the state in sessionStorage when a change is triggered
     $module.storeState($section)
   })
 
-  $module.updateOpenAllButton(nowExpanded)
+  $module.updateOpenAllButton($nowExpanded)
 }
 
 // Set section attributes when opened/closed
-Stepper.prototype.setExpanded = function (expanded, $section) {
-  var $button = $section.querySelector('.' + this.sectionButtonClass)
+Stepper.prototype.setExpanded = function ($expanded, $section) {
+  var $button = $section.querySelector('.' + this.$sectionButtonClass)
   if (!$button) {
     return;
   }
-  $button.setAttribute('aria-expanded', expanded)
+  $button.setAttribute('aria-expanded', $expanded)
 
-  if (expanded) {
-    $section.classList.add(this.sectionExpandedClass)
+  if ($expanded) {
+    $section.classList.add(this.$sectionExpandedClass)
   } else {
-    $section.classList.remove(this.sectionExpandedClass)
+    $section.classList.remove(this.$sectionExpandedClass)
   }
 
   // See if "Zobraziť všetko" button text should be updated
-  var areAllSectionsOpen = this.checkIfAllSectionsOpen()
-  this.updateOpenAllButton(areAllSectionsOpen)
+  var $areAllSectionsOpen = this.checkIfAllSectionsOpen()
+  this.updateOpenAllButton($areAllSectionsOpen)
 }
 
 // Get state of section
 Stepper.prototype.isExpanded = function ($section) {
-  return $section.classList.contains(this.sectionExpandedClass)
+  return $section.classList.contains(this.$sectionExpandedClass)
 }
 
 // Check if all sections are open
 Stepper.prototype.checkIfAllSectionsOpen = function () {
   // Get a count of all the Accordion sections
-  var sectionsCount = this.$sections.length
+  var $sectionsCount = this.$sections.length
   // Get a count of all Accordion sections that are expanded
-  var expandedSectionCount = this.$module.querySelectorAll('.' + this.sectionExpandedClass).length
-  var areAllSectionsOpen = sectionsCount === expandedSectionCount
+  var $expandedSectionCount = this.$module.querySelectorAll('.' + this.$sectionExpandedClass).length
+  var $areAllSectionsOpen = $sectionsCount === $expandedSectionCount
 
-  return areAllSectionsOpen
+  return $areAllSectionsOpen
 }
 
 // Update "Zobraziť všetko" button
-Stepper.prototype.updateOpenAllButton = function (expanded) {
-  var newButtonText = expanded ? 'Zatvoriť všetko' : 'Zobraziť všetko'
-  newButtonText += '<span class="govuk-visually-hidden"> sections</span>'
-  this.$openAllButton.setAttribute('aria-expanded', expanded)
-  this.$openAllButton.innerHTML = newButtonText
+Stepper.prototype.updateOpenAllButton = function ($expanded) {
+  var $newButtonText = $expanded ? 'Zatvoriť všetko' : 'Zobraziť všetko'
+  $newButtonText += '<span class="govuk-visually-hidden"> sections</span>'
+  this.$openAllButton.setAttribute('aria-expanded', $expanded)
+  this.$openAllButton.innerHTML = $newButtonText
 }
 
 // Check for `window.sessionStorage`, and that it actually works.
-var helper = {
+var $helper = {
   checkForSessionStorage: function () {
-    var testString = 'this is the test string'
-    var result
+    var $testString = 'this is the test string'
+    var $result
     try {
-      window.sessionStorage.setItem(testString, testString)
-      result = window.sessionStorage.getItem(testString) === testString.toString()
-      window.sessionStorage.removeItem(testString)
-      return result
+      window.sessionStorage.setItem($testString, $testString)
+      $result = window.sessionStorage.getItem($testString) === $testString.toString()
+      window.sessionStorage.removeItem($testString)
+      return $result
     } catch (exception) {
       if ((typeof console === 'undefined' || typeof console.log === 'undefined')) {
         console.log('Notice: sessionStorage not available.')
@@ -243,27 +243,27 @@ var helper = {
 
 // Set the state of the accordions in sessionStorage
 Stepper.prototype.storeState = function ($section) {
-  if (this.browserSupportsSessionStorage) {
+  if (this.$browserSupportsSessionStorage) {
     // We need a unique way of identifying each content in the accordion. Since
     // an `#id` should be unique and an `id` is required for `aria-` attributes
     // `id` can be safely used.
-    var $button = $section.querySelector('.' + this.sectionButtonClass)
+    var $button = $section.querySelector('.' + this.$sectionButtonClass)
 
     if ($button) {
-      var contentId = $button.getAttribute('aria-controls')
-      var contentState = $button.getAttribute('aria-expanded')
+      var $contentId = $button.getAttribute('aria-controls')
+      var $contentState = $button.getAttribute('aria-expanded')
 
-      if (typeof contentId === 'undefined' && (typeof console === 'undefined' || typeof console.log === 'undefined')) {
+      if (typeof $contentId === 'undefined' && (typeof console === 'undefined' || typeof console.log === 'undefined')) {
         console.error(new Error('No aria controls present in accordion section heading.'))
       }
 
-      if (typeof contentState === 'undefined' && (typeof console === 'undefined' || typeof console.log === 'undefined')) {
+      if (typeof $contentState === 'undefined' && (typeof console === 'undefined' || typeof console.log === 'undefined')) {
         console.error(new Error('No aria expanded present in accordion section heading.'))
       }
 
       // Only set the state when both `contentId` and `contentState` are taken from the DOM.
-      if (contentId && contentState) {
-        window.sessionStorage.setItem(contentId, contentState)
+      if ($contentId && $contentState) {
+        window.sessionStorage.setItem($contentId, $contentState)
       }
     }
   }
@@ -271,15 +271,15 @@ Stepper.prototype.storeState = function ($section) {
 
 // Read the state of the accordions from sessionStorage
 Stepper.prototype.setInitialState = function ($section) {
-  if (this.browserSupportsSessionStorage) {
-    var $button = $section.querySelector('.' + this.sectionButtonClass)
+  if (this.$browserSupportsSessionStorage) {
+    var $button = $section.querySelector('.' + this.$sectionButtonClass)
 
     if ($button) {
-      var contentId = $button.getAttribute('aria-controls')
-      var contentState = contentId ? window.sessionStorage.getItem(contentId) : null
+      var $contentId = $button.getAttribute('aria-controls')
+      var $contentState = $contentId ? window.sessionStorage.getItem($contentId) : null
 
-      if (contentState !== null) {
-        this.setExpanded(contentState === 'true', $section)
+      if ($contentState !== null) {
+        this.setExpanded($contentState === 'true', $section)
       }
     }
   }

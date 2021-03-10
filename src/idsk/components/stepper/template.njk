@@ -3,7 +3,7 @@
     2 %}
 {% set counter = 0 %}
 
-<h1 class="govuk-heading-l">{{params.mainTitle}}</h1>
+<h2 class="govuk-heading-l">{{params.mainTitle}}</h2>
 <p class="idsk-stepper__caption govuk-caption-m">{{params.caption}}</p>
 <div class="idsk-stepper {%- if params.classes %} {{ params.classes }}{% endif -%}" data-module="idsk-stepper" id="{{ id }}" {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}" {% endfor %}>
     <div class="idsk-stepper__subtitle-container">
@@ -60,7 +60,7 @@
                             {% for item in item.contents %}
                                 <ul class="govuk-list">
                                     <li>
-                                        <a class="govuk-link" href="#">
+                                        <a class="govuk-link" href="#" title="{{item.subtitle}}">
                                             {{item.subtitle}}</a>
                                     </li>
                                 </ul>
