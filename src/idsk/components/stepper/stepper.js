@@ -166,9 +166,8 @@ Stepper.prototype.onSectionToggle = function ($section) {
 
 // When Open/Zatvoriť všetko toggled, set and store state
 Stepper.prototype.onOpenOrCloseAllToggle = function () {
-  var $module = this.$module
+  var $module = this
   var $sections = this.$sections
-
   var $nowExpanded = !this.checkIfAllSectionsOpen()
 
   nodeListForEach($sections, function ($section) {
