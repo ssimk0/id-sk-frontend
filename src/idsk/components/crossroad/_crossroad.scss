@@ -130,7 +130,11 @@
 
   .idsk-crossroad__collapse--shadow {
     position: relative;
-    box-shadow: 5px -10px 70px 40px govuk-colour("white");
+    box-shadow: 5px -35px 30px 40px govuk-colour("white");
+
+    @include mq($from: desktop) {
+      box-shadow: 5px -10px 70px 40px govuk-colour("white");
+    }
   }
 
   .idsk-crossroad__uncollapse-hide--mobile,
