@@ -2,12 +2,14 @@
     <div class="idsk-intro-block {{ params.classes if params.classes }}">
         <div class="govuk-grid-row {{ params.classContainer }}">
             <div class="govuk-grid-column-full govuk-grid-column-two-thirds-from-desktop">
-                <h1 class="govuk-heading-xl">
+                <h2 class="govuk-heading-l">
                     {{ params.headline if params.headline else "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky"}}
-                </h1>
+                </h2>
                 <p class="idsk-intro-block__subtitle govuk-caption-l">{{ params.mainTitle if params.mainTitle else "Vitajte na stránke Ministerstva investícií, regionálneho rozvoja a informatizácie. Dozvedieť sa"}}
+                    {% if mainTitleLinkLabel %}
                     <a class="govuk-link" href="{{ params.moreInfoAboutMinistryLink if params.moreInfoAboutMinistryLink else '#'  }}">
                         {{ params.mainTitleLinkLabel if params.mainTitleLinkLabel else "viac o ministerstve."}}</a>
+                    {% endif %}
                 </p>
                 {% if params.searchEnabled %}
                     <div class="idsk-intro-block__search">
@@ -23,8 +25,8 @@
                     <div>
                         <ul class="idsk-intro-block__list__ul">
                             <li class="idsk-intro-block__bottom-menu__li govuk-caption-l">
-                                <a>Hľadáte toto?
-                                </a>
+                                <span>Hľadáte toto?
+                                </span>
                             </li>
                             {% for bottomMenu in params.bottomMenu %}
                                 <li class="idsk-intro-block__list__li">
@@ -43,23 +45,13 @@
                         <h2 class="govuk-heading-l">
                             {{ params.sideMenuTitle if params.sideMenuTitle else "Populárny obsah"}}
                         </h2>
-                        <div>
-                            <ul class="idsk-intro-block__side-menu__ul">
-                                {% for sideMenu in params.sideMenu %}
-                                    <li class="idsk-intro-block__side-menu__li">
-                                        <span class="idsk-intro-block__side-menu__span">
-                                            <svg width="10" height="10" viewbox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <circle class="idsk-intro-block__side-menu__circle" cx="5" cy="5" r="5"/>
-                                            </svg>
-                                        </span>
-                                        <p class="idsk-intro-block__side-menu__text">
-                                            <a class="idsk-intro-block__side-menu__a" href="{{sideMenu.href}}">
-                                                {{ sideMenu.item }}</a>
-                                        </p>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
+                        <ul class="idsk-intro-block__side-menu__ul">
+                        {% for sideMenu in params.sideMenu %}
+                            <li class="idsk-intro-block__side-menu__li">
+                                <a class="idsk-intro-block__side-menu__a" href="#" title="{{ sideMenu.item }}">{{ sideMenu.item }}</a>
+                            </li>
+                        {% endfor %}
+                        </ul>
                     </div>
                 {% else %}
                     <div id="idsk-intro-block__side-menu__default" class='govuk-grid-column-full govuk-grid-column-one-third-from-desktop {{ params.classBackground if params.classBackground }} '>
@@ -72,7 +64,8 @@
                                     <li class="idsk-intro-block__side-menu__default__li">
                                         <p>
                                             <a class="govuk-link" href="{{sideMenu.href}}">
-                                                {{ sideMenu.item }}</a>
+                                                {{ sideMenu.item }}
+                                            </a>
                                         </p>
                                     </li>
                                 {% endfor %}

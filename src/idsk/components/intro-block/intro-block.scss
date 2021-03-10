@@ -130,12 +130,34 @@
         }
     }
 
-    .idsk-intro-block__side-menu__ul .idsk-intro-block__side-menu__li {
-        display: flex;
+    .idsk-intro-block__side-menu__li {
+        padding-bottom: govuk-spacing(3);
     }
 
-    .idsk-intro-block__side-menu__ul .idsk-intro-block__side-menu__text {
-        margin-bottom: -5px;
+    .app-pane-blue .idsk-intro-block__side-menu__li:before {
+        content: "\2022";
+        color: govuk-colour("white");
+        display: inline-block;
+        margin-left: 0;
+        font-size: 40px;
+        margin-right: 10px;
+        line-height: 20px;
+        margin-top: -4px;
+    }
+
+    .app-pane-grey .idsk-intro-block__side-menu__li:before {
+        content: "\2022";
+        color: govuk-colour("black");
+        display: inline-block;
+        margin-left: 0;
+        font-size: 40px;
+        margin-right: 10px;
+        line-height: 20px;
+        margin-top: -4px;
+    }
+
+    .idsk-intro-block__side-menu__ul .idsk-intro-block__side-menu__li {
+        display: flex;
     }
 
     .idsk-intro-block__side-menu__default__li {
@@ -172,12 +194,11 @@
 
     #idsk-intro-block__side-menu__title .govuk-heading-l {
         padding-top: govuk-spacing(3);
-        margin-bottom: 0;
+        margin-bottom: govuk-spacing(2);
 
         @include mq($from: tablet) {
             padding-top: 0;
             margin-top: govuk-spacing(2);
-            margin-bottom: -5px;
         }
     }
 
@@ -232,10 +253,6 @@
             padding-bottom: 0;
             padding-right: govuk-spacing(4);
         }
-    }
-
-    .app-pane-grey .idsk-intro-block__side-menu__span .idsk-intro-block__side-menu__circle {
-        fill: govuk-colour("black");
     }
 
     .app-pane-grey {
