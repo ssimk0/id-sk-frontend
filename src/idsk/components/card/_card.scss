@@ -5,7 +5,6 @@
 @import "../../../govuk/helpers/typography";
 
 @include govuk-exports("idsk/component/card") {
-
   .idsk-card {
     &-basic,
     &-basic-variant,
@@ -37,7 +36,6 @@
       color: govuk-colour("black");
       text-decoration: underline;
     }
-
   }
 
   .idsk-card-img {
@@ -67,7 +65,7 @@
 
     &-profile-horizontal {
       @include govuk-grid-column("one-third");
-      padding: 0 govuk-spacing(3) 0 0;
+      padding: 0;
     }
   }
 
