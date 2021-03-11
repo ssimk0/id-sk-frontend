@@ -14,11 +14,15 @@
 
   .idsk-intro-block .app-pane-blue {
     padding: 20px;
+    margin: 45px;
   }
 
   @media (max-width: 40.0625em) {
-    .govuk-grid-column-one-third.idsk-intro-block {
+    .govuk-grid-column-one-half.idsk-intro-block {
       padding: 0;
+    }
+    .govuk-grid-column-one-half.idsk-intro-block .app-pane-blue {
+      margin: 0;
     }
   }
  
@@ -366,7 +370,7 @@
       <p class="govuk-body-m">Všetky informácie o príprave, revízii a realizácii Európskych štrukturálnych fondov (EŠIF) v podmienkach SR na jendom mieste. Viac informácií nájdete na <a class="govuk-link" href="#" title="podstránke Informatizácia">podstránke Informatizácia</a>.</p>
     </div>
 
-    <div class="govuk-grid-column-two-thirds govuk-!-padding-left-0">
+    <div class="govuk-grid-column-one-half govuk-!-padding-left-0">
       {{ idskCrossroad({
         "columns": 1,
         "items": [
@@ -377,7 +381,7 @@
         ]
       }) }}
     </div>
-    <div class="govuk-grid-column-one-third idsk-intro-block">
+    <div class="govuk-grid-column-one-half idsk-intro-block">
       <div class="app-pane-blue">
         <h4 class="govuk-heading-l govuk-!-margin-bottom-2">G2G služby</h4>
         <ul class="idsk-intro-block__side-menu__ul">
