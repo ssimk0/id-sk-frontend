@@ -98,6 +98,9 @@
     &:before {
       border-color: govuk-colour("black");
     }
+    .idsk-stepper__circle--number {
+      border-color: govuk-colour("black");
+    }
   }
 
   .idsk-stepper__section--last-item {
