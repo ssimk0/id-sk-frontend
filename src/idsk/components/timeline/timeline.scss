@@ -1,0 +1,127 @@
+@import "../../../govuk/settings/all";
+@import "../../../govuk/tools/all";
+@import "../../../govuk/helpers/all";
+@import "../../../govuk/helpers/typography";
+
+@include govuk-exports("idsk/component/timeline") {
+    .idsk-timeline__content {
+        @include govuk-font($size: 19);
+        height: 70px;
+        position: relative;
+    }
+
+    .idsk-timeline__content--caption {
+        padding: 3px;
+        position: relative;
+    }
+
+    .idsk-timeline__content--time {
+        font-size: 14px;
+        line-height: 16px;
+    }
+
+    .idsk-timeline__content {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .idsk-timeline__content--title-div {
+        margin-bottom: -25px;
+    }
+
+    .idsk-timeline__content--title {
+        padding-left: 0;
+    }
+
+    .idsk-timeline__content--title .govuk-heading-m {
+        margin-bottom: 0px;
+        margin-top: -40px;
+    }
+
+    .idsk-timeline__content--date-time:after,
+    .idsk-timeline__content--line:after,
+    .idsk-timeline__content--title:after {
+        content: "";
+        position: absolute;
+        z-index: 2;
+        height: 100%;
+        border-left: solid 2px govuk-colour("mid-grey", $legacy: "grey-2");
+        background: govuk-colour("white");
+        top: 15px;
+        left: 160px;
+    }
+
+    .idsk-timeline__content--caption .govuk-link:before {
+        content: "";
+        box-sizing: border-box;
+        position: absolute;
+        z-index: 5;
+        top: calc(50% - 9px);
+        left: -50px;
+        width: 1em;
+        height: 1em;
+        color: govuk-colour("black");
+        background: govuk-colour("white");
+        border-radius: 100px;
+        border: solid 2px govuk-colour("mid-grey", $legacy: "grey-2");
+        left: -88px;
+    }
+
+    .idsk-timeline__button--left-arrow {
+        @include govuk-font($size: 19);
+        position: relative;
+        z-index: 1;
+        margin: 0;
+        padding: 0;
+        border-width: 0;
+        color: govuk-colour("blue");
+    }
+
+    .idsk-timeline__button--back {
+        @include govuk-font($size: 19);
+        position: relative;
+        z-index: 1;
+        padding-left: govuk-spacing(3);
+        margin-bottom: govuk-spacing(4);
+        border-width: 0;
+        color: govuk-colour("blue");
+        background: none;
+        cursor: pointer;
+        -webkit-appearance: none;
+        text-decoration: underline;
+        text-align: right;
+
+        @include govuk-link-common;
+        @include govuk-link-style-default;
+    }
+
+    .idsk-timeline__button--forward {
+        @include govuk-font($size: 19);
+        position: relative;
+        z-index: 1;
+        padding-right: govuk-spacing(3);
+        margin-top: govuk-spacing(6);
+        border-width: 0;
+        color: govuk-colour("blue");
+        background: none;
+        cursor: pointer;
+        -webkit-appearance: none;
+        text-decoration: underline;
+        text-align: right;
+        float: right;
+
+        @include govuk-link-common;
+        @include govuk-link-style-default;
+    }
+
+    .idsk-timeline__content--line {
+        border-top: solid 1px govuk-colour("mid-grey", $legacy: "grey-2");
+        padding: 0;
+        margin-left: govuk-spacing(3);
+    }
+    .idsk-timeline__content--text {
+        @include govuk-font($size: 16, $weight: bold);
+        float: right;
+    }
+}
