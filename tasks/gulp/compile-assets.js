@@ -163,7 +163,9 @@ gulp.task('js:compile', () => {
       // Legacy mode is required for IE8 support
       legacy: true,
       // UMD allows the published bundle to work in CommonJS and in the browser.
-      format: 'umd'
+      format: 'umd',
+      external: ['d3'],     // pokus 
+      globals: { d3: 'd3' } // pokus
     }))
     .pipe(gulpif(isDist, uglify({
       ie8: true

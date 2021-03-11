@@ -1,6 +1,7 @@
 import '../../../govuk/vendor/polyfills/Function/prototype/bind'
 import '../../../govuk/vendor/polyfills/Event' // addEventListener and event.target normaliziation
-// import d3 from 'd3/dist/d3';
+import d3 from 'd3';
+//import * as d3 from 'd3';
 
 function InteractiveMap($module) {
     this.$module = $module
@@ -49,15 +50,6 @@ InteractiveMap.prototype.loadMap = function () {
 }
 
 InteractiveMap.prototype.loadData = function () {
-    // if (!document.getElementById("chart")) {
-    //     loadMap();
-
-    //     d3.json("https://mapa.covid.chat/admin/map_lights/data", function (data) {
-    //         renderTable(data);
-    //     });
-    //     return;
-    // }
-
     if (this.$currentData) {
         this.renderData(this.$currentData);
         return;
@@ -67,11 +59,11 @@ InteractiveMap.prototype.loadData = function () {
         return
     }
     console.log(this.$tableDataSource)
-    // console.log(d3)
-    // d3.csv(this.$tableDataSource, function (data) {
-    //     this.$currentData = data;
-    //     this.renderData(data);
-    // });
+    console.log(d3)
+    d3.csv(this.$tableDataSource, function (data) {
+        this.$currentData = data;
+        this.renderData(data);
+    });
 }
 
 InteractiveMap.prototype.renderData = function (data) {
