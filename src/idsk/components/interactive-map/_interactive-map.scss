@@ -6,5 +6,28 @@
     .idsk-interactive-map {
         @include govuk-font($size: 16);
         @include govuk-text-colour;
+
+        .idsk-interactive-map__header {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-end;
+
+            &-radios {
+                padding: 0;
+
+                .govuk-radios__item {
+                    margin-bottom: 0;
+                }
+            }
+
+            .govuk-form-group {
+                margin-bottom: 0;
+            }
+
+            &-select .govuk-form-group {
+                display: inline-block;
+                margin-right: govuk-spacing(4);
+            }
+        }
     }
 }
