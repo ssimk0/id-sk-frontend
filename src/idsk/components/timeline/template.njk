@@ -1,3 +1,4 @@
+
 <div data-module="idsk-timeline">
     <div class="idsk-timeline" role="contentinfo">
         <div class="govuk-container-width">
@@ -9,8 +10,10 @@
             </button>
             {% for event in params.events %}
                 {% if event.dateLine %}
-                    <div class="idsk-timeline__content">
-                        <div class="govuk-grid-column-full idsk-timeline__content--line">
+                    <div class="idsk-timeline__content idsk-timeline__content--line">
+                        <div class="govuk-grid-column-one-quarter"></div>
+                        <div class="govuk-grid-column-three-quarters idsk-timeline__content--date-line">
+                            <span class="idsk-timeline__vertical-line"></span>
                             <span class="idsk-timeline__content--text">{{event.dateLine}}
                             </span>
                         </div>
@@ -20,6 +23,7 @@
                     <div class="idsk-timeline__content idsk-timeline__content--title-div">
                         <div class="govuk-grid-column-one-quarter"></div>
                         <div class="govuk-grid-column-three-quarters idsk-timeline__content--title">
+                            <span class="idsk-timeline__vertical-line"></span>
                             <h3 class="govuk-heading-m">{{event.title}}
                             </h3>
                         </div>
@@ -31,7 +35,8 @@
                         <span class="idsk-timeline__content--time govuk-caption-m">{{event.time}}</span>
                     </div>
                     <div class="govuk-grid-column-three-quarters idsk-timeline__content--caption">
-                        <a class="govuk-link" href="#">{{event.caption[0].text}}</a>
+                        <span class="idsk-timeline__vertical-line"></span>
+                        <a class="govuk-link" href="#">{{event.caption[0].text}}</a>   
                     </div>
                 </div>
             {% endfor %}
