@@ -10,9 +10,10 @@
             </button>
             {% for event in params.events %}
                 {% if event.dateLine %}
-                    <div class="idsk-timeline__content idsk-timeline__content--line">
-                        <div class="govuk-grid-column-one-quarter"></div>
-                        <div class="govuk-grid-column-three-quarters idsk-timeline__content--date-line">
+                    <div class="idsk-timeline__content ">
+                        <hr class="idsk-timeline__content--line" />
+                        <div class="idsk-timeline-one-quarter"></div>
+                        <div class="idsk-timeline__content--date-line">
                             <span class="idsk-timeline__vertical-line"></span>
                             <span class="idsk-timeline__content--text">{{event.dateLine}}
                             </span>
@@ -21,8 +22,8 @@
                 {% endif %}
                 {% if event.title %}
                     <div class="idsk-timeline__content idsk-timeline__content--title-div">
-                        <div class="govuk-grid-column-one-quarter"></div>
-                        <div class="govuk-grid-column-three-quarters idsk-timeline__content--title">
+                        <div class="idsk-timeline-one-quarter"></div>
+                        <div class="idsk-timeline__content--title">
                             <span class="idsk-timeline__vertical-line"></span>
                             <h3 class="govuk-heading-m">{{event.title}}
                             </h3>
@@ -30,11 +31,11 @@
                     </div>
                 {% endif %}
                 <div class="idsk-timeline__content">
-                    <div class="govuk-grid-column-one-quarter idsk-timeline__content--date-time">
+                    <div class="idsk-timeline-one-quarter">
                         <span class="govuk-body-s">{{event.date}}</span><br>
                         <span class="idsk-timeline__content--time govuk-caption-m">{{event.time}}</span>
                     </div>
-                    <div class="govuk-grid-column-three-quarters idsk-timeline__content--caption">
+                    <div class="idsk-timeline__content--caption">
                         <span class="idsk-timeline__vertical-line"></span>
                         <a class="govuk-link" href="#">{{event.caption[0].text}}</a>   
                     </div>
