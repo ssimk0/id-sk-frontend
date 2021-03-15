@@ -234,7 +234,7 @@
       position: relative;
       z-index: 1;
       margin: 0;
-      padding: 0;
+      padding-right: 0;
       border-width: 0;
       color: $govuk-link-colour;
       background: none;
@@ -243,16 +243,17 @@
       text-decoration: underline;
       text-align: right;
       height: 50px;
+      padding-bottom: 15px;
 
       @include govuk-link-common;
       @include govuk-link-style-default;
 
       @include mq($and: "(orientation: landscape)") {
-        padding-bottom: govuk-spacing(3);
+        padding-bottom: govuk-spacing(6);
       }
 
       @include mq($from: tablet) {
-        padding-bottom: 0;
+        padding-bottom: govuk-spacing(4);
       }
 
       // Remove default button focus outline in Firefox
@@ -330,15 +331,6 @@
 
     .idsk-stepper__controls {
       text-align: right;
-      padding-bottom: govuk-spacing(1);
-      padding-top: govuk-spacing(1);
-      margin-top: -10px;
-
-      @include mq($from: tablet) {
-        padding-top: 0;
-        padding-bottom: 0;
-        
-      }
     }
 
     // Display an icon to the right of each header to indicate open/closed status,

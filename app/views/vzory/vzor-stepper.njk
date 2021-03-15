@@ -22,8 +22,11 @@
     .idsk-stepper-pattern__banner {
       margin-bottom: -20px;
     }
-    .idsk-stepper-pattern__element-right {
-      float: right;
+    @media (min-width: 48.0525em) {
+      .idsk-stepper-pattern__element-right {
+        float: right;
+        margin-right: 15px;
+      }
     }
   </style>
 {% endblock %}
@@ -35,7 +38,6 @@
     ]
   }) }}
 {% endblock %}
-
 {% block header %}
   {{ idskHeaderExtended({
     logoGrid: 'govuk-grid-column-two-thirds',
@@ -167,7 +169,6 @@
     ]    
   }) }}
 {% endblock %}
-
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-three-quarters-from-desktop idsk-stepper-pattern__element-right">
@@ -184,7 +185,6 @@
           zobraziť aktualizácie</a>
       </p>
     </div>
-
     {{ idskInPageNavigation({
       items: [
         {
