@@ -16,7 +16,7 @@
       z-index: 2;
       width: 18px;
       left: -43px;
-      border-bottom: solid 2px govuk-colour("mid-grey", $legacy: "grey-1");
+      border-bottom: solid 2px govuk-colour("grey-5");
       @include mq(tablet) {
         left: -41px;
       }
@@ -63,7 +63,7 @@
       position: absolute;
       z-index: 2;
       height: 100%;
-      border-left: solid 2px govuk-colour("mid-grey", $legacy: "grey-1");
+      border-left: solid 2px govuk-colour("grey-5");
       background: govuk-colour("white");
       top: 35px;
       left: -35px;
@@ -159,7 +159,7 @@
 
   .idsk-stepper__circle--number {
     @include govuk-font($size: 19, $weight: bold);
-    border: solid 2px govuk-colour("mid-grey", $legacy: "grey-1");
+    border: solid 2px govuk-colour("grey-5");
     padding-top: 3px;
 
     @include mq($from: tablet) {
@@ -204,7 +204,7 @@
   .js-enabled {
     .idsk-stepper {
       // Border at the bottom of the whole accordion
-      border-bottom: 2px solid govuk-colour("dark-grey", $legacy: "grey-1");;
+      border-bottom: 2px solid govuk-colour("grey-5");;
     }
 
     // Borders between accordion sections
@@ -267,7 +267,7 @@
       position: relative;
       // Safe area on the right to avoid clashing with icon
       padding-right: 40px;
-      border-top: 2px solid govuk-colour("mid-grey", $legacy: "grey-1");
+      border-top: 2px solid govuk-colour("grey-5");
       color: $idsk-stepper-link-colour;
       cursor: pointer;
     }
