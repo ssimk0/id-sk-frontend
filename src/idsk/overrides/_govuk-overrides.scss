@@ -1,0 +1,12 @@
+@import "../../govuk/objects/grid";
+
+.govuk-breadcrumbs {
+    margin-top: govuk-spacing(5);
+}
+
+@include govuk-media-query($from: tablet) {
+    .govuk-main-wrapper {
+        padding-top: 20px;
+        padding-bottom: 40px;
+    }
+}
