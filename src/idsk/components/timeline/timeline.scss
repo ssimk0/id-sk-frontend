@@ -22,7 +22,8 @@
     .idsk-timeline__content--title,
     .idsk-timeline__content--date-line {
         position: relative;
-        width: 67%;
+        width: 60%;
+        margin-left: govuk-spacing(3);
 
         @include mq($from: tablet) {
             width: 75%;
@@ -67,10 +68,10 @@
         background: govuk-colour("white");
         top: -10px;
         height: calc(100% + 70px);
-        left: -10.2%;
+        left: -15%;
 
         @include mq($and: "(orientation: landscape)") {
-            left: -13%;
+            left: -17%;
         }
 
         @include mq(tablet) {
@@ -95,10 +96,10 @@
         background: govuk-colour("white");
         border-radius: 100px;
         border: solid 2px govuk-colour("mid-grey", $legacy: "grey-2");
-        left: -13%;
+        left: -17.9%;
 
         @include mq($and: "(orientation: landscape)") {
-            left: -15%;
+            left: -19%;
         }
 
         @include mq(tablet) {
@@ -106,7 +107,7 @@
         }
 
         @include mq($from: desktop) {
-            left: -12.1%;
+            left: -12.2%;
         }
     }
 
