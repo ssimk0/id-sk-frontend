@@ -30,6 +30,10 @@
     padding-bottom: govuk-spacing(3);
   }
 
+  .idsk-stepper__caption.govuk-caption-m {
+    color: govuk-colour("black");
+  }
+
   .idsk-stepper__subtitle-container {
     display: inline-flex;
     width: 100%;
@@ -277,7 +281,6 @@
     // remove hover state as it can be stuck in that state (iOS).
     @media (hover: none) {
       .idsk-stepper__section-header:hover {
-        border-top-color: $idsk-stepper-link-colour;
         box-shadow: inset 0 1 0 0 $idsk-stepper-link-colour;
       }
     }
