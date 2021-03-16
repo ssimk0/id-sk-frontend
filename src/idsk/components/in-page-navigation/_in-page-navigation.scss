@@ -9,6 +9,7 @@
     margin-bottom: govuk-spacing(3);
     padding: 0;
     width: 100%;
+    z-index: 11;
 
     @include mq($from: tablet) {
       margin-bottom: govuk-spacing(6);

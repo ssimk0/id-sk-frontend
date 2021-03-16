@@ -8,6 +8,7 @@ import Crossroad from "./components/crossroad/crossroad";
 import CustomerSurveys from "./components/customer-surveys/customer-surveys";
 import HeaderExtended from './components/header-extended/header-extended';
 import InPageNavigation from './components/in-page-navigation/in-page-navigation';
+import Stepper from './components/stepper/stepper';
 import RegistrationForEvent from './components/registration-for-event/registration-for-event';
 import InteractiveMap from './components/interactive-map/interactive-map';
 
@@ -64,6 +65,11 @@ function initAll(options) {
   var $inPageNavigation = scope.querySelector('[data-module="idsk-in-page-navigation"]');
   new InPageNavigation($inPageNavigation).init();
 
+  var $steppers = scope.querySelectorAll('[data-module="idsk-stepper"]');
+  nodeListForEach($steppers, function ($stepper) {
+    new Stepper($stepper).init();
+  });
+
   var $registrationForEvents = scope.querySelectorAll('[data-module="idsk-registration-for-event"]');
   nodeListForEach($registrationForEvents, function ($registrationForEvent) {
     new RegistrationForEvent($registrationForEvent).init();
@@ -89,5 +95,6 @@ export {
   HeaderExtended,
   InPageNavigation,
   RegistrationForEvent,
-  InteractiveMap
+  InteractiveMap,
+  Stepper
 }
