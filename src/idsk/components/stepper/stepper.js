@@ -50,8 +50,8 @@ Stepper.prototype.init = function () {
   nodeListForEach(
     this.$links,
     function ($link) {
-      $link.addEventListener('focus', this.handleItemLink.bind(this));
-      $link.addEventListener('blur', this.handleItemLink.bind(this));
+      $link.addEventListener('click', this.handleItemLink.bind(this));
+      $link.addEventListener('blur', this.handleItemLinkBlur.bind(this));
     }.bind(this)
   );
 
@@ -100,9 +100,14 @@ Stepper.prototype.initSectionHeaders = function () {
 Stepper.prototype.handleItemLink = function (e) {
   var $link = e.target || e.srcElement;
   var $currentSection = $link.closest('.idsk-stepper__section');
-  toggleClass($currentSection, 'idsk-stepper__bolder-line');
+  $currentSection.classList.add('idsk-stepper__bolder-line')
 }
 
+Stepper.prototype.handleItemLinkBlur = function (e) {
+  var $link = e.target || e.srcElement;
+  var $currentSection = $link.closest('.idsk-stepper__section');
+  $currentSection.classList.remove('idsk-stepper__bolder-line') 
+}
 
 // Set individual header attributes
 Stepper.prototype.initHeaderAttributes = function ($headerWrapper, index) {
