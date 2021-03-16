@@ -96,10 +96,10 @@
         background: govuk-colour("white");
         border-radius: 100px;
         border: solid 2px govuk-colour("mid-grey", $legacy: "grey-2");
-        left: -17.9%;
+        left: -18.5%;
 
         @include mq($and: "(orientation: landscape)") {
-            left: -19%;
+            left: -19.7%;
         }
 
         @include mq(tablet) {
