@@ -18,9 +18,9 @@
         }
     }
 
-    .idsk-timeline__content--caption,
-    .idsk-timeline__content--title,
-    .idsk-timeline__content--date-line {
+    .idsk-timeline__content__caption,
+    .idsk-timeline__content__title,
+    .idsk-timeline__content__date-line {
         position: relative;
         width: 60%;
         margin-left: govuk-spacing(3);
@@ -30,16 +30,16 @@
         }
     }
 
-    .idsk-timeline__content--time {
+    .idsk-timeline__content__time {
         font-size: 14px;
         line-height: 16px;
     }
 
-    .idsk-timeline__content--title-div {
+    .idsk-timeline__content__title-div {
         margin-bottom: -25px;
     }
 
-    .idsk-timeline__content--title {
+    .idsk-timeline__content__title {
         margin-top: -15px;
 
         @include mq($from: tablet) {
@@ -47,12 +47,12 @@
         }
     }
 
-    .idsk-timeline__content--title .govuk-heading-m {
-        margin-bottom: 0px;
+    .idsk-timeline__content__title .govuk-heading-m {
+        margin-bottom: 0;
         margin-top: -40px;
     }
 
-    .idsk-timeline-one-quarter {
+    .idsk-timeline__one-quarter {
         margin-left: govuk-spacing(3);
         width: 33%;
         @include mq($from: tablet) {
@@ -83,7 +83,7 @@
         }
     }
 
-    .idsk-timeline__content--caption .govuk-link:before {
+    .idsk-timeline__content__caption .govuk-link:before {
         content: "";
         box-sizing: border-box;
         position: absolute;
@@ -149,10 +149,10 @@
         float: right;
     }
 
-    .idsk-timeline__content--line {
-        color: #bfc1c3;
-        border-color: #bfc1c3;
-        background-color: #bfc1c3;
+    .idsk-timeline__content__line {
+        color: govuk-colour('mid-grey');
+        border-color: govuk-colour('mid-grey');
+        background-color: govuk-colour('mid-grey');
         height: 1px;
         border: 0;
         border-top: 8px;
@@ -161,7 +161,7 @@
         margin-left: 15px;
         margin-bottom: 35px;
     }
-    .idsk-timeline__content--text {
+    .idsk-timeline__content__text {
         @include govuk-font($size: 16, $weight: bold);
         float: right;
     }

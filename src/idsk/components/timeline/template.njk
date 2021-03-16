@@ -1,43 +1,43 @@
 
-<div data-module="idsk-timeline">
-    <div class="idsk-timeline" role="contentinfo">
-        <div class="govuk-container-width">
-            <button type="button" class="idsk-timeline__button--back">
-                <svg width="20" height="15" viewbox="0 -2 25 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M7.2925 13.8005C7.6825 13.4105 7.6825 12.7805 7.2925 12.3905L3.4225 8.50047H18.5925C19.1425 8.50047 19.5925 8.05047 19.5925 7.50047C19.5925 6.95047 19.1425 6.50047 18.5925 6.50047H3.4225L7.3025 2.62047C7.6925 2.23047 7.6925 1.60047 7.3025 1.21047C6.9125 0.820469 6.2825 0.820469 5.8925 1.21047L0.2925 6.80047C-0.0975 7.19047 -0.0975 7.82047 0.2925 8.21047L5.8825 13.8005C6.2725 14.1805 6.9125 14.1805 7.2925 13.8005Z" fill="#0065B3"/>
-                </svg>
-                Zobraziť minulé udalosti
-            </button>
-            {% for event in params.events %}
-                {% if event.dateLine %}
-                    <div class="idsk-timeline__content ">
-                        <hr class="idsk-timeline__content--line" />
-                        <div class="idsk-timeline-one-quarter"></div>
-                        <div class="idsk-timeline__content--date-line">
-                            <span class="idsk-timeline__vertical-line"></span>
-                            <span class="idsk-timeline__content--text">{{event.dateLine}}
-                            </span>
-                        </div>
-                    </div>
-                {% endif %}
-                {% if event.title %}
-                    <div class="idsk-timeline__content idsk-timeline__content--title-div">
-                        <div class="idsk-timeline-one-quarter"></div>
-                        <div class="idsk-timeline__content--title">
-                            <span class="idsk-timeline__vertical-line"></span>
-                            <h3 class="govuk-heading-m">{{event.title}}
-                            </h3>
-                        </div>
-                    </div>
-                {% endif %}
-                <div class="idsk-timeline__content">
-                    <div class="idsk-timeline-one-quarter">
-                        <span class="govuk-body-s">{{event.date}}</span><br>
-                        <span class="idsk-timeline__content--time govuk-caption-m">{{event.time}}</span>
-                    </div>
-                    <div class="idsk-timeline__content--caption">
+<div class="idsk-timeline {{ params.classes if params.classes }}" data-module="idsk-timeline" role="contentinfo">
+    <div class="govuk-container-width">
+        <button type="button" class="idsk-timeline__button--back">
+            <svg width="20" height="15" viewbox="0 -2 25 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.2925 13.8005C7.6825 13.4105 7.6825 12.7805 7.2925 12.3905L3.4225 8.50047H18.5925C19.1425 8.50047 19.5925 8.05047 19.5925 7.50047C19.5925 6.95047 19.1425 6.50047 18.5925 6.50047H3.4225L7.3025 2.62047C7.6925 2.23047 7.6925 1.60047 7.3025 1.21047C6.9125 0.820469 6.2825 0.820469 5.8925 1.21047L0.2925 6.80047C-0.0975 7.19047 -0.0975 7.82047 0.2925 8.21047L5.8825 13.8005C6.2725 14.1805 6.9125 14.1805 7.2925 13.8005Z" fill="#0065B3"/>
+            </svg>
+            Zobraziť minulé udalosti
+        </button>
+        {% for event in params.events %}
+            {% if event.dateLine %}
+                <div class="idsk-timeline__content ">
+                    <hr class="idsk-timeline__content__line"/>
+                    <div class="idsk-timeline__one-quarter"></div>
+                    <div class="idsk-timeline__content__date-line">
                         <span class="idsk-timeline__vertical-line"></span>
-                        <a class="govuk-link" href="#">{{event.caption[0].text}}</a>   
+                        <span class="idsk-timeline__content__text">{{ event.dateLine }}
+                        </span>
+                    </div>
+                </div>
+            {% endif %}
+            {% if event.title %}
+                <div class="idsk-timeline__content idsk-timeline__content__title-div">
+                    <div class="idsk-timeline__one-quarter"></div>
+                    <div class="idsk-timeline__content__title">
+                        <span class="idsk-timeline__vertical-line"></span>
+                        <h3 class="govuk-heading-m">{{ event.title }}
+                        </h3>
+                    </div>
+                </div>
+            {% endif %}
+            <div class="idsk-timeline__content">
+                <div class="idsk-timeline__one-quarter">
+                    <span class="govuk-body-s">{{ event.date }}</span>
+                    <br>
+                        <span class="idsk-timeline__content__time govuk-caption-m">{{ event.time }}</span>
+                    </div>
+                    <div class="idsk-timeline__content__caption">
+                        <span class="idsk-timeline__vertical-line"></span>
+                        <a class="govuk-link" href="#" title="{{ event.caption[0].text }}">{{ event.caption[0].text }}</a>
                     </div>
                 </div>
             {% endfor %}
@@ -49,4 +49,3 @@
             </button>
         </div>
     </div>
-</div>

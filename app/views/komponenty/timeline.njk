@@ -2,11 +2,7 @@
 {% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
 {% from "../../../src/idsk/components/timeline/macro.njk" import idskTimeline %}
 {% set pageName = "Timeline" %}
-{% block styles %}
-    <style>
-        
-    </style>
-{% endblock %}
+
 {% block beforeContent %}
     {{ govukBreadcrumbs({
      "items": [
@@ -126,7 +122,7 @@
                 </p>
                 <br>
                 <h2 class="govuk-heading-s">
-                    <a href="/custom-components/timeline/default/preview">Rozšírený príklad podstránky timeline</a>
+                    <a class="govuk-link" href="/custom-components/timeline/default/preview" title="Rozšírený príklad podstránky timeline">Rozšírený príklad podstránky timeline</a>
                 </h2>
             </div>
         </div>
