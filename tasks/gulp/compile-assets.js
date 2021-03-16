@@ -155,6 +155,7 @@ gulp.task('js:compile', () => {
 
   return gulp.src([
     srcFiles,
+    'node_modules/d3/dist/d3.min.js',
     '!' + configPaths.idsk_src + '**/*.test.js'
   ])
     .pipe(rollup({
@@ -163,9 +164,7 @@ gulp.task('js:compile', () => {
       // Legacy mode is required for IE8 support
       legacy: true,
       // UMD allows the published bundle to work in CommonJS and in the browser.
-      format: 'umd',
-      external: ['d3'],     // pokus 
-      globals: { d3: 'd3' } // pokus
+      format: 'umd'
     }))
     .pipe(gulpif(isDist, uglify({
       ie8: true

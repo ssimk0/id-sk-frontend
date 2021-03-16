@@ -1,11 +1,10 @@
 import '../../../govuk/vendor/polyfills/Function/prototype/bind'
 import '../../../govuk/vendor/polyfills/Event' // addEventListener and event.target normaliziation
-import d3 from 'd3';
-//import * as d3 from 'd3';
 
 function InteractiveMap($module) {
     this.$module = $module
     this.$currentData = null;
+    this.$currentMode = '';
 }
 
 InteractiveMap.prototype.init = function () {
@@ -13,6 +12,11 @@ InteractiveMap.prototype.init = function () {
     var $module = this.$module
     if (!$module) {
         return
+    }
+
+    if (typeof d3 === "undefined") {
+        console.error('Kniznica d3.js nie je definovana. Uistite sa ci ste ju nacitali v hlavicke');
+        return;
     }
 
     var $radioTable = $module.querySelector('.idsk-intereactive-map__radio-table');
@@ -31,14 +35,21 @@ InteractiveMap.prototype.init = function () {
 }
 
 InteractiveMap.prototype.handleRadioButtonModeClick = function (type) {
+
     var $type = type;
     var $module = this.$module;
 
-    if ($type == "table") {
+    if (this.$currentMode === $type) {
+        return;
+    }
+
+    this.$currentMode = $type;
+
+    if ($type === "table") {
         $module.querySelector(".idsk-interactive-map__table").style.display = "block";
         $module.querySelector(".idsk-interactive-map__map").style.display = "none";
         this.loadData();
-    } else if ($type == "map") {
+    } else if ($type === "map") {
         $module.querySelector(".idsk-interactive-map__map").style.display = "block";
         $module.querySelector(".idsk-interactive-map__table").style.display = "none";
         this.loadMap();
@@ -51,24 +62,56 @@ InteractiveMap.prototype.loadMap = function () {
 
 InteractiveMap.prototype.loadData = function () {
     if (this.$currentData) {
-        this.renderData(this.$currentData);
+        this.renderTable(this.$currentData);
         return;
     }
 
     if (!this.$tableDataSource) {
-        return
+        return;
     }
-    console.log(this.$tableDataSource)
-    console.log(d3)
-    d3.csv(this.$tableDataSource, function (data) {
-        this.$currentData = data;
-        this.renderData(data);
+
+    var dsv = d3.dsvFormat(";");
+    d3.text(this.$tableDataSource).then(function (text) {
+        this.$currentData = dsv.parse(text);
+        this.initSelectIndicator(this.$currentData.columns);
+        this.renderCustomTable();
+    }.bind(this))
+}
+
+InteractiveMap.prototype.renderCustomTable = function () {
+
+    var $data = this.$currentData
+    var $columns = $data.columns
+    var $resultHtml = "<table>";
+
+    $resultHtml += "<tr>";
+    for (var $i in $columns) {
+        $resultHtml += "<th class='idsk-interactive-map__js-sortable'>" + $columns[$i] + "</th>";
+    }
+    $resultHtml += "</tr>";
+
+    for (var $i in $data) {
+        var $item = $data[$i];
+
+        for (var $i in $columns) {
+            $resultHtml += "<td>" + $item[$columns[$i]] + "</td>";
+        }
+
+        $resultHtml += "</tr>";
+    }
+    $resultHtml += "</table>";
+
+    this.$module.querySelector('.idsk-interactive-map__js-table').innerHTML = $resultHtml
+}
+
+InteractiveMap.prototype.initSelectIndicator = function (data) {
+    var $select = this.$module.querySelector('.idsk-interactive-map__js-indicator');
+    data.forEach(function (item, index) {
+        var $option = document.createElement('option');
+        $option.value = index;
+        $option.textContent = item;
+        $select.appendChild($option);
     });
 }
-
-InteractiveMap.prototype.renderData = function (data) {
-    console.dir(data);
-}
-
 
 export default InteractiveMap

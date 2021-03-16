@@ -29,5 +29,30 @@
                 margin-right: govuk-spacing(4);
             }
         }
+
+        .idsk-interactive-map__body {
+            display: block;
+            height: 465px;
+            overflow: auto;
+        }
+        .idsk-interactive-map__table table tr {
+            border-bottom: 1px solid govuk-colour("black");
+            text-align: right;
+        }
+
+        .idsk-interactive-map__table table tr:hover {
+            background-color: #000000;
+        }
+
+        .idsk-interactive-map__table table tr:hover th,
+        .idsk-interactive-map__table table tr:hover td {
+            color: white;
+        }
+
+        .idsk-interactive-map__table table tr th,
+        .idsk-interactive-map__table table tr td {
+            padding: 10px 10px;
+            font-size: 16px;
+        }
     }
 }

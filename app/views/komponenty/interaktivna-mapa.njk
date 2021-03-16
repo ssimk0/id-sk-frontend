@@ -17,9 +17,11 @@
       <div class="govuk-grid-column-full">
         <h3 class="govuk-heading-m" id="vzor-suvisiaceho-obsahu">Vzor interaktívnej mapy</h3>
         <div class="example example-error">
+          {# https://raw.githubusercontent.com/Institut-Zdravotnych-Analyz/covid19-data/main/OpenData_Slovakia_CovidAutomat.csv #}
+          {# https://github.com/Institut-Zdravotnych-Analyz/covid19-data/blob/main/OpenData_Slovakia_CovidAutomat.csv #}
           {% set exampleComponentHtml %}
             {{ idskInteractiveMap({
-                tableDataSource: "https://raw.githubusercontent.com/Institut-Zdravotnych-Analyz/covid19-data/main/OpenData_Slovakia_CovidAutomat.csv"
+              tableDataSource: "/public/assets/data/korona.gov.sk.csv"
           }) }}
           {% endset %}
           {{exampleComponentHtml | safe}}
