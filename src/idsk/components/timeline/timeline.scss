@@ -111,7 +111,7 @@
         box-sizing: border-box;
         position: absolute;
         z-index: 5;
-        top: calc(50% - 30px);
+        top: calc(50% - 27px);
         left: -10px;
         width: 1em;
         height: 1em;
@@ -123,6 +123,7 @@
 
         @include mq($from: tablet) {
             left: -10px;
+            top: calc(50% - 30px);
         }
     }
 
