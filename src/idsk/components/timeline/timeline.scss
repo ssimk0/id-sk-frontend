@@ -42,7 +42,7 @@
         @include govuk-font($size: 16);
     }
 
-    .idsk-timeline__one-quarter .govuk-body-m {
+    .idsk-timeline__left-side .govuk-body-m {
         font-weight: bold;
     }
 
@@ -65,66 +65,59 @@
         margin-top: -40px;
     }
 
-    .idsk-timeline__one-quarter {
+    .idsk-timeline__left-side {
         margin-left: govuk-spacing(3);
-        width: 33%;
-        @include mq($from: tablet) {
+        width: 35%;
+        
+        @include mq(405px) {
+            width: 30%;
+        }
+
+        @include mq($and: "(orientation: landscape)") {
             width: 25%;
+        }       
+
+        @include mq(tablet) {
+            width: 25%;
+        }
+
+        @include mq($from: desktop) {
+            width: 17%;
         }
     }
 
-    .idsk-timeline__vertical-line {
+    .idsk-timeline__middle {
+        width: 5%;
+    }
+
+    .idsk-timeline__vertical-line,
+    .idsk-timeline__vertical-line--circle {
         content: "";
         position: absolute;
         z-index: 2;
         border-left: solid 2px govuk-colour("grey-5");
         background: govuk-colour("white");
-        top: -10px;
-        height: calc(100% + 70px);
-        left: -11.2%;
-
-        @include mq(375px) {
-            left: -12.2%;
-        }
-
-        @include mq(425px) {
-            left: -16.8%;
-        }
-
-        @include mq(tablet) {
-            left: -10.4%;
-        }
-
-        @include mq($from: desktop) {
-            left: -11%;
-        }
+        top: 10px;
+        height: calc(100% + 20px);
     }
 
-    .idsk-timeline__content__caption .govuk-link:before {
+    .idsk-timeline__content .idsk-timeline__vertical-line--circle:before {
         content: "";
         box-sizing: border-box;
         position: absolute;
         z-index: 5;
-        top: calc(50% - 9px);
-        left: -50px;
+        top: calc(50% - 30px);
+        left: -10px;
         width: 1em;
         height: 1em;
         color: govuk-colour("black");
         background: govuk-colour("white");
         border-radius: 100px;
         border: solid 2px govuk-colour("grey-5");
-        left: -15.7%;
-
-        @include mq(425px) {
-            left: -19.7%;
-        }
-
-        @include mq(tablet) {
-            left: -12%;
-        }
-
-        @include mq($from: desktop) {
-            left: -12.2%;
+        left: -9px;
+        
+        @include mq($from: tablet) {
+            left: -10px;
         }
     }
 
