@@ -68,14 +68,14 @@
     .idsk-timeline__left-side {
         margin-left: govuk-spacing(3);
         width: 35%;
-        
+
         @include mq(405px) {
             width: 30%;
         }
 
         @include mq($and: "(orientation: landscape)") {
             width: 25%;
-        }       
+        }
 
         @include mq(tablet) {
             width: 25%;
@@ -88,6 +88,10 @@
 
     .idsk-timeline__middle {
         width: 5%;
+
+        @include mq($from: desktop) {
+            width: 6%;
+        }
     }
 
     .idsk-timeline__vertical-line,
@@ -115,7 +119,7 @@
         border-radius: 100px;
         border: solid 2px govuk-colour("grey-5");
         left: -9px;
-        
+
         @include mq($from: tablet) {
             left: -10px;
         }
@@ -161,6 +165,7 @@
         margin-top: govuk-spacing(6);
         padding-right: 0;
         float: right;
+        padding-bottom: govuk-spacing(3);
     }
 
     .idsk-timeline__content__line {
