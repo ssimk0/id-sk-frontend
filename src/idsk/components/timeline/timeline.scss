@@ -6,7 +6,7 @@
 @include govuk-exports("idsk/component/timeline") {
     .idsk-timeline__content {
         @include govuk-font($size: 19);
-        height: 70px;
+        height: 75px;
         position: relative;
         display: flex;
         flex-direction: row;
@@ -16,22 +16,35 @@
         @include mq($from: tablet) {
             margin-top: 0;
         }
+
+        @include mq($from: desktop) {
+            height: 70px;
+        }
     }
 
     .idsk-timeline__content.govuk-body {
-        margin-bottom: -25px;
+        margin-bottom: -35px;
         margin-top: -15px;
+    }
+
+    .idsk-timeline__content.idsk-timeline__content__caption--long {
+        height: 90px;
+
+        @include mq($from: desktop) {
+            height: 70px;
+        }
     }
 
     .idsk-timeline__content__caption,
     .idsk-timeline__content__title,
     .idsk-timeline__content__date-line {
         position: relative;
-        width: 60%;
-        margin-left: govuk-spacing(3);
+        width: 68%;
+        margin-left: govuk-spacing(2);
 
         @include mq($from: tablet) {
             width: 75%;
+            margin-left: govuk-spacing(3);
         }
     }
 
@@ -48,7 +61,7 @@
     }
 
     .idsk-timeline__content__title-div {
-        margin-bottom: -30px;
+        margin-bottom: -40px;
 
         @include mq(tablet) {
             margin-bottom: -25px;
@@ -68,10 +81,10 @@
 
     .idsk-timeline__left-side {
         margin-left: govuk-spacing(3);
-        width: 35%;
+        width: 26%;
 
         @include mq(405px) {
-            width: 30%;
+            width: 24%;
         }
 
         @include mq($and: "(orientation: landscape)") {
@@ -88,10 +101,10 @@
     }
 
     .idsk-timeline__middle {
-        width: 5%;
+        width: 2%;
 
-        @include mq($from: desktop) {
-            width: 6%;
+        @include mq($and: "(orientation: landscape)") {
+            width: 7%;
         }
     }
 

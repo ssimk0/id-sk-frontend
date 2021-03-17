@@ -30,7 +30,7 @@
                     </div>
                 </div>
             {% endif %}
-            <div class="idsk-timeline__content">
+            <div class="idsk-timeline__content {{'idsk-timeline__content__caption--long' if event.caption[0].text.length > 80}}">
                 <div class="idsk-timeline__left-side">
                     <span class="govuk-body-m">{{ event.date }}</span>
                     <br>
