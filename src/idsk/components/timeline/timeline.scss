@@ -20,6 +20,7 @@
 
     .idsk-timeline__content.govuk-body {
         margin-bottom: -25px;
+        margin-top: -15px;
     }
 
     .idsk-timeline__content__caption,
@@ -47,10 +48,10 @@
     }
 
     .idsk-timeline__content__title-div {
-        margin-bottom: -25px;
+        margin-bottom: -30px;
 
         @include mq(tablet) {
-            margin-bottom: -10px;
+            margin-bottom: -25px;
         }
     }
 
