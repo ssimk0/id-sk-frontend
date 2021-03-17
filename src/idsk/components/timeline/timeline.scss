@@ -18,6 +18,10 @@
         }
     }
 
+    .idsk-timeline__content.govuk-body {
+        margin-bottom: -25px;
+    }
+
     .idsk-timeline__content__caption,
     .idsk-timeline__content__title,
     .idsk-timeline__content__date-line {
@@ -30,20 +34,29 @@
         }
     }
 
+    .idsk-timeline__content__date-line {
+        margin-bottom: 0;
+    }
+
     .idsk-timeline__content__time {
-        font-size: 14px;
-        line-height: 16px;
+        @include govuk-font($size: 16);
+    }
+
+    .idsk-timeline__one-quarter .govuk-body-m {
+        font-weight: bold;
     }
 
     .idsk-timeline__content__title-div {
         margin-bottom: -25px;
+
+        @include mq(tablet) {
+            margin-bottom: -10px;
+        }
     }
 
     .idsk-timeline__content__title {
-        margin-top: -15px;
-
         @include mq($from: tablet) {
-            margin-top: 0;
+            margin-top: govuk-spacing(3);
         }
     }
 
@@ -64,20 +77,24 @@
         content: "";
         position: absolute;
         z-index: 2;
-        border-left: solid 2px govuk-colour("mid-grey", $legacy: "grey-2");
+        border-left: solid 2px govuk-colour("grey-5");
         background: govuk-colour("white");
         top: -10px;
         height: calc(100% + 70px);
-        left: -15%;
+        left: -11.2%;
 
-        @include mq($and: "(orientation: landscape)") {
-            left: -17%;
+        @include mq(375px) {
+            left: -12.2%;
+        }
+
+        @include mq(425px) {
+            left: -16.8%;
         }
 
         @include mq(tablet) {
             left: -10.4%;
         }
-        
+
         @include mq($from: desktop) {
             left: -11%;
         }
@@ -95,10 +112,10 @@
         color: govuk-colour("black");
         background: govuk-colour("white");
         border-radius: 100px;
-        border: solid 2px govuk-colour("mid-grey", $legacy: "grey-2");
-        left: -18.5%;
+        border: solid 2px govuk-colour("grey-5");
+        left: -15.7%;
 
-        @include mq($and: "(orientation: landscape)") {
+        @include mq(425px) {
             left: -19.7%;
         }
 
@@ -121,6 +138,10 @@
         color: govuk-colour("blue");
     }
 
+    .idsk-timeline__button__div {
+        padding-left: govuk-spacing(3);
+    }
+
     .idsk-timeline__button--back,
     .idsk-timeline__button--forward {
         @include govuk-font($size: 19);
@@ -139,7 +160,7 @@
     }
 
     .idsk-timeline__button--back {
-        padding-left: govuk-spacing(3);
+        padding-left: 0;
         margin-bottom: govuk-spacing(2);
     }
 
@@ -150,9 +171,9 @@
     }
 
     .idsk-timeline__content__line {
-        color: govuk-colour('mid-grey');
-        border-color: govuk-colour('mid-grey');
-        background-color: govuk-colour('mid-grey');
+        color: govuk-colour("mid-grey");
+        border-color: govuk-colour("mid-grey");
+        background-color: govuk-colour("mid-grey");
         height: 1px;
         border: 0;
         border-top: 8px;
