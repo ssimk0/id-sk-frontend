@@ -1,0 +1,202 @@
+@import "../../../govuk/settings/all";
+@import "../../../govuk/tools/all";
+@import "../../../govuk/helpers/all";
+@import "../../../govuk/helpers/typography";
+
+@include govuk-exports("idsk/component/timeline") {
+    .idsk-timeline__content {
+        @include govuk-font($size: 19);
+        height: 75px;
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top: govuk-spacing(2);
+
+        @include mq($from: tablet) {
+            margin-top: 0;
+        }
+
+        @include mq($from: desktop) {
+            height: 70px;
+        }
+    }
+
+    .idsk-timeline__content.govuk-body {
+        margin-bottom: -35px;
+        margin-top: -15px;
+    }
+
+    .idsk-timeline__content.idsk-timeline__content__caption--long {
+        height: 90px;
+
+        @include mq($from: desktop) {
+            height: 70px;
+        }
+    }
+
+    .idsk-timeline__content__caption,
+    .idsk-timeline__content__title,
+    .idsk-timeline__content__date-line {
+        position: relative;
+        width: 68%;
+        margin-left: govuk-spacing(2);
+
+        @include mq($from: tablet) {
+            width: 75%;
+            margin-left: govuk-spacing(3);
+        }
+    }
+
+    .idsk-timeline__content__date-line {
+        margin-bottom: 0;
+    }
+
+    .idsk-timeline__content__time {
+        @include govuk-font($size: 16);
+    }
+
+    .idsk-timeline__left-side .govuk-body-m {
+        font-weight: bold;
+    }
+
+    .idsk-timeline__content__title-div {
+        margin-bottom: -40px;
+
+        @include mq(tablet) {
+            margin-bottom: -25px;
+        }
+    }
+
+    .idsk-timeline__content__title {
+        @include mq($from: tablet) {
+            margin-top: govuk-spacing(3);
+        }
+    }
+
+    .idsk-timeline__content__title .govuk-heading-m {
+        margin-bottom: 0;
+        margin-top: -40px;
+    }
+
+    .idsk-timeline__left-side {
+        margin-left: govuk-spacing(3);
+        width: 26%;
+
+        @include mq(405px) {
+            width: 24%;
+        }
+
+        @include mq($and: "(orientation: landscape)") {
+            width: 25%;
+        }
+
+        @include mq(tablet) {
+            width: 25%;
+        }
+
+        @include mq($from: desktop) {
+            width: 17%;
+        }
+    }
+
+    .idsk-timeline__middle {
+        width: 2%;
+
+        @include mq($and: "(orientation: landscape)") {
+            width: 7%;
+        }
+    }
+
+    .idsk-timeline__vertical-line,
+    .idsk-timeline__vertical-line--circle {
+        content: "";
+        position: absolute;
+        z-index: 2;
+        border-left: solid 2px govuk-colour("grey-5");
+        background: govuk-colour("white");
+        top: 10px;
+        height: calc(100% + 20px);
+    }
+
+    .idsk-timeline__content .idsk-timeline__vertical-line--circle:before {
+        content: "";
+        box-sizing: border-box;
+        position: absolute;
+        z-index: 5;
+        top: calc(50% - 27px);
+        left: -10px;
+        width: 1em;
+        height: 1em;
+        color: govuk-colour("black");
+        background: govuk-colour("white");
+        border-radius: 100px;
+        border: solid 2px govuk-colour("grey-5");
+        left: -9px;
+
+        @include mq($from: tablet) {
+            left: -10px;
+            top: calc(50% - 30px);
+        }
+    }
+
+    .idsk-timeline__button--left-arrow {
+        @include govuk-font($size: 19);
+        position: relative;
+        z-index: 1;
+        margin: 0;
+        padding: 0;
+        border-width: 0;
+        color: govuk-colour("blue");
+    }
+
+    .idsk-timeline__button__div {
+        padding-left: govuk-spacing(3);
+    }
+
+    .idsk-timeline__button--back,
+    .idsk-timeline__button--forward {
+        @include govuk-font($size: 19);
+        position: relative;
+        z-index: 1;
+        border-width: 0;
+        color: govuk-colour("blue");
+        background: none;
+        cursor: pointer;
+        -webkit-appearance: none;
+        text-decoration: underline;
+        text-align: right;
+
+        @include govuk-link-common;
+        @include govuk-link-style-default;
+    }
+
+    .idsk-timeline__button--back {
+        padding-left: 0;
+        margin-bottom: govuk-spacing(2);
+    }
+
+    .idsk-timeline__button--forward {
+        margin-top: govuk-spacing(6);
+        padding-right: 0;
+        float: right;
+        margin-bottom: govuk-spacing(3);
+    }
+
+    .idsk-timeline__content__line {
+        color: govuk-colour("mid-grey");
+        border-color: govuk-colour("mid-grey");
+        background-color: govuk-colour("mid-grey");
+        height: 1px;
+        border: 0;
+        border-top: 8px;
+        width: calc(100% - 16px);
+        position: absolute;
+        margin-left: 15px;
+        margin-bottom: 35px;
+    }
+    .idsk-timeline__content__text {
+        @include govuk-font($size: 16, $weight: bold);
+        float: right;
+    }
+}
