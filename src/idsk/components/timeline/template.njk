@@ -11,8 +11,10 @@
             {% if event.dateLine %}
                 <div class="idsk-timeline__content govuk-body">
                     <div class="idsk-timeline__left-side"></div>
-                    <div class="idsk-timeline__middle"><span class="idsk-timeline__vertical-line"></span></div>
-                    <div class="idsk-timeline__content__date-line"> 
+                    <div class="idsk-timeline__middle">
+                        <span class="idsk-timeline__vertical-line"></span>
+                    </div>
+                    <div class="idsk-timeline__content__date-line">
                         <span class="idsk-timeline__content__text">{{ event.dateLine }}
                         </span>
                     </div>
@@ -21,7 +23,9 @@
             {% if event.title %}
                 <div class="idsk-timeline__content idsk-timeline__content__title-div">
                     <div class="idsk-timeline__left-side"></div>
-                    <div class="idsk-timeline__middle"><span class="idsk-timeline__vertical-line"></span></div>
+                    <div class="idsk-timeline__middle">
+                        <span class="idsk-timeline__vertical-line"></span>
+                    </div>
                     <div class="idsk-timeline__content__title">
                         <h3 class="govuk-heading-m">{{ event.title }}
                         </h3>
@@ -34,8 +38,10 @@
                     <br>
                         <span class="idsk-timeline__content__time">{{ event.time }}</span>
                     </div>
-                    <div class="idsk-timeline__middle"><span class="idsk-timeline__vertical-line--circle"></span></div>
-                    <div class="idsk-timeline__content__caption">  
+                    <div class="idsk-timeline__middle">
+                        <span class="idsk-timeline__vertical-line--circle"></span>
+                    </div>
+                    <div class="idsk-timeline__content__caption">
                         <a class="govuk-link" href="#" title="{{ event.caption[0].text }}">{{ event.caption[0].text }}</a>
                     </div>
                 </div>
