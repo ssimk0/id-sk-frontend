@@ -23,8 +23,9 @@
     }
 
     .idsk-timeline__content.govuk-body {
-        margin-bottom: -35px;
-        margin-top: -15px;
+        margin-bottom: -50px;
+        margin-top: govuk-spacing(4);
+        border-top: 1px solid govuk-colour("mid-grey");
     }
 
     .idsk-timeline__content.idsk-timeline__content__caption--long {
@@ -49,7 +50,7 @@
     }
 
     .idsk-timeline__content__date-line {
-        margin-bottom: 0;
+        margin-bottom: govuk-spacing(3);
     }
 
     .idsk-timeline__content__time {
@@ -116,7 +117,7 @@
         border-left: solid 2px govuk-colour("grey-5");
         background: govuk-colour("white");
         top: 10px;
-        height: calc(100% + 20px);
+        height: calc(100% + 30px);
     }
 
     .idsk-timeline__content .idsk-timeline__vertical-line--circle:before {
@@ -124,7 +125,7 @@
         box-sizing: border-box;
         position: absolute;
         z-index: 5;
-        top: calc(50% - 27px);
+        top: calc(50% - 32px);
         left: -10px;
         width: 1em;
         height: 1em;
@@ -136,7 +137,7 @@
 
         @include mq($from: tablet) {
             left: -10px;
-            top: calc(50% - 30px);
+            top: calc(50% - 35px);
         }
     }
 
@@ -183,20 +184,9 @@
         margin-bottom: govuk-spacing(3);
     }
 
-    .idsk-timeline__content__line {
-        color: govuk-colour("mid-grey");
-        border-color: govuk-colour("mid-grey");
-        background-color: govuk-colour("mid-grey");
-        height: 1px;
-        border: 0;
-        border-top: 8px;
-        width: calc(100% - 16px);
-        position: absolute;
-        margin-left: 15px;
-        margin-bottom: 35px;
-    }
     .idsk-timeline__content__text {
         @include govuk-font($size: 16, $weight: bold);
         float: right;
+        margin-top: -25px;
     }
 }
