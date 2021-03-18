@@ -7,7 +7,7 @@
         @include govuk-font($size: 16);
         @include govuk-text-colour;
 
-        .idsk-interactive-map__header {
+        &__header {
             display: flex;
             flex-direction: row;
             align-items: flex-end;
@@ -30,29 +30,35 @@
             }
         }
 
-        .idsk-interactive-map__body {
+        &__body {
             display: block;
             height: 465px;
             overflow: auto;
         }
-        .idsk-interactive-map__table table tr {
+
+        &__table table tr {
             border-bottom: 1px solid govuk-colour("black");
             text-align: right;
+
+            & th,
+            & td {
+                font-size: 16px;
+                padding: 10px 10px;
+            }
+            &:hover {
+                background-color: #000000;
+            }
+            &:hover th,
+            &:hover td {
+                color: white;
+            }
         }
 
-        .idsk-interactive-map__table table tr:hover {
-            background-color: #000000;
-        }
-
-        .idsk-interactive-map__table table tr:hover th,
-        .idsk-interactive-map__table table tr:hover td {
-            color: white;
-        }
-
-        .idsk-interactive-map__table table tr th,
-        .idsk-interactive-map__table table tr td {
-            padding: 10px 10px;
-            font-size: 16px;
+        &__map,
+        &__map-iframe {
+            border: none;
+            height: 100%;
+            width: 100%;
         }
     }
 }

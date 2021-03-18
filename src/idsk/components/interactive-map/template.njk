@@ -6,11 +6,11 @@
             <div class="govuk-form-group">
                 <div class="govuk-radios govuk-radios--inline">
                     <div class="govuk-radios__item idsk-intereactive-map__radio-map">
-                        <input class="govuk-radios__input" name="radio-interactive-map" type="radio" value="map">
+                        <input class="govuk-radios__input" name="radio-interactive-map" type="radio" value="map" checked="">
                         <label class="govuk-label govuk-radios__label">Mapa</label>
                     </div>
                     <div class="govuk-radios__item idsk-intereactive-map__radio-table">
-                        <input class="govuk-radios__input" data-source="{{ params.tableDataSource }}" name="radio-interactive-map" type="radio" value="table" checked="">
+                        <input class="govuk-radios__input" data-source="{{ params.tableDataSource }}" name="radio-interactive-map" type="radio" value="table">
                         <label class="govuk-label govuk-radios__label" >Tabuľka</label>
                     </div>
                 </div>
@@ -22,7 +22,10 @@
                     <label class="govuk-label" for="select-3"><strong>Obdobie</strong></label>
                 </div>
                 <select class="govuk-select" id="select-3" name="select-3">
-                    <option value="1" selected>Posledný mesiac</option>
+                    <option value="1" selected>Poslený mesiac</option>
+                    <option value="2" selected>Posledné 3 mesiace</option>
+                    <option value="3" selected>Posledných 6 mesiacov</option>
+                    <option value="4" selected>Celé obdobie</option>
                 </select>
             </div>
             <div class="govuk-form-group">
@@ -35,7 +38,7 @@
     </div>
     <div class="idsk-interactive-map__body">
         <div class="idsk-interactive-map__map">
-        mapa
+            <iframe class="idsk-interactive-map__map-iframe" src="{{ params.mapIframeSource }}"></iframe>
         </div>
         <div class="idsk-interactive-map__table idsk-interactive-map__js-table"></div>
     </div>

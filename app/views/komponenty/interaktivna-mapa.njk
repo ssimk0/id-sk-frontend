@@ -21,7 +21,8 @@
           {# https://github.com/Institut-Zdravotnych-Analyz/covid19-data/blob/main/OpenData_Slovakia_CovidAutomat.csv #}
           {% set exampleComponentHtml %}
             {{ idskInteractiveMap({
-              tableDataSource: "/public/assets/data/korona.gov.sk.csv"
+              tableDataSource: "/public/assets/data/korona.gov.sk.csv",
+              mapIframeSource: "/vzory/interactive-map"
           }) }}
           {% endset %}
           {{exampleComponentHtml | safe}}

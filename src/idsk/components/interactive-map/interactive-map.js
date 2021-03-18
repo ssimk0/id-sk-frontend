@@ -1,5 +1,7 @@
 import '../../../govuk/vendor/polyfills/Function/prototype/bind'
 import '../../../govuk/vendor/polyfills/Event' // addEventListener and event.target normaliziation
+import { idskSortTable } from "../../utilities/utils";
+
 
 function InteractiveMap($module) {
     this.$module = $module
@@ -15,7 +17,7 @@ InteractiveMap.prototype.init = function () {
     }
 
     if (typeof d3 === "undefined") {
-        console.error('Kniznica d3.js nie je definovana. Uistite sa ci ste ju nacitali v hlavicke');
+        console.error('Kniznica d3.js nie je definovana. Je potrebne ju nacitat v hlavicke');
         return;
     }
 
@@ -31,7 +33,6 @@ InteractiveMap.prototype.init = function () {
     if ($radioTable) {
         $radioTable.addEventListener('click', this.handleRadioButtonModeClick.bind(this, 'table'));
     }
-    $radioTable.click();
 }
 
 InteractiveMap.prototype.handleRadioButtonModeClick = function (type) {
@@ -62,7 +63,6 @@ InteractiveMap.prototype.loadMap = function () {
 
 InteractiveMap.prototype.loadData = function () {
     if (this.$currentData) {
-        this.renderTable(this.$currentData);
         return;
     }
 
@@ -102,6 +102,16 @@ InteractiveMap.prototype.renderCustomTable = function () {
     $resultHtml += "</table>";
 
     this.$module.querySelector('.idsk-interactive-map__js-table').innerHTML = $resultHtml
+    //this.initSortableTH()
+}
+
+InteractiveMap.prototype.initSortableTH = function () {
+    var $ths = this.$module.querySelectorAll('.idsk-interactive-map__js-sortable')
+
+    $ths.forEach(function ($th) {
+        $th.addEventListener('click', idskSortTable.bind(this));
+    }.bind(this))
+
 }
 
 InteractiveMap.prototype.initSelectIndicator = function (data) {

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Interaktívna mapa</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="title" content="Interaktívna mapa">
+    <meta name="description" content="Príkladová mapa na demonštráciu koponentu - interaktívna mapa">
+
+    <link rel="shortcut icon" sizes="16x16 32x32 48x48" href="/public/assets/images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/public/assets/images/apple-touch-icon-180x180.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="/public/assets/images/apple-touch-icon-167x167.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/public/assets/images/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" href="/public/assets/images/apple-touch-icon.png">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    {# var okresyGeoJSON #}
+    <script src="/public/assets/data/okresyGeoJSON.js"></script>
+    
+    <style>
+        #map {
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+
+        function renderMap() {
+            var map = L.map('map');
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            var geoJSON = L.geoJson(okresyGeoJSON).addTo(map);
+            map.fitBounds(geoJSON.getBounds());
+        }
+
+        if (document.readyState === "complete" || document.readyState === "interactive") {
+            renderMap();
+        } else {
+            document.addEventListener("DOMContentLoaded", function() {
+                renderMap();
+            });
+        }
+    </script>
+
+</body>
+</html>
