@@ -8,8 +8,10 @@
 
 {% block styles %}
     <style>
-        .idsk-stepper-pattern__intro-heading {
-            margin-top: 20px;
+        .govuk-heading-l.idsk-stepper-pattern__intro-heading {
+            margin-bottom: 20px;
+            padding-top: 0;
+            margin-top: -10px;
         }
         .idsk-article-pattern__text-silver--down {
             color: #6F777B;
@@ -21,9 +23,6 @@
             color: #6F777B;
             border-top: 1px solid #BFC1C3;
             padding-top: 10px;
-        }
-        .idsk-stepper-pattern__banner {
-            margin-bottom: -20px;
         }
         #idsk-article__content__news {
             display: none;
@@ -44,8 +43,11 @@
         .idsk-article__social-networks a {
             text-decoration: none;
         }
+        .idsk-article-pattern__subtitle {
+            color: #626A6E;
+        }
         @media(min-width: 48.0525em) {
-            .idsk-stepper-pattern__element-right {
+            .idsk-article-pattern__element-right {
                 float: right;
                 margin-right: 15px;
             }
@@ -193,12 +195,13 @@
 {% endblock %}
 {% block content %}
     <div class="govuk-grid-row">
-        <div class="govuk-grid-column-three-quarters-from-desktop idsk-stepper-pattern__element-right">
+        <div class="govuk-grid-column-three-quarters-from-desktop idsk-article-pattern__element-right">
             <div id="uvod">
-                <h3 class="govuk-heading-l idsk-stepper-pattern__intro-heading">Povinná elektronická komunikácia so štátom sa o necelý mesiac dotkne už aj poľovníkov a cirkví</h3>
+                <span class="govuk-caption-xl idsk-article-pattern__subtitle">Aktualita</span>
+                <h2 class="govuk-heading-l idsk-stepper-pattern__intro-heading">Povinná elektronická komunikácia so štátom sa o necelý mesiac dotkne už aj poľovníkov a cirkví</h2>
             </div>
             <p class="govuk-body-s idsk-article-pattern__text-silver--down">Aktualizované 8.12.2020 -
-                <a class="govuk-link" href="#idsk-article__content__news" title="zobraziť aktualizácie" onclick="showNews();">
+                <a class="govuk-link" href="#idsk-article__content__news__div" title="zobraziť aktualizácie" onclick="showNews();">
                     zobraziť aktualizácie</a>
             </p>
         </div>
@@ -228,7 +231,7 @@
             <p class="govuk-body">Počet elektronických schránok subjektov neziskového mimovládneho sektora aktivovaných na doručovanie úradných rozhodnutí sa tak od 1. augusta zvýši približne zo 63-tisíc na skoro 67-tisíc. Aktiváciu elektronickej schránky na doručovanie NASES zrealizuje automaticky bez toho, aby sa štatutár do svojej e-schránky prihlásil.</p>
             <p class="govuk-body">„Znamená to, že do takto aktivovaných elektronických schránok sú zo strany úradov doručované úradné rozhodnutia. Štatutári alebo nimi poverené osoby už nechodia so žltým lístkom na poštu, ale rozhodnutia im štát doručuje do úradných e-schránok zriadených na slovensko.sk. Rovnako platí, že tieto organizácie nemusia úradné podania realizovať listinne na pošte, ale majú možnosť tak robiť prostredníctvom svojej elektronickej schránky,“ vysvetľuje Peter Kucer z MIRRI SR.</p>
             <img src="/public/assets/images/examples/ministerstvo-aktuality-cover.png" width="100%" alt="ministerstvo-aktuality-img">
-                <h3 class="govuk-heading-m idsk-stepper-pattern__intro-heading" id="nadpis-1">Počet subjektov aktuálne</h3>
+                <h3 class="govuk-heading-m govuk-!-margin-top-6" id="nadpis-1">Počet subjektov aktuálne</h3>
                 <p class="govuk-body">Povinnú aktiváciu elektronických schránok právnických osôb, ktoré odvodzujú právnu subjektivitu od právnej subjektivity cirkví a náboženských spoločností, štát nateraz odkladá. Možná je však dobrovoľná aktivácia elektronických schránok pre tieto tipy právnických osôb, a to formou listinnej žiadosti zaslanej zo strany štatutára do NASES.</p>
                 <p class="govuk-body">Peter Kucer hovorí, že štatutári sú si vedomí zodpovednosti a ich záujem postupne rastie: „Ku koncu júna prišlo do elektronických schránok neziskových organizácií, nadácií, fondov, záujmových či občianskych združení 5 420 úradných rozhodnutí. Chcel by som preto vyzvať aj poľovníkov a cirkvi, keďže oni so štátom komunikujú pomerne často, aby situáciu nepodcenili a počítali s tým, že do schránky im budú doručované úradné rozhodnutia.“</p>
                 <p class="govuk-body">Národná agentúra pre sieťové a elektronické služby (NASES) aktivuje na doručovanie úradných rozhodnutí e-schránky ďalších organizácií mimovládneho neziskového sektora postupne v jednotlivých fázach podľa indikatívneho harmonogramu.</p>
@@ -246,14 +249,16 @@
                     <a class="govuk-link" id="idsk-article__content__button" href="#" title="zobraziť aktualizácie" onclick="showNews(); return false" data-opened="schovať aktualizácie" data-closed="zobraziť aktualizácie">
                     zobraziť aktualizácie</a>
                 </p>
-                <div class="govuk-grid-column-two-thirds" id="idsk-article__content__news">
-                    <p class="govuk-body-s govuk-!-font-weight-bold">29.11.2020</p>
-                    <p class="govuk-body-s">Bolo pridané stanovisko GR sekcie informatizácie verejnej správy.</p>
-                    <p class="govuk-body-s govuk-!-font-weight-bold">25.11.2020</p>
-                    <p class="govuk-body-s">Jazyková korektúra.</p>
-                    <p class="govuk-body-s govuk-!-font-weight-bold">15.11.2020</p>
-                    <p class="govuk-body-s">Pridané nová cool fotečka, zároveň boli aktializované termíny vyplávajúce zo zákona.</p>
-                    <p class="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-top-3 govuk-!-margin-bottom-4">Vypublikované 1.10.2020</p>
+                <div id="idsk-article__content__news__div">
+                    <div class="govuk-grid-column-two-thirds" id="idsk-article__content__news">
+                        <p class="govuk-body-s govuk-!-font-weight-bold">29.11.2020</p>
+                        <p class="govuk-body-s">Bolo pridané stanovisko GR sekcie informatizácie verejnej správy.</p>
+                        <p class="govuk-body-s govuk-!-font-weight-bold">25.11.2020</p>
+                        <p class="govuk-body-s">Jazyková korektúra.</p>
+                        <p class="govuk-body-s govuk-!-font-weight-bold">15.11.2020</p>
+                        <p class="govuk-body-s">Pridané nová cool fotečka, zároveň boli aktializované termíny vyplávajúce zo zákona.</p>
+                        <p class="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-top-3 govuk-!-margin-bottom-4">Vypublikované 1.10.2020</p>
+                    </div>
                 </div>
                 <br>
                     <div class="govuk-grid-column-full idsk-article__social-networks">
