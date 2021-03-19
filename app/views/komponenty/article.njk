@@ -15,7 +15,6 @@
         }
         .idsk-article-pattern__text-silver--down {
             color: #6F777B;
-            border-bottom: 1px solid #BFC1C3;
             padding-top: 10px;
             padding-bottom: 13px;
         }
@@ -23,6 +22,11 @@
             color: #6F777B;
             border-top: 1px solid #BFC1C3;
             padding-top: 10px;
+        }
+        @media(min-width: 48.0525em) {
+            .idsk-article-pattern__text-silver--down {
+                border-bottom: 1px solid #BFC1C3;
+            }
         }
         #idsk-article__content__news {
             display: none;
@@ -45,6 +49,7 @@
         }
         .idsk-article-pattern__subtitle {
             color: #626A6E;
+            padding-bottom: 5px;
         }
         @media(min-width: 48.0525em) {
             .idsk-article-pattern__element-right {
@@ -263,7 +268,7 @@
                 <br>
                     <div class="govuk-grid-column-full idsk-article__social-networks">
                         <p class="govuk-body-s govuk-!-font-weight-bold">Zdielať tento článok</p>
-                        <a href="#">
+                        <a href="#" class="govuk-link">
                             <span>
                                 <svg width="10" height="17" viewBox="0 0 10 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M8.69561 9.43203L9.13639 6.55825H6.37911V4.69334C6.37911 3.90712 6.76427 3.14078 7.99927 3.14078H9.25289V0.694188C9.25289 0.694188 8.11517 0.5 7.02749 0.5C4.75655 0.5 3.27233 1.87631 3.27233 4.36797V6.55825H0.748047V9.43203H3.27233V16.3792C3.77849 16.4586 4.29727 16.5 4.82574 16.5C5.3542 16.5 5.87295 16.4586 6.37911 16.3792V9.43203H8.69561Z" fill="#003078"/>
@@ -275,9 +280,9 @@
                             </span>
                         </a>
                         &nbsp;
-                        <a href="#">
+                        <a href="#" class="govuk-link">
                             <span>
-                                <svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <svg width="19" height="23" viewBox="0 -2 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M4.15981 19.4002V6.70247H0.415564V19.4002H4.15981ZM4.15981 2.20169C4.13751 1.06537 3.41499 0.200195 2.24124 0.200195C1.06718 0.200195 0.300049 1.06537 0.300049 2.20169C0.300049 3.31332 1.04487 4.20352 2.19633 4.20352H2.21863C3.41499 4.20352 4.15981 3.31332 4.15981 2.20169ZM10.2684 19.4002V12.1656C10.2684 11.7785 10.295 11.3913 10.4037 11.1153C10.7007 10.3413 11.3765 9.54009 12.5114 9.54009C13.9981 9.54009 14.9305 10.4245 14.9305 12.1656V19.4002H18.7V11.9721C18.7 7.9929 16.6735 6.14133 13.9703 6.14133C11.754 6.14133 10.7811 7.44011 10.2409 8.32411L10.268 6.62585H6.50498C6.55911 7.84144 6.50498 19.4002 6.50498 19.4002H10.2684Z" fill="#003078"/>
                                 </svg>
                                 &nbsp;
@@ -308,54 +313,178 @@
         {% endblock %}
 {% block footer %}
             {{ idskFooterExtended({
-        characterLength : 350,
-        upButtonEnabled : "true",
-        logo: "footer-extended-logo.svg",
-        subtitles: [
-        {
-        item:"Pomoc", 
-        href:"#"}, 
-        {
-        item:"Cookies",
-        href:"#"
-        }, 
-        {
-        item:"Kontakty",
-        href:"#"
-        }, 
-        { 
-        item:"Mapa Stránky",
-        href:"#"
-        }, 
-        {
-        item:"RSS",
-        href:"#"
-        }, 
-        {
-        item:"Vyhlásenie o prístupnosti",
-        href:"#"
-        }
-        ],
-        dropdownItems: [
-        {
-        value: "published",
-        text: "Validačná chyba"
-        },
-        {
-        value: "updated",
-        text: "Gramatická chyba",
-        selected: true
-        },
-        {
-        value: "views",
-        text: "Chyba responzivity"
-        },
-        {
-        value: "comments",
-        text: "Chyba iná"
-        }
-        ]
-        }) }}
+                characterLength : 500,
+                showFeedback : "true",
+                upButtonEnabled : "true",
+                designAddress : "#",
+                logo: "footer-extended-logo.svg",
+                feedbackButtonAddress : "idsk.gov.sk",
+                firstColumn: {
+                title: "Navigácia v 2 stĺpcoch (2/3)",
+                leftItems: [
+                    {
+                    name:"Link small Regular 12/20", 
+                    href:"#"  
+                    },
+                    {
+                    name:"Link small Regular 13/20", 
+                    href:"#"
+                    },
+                    {
+                    name:"Link small Regular 14/20", 
+                    href:"#"
+                    },
+                    {
+                    name:"Link small Regular 15/20", 
+                    href:"#"
+                    }
+                ],
+                rightItems: [
+                    {
+                    name:"Link small Regular 16/20", 
+                    href:"#"  
+                    },
+                    {
+                    name:"Link small Regular 17/20", 
+                    href:"#"
+                    },
+                    {
+                    name:"Link small Regular 18/20", 
+                    href:"#"
+                    },
+                    {
+                    name:"Link small Regular 19/20", 
+                    href:"#"
+                    }
+                ]
+                },
+
+                secondColumn: {
+                title: "Navigácia v 1 stĺpci (1/3)",
+                items: [
+                    {
+                    name:"Link small Regular 20/20", 
+                    href:"#"  
+                    },
+                    {
+                    name:"Link small Regular 21/20", 
+                    href:"#"
+                    },
+                    {
+                    name:"Link small Regular 22/20", 
+                    href:"#"
+                    },
+                    {
+                    name:"Link small Regular 23/20", 
+                    href:"#"
+                    }
+                ]
+                },
+                    
+                thirdColumn: {
+                title: "Dodatočná hyperlinková navigácia (2/3)",
+                leftItems: [
+                    {
+                    name:"Link small Regular 12/20", 
+                    href:"#"  
+                    },
+                    {
+                    name:"Link small Regular 13/20", 
+                    href:"#"
+                    },
+                    {
+                    name:"Link small Regular 14/20", 
+                    href:"#"
+                    },
+                    {
+                    name:"Link small Regular 15/20", 
+                    href:"#"
+                    }
+                ],
+                rightItems: [
+                    {
+                    name:"Link small Regular 16/20", 
+                    href:"#"  
+                    },
+                    {
+                    name:"Link small Regular 17/20", 
+                    href:"#"
+                    },
+                    {
+                    name:"Link small Regular 18/20", 
+                    href:"#"
+                    },
+                    {
+                    name:"Link small Regular 19/20", 
+                    href:"#"
+                    }
+                ]
+                },
+
+                fourthColumn: {
+                title: "Navigácia v 1 stĺpci (1/3)",
+                items: [
+                    {
+                    name:"Link small Regular 28/20", 
+                    href:"#"  
+                    },
+                    {
+                    name:"Link small Regular 29/20", 
+                    href:"#"
+                    },
+                    {
+                    name:"Link small Regular 30/20", 
+                    href:"#"
+                    },
+                    {
+                    name:"Link small Regular 31/20", 
+                    href:"#"
+                    }
+                ]
+                },
+
+                subtitles: [
+                {
+                    item:"Pomoc", 
+                    href:"#"
+                }, 
+                {
+                    item:"Cookies",
+                    href:"#"
+                }, 
+                {
+                    item:"Kontakty",
+                    href:"#"
+                }, 
+                {
+                    item:"Mapa Stránky",
+                    href:"#"
+                }, 
+                {
+                    item:"RSS",
+                    href:"#"
+                }, 
+                {
+                    item:"Vyhlásenie o prístupnosti",
+                    href:"#"
+                }
+                ],
+                dropdownItems: [
+                {
+                    text:"Gramatická chyba", 
+                    value:"#"
+                },
+                {
+                    text:"chyba zobrazovania",
+                    value:"#"
+                }, 
+                {
+                    text:"chyba obsahu",
+                    value:"#"
+                }
+                ]
+            }) 
+            }}
         {% endblock %}
 {% block scripts %}
   <script type="text/javascript">
