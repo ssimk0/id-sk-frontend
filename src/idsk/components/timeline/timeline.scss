@@ -29,7 +29,7 @@
     }
 
     .idsk-timeline__content.idsk-timeline__content__caption--long {
-        height: 90px;
+        height: 100px;
 
         @include mq($from: desktop) {
             height: 70px;
@@ -42,6 +42,10 @@
         position: relative;
         width: 67%;
         margin-left: govuk-spacing(2);
+
+        @include mq(405px) {
+            width: 69%;
+        }
 
         @include mq($from: tablet) {
             width: 75%;
@@ -65,7 +69,7 @@
         margin-bottom: -20px;
 
         @include mq(405px) {
-            margin-bottom: -40px;
+            margin-bottom: -50px;
         }
 
         @include mq(tablet) {
@@ -88,7 +92,7 @@
         width: 26.5%;
 
         @include mq(405px) {
-            width: 24%;
+            width: 23%;
         }
 
         @include mq($and: "(orientation: landscape)") {
