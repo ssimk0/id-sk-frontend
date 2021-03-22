@@ -126,17 +126,23 @@
         z-index: 5;
         top: calc(50% - 32px);
         left: -10px;
-        width: 1em;
-        height: 1em;
+        width: 16px;
+        height: 16px;
         color: govuk-colour("black");
         background: govuk-colour("white");
         border-radius: 100px;
         border: solid 2px govuk-colour("grey-5");
         left: -9px;
 
-        @include mq($from: tablet) {
-            left: -10px;
+        @include mq(tablet) {
+            left: -11.5px;
             top: calc(50% - 35px);
+            width: 22px;
+            height: 22px;
+        }
+
+        @include mq($from: desktop) {
+            left: -11.9px;
         }
     }
 
@@ -177,6 +183,14 @@
         padding-right: 0;
         float: right;
         margin-bottom: govuk-spacing(3);
+    }
+
+    .idsk-timeline__button__svg--previous{
+        padding-right: govuk-spacing(2);
+    }
+
+    .idsk-timeline__button__svg--next {
+        padding-left: govuk-spacing(2);
     }
 
     .idsk-timeline__content__text {
