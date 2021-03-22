@@ -44,10 +44,8 @@ examples:
           - text: Lorem ipsum dolor sit amet, consectetur adipiscingLorem ipsum dolor sit amet, consectetur adid
             href: "#"
       - date: "15.03.2021"
-        time: "9:30 - 12:00"
         caption:
           - text: Lorem ipsum dolor sit amet, consectetur adipiscing
-            href: "#"
       - date: "16.03.2021"
         time: "10:30 - 12:00"
         dateLine: "marec 2021"
