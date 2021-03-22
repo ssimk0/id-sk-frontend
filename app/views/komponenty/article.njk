@@ -8,18 +8,20 @@
 
 {% block styles %}
     <style>
+        #idsk-article-pattern .govuk-body-s {
+            font-size: 16px;
+            line-height: 20px;
+        }
         .govuk-heading-l.idsk-stepper-pattern__intro-heading {
             margin-bottom: 20px;
             padding-top: 0;
             margin-top: -10px;
         }
         .idsk-article-pattern__text-silver--down {
-            color: #6F777B;
             padding-top: 10px;
             padding-bottom: 13px;
         }
         .idsk-article-pattern__text-silver--up {
-            color: #6F777B;
             border-top: 1px solid #BFC1C3;
             padding-top: 10px;
         }
@@ -69,144 +71,146 @@
 {% endblock %}
 {% block header %}
     {{ idskHeaderExtended({
-        logoGrid: 'govuk-grid-column-two-thirds',
-        logo: "logo-mirri-farebne.svg",
-        logoSmall: "logo-mirri-small-farebne.svg",
-        logoWhite: "logo-mirri-biele.svg",
-        logoSmallWhite: "logo-mirri-small-biele.svg",
-        navigation:[
+    headerTitle: "Domov",
+    logo: "logo-mirri-farebne.svg",
+    logoSmall: "logo-mirri-small-farebne.svg",
+    logoWhite: "logo-mirri-biele.svg",
+    logoSmallWhite: "logo-mirri-small-biele.svg",
+    logoGrid: "govuk-grid-column-one-third",
+    navigation:[
         {
-        link: "#1",
-        text: "Eurofondy"
+            link: "#1",
+            text: "Eurofondy"
         },
         {
-        link: "#2",
-        text: "Informatizácia"
+            link: "#2",
+            text: "Informatizácia"
         },
         {
-        text: "Regionálny rozvoj",
-        link: "#3",
-        submenu: [
-        {
-        link: "#3.1",
-        text: "O regionálnom rozvoji"
+            text: "Regionálny rozvoj",
+            link: "#3",
+            submenu: [
+                {
+                    link: "#3.1",
+                    text: "O regionálnom rozvoji"
+                },
+                {
+                    link: "#3.2",
+                    text: "Zoznam úloh"
+                },
+                {
+                    link: "#3.3",
+                    text: "Zabezpečenie dát"
+                },
+                {
+                    link: "#3.4",
+                    text: "Ochrana práv"
+                },
+                {
+                    link: "#3.5",
+                    text: "Kvapka nádeje"
+                },
+                {
+                    link: "#3.6",
+                    text: "Programy 6"
+                },
+                {
+                    link: "#3.7",
+                    text: "Programy 7"
+                },
+                {
+                    link: "#3.8",
+                    text: "Programy 8"
+                },
+                {
+                    link: "#3.9",
+                    text: "Programy 9"
+                },
+                {
+                    link: "#3.10",
+                    text: "Programy 10"
+                }
+            ]
         },
         {
-        link: "#3.2",
-        text: "Zoznam úloh"
+            link: "#4",
+            text: "Inovácie",
+            submenu: [
+                {
+                    link: "#4.1",
+                    text: "Aktuality 1"
+                },
+                {
+                    link: "#4.2",
+                    text: "Aktuality 2"
+                },
+                {
+                    link: "#4.3",
+                    text: "Aktuality 3"
+                },
+                {
+                    link: "#4.4",
+                    text: "Aktuality 4"
+                }
+            ]
         },
         {
-        link: "#3.3",
-        text: "Zabezpečenie dát"
-        },
-        {
-        link: "#3.4",
-        text: "Ochrana práv"
-        },
-        {
-        link: "#3.5",
-        text: "Kvapka nádeje"
-        },
-        {
-        link: "#3.6",
-        text: "Programy 6"
-        },
-        {
-        link: "#3.7",
-        text: "Programy 7"
-        },
-        {
-        link: "#3.8",
-        text: "Programy 8"
-        },
-        {
-        link: "#3.9",
-        text: "Programy 9"
-        },
-        {
-        link: "#3.10",
-        text: "Programy 10"
+            link: "#5",
+            text: "Investície"
         }
-        ]
-        },
-        {
-        link: "#4",
-        text: "Inovácie",
-        submenu: [
-        {
-        link: "#4.1",
-        text: "Aktuality 1"
-        },
-        {
-        link: "#4.2",
-        text: "Aktuality 2"
-        },
-        {
-        link: "#4.3",
-        text: "Aktuality 3"
-        },
-        {
-        link: "#4.4",
-        text: "Aktuality 4"
-        }
-        ]
-        },
-        {
-        link: "#5",
-        text: "Investície"
-        }
-        ],
-        language: {
+    ],
+    search: true,
+    language: {
         current: {
-        text: "slovenčina",
-        flag: "slovakia-flag-icon-16.png"
+            text: "slovenčina",
+            flag: "slovakia-flag-icon-16.png"
         },
         choices: [
-        {
-        flag: "united-states-of-america-flag-icon-16.png",
-        text: "english",
-        link: "#"
-        },
-        {
-        flag: "germany-flag-icon-16.png",
-        text: "german",
-        link: "#"
-        }
+            {
+                flag: "united-states-of-america-flag-icon-16.png",
+                text: "english",
+                link: "#"
+            },
+            {
+                flag: "germany-flag-icon-16.png",
+                text: "german",
+                link: "#"
+            }
         ]
-        },
-        socials: [
+    },
+    socials: [
         {
-        icon: "fab fa-instagram",
-        link: "#",
-        text: "Instagram"
-        },
-        {
-        icon: "fab fa-linkedin-in",
-        link: "#",
-        text: "Linkedin"
+            icon: "fab fa-instagram",
+            link: "#",
+            text: "Instagram"
         },
         {
-        icon: "fab fa-facebook-f",
-        link: "#",
-        text: "Facebook"
+            icon: "fab fa-linkedin-in",
+            link: "#",
+            text: "Linkedin"
         },
         {
-        icon: "fab fa-twitter",
-        link: "#",
-        text: "Twitter"
+            icon: "fab fa-facebook-f",
+            link: "#",
+            text: "Facebook"
+        },
+        {
+            icon: "fab fa-twitter",
+            link: "#",
+            text: "Twitter"
         }
-        ]    
-    }) }}
+    ]
+}) }}
 {% endblock %}
 {% block content %}
-    <div class="govuk-grid-row">
+    <div class="govuk-grid-row" id="idsk-article-pattern">
         <div class="govuk-grid-column-three-quarters-from-desktop idsk-article-pattern__element-right">
             <div id="uvod">
                 <span class="govuk-caption-xl idsk-article-pattern__subtitle">Aktualita</span>
                 <h2 class="govuk-heading-l idsk-stepper-pattern__intro-heading">Povinná elektronická komunikácia so štátom sa o necelý mesiac dotkne už aj poľovníkov a cirkví</h2>
             </div>
             <p class="govuk-body-s idsk-article-pattern__text-silver--down">Aktualizované 8.12.2020 -
-                <a class="govuk-link" href="#idsk-article__content__news__div" title="zobraziť aktualizácie" onclick="showNews();">
+                <a class="govuk-link" href="#" title="zobraziť aktualizácie" onclick="scrollToNews(); return false">
                     zobraziť aktualizácie</a>
             </p>
         </div>
@@ -224,6 +228,10 @@
                     {
                     text: "Odklad povinnej aktivácie",
                     link: "#nadpis-2"
+                    },
+                    {
+                    text: "Aktualizácie",
+                    link: "#idsk-article__content__button"
                     },
                     {
                     text: "Taktiež súčasťou životných situácii",
@@ -250,9 +258,9 @@
                 <p class="govuk-body">Peter Kucer hovorí, že štatutári sú si vedomí zodpovednosti a ich záujem postupne rastie: „Ku koncu júna prišlo do elektronických schránok neziskových organizácií, nadácií, fondov, záujmových či občianskych združení 5 420 úradných rozhodnutí. Chcel by som preto vyzvať aj poľovníkov a cirkvi, keďže oni so štátom komunikujú pomerne často, aby situáciu nepodcenili a počítali s tým, že do schránky im budú doručované úradné rozhodnutia“.</p>
                 <p class="govuk-body">Národná agentúra pre sieťové a elektronické služby (NASES) aktivuje na doručovanie úradných rozhodnutí e-schránky ďalších organizácií mimovládneho neziskového sektora postupne v jednotlivých fázach podľa indikatívneho harmonogramu.</p>
                 <p class="govuk-body">Štatutári nájdu potrebné informácie o elektronických schránkach a prístupe k nim na statutar.sk. Komplexné informácie aj na slovensko.sk.</p>
-                <p class="govuk-body-s idsk-article-pattern__text-silver--up">Aktualizované 8.12.2020 -
-                    <a class="govuk-link" id="idsk-article__content__button" href="#" title="zobraziť aktualizácie" onclick="showNews(); return false" data-opened="schovať aktualizácie" data-closed="zobraziť aktualizácie">
-                    zobraziť aktualizácie</a>
+                <p class="govuk-body-s idsk-article-pattern__text-silver--up">Aktualizované 8.12.2020 
+                    <a class="govuk-link" id="idsk-article__content__button" href="#" title="+ zobraziť aktualizácie" onclick="showNews(); return false" data-opened="- schovať aktualizácie" data-closed="+ zobraziť aktualizácie">
+                    + zobraziť aktualizácie</a>
                 </p>
                 <div id="idsk-article__content__news__div">
                     <div class="govuk-grid-column-two-thirds" id="idsk-article__content__news">
@@ -499,6 +507,17 @@
         $content.classList.add('idsk-article__content__news--visible');
         $contentButton.innerText = $contentButton.dataset.opened;
     }
-}
+  }
+
+  scrollToNews = function (e) {
+        var $news = document.getElementById('idsk-article__content__button');
+        var $panelHeight = document.getElementsByClassName('idsk-in-page-navigation__link-panel')[0].offsetHeight
+
+        showNews();
+        setTimeout(function () {
+            window.scrollTo(0, $news.offsetTop - ($panelHeight * 4))
+        }, 10)
+  }
+
   </script>
 {% endblock %}
