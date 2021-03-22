@@ -40,7 +40,7 @@
     .idsk-timeline__content__title,
     .idsk-timeline__content__date-line {
         position: relative;
-        width: 68%;
+        width: 67%;
         margin-left: govuk-spacing(2);
 
         @include mq($from: tablet) {
@@ -62,7 +62,11 @@
     }
 
     .idsk-timeline__content__title-div {
-        margin-bottom: -40px;
+        margin-bottom: -20px;
+
+        @include mq(405px) {
+            margin-bottom: -40px;
+        }
 
         @include mq(tablet) {
             margin-bottom: -25px;
@@ -81,7 +85,7 @@
     }
 
     .idsk-timeline__left-side {
-        width: 26%;
+        width: 26.5%;
 
         @include mq(405px) {
             width: 24%;
@@ -185,7 +189,7 @@
         margin-bottom: govuk-spacing(3);
     }
 
-    .idsk-timeline__button__svg--previous{
+    .idsk-timeline__button__svg--previous {
         padding-right: govuk-spacing(2);
     }
 
