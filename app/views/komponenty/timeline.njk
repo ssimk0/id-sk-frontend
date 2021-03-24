@@ -1,7 +1,7 @@
 {% extends "layout.njk" %}
 {% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
 {% from "../../../src/idsk/components/timeline/macro.njk" import idskTimeline %}
-{% set pageName = "Timeline" %}
+{% set pageName = "Časová os - timeline" %}
 
 {% block beforeContent %}
     {{ govukBreadcrumbs({
@@ -13,15 +13,43 @@
 {% endblock %}
 {% block content %}
     <div class="govuk-width-container">
-        <h1 class="govuk-heading-xl idsk-stepper__heading">{{pageName}}</h1>
-        <p class="govuk-body-l">
-            Timeline je komponent.
+        <h1 class="govuk-heading-xl idsk-stepper__heading govuk-!-margin-bottom-6">{{pageName}}</h1>
+        <p class="govuk-body">
+            Časovú os použite vtedy, keď chcete používateľom zobraziť chronologicky usporiadaný obsah. Používateľ sa rýchlo zorientuje vo vašom obsahu. 
         </p>
-        <div class="govuk-grid-row">
-            <div class="govuk-grid-column-full">
-                <h3 class="govuk-heading-l">Vzor Timeline</h3>
-            </div>
-        </div>
+        <p class="govuk-body">
+           Zobrazujte 10 položiek časovej osi. Ak je ich viac, či do minulosti alebo do budúcnosti, umožnite ich zobraziť pomocou tlačidiel “Zobraziť staršie udalosti” a/alebo “Zobraziť budúce udalosti”.
+        </p>
+        <h2 class="govuk-heading-l">Z čoho sa skladá časová os?</h2>
+        <p class="govuk-body-l">Časová os sa skladá z:
+        </p>
+        <ul class="govuk-list">
+            <li>
+                <span>a)&nbsp; popisu v ľavej časti - môže obsahovať dátum, čas, mesiac,</span>
+            </li>
+            <li>
+                <span>b)&nbsp; vizuálnej časovej osi s guličkou,</span>
+            </li>
+            <li>
+                <span>c)&nbsp; popisu v pravej časti - link alebo popis s udalosťou alebo časťou procesu, ktorý reprezentuje,</span>
+            </li>
+            <li>
+                <span>d)&nbsp; vertikálneho oddeľovača s popisom - voliteľná časť - zoskupuje udalosti nachádzajúce sa pod ním,</span>
+            </li>
+            <li>
+                <span>e)&nbsp; nadpisu - voliteľná časť,</span>
+            </li>
+            <li>
+                <span>f)&nbsp; tlačidiel “Zobraziť staršie udalosti” a/alebo “Zobraziť budúce udalosti”.</span>
+            </li>
+        </ul>
+        <h2 class="govuk-heading-l">Ako použiť časovú os?</h2>
+        <p class="govuk-body">
+            Komponent časová os môžete použiť pre zobrazenie jedinečného obsahu, ktorý je možné chronologicky usporiadať do časového radu v jednej časovej osi (napr. zobrazenie podujatí, workshopov, tlačových konferencií, pracovných skupín a pod.). V prípade podujatí zobrazujte používateľom podujatia k aktuálnemu dňu a novšie. Staršie podujatia sú pre používateľa z hľadiska participácie na nich irelevantné, môže si ich však zobraziť. 
+        </p>
+        <p class="govuk-body">
+           Môžete ho taktiež použiť pri obsahu, ktorý vzájomne súvisí a je možné ho usporiadať do časového radu. Dobrý príkladom sú procesy. Niekde začínajú, majú trvanie a niekde končia. Napríklad legislatívny proces.
+        </p>
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-full">
                 <div class="example example-error">
@@ -96,29 +124,11 @@
                     {% endset %}
                     {{exampleComponentHtml | safe}}
                 </div>
-                <pre class=" language-markup"><code class="govuk-!-font-size-16  language-markup">{{ exampleComponentHtml }}</code></pre>
             </div>
-        </div>
-        <div class="govuk-grid-row">
-
+            <pre class="language-markup"><code class="govuk-!-font-size-16  language-markup">{{ exampleComponentHtml }}</code></pre>
         </div>
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-full">
-                <h4 class="govuk-heading-m">Zvýraznený krok po kliknutí na odkaz</h4>
-                <p class="govuk-body">
-                    Tento prvok sa použije na konci obsahu ku konkrétnemu obsahu, aby používateľ vedel, na ktorý odkaz v stepperi klikol. Slúži to ako dodatočná navigácia v rámci steppera.
-                </p>
-
-                <h3 class="govuk-heading-l idsk-stepper__heading--top">Ako použiť timeline pre životnú situáciu ?</h3>
-                <p class="govuk-body">
-                    Keď používateľ počas riešenia svojej životnej situácie narazí na tzv. trecie plochy, t.j. časti procesu, v ktorých sa neorientuje hladko, spôsobí to používateľovi frustráciu a nemusí danú časť procesu úspešne dokončiť. Ak aj vaša služba nie je 100 % digitalizovaná alebo nemá dokonalý dizajn, dobrým návodom a popisom výrazne uľahčíte používateľovi zvládnuť danú službu alebo časť životnej situácie. Kvalitný návod vám môže znížiť administratívne náklady - ak budú používatelia vedieť, čo majú robiť, nebudú sa obracať na vaše call centrum alebo písať emaily. Kvalitným návodom navyše získate spokojného občana - zákazníka.
-                </p>
-                <p class="govuk-body">
-                    V ideálnom prípade by ste mali pomocou steppera zvizualizovať na vašom portáli celú životnú situáciu tak, ako ju vníma používateľ (nie len vašu agendu, ktorá z pohľadu používateľa tvorí jeden z krokov). Používateľa pri riešení životnej situácie totiž nezaujíma, že jeho potreby a práva napĺňa viacero inštitúcií. Veľakrát to ani nevie a nemusí vedieť. Pre používateľa vystupuje štát ako jedna organizácia.
-                </p>
-                <p class="govuk-body">
-                    Ak poskytujete aspoň jednu službu v danej životnej situácii a ostatné služby poskytujú iné orgány verejnej moci, skontaktujte sa s kolegami z ostatných inštitúcií a skoordinujte sa pri tvorbe takéhoto návodu. Všetky inštitúcie používajte jeden a ten istý stepper k životnej situácii.
-                </p>
                 <br>
                 <h2 class="govuk-heading-s">
                     <a class="govuk-link" href="/custom-components/timeline/default/preview" title="Rozšírený príklad podstránky timeline">Rozšírený príklad podstránky timeline</a>
