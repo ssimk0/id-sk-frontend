@@ -1,7 +1,6 @@
 @import "../../../govuk/settings/all";
 @import "../../../govuk/tools/all";
 @import "../../../govuk/helpers/all";
-
 @import "../../../govuk/helpers/typography";
 
 @include govuk-exports("idsk/component/crossroad") {
@@ -10,7 +9,17 @@
   }
 
   .idsk-crossroad-2 {
-    @include govuk-grid-column("one-half");
+    @include mq(mobile) {
+      @include govuk-grid-column("full");
+    }
+
+    @include mq($and: "(orientation: landscape)") {
+      @include govuk-grid-column("one-half");
+    }
+
+    @include mq($from: desktop) {
+      @include govuk-grid-column("one-half");
+    }
   }
 
   .idsk-crossroad {
@@ -48,7 +57,123 @@
       height: 1px;
       border: 0;
       border-top: 1px;
-      margin-bottom: 10px;
+      margin-bottom: govuk-spacing(2);
+    }
+  }
+
+  .idsk-crossroad__uncollapse-div {
+    text-align: center;
+  }
+
+  .idsk-crossroad__colapse--button {
+    @include govuk-font($size: 19);
+    background: none;
+    border: none;
+    width: -webkit-fill-available;
+    text-align: center;
+    text-decoration-line: underline;
+    color: govuk-colour("blue");
+    width: auto;
+    height: 100%;
+    cursor: pointer;
+    display: inline-block;
+
+    &::before,
+    &::after {
+      border-style: solid;
+      border-width: 0.1em 0.1em 0 0;
+      color: govuk-colour("blue");
+      content: "";
+      display: inline-block;
+      height: 0.45em;
+      right: 25px;
+      top: 15px;
+      transform: rotate(135deg);
+      transition: all 0.2s ease-out;
+      vertical-align: top;
+      width: 0.45em;
+
+      @include mq(tablet) {
+        right: 50px;
+        top: 20px;
+      }
+    }
+
+    &::after {
+      margin: 5px 0 0 20px;
+    }
+    &::before {
+      margin: 5px 22px 0 0;
+    }
+
+    &:focus,
+    &:active {
+      @include govuk-focused-text;
+      width: auto;
+      padding: 0 12px;
+    }
+  }
+
+  .idsk-crossroad__colapse--button-show {
+    &:focus,
+    &:active {
+      padding: 0;
+    }
+  }
+
+  .idsk-crossroad__collapse--arrow .idsk-crossroad__colapse--button::before,
+  .idsk-crossroad__collapse--arrow .idsk-crossroad__colapse--button::after {
+    margin: 11px 12px 0 12px;
+    transform: rotate(-45deg);
+    transition: all 0.2s ease-in;
+  }
+
+  .idsk-crossroad__collapse--shadow {
+    position: relative;
+    box-shadow: 5px -35px 30px 40px govuk-colour("white");
+
+    @include mq($from: desktop) {
+      box-shadow: 5px -10px 70px 40px govuk-colour("white");
+    }
+  }
+
+  .idsk-crossroad__uncollapse-hide--mobile,
+  .idsk-crossroad__item--one-column-hide {
+    display: none;
+  }
+
+  .idsk-crossroad__item--two-columns-hide-mobile.idsk-crossroad__item--two-columns-hide,
+  .idsk-crossroad__uncollapse-hide--desktop {
+    @include mq($and: "(orientation: landscape)") {
+      display: none;
+    }
+
+    @include mq($from: desktop) {
+      display: none;
+    }
+  }
+
+  .idsk-crossroad__item--two-columns-hide-mobile.idsk-crossroad__item--two-columns-show {
+    display: block;
+  }
+
+  .idsk-crossroad__item--two-columns-hide-mobile {
+    @include mq(mobile) {
+      display: none;
+    }
+
+    @include mq($and: "(orientation: landscape)") {
+      display: unset;
+    }
+
+    @include mq($from: desktop) {
+      display: unset;
+    }
+  }
+
+  .idsk-crossroad__item--two-columns-show {
+    @include mq($from: desktop) {
+      display: block;
     }
   }
 }

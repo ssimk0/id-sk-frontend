@@ -7,6 +7,10 @@ params:
   type: number
   required: true
   description: The number of columns into which the crossraod elements are to be divided. The component currently supports splitting elements into one or two columns.
+- name: hideTiles
+  type: boolean
+  required: false
+  description: Determines whether crossroad tiles should be hidden when count of tiles is higher than 5 in one column.
 - name: items
   type: array
   required: true

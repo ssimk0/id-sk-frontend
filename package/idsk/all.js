@@ -2578,7 +2578,6 @@ FooterExtended.prototype.init = function () {
     var $closeErrorFormButton = $module.querySelector('#idsk-footer-extended-close-error-form-button');
     var $closeHelpFormButton = $module.querySelector('#idsk-footer-extended-close-help-form-button');
     var $textAreaCharacterCount = $module.querySelector('#idsk-footer-extended-error-form #with-hint');
-    var $fillFeedbackButton = $module.querySelector('#fill-feedback-help-form');
     var $submitErrorButton = $module.querySelector('#submit-button-error-form');
     var $writeUsButton = $module.querySelector('#idsk-footer-extended-write-us-button');
     var $upButton = $module.querySelector("#footer-extended-up-button");
@@ -2599,10 +2598,6 @@ FooterExtended.prototype.init = function () {
 
     if ($closeErrorFormButton) {
         $closeErrorFormButton.addEventListener('click', this.handleCloseErrorFormButtonClick.bind(this));
-    }
-
-    if ($fillFeedbackButton) {
-        $fillFeedbackButton.addEventListener('click', this.handleSubmitButtonClick.bind(this));
     }
 
     if ($submitErrorButton) {
@@ -2938,9 +2933,14 @@ function Crossroad($module) {
 Crossroad.prototype.init = function () {
   var $module = this.$module;
   var $items = this.$items;
+  var $uncollapseButton = $module.querySelector('#idsk-crossroad__uncollapse-button');
 
   if (!$module || !$items) {
     return;
+  }
+
+  if ($uncollapseButton) {
+    $uncollapseButton.addEventListener('click', this.handleShowItems.bind(this));
   }
 
   nodeListForEach(
@@ -2955,6 +2955,267 @@ Crossroad.prototype.handleItemClick = function (e) {
   var $item = e.target;
   $item.setAttribute("aria-current", "true");
 };
+
+Crossroad.prototype.setAriaLabel = function (arr) {
+  arr.forEach(function (item) {
+    if (item.classList.contains('idsk-crossroad__arria-hidden')) {
+      item.setAttribute("aria-hidden", "true");
+      toggleClass(item, 'idsk-crossroad__arria-hidden');
+    } else if (item.getAttribute("aria-hidden") == "true") {
+      item.setAttribute("aria-hidden", "false");
+      toggleClass(item, 'idsk-crossroad__arria-hidden');
+    }
+  });
+};
+
+Crossroad.prototype.handleShowItems = function (e) {
+  var $crossroadItems = this.$module.querySelectorAll('.idsk-crossroad__item');
+  var $uncollapseButton = this.$module.querySelector('#idsk-crossroad__uncollapse-button');
+  var $uncollapseDiv = this.$module.querySelector('.idsk-crossroad__uncollapse-div');
+  var $crossroadTitles = this.$module.querySelectorAll('.idsk-crossroad-title');
+  var $crossroadSubtitles = this.$module.querySelectorAll('.idsk-crossroad-subtitle');
+
+  $crossroadItems.forEach(function (crossroadItem) {
+    toggleClass(crossroadItem, 'idsk-crossroad__item--two-columns-show');
+  });
+
+  this.setAriaLabel($crossroadTitles);
+  this.setAriaLabel($crossroadSubtitles);
+
+  $uncollapseButton.innerHTML = $uncollapseButton.textContent == 'Zobraziť viac' ? 'Zobraziť menej' : 'Zobraziť viac';
+
+  toggleClass(e.srcElement, 'idsk-crossroad__colapse--button-show');
+  toggleClass($uncollapseDiv, 'idsk-crossroad__collapse--shadow');
+  toggleClass($uncollapseDiv, 'idsk-crossroad__collapse--arrow');
+};
+
+function CustomerSurveys($module) {
+    this.$module = $module;
+}
+
+CustomerSurveys.prototype.init = function () {
+    var $module = this.$module;
+    var $nextButton = $module.querySelector('#idsk-customer-surveys__send-button');
+    var $previousButton = $module.querySelector('#idsk-customer-surveys__previous-button');
+    var $textAreaFirst = $module.querySelector('.idsk-customer-surveys-text-area #first');
+    var $textAreaSecond = $module.querySelector('.idsk-customer-surveys-text-area #second');
+    var $textAreaThird = $module.querySelector('.idsk-customer-surveys-text-area #third');
+    var $textAreaFourth = $module.querySelector('.idsk-customer-surveys-text-area #fourth');
+    var $radioButtonWork = $module.querySelector('.idsk-customer-survey__radio--work');
+    var $radioButtonPrivate = $module.querySelector('.idsk-customer-survey__radio--private');
+    var $counter = 7;
+    $module.sendButtonDisabled = new Array(7);
+    $module.textAreaMap = new Map();
+
+    if (!$module) {
+        return;
+    }
+
+    this.handleCounterOfSubtitles.call(this, $counter);
+    this.enableNextButtonForAllSteps.call(this);
+
+    if ($radioButtonWork) {
+        $radioButtonWork.addEventListener('click', this.handleRadioButtonWorkClick.bind(this));
+    }
+
+    if ($radioButtonPrivate) {
+        $radioButtonPrivate.addEventListener('click', this.handleRadioButtonPrivateClick.bind(this));
+    }
+
+    if ($nextButton) {
+        $nextButton.addEventListener('click', this.handleNextButtonClick.bind(this));
+    }
+
+    if ($previousButton) {
+        $previousButton.addEventListener('click', this.handlePreviousButtonClick.bind(this));
+    }
+
+    if ($textAreaFirst) {
+        $module.textAreaMap.set('first', 1);
+        $textAreaFirst.addEventListener('input', this.handleStatusOfCharacterCountButton.bind(this));
+    }
+
+    if ($textAreaSecond) {
+        $module.textAreaMap.set('second', 2);
+        $textAreaSecond.addEventListener('input', this.handleStatusOfCharacterCountButton.bind(this));
+    }
+
+    if ($textAreaThird) {
+        $module.textAreaMap.set('third', 4);
+        $textAreaThird.addEventListener('input', this.handleStatusOfCharacterCountButton.bind(this));
+    }
+
+    if ($textAreaFourth) {
+        $module.textAreaMap.set('fourth', 5);
+        $textAreaFourth.addEventListener('input', this.handleStatusOfCharacterCountButton.bind(this));
+    }
+};
+CustomerSurveys.prototype.enableNextButtonForAllSteps = function (e) {
+    for (var index = 0; index < this.$module.sendButtonDisabled.length; index++) {
+        this.$module.sendButtonDisabled[index] = false;
+    }
+};
+
+CustomerSurveys.prototype.handleStatusOfCharacterCountButton = function (e) {
+    var $module = this.$module;
+    var $name = e.srcElement.id;
+    var $textAreaCharacterCount = $module.querySelector('#' + $name);
+    var $remainingCharacterCountMessage = $module.querySelector('#' + $name + '-info');
+    var $submitButton = $module.querySelector('#idsk-customer-surveys__send-button');
+
+    setTimeout(function () {
+        if ($textAreaCharacterCount.classList.contains('govuk-textarea--error') || $remainingCharacterCountMessage.classList.contains('govuk-error-message')) {
+            $submitButton.disabled = true;
+        } else {
+            $submitButton.disabled = false;
+            // changing value of global variable for disabling button, in case of walk through steps and comming back to this textarea.
+            $module.sendButtonDisabled[$module.textAreaMap.get($name)] = false;
+        }
+    }, 300);
+};
+
+CustomerSurveys.prototype.handleCounterOfSubtitles = function ($counter) {
+    var $subtitles = this.$module.querySelectorAll('.idsk-customer-surveys--subtitle');
+    var i;
+
+    // remove previous indexing, cause amount of steps could change
+    // adding new indexing
+    for (i = 0; i < $counter; i++) {
+        $subtitles[i].textContent = $subtitles[i].textContent.substring(3);
+        $subtitles[i].innerHTML = (i + 1) + '. ' + $subtitles[i].textContent;
+    }
+};
+
+CustomerSurveys.prototype.handleRadioButtonWorkClick = function (e) {
+    var $textArea = this.$module.querySelector('.idsk-customer-survey__text-area--work');
+    var $subtitle = this.$module.querySelector('.idsk-customer-survey__subtitle--work');
+
+    $subtitle.classList.add('idsk-customer-surveys--subtitle');
+    $textArea.classList.remove('idsk-customer-surveys--hidden');
+    this.handleCounterOfSubtitles.call(this, 8);
+};
+
+CustomerSurveys.prototype.clearTextArea = function ($textArea) {
+    var $text = $textArea.querySelector('.govuk-textarea');
+    var $hint = $textArea.querySelector('.govuk-character-count__message');
+
+    $text.value = "";
+    if ($text.classList.contains('govuk-textarea--error')) {
+        $text.classList.remove('govuk-textarea--error');
+        $hint.classList.remove('govuk-error-message');
+        $hint.classList.add('govuk-hint');
+        $hint.innerHTML = "Zostáva Vám 200 znakov";
+    }
+};
+
+CustomerSurveys.prototype.handleRadioButtonPrivateClick = function (e) {
+    var $textArea = this.$module.querySelector('.idsk-customer-survey__text-area--work');
+    var $subtitle = this.$module.querySelector('.idsk-customer-survey__subtitle--work');
+    var $nextButton = this.$module.querySelector('#idsk-customer-surveys__send-button');
+
+    $nextButton.disabled = false;
+    $subtitle.classList.remove('idsk-customer-surveys--subtitle');
+    $textArea.classList.add('idsk-customer-surveys--hidden');
+    this.clearTextArea.call(this, $textArea);
+    this.handleCounterOfSubtitles.call(this, 7);
+};
+
+CustomerSurveys.prototype.handlePreviousButtonClick = function (e) {
+    var $module = this.$module;
+    var $steps = $module.querySelectorAll('.idsk-customer-surveys__step');
+    var i;
+    var $nextButton = $module.querySelector('#idsk-customer-surveys__send-button');
+    var $previousButton = $module.querySelector('#idsk-customer-surveys__previous-button');
+    var $startIcon = $module.querySelectorAll('.idsk-button__start-icon');
+    var $nextButtonText = $module.querySelector('.idsk-customer-surveys__send-button');
+
+    $previousButton.blur();
+    // showing and hiding steps, once step is set to be showed return is called.
+    // changing names of buttons, disabling
+    for (i = 1; i < $steps.length - 1; i++) {
+        if ($previousButton.textContent == "Späť" && $steps[1].classList.contains('idsk-customer-surveys--show')) {
+            $previousButton.innerHTML = 'Odísť';
+            $nextButtonText.innerHTML = 'Začať';
+            toggleClass($startIcon[0], 'idsk-customer-surveys__icon--hidden');
+            $previousButton.onclick = function () {
+                location.href = "/";
+            };
+        }
+        if ($nextButtonText.textContent.includes("Odoslať odpovede")) {
+            $nextButtonText.innerHTML = 'Ďalej';
+            toggleClass($startIcon[0], 'idsk-customer-surveys__icon--hidden');
+        }
+        if ($steps[i].classList.contains('idsk-customer-surveys--show')) {
+            if ($nextButton.disabled) {
+                $module.sendButtonDisabled[i] = true;
+                $nextButton.disabled = false;
+            }
+            $steps[i].classList.remove('idsk-customer-surveys--show');
+            toggleClass($steps[i], 'idsk-customer-surveys--hidden');
+            toggleClass($steps[i - 1], 'idsk-customer-surveys--hidden');
+            $steps[i - 1].classList.add('idsk-customer-surveys--show');
+            return;
+        }
+    }};
+
+CustomerSurveys.prototype.handleNextButtonClick = function (e) {
+    var $module = this.$module;
+    var $steps = $module.querySelectorAll('.idsk-customer-surveys__step');
+    var i;
+    var $buttonsDiv = $module.querySelector('.idsk-customer-surveys__buttons');
+    var $nextButton = $module.querySelector('#idsk-customer-surveys__send-button');
+    var $previousButton = $module.querySelector('#idsk-customer-surveys__previous-button');
+    var $startIcon = $module.querySelectorAll('.idsk-button__start-icon');
+    var $nextButtonText = $module.querySelector('.idsk-customer-surveys__send-button');
+
+    $nextButton.blur();
+    if ($nextButtonText.textContent.includes("Začať")) {
+        $nextButtonText.innerHTML = 'Ďalej';        toggleClass($startIcon[0], 'idsk-customer-surveys__icon--hidden');
+        // uncheck all radiobuttons 
+        this.handleRadioButtonPrivateClick.call(this);
+
+        var $radios = $module.querySelectorAll('.govuk-radios__input');
+        for (var i = 0; i < $radios.length; i++) {
+            $radios[i].checked = false;
+        }
+        // clear all textAreas
+        var $textAreas = $module.querySelectorAll('.idsk-customer-surveys-text-area');
+        for (var i = 0; i < $textAreas.length; i++) {
+            this.clearTextArea.call(this, $textAreas[i]);
+        }
+        this.enableNextButtonForAllSteps.call(this);
+    }
+
+    if ($nextButtonText.textContent.includes("Odoslať odpovede")) {
+        $buttonsDiv.classList.add('idsk-customer-surveys--hidden');
+    }
+
+    // showing and hiding steps, once step is set to be showed return is called.
+    // changing names of buttons, disabling
+    for (i = 0; i < $steps.length - 1; i++) {
+        if ($steps[i].classList.contains('idsk-customer-surveys--show')) {
+            if ($module.sendButtonDisabled[i + 1]) {
+                $nextButton.disabled = true;
+            } else {
+                $nextButton.disabled = false;
+            }
+            $steps[i].classList.remove('idsk-customer-surveys--show');
+            toggleClass($steps[i], 'idsk-customer-surveys--hidden');
+            toggleClass($steps[i + 1], 'idsk-customer-surveys--hidden');
+            $steps[i + 1].classList.add('idsk-customer-surveys--show');
+            if (i == 4) {
+                $nextButtonText.innerHTML = 'Odoslať odpovede';
+                toggleClass($startIcon[0], 'idsk-customer-surveys__icon--hidden');
+            }
+            if (i == 0) {
+                $previousButton.innerHTML = 'Späť';
+                $previousButton.onclick = function () {
+                    location.href = "#";
+                };
+            }
+            return;
+        }
+    }};
 
 /**
  * Header for extended websites
@@ -2984,23 +3245,20 @@ HeaderExtended.prototype.init = function () {
         $toggleSearchInputComponent.addEventListener('focusout', this.handleSearchComponentClick.bind(this));
     }
 
-    // check for language selector
-    var $toggleLanguageSelector = $module.querySelector('.idsk-js-header-extended-language-toggle');
-    if ($toggleLanguageSelector) {
-        // Handle $toggleLanguageSelect click events
-        $toggleLanguageSelector.addEventListener('focus', this.handleLanguageSelectorClick.bind(this));
-        $toggleLanguageSelector.addEventListener('blur', this.handleLanguageSelectorClick.bind(this));
+    // check for language switcher
+    var $toggleLanguageSwitcher = $module.querySelector('.idsk-js-header-extended-language-toggle');
+    if ($toggleLanguageSwitcher) {
+        // Handle $toggleLanguageSwitcher click events
+        $toggleLanguageSwitcher.addEventListener('click', this.handleLanguageSwitcherClick.bind(this));
     }
 
-    // check for submenu
-    var $toggleSubmenus = $module.querySelectorAll('.idsk-header-extended__link');
-    if ($toggleSubmenus) {
-        var $self = this;
-        // Handle $toggleSubmenu click events
-        nodeListForEach$1($toggleSubmenus, function ($toggleSubmenu) {
-            $toggleSubmenu.addEventListener('focus', $self.handleSubmenuClick2.bind($self));
-            $toggleSubmenu.addEventListener('blur', $self.handleSubmenuClick.bind($self));
-        });
+    // check for menu items
+    var $menuItems = $module.querySelectorAll('.idsk-header-extended__link');
+    if ($menuItems) {
+        // Handle $menuItem click events
+        nodeListForEach$1($menuItems, function ($menuItem) {
+            $menuItem.addEventListener('click', this.handleSubmenuClick.bind(this));
+        }.bind(this));
     }
 
     // check for menu button and x-mark button
@@ -3012,6 +3270,9 @@ HeaderExtended.prototype.init = function () {
     }
 
     window.addEventListener('scroll', this.scrollFunction.bind(this));
+
+    $module.boundCheckBlurMenuItemClick = this.checkBlurMenuItemClick.bind(this);
+    $module.boundCheckBlurLanguageSwitcherClick = this.checkBlurLanguageSwitcherClick.bind(this);
 };
 
 /**
@@ -3032,12 +3293,22 @@ HeaderExtended.prototype.handleSearchComponentClick = function (e) {
 
 /**
  * Handle open/hide language switcher
- * @param {object} e 
+ * @param {object} e
  */
-HeaderExtended.prototype.handleLanguageSelectorClick = function (e) {
+HeaderExtended.prototype.handleLanguageSwitcherClick = function (e) {
     var $toggleButton = e.target || e.srcElement;
     var $target = $toggleButton.closest('.idsk-header-extended__language');
     toggleClass($target, 'idsk-header-extended__language--active');
+    document.addEventListener('click', this.$module.boundCheckBlurLanguageSwitcherClick, true);
+};
+
+/**
+ * handle click outside language switcher or "blur" the item link
+ */
+HeaderExtended.prototype.checkBlurLanguageSwitcherClick = function () {
+    var $target = this.$module.querySelectorAll('.idsk-header-extended__language');
+    $target[0].classList.remove('idsk-header-extended__language--active');
+    document.removeEventListener('click', this.$module.boundCheckBlurLanguageSwitcherClick, true);
 };
 
 /**
@@ -3047,22 +3318,23 @@ HeaderExtended.prototype.handleLanguageSelectorClick = function (e) {
 HeaderExtended.prototype.handleSubmenuClick = function (e) {
     var $srcEl = e.target || e.srcElement;
     var $toggleButton = $srcEl.closest('.idsk-header-extended__navigation-item');
-    toggleClass($toggleButton, 'idsk-header-extended__navigation-item--active');
-};/**
- * Handle open/hide submenu
- * @param {object} e 
- */
-
-HeaderExtended.prototype.handleSubmenuClick2 = function (e) {
-    var $srcEl = e.target || e.srcElement;
-    var $toggleButton = $srcEl.closest('.idsk-header-extended__navigation-item');
     var $currActiveList = this.$module.querySelectorAll('.idsk-header-extended__navigation-item--active');
 
     if ($currActiveList.length > 0) {
         $currActiveList[0].classList.remove('idsk-header-extended__navigation-item--active');
     }
-    
     toggleClass($toggleButton, 'idsk-header-extended__navigation-item--active');
+
+    document.addEventListener('click', this.$module.boundCheckBlurMenuItemClick, true);
+};
+
+/**
+ * handle click outside menu or "blur" the item link
+ */
+HeaderExtended.prototype.checkBlurMenuItemClick = function () {
+    var $currActiveList = this.$module.querySelectorAll('.idsk-header-extended__navigation-item--active');
+    $currActiveList[0].classList.remove('idsk-header-extended__navigation-item--active');
+    document.removeEventListener('click', this.$module.boundCheckBlurMenuItemClick, true);
 };
 
 /**
@@ -3224,6 +3496,332 @@ InPageNavigation.prototype.changeCurrentLink = function (el) {
     $linkPanelText.innerText = $articleTitle.innerText;
 };
 
+function Stepper($module) {
+  this.$module = $module;
+  this.$moduleId = $module.getAttribute('id');
+  this.$sections = $module.querySelectorAll('.idsk-stepper__section');
+  this.$links = $module.querySelectorAll('.idsk-stepper__section-content .govuk-link');
+  this.$openAllButton = '';
+  this.$browserSupportsSessionStorage = $helper.checkForSessionStorage();
+
+  this.$controlsClass = 'idsk-stepper__controls';
+  this.$openAllClass = 'idsk-stepper__open-all';
+  this.$iconClass = 'idsk-stepper__icon';
+
+  this.$sectionHeaderClass = 'idsk-stepper__section-header';
+  this.$sectionHeaderFocusedClass = 'idsk-stepper__section-header--focused';
+  this.$sectionHeadingClass = 'idsk-stepper__section-heading';
+  this.$sectionSummaryClass = 'idsk-stepper__section-summary';
+  this.$sectionButtonClass = 'idsk-stepper__section-button';
+  this.$sectionExpandedClass = 'idsk-stepper__section--expanded';
+}
+
+// Initialize component
+Stepper.prototype.init = function () {
+  // Check for module
+  if (!this.$module) {
+    return
+  }
+
+  this.initControls();
+  this.initSectionHeaders();
+
+  nodeListForEach(
+    this.$links,
+    function ($link) {
+      $link.addEventListener('click', this.handleItemLink.bind(this));
+      $link.addEventListener('blur', this.handleItemLinkBlur.bind(this));
+    }.bind(this)
+  );
+
+  // See if "Zobraziť všetko" button text should be updated
+  var $areAllSectionsOpen = this.checkIfAllSectionsOpen();
+  this.updateOpenAllButton($areAllSectionsOpen);
+};
+
+// Initialise controls and set attributes
+Stepper.prototype.initControls = function () {
+  // Create "Zobraziť všetko" button and set attributes
+  this.$openAllButton = document.createElement('button');
+  this.$openAllButton.setAttribute('type', 'button');
+  this.$openAllButton.innerHTML = 'Zobraziť všetko <span class="govuk-visually-hidden">sections</span>';
+  this.$openAllButton.setAttribute('class', this.$openAllClass);
+  this.$openAllButton.setAttribute('aria-expanded', 'false');
+  this.$openAllButton.setAttribute('type', 'button');
+
+  // Create control wrapper and add controls to it
+  var $accordionControls = this.$module.querySelector('.idsk-stepper__controls');
+  $accordionControls.appendChild(this.$openAllButton);
+   
+  // Handle events for the controls
+  this.$openAllButton.addEventListener('click', this.onOpenOrCloseAllToggle.bind(this));
+};
+
+// Initialise section headers
+Stepper.prototype.initSectionHeaders = function () {
+  // Loop through section headers
+  nodeListForEach(this.$sections, function ($section, $i) {
+    // Set header attributes
+    var $header = $section.querySelector('.' + this.$sectionHeaderClass);
+    this.initHeaderAttributes($header, $i);
+
+    this.setExpanded(this.isExpanded($section), $section);
+
+    // Handle events
+    $header.addEventListener('click', this.onSectionToggle.bind(this, $section));
+
+    // See if there is any state stored in sessionStorage and set the sections to
+    // open or closed.
+    this.setInitialState($section);
+  }.bind(this));
+};
+
+Stepper.prototype.handleItemLink = function (e) {
+  var $link = e.target || e.srcElement;
+  var $currentSection = $link.closest('.idsk-stepper__section');
+  $currentSection.classList.add('idsk-stepper__bolder-line');
+};
+
+Stepper.prototype.handleItemLinkBlur = function (e) {
+  var $link = e.target || e.srcElement;
+  var $currentSection = $link.closest('.idsk-stepper__section');
+  $currentSection.classList.remove('idsk-stepper__bolder-line'); 
+};
+
+// Set individual header attributes
+Stepper.prototype.initHeaderAttributes = function ($headerWrapper, index) {
+  var $module = this.$module;
+  var $span = $headerWrapper.querySelector('.' + this.$sectionButtonClass);
+  var $heading = $headerWrapper.querySelector('.' + this.$sectionHeadingClass);
+  var $summary = $headerWrapper.querySelector('.' + this.$sectionSummaryClass);
+
+  if (!$span) {
+    return;
+  }
+
+  // Copy existing span element to an actual button element, for improved accessibility.
+  var $button = document.createElement('button');
+  $button.setAttribute('type', 'button');
+  $button.setAttribute('id', this.$moduleId + '-heading-' + (index + 1));
+  $button.setAttribute('aria-controls', this.$moduleId + '-content-' + (index + 1));
+
+  // Copy all attributes (https://developer.mozilla.org/en-US/docs/Web/API/Element/attributes) from $span to $button
+  for (var i = 0; i < $span.attributes.length; i++) {
+    var $attr = $span.attributes.item(i);
+    $button.setAttribute($attr.nodeName, $attr.nodeValue);
+  }
+
+  $button.addEventListener('focusin', function (e) {
+    if (!$headerWrapper.classList.contains($module.$sectionHeaderFocusedClass)) {
+      $headerWrapper.className += ' ' + $module.$sectionHeaderFocusedClass;
+    }
+  });
+
+  $button.addEventListener('blur', function (e) {
+    $headerWrapper.classList.remove($module.$sectionHeaderFocusedClass);
+  });
+
+  if (typeof ($summary) !== 'undefined' && $summary !== null) {
+    $button.setAttribute('aria-describedby', this.$moduleId + '-summary-' + (index + 1));
+  }
+
+  // $span could contain HTML elements (see https://www.w3.org/TR/2011/WD-html5-20110525/content-models.html#phrasing-content)
+  $button.innerHTML = $span.innerHTML;
+
+  $heading.removeChild($span);
+  $heading.appendChild($button);
+
+  // Add "+/-" icon
+  var $icon = document.createElement('span');
+  $icon.className = this.$iconClass;
+  $icon.setAttribute('aria-hidden', 'true');
+
+  $heading.appendChild($icon);
+};
+
+// When section toggled, set and store state
+Stepper.prototype.onSectionToggle = function ($section) {
+  var $expanded = this.isExpanded($section);
+  this.setExpanded(!$expanded, $section);
+
+  // Store the state in sessionStorage when a change is triggered
+  this.storeState($section);
+};
+
+// When Open/Zatvoriť všetko toggled, set and store state
+Stepper.prototype.onOpenOrCloseAllToggle = function () {
+  var $self = this;
+  var $sections = this.$sections;
+  var $nowExpanded = !this.checkIfAllSectionsOpen();
+
+  nodeListForEach($sections, function ($section) {
+    $self.setExpanded($nowExpanded, $section);
+    // Store the state in sessionStorage when a change is triggered
+    $self.storeState($section);
+  });
+
+  $self.updateOpenAllButton($nowExpanded);
+};
+
+// Set section attributes when opened/closed
+Stepper.prototype.setExpanded = function ($expanded, $section) {
+  var $button = $section.querySelector('.' + this.$sectionButtonClass);
+  if (!$button) {
+    return;
+  }
+  $button.setAttribute('aria-expanded', $expanded);
+
+  if ($expanded) {
+    $section.classList.add(this.$sectionExpandedClass);
+  } else {
+    $section.classList.remove(this.$sectionExpandedClass);
+  }
+
+  // See if "Zobraziť všetko" button text should be updated
+  var $areAllSectionsOpen = this.checkIfAllSectionsOpen();
+  this.updateOpenAllButton($areAllSectionsOpen);
+};
+
+// Get state of section
+Stepper.prototype.isExpanded = function ($section) {
+  return $section.classList.contains(this.$sectionExpandedClass)
+};
+
+// Check if all sections are open
+Stepper.prototype.checkIfAllSectionsOpen = function () {
+  // Get a count of all the Accordion sections
+  var $sectionsCount = this.$sections.length;
+  // Get a count of all Accordion sections that are expanded
+  var $expandedSectionCount = this.$module.querySelectorAll('.' + this.$sectionExpandedClass).length;
+  var $areAllSectionsOpen = $sectionsCount === $expandedSectionCount;
+
+  return $areAllSectionsOpen
+};
+
+// Update "Zobraziť všetko" button
+Stepper.prototype.updateOpenAllButton = function ($expanded) {
+  var $newButtonText = $expanded ? 'Zatvoriť všetko' : 'Zobraziť všetko';
+  $newButtonText += '<span class="govuk-visually-hidden"> sections</span>';
+  this.$openAllButton.setAttribute('aria-expanded', $expanded);
+  this.$openAllButton.innerHTML = $newButtonText;
+};
+
+// Check for `window.sessionStorage`, and that it actually works.
+var $helper = {
+  checkForSessionStorage: function () {
+    var $testString = 'this is the test string';
+    var $result;
+    try {
+      window.sessionStorage.setItem($testString, $testString);
+      $result = window.sessionStorage.getItem($testString) === $testString.toString();
+      window.sessionStorage.removeItem($testString);
+      return $result
+    } catch (exception) {
+      if ((typeof console === 'undefined' || typeof console.log === 'undefined')) {
+        console.log('Notice: sessionStorage not available.');
+      }
+    }
+  }
+};
+
+// Set the state of the accordions in sessionStorage
+Stepper.prototype.storeState = function ($section) {
+  if (this.$browserSupportsSessionStorage) {
+    // We need a unique way of identifying each content in the accordion. Since
+    // an `#id` should be unique and an `id` is required for `aria-` attributes
+    // `id` can be safely used.
+    var $button = $section.querySelector('.' + this.$sectionButtonClass);
+
+    if ($button) {
+      var $contentId = $button.getAttribute('aria-controls');
+      var $contentState = $button.getAttribute('aria-expanded');
+
+      if (typeof $contentId === 'undefined' && (typeof console === 'undefined' || typeof console.log === 'undefined')) {
+        console.error(new Error('No aria controls present in accordion section heading.'));
+      }
+
+      if (typeof $contentState === 'undefined' && (typeof console === 'undefined' || typeof console.log === 'undefined')) {
+        console.error(new Error('No aria expanded present in accordion section heading.'));
+      }
+
+      // Only set the state when both `contentId` and `contentState` are taken from the DOM.
+      if ($contentId && $contentState) {
+        window.sessionStorage.setItem($contentId, $contentState);
+      }
+    }
+  }
+};
+
+// Read the state of the accordions from sessionStorage
+Stepper.prototype.setInitialState = function ($section) {
+  if (this.$browserSupportsSessionStorage) {
+    var $button = $section.querySelector('.' + this.$sectionButtonClass);
+
+    if ($button) {
+      var $contentId = $button.getAttribute('aria-controls');
+      var $contentState = $contentId ? window.sessionStorage.getItem($contentId) : null;
+
+      if ($contentState !== null) {
+        this.setExpanded($contentState === 'true', $section);
+      }
+    }
+  }
+};
+
+function RegistrationForEvent($module) {
+    this.$module = $module;
+}
+
+RegistrationForEvent.prototype.init = function () {
+    // Check for module
+    var $module = this.$module;
+    if (!$module) {
+        return
+    }
+
+    // Check for button
+    var $submitButtons = $module.querySelectorAll('.idsk-registration-for-event-js-submit');
+    if (!$submitButtons) {
+        return
+    }
+
+    // Handle $submitButtons click events
+    $submitButtons.forEach(function ($submitButton) {
+        $submitButton.addEventListener('click', this.handleSubmitClick.bind(this));
+    }.bind(this));
+};
+
+RegistrationForEvent.prototype.handleSubmitClick = function (e) {
+    e.preventDefault();
+
+    var $module = this.$module;
+    var $form = $module.querySelector('.idsk-registration-for-event__form');
+    var $thankYouMsg = $module.querySelector('.idsk-registration-for-event__thank-you-msg');
+    var $requiredFormItems = $module.querySelectorAll('[required]');
+    var $valid = true;
+    var emailRegex = /\S+@\S+\.\S+/;
+
+    $requiredFormItems.forEach(function ($item) {
+        var $formGroup = $item.closest('.govuk-form-group');
+
+        if (!$item.checkValidity() || $item.type === 'email' && !emailRegex.test($item.value)) {
+            $formGroup.querySelector('.govuk-error-message').style.display = 'block';
+            $formGroup.classList.add('govuk-form-group--error');
+            $item.classList.add('govuk-input--error');
+            $valid = false;
+        } else {
+            $formGroup.querySelector('.govuk-error-message').style.display = 'none';
+            $formGroup.classList.remove('govuk-form-group--error');
+            $item.classList.remove('govuk-input--error');
+        }
+    });
+
+    if ($valid) {
+        $thankYouMsg.style.display = 'block';
+        $form.style.display = 'none';
+    }
+};
+
 function initAll$1(options) {
   // Set the options to an empty object by default if no options are passed.
   options = typeof options !== "undefined" ? options : {};
@@ -3263,6 +3861,11 @@ function initAll$1(options) {
     new Crossroad($crossroad).init();
   });
 
+  var $customerSurveys = scope.querySelectorAll('[data-module="idsk-customer-surveys"]');
+  nodeListForEach($customerSurveys, function ($customerSurveys) {
+    new CustomerSurveys($customerSurveys).init();
+  });
+
   // Find first Header-extended module to enhance.
   var $headersExtended = scope.querySelectorAll('[data-module="idsk-header-extended"]');
   nodeListForEach($headersExtended, function ($headerExtended) {
@@ -3272,6 +3875,16 @@ function initAll$1(options) {
   var $inPageNavigation = scope.querySelector('[data-module="idsk-in-page-navigation"]');
   new InPageNavigation($inPageNavigation).init();
 
+  var $steppers = scope.querySelectorAll('[data-module="idsk-stepper"]');
+  nodeListForEach($steppers, function ($stepper) {
+    new Stepper($stepper).init();
+  });
+
+  var $registrationForEvents = scope.querySelectorAll('[data-module="idsk-registration-for-event"]');
+  nodeListForEach($registrationForEvents, function ($registrationForEvent) {
+    new RegistrationForEvent($registrationForEvent).init();
+  });
+
   // Init all GOVUK components js
   initAll(options);
 }
@@ -3280,9 +3893,12 @@ exports.initAll = initAll$1;
 exports.Button = Button$1;
 exports.CharacterCount = CharacterCount$1;
 exports.Crossroad = Crossroad;
+exports.CustomerSurveys = CustomerSurveys;
 exports.Feedback = Feedback;
 exports.FooterExtended = FooterExtended;
 exports.HeaderExtended = HeaderExtended;
 exports.InPageNavigation = InPageNavigation;
+exports.Stepper = Stepper;
+exports.RegistrationForEvent = RegistrationForEvent;
 
 })));

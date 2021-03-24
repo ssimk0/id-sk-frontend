@@ -1,0 +1,152 @@
+{% extends "layout.njk" %}
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "../../../src/idsk/components/crossroad/macro.njk" import idskCrossroad %}
+{% set pageName = "Rázcestník" %}
+{% block beforeContent %}
+    {{ govukBreadcrumbs({
+     "items": [
+         { text: 'ID-SK frontend', href: '/' + legacyQuery },
+         { text: pageName }
+     ]
+ }) }}
+{% endblock %}
+{% block content %}
+    <div class="govuk-width-container">
+        <span class="govuk-caption-xl">Webové komponenty</span>
+        <h1 class="govuk-heading-xl">{{pageName}}</h1>
+        <p class="govuk-body-l">
+            Rázcestník má formu jednoduchej dlaždice, zloženej z nadpisu, popisku a oddeľovacej čiary. Jeho účelom je prehľadne a jednoducho zoskupiť resp. usporiadať pre používateľa odkazy na súvisiaci obsah, ktorý je rozmiestnený na rôznych, samostatných podstránkach.
+        </p>
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <h2 class="govuk-heading-s">Obsah:</h2>
+                <ul class="govuk-list">
+                    <li>
+                        <a href="#vlastnosti-razcestnika-desktop">Vlastnosti rázcestníka (desktop)</a>
+                    </li>
+                    <li>
+                        <a href="#pouzitie-razcestnika">Použitie rázcestníka</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+                <h3 class="govuk-heading-m" id="vlastnosti-razcestnika-desktop">Vlastnosti rázcestníka (desktop)</h3>
+                <p class="govuk-body">
+                    <ul class="govuk-list govuk-list--bullet">
+                        <li>Hyperlinkový text - použite max. 50 znakov (vrátane medzier)</li>
+                        <li>Popiska hyperlinku - použite max. 120 znakov (vrátane medzier)</li>
+                    </ul>
+                </p>
+            </div>
+            <div class="govuk-grid-column-full">
+                <div class="example example-error">
+                    {% set exampleComponentHtml %}
+                    {{ idskCrossroad({
+                            "columns": 1,
+                            "items": [
+                                { "title": 'Title for 1st element', "subtitle": 'Subtitle for 1st element', "link": '#' },
+                                { "title": 'Title for 2nd element', "subtitle": 'Subtitle for 2nd element', "link": '#' },
+                                { "title": 'Title for 3rd element', "subtitle": 'Subtitle for 3rd element', "link": '#' },
+                                { "title": 'Title for 4th element', "subtitle": 'Subtitle for 4th element', "link": '#' },
+                                { "title": 'Title for 5th element', "subtitle": 'Subtitle for 5th element', "link": '#' },
+                                { "title": 'Title for 6th element', "subtitle": 'Subtitle for 6th element', "link": '#' },
+                                { "title": 'Title for 7th element', "subtitle": 'Subtitle for 7th element', "link": '#' }
+                            ]
+                        }) }}
+                    {% endset %}
+                    {{exampleComponentHtml | safe}}
+                </div>
+                <pre class=" language-markup"><code class="govuk-!-font-size-16  language-markup">{{ exampleComponentHtml }}</code></pre>
+            </div>
+            <div class="govuk-grid-column-full">
+                <h3 class="govuk-heading-m" id="pouzitie-razcestnika">Použitie rázcestníka</h3>
+                <p class="govuk-body">
+                    <strong>S nadpisom a podnadpisom:</strong>
+                    Rázcestník je jedným z komponentov, ktoré navigujú používateľa k obsahu vašej stránky. Použitím rázcestníka spolu s nadpisom a podnadpisom dáte používateľovi najavo, ktorý obsah (a ako) spolu na stránke súvisí.
+                </p>
+                <p class="govuk-body">
+                    V prípade použitia nadpisu a podnadpisu buďte struční a vecní. Ak rázcestník zoskupuje obsah, ktorý má vlastnú domovskú podstránku, v podnadpise na ňu odkážte s použitím hyperlinku (napr. všetok obsah k téme Informatizácia je zoskupený na hlavnej, domovskej stránke ale má aj k téme delegovanú podstránku). Ten istý hyperlink (ak to dáva zmysel), môže byť vložený aj do nadpisu rázcestníka.
+                </p>
+                <p class="govuk-body">
+                    <strong>V jednom alebo viacerých stĺpcoch:</strong>
+                    Rázcestník môžete štrukturovať do jedného alebo viacerých stĺpcov, musíte však dodržať IDSK pravidlá rozloženia stránky (grid).
+                </p>
+                <div class="example example-error">
+                    {% set exampleComponentHtml %}
+                    {{ idskCrossroad({
+                            "columns": 2,
+                            "items": [
+                                { "title": 'Title for 1st element', "subtitle": 'Subtitle for 1st element', "link": '#' },
+                                { "title": 'Title for 2nd element', "subtitle": 'Subtitle for 2nd element', "link": '#' },
+                                { "title": 'Title for 3rd element', "subtitle": 'Subtitle for 3rd element', "link": '#' },
+                                { "title": 'Title for 4th element', "subtitle": 'Subtitle for 4th element', "link": '#' },
+                                { "title": 'Title for 5th element', "subtitle": 'Subtitle for 5th element', "link": '#' },
+                                { "title": 'Title for 6th element', "subtitle": 'Subtitle for 6th element', "link": '#' },
+                                { "title": 'Title for 7th element', "subtitle": 'Subtitle for 7th element', "link": '#' },
+                                { "title": 'Title for 8th element', "subtitle": 'Subtitle for 8th element', "link": '#' }
+                            ]
+                        }) }}
+                    {% endset %}
+                    {{exampleComponentHtml | safe}}
+                </div>
+                <pre class=" language-markup"><code class="govuk-!-font-size-16  language-markup">{{ exampleComponentHtml }}</code></pre>
+                <p class="govuk-body">
+                    <strong>Rázcestník len s 5 dlaždicami v jednom stĺpci:</strong>
+                    Rázcestník nepoužívajte s viac ako 5 dlaždicami v jednom stĺpci. Ak potrebujete použiť viac dlaždíc, použite komponent "rozbalovací rázcestník".
+                </p>
+                <h2 class="govuk-heading-l">Základný blok 2, rozbaliteľný
+                </h2>
+                <p class="govuk-body">Tento rozbaliteľný blok použite ak potrebujete alebo chcete v rázcestníku použiť viac ako 5 odkazov v jednom stĺpci, respektíve 10 odkazov v dvoch stĺpcoch.
+                </p>
+
+                <p class="govuk-body">Aby používateľ nebol zahltený veľkým množstvom informácií, časť obsahu bude skrytá. Používateľ ich môže odkryť stlačením textového tlačidla na konci rázcestníku.</p>
+                <h3 class="govuk-heading-m" id="skladba">Z čoho sa skladá rozbaliteľný blok?</h3>
+                <p class="govuk-body">Skladá sa z:</p>
+                <ul class="govuk-list">
+                    <li>
+                        <a >a) rázcestník,
+                        </a>
+                    </li>
+                    <li>
+                        <a >b) čiastočne transparentné prekrytie piateho riadku,
+                        </a>
+                    </li>
+                    <li>
+                        <a >c) tlačidlo “zobraziť viac” pre zobrazenie ďaľších odkazov v rázcestníku.
+                        </a>
+                    </li>
+                </ul>
+                <div class="example example-error">
+                    {% set exampleComponentHtml %}
+                    {{ idskCrossroad({
+                            "columns": 2,
+                            "hideTiles": true,
+                            "items": [
+                                { "title": 'Title for 1st element', "subtitle": 'Subtitle for 1st element', "link": '#' },
+                                { "title": 'Title for 2nd element', "subtitle": 'Subtitle for 2nd element', "link": '#' },
+                                { "title": 'Title for 3rd element', "subtitle": 'Subtitle for 3rd element', "link": '#' },
+                                { "title": 'Title for 4th element', "subtitle": 'Subtitle for 4th element', "link": '#' },
+                                { "title": 'Title for 5th element', "subtitle": 'Subtitle for 5th element', "link": '#' },
+                                { "title": 'Title for 6th element', "subtitle": 'Subtitle for 6th element', "link": '#' },
+                                { "title": 'Title for 7th element', "subtitle": 'Subtitle for 7th element', "link": '#' },
+                                { "title": 'Title for 8th element', "subtitle": 'Subtitle for 8th element', "link": '#' },
+                                { "title": 'Title for 9th element', "subtitle": 'Subtitle for 9th element', "link": '#' },
+                                { "title": 'Title for 10th element', "subtitle": 'Subtitle for 10th element', "link": '#' },
+                                { "title": 'Title for 11th element', "subtitle": 'Subtitle for 11th element', "link": '#' },
+                                { "title": 'Title for 12th element', "subtitle": 'Subtitle for 12th element', "link": '#' },
+                                { "title": 'Title for 13th element', "subtitle": 'Subtitle for 13th element', "link": '#' },
+                                { "title": 'Title for 14th element', "subtitle": 'Subtitle for 14th element', "link": '#' },
+                                { "title": 'Title for 15th element', "subtitle": 'Subtitle for 15th element', "link": '#' },
+                                { "title": 'Title for 16th element', "subtitle": 'Subtitle for 16th element', "link": '#' }
+                            ]
+                        }) }}
+                    {% endset %}
+                    {{exampleComponentHtml | safe}}
+                </div>
+                <pre class=" language-markup"><code class="govuk-!-font-size-16  language-markup">{{ exampleComponentHtml }}</code></pre>
+            </div>
+        </div>
+    </div>
+{% endblock %}

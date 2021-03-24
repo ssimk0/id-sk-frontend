@@ -5,11 +5,11 @@
 @import "./node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
 
 @include govuk-exports("idsk/component/header-extended") {
-  $idsk-header-background: govuk-colour("white");
-  $idsk-header-border-color: $idsk-brand-colour;
-  $idsk-header-dark-blue: govuk-colour("dark-blue");
-  $idsk-header-light-blue: govuk-colour("blue");
-  $idsk-header-link: govuk-colour("white");
+  $idsk-header-background: govuk-colour("white") !default;
+  $idsk-header-border-color: $idsk-brand-colour !default;
+  $idsk-header-dark-blue: govuk-colour("dark-blue") !default;
+  $idsk-header-light-blue: govuk-colour("blue") !default;
+  $idsk-header-link: govuk-colour("white") !default;
 
   .idsk-header-extended {
     @include govuk-font($size: 16);
@@ -227,7 +227,7 @@
 
     &-wrapper {
       margin-left: govuk-spacing(3);
-      z-index: 1;
+      z-index: 11;
     }
 
     &-list {
@@ -529,7 +529,7 @@
       width: 100vw;
       display: table;
       overflow-y: scroll;
-      z-index: 1;
+      z-index: 11;
     }
 
     &-overlay {
@@ -537,7 +537,7 @@
       height: 100%;
       width: 0;
       position: fixed;
-      z-index: 1;
+      z-index: 11;
       top: 0;
       left: 0;
       background: $idsk-header-dark-blue;
@@ -597,7 +597,7 @@
     &__social {
       display: block;
       position: relative;
-      z-index: 2;
+      z-index: 12;
     }
 
     &__search {
@@ -653,7 +653,7 @@
         height: 100%;
         overflow-y: scroll;
         display: inline-block;
-        z-index: 1;
+        z-index: 11;
 
         .idsk-header-extended-overlay {
           width: 100%;
@@ -664,7 +664,7 @@
         }
 
         .idsk-header-extended__logo {
-          z-index: 2;
+          z-index: 12;
           padding-bottom: govuk-spacing(3);
 
           &type-crown,
@@ -682,7 +682,7 @@
         .idsk-header-extended__search {
           display: inline-block;
           position: relative;
-          z-index: 2;
+          z-index: 12;
           width: 100%;
           margin: govuk-spacing(3) 0;
 
@@ -777,7 +777,7 @@
         .idsk-header-extended__navigation {
           display: block;
           position: relative;
-          z-index: 2;
+          z-index: 12;
           border-bottom: 1px solid;
 
           a {

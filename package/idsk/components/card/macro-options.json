@@ -3,7 +3,7 @@
         "name": "type",
         "type": "string",
         "required": false,
-        "description": "Type of the card to render. If none provided or if wrong value provded falls to 'basic' card. Supported types 'basic', 'basic-variant', 'simple', 'hero', 'secondary', 'profile-vertical' and 'profile-horizontal'."
+        "description": "Type of the card to render. If none provided or if wrong value provded falls to 'basic' card. Supported types 'basic', 'basic-variant', 'simple', 'hero', 'secondary', 'secondary-horizontal', 'profile-vertical' and 'profile-horizontal'."
     },
     {
         "name": "imgSrc",

@@ -1,0 +1,20 @@
+@include govuk-exports("idsk/core/general-rules") {
+    .idsk-text-justify {
+        text-align: justify;
+    }
+    .idsk-hr-separator {
+        background: black;
+        height: 5px;
+        margin-top: govuk-spacing(6);
+        margin-bottom: 0;
+        border: none;
+
+        &-until-tablet {
+            @extend .idsk-hr-separator;
+            @include mq($until: tablet) {
+                height: 0;
+                margin-top: 0;
+            }
+        }
+    }
+}

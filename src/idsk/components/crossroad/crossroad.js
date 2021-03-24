@@ -1,6 +1,6 @@
 import "../../../govuk/vendor/polyfills/Function/prototype/bind";
 import "../../../govuk/vendor/polyfills/Event"; // addEventListener and event.target normaliziation
-import { nodeListForEach } from "../../common";
+import { nodeListForEach, toggleClass } from "../../common";
 
 /**
  * Crossroad Component
@@ -13,9 +13,14 @@ function Crossroad($module) {
 Crossroad.prototype.init = function () {
   var $module = this.$module;
   var $items = this.$items;
+  var $uncollapseButton = $module.querySelector('#idsk-crossroad__uncollapse-button');
 
   if (!$module || !$items) {
     return;
+  }
+
+  if ($uncollapseButton) {
+    $uncollapseButton.addEventListener('click', this.handleShowItems.bind(this));
   }
 
   nodeListForEach(
@@ -29,6 +34,39 @@ Crossroad.prototype.init = function () {
 Crossroad.prototype.handleItemClick = function (e) {
   var $item = e.target;
   $item.setAttribute("aria-current", "true");
+};
+
+Crossroad.prototype.setAriaLabel = function (arr) {
+  arr.forEach(function (item) {
+    if (item.classList.contains('idsk-crossroad__arria-hidden')) {
+      item.setAttribute("aria-hidden", "true");
+      toggleClass(item, 'idsk-crossroad__arria-hidden');
+    } else if (item.getAttribute("aria-hidden") == "true") {
+      item.setAttribute("aria-hidden", "false");
+      toggleClass(item, 'idsk-crossroad__arria-hidden');
+    }
+  });
+};
+
+Crossroad.prototype.handleShowItems = function (e) {
+  var $crossroadItems = this.$module.querySelectorAll('.idsk-crossroad__item');
+  var $uncollapseButton = this.$module.querySelector('#idsk-crossroad__uncollapse-button');
+  var $uncollapseDiv = this.$module.querySelector('.idsk-crossroad__uncollapse-div');
+  var $crossroadTitles = this.$module.querySelectorAll('.idsk-crossroad-title');
+  var $crossroadSubtitles = this.$module.querySelectorAll('.idsk-crossroad-subtitle');
+
+  $crossroadItems.forEach(function (crossroadItem) {
+    toggleClass(crossroadItem, 'idsk-crossroad__item--two-columns-show');
+  });
+
+  this.setAriaLabel($crossroadTitles);
+  this.setAriaLabel($crossroadSubtitles);
+
+  $uncollapseButton.innerHTML = $uncollapseButton.textContent == 'Zobraziť viac' ? 'Zobraziť menej' : 'Zobraziť viac';
+
+  toggleClass(e.srcElement, 'idsk-crossroad__colapse--button-show');
+  toggleClass($uncollapseDiv, 'idsk-crossroad__collapse--shadow');
+  toggleClass($uncollapseDiv, 'idsk-crossroad__collapse--arrow');
 };
 
 export default Crossroad;

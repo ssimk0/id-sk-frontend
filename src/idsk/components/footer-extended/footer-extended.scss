@@ -46,6 +46,10 @@
         box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
         font-style: normal;
         font-weight: 400;
+
+        &.idsk-footer-extended--up-button-enabled {
+          box-shadow: none;
+        }
     }
 
     .idsk-footer-extended-inline-list {
@@ -344,9 +348,14 @@
     }
 
     #idsk-footer-extended-close-help-form-button,
-    #idsk-footer-extended-close-error-form-button,
+    #idsk-footer-extended-close-error-form-button {
+        float: right;
+        margin-top: -3px;
+    }
+
     .idsk-footer-extended-write-us-button {
         float: right;
+        padding-top: govuk-spacing(3);
     }
 
     .idsk-footer-extended-feedback-question-container .govuk-grid-column-one-third {
@@ -450,12 +459,24 @@
     }
 
     .idsk-footer-extended-heart-visible {
+        @include govuk-font($size: 24);
+        font-weight: bold;
         display: block;
-        padding-top: govuk-spacing(1);
         line-height: 40px;
+
         @include mq($from: tablet) {
-            padding-top: 0;
-            line-height: 0px;
+            @include govuk-font($size: 19);
+            margin-top: -5px;
+            font-weight: bold;
+        }
+    }
+
+    .idsk-footer-extended-heart--svg {
+        display: none;
+
+        @include mq($from: desktop) {
+            display: unset;
+            margin-bottom: -2px;
         }
     }
 
@@ -496,7 +517,6 @@
         height: 45px;
         width: 100%;
         background-color: govuk-colour("white");
-        box-shadow: 0 -1px 0 white;
     }
 
     .idsk-footer-extended-up-button-a {
