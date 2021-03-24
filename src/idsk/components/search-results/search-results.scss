@@ -1,0 +1,179 @@
+@import "../../../govuk/settings/all";
+@import "../../../govuk/tools/all";
+@import "../../../govuk/helpers/all";
+
+@include govuk-exports("idsk/component/search-results") {
+  .idsk-search-results {
+    @include govuk-font($size: 19);
+  }
+
+  .idsk-search-results__filter .govuk-select {
+    width: 100%;
+  }
+
+  .idsk-search-results__content .govuk-grid-column-two-quarters {
+    @include govuk-font($size: 19);
+
+    display: inline-flex;
+    float: right;
+    margin-right: -15px;
+  }
+
+  .idsk-search-results__content .govuk-grid-column-two-quarters span {
+    padding-top: 7px;
+    padding-right: govuk-spacing(1);
+  }
+
+  .idsk-search-results__content .govuk-grid-column-two-quarters .govuk-form-group {
+    margin-bottom: govuk-spacing(1);
+  }
+
+  .idsk-search-results__content__picked-filters {
+    @include govuk-font($size: 19, $weight: bold);
+
+    margin-left: govuk-spacing(3);
+    padding-left: 0;
+    padding-right: 0;
+    border-top: 1px solid govuk-colour("black");
+    border-bottom: 1px solid govuk-colour("black");
+  }
+
+  .idsk-search-results__picked-topic {
+    font-weight: normal;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: govuk-spacing(2) govuk-spacing(1) govuk-spacing(1) govuk-spacing(1);
+    margin: govuk-spacing(2);
+    display: inline-block;
+  }
+
+  .idsk-search-results__content__picked-filters__topics {
+    background-color: govuk-colour("grey-4");
+    min-height: 40px;
+  }
+
+  .idsk-search-results__content__picked-filters__topics span {
+    padding-top: govuk-spacing(1);
+  }
+
+  .idsk-search-results--hidden {
+    visibility: hidden;
+  }
+
+  .idsk-search-results__content__results {
+    @include govuk-font($size: 24, $weight: bold);
+  }
+
+  .idsk-search-results__link-panel-button span {
+    @include govuk-font($size: 14);
+
+    float: right;
+    padding-top: govuk-spacing(1);
+  }
+
+  .idsk-search-results--expand {
+    .idsk-search-results__list {
+      margin-bottom: 15px;
+      max-height: 300px;
+      overflow-y: auto;
+      padding-top: 15px;
+      transition: all 0.2s ease-in;
+    }
+
+    .idsk-search-results__link-panel-button {
+      border-bottom: none;
+    }
+
+    .idsk-search-results__link-panel-button::before {
+      top: 20px;
+      transform: rotate(-45deg);
+      transition: all 0.2s ease-in;
+
+      @include mq(tablet) {
+        top: 25px;
+      }
+    }
+  }
+
+  .idsk-search-results__title {
+    display: none;
+  }
+
+  .idsk-search-results__link-panel {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    height: 50px;
+
+    &-button {
+      @include govuk-font($size: 19);
+
+      outline: none;
+      background-color: govuk-colour("white");
+      border: none;
+      text-align: left;
+      width: 100%;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      border-bottom: 1px solid govuk-colour("mid-grey");
+
+      @include mq(tablet) {
+        padding: govuk-spacing(3) 35px govuk-spacing(3) govuk-spacing(1);
+      }
+
+      &:focus {
+      }
+    }
+
+    &-button::before {
+      border-style: solid;
+      border-width: 3px 3px 0 0;
+      color: govuk-colour("black");
+      content: "";
+      display: inline-block;
+      height: 0.45em;
+      right: 10px;
+      position: absolute;
+      top: 15px;
+      transform: rotate(135deg);
+      transition: all 0.2s ease-out;
+      vertical-align: top;
+      width: 0.45em;
+
+      @include mq(tablet) {
+        top: 20px;
+      }
+    }
+
+    &-button:focus::before {
+      color: govuk-colour("black");
+    }
+  }
+
+  .idsk-search-results__link {
+    text-decoration: underline;
+
+    &-number {
+      display: inline-block;
+      text-decoration: underline;
+    }
+    &-number:focus {
+      text-decoration: none;
+    }
+  }
+
+  .idsk-search-results__list {
+    background-color: white;
+    padding-top: 0;
+    padding-left: govuk-spacing(2);
+    max-height: 0;
+    transition: all 0.2s ease-out;
+    overflow-y: hidden;
+  }
+
+  .idsk-search-results__list-item--active::before {
+    top: 5px;
+  }
+}
