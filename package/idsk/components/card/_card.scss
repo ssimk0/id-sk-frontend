@@ -5,18 +5,17 @@
 @import "../../../govuk/helpers/typography";
 
 @include govuk-exports("idsk/component/card") {
-
   .idsk-card {
     &-basic,
     &-basic-variant,
     &-hero,
-    &-profile-horizontal {
+    &-profile-horizontal,
+    &-secondary,
+    &-secondary-horizontal {
       @include govuk-grid-column("full");
     }
 
     &-secondary {
-      @include govuk-grid-column("full");
-
       @include mq($from: tablet) {
         @include govuk-grid-column("one-third");
       }
@@ -27,7 +26,7 @@
       @include govuk-grid-column("one-third");
     }
   }
-  
+
   .idsk-card-title {
     cursor: pointer;
     margin: 0;
@@ -37,7 +36,6 @@
       color: govuk-colour("black");
       text-decoration: underline;
     }
-    
   }
 
   .idsk-card-img {
@@ -52,10 +50,13 @@
       }
     }
 
-    &-secondary {
+    &-secondary,
+    &-secondary-horizontal {
       width: 33.3%;
       float: left;
+    }
 
+    &-secondary {
       @include mq($from: tablet) {
         @include govuk-grid-column("full");
         padding: 0 0 govuk-spacing(2) 0;
@@ -64,7 +65,7 @@
 
     &-profile-horizontal {
       @include govuk-grid-column("one-third");
-      padding: 0 govuk-spacing(3) 0 0;
+      padding: 0;
     }
   }
 
@@ -120,15 +121,24 @@
       @include govuk-grid-column("two-thirds");
     }
 
-    &-secondary {
+    &-secondary,
+    &-secondary-horizontal {
       width: 66.6%;
       box-sizing: border-box;
       padding-left: govuk-spacing(2);
       float: left;
+    }
 
+    &-secondary {
       @include mq($from: tablet) {
         @include govuk-grid-column("full");
         padding: 0;
+      }
+    }
+
+    &-secondary-horizontal {
+      @include mq($from: tablet) {
+        padding-left: govuk-spacing(3);
       }
     }
   }
@@ -143,7 +153,8 @@
     }
 
     &-basic,
-    &-hero {
+    &-hero,
+    &-secondary-horizontal {
       @include govuk-font($size: 24, $weight: bold);
     }
 
@@ -157,7 +168,7 @@
 
     &-profile-vertical,
     &-profile-horizontal {
-      @include govuk-font($size: 36, $weight: bold);
+      @include govuk-font($size: 24, $weight: bold);
       text-decoration: underline;
     }
   }
@@ -167,7 +178,8 @@
 
     &-basic,
     &-basic-variant,
-    &-hero {
+    &-hero,
+    &-secondary-horizontal {
       @include govuk-font($size: 19);
     }
 
@@ -181,7 +193,7 @@
 
     &-profile-vertical,
     &-profile-horizontal {
-      @include govuk-font($size: 24);
+      @include govuk-font($size: 19);
       @include govuk-responsive-padding(2, "top");
       @include govuk-responsive-padding(4, "bottom");
     }
@@ -190,7 +202,7 @@
   .idsk-quote {
     @include govuk-responsive-padding(8, "right");
     @include govuk-responsive-padding(8, "left");
-    @include govuk-font($size: 24);
+    @include govuk-font($size: 19);
     margin-top: 0;
 
     &-right {

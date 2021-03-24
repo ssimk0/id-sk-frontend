@@ -659,12 +659,6 @@ if (detect) return
 })
 .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
-/**
- * TODO: Ideally this would be a NodeList.prototype.forEach polyfill
- * This seems to fail in IE8, requires more investigation.
- * See: https://github.com/imagitama/nodelist-foreach-polyfill
- */
-
 function InPageNavigation($module) {
     this.$module = $module;
 }

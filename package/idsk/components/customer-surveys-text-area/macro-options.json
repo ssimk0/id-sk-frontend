@@ -1,0 +1,14 @@
+[
+    {
+        "name": "id",
+        "type": "string",
+        "required": false,
+        "description": "unique id for textarea element"
+    },
+    {
+        "name": "characterLength",
+        "type": "int",
+        "required": false,
+        "description": "Number of allowed characters in textarea."
+    }
+]
