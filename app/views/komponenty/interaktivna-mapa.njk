@@ -17,12 +17,29 @@
       <div class="govuk-grid-column-full">
         <h3 class="govuk-heading-m" id="vzor-suvisiaceho-obsahu">Vzor interaktívnej mapy</h3>
         <div class="example example-error">
-          {# https://raw.githubusercontent.com/Institut-Zdravotnych-Analyz/covid19-data/main/OpenData_Slovakia_CovidAutomat.csv #}
-          {# https://github.com/Institut-Zdravotnych-Analyz/covid19-data/blob/main/OpenData_Slovakia_CovidAutomat.csv #}
           {% set exampleComponentHtml %}
             {{ idskInteractiveMap({
-              tableDataSource: "/public/assets/data/korona.gov.sk.csv",
-              mapIframeSource: "/vzory/interactive-map"
+              mapIframeSrc: "/vzory/interactive-map-sample",
+              tableIframeSrc: "/vzory/interactive-table-sample",
+              indicatorOptions: [
+                {
+                  title: "Celkový stav",
+                  value: ""
+                },
+                {
+                  title: "Počet zaočkovaných 1. dávkou",
+                  value: "dose2"
+                },
+                {
+                  title: "Počet zaočkovaných 2. dávkou",
+                  value: "dose1"
+                }
+              ],
+              dataSource: "od Filipa",
+              dataCSV: {
+                text: "Stiahnuť údaje (CSV, 42 kb)",
+                link: "https://raw.githubusercontent.com/Institut-Zdravotnych-Analyz/covid19-data/main/OpenData_Slovakia_CovidAutomat.csv"
+              }
           }) }}
           {% endset %}
           {{exampleComponentHtml | safe}}

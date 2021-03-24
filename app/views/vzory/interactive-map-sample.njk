@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sk">
 <head>
     <title>Interaktívna mapa</title>
 
@@ -15,11 +15,22 @@
     <link rel="apple-touch-icon" sizes="152x152" href="/public/assets/images/apple-touch-icon-152x152.png">
     <link rel="apple-touch-icon" href="/public/assets/images/apple-touch-icon.png">
     
+    <!--[if !IE 8]><!-->
+        <link rel="stylesheet" href="/public/app.css">
+    <!--<![endif]-->
+    <!--[if IE 8]>
+        <link rel="stylesheet" href="/public/app-ie8.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+        <script src="/vendor/html5-shiv/html5shiv.js"></script>
+    <![endif]-->
+
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <script src="https://d3js.org/d3.v6.min.js"></script>
-    {# var okresyGeoJSON #}
-    <script src="/public/assets/data/okresyGeoJSON.js"></script>
+    {# var $krajeGeoJSON #}
+    <script src="/public/assets/data/krajeGeoJSON.js"></script>
+    {# var $vaccinationsByRegion #}
+    <script src="/public/assets/data/vaccinationsByRegion.js"></script>
     
     <style>
         #map {
@@ -37,14 +48,44 @@
     <div id="map"></div>
     <script>
 
+        var $currentData = "";
+        var $regionsMapping = {
+            1: "Košický",
+            2: "Nitriansky",
+            3: "Bratislavský",
+            4: "Trenčiansky",
+            5: "Žilinský",
+            6: "Banskobystrický",
+            7: "Trnavský",
+            8: "Prešovský"
+        }
+
+        var $params = new URL(location.href).searchParams;
+        var $indicatorExclude = $params.get("exclude");
+        var $timePeriod = $params.get("time");
+
         function renderMap() {
-            var map = L.map('map');
+
+            // filter data by indicator and time period
+            var $data = $vaccinationsByRegion.page;
+            $data.filter(function(d) {
+                console.log(d)
+            })
+
+            var $map = L.map('map');
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(map);
+            }).addTo($map);
 
-            var geoJSON = L.geoJson(okresyGeoJSON).addTo(map);
-            map.fitBounds(geoJSON.getBounds());
+            var $geoJSON = L.geoJson($krajeGeoJSON, {
+                onEachFeature: function (feature, layer) {
+                    layer.bindTooltip(
+                        feature.properties.TXT + '<br>' + feature.properties.REF,
+                        {direction:"center"}
+                )}
+            }).addTo($map);
+
+            $map.fitBounds($geoJSON.getBounds());
         }
 
         if (document.readyState === "complete" || document.readyState === "interactive") {

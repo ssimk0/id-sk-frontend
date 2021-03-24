@@ -8,9 +8,12 @@
         @include govuk-text-colour;
 
         &__header {
-            display: flex;
-            flex-direction: row;
-            align-items: flex-end;
+            &-controls {
+                display: flex;
+                flex-direction: row;
+                align-items: flex-end;
+                margin-bottom: govuk-spacing(6);
+            }
 
             &-radios {
                 padding: 0;
@@ -24,10 +27,22 @@
                 margin-bottom: 0;
             }
 
-            &-select .govuk-form-group {
-                display: inline-block;
-                margin-right: govuk-spacing(4);
+            &-selects {
+                padding: 0;
+                text-align: right;
+
+                & .govuk-form-group {
+                    display: inline-block;
+                    text-align: left;
+                }
+                & .govuk-form-group:first-child {
+                    margin-right: govuk-spacing(4);
+                }
             }
+        }
+
+        &__current-time-period {
+            text-transform: lowercase;
         }
 
         &__body {
@@ -36,29 +51,28 @@
             overflow: auto;
         }
 
-        &__table table tr {
-            border-bottom: 1px solid govuk-colour("black");
-            text-align: right;
-
-            & th,
-            & td {
-                font-size: 16px;
-                padding: 10px 10px;
-            }
-            &:hover {
-                background-color: #000000;
-            }
-            &:hover th,
-            &:hover td {
-                color: white;
-            }
+        &__table {
+            display: none;
         }
 
         &__map,
-        &__map-iframe {
+        &__map-iframe,
+        &__table,
+        &__table-iframe {
             border: none;
             height: 100%;
             width: 100%;
+        }
+
+        &__meta {
+            margin-top: govuk-spacing(2);
+
+            &-data {
+                float: left;
+            }
+            &-source {
+                float: right;
+            }
         }
     }
 }

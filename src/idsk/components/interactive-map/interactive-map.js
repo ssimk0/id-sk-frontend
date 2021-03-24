@@ -1,7 +1,5 @@
 import '../../../govuk/vendor/polyfills/Function/prototype/bind'
 import '../../../govuk/vendor/polyfills/Event' // addEventListener and event.target normaliziation
-import { idskSortTable } from "../../utilities/utils";
-
 
 function InteractiveMap($module) {
     this.$module = $module
@@ -16,23 +14,27 @@ InteractiveMap.prototype.init = function () {
         return
     }
 
-    if (typeof d3 === "undefined") {
-        console.error('Kniznica d3.js nie je definovana. Je potrebne ju nacitat v hlavicke');
-        return;
-    }
-
-    var $radioTable = $module.querySelector('.idsk-intereactive-map__radio-table');
-    var $radioMap = $module.querySelector('.idsk-intereactive-map__radio-map');
-    var $radioTableInput = $radioTable.querySelector(".govuk-radios__input");
-    this.$tableDataSource = $radioTableInput.dataset.source;
-
+    var $radioMap = $module.querySelector('.idsk-intereactive-map__radio-map')
     if ($radioMap) {
-        $radioMap.addEventListener('click', this.handleRadioButtonModeClick.bind(this, 'map'));
+        $radioMap.addEventListener('click', this.handleRadioButtonModeClick.bind(this, 'map'))
     }
 
+    var $radioTable = $module.querySelector('.idsk-intereactive-map__radio-table')
     if ($radioTable) {
-        $radioTable.addEventListener('click', this.handleRadioButtonModeClick.bind(this, 'table'));
+        $radioTable.addEventListener('click', this.handleRadioButtonModeClick.bind(this, 'table'))
     }
+
+    var $selectTimePeriod = $module.querySelector('.idsk-interactive-map__select-time-period')
+    if ($selectTimePeriod) {
+        $selectTimePeriod.addEventListener('change', this.renderData.bind(this))
+    }
+
+    var $selectIndicator = $module.querySelector('.idsk-interactive-map__select-indicator')
+    if ($selectIndicator) {
+        $selectIndicator.addEventListener('change', this.renderData.bind(this))
+    }
+
+    this.renderData()
 }
 
 InteractiveMap.prototype.handleRadioButtonModeClick = function (type) {
@@ -49,79 +51,31 @@ InteractiveMap.prototype.handleRadioButtonModeClick = function (type) {
     if ($type === "table") {
         $module.querySelector(".idsk-interactive-map__table").style.display = "block";
         $module.querySelector(".idsk-interactive-map__map").style.display = "none";
-        this.loadData();
     } else if ($type === "map") {
         $module.querySelector(".idsk-interactive-map__map").style.display = "block";
         $module.querySelector(".idsk-interactive-map__table").style.display = "none";
-        this.loadMap();
     }
 }
 
-InteractiveMap.prototype.loadMap = function () {
-    console.log('loadMap')
-}
+InteractiveMap.prototype.renderData = function () {
+    var $module = this.$module
+    var $tableEl = $module.querySelector('.idsk-interactive-map__table-iframe')
+    var $tableSrc = $tableEl.dataset.src
+    var $mapEl = $module.querySelector('.idsk-interactive-map__map-iframe')
+    var $mapSrc = $mapEl.dataset.src
 
-InteractiveMap.prototype.loadData = function () {
-    if (this.$currentData) {
-        return;
-    }
+    var $indicatorSelect = $module.querySelector('.idsk-interactive-map__select-indicator')
+    var $indicatorValue = $indicatorSelect.options[$indicatorSelect.selectedIndex].value;
+    var $indicator = $indicatorSelect.options[$indicatorSelect.selectedIndex].text;
 
-    if (!this.$tableDataSource) {
-        return;
-    }
+    var $timePeriodSelect = $module.querySelector('.idsk-interactive-map__select-time-period')
+    var $timePeriodValue = $timePeriodSelect.options[$timePeriodSelect.selectedIndex].value;
+    var $timePeriod = $timePeriodSelect.options[$timePeriodSelect.selectedIndex].text;
 
-    var dsv = d3.dsvFormat(";");
-    d3.text(this.$tableDataSource).then(function (text) {
-        this.$currentData = dsv.parse(text);
-        this.initSelectIndicator(this.$currentData.columns);
-        this.renderCustomTable();
-    }.bind(this))
-}
-
-InteractiveMap.prototype.renderCustomTable = function () {
-
-    var $data = this.$currentData
-    var $columns = $data.columns
-    var $resultHtml = "<table>";
-
-    $resultHtml += "<tr>";
-    for (var $i in $columns) {
-        $resultHtml += "<th class='idsk-interactive-map__js-sortable'>" + $columns[$i] + "</th>";
-    }
-    $resultHtml += "</tr>";
-
-    for (var $i in $data) {
-        var $item = $data[$i];
-
-        for (var $i in $columns) {
-            $resultHtml += "<td>" + $item[$columns[$i]] + "</td>";
-        }
-
-        $resultHtml += "</tr>";
-    }
-    $resultHtml += "</table>";
-
-    this.$module.querySelector('.idsk-interactive-map__js-table').innerHTML = $resultHtml
-    //this.initSortableTH()
-}
-
-InteractiveMap.prototype.initSortableTH = function () {
-    var $ths = this.$module.querySelectorAll('.idsk-interactive-map__js-sortable')
-
-    $ths.forEach(function ($th) {
-        $th.addEventListener('click', idskSortTable.bind(this));
-    }.bind(this))
-
-}
-
-InteractiveMap.prototype.initSelectIndicator = function (data) {
-    var $select = this.$module.querySelector('.idsk-interactive-map__js-indicator');
-    data.forEach(function (item, index) {
-        var $option = document.createElement('option');
-        $option.value = index;
-        $option.textContent = item;
-        $select.appendChild($option);
-    });
+    $mapEl.src = `${$mapSrc}?exclude=${$indicatorValue}&time=${$timePeriodValue}`
+    $tableEl.src = `${$tableSrc}?exclude=${$indicatorValue}&time=${$timePeriodValue}`
+    $module.querySelector(".idsk-interactive-map__current-indicator").innerText = $indicator
+    $module.querySelector(".idsk-interactive-map__current-time-period").innerText = $timePeriod
 }
 
 export default InteractiveMap

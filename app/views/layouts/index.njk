@@ -49,7 +49,7 @@
     {% endset %}
 
     {% set govukComponents %}
-      <ul class="govuk-list" lang="en">
+      <ul class="govuk-list" lang="sk">
         {% for componentName in componentsDirectory | sort %}
           {% if componentName != 'idsk' and componentName != 'custom' %}
             <li><a href="/components/{{ componentName }}" class="govuk-link">{{ componentName | replace("-", " ") | capitalize }}</a></li>
@@ -59,7 +59,7 @@
     {% endset %}
 
     {% set govukExamples %}
-      <ul class="govuk-list" lang="en">
+      <ul class="govuk-list" lang="sk">
         {% for exampleName in examplesDirectory | sort %}
           <li><a href="/examples/{{ exampleName }}{{ legacyQuery }}" class="govuk-link">{{ exampleName | replace("-", " ") | capitalize }}</a></li>
         {% endfor %}
@@ -67,7 +67,7 @@
     {% endset %}
 
     {% set govukPageExamples %}
-      <ul class="govuk-list" lang="en">
+      <ul class="govuk-list" lang="sk">
         {% for example in fullPageExamples %}
           <li><a href="/full-page-examples/{{ example.path }}{{ legacyQuery }}" class="govuk-link">{{ example.name | replace("-", " ") | capitalize }}</a></li>
         {% endfor %}
