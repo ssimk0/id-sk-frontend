@@ -1,0 +1,40 @@
+params:
+  - name: feedbackOptions
+    type: array
+    required: true
+    description: Array of items for radio buttons in feedback form.
+    params:
+      - name: name
+        type: string
+        required: false
+        description: Name of radio button item
+      - name: textArea
+        type: boolean
+        required: false
+        description: Determines whether textarea should be showed up after click on radio button.
+      - name: value
+        type: string
+        required: false
+        description: Value of radio button item
+      - name: class
+        type: string
+        required: false
+        description: Value of radio button class
+
+
+examples:
+- name: default
+  data: 
+    checkBoxItems:
+      - value: rozvoj
+        text: Rozvoj regiónov
+      - value: novinky
+        text: Novinky a komunikačné vyhlásenia
+      - value: transparentnost
+        text: Transparentnosť a sloboda prístupu k informáciám
+      - value: legislativa
+        text: Legislatíva
+      - value: statistika
+        text: Štatistické údaje
+      - value: rodova
+        text: Rodová rovnosť a postavenia žien v pracovom prostredí

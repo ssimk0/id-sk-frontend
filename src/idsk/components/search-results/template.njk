@@ -28,13 +28,32 @@
           <span class="idsk-search-results__link-panel--span"></span>
         </button>
         <div class="idsk-search-results__list idsk-search-results--hidden">
-          {% from "../../components/customer-surveys-radios/macro.njk" import idskCustomerSurveysRadios %}
-          {{ idskCustomerSurveysRadios({
-            counter : 0,
-            group: item.group,
-            feedbackOptions: 
-            item.radios
-          }) }}
+          {% if item.isRadio %}
+            {% from "../../components/customer-surveys-radios/macro.njk" import idskCustomerSurveysRadios %}
+            {{ idskCustomerSurveysRadios({
+              counter : 0,
+              id : item.id,
+              group: item.group,
+              feedbackOptions: 
+              item.radios
+            }) }}
+          {% endif %}
+          {% if item.isCheckBox %}
+            {% from "../../components/option-select-filter/macro.njk" import idskOptionSelectFilter %}
+            {{ idskOptionSelectFilter({
+              checkBoxItems : item.checkBoxItems
+            }) }}
+          {% endif %}
+          {% if item.isTextarea %}
+            {% from "../../../govuk/components/textarea/macro.njk" import govukTextarea %}
+              {{ govukTextarea({
+              "id": item.id,
+              "rows": 1,
+              "formGroup": {
+                  "classes": item.classes
+              }
+            }) }}
+          {% endif %}
         </div>
       </div>
     {% endfor %}

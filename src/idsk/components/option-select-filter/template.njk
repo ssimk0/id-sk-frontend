@@ -1,0 +1,17 @@
+<div data-module="idsk-option-select-filter" class="idsk-option-select-filter {{ params.classes if params.classes }}">
+    <div>
+        {% from "../../../govuk/components/textarea/macro.njk" import govukTextarea %}
+            {{ govukTextarea({
+            "id": "idsk-option-select-filter__textarea",
+            "name": "",
+            "formGroup": {
+                "classes": ""
+            }
+        }) }}
+        {% from "checkboxes/macro.njk" import govukCheckboxes %}
+            {{ govukCheckboxes({
+            "name": "colours",
+            "items": params.checkBoxItems
+        }) }}
+    </div>
+</div>

@@ -19,24 +19,13 @@ SearchResults.prototype.init = function () {
         return
     }
 
-    // list of all ids and titles
-    this.$arrTitlesAndElems = []
-    // Handle $link click events
-    $links.forEach(function ($link) {
-        var $item = {}
-        $item.el = document.getElementById($link.href.split('#')[1])
-        this.$arrTitlesAndElems.push($item)
-        $link.addEventListener('click', this.handleClickLink.bind(this))
-    }.bind(this))
-
     var $linkPanelButtons = $module.querySelectorAll('.idsk-search-results__link-panel-button')
     if (!$linkPanelButtons) {
         return
     }
 
-    var $radioButtons = $module.querySelectorAll('.govuk-radios__label')
     var $radioButtonsInput = $module.querySelectorAll('.govuk-radios__input ')
-    if (!$radioButtons) {
+    if (!$radioButtonsInput) {
         return
     }
 
@@ -45,19 +34,6 @@ SearchResults.prototype.init = function () {
     $linkPanelButtons.forEach(function ($button) {
         $button.addEventListener('click', $module.boundHandleClickLinkPanel, true)
     }.bind(this))
-
-    $radioButtons.forEach(function ($radio) {
-        $radio.addEventListener('click', this.handleClickRadioButton.bind(this), true)
-    }.bind(this))
-
-
-    // nodeListForEach(
-    //     $items,
-    //     function ($item) {
-    //       $item.addEventListener("click", this.handleItemClick.bind(this));
-    //     }.bind(this)
-    //   );
-
 
     $radioButtonsInput.forEach(function ($input) {
         $input.addEventListener('click', this.handleClickRadioButton.bind(this), true)
@@ -74,7 +50,6 @@ SearchResults.prototype.init = function () {
 SearchResults.prototype.handleClickLinkPanel = function (e) {
     var $el = e.target || e.srcElement
     var $module = this.$module
-    console.log($module)
     var $linkPanelButton = $el.closest('.idsk-search-results__link-panel')
     var $contentPanel = $linkPanelButton.querySelector('.idsk-search-results__list')
 
@@ -92,36 +67,53 @@ SearchResults.prototype.handleClickRadioButton = function (e) {
     var $linkPanelButton = $el.closest('.idsk-search-results__link-panel')
     var $buttonCaption = $linkPanelButton.querySelector('.idsk-search-results__link-panel--span')
 
-    var $filerPicked = $module.querySelector('.idsk-search-results__content__picked-filters__topics')
+    var $choosenFiltersContainer = $module.querySelector('.idsk-search-results__content__picked-filters__topics')
+    var $filterContainer = $choosenFiltersContainer.querySelector('.idsk-search-results__picked-topic')
 
-    // creating or renaming new span element 
-    if ($el.value && !$filerPicked.querySelector('.idsk-search-results__picked-topic')) {
-        var $topicPicked = document.createElement('span')
-        $topicPicked.setAttribute('class', 'idsk-search-results__picked-topic')
+    console.log($filterContainer)
+
+    var $radios = $el.closest('.govuk-radios')
+
+    // creating or renaming new span element for picked topic
+
+
+    if ($el.value && !$filterContainer) {
+        var $topicPicked = this.createTopicInContainer.call(this, $choosenFiltersContainer, $radios, $el);
+    } else if ($filterContainer.dataset.source == $radios.dataset.id) {
+        $topicPicked = $choosenFiltersContainer.querySelector('.idsk-search-results__picked-topic');
         $topicPicked.innerHTML = $el.value + ' &#10005;';
-        $filerPicked.appendChild($topicPicked);
-    } else if ($filerPicked.querySelector('.idsk-search-results__picked-topic')) {
-        $filerPicked.querySelector('.idsk-search-results__picked-topic').innerHTML = $el.value + ' &#10005;';
+    } else if ($filterContainer.dataset.source != $radios.dataset.id) {
+        var $topicPicked = this.createTopicInContainer.call(this, $choosenFiltersContainer, $radios, $el);
     }
 
+    $topicPicked.removeEventListener('click', this.handleRemovePickedTopic.bind(this), true);
+    $topicPicked.addEventListener('click', this.handleRemovePickedTopic.bind(this));
 
     $buttonCaption.innerText = '1 vybraté'
-    // toggleClass($contentPanel, 'idsk-search-results--hidden')
-    // toggleClass($linkPanelButton, 'idsk-search-results--expand')
 }
 
-// SearchResults.prototype.changeCurrentLink = function (el) {
-//     var $module = this.$module
-//     var $currItem = el.closest('.idsk-in-page-navigation__list-item')
-//     var $articleTitle = $currItem.querySelector('.idsk-in-page-navigation__link-title')
-//     var $items = $module.querySelectorAll('.idsk-in-page-navigation__list-item')
-//     var $linkPanelText = $module.querySelector('.idsk-in-page-navigation__link-panel-button')
+SearchResults.prototype.createTopicInContainer = function ($choosenFiltersContainer, $radios, $el) {
+    var $topicPicked = document.createElement('span')
+    $topicPicked.setAttribute('class', 'idsk-search-results__picked-topic')
+    $topicPicked.setAttribute('data-source', $radios.dataset.id)
+    $topicPicked.innerHTML = $el.value + ' &#10005;';
+    $choosenFiltersContainer.appendChild($topicPicked);
 
-//     $items.forEach(function ($item) {
-//         $item.classList.remove('idsk-in-page-navigation__list-item--active')
-//     })
-//     $currItem.classList.add('idsk-in-page-navigation__list-item--active')
-//     $linkPanelText.innerText = $articleTitle.innerText
-// }
+    return $topicPicked
+}
+
+SearchResults.prototype.handleRemovePickedTopic = function (e) {
+    var $el = e.target || e.srcElement
+    var $radios = this.$module.querySelector('[data-id="' + $el.dataset.source + '"]')
+    var $buttonCaption = $radios.closest('.idsk-search-results__link-panel')
+
+    $buttonCaption.querySelector('.idsk-search-results__link-panel--span').innerText = ''
+    $radios.querySelectorAll('.govuk-radios__input').forEach(function ($radio) {
+        $radio.checked = false
+    }.bind(this))
+
+    $el.remove();
+}
+
 
 export default SearchResults
