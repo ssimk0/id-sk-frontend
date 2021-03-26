@@ -11,6 +11,10 @@
     width: 100%;
   }
 
+  .idsk-search-results__filter .govuk-form-group {
+    margin-bottom: 0;
+  }
+
   .idsk-search-results__content .govuk-grid-column-two-quarters {
     @include govuk-font($size: 19);
 
@@ -46,6 +50,54 @@
     margin: govuk-spacing(2);
     display: inline-block;
     cursor: pointer;
+  }
+
+  .idsk-search-results__content__page-changer {
+    padding-top: govuk-spacing(3);
+    margin-left: govuk-spacing(3);
+    border-top: 2px solid govuk-colour("black");
+  }
+
+  .idsk-search-results__button--back,
+  .idsk-search-results__button--forward {
+    @include govuk-font($size: 19);
+    position: relative;
+    z-index: 1;
+    border-width: 0;
+    color: govuk-colour("blue");
+    background: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    text-decoration: underline;
+    text-align: right;
+
+    @include govuk-link-common;
+    @include govuk-link-style-default;
+  }
+
+  .idsk-search-results__button--back {
+    padding-left: 0;
+    margin-bottom: govuk-spacing(2);
+    margin-left: -15px;
+  }
+
+  .idsk-search-results__button--forward {
+    margin-right: -15px;
+    padding-right: 0;
+    float: right;
+    margin-bottom: govuk-spacing(3);
+  }
+
+  .idsk-search-results__button__svg--previous {
+    padding-right: govuk-spacing(2);
+  }
+
+  .idsk-search-results__button__svg--next {
+    padding-left: govuk-spacing(2);
+  }
+
+  .idsk-search-results__page-number {
+    text-align: center;
   }
 
   .idsk-search-results__content__picked-filters__topics {
