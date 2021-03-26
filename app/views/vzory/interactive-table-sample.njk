@@ -25,7 +25,7 @@
         <script src="/vendor/html5-shiv/html5shiv.js"></script>
     <![endif]-->
 
-    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="/public/assets/js/d3.min.js"></script>
     
     <style>
         #content {
@@ -46,6 +46,45 @@
         table tr {
             border-bottom: 1px solid govuk-colour("black");
             text-align: right;
+        }
+
+        table tr th .arrows:after {
+            position: absolute;
+            margin-left: 7px;
+            margin-top: 11px;
+            border-style: solid;
+            border-width: 7px 6px 0;
+            border-color: #000 transparent transparent;
+            content: "";
+            -webkit-transition: -webkit-transform 0.2s;
+            transition: -webkit-transform 0.2s;
+            transition: transform 0.2s;
+            transition: transform 0.2s, -webkit-transform 0.2s;
+        }
+
+        table tr th .arrows:before {
+            position: absolute;
+            margin-top: 2px;
+            border-style: solid;
+            border-width: 7px 6px 0;
+            border-color: #000 transparent transparent;
+            transform: rotate(180deg);
+            content: "";
+            -webkit-transition: -webkit-transform 0.2s;
+            transition: -webkit-transform 0.2s;
+            transition: transform 0.2s;
+            transition: transform 0.2s, -webkit-transform 0.2s;
+            margin-left: 7px;
+        }
+
+        table tr th.des .arrows:before,
+        table tr th.aes .arrows:after {
+            display: none;
+        }
+
+        table tr:hover th .arrows:after,
+        table tr:hover th .arrows:before {
+            border-color: #fff transparent transparent;
         }
 
         table tr th,
@@ -92,10 +131,11 @@
         }
 
         var $params = new URL(location.href).searchParams;
-        var $indicatorExclude = $params.get("exclude");
+        var $indicator = $params.get("indicator");
+        var $indicatorExclude = $indicator === "dose1" ? "dose2" : ($indicator === "dose2" ? "dose1" : "") 
         var $timePeriod = $params.get("time");
 
-        RenderCustomTable = function () {
+        var RenderCustomTable = function () {
             var $columns = Object.keys($currentData[0]);
             $columns.splice($columns.indexOf("id"), 1);
             $columns.splice($columns.indexOf("updated_at"), 1);
@@ -119,7 +159,6 @@
                     return $columnsMapping[d];
                 })
                 .on("click", function (d) {
-                    $headers.attr("class", "header");
                     var $target = d.target || d.srcElement
                     var $key = $target.dataset.th
                     if ($sortAscending) {
@@ -132,6 +171,9 @@
                         this.className = "des";
                     }
                 })
+                .append("span")
+                .attr("class", "arrows")
+
 
             var $rows = $table.append("tbody").selectAll("tr")
                 .data($currentData).enter()

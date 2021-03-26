@@ -34,6 +34,10 @@ InteractiveMap.prototype.init = function () {
         $selectIndicator.addEventListener('change', this.renderData.bind(this))
     }
 
+    var $radioBtn = $module.querySelector('.govuk-radios__input')
+    var $radiosName = $radioBtn.getAttribute('name')
+    var $selectedControlOption = $module.querySelector('input[name="' + $radiosName + '"]:checked').value
+    this.handleRadioButtonModeClick($selectedControlOption)
     this.renderData()
 }
 
@@ -48,12 +52,12 @@ InteractiveMap.prototype.handleRadioButtonModeClick = function (type) {
 
     this.$currentMode = $type;
 
-    if ($type === "table") {
-        $module.querySelector(".idsk-interactive-map__table").style.display = "block";
-        $module.querySelector(".idsk-interactive-map__map").style.display = "none";
-    } else if ($type === "map") {
-        $module.querySelector(".idsk-interactive-map__map").style.display = "block";
-        $module.querySelector(".idsk-interactive-map__table").style.display = "none";
+    if ($type === 'table') {
+        $module.querySelector('.idsk-interactive-map__table').style.display = 'block';
+        $module.querySelector('.idsk-interactive-map__map').style.display = 'none';
+    } else if ($type === 'map') {
+        $module.querySelector('.idsk-interactive-map__map').style.display = 'block';
+        $module.querySelector('.idsk-interactive-map__table').style.display = 'none';
     }
 }
 
@@ -72,10 +76,10 @@ InteractiveMap.prototype.renderData = function () {
     var $timePeriodValue = $timePeriodSelect.options[$timePeriodSelect.selectedIndex].value;
     var $timePeriod = $timePeriodSelect.options[$timePeriodSelect.selectedIndex].text;
 
-    $mapEl.src = `${$mapSrc}?exclude=${$indicatorValue}&time=${$timePeriodValue}`
-    $tableEl.src = `${$tableSrc}?exclude=${$indicatorValue}&time=${$timePeriodValue}`
-    $module.querySelector(".idsk-interactive-map__current-indicator").innerText = $indicator
-    $module.querySelector(".idsk-interactive-map__current-time-period").innerText = $timePeriod
+    $mapEl.src = `${$mapSrc}?indicator=${$indicatorValue}&time=${$timePeriodValue}`
+    $tableEl.src = `${$tableSrc}?indicator=${$indicatorValue}&time=${$timePeriodValue}`
+    $module.querySelector('.idsk-interactive-map__current-indicator').innerText = $indicator
+    $module.querySelector('.idsk-interactive-map__current-time-period').innerText = $timePeriod
 }
 
 export default InteractiveMap

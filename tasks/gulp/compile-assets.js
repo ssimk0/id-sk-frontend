@@ -155,7 +155,6 @@ gulp.task('js:compile', () => {
 
   return gulp.src([
     srcFiles,
-    'node_modules/d3/dist/d3.min.js',
     '!' + configPaths.idsk_src + '**/*.test.js'
   ])
     .pipe(rollup({

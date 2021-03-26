@@ -3,21 +3,21 @@
 <div data-module="idsk-interactive-map" class="idsk-interactive-map{{ ' ' + params.classes if params.classes }}">
     <div class="idsk-interactive-map__header">
         <div class="idsk-interactive-map__header-controls">
-            <div class="idsk-interactive-map__header-radios govuk-grid-column-one-third">
+            <div class="idsk-interactive-map__header-radios">
                 <div class="govuk-form-group">
                     <div class="govuk-radios govuk-radios--inline">
                         <div class="govuk-radios__item idsk-intereactive-map__radio-map">
-                            <input class="govuk-radios__input" name="radio-interactive-map" type="radio" value="map" checked="">
-                            <label class="govuk-label govuk-radios__label">Mapa</label>
+                            <input class="govuk-radios__input" name="{{ params.radioControlsName }}" id="{{ params.radioControlsName }}-1" type="radio" value="map" {{ "" if params.checkedTable else "checked=''"}}>
+                            <label class="govuk-label govuk-radios__label" for="{{ params.radioControlsName }}-1">Mapa</label>
                         </div>
                         <div class="govuk-radios__item idsk-intereactive-map__radio-table">
-                            <input class="govuk-radios__input" name="radio-interactive-map" type="radio" value="table">
-                            <label class="govuk-label govuk-radios__label" >Tabuľka</label>
+                            <input class="govuk-radios__input" name="{{ params.radioControlsName }}" id="{{ params.radioControlsName }}-2" type="radio" value="table" {{ "checked=''" if params.checkedTable }}>
+                            <label class="govuk-label govuk-radios__label" for="{{ params.radioControlsName }}-2">Tabuľka</label>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="idsk-interactive-map__header-selects govuk-grid-column-two-thirds">
+            <div class="idsk-interactive-map__header-selects">
                 <div class="govuk-form-group">
                     <div class="govuk-label-wrapper">
                         <label class="govuk-label" for="time-period"><strong>Obdobie</strong></label>

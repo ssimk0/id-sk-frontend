@@ -9,17 +9,28 @@
 
         &__header {
             &-controls {
-                display: flex;
-                flex-direction: row;
-                align-items: flex-end;
                 margin-bottom: govuk-spacing(6);
             }
 
             &-radios {
+                display: inline-block;
                 padding: 0;
 
                 .govuk-radios__item {
+                    display: inline-block;
                     margin-bottom: 0;
+                }
+
+                .idsk-intereactive-map__radio-map,
+                .idsk-intereactive-map__radio-table {
+                    top: 10px;
+                }
+
+                .idsk-intereactive-map__radio-table {
+                    margin-right: 0;
+                }
+
+                @include mq($until: desktop) {
                 }
             }
 
@@ -28,12 +39,23 @@
             }
 
             &-selects {
+                display: inline-block;
+                margin-top: govuk-spacing(4);
                 padding: 0;
-                text-align: right;
 
                 & .govuk-form-group {
                     display: inline-block;
+                    margin-top: govuk-spacing(4);
                     text-align: left;
+                    width: 100%;
+
+                    @include mq($from: desktop) {
+                        width: auto;
+                    }
+
+                    .govuk-select {
+                        width: 100%;
+                    }
                 }
                 & .govuk-form-group:first-child {
                     margin-right: govuk-spacing(4);
@@ -73,6 +95,36 @@
             &-source {
                 float: right;
             }
+        }
+    }
+
+    @include mq($from: desktop) {
+        .idsk-interactive-map .govuk-radios .govuk-radios__input:hover + .govuk-radios__label::before {
+            box-shadow: 0 0 0 10px govuk-colour("mid-grey");
+        }
+
+        .idsk-interactive-map
+            .govuk-radios
+            .govuk-radios__item:hover
+            .govuk-radios__input:focus
+            + .govuk-radios__label::before {
+            box-shadow: 0 0 0 4px govuk-colour("yellow"), 0 0 0 10px govuk-colour("mid-grey");
+        }
+
+        .idsk-interactive-map .govuk-radios__label {
+            padding-left: 0;
+        }
+
+        .idsk-interactive-map .govuk-radios__label::before {
+            top: 8px;
+            width: 24px;
+            height: 24px;
+        }
+
+        .idsk-interactive-map .govuk-radios__label::after {
+            top: 15px;
+            left: 7px;
+            border-width: 5px;
         }
     }
 }

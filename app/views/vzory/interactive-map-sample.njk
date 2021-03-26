@@ -25,8 +25,9 @@
         <script src="/vendor/html5-shiv/html5shiv.js"></script>
     <![endif]-->
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="/public/assets/css/leaflet.css" />
+
+    <script src="/public/assets/js/leaflet.js"></script>
     {# var $krajeGeoJSON #}
     <script src="/public/assets/data/krajeGeoJSON.js"></script>
     {# var $vaccinationsByRegion #}
@@ -42,47 +43,88 @@
             right: 0;
             bottom: 0;
         }
+        .interactive-map__region {
+            color: red;
+        }
     </style>
 </head>
 <body>
     <div id="map"></div>
+    
     <script>
 
         var $currentData = "";
         var $regionsMapping = {
-            1: "Košický",
-            2: "Nitriansky",
-            3: "Bratislavský",
-            4: "Trenčiansky",
-            5: "Žilinský",
-            6: "Banskobystrický",
-            7: "Trnavský",
-            8: "Prešovský"
+            "SK042": 1,
+            "SK023": 2,
+            "SK010": 3,
+            "SK022": 4,
+            "SK031": 5,
+            "SK032": 6,
+            "SK021": 7,
+            "SK041": 8,
+        }
+
+        var $doseDesc = {
+            "dose1": "1. dávka",
+            "dose2": "2. dávka",
         }
 
         var $params = new URL(location.href).searchParams;
-        var $indicatorExclude = $params.get("exclude");
+        var $indicator = $params.get("indicator");
         var $timePeriod = $params.get("time");
 
-        function renderMap() {
+        var renderMap = function() {
+
+            var $data = $vaccinationsByRegion.page;
 
             // filter data by indicator and time period
-            var $data = $vaccinationsByRegion.page;
-            $data.filter(function(d) {
-                console.log(d)
+            if (Number($timePeriod)) {
+                var $cutoffDate = new Date();
+                $cutoffDate.setDate($cutoffDate.getDate() - Number($timePeriod));
+                $data = $data.filter(function(d) {
+                    var $date = new Date(d["published_on"])
+                    return $date > $cutoffDate;
+                })
+            }
+
+            var $groupedData = {
+                1: {"dose1_count": 0, "dose2_count": 0},
+                2: {"dose1_count": 0, "dose2_count": 0},
+                3: {"dose1_count": 0, "dose2_count": 0},
+                4: {"dose1_count": 0, "dose2_count": 0},
+                5: {"dose1_count": 0, "dose2_count": 0},
+                6: {"dose1_count": 0, "dose2_count": 0},
+                7: {"dose1_count": 0, "dose2_count": 0},
+                8: {"dose1_count": 0, "dose2_count": 0},
+            }
+
+            $data.map(function(d) {
+                $groupedData[d["region_id"]]["dose1_count"] += d["dose1_count"]
+                $groupedData[d["region_id"]]["dose2_count"] += d["dose2_count"] 
             })
 
-            var $map = L.map('map');
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            var $map = L.map("map");
+            L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                attribution: "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
             }).addTo($map);
 
             var $geoJSON = L.geoJson($krajeGeoJSON, {
                 onEachFeature: function (feature, layer) {
+                    var $description = "<span class='interactive-map__region'>" + feature.properties.TXT + "</span><br>";
+                    if (["dose1", "dose2"].includes($indicator)){
+                        $description += "<strong>" + $doseDesc[$indicator] + ":</strong> " + $groupedData[$regionsMapping[feature.properties.REF]][$indicator+"_count"]
+                    } else {
+                        $description += "<strong>" + $doseDesc["dose1"] + ":</strong> " + $groupedData[$regionsMapping[feature.properties.REF]]["dose1_count"] +
+                        "<br>" +
+                        "<strong>" + $doseDesc["dose2"] + ":</strong> " + $groupedData[$regionsMapping[feature.properties.REF]]["dose2_count"]
+                    }
+
                     layer.bindTooltip(
-                        feature.properties.TXT + '<br>' + feature.properties.REF,
+                        $description,
                         {direction:"center"}
-                )}
+                    )
+                }
             }).addTo($map);
 
             $map.fitBounds($geoJSON.getBounds());
