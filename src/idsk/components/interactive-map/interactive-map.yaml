@@ -1,0 +1,10 @@
+params:
+- name: classes
+  type: string
+  required: false
+  description: Classes to add to the interactive map.
+- name: indicatorOptions
+  type: string
+  required: false
+  description: indicator options
+  
