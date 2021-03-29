@@ -13,6 +13,8 @@
         &__map {
             border: 1px solid #000000;
             height: 150px;
+            margin-bottom: govuk-spacing(6);
+            margin-top: govuk-spacing(5);
             width: 100%;
         }
 
@@ -44,7 +46,21 @@
                 }
             }
         }
+
+        .govuk-body {
+            margin-bottom: govuk-spacing(1);
+
+            & > .govuk-link {
+                display: inline-block;
+                margin-top: govuk-spacing(3);
+            }
+        }
+
+        .govuk-heading-m {
+            margin-bottom: govuk-spacing(2);
+        }
     }
+
     .idsk-address--full-width {
         @include govuk-grid-column("full");
 
@@ -83,7 +99,7 @@
                     border: none;
                     display: block;
                     height: 2px;
-                    margin-top: govuk-spacing(5);
+                    margin-top: 0;
                 }
 
                 &-top {
