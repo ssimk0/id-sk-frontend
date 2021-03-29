@@ -124,6 +124,10 @@
     padding-top: govuk-spacing(1);
   }
 
+  .idsk-search-results--invisible {
+    display: none;
+  }
+
   .idsk-search-results--expand {
     .idsk-search-results__list {
       margin-bottom: 15px;

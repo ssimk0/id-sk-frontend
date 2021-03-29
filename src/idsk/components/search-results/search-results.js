@@ -9,6 +9,10 @@ function SearchResults($module) {
 SearchResults.prototype.init = function () {
     // Check for module
     var $module = this.$module
+    $module.resultCards = new Array();
+    $module.countOfCardsPerPage = new Number();
+    $module.currentPageNumber = new Number();
+
     if (!$module) {
         return
     }
@@ -16,6 +20,26 @@ SearchResults.prototype.init = function () {
     // Check for button
     var $links = $module.querySelectorAll('.idsk-search-results__link')
     if (!$links) {
+        return
+    }
+
+    var $resultsPerPageDropdown = $module.querySelector('.idsk-search-results__content .govuk-select')
+    if (!$resultsPerPageDropdown) {
+        return
+    }
+
+    var $backButton = $module.querySelector('.idsk-search-results__button--back')
+    if (!$backButton) {
+        return
+    }
+
+    var $forwardButton = $module.querySelector('.idsk-search-results__button--forward')
+    if (!$forwardButton) {
+        return
+    }
+
+    $module.resultCards = $module.querySelectorAll('.idsk-search-results__card')
+    if (!$module.resultCards) {
         return
     }
 
@@ -29,7 +53,18 @@ SearchResults.prototype.init = function () {
         return
     }
 
+    $backButton.addEventListener('click', this.handleClickPreviousPage.bind(this))
+    $forwardButton.addEventListener('click', this.handleClickNextPage.bind(this))
+
     $module.boundHandleClickLinkPanel = this.handleClickLinkPanel.bind(this)
+
+    // set selected value in dropdown
+    $resultsPerPageDropdown.value = 10
+    $module.countOfCardsPerPage = $resultsPerPageDropdown.value
+    $module.currentPageNumber = 1
+    this.showResultCardsPerPage.call(this, 0, $resultsPerPageDropdown.value)
+    $resultsPerPageDropdown.addEventListener('change', this.handleClickResultsPerPageDropdown.bind(this))
+
 
     $linkPanelButtons.forEach(function ($button) {
         $button.addEventListener('click', $module.boundHandleClickLinkPanel, true)
@@ -39,8 +74,84 @@ SearchResults.prototype.init = function () {
         $input.addEventListener('click', this.handleClickRadioButton.bind(this), true)
     }.bind(this))
 
+
+
     // Handle case if the viewport is shor and there are more than one article - scrolling is not needed, but navigation pointer has to be updated
     this.$module.labelChanged = false
+}
+
+SearchResults.prototype.handleClickPreviousPage = function (e) {
+    var $el = e.target || e.srcElement
+    var $module = this.$module
+
+    $module.currentPageNumber = $module.currentPageNumber - 1
+
+    this.showResultCardsPerPage.call(this, $module.countOfCardsPerPage * ($module.currentPageNumber - 1) , $module.countOfCardsPerPage * ($module.currentPageNumber ));
+
+    //$module.countOfCardsPerPage = $el.value
+}
+
+SearchResults.prototype.handleClickNextPage = function (e) {
+    var $el = e.target || e.srcElement
+    var $module = this.$module
+
+    console.log($module.countOfCardsPerPage)
+    $module.currentPageNumber = $module.currentPageNumber + 1
+    this.showResultCardsPerPage.call(this, $module.countOfCardsPerPage, $module.countOfCardsPerPage * 2);
+
+    // $module.countOfCardsPerPage = $el.value
+}
+
+SearchResults.prototype.handleClickResultsPerPageDropdown = function (e) {
+    var $el = e.target || e.srcElement
+    var $module = this.$module
+
+
+    this.showResultCardsPerPage.call(this, 0, $el.value);
+
+    $module.countOfCardsPerPage = $el.value
+}
+
+SearchResults.prototype.showResultCardsPerPage = function ($startIndex, $endIndex) {
+    var $module = this.$module
+    var $backButton = $module.querySelector('.idsk-search-results__button--back')
+    var $forwardButton = $module.querySelector('.idsk-search-results__button--forward')
+    var $pageNumber = $module.querySelector('.idsk-search-results__page-number')
+
+    //hide all cards
+    $module.resultCards.forEach(function ($card) {
+        if (!$card.classList.contains('idsk-search-results--invisible')) {
+            $card.classList.add('idsk-search-results--invisible')
+        }
+    }.bind(this))
+
+    if ($endIndex >= $module.resultCards.length) {
+        $endIndex = $module.resultCards.length
+        $forwardButton.classList.add('idsk-search-results--invisible')
+        $backButton.classList.remove('idsk-search-results--invisible')
+    } else {
+        $forwardButton.classList.remove('idsk-search-results--invisible')
+    }
+
+    var $i;
+    if ($startIndex < 0) {
+        $startIndex = 0
+    }
+    for ($i = $startIndex; $i < $endIndex; $i++) {
+        $module.resultCards[$i].classList.remove('idsk-search-results--invisible')
+    }
+
+    // hide back button if 1st page is showed
+    if ($startIndex == 0 && !$backButton.classList.contains('idsk-search-results--invisible')) {
+        $backButton.classList.add('idsk-search-results--invisible')
+    }
+
+    var $numberOfPages = ($module.resultCards.length / ($endIndex - $startIndex)) | 0
+    if ($module.resultCards.length % $endIndex > 0) {
+        $numberOfPages = $numberOfPages + 1
+    }
+    $pageNumber.innerText = 'Strana ' + $module.currentPageNumber + ' z ' + $numberOfPages
+
 }
 
 /**
@@ -69,8 +180,6 @@ SearchResults.prototype.handleClickRadioButton = function (e) {
 
     var $choosenFiltersContainer = $module.querySelector('.idsk-search-results__content__picked-filters__topics')
     var $filterContainer = $choosenFiltersContainer.querySelector('.idsk-search-results__picked-topic')
-
-    console.log($filterContainer)
 
     var $radios = $el.closest('.govuk-radios')
 
@@ -114,6 +223,5 @@ SearchResults.prototype.handleRemovePickedTopic = function (e) {
 
     $el.remove();
 }
-
 
 export default SearchResults

@@ -76,16 +76,18 @@
         <span>Len v témach</span>
       </div>
     </div>
-    <div>
-      {% from "../../components/card/macro.njk" import idskCard %}
-      {{ idskCard({ 
+    {% for item in params.searchResultsCard %}
+      <div class="idsk-search-results__card">
+        {% from "../../components/card/macro.njk" import idskCard %}
+        {{ idskCard({ 
           "type": "basic-variant", 
           "link": "#",
-          "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua/ Ut enim ad minim veniam, quis nonstrud exercitation ullamc Lorem ipsum dolor.",
+          "heading": item.heading,
+          "description": item.description,
           "date": { "date": "1.7.2020", "link": "#" }          
       }) }}
       </div>
+    {% endfor %}
     <div class="idsk-search-results__content__page-changer govuk-grid-column-full">
       <button type="button" class="idsk-search-results__button--back">
         <svg class="idsk-search-results__button__svg--previous" width="20" height="15" viewbox="0 -2 25 15" fill="none" xmlns="http://www.w3.org/2000/svg">
