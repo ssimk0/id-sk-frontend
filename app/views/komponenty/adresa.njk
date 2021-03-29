@@ -13,9 +13,17 @@
 {% block content %}
     <span class="govuk-caption-xl">Webové komponenty</span>
     <h1 class="govuk-heading-xl">{{pageName}}</h1>
+    <p class="govuk-body-l">
+      Zobrazenie údajov v mape pomáha používateľom predstaviť si, kde sa dané miesto nachádza. Vždy poskytnite údaje tak, aby boli prístupné aj používateľom so zrakovým znevýhodnením.
+    </p>
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">
-        <h3 class="govuk-heading-m" id="vzor-suvisiaceho-obsahu">Vzor súvisiaceho obsahu</h3>
+        <h2 class="govuk-heading-m" id="vzor-suvisiaceho-obsahu">Adresa podujatia</h2>
+        <p class="govuk-body-m">
+          Ak budete potrebovať zobraziť používateľovi adresu konania vášho podujatia, použite na to Adresu na ⅓ obrazovky.
+        </p>
+        <p class="govuk-body-m">
+          Ako prvú informáciu zobrazte používateľovi adresu konania podujatia. Môžete pridať spresňujúce informácie (napr. poschodie, názov, či číslo zasadacej miestnosti), následne potom mapové okno s prednastavenou adresou miesta konania podujatia. Pomôžete tak používateľovi zorientovať sa ešte predtým ako príde realne miesto podujatia. Ocenia to najmä tí, ktorí sa miesto podujatia chystajú navštíviť prvýkrát.        </p>
         <div class="example example-error">
           {% set exampleComponentHtml %}
             {{ idskAddress({
@@ -39,7 +47,18 @@
           {% endset %}
           {{exampleComponentHtml | safe}}
         </div>
-        {# <pre class="language-markup"><code class="govuk-!-font-size-16 language-markup">{{ exampleComponentHtml }}</code></pre> #}
+        <pre class="language-markup"><code class="govuk-!-font-size-16 language-markup">{{ exampleComponentHtml }}</code></pre>
+
+        <h2 class="govuk-heading-m" id="vzor-suvisiaceho-obsahu">Adresa sídla</h2>
+        <p class="govuk-body-m">
+          Ak potrebujete zobraziť používateľovi presné miesto vášho sídla, kancelárie či detašovaného pracoviska, použite adresu na celú šírku.
+        </p>
+        <p class="govuk-body-m">
+          Ako prvú informáciu zobrazte používateľovi adresu sídla, ktorú môžete rozšíriť o doplňujúce informácie (napr. poschodie, názov, číslo kancelárie alebo rokovacej miestnosti). Pomôžete tak zorientovať sa používateľom ešte predtým, než vás navštívia. Ocenia to najmä tí, ktorí sa miesto sídlwa chystajú navštíviť prvýkrát.
+        </p>
+        <p class="govuk-body-m">
+          Ak máte detašované pracoviská, využite skrytý zoznam. V ňom uveďte, ktoré časti vašej organizácie sídlia na ktorej adrese, aby používateľ presne vedel, kde nájde tých, ktorých hľadá.
+        </p>
         <div class="example example-error">
           {% set exampleComponentHtml %}
             {{ idskAddress({
