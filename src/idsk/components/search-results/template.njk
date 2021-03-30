@@ -22,7 +22,7 @@
     </div>
     {% for item in params.filters %}
       <div class="idsk-search-results__link-panel">
-        <button class="idsk-search-results__link-panel-button">
+        <button class="idsk-search-results__link-panel-button {{ 'idsk-search-results__subtopic' if item.isSubtopic}}">
           {{ item.name }}
           <span class="idsk-search-results__link-panel--span"></span>
         </button>
