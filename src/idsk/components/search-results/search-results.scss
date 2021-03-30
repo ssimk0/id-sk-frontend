@@ -42,7 +42,7 @@
     border-bottom: 1px solid govuk-colour("black");
   }
 
-  .idsk-search-results__picked-topic {
+  .idsk-search-results__picked-topic, .idsk-search-results__picked-content-type {
     font-weight: normal;
     border: 1px solid black;
     border-radius: 5px;
@@ -105,7 +105,12 @@
     min-height: 40px;
   }
 
-  .idsk-search-results__content__picked-filters__topics span {
+  .idsk-search-results__content__picked-filters__content-type {
+    min-height: 40px;
+  }
+
+  .idsk-search-results__content__picked-filters__topics span,
+  .idsk-search-results__content__picked-filters__content-type span {
     padding-top: govuk-spacing(1);
   }
 
@@ -120,12 +125,20 @@
   .idsk-search-results__link-panel-button span {
     @include govuk-font($size: 14);
 
+    color: govuk-colour("black");
     float: right;
     padding-top: govuk-spacing(1);
   }
 
   .idsk-search-results--invisible {
     display: none;
+  }
+
+  .idsk-search-results__link-panel-button {
+    @include govuk-font($size: 24, $weight: bold);
+
+    cursor: pointer;
+    color: govuk-colour("blue");
   }
 
   .idsk-search-results--expand {
@@ -164,7 +177,7 @@
     height: 50px;
 
     &-button {
-      @include govuk-font($size: 19);
+      @include govuk-font($size: 19, $weight: bold);
 
       outline: none;
       background-color: govuk-colour("white");
@@ -181,6 +194,16 @@
       }
 
       &:focus {
+        @include govuk-focused-text;
+      }
+
+      &:disabled {
+        color: govuk-colour("grey-2");
+        cursor: text;
+
+        &::before {
+          color: govuk-colour("grey-2");
+        }
       }
     }
 

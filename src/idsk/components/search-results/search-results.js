@@ -51,8 +51,13 @@ SearchResults.prototype.init = function () {
         return
     }
 
-    var $radioButtonsInput = $module.querySelectorAll('.govuk-radios__input ')
+    var $radioButtonsInput = $module.querySelectorAll('.idsk-search-results__filter .govuk-radios__input ')
     if (!$radioButtonsInput) {
+        return
+    }
+
+    var $contentTypeCheckBoxes = $module.querySelectorAll('.idsk-search-results__filter .govuk-checkboxes__input ')
+    if (!$contentTypeCheckBoxes) {
         return
     }
 
@@ -67,13 +72,16 @@ SearchResults.prototype.init = function () {
     this.showResultCardsPerPage.call(this, 0, $resultsPerPageDropdown.value)
     $resultsPerPageDropdown.addEventListener('change', this.handleClickResultsPerPageDropdown.bind(this))
 
-
     $linkPanelButtons.forEach(function ($button) {
         $button.addEventListener('click', $module.boundHandleClickLinkPanel, true)
     }.bind(this))
 
     $radioButtonsInput.forEach(function ($input) {
         $input.addEventListener('click', this.handleClickRadioButton.bind(this), true)
+    }.bind(this))
+
+    $contentTypeCheckBoxes.forEach(function ($checkBox) {
+        $checkBox.addEventListener('click', this.handleClickContentTypeCheckBox.bind(this), true)
     }.bind(this))
 }
 
@@ -110,6 +118,7 @@ SearchResults.prototype.showResultCardsPerPage = function ($startIndex, $endInde
     var $backButton = $module.querySelector('.idsk-search-results__button--back')
     var $forwardButton = $module.querySelector('.idsk-search-results__button--forward')
     var $pageNumber = $module.querySelector('.idsk-search-results__page-number')
+    var $i;
 
     //hide all cards
     $module.resultCards.forEach(function ($card) {
@@ -125,11 +134,13 @@ SearchResults.prototype.showResultCardsPerPage = function ($startIndex, $endInde
     } else {
         $forwardButton.classList.remove('idsk-search-results--invisible')
     }
-
-    var $i;
+    
     if ($startIndex < 0) {
         $startIndex = 0
+    } else if ($startIndex > 0) {
+        $backButton.classList.remove('idsk-search-results--invisible')
     }
+
     for ($i = $startIndex; $i < $endIndex; $i++) {
         $module.resultCards[$i].classList.remove('idsk-search-results--invisible')
     }
@@ -168,30 +179,88 @@ SearchResults.prototype.handleClickRadioButton = function (e) {
     var $choosenFiltersContainer = $module.querySelector('.idsk-search-results__content__picked-filters__topics')
     var $filterContainer = $choosenFiltersContainer.querySelector('.idsk-search-results__picked-topic')
     var $radios = $el.closest('.govuk-radios')
+    var $class = 'idsk-search-results__picked-topic'
 
     // creating or renaming new span element for picked topic
     if ($el.value && !$filterContainer) {
-        var $topicPicked = this.createTopicInContainer.call(this, $choosenFiltersContainer, $radios, $el);
+        var $topicPicked = this.createTopicInContainer.call(this, $choosenFiltersContainer, $radios.dataset.id, $class, $el);
         $module.subTopicButton.disabled = false;
     } else if ($filterContainer.dataset.source == $radios.dataset.id) {
         $topicPicked = $choosenFiltersContainer.querySelector('.idsk-search-results__picked-topic');
         $topicPicked.innerHTML = $el.value + ' &#10005;';
     } else if ($filterContainer.dataset.source != $radios.dataset.id) {
-        var $topicPicked = this.createTopicInContainer.call(this, $choosenFiltersContainer, $radios, $el);
+        var $topicPicked = this.createTopicInContainer.call(this, $choosenFiltersContainer, $radios.dataset.id, $class, $el);
     }
 
+    $choosenFiltersContainer.classList.remove('idsk-search-results--invisible')
     $topicPicked.removeEventListener('click', this.handleRemovePickedTopic.bind(this), true);
     $topicPicked.addEventListener('click', this.handleRemovePickedTopic.bind(this));
     $buttonCaption.innerText = '1 vybraté'
 }
 
-SearchResults.prototype.createTopicInContainer = function ($choosenFiltersContainer, $radios, $el) {
+SearchResults.prototype.handleClickContentTypeCheckBox = function (e) {
+    var $el = e.target || e.srcElement
+    var $module = this.$module
+    var $linkPanelButton = $el.closest('.idsk-search-results__link-panel')
+    var $choosenFiltersContainer = $module.querySelector('.idsk-search-results__content__picked-filters__content-type')
+    var $checkBoxes = $el.closest('.govuk-checkboxes')
+    var $class = 'idsk-search-results__picked-content-type'
+    
+    if ($el.checked) {
+        var $contentTypePicked = this.createTopicInContainer.call(this, $choosenFiltersContainer, $el.id, $class, $el);
+        $contentTypePicked.addEventListener('click', this.handleRemovePickedContentType.bind(this));
+    } else {
+        var $itemToRemove = $module.querySelector('[data-source="' + $el.id + '"]')
+        $itemToRemove.remove()
+    }
+
+    $choosenFiltersContainer.classList.remove('idsk-search-results--invisible')
+    this.handleCountOfPickedContentTypes.call(this, $checkBoxes, $linkPanelButton);
+}
+
+SearchResults.prototype.handleRemovePickedContentType = function (e) {
+    var $el = e.target || e.srcElement
+    var $checkBoxes = this.$module.querySelector('.idsk-search-results__content-type-filter .govuk-checkboxes') 
+    var $checkBoxToRemove = $checkBoxes.querySelector('#' + $el.dataset.source + '')
+
+    $checkBoxToRemove.checked = false
+    $el.remove();
+}
+
+SearchResults.prototype.handleCountOfPickedContentTypes = function ($checkBoxes, $linkPanelButton) {
+    var $choosenFiltersContainer = this.$module.querySelector('.idsk-search-results__content__picked-filters__content-type')
+    var $buttonCaption = $linkPanelButton.querySelector('.idsk-search-results__link-panel--span')
+    var $counter = 0
+
+    $checkBoxes.querySelectorAll('.govuk-checkboxes__input').forEach(function ($checkBox) {
+        if ($checkBox.checked) {
+            $counter = $counter + 1
+        }
+    }.bind(this))
+
+    if ($counter == 0) {
+        $buttonCaption.innerText = ''
+        $choosenFiltersContainer.classList.add('idsk-search-results--invisible')
+    } else {
+        $buttonCaption.innerText = $counter + ' vybraté'
+    }
+}
+
+SearchResults.prototype.createTopicInContainer = function ($choosenFiltersContainer, $input, $class, $el) {
     var $topicPicked = document.createElement('span')
-    $topicPicked.setAttribute('class', 'idsk-search-results__picked-topic')
-    $topicPicked.setAttribute('data-source', $radios.dataset.id)
+    $topicPicked.setAttribute('class', $class)
+    $topicPicked.setAttribute('data-source', $input)
     $topicPicked.innerHTML = $el.value + ' &#10005;';
     $choosenFiltersContainer.appendChild($topicPicked);
     return $topicPicked
+}
+
+SearchResults.prototype.disableSubtopic = function (e) {
+    var $contentPanel = this.$module.subTopicButton.parentElement.querySelector('.idsk-search-results__list')
+    
+    this.$module.subTopicButton.parentElement.classList.remove('idsk-search-results--expand')
+    $contentPanel.classList.add('idsk-search-results--hidden')
+    this.$module.subTopicButton.disabled = true;
 }
 
 SearchResults.prototype.handleRemovePickedTopic = function (e) {
@@ -203,11 +272,9 @@ SearchResults.prototype.handleRemovePickedTopic = function (e) {
         if ($subTopic) {
             this.removeTopic.call(this, $subTopic, true);
         } else {
-            this.$module.subTopicButton.parentElement.classList.remove('idsk-search-results--expand')
-            var $contentPanel = this.$module.subTopicButton.parentElement.querySelector('.idsk-search-results__list')
-            $contentPanel.classList.add('idsk-search-results--hidden')
-            this.$module.subTopicButton.disabled = true;
+            this.disableSubtopic.call(this);
         }
+        $choosenFiltersContainer.classList.add('idsk-search-results--invisible')
     }
 
     this.removeTopic.call(this, $el, false);
@@ -223,10 +290,7 @@ SearchResults.prototype.removeTopic = function ($el, $disableFilter) {
     }.bind(this))
 
     if ($disableFilter) {
-        this.$module.subTopicButton.parentElement.classList.remove('idsk-search-results--expand')
-        var $contentPanel = this.$module.subTopicButton.parentElement.querySelector('.idsk-search-results__list')
-        $contentPanel.classList.add('idsk-search-results--hidden')
-        this.$module.subTopicButton.disabled = true;
+        this.disableSubtopic.call(this);
     }
 
     $el.remove();
