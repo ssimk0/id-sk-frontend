@@ -61,6 +61,18 @@ SearchResults.prototype.init = function () {
         return
     }
 
+    var $dateFrom = $module.querySelector('#datum-od')
+    if (!$dateFrom) {
+        return
+    }
+
+    var $dateTo = $module.querySelector('#datum-do')
+    if (!$dateTo) {
+        return
+    }
+
+    $dateFrom.addEventListener('focusout', this.handleFillDate.bind(this))
+    $dateTo.addEventListener('focusout', this.handleFillDate.bind(this))
     $backButton.addEventListener('click', this.handleClickPreviousPage.bind(this))
     $forwardButton.addEventListener('click', this.handleClickNextPage.bind(this))
     $module.boundHandleClickLinkPanel = this.handleClickLinkPanel.bind(this)
@@ -109,6 +121,25 @@ SearchResults.prototype.handleClickResultsPerPageDropdown = function (e) {
 
     $module.countOfCardsPerPage = $el.value
     this.showResultCardsPerPage.call(this, 0, $el.value);
+}
+
+SearchResults.prototype.handleFillDate = function (e) {
+    var $el = e.target || e.srcElement
+    var $module = this.$module
+    var $choosenFiltersContainer = $module.querySelector('.idsk-search-results__content__picked-filters__date')
+    var $class = 'idsk-search-results__picked-date'
+
+    
+
+    var $contentTypePicked = this.createTopicInContainer.call(this, $choosenFiltersContainer, $el.id, $class, $el);
+    $contentTypePicked.addEventListener('click', this.handleRemovePickedContentType.bind(this));
+
+    $el.value = ''
+    $choosenFiltersContainer.classList.remove('idsk-search-results--invisible')
+    //this.handleCountOfPickedContentTypes.call(this, $checkBoxes, $linkPanelButton);
+
+
+    console.log("tad")
 }
 
 /**
@@ -180,7 +211,7 @@ SearchResults.prototype.handleClickRadioButton = function (e) {
     var $buttonCaption = $linkPanelButton.querySelector('.idsk-search-results__link-panel--span')
     var $choosenFiltersContainer = $module.querySelector('.idsk-search-results__content__picked-filters__topics')
     var $radios = $el.closest('.govuk-radios')
-    var $filterContainer = $choosenFiltersContainer.querySelector('[data-source="'+$radios.dataset.id+'"]')
+    var $filterContainer = $choosenFiltersContainer.querySelector('[data-source="' + $radios.dataset.id + '"]')
     var $class = 'idsk-search-results__picked-topic'
 
     // creating or renaming new span element for picked topic
@@ -225,7 +256,7 @@ SearchResults.prototype.handleRemovePickedContentType = function (e) {
     var $checkBoxes = this.$module.querySelector('.idsk-search-results__content-type-filter .govuk-checkboxes')
     var $checkBoxToRemove = $checkBoxes.querySelector('#' + $el.dataset.source + '')
     var $linkPanelButton = $checkBoxes.closest('.idsk-search-results__link-panel')
-    
+
     $checkBoxToRemove.checked = false
     $el.remove();
     this.handleCountOfPickedContentTypes.call(this, $checkBoxes, $linkPanelButton);
