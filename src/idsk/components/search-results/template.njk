@@ -21,13 +21,26 @@
       }) }}
     </div>
     {% for item in params.filters %}
-      <div class="idsk-search-results__link-panel {{ item.filterClass if item.filterClass}}">
+      <div class="idsk-search-results__link-panel {{ item.filterClass if item.filterClass }}">
         <button class="idsk-search-results__link-panel-button {{ 'idsk-search-results__subtopic' if item.isSubtopic }}">
-          {{ item.name }}
+          <a class="idsk-search-results__link-panel__title" href="#" onClick="return false;">
+            {{ item.name }}
+          </a>
           <span class="idsk-search-results__link-panel--span"></span>
         </button>
         <div class="idsk-search-results__list idsk-search-results--hidden">
           {% if item.isRadio %}
+            {% if item.radios.length > 10 %}
+              {% from "../../../govuk/components/textarea/macro.njk" import govukTextarea %}
+              {{ govukTextarea({
+                "id": item.searchInputId,
+                "name": "",
+                "rows": 1,
+                "formGroup": {
+                    "classes": ""
+                }
+              }) }}
+            {% endif %}
             {% from "../../components/customer-surveys-radios/macro.njk" import idskCustomerSurveysRadios %}
             {{ idskCustomerSurveysRadios({
               counter : 0,
@@ -38,6 +51,17 @@
             }) }}
           {% endif %}
           {% if item.isCheckBox %}
+            {% if item.checkBoxItems.length > 10 %}
+              {% from "../../../govuk/components/textarea/macro.njk" import govukTextarea %}
+              {{ govukTextarea({
+                "id": item.searchInputId,
+                "name": "",
+                "rows": 1,
+                "formGroup": {
+                    "classes": ""
+                }
+              }) }}
+            {% endif %}
             {% from "../../components/option-select-filter/macro.njk" import idskOptionSelectFilter %}
             {{ idskOptionSelectFilter({
               id: 'content-type',
@@ -45,9 +69,25 @@
             }) }}
           {% endif %}
           {% if item.isTextarea %}
+            <span class="idsk-search-results__date__span">Zobraziť len výsledky aktualizované po
+            </span>
+            <span class="idsk-search-results__date__span__example">Napr. 2005, alebo 8.3.2021
+            </span>
             {% from "../../../govuk/components/textarea/macro.njk" import govukTextarea %}
             {{ govukTextarea({
-              "id": item.id,
+              "id": item.idFrom,
+              "rows": 1,
+              "formGroup": {
+                  "classes": item.classes
+              }
+            }) }}
+            <span class="idsk-search-results__date__span">Zobraziť len výsledky aktualizovaný pred
+            </span>
+            <span class="idsk-search-results__date__span__example">Napr. 2005, alebo 8.3.2021
+            </span>
+            {% from "../../../govuk/components/textarea/macro.njk" import govukTextarea %}
+            {{ govukTextarea({
+              "id": item.idTo,
               "rows": 1,
               "formGroup": {
                   "classes": item.classes
@@ -63,8 +103,10 @@
       <span class="idsk-search-results__content__results">{{ params.numberOfResults }}
         výsledkov</span>
     </div>
-    <div class="govuk-grid-column-two-quarters">
-      <span>Počet výsledkov na stranu</span>
+    <div class="govuk-grid-column-two-quarters idsk-search-results__per-page">
+      <a href="" class="idsk-search-results__filters" title="Filtre">Filtre
+      </a>
+      <span></span>
       {% from "../../../govuk/components/select/macro.njk" import govukSelect %}
       {{ govukSelect({
           id: "sort",

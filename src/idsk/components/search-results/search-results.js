@@ -179,8 +179,8 @@ SearchResults.prototype.handleClickRadioButton = function (e) {
     var $linkPanelButton = $el.closest('.idsk-search-results__link-panel')
     var $buttonCaption = $linkPanelButton.querySelector('.idsk-search-results__link-panel--span')
     var $choosenFiltersContainer = $module.querySelector('.idsk-search-results__content__picked-filters__topics')
-    var $filterContainer = $choosenFiltersContainer.querySelector('.idsk-search-results__picked-topic')
     var $radios = $el.closest('.govuk-radios')
+    var $filterContainer = $choosenFiltersContainer.querySelector('[data-source="'+$radios.dataset.id+'"]')
     var $class = 'idsk-search-results__picked-topic'
 
     // creating or renaming new span element for picked topic
@@ -188,7 +188,7 @@ SearchResults.prototype.handleClickRadioButton = function (e) {
         var $topicPicked = this.createTopicInContainer.call(this, $choosenFiltersContainer, $radios.dataset.id, $class, $el);
         $module.subTopicButton.disabled = false;
     } else if ($filterContainer.dataset.source == $radios.dataset.id) {
-        $topicPicked = $choosenFiltersContainer.querySelector('.idsk-search-results__picked-topic');
+        $topicPicked = $filterContainer
         $topicPicked.innerHTML = $el.value + ' &#10005;';
     } else if ($filterContainer.dataset.source != $radios.dataset.id) {
         var $topicPicked = this.createTopicInContainer.call(this, $choosenFiltersContainer, $radios.dataset.id, $class, $el);

@@ -112,6 +112,7 @@ examples:
         group: 1
         id: 'tema'
         isRadio: true
+        searchInputId: idsk-search-input__topic
         radios: 
           - name: Eurofondy
             value: Eurofondy
@@ -129,6 +130,7 @@ examples:
         id: 'podtema'
         isRadio: true
         isSubtopic: true
+        searchInputId: idsk-search-input__subtopic
         radios: 
           - name: Výzvy pre rozvoj regiónov
             value: Výzvy pre rozvoj regiónov
@@ -140,12 +142,25 @@ examples:
             value: Agroturistika
           - name: Podpora miestnej komunity
             value: Podpora miestnej komunity
+          - name: Výzvy pre rozvoj regiónov2
+            value: Výzvy pre rozvoj regiónov2
+          - name: WiFi 4u2
+            value: WiFi 4u2
+          - name: Dotácie na obecné školy2
+            value: Dotácie na obecné školy2
+          - name: Agroturistika2
+            value: Agroturistika2
+          - name: Dotácie na obecné školy3
+            value: Dotácie na obecné školy3
+          - name: Agroturistika3
+            value: Agroturistika3
 
       - name: Typ obsahu
         group: 3
         id: 'obsah'
         isCheckBox: true
         filterClass: idsk-search-results__content-type-filter
+        searchInputId: idsk-search-input__content-type
         checkBoxItems: 
           - value: Rozvoj regiónov
             text: Rozvoj regiónov
@@ -165,10 +180,29 @@ examples:
           - value: Rodová rovnosť a postavenia žien v pracovom prostredí
             text: Rodová rovnosť a postavenia žien v pracovom prostredí
             id: rodova
+          - value: Rozvoj regiónov
+            text: Rozvoj regiónov
+            id: rozvoj2
+          - value: Novinky a komunikačné vyhlásenia
+            text: Novinky a komunikačné vyhlásenia
+            id: novinky2
+          - value: Transparentnosť a sloboda prístupu k informáciám
+            text: Transparentnosť a sloboda prístupu k informáciám
+            id: transparentnost2
+          - value: Legislatíva
+            text: Legislatíva
+            id: legislativa2
+          - value: Štatistické údaje
+            text: Štatistické údaje
+            id: statistika2
+          - value: Rodová ro2vnosť a postavenia žien v pracovom prostredí
+            text: Rodová rovnosť a postavenia žien v pracovom prostredí
+            id: rodova2
       
-      - name: Dátum aktulizácie
+      - name: Dátum aktualizácie
         group: 3
-        id: 'datum'
+        idFrom: 'datum-od'
+        idTo: 'datum-do'
         isTextarea: true
         classes: 'idsk-search-results__textarea-date'
 
