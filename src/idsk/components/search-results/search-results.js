@@ -71,6 +71,21 @@ SearchResults.prototype.init = function () {
         return
     }
 
+    var $topicSearchInput = $module.querySelector('#idsk-search-input__topic')
+    if ($topicSearchInput) {
+        $topicSearchInput.addEventListener('keyup', this.handleSearchItemsFromInput.bind(this, 'radios'))
+    }
+
+    var $subtopicSearchInput = $module.querySelector('#idsk-search-input__subtopic')
+    if ($subtopicSearchInput) {
+        $subtopicSearchInput.addEventListener('keyup', this.handleSearchItemsFromInput.bind(this, 'radios'))
+    }
+
+    var $contentTypeSearchInput = $module.querySelector('#idsk-search-input__content-type')
+    if ($contentTypeSearchInput) {
+        $contentTypeSearchInput.addEventListener('keyup', this.handleSearchItemsFromInput.bind(this, 'checkboxes'))
+    }
+
     $dateFrom.addEventListener('focusout', this.handleFillDate.bind(this))
     $dateTo.addEventListener('focusout', this.handleFillDate.bind(this))
     $backButton.addEventListener('click', this.handleClickPreviousPage.bind(this))
@@ -123,13 +138,30 @@ SearchResults.prototype.handleClickResultsPerPageDropdown = function (e) {
     this.showResultCardsPerPage.call(this, 0, $el.value);
 }
 
+SearchResults.prototype.handleSearchItemsFromInput = function ($type, e) {
+    var $el = e.target || e.srcElement
+    var $linkPanelButton = $el.closest('.idsk-search-results__link-panel')
+
+    var $items = $linkPanelButton.querySelectorAll('.govuk-' + $type + '__item')
+    $items.forEach(function ($item) {
+        $item.classList.remove('idsk-search-results--invisible')
+    }.bind(this))
+    $items.forEach(function ($item) {
+        if ($el.value == '') {
+            $item.classList.remove('idsk-search-results--invisible')
+        } else if (!$item.querySelector('.govuk-' + $type + '__label').innerText.toLowerCase().includes($el.value.toLowerCase())) {
+            $item.classList.add('idsk-search-results--invisible')
+        }
+    }.bind(this))
+}
+
 SearchResults.prototype.handleFillDate = function (e) {
     var $el = e.target || e.srcElement
     var $module = this.$module
     var $choosenFiltersContainer = $module.querySelector('.idsk-search-results__content__picked-filters__date')
     var $class = 'idsk-search-results__picked-date'
 
-    
+
 
     var $contentTypePicked = this.createTopicInContainer.call(this, $choosenFiltersContainer, $el.id, $class, $el);
     $contentTypePicked.addEventListener('click', this.handleRemovePickedContentType.bind(this));
@@ -263,9 +295,6 @@ SearchResults.prototype.handleRemovePickedContentType = function (e) {
 }
 
 SearchResults.prototype.handleCountOfPickedContentTypes = function ($checkBoxes, $linkPanelButton) {
-    console.log($checkBoxes)
-    console.log($linkPanelButton)
-
     var $choosenFiltersContainer = this.$module.querySelector('.idsk-search-results__content__picked-filters__content-type')
     var $buttonCaption = $linkPanelButton.querySelector('.idsk-search-results__link-panel--span')
     var $counter = 0
