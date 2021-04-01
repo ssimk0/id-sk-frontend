@@ -1,6 +1,7 @@
 {% from '../../../govuk/components/radios/macro.njk' import govukRadios %}
 
 <div data-module="idsk-interactive-map" class="idsk-interactive-map{{ ' ' + params.classes if params.classes }}">
+    <h2 class="govuk-heading-l">{{ params.title }}</h2>
     <div class="idsk-interactive-map__header">
         <div class="idsk-interactive-map__header-controls">
             <div class="idsk-interactive-map__header-radios">
@@ -29,6 +30,7 @@
                         <option value="" selected="selected">Celé obdobie</option>
                     </select>
                 </div>
+                {% if params.indicatorOptions %}
                 <div class="govuk-form-group">
                     <div class="govuk-label-wrapper">
                         <label class="govuk-label" for="indicator"><strong>Ukazovateľ</strong></label>
@@ -39,9 +41,14 @@
                         {% endfor %}
                     </select>
                 </div>
+                {% endif %}
             </div>
         </div>
-        <h3 class="govuk-heading-m"><span class="idsk-interactive-map__current-indicator">{{ params.indicatorOptions[0].text }}</span> za <span class="idsk-interactive-map__current-time-period">celé obdobie</span></h3>
+        {% if params.indicatorOptions %}
+        <h3 class="govuk-heading-m">
+            <span class="idsk-interactive-map__current-indicator">{{ params.indicatorOptions[0].text }}</span> za <span class="idsk-interactive-map__current-time-period">celé obdobie</span>
+        </h3>
+        {% endif %}
     </div>
     <div class="idsk-interactive-map__body">
         <div class="idsk-interactive-map__map">
@@ -51,10 +58,10 @@
             <iframe class="idsk-interactive-map__table-iframe" data-src="{{ params.tableIframeSrc }}"></iframe>
         </div>
     </div>
-    {% if params.dataSource or params.dataCSV %}
+    {% if params.dataSource or params.dataDownload %}
     <div class="idsk-interactive-map__meta">
-        {% if params.dataCSV %}
-        <a class="govuk-link idsk-interactive-map__meta-data" title="{{ params.dataCSV.text }}" href="{{ params.dataCSV.link }}" download>{{ params.dataCSV.text }}</a>
+        {% if params.dataDownload %}
+        <a class="govuk-link idsk-interactive-map__meta-data" title="{{ params.dataDownload.text }}" href="{{ params.dataDownload.link }}" download>{{ params.dataDownload.text }}</a>
         {% endif %}
         {% if params.dataSource %}
         <span class="idsk-interactive-map__meta-source">Zdroj: {{ params.dataSource }}</span>

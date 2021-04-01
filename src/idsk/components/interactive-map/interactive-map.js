@@ -67,19 +67,21 @@ InteractiveMap.prototype.renderData = function () {
     var $tableSrc = $tableEl.dataset.src
     var $mapEl = $module.querySelector('.idsk-interactive-map__map-iframe')
     var $mapSrc = $mapEl.dataset.src
-
-    var $indicatorSelect = $module.querySelector('.idsk-interactive-map__select-indicator')
-    var $indicatorValue = $indicatorSelect.options[$indicatorSelect.selectedIndex].value;
-    var $indicator = $indicatorSelect.options[$indicatorSelect.selectedIndex].text;
-
     var $timePeriodSelect = $module.querySelector('.idsk-interactive-map__select-time-period')
     var $timePeriodValue = $timePeriodSelect.options[$timePeriodSelect.selectedIndex].value;
     var $timePeriod = $timePeriodSelect.options[$timePeriodSelect.selectedIndex].text;
+    var $indicatorSelect = $module.querySelector('.idsk-interactive-map__select-indicator')
+
+    if ($indicatorSelect) {
+        var $indicatorValue = $indicatorSelect.options[$indicatorSelect.selectedIndex].value;
+        var $indicatorText = $indicatorSelect.options[$indicatorSelect.selectedIndex].text;
+
+        $module.querySelector('.idsk-interactive-map__current-indicator').innerText = $indicatorText
+        $module.querySelector('.idsk-interactive-map__current-time-period').innerText = $timePeriod
+    }
 
     $mapEl.src = `${$mapSrc}?indicator=${$indicatorValue}&time=${$timePeriodValue}`
     $tableEl.src = `${$tableSrc}?indicator=${$indicatorValue}&time=${$timePeriodValue}`
-    $module.querySelector('.idsk-interactive-map__current-indicator').innerText = $indicator
-    $module.querySelector('.idsk-interactive-map__current-time-period').innerText = $timePeriod
 }
 
 export default InteractiveMap

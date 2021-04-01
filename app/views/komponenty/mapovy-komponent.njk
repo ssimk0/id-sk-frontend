@@ -67,27 +67,14 @@
         <div class="example example-error">
           {% set exampleComponentHtml %}
             {{ idskInteractiveMap({
+              title: "Počet zaočkovaných ľudí (1. aj 2. dávkou)",
               mapIframeSrc: "/vzory/interactive-map-sample",
               tableIframeSrc: "/vzory/interactive-table-sample",
               radioControlsName: "interactive-radios-a",
-              indicatorOptions: [
-                {
-                  title: "Celkový stav",
-                  value: ""
-                },
-                {
-                  title: "Počet zaočkovaných 1. dávkou",
-                  value: "dose1"
-                },
-                {
-                  title: "Počet zaočkovaných 2. dávkou",
-                  value: "dose2"
-                }
-              ],
               dataSource: "od Filipa",
-              dataCSV: {
+              dataDownload: {
                 text: "Stiahnuť údaje (CSV, 42 kb)",
-                link: "https://raw.githubusercontent.com/Institut-Zdravotnych-Analyz/covid19-data/main/OpenData_Slovakia_CovidAutomat.csv"
+                link: "/public/assets/data/korona.gov.sk.csv"
               }
           }) }}
           {% endset %}
@@ -105,6 +92,7 @@
         <div class="example example-error">
           {% set exampleComponentHtml %}
             {{ idskInteractiveMap({
+              title: "Koronavírus na Slovensku",
               mapIframeSrc: "/vzory/interactive-map-sample",
               tableIframeSrc: "/vzory/interactive-table-sample",
               radioControlsName: "interactive-radios-b",
@@ -123,9 +111,9 @@
                 }
               ],
               dataSource: "od Filipa",
-              dataCSV: {
+              dataDownload: {
                 text: "Stiahnuť údaje (CSV, 42 kb)",
-                link: "https://raw.githubusercontent.com/Institut-Zdravotnych-Analyz/covid19-data/main/OpenData_Slovakia_CovidAutomat.csv"
+                link: "/public/assets/data/korona.gov.sk.csv"
               }
           }) }}
           {% endset %}
@@ -140,6 +128,7 @@
         <div class="example example-error">
           {% set exampleComponentHtml %}
             {{ idskInteractiveMap({
+              title: "Koronavírus na Slovensku",
               mapIframeSrc: "/vzory/interactive-map-sample",
               tableIframeSrc: "/vzory/interactive-table-sample",
               checkedTable: true,
@@ -159,9 +148,9 @@
                 }
               ],
               dataSource: "od Filipa",
-              dataCSV: {
+              dataDownload: {
                 text: "Stiahnuť údaje (CSV, 42 kb)",
-                link: "https://raw.githubusercontent.com/Institut-Zdravotnych-Analyz/covid19-data/main/OpenData_Slovakia_CovidAutomat.csv"
+                link: "/public/assets/data/korona.gov.sk.csv"
               }
           }) }}
           {% endset %}
