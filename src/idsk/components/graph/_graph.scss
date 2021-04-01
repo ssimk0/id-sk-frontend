@@ -1,0 +1,165 @@
+@import "../../../govuk/settings/all";
+@import "../../../govuk/tools/all";
+@import "../../../govuk/helpers/all";
+
+@include govuk-exports("idsk/component/graph") {
+    .idsk-graph {
+        @include govuk-font($size: 16);
+        @include govuk-text-colour;
+
+        background-color: govuk-colour("grey-4");
+        padding: govuk-spacing(6);
+
+        &__heading {
+            display: block;
+            margin: 0;
+
+            @include mq($from: desktop) {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: inherit;
+            }
+        }
+
+        &__controls {
+            margin-left: auto;
+
+            .govuk-radios__item {
+                display: inline-block;
+            }
+        }
+
+        &__summary {
+            color: govuk-colour("dark-grey");
+        }
+
+        .idsk-graph__iframe {
+            border: none;
+            height: 100%;
+            width: 100%;
+        }
+
+        .idsk-graph__meta {
+            display: flex;
+            flex-flow: column-reverse;
+            margin: 0;
+
+            @include mq($from: desktop) {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: inherit;
+            }
+
+            &-link-list {
+                @include govuk-font($size: 19);
+
+                svg {
+                    margin-left: 20px;
+                }
+
+                &:first-child {
+                    margin-right: govuk-spacing(8);
+                }
+            }
+
+            &-download,
+            &-share {
+                display: inline-block;
+                position: relative;
+            }
+
+            &-source {
+                margin-left: 0;
+
+                @include mq($from: desktop) {
+                    margin-left: auto;
+                }
+            }
+
+            &-list {
+                display: none;
+                position: absolute;
+                background-color: govuk-colour("grey-4");
+                z-index: 1;
+                list-style: none;
+                padding: 0;
+                box-shadow: 3px 3px 5px govuk-colour("mid-grey");
+                width: calc(100% - 50px);
+
+                li {
+                    border-bottom: 1px solid govuk-colour("mid-grey");
+                    padding: 5px;
+                }
+
+                .govuk-link {
+                    @include govuk-font($size: 19);
+                }
+            }
+        }
+
+        // overrided tab styles
+        .govuk-tabs__panel,
+        .govuk-tabs__list,
+        .govuk-tabs__list-item.govuk-tabs__list-item--selected {
+            border: none;
+        }
+        .govuk-tabs__list-item,
+        .govuk-tabs__list-item.govuk-tabs__list-item--selected {
+            background-color: transparent;
+            margin-top: 0;
+        }
+        .govuk-tabs__tab:link,
+        .govuk-tabs__tab:visited {
+            color: govuk-colour("dark-blue");
+        }
+        .govuk-tabs__list-item--selected .govuk-tabs__tab {
+            color: govuk-colour("dark-blue");
+            font-weight: bold;
+            box-shadow: 0 4px govuk-colour("dark-blue");
+        }
+        .govuk-tabs__list-item {
+            padding-top: 0;
+
+            &:first-child {
+                padding-left: 0;
+            }
+        }
+        .govuk-tabs__panel {
+            height: 280px;
+            padding: 0;
+        }
+        .govuk-form-group {
+            margin-bottom: govuk-spacing(4);
+        }
+    }
+
+    @include mq($from: desktop) {
+        .idsk-graph .govuk-radios .govuk-radios__input:hover + .govuk-radios__label::before {
+            box-shadow: 0 0 0 10px govuk-colour("mid-grey");
+        }
+
+        .govuk-radios__item {
+            margin-bottom: 0;
+        }
+
+        .idsk-graph .govuk-radios .govuk-radios__item:hover .govuk-radios__input:focus + .govuk-radios__label::before {
+            box-shadow: 0 0 0 4px govuk-colour("yellow"), 0 0 0 10px govuk-colour("mid-grey");
+        }
+
+        .idsk-graph .govuk-radios__label {
+            padding-left: 0;
+        }
+
+        .idsk-graph .govuk-radios__label::before {
+            top: 8px;
+            width: 24px;
+            height: 24px;
+        }
+
+        .idsk-graph .govuk-radios__label::after {
+            top: 15px;
+            left: 7px;
+            border-width: 5px;
+        }
+    }
+}
