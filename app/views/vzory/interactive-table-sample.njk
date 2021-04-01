@@ -160,6 +160,11 @@
                 .on("click", function (d) {
                     var $target = d.target || d.srcElement
                     var $key = $target.dataset.th
+                    var $ths = this.parentElement.children
+                    Array.from($ths).forEach(function(sib) {
+                      sib.classList.remove('aes')
+                      sib.classList.remove('des')
+                    })
                     if ($sortAscending) {
                         $rows.sort(function(a, b) { return d3.ascending(b[$key], a[$key]); });
                         $sortAscending = false;
@@ -181,8 +186,7 @@
             $rows.selectAll("td")
                 .data(function (d) {
                     return $columns.map(function (k) {
-                        var $value = k === "region_id" ? $regionsMapping[d[k]] : d[k];
-                        return { "value": $value, "name": k};
+                        return { "value": d[k], "name": k};
                     });
                 }).enter()
                 .append("td")
@@ -206,6 +210,10 @@
                         return $date > $cutoffDate;
                     })
                 }
+                $currentData = $currentData.map(function ($d) {
+                    $d["region_id"] = $regionsMapping[$d["region_id"]]
+                    return $d
+                });
                 RenderCustomTable();
             }) 
         }
