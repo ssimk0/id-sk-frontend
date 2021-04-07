@@ -42,66 +42,91 @@
 
         table {
             width: 100%;
+            border-collapse: collapse;
         }
         table tr {
-            border-bottom: 1px solid govuk-colour("black");
-            text-align: right;
+            border-bottom: 1px solid #949494;
         }
 
-        table tr th .arrows:after {
-            position: absolute;
-            margin-left: 7px;
-            margin-top: 11px;
+        table tr th {
+            position: sticky;
+            top: 0;
+            background-color: #FFF;
+        }
+
+        .th-span {
+            display: inline-flex;
+            flex-direction: row;
+            -webkit-box-align: center;
+            align-items: center;
+        }
+
+        .arrowBtn:last-of-type {
+            padding-right: 20px;
+        }
+        .arrowBtn {
+            border: 1px solid transparent;
+            background: transparent;
+            cursor: pointer;
+            display: block;
+            height: 22px;
+            line-height: normal;
+            margin: 0;
+            margin-left: 5px;
+            outline: none;
+            overflow: visible;
+            padding: 0;
+            width: 10px;
+        }
+        .arrowBtn:after {
             border-style: solid;
             border-width: 7px 6px 0;
             border-color: #000 transparent transparent;
             content: "";
-            -webkit-transition: -webkit-transform 0.2s;
-            transition: -webkit-transform 0.2s;
-            transition: transform 0.2s;
-            transition: transform 0.2s, -webkit-transform 0.2s;
-        }
-
-        table tr th .arrows:before {
+            margin-left: 5px;
             position: absolute;
-            margin-top: 2px;
+            top: calc(50% + 2px);
+        }
+        .arrowBtn:before {
             border-style: solid;
             border-width: 7px 6px 0;
             border-color: #000 transparent transparent;
+            content: "";
+            margin-left: 5px;
+            position: absolute;
+            top: calc(50% - 8px);
             transform: rotate(180deg);
-            content: "";
-            -webkit-transition: -webkit-transform 0.2s;
-            transition: -webkit-transform 0.2s;
-            transition: transform 0.2s;
-            transition: transform 0.2s, -webkit-transform 0.2s;
-            margin-left: 7px;
+        }
+        .arrowBtn:focus {
+            border: 1px solid #000;
         }
 
-        table tr th.des .arrows:before,
-        table tr th.aes .arrows:after {
+        .des.arrowBtn:before,
+        .aes.arrowBtn:after {
             display: none;
-        }
-
-        table tr:hover th .arrows:after,
-        table tr:hover th .arrows:before {
-            border-color: #fff transparent transparent;
         }
 
         table tr th,
         table tr td {
-            font-size: 16px;
             padding: 10px 10px;
         }
         table tr td,
         table tr th {
             text-align: left;
         }
-        table tr:hover {
-            background-color: #000000;
-        }
-        table tr:hover th,
-        table tr:hover td {
-            color: white;
+
+        .sr-only {
+            position: absolute;
+            overflow: hidden;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            border: 0;
+            margin: -1px;
+            clip: rect(1px,1px,1px,1px);
+            -webkit-clip-path: inset(50%);
+            clip-path: inset(50%);
+            white-space: nowrap;
         }
     </style>
 </head>
@@ -144,40 +169,51 @@
                 }
                 return $column
             })
-            
+
+            var $unsortedDesc = "Nezoradený stĺpec - použije vzostupné zoradenie."
+            var $sortedAesDesc = "Zoradený stĺpec (vzostupne) - Použiť zostupné zoradenie."
+            var $sortedDesDesc = "Zoradený stĺpec (zostupne) - použije vzostupné zoradenie."
+           
             var $sortAscending = true;
 		    var $table = d3.select("#content").append("table");
             var $headers = $table.append("thead").append("tr")
                 .selectAll("th")
                 .data($columns).enter()
                 .append("th")
-                .attr("data-th", function (d) {
-                    return d;
-                })
+                .append("span")
+                .attr("class", "th-span")
                 .text(function (d) {
                     return $columnsMapping[d];
                 })
+                .append("button")
+                .attr("data-th", function (d) {
+                    return d;
+                })
+                .attr("class", "arrowBtn")
                 .on("click", function (d) {
                     var $target = d.target || d.srcElement
                     var $key = $target.dataset.th
-                    var $ths = this.parentElement.children
-                    Array.from($ths).forEach(function(sib) {
-                      sib.classList.remove('aes')
-                      sib.classList.remove('des')
+                    var $btns = this.closest("thead").querySelectorAll(".arrowBtn")
+                    $btns.forEach(function($btn) {
+                      $btn.classList.remove("aes")
+                      $btn.classList.remove("des")
+                      $btn.querySelector(".sr-only").innerText = $unsortedDesc
                     })
                     if ($sortAscending) {
                         $rows.sort(function(a, b) { return d3.ascending(b[$key], a[$key]); });
                         $sortAscending = false;
-                        this.className = "aes";
+                        this.classList.add("aes");
+                        this.querySelector(".sr-only").innerText = $sortedAesDesc
                     } else {
                         $rows.sort(function(a, b) { return d3.descending(b[$key], a[$key]); });
                         $sortAscending = true;
-                        this.className = "des";
+                        this.classList.add("des");
+                        this.querySelector(".sr-only").innerText = $sortedDesDesc
                     }
                 })
                 .append("span")
-                .attr("class", "arrows")
-
+                .attr("class", "sr-only")
+                .text($unsortedDesc)
 
             var $rows = $table.append("tbody").selectAll("tr")
                 .data($currentData).enter()
