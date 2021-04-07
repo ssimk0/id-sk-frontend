@@ -60,7 +60,7 @@ SearchResults.prototype.init = function () {
         return
     }
 
-    var $filtersButtonMobile = $module.querySelector('.idsk-search-results__filters')
+    var $filtersButtonMobile = $module.querySelector('.idsk-search-results__filters__button')
     if (!$filtersButtonMobile) {
         return
     }
@@ -148,12 +148,17 @@ SearchResults.prototype.init = function () {
     }.bind(this))
 }
 
+/**
+ * function for handling show results button and 'back to results' button in mobile view
+ * hiding and showing elements - mobile version only
+ * 
+ */
 SearchResults.prototype.handleClickShowResultsButton = function (e) {
     var $module = this.$module
     var $filterBar = $module.querySelector('.idsk-search-results__filter')
     var $searchBar = $module.querySelector('.idsk-search-results .idsk-intro-block__search')
     var $orderByDropdown = $module.querySelector('.idsk-search-results--order__dropdown')
-    var $resultsPerPage = $module.querySelector('.idsk-search-results__per-page')
+    var $resultsPerPage = $module.querySelector('.idsk-search-results__filter-panel--mobile')
     var $orderByDropdownMobile = $module.querySelector('.idsk-search-results--order')
     var $pagingMobile = $module.querySelector('.idsk-search-results__page-number--mobile')
     var $pagingDesktop = $module.querySelector('.idsk-search-results__content__page-changer')
@@ -163,7 +168,7 @@ SearchResults.prototype.handleClickShowResultsButton = function (e) {
     var $showResultsButton = $module.querySelector('.idsk-search-results__show-results__button')
     var $contentContainer = $module.querySelector('.idsk-search-results__content')
 
-    $contentContainer.classList.remove('idsk-search-results--invisible')
+    $contentContainer.classList.remove('idsk-search-results--invisible__mobile')
     $showResultsButton.classList.add('idsk-search-results--invisible')
     $pickedFiltersPanel.classList.add('idsk-search-results--invisible')
     $filterBar.classList.remove('idsk-search-results--visible')
@@ -177,6 +182,11 @@ SearchResults.prototype.handleClickShowResultsButton = function (e) {
     $orderByDropdownMobile.classList.remove('idsk-search-results--invisible')
 }
 
+/**
+ * function for handling whether is some filter picked, because of hiding and showing elements in container with picked items
+ * returns boolean
+ * 
+ */
 SearchResults.prototype.handleSomeFilterPicked = function (e) {
     var $module = this.$module
     var $contentContainer = $module.querySelector('.idsk-search-results__content')
@@ -186,14 +196,18 @@ SearchResults.prototype.handleSomeFilterPicked = function (e) {
     var $isFilterPicked = $pickedTopics.length > 0 || $pickedContentTypes.length > 0 || $pickedDates.length > 0
 
     if ($isFilterPicked) {
-        $contentContainer.classList.remove('idsk-search-results--invisible')
+        $contentContainer.classList.remove('idsk-search-results--invisible__mobile')
     } else {
-        $contentContainer.classList.add('idsk-search-results--invisible')
+        $contentContainer.classList.add('idsk-search-results--invisible__mobile')
     }
 
     return $isFilterPicked
 }
 
+/**
+ * function for disabling all picked filters
+ * 
+ */
 SearchResults.prototype.handleClickTurnFiltersOffButton = function (e) {
     var $module = this.$module
     var $contentContainer = $module.querySelector('.idsk-search-results__content')
@@ -201,7 +215,7 @@ SearchResults.prototype.handleClickTurnFiltersOffButton = function (e) {
     var $pickedContentTypes = $module.querySelectorAll('.idsk-search-results__picked-content-type')
     var $pickedDates = $module.querySelectorAll('.idsk-search-results__picked-date')
 
-    $contentContainer.classList.add('idsk-search-results--invisible')
+    $contentContainer.classList.add('idsk-search-results--invisible__mobile')
 
     $pickedTopics.forEach(function ($topic) {
         this.handleRemovePickedTopic.call(this, $topic);
@@ -216,12 +230,16 @@ SearchResults.prototype.handleClickTurnFiltersOffButton = function (e) {
     }.bind(this))
 }
 
+/**
+ * function for changing view for mobile after click on "Filters" button
+ * 
+ */
 SearchResults.prototype.handleClickFiltersButton = function (e) {
     var $module = this.$module
     var $filterBar = $module.querySelector('.idsk-search-results__filter')
     var $searchBar = $module.querySelector('.idsk-search-results .idsk-intro-block__search')
     var $orderByDropdown = $module.querySelector('.idsk-search-results--order__dropdown')
-    var $resultsPerPage = $module.querySelector('.idsk-search-results__per-page')
+    var $resultsPerPage = $module.querySelector('.idsk-search-results__filter-panel--mobile')
     var $orderByDropdownMobile = $module.querySelector('.idsk-search-results--order')
     var $pagingMobile = $module.querySelector('.idsk-search-results__page-number--mobile')
     var $pagingDesktop = $module.querySelector('.idsk-search-results__content__page-changer')
@@ -306,7 +324,7 @@ SearchResults.prototype.handleFillDate = function ($period, e) {
         $contentTypePicked.innerHTML = $el.value + ' &#10005;';
     }
 
-    $contentContainer.classList.remove('idsk-search-results--invisible')
+    $contentContainer.classList.remove('idsk-search-results--invisible__mobile')
     $contentTypePicked.addEventListener('click', this.handleRemovePickedDate.bind(this));
     $el.value = ''
     $choosenDatesInFiltersContainer.classList.remove('idsk-search-results--invisible')
@@ -329,6 +347,10 @@ SearchResults.prototype.createSpanElement = function ($class, $text) {
     return $spanElement
 }
 
+/**
+ * function for checking whether is there any date items selected in container
+ * 
+ */
 SearchResults.prototype.checkValuesInDateContainer = function (e) {
     var $choosenDatesInFiltersContainer = this.$module.querySelector('.idsk-search-results__content__picked-filters__date')
     var $beforeDateClass = 'idsk-search-results__before-date'
@@ -416,7 +438,7 @@ SearchResults.prototype.showResultCardsPerPage = function ($startIndex, $endInde
 }
 
 /**
- * An event handler for click event on $linkPanel - collapse or expand in page navigation menu
+ * An event handler for click event on $linkPanel - collapse or expand filter
  * @param {object} e 
  */
 SearchResults.prototype.handleClickLinkPanel = function (e) {
@@ -454,7 +476,7 @@ SearchResults.prototype.handleClickRadioButton = function (e) {
         var $topicPicked = this.createTopicInContainer.call(this, $choosenFiltersContainer, $radios.dataset.id, $class, $el, false);
     }
 
-    $contentContainer.classList.remove('idsk-search-results--invisible')
+    $contentContainer.classList.remove('idsk-search-results--invisible__mobile')
     $choosenFiltersContainer.classList.remove('idsk-search-results--invisible')
     $topicPicked.removeEventListener('click', this.handleRemovePickedTopic.bind(this), true);
     $topicPicked.addEventListener('click', this.handleRemovePickedTopic.bind(this));
@@ -478,7 +500,7 @@ SearchResults.prototype.handleClickContentTypeCheckBox = function (e) {
         $itemToRemove.remove()
     }
 
-    $contentContainer.classList.remove('idsk-search-results--invisible')
+    $contentContainer.classList.remove('idsk-search-results--invisible__mobile')
     $choosenFiltersContainer.classList.remove('idsk-search-results--invisible')
     this.handleCountOfPickedContentTypes.call(this, $checkBoxes, $linkPanelButton);
 }
@@ -496,6 +518,11 @@ SearchResults.prototype.handleRemovePickedContentType = function (e) {
     this.handleCountOfPickedContentTypes.call(this, $checkBoxes, $linkPanelButton);
 }
 
+/**
+ * function for counting selected checkboxes in content type filter
+ * @param {object} $checkBoxes 
+ * @param {object} $linkPanelButton
+ */
 SearchResults.prototype.handleCountOfPickedContentTypes = function ($checkBoxes, $linkPanelButton) {
     var $choosenFiltersContainer = this.$module.querySelector('.idsk-search-results__content__picked-filters__content-type')
     var $buttonCaption = $linkPanelButton.querySelector('.idsk-search-results__link-panel--span')
@@ -516,9 +543,17 @@ SearchResults.prototype.handleCountOfPickedContentTypes = function ($checkBoxes,
     }
 }
 
+/**
+ * function for creating element in container, in case of date we need param $insertBeforeFirst to check whether it should be on first position or not
+ * @param {object} $choosenFiltersContainer
+ * @param {object} $input
+ * @param {object} $el
+ * @param {boolean} $insertBeforeFirst 
+ */
 SearchResults.prototype.createTopicInContainer = function ($choosenFiltersContainer, $input, $class, $el, $insertBeforeFirst) {
     var $showResultsMobileButton = this.$module.querySelector('.idsk-search-results__show-results__button')
     var $turnFiltersOffMobileButton = this.$module.querySelector('.idsk-search-results__button--turn-filters-off')
+    var $pickedFiltersContainer = this.$module.querySelector('.idsk-search-results__content__picked-filters')
 
     var $topicPicked = document.createElement('span')
     $topicPicked.setAttribute('class', $class)
@@ -530,12 +565,17 @@ SearchResults.prototype.createTopicInContainer = function ($choosenFiltersContai
         $choosenFiltersContainer.appendChild($topicPicked);
     }
 
+    $pickedFiltersContainer.classList.remove('idsk-search-results--invisible')
     $showResultsMobileButton.classList.remove('idsk-search-results--invisible')
     $turnFiltersOffMobileButton.classList.remove('idsk-search-results--invisible')
 
     return $topicPicked
 }
 
+/**
+ * function for disabling 'subtopic' filter, in case of removing topic filter
+ * 
+ */
 SearchResults.prototype.disableSubtopic = function (e) {
     var $contentPanel = this.$module.subTopicButton.parentElement.querySelector('.idsk-search-results__list')
 

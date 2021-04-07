@@ -33,7 +33,7 @@
     {% for item in params.filters %}
       <div class="idsk-search-results__link-panel {{ item.filterClass if item.filterClass }}">
         <button class="idsk-search-results__link-panel-button {{ 'idsk-search-results__subtopic' if item.isSubtopic }}">
-          <a class="idsk-search-results__link-panel__title" href="#" onClick="return false;">
+          <a class="idsk-search-results__link-panel__title" title="{{ item.name }}" href="#" onClick="return false;">
             {{ item.name }}
           </a>
           <span class="idsk-search-results__link-panel--span"></span>
@@ -110,13 +110,13 @@
   </div>
   <div class="idsk-search-results__content govuk-grid-column-three-quarters">
     <div class="govuk-grid-column-one-quarter">
-      <span class="idsk-search-results__content__results">{{ params.numberOfResults }}
+      <span class="idsk-search-results__content__number-of-results">{{ params.numberOfResults }}
         výsledkov</span>
     </div>
-    <div class="govuk-grid-column-two-quarters idsk-search-results__per-page">
-      <button class="idsk-search-results__filters" title="Filtre">Filtre
+    <div class="govuk-grid-column-two-quarters idsk-search-results__filter-panel--mobile">
+      <button class="idsk-search-results__filters__button" title="Filtre">Filtre
       </button>
-      <div class="idsk-search-results-per-page">
+      <div class="idsk-search-results__per-page">
         <span>Počet výsledkov na stranu</span>
         {% from "../../../govuk/components/select/macro.njk" import govukSelect %}
         {{ govukSelect({
