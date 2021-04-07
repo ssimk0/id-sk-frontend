@@ -24,7 +24,7 @@
                         <label class="govuk-label" for="time-period"><strong>Obdobie</strong></label>
                     </div>
                     <select class="idsk-interactive-map__select-time-period govuk-select" id="time-period" name="time-period">
-                        <option value="30">Poslený mesiac</option>
+                        <option value="30">Posledný mesiac</option>
                         <option value="90">Posledné 3 mesiace</option>
                         <option value="180">Posledných 6 mesiacov</option>
                         <option value="" selected="selected">Celé obdobie</option>
@@ -52,10 +52,10 @@
     </div>
     <div class="idsk-interactive-map__body">
         <div class="idsk-interactive-map__map">
-            <iframe class="idsk-interactive-map__map-iframe" data-src="{{ params.mapIframeSrc }}" src="{{ params.mapIframeSrc }}"></iframe>
+            <iframe class="idsk-interactive-map__map-iframe" data-src="{{ params.mapIframeSrc }}" src="{{ params.mapIframeSrc }}" title="{{ params.mapIframeTitle }}"></iframe>
         </div>
         <div class="idsk-interactive-map__table">
-            <iframe class="idsk-interactive-map__table-iframe" data-src="{{ params.tableIframeSrc }}"></iframe>
+            <iframe class="idsk-interactive-map__table-iframe" data-src="{{ params.tableIframeSrc }}"title="{{ params.tableIframeTitle }}"></iframe>
         </div>
     </div>
     {% if params.dataSource or params.dataDownload %}

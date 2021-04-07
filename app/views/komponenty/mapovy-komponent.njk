@@ -25,10 +25,13 @@
         <h2 class="govuk-heading-s">Obsah:</h2>
         <ul class="govuk-list">
             <li>
-                <a href="#z-coho-sa-sklada-mapovy-komponent" title="Z čoho sa skladá mapový komponent?">Z čoho sa skladá mapový komponent?</a>
+                <a href="#z-coho-sa-sklada-mapovy-komponent" title="Z čoho sa skladá mapový komponent?" class="govuk-link">Z čoho sa skladá mapový komponent?</a>
             </li>
             <li>
-                <a href="#ako-funguje-interaktivna-mapa" title="Ako funguje interaktívna mapa?">Ako funguje interaktívna mapa?</a>
+                <a href="#ako-funguje-interaktivna-mapa" title="Ako funguje interaktívna mapa?" class="govuk-link">Ako funguje interaktívna mapa?</a>
+            </li>
+            <li>
+                <a href="#priklady" title="Rozšírené príklady pre mapový komponent" class="govuk-link">Rozšírené príklady pre mapový komponent</a>
             </li>
         </ul>
         <h2 class="govuk-heading-m" id="z-coho-sa-sklada-mapovy-komponent">Z čoho sa skladá mapový komponent?</h2>
@@ -69,9 +72,11 @@
             {{ idskInteractiveMap({
               title: "Počet zaočkovaných ľudí (1. aj 2. dávkou)",
               mapIframeSrc: "/vzory/interactive-map-sample",
+              mapIframeTitle: "Príkladová mapa na demonštráciu koponentu - interaktívna mapa",
               tableIframeSrc: "/vzory/interactive-table-sample",
+              tableIframeTitle: "Príkladová tabuľka na demonštráciu koponentu - interaktívna mapa",
               radioControlsName: "interactive-radios-a",
-              dataSource: "od Filipa",
+              dataSource: "NCZI",
               dataDownload: {
                 text: "Stiahnuť údaje (CSV, 42 kb)",
                 link: "/public/assets/data/korona.gov.sk.csv"
@@ -94,7 +99,9 @@
             {{ idskInteractiveMap({
               title: "Koronavírus na Slovensku",
               mapIframeSrc: "/vzory/interactive-map-sample",
+              mapIframeTitle: "Príkladová mapa na demonštráciu koponentu - interaktívna mapa",
               tableIframeSrc: "/vzory/interactive-table-sample",
+              tableIframeTitle: "Príkladová tabuľka na demonštráciu koponentu - interaktívna mapa",
               radioControlsName: "interactive-radios-b",
               indicatorOptions: [
                 {
@@ -110,7 +117,7 @@
                   value: "dose2"
                 }
               ],
-              dataSource: "od Filipa",
+              dataSource: "NCZI",
               dataDownload: {
                 text: "Stiahnuť údaje (CSV, 42 kb)",
                 link: "/public/assets/data/korona.gov.sk.csv"
@@ -130,7 +137,9 @@
             {{ idskInteractiveMap({
               title: "Koronavírus na Slovensku",
               mapIframeSrc: "/vzory/interactive-map-sample",
+              mapIframeTitle: "Príkladová mapa na demonštráciu koponentu - interaktívna mapa",
               tableIframeSrc: "/vzory/interactive-table-sample",
+              tableIframeTitle: "Príkladová tabuľka na demonštráciu koponentu - interaktívna mapa",
               checkedTable: true,
               radioControlsName: "interactive-radios-c",
               indicatorOptions: [
@@ -147,7 +156,7 @@
                   value: "dose2"
                 }
               ],
-              dataSource: "od Filipa",
+              dataSource: "NCZI",
               dataDownload: {
                 text: "Stiahnuť údaje (CSV, 42 kb)",
                 link: "/public/assets/data/korona.gov.sk.csv"
@@ -170,6 +179,12 @@
         <p class="govuk-body">
           Uvádzajte, kto alebo čo je zdrojom údajov, ktoré prezentuje.
         </p>
+      </div>
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-m" id="priklady">Rozšírené príklady pre mapový komponent</h2>
+        <ul class="govuk-list">
+            <li><a href="/custom-components/interactive-map" title="Rozšírené príklady hlavičky pre webové sídla" class="govuk-link">Rozšírené príklady hlavičky pre webové sídla</a></li>
+        </ul>
       </div>
     </div>
 {% endblock %}

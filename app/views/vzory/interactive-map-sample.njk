@@ -122,12 +122,25 @@
 
                     layer.bindTooltip(
                         $description,
-                        {direction:"center"}
-                    )
+                        {
+                            permanent: true,
+                            interactive: true,
+                        }
+                    ).closeTooltip()
+
+                    layer.on('click', function () {
+                        layer.toggleTooltip()
+                    })
+
+                    layer.closeTooltip()
+
+                    setTimeout(function(){
+                        layer.closeTooltip()    
+                    }, 0)
                 }
             }).addTo($map);
 
-            $map.fitBounds($geoJSON.getBounds());
+            $map.fitBounds($geoJSON.getBounds())
         }
 
         if (document.readyState === "complete" || document.readyState === "interactive") {
