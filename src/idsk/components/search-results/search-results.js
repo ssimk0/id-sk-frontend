@@ -8,7 +8,7 @@ function SearchResults($module) {
 
 SearchResults.prototype.init = function () {
     // Check for module
-    if (!$module) {
+    if (!this.$module) {
         return
     }
     var $module = this.$module
