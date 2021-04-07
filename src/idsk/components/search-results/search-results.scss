@@ -214,7 +214,8 @@
 
   .idsk-search-results__button--turn-filters-off {
     text-align: left;
-    padding: govuk-spacing(3) 0;
+    margin: govuk-spacing(3) 0;
+    padding: 0;
     width: auto;
 
     @include mq($from: tablet) {
