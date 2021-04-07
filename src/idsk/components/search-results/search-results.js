@@ -8,6 +8,9 @@ function SearchResults($module) {
 
 SearchResults.prototype.init = function () {
     // Check for module
+    if (!$module) {
+        return
+    }
     var $module = this.$module
     $module.resultCards = new Array();
     $module.countOfCardsPerPage = new Number();
@@ -15,10 +18,6 @@ SearchResults.prototype.init = function () {
     $module.subTopicButton = $module.querySelector('.idsk-search-results__subtopic')
 
     $module.subTopicButton.disabled = true
-
-    if (!$module) {
-        return
-    }
 
     // Check for button
     var $links = $module.querySelectorAll('.idsk-search-results__link')
