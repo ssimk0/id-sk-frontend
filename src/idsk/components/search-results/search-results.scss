@@ -282,11 +282,14 @@
     }
   }
 
-  .idsk-search-results__content__picked-filters__topics {
-    min-height: 40px;
+  .idsk-search-results--grey {
     @include mq($from: tablet) {
       background-color: govuk-colour("grey-4");
     }
+  }
+
+  .idsk-search-results__content__picked-filters__topics {
+    min-height: 40px;
   }
 
   .idsk-search-results__content__picked-filters__content-type,
@@ -432,7 +435,7 @@
       margin-bottom: govuk-spacing(3);
       max-height: 300px;
       overflow-y: auto;
-      padding-top: 0;
+      padding-top: govuk-spacing(1);
       transition: all 0.2s ease-in;
       padding-left: govuk-spacing(2);
     }
@@ -457,8 +460,8 @@
   }
 
   .idsk-search-results--order__dropdown .govuk-select:focus {
-    margin-bottom: 3px;     
-  } 
+    margin-bottom: 3px;
+  }
 
   .idsk-search-results__link-panel {
     cursor: pointer;

@@ -347,9 +347,10 @@ SearchResults.prototype.handleFillDate = function ($period, e) {
 
     $contentContainer.classList.remove('idsk-search-results--invisible__mobile')
     $contentTypePicked.addEventListener('click', this.handleRemovePickedDate.bind(this));
-    $el.value = ''
+    // $el.value = ''
     $choosenDatesInFiltersContainer.classList.remove('idsk-search-results--invisible')
     this.checkValuesInDateContainer.call(this);
+    this.changeBackgroundForPickedFilters.call(this)
 }
 
 SearchResults.prototype.handleRemovePickedDate = function (e) {
@@ -359,6 +360,7 @@ SearchResults.prototype.handleRemovePickedDate = function (e) {
     this.handleSomeFilterPicked.call(this)
     this.checkValuesInDateContainer.call(this);
     this.handleCountForFiltersButton.call(this)
+    this.changeBackgroundForPickedFilters.call(this)
 }
 
 SearchResults.prototype.createSpanElement = function ($class, $text) {
@@ -502,6 +504,7 @@ SearchResults.prototype.handleClickRadioButton = function (e) {
     $choosenFiltersContainer.classList.remove('idsk-search-results--invisible')
     $topicPicked.removeEventListener('click', this.handleRemovePickedTopic.bind(this), true);
     $topicPicked.addEventListener('click', this.handleRemovePickedTopic.bind(this));
+    this.changeBackgroundForPickedFilters.call(this)
     $buttonCaption.innerText = '1 vybraté'
 }
 
@@ -525,11 +528,11 @@ SearchResults.prototype.handleClickContentTypeCheckBox = function (e) {
     $contentContainer.classList.remove('idsk-search-results--invisible__mobile')
     $choosenFiltersContainer.classList.remove('idsk-search-results--invisible')
     this.handleCountOfPickedContentTypes.call(this, $checkBoxes, $linkPanelButton);
+    this.changeBackgroundForPickedFilters.call(this)
 }
 
 SearchResults.prototype.handleRemovePickedContentType = function (e) {
     var $el = e.target || e.srcElement || e
-
     var $checkBoxes = this.$module.querySelector('.idsk-search-results__content-type-filter .govuk-checkboxes')
     var $checkBoxToRemove = $checkBoxes.querySelector('#' + $el.dataset.source + '')
     var $linkPanelButton = $checkBoxes.closest('.idsk-search-results__link-panel')
@@ -539,6 +542,7 @@ SearchResults.prototype.handleRemovePickedContentType = function (e) {
     this.handleSomeFilterPicked.call(this)
     this.handleCountOfPickedContentTypes.call(this, $checkBoxes, $linkPanelButton);
     this.handleCountForFiltersButton.call(this)
+    this.changeBackgroundForPickedFilters.call(this)
 }
 
 /**
@@ -597,6 +601,27 @@ SearchResults.prototype.createTopicInContainer = function ($choosenFiltersContai
 }
 
 /**
+ * function for setting grey background for odd elements in picked topics container
+ * 
+ */
+SearchResults.prototype.changeBackgroundForPickedFilters = function (e) {
+    var $module = this.$module
+    var $pickedFiltersContainer = $module.querySelector('.idsk-search-results__content__picked-filters')
+    var $notEmptySections = $pickedFiltersContainer.querySelectorAll('div:not(.idsk-search-results--invisible)')
+
+    $notEmptySections.forEach(function ($section) {
+        $section.classList.remove('idsk-search-results--grey')
+    }.bind(this))
+
+    var $i;
+    for ($i = 0; $i < $notEmptySections.length; $i++) {
+        if ($i == 0 || $i == 2) {
+            $notEmptySections[$i].classList.add('idsk-search-results--grey')
+        }
+    }
+}
+
+/**
  * function for disabling 'subtopic' filter, in case of removing topic filter
  * 
  */
@@ -641,6 +666,7 @@ SearchResults.prototype.removeTopic = function ($el, $disableFilter) {
     $el.remove()
     this.handleSomeFilterPicked.call(this)
     this.handleCountForFiltersButton.call(this)
+    this.changeBackgroundForPickedFilters.call(this)
 }
 
 export default SearchResults
