@@ -288,10 +288,7 @@
     }
   }
 
-  .idsk-search-results__content__picked-filters__topics {
-    min-height: 40px;
-  }
-
+  .idsk-search-results__content__picked-filters__topics,
   .idsk-search-results__content__picked-filters__content-type,
   .idsk-search-results__content__picked-filters__date {
     min-height: 40px;
@@ -302,6 +299,7 @@
 
     @include mq($from: tablet) {
       display: unset;
+      padding-left: govuk-spacing(1);
     }
   }
 
