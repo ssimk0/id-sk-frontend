@@ -167,7 +167,9 @@ SearchResults.prototype.handleClickShowResultsButton = function (e) {
     var $pickedFiltersPanel = $module.querySelector('.idsk-search-results__content__picked-filters')
     var $showResultsButton = $module.querySelector('.idsk-search-results__show-results__button')
     var $contentContainer = $module.querySelector('.idsk-search-results__content')
+    var $title = $module.querySelector('.idsk-search-results__title')
 
+    $title.classList.remove('idsk-search-results--invisible__mobile')
     $contentContainer.classList.remove('idsk-search-results--invisible__mobile')
     $showResultsButton.classList.add('idsk-search-results--invisible')
     $pickedFiltersPanel.classList.add('idsk-search-results--invisible')
@@ -205,6 +207,21 @@ SearchResults.prototype.handleSomeFilterPicked = function (e) {
 }
 
 /**
+ * function for counting selected filters, for mobile button 'Filters' purposes
+ * 
+ */
+SearchResults.prototype.handleCountForFiltersButton = function (e) {
+    var $module = this.$module
+    var $pickedTopics = $module.querySelectorAll('.idsk-search-results__picked-topic')
+    var $pickedContentTypes = $module.querySelectorAll('.idsk-search-results__picked-content-type')
+    var $pickedDates = $module.querySelectorAll('.idsk-search-results__picked-date')
+    var $filtersButtonMobile = $module.querySelector('.idsk-search-results__filters__button')
+    var $countOfPickedFilters = $pickedTopics.length + $pickedContentTypes.length + $pickedDates.length
+
+    $filtersButtonMobile.innerText = 'Filtre(' + $countOfPickedFilters + ')'
+}
+
+/**
  * function for disabling all picked filters
  * 
  */
@@ -214,8 +231,10 @@ SearchResults.prototype.handleClickTurnFiltersOffButton = function (e) {
     var $pickedTopics = $module.querySelectorAll('.idsk-search-results__picked-topic')
     var $pickedContentTypes = $module.querySelectorAll('.idsk-search-results__picked-content-type')
     var $pickedDates = $module.querySelectorAll('.idsk-search-results__picked-date')
+    var $filtersButtonMobile = $module.querySelector('.idsk-search-results__filters__button')
 
     $contentContainer.classList.add('idsk-search-results--invisible__mobile')
+    $filtersButtonMobile.innerText = 'Filtre(0)'
 
     $pickedTopics.forEach(function ($topic) {
         this.handleRemovePickedTopic.call(this, $topic);
@@ -247,12 +266,14 @@ SearchResults.prototype.handleClickFiltersButton = function (e) {
     var $filterHeaderPanel = $module.querySelector('.idsk-search-results__filter-header-panel')
     var $pickedFiltersPanel = $module.querySelector('.idsk-search-results__content__picked-filters')
     var $showResultsButton = $module.querySelector('.idsk-search-results__show-results__button')
+    var $title = $module.querySelector('.idsk-search-results__title')
 
     if (this.handleSomeFilterPicked.call(this)) {
         $showResultsButton.classList.remove('idsk-search-results--invisible')
         $pickedFiltersPanel.classList.remove('idsk-search-results--invisible')
     }
 
+    $title.classList.add('idsk-search-results--invisible__mobile')
     $filterBar.classList.add('idsk-search-results--visible')
     $filterHeaderPanel.classList.add('idsk-search-results--visible__mobile--inline')
     $searchResultsAll.classList.add('idsk-search-results--invisible__mobile')
@@ -337,6 +358,7 @@ SearchResults.prototype.handleRemovePickedDate = function (e) {
     $el.remove();
     this.handleSomeFilterPicked.call(this)
     this.checkValuesInDateContainer.call(this);
+    this.handleCountForFiltersButton.call(this)
 }
 
 SearchResults.prototype.createSpanElement = function ($class, $text) {
@@ -516,6 +538,7 @@ SearchResults.prototype.handleRemovePickedContentType = function (e) {
     $el.remove();
     this.handleSomeFilterPicked.call(this)
     this.handleCountOfPickedContentTypes.call(this, $checkBoxes, $linkPanelButton);
+    this.handleCountForFiltersButton.call(this)
 }
 
 /**
@@ -568,6 +591,7 @@ SearchResults.prototype.createTopicInContainer = function ($choosenFiltersContai
     $pickedFiltersContainer.classList.remove('idsk-search-results--invisible')
     $showResultsMobileButton.classList.remove('idsk-search-results--invisible')
     $turnFiltersOffMobileButton.classList.remove('idsk-search-results--invisible')
+    this.handleCountForFiltersButton.call(this)
 
     return $topicPicked
 }
@@ -616,6 +640,7 @@ SearchResults.prototype.removeTopic = function ($el, $disableFilter) {
 
     $el.remove()
     this.handleSomeFilterPicked.call(this)
+    this.handleCountForFiltersButton.call(this)
 }
 
 export default SearchResults
