@@ -1,0 +1,415 @@
+{% extends "layout.njk" %}
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "../../../src/idsk/components/header-extended/macro.njk" import idskHeaderExtended %}
+{% from "../../../src/idsk/components/search-results/macro.njk" import idskSearchResults %}
+{% set pageName = "Výsledky vyhľadávania" %}
+{% block styles %}
+  <style>
+    .idsk-search-results-pattern .govuk-heading-xl {
+      margin-bottom: 40px;
+      margin-top: 0;
+    }
+    .idsk-search-results-pattern li {
+      padding-left: 15px;
+    }
+    ul.idsk-search-results-pattern--dash > li:before {
+      content: "-";
+      text-indent: -5px;
+    }
+  </style>
+{% endblock %}
+{% block beforeContent %}
+  <div class="govuk-width-container">
+    {{ govukBreadcrumbs({
+    "items": [
+    { text: ' ID-SK frontend', href: '/' + legacyQuery },
+    { text: pageName }
+    ]
+  }) }}
+  {% endblock %}
+  {% block content %}
+    <div class="idsk-search-results-pattern">
+      <h1 class="govuk-heading-xl">Výsledky vyhľadávania</h1>
+      <p class="govuk-body">Výsledky vyhľadávania sa používateľovi zobrazia po tom, ako na vašej webovej stránke  využije vyhľadávacie pole na hlavnej stránke portálu alebo jeho zmenšenú verziu v hlavičke.</p>
+      <h2 class="govuk-heading-l">Z čoho sa skladajú výsledky vyhľadávania?</h2>
+      <p class="govuk-body">Pole s výsledkami vyhľadávania sa skladá z:
+      </p>
+      <ul class="govuk-list">
+        <li>
+          <span>a) vyhľadávacieho poľa so zadaným hľadaným výrazom,</span>
+        </li>
+        <li>
+          <span>b) počítadla zobrazených výsledkov,</span>
+        </li>
+        <li>
+          <span>c) regulátora počtu zobrazených výsledkov na jednej strane,</span>
+        </li>
+        <li>
+          <span>d) poľa s filtrami a zoraďovačom výsledkov,</span>
+        </li>
+        <li>
+          <span>e) poľa zobrazujúceho aktivované filtre,</span>
+        </li>
+        <li>
+          <span>f) výsledkov vyhľadávania, ktoré môžu mať až 2 úrovne,</span>
+        </li>
+        <li>
+          <span>g) tlačidiel “Zobraziť predchádzajúce” a “Zobraziť ďaľšie”,</span>
+        </li>
+        <li>
+          <span>h) informatívneho údaja o tom, na ktorej stránke z koľkých sa používateľ nachádza.</span>
+        </li>
+      </ul>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <div class="example example-error">
+            {% set exampleComponentHtml %}
+            {{ idskSearchResults({
+                "numberOfResults": 27,
+                "searchResultsCard": [
+                  {
+                    "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum doloramet, consectetur.   consectetur. Lorem ipsum dolor Lorem ipsum  consectetur. Lorem ipsum dolor  dtetur adipi si..."
+                  },
+                  {
+                    "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum doloramet, consectetur.   consectetur. Lorem ipsum dolor Lorem ipsum  consectetur. Lorem ipsum dolor  dtetur adipi si..."
+                  },
+                  {
+                    "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum doloramet, consectetur.   consectetur. Lorem ipsum dolor Lorem ipsum  consectetur. Lorem ipsum dolor  dtetur adipi si..."
+                  },
+                  {
+                    "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum doloramet, consectetur.   consectetur. Lorem ipsum dolor Lorem ipsum  consectetur. Lorem ipsum dolor  dtetur adipi si..."
+                  },
+                  {
+                    "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum doloramet, consectetur.   consectetur. Lorem ipsum dolor Lorem ipsum  consectetur. Lorem ipsum dolor  dtetur adipi si..."
+                  },
+                  {
+                    "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum doloramet, consectetur.   consectetur. Lorem ipsum dolor Lorem ipsum  consectetur. Lorem ipsum dolor  dtetur adipi si..."
+                  },
+                  {
+                    "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum doloramet, consectetur.   consectetur. Lorem ipsum dolor Lorem ipsum  consectetur. Lorem ipsum dolor  dtetur adipi si..."
+                  },
+                  {
+                    "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum doloramet, consectetur.   consectetur. Lorem ipsum dolor Lorem ipsum  consectetur. Lorem ipsum dolor  dtetur adipi si..."
+                  },
+                  {
+                    "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum doloramet, consectetur.   consectetur. Lorem ipsum dolor Lorem ipsum  consectetur. Lorem ipsum dolor  dtetur adipi si..."
+                  },
+                  {
+                    "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum doloramet, consectetur.   consectetur. Lorem ipsum dolor Lorem ipsum  consectetur. Lorem ipsum dolor  dtetur adipi si..."
+                  },
+                  {
+                    "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum doloramet, consectetur.   consectetur. Lorem ipsum dolor Lorem ipsum  consectetur. Lorem ipsum dolor  dtetur adipi si..."
+                  },
+                  {
+                    "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum doloramet, consectetur.   consectetur. Lorem ipsum dolor Lorem ipsum  consectetur. Lorem ipsum dolor  dtetur adipi si..."
+                  },
+                  {
+                    "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum doloramet, consectetur.   consectetur. Lorem ipsum dolor Lorem ipsum  consectetur. Lorem ipsum dolor  dtetur adipi si..."
+                  },
+                  {
+                    "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum doloramet, consectetur.   consectetur. Lorem ipsum dolor Lorem ipsum  consectetur. Lorem ipsum dolor  dtetur adipi si..."
+                  },
+                  {
+                    "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum doloramet, consectetur.   consectetur. Lorem ipsum dolor Lorem ipsum  consectetur. Lorem ipsum dolor  dtetur adipi si..."
+                  },
+                  {
+                    "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum doloramet, consectetur.   consectetur. Lorem ipsum dolor Lorem ipsum  consectetur. Lorem ipsum dolor  dtetur adipi si..."
+                  },
+                  {
+                    "heading": "Lorem ipsum dolor sit amet, consectetur pes",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum doloramet, consectetur.   consectetur. Lorem ipsum dolor Lorem ipsum  consectetur. Lorem ipsum dolor  dtetur adipi si..."
+                  },
+                  {
+                    "heading": "Lorem ipsum dolor sit amet, consectetur des",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum doloramet, consectetur.   consectetur. Lorem ipsum dolor Lorem ipsum  consectetur. Lorem ipsum dolor  dtetur adipi si..."
+                  },
+                  {
+                    "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum doloramet, consectetur.   consectetur. Lorem ipsum dolor Lorem ipsum  consectetur. Lorem ipsum dolor  dtetur adipi si..."
+                  },
+                  {
+                    "heading": "Lorem ipsum dolor sit amet, consectetur pes",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum doloramet, consectetur.   consectetur. Lorem ipsum dolor Lorem ipsum  consectetur. Lorem ipsum dolor  dtetur adipi si..."
+                  },
+                  {
+                    "heading": "Lorem ipsum dolor sit amet, consectetur des",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum doloramet, consectetur.   consectetur. Lorem ipsum dolor Lorem ipsum  consectetur. Lorem ipsum dolor  dtetur adipi si..."
+                  }
+                ],
+                "dropdownResults": [
+                  {
+                    "value": 5,
+                    "text": 5
+                  },
+                  {
+                    "value": 10,
+                    "text": 10
+                  },
+                  {
+                    "value": 20,
+                    "text": 20
+                  },
+                  {
+                    "value": 30,
+                    "text": 30
+                  },
+                  {
+                    "value": 50,
+                    "text": 50
+                  },
+                  {
+                    "value": 100,
+                    "text": 100
+                  },
+                  {
+                    "value": 200,
+                    "text": 200
+                  },
+                  {
+                    "value": 300,
+                    "text": 300
+                  },
+                  {
+                    "value": 400,
+                    "text": 400
+                  },
+                  {
+                    "value": 500,
+                    "text": 500
+                  }
+                ],
+                "dropdownItems": [
+                  {
+                    "value": "relevant",
+                    "text": "Relevantnosti"
+                  },
+                  {
+                    "value": "favourites",
+                    "text": "Obľúbenosti"
+                  },
+                  {
+                    "value": "top",
+                    "text": "Top"
+                  },
+                  {
+                    "value": "bottom",
+                    "text": "Bottom"
+                  }
+                ],
+                "filters": [
+                  {
+                    "name": "Téma",
+                    "group": 1,
+                    "id": "tema",
+                    "isRadio": true,
+                    "searchInputId": "idsk-search-input__topic",
+                    "radios": [
+                      {
+                        "name": "Eurofondy",
+                        "value": "Eurofondy"
+                      },
+                      {
+                        "name": "Informatizácia",
+                        "value": "Informatizácia"
+                      },
+                      {
+                        "name": "Regionálny rozvoj",
+                        "value": "Regionálny rozvoj"
+                      },
+                      {
+                        "name": "Investície",
+                        "value": "Investície"
+                      },
+                      {
+                        "name": "Inovácie",
+                        "value": "Inovácie"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Podtéma",
+                    "group": 2,
+                    "id": "podtema",
+                    "isRadio": true,
+                    "isSubtopic": true,
+                    "searchInputId": "idsk-search-input__subtopic",
+                    "radios": [
+                      {
+                        "name": "Výzvy pre rozvoj regiónov",
+                        "value": "Výzvy pre rozvoj regiónov"
+                      },
+                      {
+                        "name": "WiFi 4u",
+                        "value": "WiFi 4u"
+                      },
+                      {
+                        "name": "Dotácie na obecné školy",
+                        "value": "Dotácie na obecné školy"
+                      },
+                      {
+                        "name": "Agroturistika",
+                        "value": "Agroturistika"
+                      },
+                      {
+                        "name": "Podpora miestnej komunity",
+                        "value": "Podpora miestnej komunity"
+                      },
+                      {
+                        "name": "Výzvy pre rozvoj regiónov2",
+                        "value": "Výzvy pre rozvoj regiónov2"
+                      },
+                      {
+                        "name": "WiFi 4u2",
+                        "value": "WiFi 4u2"
+                      },
+                      {
+                        "name": "Dotácie na obecné školy2",
+                        "value": "Dotácie na obecné školy2"
+                      },
+                      {
+                        "name": "Agroturistika2",
+                        "value": "Agroturistika2"
+                      },
+                      {
+                        "name": "Dotácie na obecné školy3",
+                        "value": "Dotácie na obecné školy3"
+                      },
+                      {
+                        "name": "Agroturistika3",
+                        "value": "Agroturistika3"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Typ obsahu",
+                    "group": 3,
+                    "id": "obsah",
+                    "isCheckBox": true,
+                    "filterClass": "idsk-search-results__content-type-filter",
+                    "searchInputId": "idsk-search-input__content-type",
+                    "checkBoxItems": [
+                      {
+                        "value": "Rozvoj regiónov",
+                        "text": "Rozvoj regiónov",
+                        "id": "rozvoj"
+                      },
+                      {
+                        "value": "Novinky a komunikačné vyhlásenia",
+                        "text": "Novinky a komunikačné vyhlásenia",
+                        "id": "novinky"
+                      },
+                      {
+                        "value": "Transparentnosť a sloboda prístupu k informáciám",
+                        "text": "Transparentnosť a sloboda prístupu k informáciám",
+                        "id": "transparentnost"
+                      },
+                      {
+                        "value": "Legislatíva",
+                        "text": "Legislatíva",
+                        "id": "legislativa"
+                      },
+                      {
+                        "value": "Štatistické údaje",
+                        "text": "Štatistické údaje",
+                        "id": "statistika"
+                      },
+                      {
+                        "value": "Rodová rovnosť a postavenia žien v pracovom prostredí",
+                        "text": "Rodová rovnosť a postavenia žien v pracovom prostredí",
+                        "id": "rodova"
+                      },
+                      {
+                        "value": "Rozvoj regiónov",
+                        "text": "Rozvoj regiónov",
+                        "id": "rozvoj2"
+                      },
+                      {
+                        "value": "Novinky a komunikačné vyhlásenia",
+                        "text": "Novinky a komunikačné vyhlásenia",
+                        "id": "novinky2"
+                      },
+                      {
+                        "value": "Transparentnosť a sloboda prístupu k informáciám",
+                        "text": "Transparentnosť a sloboda prístupu k informáciám",
+                        "id": "transparentnost2"
+                      },
+                      {
+                        "value": "Legislatíva",
+                        "text": "Legislatíva",
+                        "id": "legislativa2"
+                      },
+                      {
+                        "value": "Štatistické údaje",
+                        "text": "Štatistické údaje",
+                        "id": "statistika2"
+                      },
+                      {
+                        "value": "Rodová ro2vnosť a postavenia žien v pracovom prostredí",
+                        "text": "Rodová rovnosť a postavenia žien v pracovom prostredí",
+                        "id": "rodova2"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Dátum aktualizácie",
+                    "group": 3,
+                    "idFrom": "datum-od",
+                    "idTo": "datum-do",
+                    "isTextarea": true,
+                    "classes": "idsk-search-results__textarea-date"
+                  }
+                ]
+              }) }}
+            {% endset %}
+            {{ exampleComponentHtml | safe }}
+          </div>
+          <pre class=" language-markup"><code class="govuk-!-font-size-16  language-markup">{{ exampleComponentHtml }}</code></pre>
+        </div>
+      </div>
+    
+    <p class="govuk-body">Výsledky vyhľadávania sa pri desktopovej verzii zobrazujú na ⅔ šírky stránky, pričom zvyšná ⅓ je alokovaná filtrovaciemu menu. Výsledky majú formu jednoduchých, neotagovaných kartičiek. Na konci poľa s výsledkami vyhľadávania sú tlačidlá “Zobraziť ďalšie” a “Zobraziť predchádzajúce”, ktoré umožňujú používateľom prepínať medzi stranami s výsledkami v prípade, že počet nájdených výsledkov je väčší než zvolený počet zobrazených výsledkov na stranu.</p>
+    <p class="govuk-body">Pod tlačidlami sa nachádza informácia o počte strán s výsledkami vyhľadávania a informácia, na ktorej strane sa práve používateľ nachádza</p>
+    <p class="govuk-body">Vzor podstránky s výsledkami vyhľadávania sa pre mobilné zariadenia líši od desktopovej v spôsobe zobrazenia poľa s filtrami resp. zoraďovačom výsledkov vyhľadávania. Zatiaľ čo pre desktopy a tablety sa toto pole ukazuje naľavo od samotných výsledkov vyhľadávania, pri mobiloch ich človek uvidí až po tom ako klikne na textové tlačidlo “Filtre”.</p>
+    <p class="govuk-body">Stránkovanie pre mobilné zariadenia sa nachádza nad výsledkami vyhľadávania vo forme navigačných šípok a statickým zobrazením počtu strán a informácie, na ktorej strane sa práve používateľ nachádza. Pod výsledkami vyhľadávania sú tlačidlá a informácia o počte strán s výsledkami vyhľadávania a na ktorej strane sa práve používateľ nachádza.</p>
+    <p class="govuk-body">Popisu filtrov sa detailnejšie venujeme na podstránke filtrov pre filtrovanie výsledkov vyhľadávania.</p>
+    <p class="govuk-body">Predvytvorené boli 4 druhy filtrov:
+      </p>
+    <ul class="govuk-list idsk-search-results-pattern--dash">
+        <li>
+          <span>Téma</span>
+        </li>
+        <li>
+          <span>Podtéma</span>
+        </li>
+        <li>
+          <span>Typ obsahu</span>
+        </li>
+        <li>
+          <span>Dátum aktualizácie</span>
+        </li>
+    </ul>
+      <p class="govuk-body">Prvé dva filtre vám umožňujú vytvárať hierarchiu a štruktúrovať obsah vášho portálu. Téma je nadradená podtémam, ktoré reprezentujú súvisiace skupiny obsahu na vašom portály.</p>
+      <p class="govuk-body">Typ obsahu umožňuje triediť obsah vášho portálu podľa technických parametrov (dokumenty, štatistiky, atď.) alebo špecifického účelu (legislatíva, štatistiky, novinky, atď.).</p>
+      <p class="govuk-body">Vypublikovaný obsah so sebou vždy nesie termín vypublikovania, resp. poslednej aktualizácie. Používateľ zadaním časového intervalu vie zobraziť len výsledky po, pred alebo medzi konkrétnym časom. </p>
+      <p class="govuk-body">Detailnejšiemu popisu filtrov sa venuje podstránka filtrov pre filtrovanie výsledkov vyhľadávania</p>
+    <h3 class="govuk-heading-s">
+      <a href="vzor-podstranka-vysledky-vyhladavania" class="govuk-link" title="Rozšírený príklad použitia">Rozšírený príklad použitia</a>
+    </h3>
+  </div>
+</div>{% endblock %}{% block footer %}{% endblock %}

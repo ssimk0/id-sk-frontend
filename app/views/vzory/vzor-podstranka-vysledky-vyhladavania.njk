@@ -1,0 +1,103 @@
+{% extends "layout.njk" %}
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "../../../src/idsk/components/header-extended/macro.njk" import idskHeaderExtended %}
+{% from "../../../src/idsk/components/search-results/macro.njk" import idskSearchResults %}
+{% set pageName = "Podstránka s výsledkami vyhľadávania" %}
+{% block styles %}
+  <style>
+    .idsk-search-results-pattern .govuk-heading-xl {
+      margin-bottom: 40px;
+      margin-top: 0;
+    }
+    .idsk-search-results-pattern li {
+      padding-left: 15px;
+    }
+
+    ul.idsk-search-results-pattern--dash > li:before {
+      content: "-";
+      text-indent: -5px;
+    }
+
+  </style>
+{% endblock %}
+{% block beforeContent %}
+  <div class="govuk-width-container">
+    {{ govukBreadcrumbs({
+    "items": [
+    { text: ' ID-SK frontend', href: '/' + legacyQuery },
+    { text: pageName }
+    ]
+  }) }}
+  {% endblock %}
+  {% block content %}
+    <div class="idsk-search-results-pattern">
+      <h1 class="govuk-heading-xl">Podstránka s výsledkami vyhľadávania</h1>
+      <p class="govuk-body">Podstránka s výsledkami vyhľadávania sa zobrazí používateľovi vašej webovej stránky po tom, keď použije vyhľadávacie pole na hlavnej stránke vášho portálu alebo jeho zmenšenú verziu v hlavičke.</p>
+      <p class="govuk-body">Vzor podstránky s výsledkami vyhľadávania sa skladá z nasledujúcich častí:
+      </p>
+      <ul class="govuk-list idsk-search-results-pattern--dash">
+        <li>
+          <span>hlavička pre webové sídla,</span>
+        </li>
+        <li>
+          <span>breadcrumbs,</span>
+        </li>
+        <li>
+          <span>nadpis,</span>
+        </li>
+        <li>
+          <span>vyhľadávacie pole,</span>
+        </li>
+        <li>
+          <span>pole pre zoradenie, resp. výber filtrovania zobrazených výsledkov vyhľadávania,</span>
+          <p class="govuk-body">ktoré obsahuje:
+          </p>
+          <ul class="govuk-list idsk-search-results-pattern--dash">
+            <li>
+              <span>zoraďovač výsledkov podľa relevantnosti,</span>
+            </li>
+            <li>
+              <span>filtre  “téma” a “podtéma” s možnosťou výberu len jedného kritéria,</span>
+            </li>
+            <li>
+              <span>filter “typ obsahu” s možnosťou výberu viacerých kritérií súčasne,</span>
+            </li>
+            <li>
+              <span>filter “dátum aktualizácie” s možnosťou zadania časového míľnika alebo intervalu,</span>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <span>pole zobrazujúce aktivované filtre,</span>
+        </li>
+        <li>
+          <span>počítadlo zobrazených výsledkov,</span>
+        </li>
+        <li>
+          <span>regulátor počtu zobrazených výsledkov na jednej strane,</span>
+        </li>
+        <li>
+          <span>zoraďovač výsledkov podľa relevantnosti,</span>
+        </li>
+        <li>
+          <span>výsledky vyhľadávania, ktoré môžu mať až 2 úrovne,</span>
+        </li>
+        <li>
+          <span>tlačidlá “Zobraziť predchádzajúce” a “Zobraziť ďaľšie”,</span>
+        </li>
+        <li>
+          <span>informatívny údaj o tom, na ktorej stránke z koľkých sa používateľ nachádza,</span>
+        </li>
+        <li>
+          <span>pätička a feedback bar.</span>
+        </li>
+      </ul>
+      <h3 class="govuk-heading-s">
+        <a href="/custom-components/search-results/default/preview" class="govuk-link" title="Rozšírený príklad podstránky vyhľadávania">Rozšírený príklad podstránky vyhľadávania</a>
+      </h3>
+      <p class="govuk-body">Podstránka s výsledkami vyhľadávania sa skladá z výsledkov vyhľadávania ( ⅔ šírky stránky) a filtrovacích polí (⅓ stránky). Výsledky majú formu jednoduchých, neotagovaných kartičiek. Pole s výsledkami je “ukončené” posuvnými tlačidlami, ktoré umožňujú používateľom prepínať medzi stranami s výsledkami v prípade, že počet nájdených výsledkov je väčší než zvolený počet zobrazených výsledkov na stranu.</p>
+      <p class="govuk-body">Vzor podstránky s výsledkami vyhľadávania sa pre mobilné zariadenia líši od desktopovej v spôsobe zobrazenia poľa s filtrami, resp. zoraďovačom výsledkov vyhľadávania. Zatiaľ čo pre desktopy a tablety sa toto pole ukazuje naľavo od samotných výsledkov vyhľadávania, pri mobiloch ich človek uvidí až po tom, ako klikne na textové tlačidlo “filtre”.</p>
+      <p class="govuk-body">Detailnejší popis filtrov je na špecifickej podstránke filtrov pre filtrovanie výsledkov vyhľadávania.</p>
+      <p class="govuk-body">Detailnejší popis samotných výsledkov vyhľadávania nájdete na špecifickej podstránke vysledky vyhľadávania.</p>
+  </div>
+</div>{% endblock %}{% block footer %}{% endblock %}
