@@ -611,6 +611,7 @@ SearchResults.prototype.changeBackgroundForPickedFilters = function (e) {
 
     $notEmptySections.forEach(function ($section) {
         $section.classList.remove('idsk-search-results--grey')
+        $section.classList.remove('idsk-search-results--border')
     }.bind(this))
 
     var $i;
@@ -619,6 +620,8 @@ SearchResults.prototype.changeBackgroundForPickedFilters = function (e) {
             $notEmptySections[$i].classList.add('idsk-search-results--grey')
         }
     }
+
+    $notEmptySections[$notEmptySections.length-1].classList.add('idsk-search-results--border')  
 }
 
 /**

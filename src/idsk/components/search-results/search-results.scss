@@ -154,8 +154,13 @@
     padding-right: 0;
 
     @include mq($from: tablet) {
-      border-top: 1px solid govuk-colour("black");
-      border-bottom: 1px solid govuk-colour("black");
+      border-top: 2px solid govuk-colour("black");
+    }
+  }
+
+  .idsk-search-results--border {
+    @include mq($from: tablet) {
+      border-bottom: 2px solid govuk-colour("black");
     }
   }
 
@@ -292,6 +297,13 @@
   .idsk-search-results__content__picked-filters__content-type,
   .idsk-search-results__content__picked-filters__date {
     min-height: 40px;
+    //cause of border space
+    margin-top: -0.5px;
+  }
+
+  .idsk-search-results__before-date,
+  .idsk-search-after-date {
+    padding-left: govuk-spacing(1);
   }
 
   .idsk-search-results__text {
