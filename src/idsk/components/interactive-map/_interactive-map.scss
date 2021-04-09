@@ -79,6 +79,9 @@
                 & .govuk-form-group:first-child {
                     margin-right: govuk-spacing(4);
                 }
+                & .govuk-form-group:last-child {
+                    margin-right: 0;
+                }
             }
         }
 
@@ -104,6 +107,7 @@
             border: none;
             height: 100%;
             width: 100%;
+            overflow-y: hidden;
         }
 
         &__meta {
