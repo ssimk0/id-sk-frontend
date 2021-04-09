@@ -46,6 +46,17 @@ Graph.prototype.init = function () {
             $dropdownLink.addEventListener('click', this.handleDropdownLinkClick.bind(this))
         }.bind(this))
     }
+
+    var $tabs = $module.querySelectorAll('.govuk-tabs__tab')
+    if ($tabs) {
+        nodeListForEach($tabs, function ($tab) {
+            $tab.addEventListener('click', this.handleTabLinkClick.bind(this))
+        }.bind(this))
+
+        var $activeTab = $module.querySelector('.govuk-tabs__tab[href="' + window.location.hash + '"]') || $tabs[0]
+        this.showTab($activeTab)
+    }
+
 }
 
 /**
@@ -120,7 +131,47 @@ Graph.prototype.handleShareByFacebook = function (e) {
 Graph.prototype.handleDropdownLinkClick = function (e) {
     e.preventDefault()
     var $el = e.target || e.srcElement;
-    $el.nextElementSibling.style.display = "block"
+    var $module = this.$module
+    var $dropdownLists = $module.querySelectorAll('.idsk-graph__meta-list')
+    var $displayValue = window.getComputedStyle($el.nextElementSibling, null).display;
+
+    $dropdownLists.forEach(function ($dropdownList) {
+        $dropdownList.style.display = 'none'
+    })
+    $el.nextElementSibling.style.display = $displayValue == 'block' ? 'none' : 'block'
+}
+
+/**
+ * Handle click on Tab -> show related section
+ * @param {object} e 
+ */
+Graph.prototype.handleTabLinkClick = function (e) {
+    var $tab = e.target || e.srcElement;
+    var $module = this.$module
+    var $activePanel = $module.querySelector('.idsk-graph__section-show')
+    var $activePanelId = $activePanel.getAttribute('id')
+    var $activeTabLink = $module.querySelector(`a[href="#${$activePanelId}"]`)
+    var $activeTabLi = $activeTabLink.closest('.govuk-tabs__list-item')
+
+    $activePanel.classList.remove('idsk-graph__section-show')
+    $activeTabLi.classList.remove('idsk-graph__section--selected')
+
+    this.showTab($tab)
+}
+
+/**
+ * Show section based on tab
+ * @param {object} $tab 
+ */
+Graph.prototype.showTab = function ($tab) {
+    var $href = $tab.getAttribute('href')
+    var $hash = $href.slice($href.indexOf('#'), $href.length)
+    var $hash = $href.slice($href.indexOf('#'), $href.length)
+    var $panel = this.$module.querySelector($hash)
+    var $tabLi = $tab.closest('.govuk-tabs__list-item')
+
+    $tabLi.classList.add('idsk-graph__section--selected')
+    $panel.classList.add('idsk-graph__section-show')
 }
 
 export default Graph
