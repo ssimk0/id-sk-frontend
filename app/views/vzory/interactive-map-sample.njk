@@ -129,6 +129,9 @@
                     ).closeTooltip()
 
                     layer.on('click', function () {
+                        $map.eachLayer(function(layer) {
+                            layer.closeTooltip();
+                        });
                         layer.toggleTooltip()
                     })
 
