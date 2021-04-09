@@ -379,6 +379,9 @@
             {% endset %}
             {{ exampleComponentHtml | safe }}
           </div>
+          {# {% from "details/macro.njk" import govukDetails %}
+          {% set detailsHtml %}{% include "../partials/code.njk" %}{% endset %}
+          {{- govukDetails({ summaryText: "Code", html: detailsHtml  }) -}} #}
           <pre class=" language-markup"><code class="govuk-!-font-size-16  language-markup">{{ exampleComponentHtml }}</code></pre>
         </div>
       </div>

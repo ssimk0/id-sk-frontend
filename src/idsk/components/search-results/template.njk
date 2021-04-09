@@ -45,15 +45,7 @@
         <div class="idsk-search-results__list idsk-search-results--hidden">
           {% if item.isRadio %}
             {% if item.radios.length > 10 %}
-              {% from "../../../govuk/components/textarea/macro.njk" import govukTextarea %}
-              {{ govukTextarea({
-                "id": item.searchInputId,
-                "name": "",
-                "rows": 1,
-                "formGroup": {
-                    "classes": ""
-                }
-              }) }}
+              <input class="govuk-input idsk-search-results__search__input" type="text" name="{{item.searchInputId}}" id="{{item.searchInputId}}">
             {% endif %}
             {% from "../../components/customer-surveys-radios/macro.njk" import idskCustomerSurveysRadios %}
             {{ idskCustomerSurveysRadios({
@@ -66,15 +58,7 @@
           {% endif %}
           {% if item.isCheckBox %}
             {% if item.checkBoxItems.length > 10 %}
-              {% from "../../../govuk/components/textarea/macro.njk" import govukTextarea %}
-              {{ govukTextarea({
-                "id": item.searchInputId,
-                "name": "",
-                "rows": 1,
-                "formGroup": {
-                    "classes": ""
-                }
-              }) }}
+              <input class="govuk-input idsk-search-results__search__input" type="text" name="{{item.searchInputId}}" id="{{item.searchInputId}}">
             {% endif %}
             {% from "../../components/option-select-filter/macro.njk" import idskOptionSelectFilter %}
             {{ idskOptionSelectFilter({
@@ -87,26 +71,12 @@
             </span>
             <span class="idsk-search-results__date__span__example">Napr. 2005, alebo 8.3.2021
             </span>
-            {% from "../../../govuk/components/textarea/macro.njk" import govukTextarea %}
-            {{ govukTextarea({
-              "id": item.idFrom,
-              "rows": 1,
-              "formGroup": {
-                  "classes": item.classes
-              }
-            }) }}
-            <span class="idsk-search-results__date__span">Zobraziť len výsledky aktualizovaný pred
-            </span>
-            <span class="idsk-search-results__date__span__example">Napr. 2005, alebo 8.3.2021
-            </span>
-            {% from "../../../govuk/components/textarea/macro.njk" import govukTextarea %}
-            {{ govukTextarea({
-              "id": item.idTo,
-              "rows": 1,
-              "formGroup": {
-                  "classes": item.classes
-              }
-            }) }}
+            <input class="govuk-input" type="text" name="{{item.idFrom}}" id="{{item.idFrom}}">
+              <span class="idsk-search-results__date__span">Zobraziť len výsledky aktualizovaný pred
+              </span>
+              <span class="idsk-search-results__date__span__example">Napr. 2005, alebo 8.3.2021
+              </span>
+            <input class="govuk-input" type="text" name="{{item.idTo}}" id="{{item.idTo}}">
           {% endif %}
         </div>
       </div>
@@ -136,7 +106,7 @@
         id: "sort",
         name: "sort",
         label: {
-        text: "Zoradiť " + params.searchResultsCard.length + " výsledkov podľa"
+        html: "Zoradiť <strong>" + params.searchResultsCard.length + " výsledkov</strong> podľa"
       },
         items: params.dropdownItems
       }) }}

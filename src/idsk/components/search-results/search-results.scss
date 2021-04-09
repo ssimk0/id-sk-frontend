@@ -180,7 +180,7 @@
     }
   }
 
-  .idsk-search-results__list .govuk-textarea {
+  .idsk-search-results__list .idsk-search-results__search__input {
     margin-bottom: govuk-spacing(2);
   }
 
@@ -236,6 +236,11 @@
     padding-top: govuk-spacing(3);
     margin-top: govuk-spacing(3);
     box-shadow: 0 -4px 3px -3px govuk-colour("grey-1");
+
+    width: calc(100% + 30px);
+    margin-left: - govuk-spacing(3);
+    padding-left: govuk-spacing(6);
+    padding-right: govuk-spacing(6);
 
     @include mq($from: tablet) {
       display: none;
@@ -301,12 +306,20 @@
   }
 
   .idsk-search-results__before-date,
-  .idsk-search-after-date {
+  .idsk-search-results__after-date {
     padding-left: govuk-spacing(1);
+  }
+
+  .idsk-search-results__content__picked-filters__content-type .idsk-search-results__text,
+  .idsk-search-results__content__picked-filters__topics .idsk-search-results__text,
+  .idsk-search-results__content__picked-filters__date .idsk-search-results__before-date,
+  .idsk-search-results__content__picked-filters__date .idsk-search-results__after-date {
+    font-weight: bold;
   }
 
   .idsk-search-results__text {
     display: block;
+    
 
     @include mq($from: tablet) {
       display: unset;
@@ -317,11 +330,11 @@
   .idsk-search-results__content__picked-filters__topics span,
   .idsk-search-results__content__picked-filters__content-type span,
   .idsk-search-results__content__picked-filters__date span {
-    @include govuk-font($size: 16, $weight: bold);
+    @include govuk-font($size: 16);
     padding-top: govuk-spacing(1);
 
     @include mq($from: tablet) {
-      @include govuk-font($size: 19, $weight: bold);
+      @include govuk-font($size: 19);
     }
   }
 
@@ -335,6 +348,7 @@
     @include mq($from: desktop) {
       @include govuk-font($size: 24, $weight: bold);
       display: block;
+      padding-top: govuk-spacing(1);
     }
   }
 
@@ -467,6 +481,15 @@
 
   .idsk-search-results__list {
     cursor: text;
+  }
+
+  .idsk-search-results__list .idsk-search-results__search__input {
+    width: 240px;
+    background-image: govuk-image-url("loupe.svg");
+    background-repeat: no-repeat;
+    background-position: 7px 10px;
+    background-size: 17px;
+    padding-left: govuk-spacing(6)
   }
 
   .idsk-search-results--order__dropdown .govuk-select:focus {

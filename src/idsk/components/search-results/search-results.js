@@ -347,7 +347,7 @@ SearchResults.prototype.handleFillDate = function ($period, e) {
 
     $contentContainer.classList.remove('idsk-search-results--invisible__mobile')
     $contentTypePicked.addEventListener('click', this.handleRemovePickedDate.bind(this));
-    // $el.value = ''
+    $el.value = ''
     $choosenDatesInFiltersContainer.classList.remove('idsk-search-results--invisible')
     this.checkValuesInDateContainer.call(this);
     this.changeBackgroundForPickedFilters.call(this)
