@@ -297,8 +297,7 @@
   .idsk-search-results__content__picked-filters__content-type,
   .idsk-search-results__content__picked-filters__date {
     min-height: 40px;
-    //cause of border space
-    margin-top: -0.5px;
+    margin-top: -0.5px; //cause of border space
   }
 
   .idsk-search-results__before-date,
@@ -442,12 +441,13 @@
 
   .idsk-search-results--expand {
     .idsk-search-results__list {
-      margin-bottom: govuk-spacing(3);
+      margin-bottom: -5px;
       max-height: 300px;
       overflow-y: auto;
       padding-top: govuk-spacing(1);
       transition: all 0.2s ease-in;
       padding-left: govuk-spacing(2);
+      border-bottom: 1px solid govuk-colour("mid-grey");
     }
 
     .idsk-search-results__link-panel-button {
