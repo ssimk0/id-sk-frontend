@@ -114,7 +114,7 @@
   </div>
   <div class="idsk-search-results__content govuk-grid-column-three-quarters">
     <div class="govuk-grid-column-one-quarter">
-      <span class="idsk-search-results__content__number-of-results">{{ params.numberOfResults }}
+      <span class="idsk-search-results__content__number-of-results">{{ params.searchResultsCard.length }}
         výsledkov</span>
     </div>
     <div class="govuk-grid-column-two-quarters idsk-search-results__filter-panel--mobile">
@@ -136,7 +136,7 @@
         id: "sort",
         name: "sort",
         label: {
-        text: "Zoradiť " + params.numberOfResults + " výsledkov podľa"
+        text: "Zoradiť " + params.searchResultsCard.length + " výsledkov podľa"
       },
         items: params.dropdownItems
       }) }}
@@ -167,7 +167,7 @@
     </div>
     <div class="govuk-grid-column-full idsk-search-results__show-results__button idsk-search-results--invisible">
       <button class="govuk-button idsk-search-results__button-show-results" type="button">Zobraziť
-        {{ params.numberOfResults }}
+        {{ params.searchResultsCard.length }}
         výsledkov
       </button>
     </div>

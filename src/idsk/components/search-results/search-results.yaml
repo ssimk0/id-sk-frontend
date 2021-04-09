@@ -103,10 +103,10 @@ examples:
         text: Relevantnosti
       - value: favourites
         text: Obľúbenosti
-      - value: top
-        text: Top
-      - value: bottom
-        text: Bottom
+      - value: vzostupne
+        text: Vzostupne
+      - value: zostupne
+        text: Zostupne
     filters:
       - name: Téma
         group: 1
@@ -114,12 +114,12 @@ examples:
         isRadio: true
         searchInputId: idsk-search-input__topic
         radios: 
-          - name: Eurofondy
+          - name: Eurofondy 
             value: Eurofondy
           - name: Informatizácia
             value: Informatizácia
-          - name: Regionálny rozvoj
-            value: Regionálny rozvoj
+          - name: Regionálny rozvoj a komunity
+            value: Regionálny rozvoj a komunity
           - name: Investície
             value: Investície
           - name: Inovácie
