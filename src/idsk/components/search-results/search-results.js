@@ -444,6 +444,8 @@ SearchResults.prototype.showResultCardsPerPage = function ($startIndex, $endInde
     } else if ($startIndex > 0) {
         $backButton.classList.remove('idsk-search-results--invisible')
         $backButtonMobile.classList.remove('idsk-search-results--invisible')
+    } else if ($startIndex == 0) {
+        $module.currentPageNumber = 1
     }
 
     for ($i = $startIndex; $i < $endIndex; $i++) {
@@ -621,7 +623,7 @@ SearchResults.prototype.changeBackgroundForPickedFilters = function (e) {
         }
     }
 
-    $notEmptySections[$notEmptySections.length-1].classList.add('idsk-search-results--border')  
+    $notEmptySections[$notEmptySections.length - 1].classList.add('idsk-search-results--border')
 }
 
 /**

@@ -31,8 +31,20 @@ params:
 examples:
 - name: default
   data:
-    numberOfResults: 27
+    numberOfResults: 21
     searchResultsCard:
+      - heading: Lorem ipsum dolor sit amet, consectetur adipisc
+        description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum doloramet, consectetur.   consectetur. Lorem ipsum dolor Lorem ipsum  consectetur. Lorem ipsum dolor  dtetur adipi si... 
+        subcards:
+          - heading: Lorem ipsum dolor sitr adipisc
+            description: Lorem ipsum dolor sit amet, consectetur adipisc Lorem ipsum dolor sit amet, consectetur adipisc
+          - heading: Lorem ipsum sectetur adipisc
+            description: Lorem ipsum dolor sit amet, consectetur adipisc Lorem ipsum dolor sit amet, consectetur adipisc
+          - heading: Lorem ipsum dor adipisc
+            description: Lorem ipsum dolor sit amet, consectetur adipisc Lorem ipsum dolor sit amet, consectetur adipisc
+          - heading: Lorem ipsum dor adipisc
+            description: Lorem ipsum dolor sit amet, consectetur adipisc Lorem ipsum dolor sit amet, consectetur adipisc
+
       - heading: Lorem ipsum dolor sit amet, consectetur adipiscing
         description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum doloramet, consectetur.   consectetur. Lorem ipsum dolor Lorem ipsum  consectetur. Lorem ipsum dolor  dtetur adipi si... 
       - heading: Lorem ipsum dolor sit amet, consectetur adipiscing
@@ -43,8 +55,11 @@ examples:
         description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum doloramet, consectetur.   consectetur. Lorem ipsum dolor Lorem ipsum  consectetur. Lorem ipsum dolor  dtetur adipi si... 
       - heading: Lorem ipsum dolor sit amet, consectetur adipiscing
         description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum doloramet, consectetur.   consectetur. Lorem ipsum dolor Lorem ipsum  consectetur. Lorem ipsum dolor  dtetur adipi si... 
-      - heading: Lorem ipsum dolor sit amet, consectetur adipiscing
-        description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum doloramet, consectetur.   consectetur. Lorem ipsum dolor Lorem ipsum  consectetur. Lorem ipsum dolor  dtetur adipi si... 
+        subcards:
+          - heading: Lorem ipsum dolor sitr adipisc
+            description: Lorem ipsum dolor sit amet, consectetur adipisc Lorem ipsum dolor sit amet, consectetur adipisc
+          - heading: Lorem ipsum sectetur adipisc
+            description: Lorem ipsum dolor sit amet, consectetur adipisc Lorem ipsum dolor sit amet, consectetur adipisc
       - heading: Lorem ipsum dolor sit amet, consectetur adipiscing
         description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum doloramet, consectetur.   consectetur. Lorem ipsum dolor Lorem ipsum  consectetur. Lorem ipsum dolor  dtetur adipi si... 
       - heading: Lorem ipsum dolor sit amet, consectetur adipiscing
