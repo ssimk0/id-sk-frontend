@@ -45,6 +45,8 @@ Graph.prototype.init = function () {
         nodeListForEach($dropdownLinks, function ($dropdownLink) {
             $dropdownLink.addEventListener('click', this.handleDropdownLinkClick.bind(this))
         }.bind(this))
+
+        $module.boundCheckDropdownOutsideClick = this.checkDropdownOutsideClick.bind(this);
     }
 
     var $tabs = $module.querySelectorAll('.govuk-tabs__tab')
@@ -71,7 +73,7 @@ Graph.prototype.handleRadioButtonModeClick = function (e) {
     }
 
     var $value = $el.getAttribute('value')
-    var $iframeGraphs = this.$module.querySelectorAll('.idsk-graph__iframe-graph')
+    var $iframeGraphs = this.$module.querySelectorAll('.idsk-graph__iframe')
     $iframeGraphs.forEach(function ($iframeGraph) {
         var $iframeSrc = $iframeGraph.dataset.src
         var $srcParam = $iframeSrc.indexOf('?') < 0 ? `?type=${$value}` : `&type=${$value}`
@@ -139,6 +141,20 @@ Graph.prototype.handleDropdownLinkClick = function (e) {
         $dropdownList.style.display = 'none'
     })
     $el.nextElementSibling.style.display = $displayValue == 'block' ? 'none' : 'block'
+
+    document.addEventListener('click', this.$module.boundCheckDropdownOutsideClick, true);
+}
+
+/**
+ * handle click outside dropdown menu
+ */
+Graph.prototype.checkDropdownOutsideClick = function () {
+    var $module = this.$module
+    var $dropdownLists = $module.querySelectorAll('.idsk-graph__meta-list')
+    $dropdownLists.forEach(function ($dropdownList) {
+        $dropdownList.style.display = 'none'
+    })
+    document.removeEventListener('click', $module.boundCheckDropdownOutsideClick, false);
 }
 
 /**

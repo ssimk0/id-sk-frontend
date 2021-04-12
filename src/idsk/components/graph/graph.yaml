@@ -22,7 +22,7 @@ examples:
       iaculis. Sed ac sodales turpis.
     graphDailyIframeSrc: "/vzory/graph-sample"
     graphSumframeSrc: "/vzory/graph-sample?time=sum"
-    tableIframeSrc: "/vzory/interactive-table-sample"
+    tableIframeSrc: "/vzory/interactive-table-sample-2"
     methodicsHtml: "
       <p class='govuk-body'>Lorem ipsum ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu tellus suscipit, condimentum arcu a, sollicitudin quam. Fusce tempor facilisis dui vitae iaculis. Sed ac sodales turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu tellus suscipit, condimentum arcu a, sollicitudin quam. Fusce tempor facilisis dui vitae iaculis. Sed ac sodales turpis.</p>
       <p class='govuk-body'>Loipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu tellus suscipit, condimentum arcu a, sollicitudin quam. Fusce tempor facilisis dui vitae iaculis. Sed ac sodales turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu tellus suscipit, condimentum arcu a, sollicitudin quam. Fusce tempor facilisis dui vitae iaculis. Sed ac sodales turpis.</p>
