@@ -288,15 +288,23 @@
     }
   }
 
+  .idsk-search-results__content__picked-filters.govuk-grid-column-full {
+    width: 96%;
+
+    @include mq($from: tablet) {
+      width: 100%;
+    }
+  }
+
   .idsk-search-results__show-results__button {
     padding-top: govuk-spacing(3);
     margin-top: govuk-spacing(3);
     box-shadow: 0 -4px 3px -3px govuk-colour("grey-1");
 
-    width: calc(100% + 30px);
-    margin-left: -govuk-spacing(3);
-    padding-left: govuk-spacing(6);
-    padding-right: govuk-spacing(6);
+    width: calc(100% + 4px);
+    margin-left: -3px;
+    padding-left: govuk-spacing(3);
+    padding-right: govuk-spacing(4);
 
     @include mq($from: tablet) {
       display: none;

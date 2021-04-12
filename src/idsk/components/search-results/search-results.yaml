@@ -31,7 +31,7 @@ params:
 examples:
 - name: default
   data:
-    numberOfResults: 21
+    headline: Výsledky vyhľadávania
     searchResultsCard:
       - heading: Lorem ipsum dolor sit amet, consectetur adipisc
         description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum doloramet, consectetur.   consectetur. Lorem ipsum dolor Lorem ipsum  consectetur. Lorem ipsum dolor  dtetur adipi si... 

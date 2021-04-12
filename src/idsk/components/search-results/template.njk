@@ -1,6 +1,6 @@
 <div class="idsk-search-results {{ params.classes if params.classes }}" data-module="idsk-search-results">
   <div class="govuk-grid-column-full idsk-search-results__title">
-    <h1 class="govuk-heading-xl">Výsledky vyhľadávania
+    <h1 class="govuk-heading-xl">{{params.headline}}
     </h1>
   </div>
   <div class="govuk-grid-column-full idsk-intro-block__search">
@@ -58,7 +58,7 @@
           {% endif %}
           {% if item.isCheckBox %}
             {% if item.checkBoxItems.length > 10 %}
-              <input class="govuk-input idsk-search-results__search__input" type="text" name="{{item.searchInputId}}" id="{{item.searchInputId}}">
+              <input class="govuk-input idsk-search-results__search__input" type="text" name="{{item.searchInputId}}" >
             {% endif %}
             {% from "../../components/option-select-filter/macro.njk" import idskOptionSelectFilter %}
             {{ idskOptionSelectFilter({
@@ -91,7 +91,7 @@
       <button class="idsk-search-results__filters__button" title="Filtre">Filtre
       </button>
       <div class="idsk-search-results__per-page">
-        <span>Počet výsledkov na stranu</span>
+        <span>Výsledky na stranu</span>
         {% from "../../../govuk/components/select/macro.njk" import govukSelect %}
         {{ govukSelect({
           id: "sort",
@@ -126,10 +126,10 @@
     </div>
     <div class="idsk-search-results__content__picked-filters govuk-grid-column-full">
       <div class="idsk-search-results__content__picked-filters__topics idsk-search-results--invisible">
-        <span class="idsk-search-results__text">Len v témach</span>
+        <span class="idsk-search-results__text">{{params.firstFilterLabel if params.firstFilterLabel else 'Len v témach'}}</span>
       </div>
       <div class="idsk-search-results__content__picked-filters__content-type idsk-search-results--invisible">
-        <span class="idsk-search-results__text">Typ obsahu</span>
+        <span class="idsk-search-results__text">{{params.secondFilterLabel if params.secondFilterLabel else 'Typ obsahu'}}</span>
       </div>
       <div class="idsk-search-results__content__picked-filters__date idsk-search-results--invisible"></div>
       <button class="idsk-search-results__button--turn-filters-off govuk-grid-column-full idsk-search-results--invisible" type="button">Vypnúť všetky filtre

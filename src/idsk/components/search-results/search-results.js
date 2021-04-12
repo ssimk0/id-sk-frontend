@@ -17,7 +17,9 @@ SearchResults.prototype.init = function () {
     $module.currentPageNumber = new Number();
     $module.subTopicButton = $module.querySelector('.idsk-search-results__subtopic')
 
-    $module.subTopicButton.disabled = true
+    if ($module.subTopicButton) {
+        $module.subTopicButton.disabled = true
+    }
 
     // Check for button
     var $links = $module.querySelectorAll('.idsk-search-results__link')
@@ -91,14 +93,8 @@ SearchResults.prototype.init = function () {
     }
 
     var $dateFrom = $module.querySelector('#datum-od')
-    if (!$dateFrom) {
-        return
-    }
-
     var $dateTo = $module.querySelector('#datum-do')
-    if (!$dateTo) {
-        return
-    }
+
 
     var $topicSearchInput = $module.querySelector('#idsk-search-input__topic')
     if ($topicSearchInput) {
@@ -110,13 +106,16 @@ SearchResults.prototype.init = function () {
         $subtopicSearchInput.addEventListener('keyup', this.handleSearchItemsFromInput.bind(this, 'radios'))
     }
 
-    var $contentTypeSearchInput = $module.querySelector('#idsk-search-input__content-type')
+    var $contentTypeSearchInput = $module.querySelector('.idsk-search-input__content-type')
     if ($contentTypeSearchInput) {
         $contentTypeSearchInput.addEventListener('keyup', this.handleSearchItemsFromInput.bind(this, 'checkboxes'))
     }
 
-    $dateFrom.addEventListener('focusout', this.handleFillDate.bind(this, 'from'))
-    $dateTo.addEventListener('focusout', this.handleFillDate.bind(this, 'to'))
+    if ($dateFrom) {
+        $dateFrom.addEventListener('focusout', this.handleFillDate.bind(this, 'from'))
+        $dateTo.addEventListener('focusout', this.handleFillDate.bind(this, 'to'))
+    }
+
     $backButton.addEventListener('click', this.handleClickPreviousPage.bind(this))
     $forwardButton.addEventListener('click', this.handleClickNextPage.bind(this))
     $backButtonMobile.addEventListener('click', this.handleClickPreviousPage.bind(this))
@@ -494,7 +493,9 @@ SearchResults.prototype.handleClickRadioButton = function (e) {
     // creating or renaming new span element for picked topic
     if ($el.value && !$filterContainer) {
         var $topicPicked = this.createTopicInContainer.call(this, $choosenFiltersContainer, $radios.dataset.id, $class, $el, false);
-        $module.subTopicButton.disabled = false;
+        if ($module.subTopicButton) {
+            $module.subTopicButton.disabled = false;
+        }
     } else if ($filterContainer.dataset.source == $radios.dataset.id) {
         $topicPicked = $filterContainer
         $topicPicked.innerHTML = $el.value + ' &#10005;';
@@ -536,7 +537,7 @@ SearchResults.prototype.handleClickContentTypeCheckBox = function (e) {
 SearchResults.prototype.handleRemovePickedContentType = function (e) {
     var $el = e.target || e.srcElement || e
     var $checkBoxes = this.$module.querySelector('.idsk-search-results__content-type-filter .govuk-checkboxes')
-    var $checkBoxToRemove = $checkBoxes.querySelector('#' + $el.dataset.source + '')
+    var $checkBoxToRemove = $checkBoxes.querySelector('#' + $el.dataset.source)
     var $linkPanelButton = $checkBoxes.closest('.idsk-search-results__link-panel')
 
     $checkBoxToRemove.checked = false
@@ -611,6 +612,10 @@ SearchResults.prototype.changeBackgroundForPickedFilters = function (e) {
     var $pickedFiltersContainer = $module.querySelector('.idsk-search-results__content__picked-filters')
     var $notEmptySections = $pickedFiltersContainer.querySelectorAll('div:not(.idsk-search-results--invisible)')
 
+    if ($notEmptySections.length == 0) {
+        return
+    }
+
     $notEmptySections.forEach(function ($section) {
         $section.classList.remove('idsk-search-results--grey')
         $section.classList.remove('idsk-search-results--border')
@@ -635,7 +640,9 @@ SearchResults.prototype.disableSubtopic = function (e) {
 
     this.$module.subTopicButton.parentElement.classList.remove('idsk-search-results--expand')
     $contentPanel.classList.add('idsk-search-results--hidden')
-    this.$module.subTopicButton.disabled = true;
+    if (this.$module.subTopicButton) {
+        this.$module.subTopicButton.disabled = true;
+    }
 }
 
 SearchResults.prototype.handleRemovePickedTopic = function (e) {
@@ -647,7 +654,9 @@ SearchResults.prototype.handleRemovePickedTopic = function (e) {
         if ($subTopic) {
             this.removeTopic.call(this, $subTopic, true);
         } else {
-            this.disableSubtopic.call(this);
+            if (this.$module.subTopicButton) {
+                this.disableSubtopic.call(this);
+            }
         }
         $choosenFiltersContainer.classList.add('idsk-search-results--invisible')
     }
@@ -664,7 +673,7 @@ SearchResults.prototype.removeTopic = function ($el, $disableFilter) {
         $radio.checked = false
     }.bind(this))
 
-    if ($disableFilter) {
+    if ($disableFilter && this.$module.subTopicButton) {
         this.disableSubtopic.call(this)
     }
 
