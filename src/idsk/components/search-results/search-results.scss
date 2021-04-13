@@ -533,6 +533,12 @@
 
     .idsk-search-results__link-panel-button {
       border-bottom: none;
+
+      &:focus {
+        .idsk-search-results__link-panel__title {
+          @include govuk-focused-text;
+        }
+      }
     }
 
     .idsk-search-results__link-panel-button::before {
@@ -588,6 +594,7 @@
       }
 
       &:disabled {
+        cursor: text;
         .idsk-search-results__link-panel__title {
           color: govuk-colour("grey-2");
           cursor: text;
