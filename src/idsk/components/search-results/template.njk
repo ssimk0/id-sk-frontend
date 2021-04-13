@@ -58,13 +58,16 @@
           {% endif %}
           {% if item.isCheckBox %}
             {% if item.checkBoxItems.length > 10 %}
-              <input class="govuk-input idsk-search-results__search__input" type="text" name="{{item.searchInputId}}" >
+              <input class="govuk-input idsk-search-results__search__input" type="text" name="{{item.searchInputId}}" id="{{item.searchInputId}}">
             {% endif %}
-            {% from "../../components/option-select-filter/macro.njk" import idskOptionSelectFilter %}
-            {{ idskOptionSelectFilter({
-              id: 'content-type',
-              checkBoxItems : item.checkBoxItems
-            }) }}
+            <div class="idsk-option-select-filter {{ params.classes if params.classes }}">
+              {% from "checkboxes/macro.njk" import govukCheckboxes %}
+              {{ govukCheckboxes({
+                "name": "colours",
+                "classes": "govuk-checkboxes--small",
+                "items": item.checkBoxItems
+              }) }}
+            </div>
           {% endif %}
           {% if item.isTextarea %}
             <span class="idsk-search-results__date__span">Zobraziť len výsledky aktualizované po

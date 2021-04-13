@@ -652,4 +652,25 @@
   .idsk-search-results__list-item--active::before {
     top: 5px;
   }
+
+  .idsk-option-select-filter .govuk-checkboxes__label::before {
+    width: 30px;
+    height: 30px;
+  }
+
+  .idsk-option-select-filter .govuk-checkboxes__label::after {
+    top: 15px;
+    left: 8px;
+    width: 10px;
+    height: 5px;
+    border-width: 0 0 5px 5px;
+  }
+
+  .idsk-option-select-filter .govuk-checkboxes__label {
+    padding: govuk-spacing(2) govuk-spacing(1) govuk-spacing(1);
+  }
+
+  .idsk-option-select-filter .govuk-checkboxes--small .govuk-checkboxes__item {
+    margin-bottom: govuk-spacing(2);
+  }
 }

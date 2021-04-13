@@ -1,6 +1,6 @@
 import '../../../govuk/vendor/polyfills/Function/prototype/bind'
 import '../../../govuk/vendor/polyfills/Event' // addEventListener and event.target normaliziation
-import { nodeListForEach, toggleClass } from "../../common";
+import { toggleClass } from "../../common";
 
 function SearchResults($module) {
     this.$module = $module
@@ -106,7 +106,7 @@ SearchResults.prototype.init = function () {
         $subtopicSearchInput.addEventListener('keyup', this.handleSearchItemsFromInput.bind(this, 'radios'))
     }
 
-    var $contentTypeSearchInput = $module.querySelector('.idsk-search-input__content-type')
+    var $contentTypeSearchInput = $module.querySelector('#idsk-search-input__content-type')
     if ($contentTypeSearchInput) {
         $contentTypeSearchInput.addEventListener('keyup', this.handleSearchItemsFromInput.bind(this, 'checkboxes'))
     }
