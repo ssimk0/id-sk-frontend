@@ -31,6 +31,7 @@
 
     @include mq($from: tablet) {
       display: block;
+      padding-top: govuk-spacing(3);
     }
   }
 
@@ -666,15 +667,16 @@
   }
 
   .idsk-option-select-filter .govuk-checkboxes__label::after {
-    top: 15px;
+    top: 16px;
     left: 8px;
-    width: 10px;
-    height: 5px;
-    border-width: 0 0 5px 5px;
+    width: 15px;
+    box-sizing: border-box;
+    height: 9px;
+    border-width: 0 0 3px 3px;
   }
 
   .idsk-option-select-filter .govuk-checkboxes__label {
-    padding: govuk-spacing(2) govuk-spacing(1) govuk-spacing(1);
+    padding: govuk-spacing(2) govuk-spacing(2) govuk-spacing(1);
   }
 
   .idsk-option-select-filter .govuk-checkboxes--small .govuk-checkboxes__item {
