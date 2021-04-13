@@ -12,6 +12,8 @@ import SearchResults from './components/search-results/search-results';
 import SearchResultsFilter from './components/search-results-filter/search-results-filter';
 import Stepper from './components/stepper/stepper';
 import RegistrationForEvent from './components/registration-for-event/registration-for-event';
+import InteractiveMap from './components/interactive-map/interactive-map';
+import Graph from './components/graph/graph';
 
 function initAll(options) {
   // Set the options to an empty object by default if no options are passed.
@@ -84,9 +86,20 @@ function initAll(options) {
     new RegistrationForEvent($registrationForEvent).init();
   })
 
+  var $interactiveMaps = scope.querySelectorAll('[data-module="idsk-interactive-map"]');
+  nodeListForEach($interactiveMaps, function ($interactiveMap) {
+    new InteractiveMap($interactiveMap).init();
+  })
+
+  var $graphs = scope.querySelectorAll('[data-module="idsk-graph"]');
+  nodeListForEach($graphs, function ($graph) {
+    new Graph($graph).init();
+  })
+
   // Init all GOVUK components js
   initAllGOVUKjs(options);
 }
+
 
 export {
   initAll,
@@ -100,6 +113,8 @@ export {
   InPageNavigation,
   SearchResults,
   SearchResultsFilter,
+  RegistrationForEvent,
+  InteractiveMap,
   Stepper,
-  RegistrationForEvent 
+  Graph
 }

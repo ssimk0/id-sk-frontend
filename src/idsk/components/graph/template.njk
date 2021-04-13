@@ -1,0 +1,105 @@
+{% from "../../../govuk/components/tabs/macro.njk" import govukTabs %}
+
+<div data-module="idsk-graph" class="idsk-graph{{ ' ' + params.classes if params.classes }}" id="graph1">
+    <div class="govuk-grid-row idsk-graph__heading">
+        <div class="idsk-graph__title">
+            <h2 class="govuk-heading-m">{{ params.title }}</h2>
+        </div>
+        <div class="idsk-graph__controls">
+            <div class="govuk-form-group">
+                <div class="govuk-radios govuk-radios--inline">
+                    {% for radio in params.radioOptions %}
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input idsk-graph__radio" name="{{ params.radioOptionsName }}" id="{{ params.radioOptionsName + '-' + loop.index }}" type="radio" value="{{ radio.value }}" {{ "checked=''" if loop.index == 1 }}>
+                            <label class="govuk-label govuk-radios__label" for="{{ params.radioOptionsName + '-' + loop.index }}">{{ radio.title }}</label>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-half">
+            <summary class="govuk-body-s idsk-graph__summary">
+                {{ params.summary }}
+            </summary>
+        </div>
+    </div>
+
+    {{ govukTabs({
+        "items": [
+            {
+                "label": "Denné prírastky",
+                "id": "tab-1",
+                "panel": {
+                    "html": "<iframe class='idsk-graph__iframe' data-src='" + params.graphDailyIframeSrc + "' src='" + params.graphDailyIframeSrc + "' title='" + params.graphDailyIframeTitle + "'></iframe>"
+                }
+            },
+            {
+                "label": "Celkovo",
+                "id": "tab-2",
+                "panel": {
+                    "html": "<iframe class='idsk-graph__iframe' data-src='" + params.graphSumIframeSrc + "' src='" + params.graphSumIframeSrc + "' title='" + params.graphSumframeTitle + "'></iframe>"
+                }
+            },
+            {
+                "label": "Údaje",
+                "id": "tab-3",
+                "panel": {
+                    "html": "<iframe class='idsk-graph__iframe' data-src='" + params.tableIframeSrc + "' src='" + params.tableIframeSrc + "' title='" + params.tableIframeTitle + "'></iframe>"
+                }
+            },
+            {
+                "label": "Metodika",
+                "id": "tab-4",
+                "panel": {
+                    "html": params.methodicsHtml
+                }
+            }
+        ]
+    }) }}
+    <div class="idsk-graph__meta">
+        <div class="idsk-graph__meta-download-share">
+        {% if params.download %}
+            <div class="idsk-graph__meta-download">
+                <a class="govuk-link idsk-graph__meta-link-list" title="{{ params.download.downloadTitle }}" href="#">
+                    {{ params.download.downloadTitle }}
+                    <svg width="18" height="11" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16.0725 1.07107L9.00146 8.14214L1.9304 1.07107" stroke="#0B0C0C" stroke-width="3"/>
+                    </svg>
+                </a>
+                <ul class="idsk-graph__meta-list">
+                    {% for item in params.download.items %}
+                    <li>
+                        <a title="{{ item.title }}" href="{{ item.value }}" class="govuk-link{{ ' ' + item.class if item.class}}" download>{{ item.title }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            {% if params.share %}
+            <div class="idsk-graph__meta-share">
+                <a class="govuk-link idsk-graph__meta-link-list" title="{{ params.share.shareTitle }}" href="#">
+                    {{ params.share.shareTitle }}
+                    <svg width="18" height="11" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16.0725 1.07107L9.00146 8.14214L1.9304 1.07107" stroke="#0B0C0C" stroke-width="3"/>
+                    </svg>
+                </a>
+                <ul class="idsk-graph__meta-list">
+                    {% for item in params.share.items %}
+                    <li>
+                        <a title="{{ item.title }}" href="{{ item.value }}" class="govuk-link{{ ' ' + item.class if item.class}}" {{ "target=" + item.target if item.target }}>{{ item.title }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        </div>
+        {% if params.source %}
+        <div class="idsk-graph__meta-source">
+            {{ params.source }}
+        </div>
+        {% endif %}
+    </div>
+</div>

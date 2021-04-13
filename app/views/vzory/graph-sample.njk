@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <title>Grafový komponent</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="title" content="Grafový komponent">
+    <meta name="description" content="Príkladový graf koponentu - Grafový komponent">
+
+    <link rel="shortcut icon" sizes="16x16 32x32 48x48" href="/public/assets/images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/public/assets/images/apple-touch-icon-180x180.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="/public/assets/images/apple-touch-icon-167x167.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/public/assets/images/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" href="/public/assets/images/apple-touch-icon.png">
+    
+    <!--[if !IE 8]><!-->
+        <link rel="stylesheet" href="/public/app.css">
+    <!--<![endif]-->
+    <!--[if IE 8]>
+        <link rel="stylesheet" href="/public/app-ie8.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+        <script src="/vendor/html5-shiv/html5shiv.js"></script>
+    <![endif]-->
+
+    <script src="/public/assets/js/plotly-latest.min.js"></script>
+    {# var $krajeGeoJSON #}
+    <script src="/public/assets/data/krajeGeoJSON.js"></script>
+    {# var $vaccinationsByRegion #}
+    <script src="/public/assets/data/vaccinationsByRegion.js"></script>
+    
+    <style>
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="graph"></div>
+    
+    <script>
+        var $gd;
+        var $params = new URL(location.href).searchParams
+        var $time = $params.get("time")
+        var $types = $params.get("type")
+        var $typesArr = $types === null || $types === ""  ? ["pcr"] : $types.split("-")
+
+        var renderGraph = function() {
+            var $d3 = Plotly.d3;
+            var WIDTH_IN_PERCENT_OF_PARENT = 100,
+                HEIGHT_IN_PERCENT_OF_PARENT = 100;
+            var $gd3 = $d3.select("body")
+                .append("div")
+                .style({
+                    "width": "100%",
+                    "margin-left": "0",
+                    "height": "100%",
+                    "margin-top": "0"
+                });
+
+            $gd = $gd3.node();
+
+            $d3.json("/public/assets/data/PCR_denne_kumulat_AG-denne_kumulat.json", function($d){
+                
+                var $xAxisDate = []
+                var $pcr = []
+                var $ag = []
+                var $agKey = $time === "sum" ? "Kumulativne - AgPosit" : "AgPosit"
+                var $pcrKey = $time === "sum" ? "Kumulative.PCR.testami" : "PCR.Posit"
+
+                $d.forEach(function($i) {
+                    var $splitDate = $i["Datum"].split(".")
+                    var $reverseDate = $splitDate.reverse()
+                    var $joinDate = $reverseDate.join("=")
+                    var $date = new Date($joinDate)
+
+                    $xAxisDate.push($date)
+                    $ag.push($i[$agKey])
+                    $pcr.push($i[$pcrKey])
+                })
+
+                var $bar = []
+                $bar["antigen"] = {
+                    x: $xAxisDate,
+                    y: $ag,
+                    name: "Antigén",
+                    type: "bar",
+                    marker: {
+                        color: "#5694ca"
+                    },
+                }
+                $bar["pcr"] = {
+                    x: $xAxisDate,
+                    y: $pcr,
+                    name: "PCR",
+                    type: "bar",
+                    marker: {
+                        color: "#003078"
+                    },
+                }
+                var $data = $typesArr.map(function($type) {
+                    return $bar[$type]
+                })
+                var $layout = {
+                    height: 276,
+                    xaxis: {
+                        type: "date",
+                    },
+                    paper_bgcolor: "rgba(0,0,0,0)",
+                    plot_bgcolor: "rgba(0,0,0,0)",
+                    showlegend: true,
+	                legend: {
+                        "orientation": "h"
+                    },
+                    margin: {
+                        l: 35,
+                        r: 20,
+                        b: 0,
+                        t: 0,
+                        pad: 0
+                    }
+                }
+                var $config = {
+                    responsive: true,
+                    modeBarButtonsToRemove: ["autoScale2d", "lasso2d", "pan2d", "select2d", "toggleSpikelines", "hoverCompareCartesian", "zoom2d", "hoverClosestCartesian"],
+                }
+                Plotly.plot($gd, $data, $layout, $config)
+            })
+        }
+
+        if (document.readyState === "complete" || document.readyState === "interactive") {
+            renderGraph()
+        } else {
+            document.addEventListener("DOMContentLoaded", function() {
+                renderGraph()
+            })
+        }
+
+        window.onresize = function() {
+            Plotly.Plots.resize($gd);
+        };
+    </script>
+
+</body>
+</html>
