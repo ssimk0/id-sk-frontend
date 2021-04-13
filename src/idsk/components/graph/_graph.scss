@@ -65,7 +65,7 @@
                 }
 
                 svg {
-                    margin-left: 20px;
+                    margin-left: govuk-spacing(4);
                 }
 
                 &:first-child {
@@ -108,7 +108,7 @@
 
                 li {
                     border-bottom: 1px solid govuk-colour("mid-grey");
-                    padding: 5px;
+                    padding: govuk-spacing(1);
                 }
 
                 .govuk-link {
