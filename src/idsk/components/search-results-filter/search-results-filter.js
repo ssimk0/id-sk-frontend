@@ -46,9 +46,9 @@ SearchResultsFilter.prototype.handleSearchItemsFromInput = function ($type, e) {
         $item.classList.remove('idsk-search-results--invisible')
     }.bind(this))
     $items.forEach(function ($item) {
-        if ($el.value == '') {
-            $item.classList.remove('idsk-search-results--invisible')
-        } else if (!$item.querySelector('.govuk-' + $type + '__label').innerText.toLowerCase().includes($el.value.toLowerCase())) {
+        var $labelItem = $item.querySelector('.govuk-' + $type + '__label')
+        
+        if (!$labelItem.innerText.toLowerCase().includes($el.value.toLowerCase())) {
             $item.classList.add('idsk-search-results--invisible')
         }
     }.bind(this))

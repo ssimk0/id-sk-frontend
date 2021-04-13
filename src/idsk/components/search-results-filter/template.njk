@@ -11,7 +11,7 @@
         <div class="idsk-search-results__list">
           {% if item.isRadio %}
             {% if item.radios.length > 10 %}
-              <input class="govuk-input idsk-search-results__search__input" type="text" name="{{item.searchInputId}}" id="{{item.searchInputId}}">
+              <input class="govuk-input idsk-search-results__search__input" type="text" title="{{item.searchInputId}}" name="{{item.searchInputId}}" id="{{item.searchInputId}}">
             {% endif %}
                 {% from "../../components/customer-surveys-radios/macro.njk" import idskCustomerSurveysRadios %}
                 {{ idskCustomerSurveysRadios({
@@ -24,7 +24,7 @@
           {% endif %}
           {% if item.isCheckBox %}
             {% if item.checkBoxItems.length > 10 %}
-              <input class="govuk-input idsk-search-results__search__input" type="text" name="{{item.searchInputId}}" id="{{item.searchInputId}}">
+              <input class="govuk-input idsk-search-results__search__input" type="text" title="{{item.searchInputId}}" name="{{item.searchInputId}}" id="{{item.searchInputId}}">
             {% endif %}
             <div class="idsk-option-select-filter {{ params.classes if params.classes }}">
               {% from "checkboxes/macro.njk" import govukCheckboxes %}
