@@ -69,8 +69,10 @@ function initAll(options) {
   var $searchResults = scope.querySelector('[data-module="idsk-search-results"]');
   new SearchResults($searchResults).init();
 
-  var $searchResultsFilter = scope.querySelector('[data-module="idsk-search-results-filter"]');
-  new SearchResultsFilter($searchResultsFilter).init();
+  var $searchResultsFilters = scope.querySelectorAll('[data-module="idsk-search-results-filter"]');
+  nodeListForEach($searchResultsFilters, function ($searchResultsFilter) {
+    new SearchResultsFilter($searchResultsFilter).init();
+  })
 
   var $steppers = scope.querySelectorAll('[data-module="idsk-stepper"]');
   nodeListForEach($steppers, function ($stepper) {

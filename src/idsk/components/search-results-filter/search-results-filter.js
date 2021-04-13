@@ -41,7 +41,6 @@ SearchResultsFilter.prototype.init = function () {
 SearchResultsFilter.prototype.handleSearchItemsFromInput = function ($type, e) {
     var $el = e.target || e.srcElement
     var $linkPanelButton = $el.closest('.idsk-search-results__link-panel')
-
     var $items = $linkPanelButton.querySelectorAll('.govuk-' + $type + '__item')
     $items.forEach(function ($item) {
         $item.classList.remove('idsk-search-results--invisible')
