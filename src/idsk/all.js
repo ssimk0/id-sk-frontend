@@ -11,6 +11,7 @@ import InPageNavigation from './components/in-page-navigation/in-page-navigation
 import Stepper from './components/stepper/stepper';
 import RegistrationForEvent from './components/registration-for-event/registration-for-event';
 import InteractiveMap from './components/interactive-map/interactive-map';
+import Graph from './components/graph/graph';
 
 function initAll(options) {
   // Set the options to an empty object by default if no options are passed.
@@ -80,6 +81,11 @@ function initAll(options) {
     new InteractiveMap($interactiveMap).init();
   })
 
+  var $graphs = scope.querySelectorAll('[data-module="idsk-graph"]');
+  nodeListForEach($graphs, function ($graph) {
+    new Graph($graph).init();
+  })
+
   // Init all GOVUK components js
   initAllGOVUKjs(options);
 }
@@ -97,5 +103,6 @@ export {
   InPageNavigation,
   RegistrationForEvent,
   InteractiveMap,
-  Stepper
+  Stepper,
+  Graph
 }

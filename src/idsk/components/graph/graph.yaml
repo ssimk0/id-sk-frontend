@@ -1,0 +1,165 @@
+params:
+- name: classes
+  type: string
+  required: false
+  description: Classes to add to the graph component.
+- name: title
+  type: string
+  required: true
+  description: Title for graph component
+- name: radioOptions
+  type: object
+  required: true
+  description: Radio options for filtering data
+  params:
+  - name: title
+    type: string
+    required: true
+    description: title of radio button
+  - name: value
+    type: string
+    required: true
+    description: value of radio button
+- name: radioOptionsName
+  type: string
+  required: true
+  description: The name of radio group
+- name: summary
+  type: string
+  required: true
+  description: Summary description of graph
+- name: graphDailyIframeSrc
+  type: string
+  required: true
+  description: source of daily graph - iframe
+- name: graphDailyIframeTitle
+  type: string
+  required: true
+  description: title of daily graph - iframe
+- name: graphSumIframeSrc
+  type: string
+  required: true
+  description: source of summary graph - iframe
+- name: graphSumframeTitle
+  type: string
+  required: true
+  description: title of summary graph - iframe
+- name: tableIframeSrc
+  type: string
+  required: true
+  description: source of table - iframe
+- name: tableIframeTitle
+  type: string
+  required: true
+  description: title of table - iframe
+- name: methodicsHtml
+  type: string
+  required: true
+  description: some methodical description
+- name: download
+  type: object
+  required: false
+  params:
+  - name: downloadTitle
+    type: string
+    required: true
+    description: title of download files button
+  - name: items
+    type: object
+    required: true
+    params:
+    - name: title
+      type: string
+      required: true
+      description: title of file
+    - name: value
+      type: string
+      required: true
+      description: file source
+    - name: class
+      type: string
+      required: true
+      description: individual class for file
+- name: share
+  type: object
+  required: false
+  params:
+  - name: shareTitle
+    type: string
+    required: true
+    description: title of share links button    
+  - name: items
+    type: object
+    required: true
+    params:
+    - name: title
+      type: string
+      required: true
+      description: title of sharing lin
+    - name: value
+      type: string
+      required: true
+      description: sharing link source
+    - name: class
+      type: string
+      required: true
+      description: individial class for link
+    - name: target
+      type: string
+      required: false
+      description: target attribute for link
+- name: source
+  type: string
+  required: true
+  description: source of data
+
+examples:
+- name: ukážka grafového komponentu
+  data:
+    uniqueId: graph1
+    title: Pozitívne testovaní
+    radioOptionsName: test-graph
+    radioOptions:
+    - title: PCR
+      value: pcr
+    - title: Antigén
+      value: antigen
+    - title: PCR + Antigén
+      value: pcr-antigen
+    summary: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu tellus
+      suscipit, condimentum arcu a, sollicitudin quam. Fusce tempor facilisis dui vitae
+      iaculis. Sed ac sodales turpis.
+    graphDailyIframeSrc: "/vzory/graph-sample"
+    graphDailyIframeTitle: Lorem Ipsun title
+    graphSumIframeSrc: "/vzory/graph-sample?time=sum"
+    graphSumframeTitle: Lorem Ipsun 2 title
+    tableIframeSrc: "/vzory/interactive-table-sample-2"
+    tableIframeTitle: Lorem Ipsun 3 title
+    methodicsHtml: "
+      <p class='govuk-body'>Lorem ipsum ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu tellus suscipit, condimentum arcu a, sollicitudin quam. Fusce tempor facilisis dui vitae iaculis. Sed ac sodales turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu tellus suscipit, condimentum arcu a, sollicitudin quam. Fusce tempor facilisis dui vitae iaculis. Sed ac sodales turpis.</p>
+      <p class='govuk-body'>Loipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu tellus suscipit, condimentum arcu a, sollicitudin quam. Fusce tempor facilisis dui vitae iaculis. Sed ac sodales turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu tellus suscipit, condimentum arcu a, sollicitudin quam. Fusce tempor facilisis dui vitae iaculis. Sed ac sodales turpis.</p>
+      <p class='govuk-body'>Loipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu tellus suscipit, condimentum arcu a, sollicitudin quam. Fusce tempor facilisis dui vitae iaculis. Sed ac sodales turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu tellus suscipit, condimentum arcu a, sollicitudin quam. Fusce tempor facilisis dui vitae iaculis. Sed ac sodales turpis.</p>
+      "
+    download:
+      downloadTitle: Stiahnuť údaje
+      items:
+      - title: ako CSV (54 kB)
+        value: "/public/assets/data/PCR_denne_kumulat_AG-denne_kumulat.csv"
+      - title: ako JSON (54 kB)
+        value: "/public/assets/data/PCR_denne_kumulat_AG-denne_kumulat.json"
+      - title: ako XLSX (54 kB)
+        value: "/public/assets/data/PCR_denne_kumulat_AG-denne_kumulat.xlsx"
+    share:
+      shareTitle: Zdielať údaje
+      items:
+      - title: Kopírovať link
+        class: idsk-graph__copy-to-clickboard
+        value: "/komponenty/grafovy-komponent#graph1"
+      - title: Emailom
+        class: idsk-graph__send-link-by-email
+        value: "#graph1"
+      - title: na Facebooku
+        class: idsk-graph__share-on-facebook
+        value: "#graph1"
+        target: _blank
+    source: 'Zdroj: NCZI'

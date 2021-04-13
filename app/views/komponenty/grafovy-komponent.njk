@@ -1,0 +1,126 @@
+{% extends "layout.njk" %}
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "../../../src/idsk/components/graph/macro.njk" import idskGraph %}
+{% set pageName = "Grafový komponent" %}
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    "items": [
+      { text: 'ID-SK frontend', href: '/' + legacyQuery },
+      { text: pageName }
+    ]
+  }) }}
+{% endblock %}
+{% block content %}
+  <span class="govuk-caption-xl">Webové komponenty</span>
+  <h1 class="govuk-heading-xl">{{pageName}}</h1>
+  <p class="govuk-body-l">
+    Popis
+  </p>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-s">Obsah:</h2>
+      <ul class="govuk-list">
+          <li>
+              <a href="#z-coho-sa-sklada-mapovy-komponent" title="Z čoho sa skladá mapový komponent?">Z čoho sa skladá mapový komponent?</a>
+          </li>
+          <li>
+              <a href="#ako-funguje-interaktivna-mapa" title="Ako funguje interaktívna mapa?">Ako funguje interaktívna mapa?</a>
+          </li>
+          <li>
+              <a href="#ako-funguje-interaktivna-mapa" title="priklady">Rozšírené príklady pre grafový komponent</a>
+          </li>
+      </ul>
+    </div>
+
+    <div class="govuk-grid-column-full">
+      <h2 class="govuk-heading-m" id="ako-funguje-interaktivna-mapa">Ako funguje interaktívna mapa?</h2>
+
+      <h3 class="govuk-heading-s">Prepínač</h3>
+      <p class="govuk-body">
+        Prepínačom je možné prepínať medzi mapovým a tabuľkovým zobrazením údajov. V takejto forme sú údaje prístupné aj pre zrakovo znevýhodnených používateľov.
+      </p>
+
+      <div class="example example-error">
+        {% set exampleComponentHtml %}
+          {{ idskGraph({
+              uniqueId: "graph1",
+              title: "Pozitívne testovaní",
+              radioOptionsName: "test-graph",
+              radioOptions: [
+                  {
+                      title: "PCR",
+                      value: "pcr"
+                  },
+                  {
+                      title: "Antigén",
+                      value: "antigen"
+                  },
+                  {
+                      title: "PCR + Antigén",
+                      value: "pcr-antigen"
+                  }
+              ],
+              summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu tellus suscipit, condimentum arcu a, sollicitudin quam. Fusce tempor facilisis dui vitae iaculis. Sed ac sodales turpis.",
+              graphDailyIframeSrc: "/vzory/graph-sample",
+              graphDailyIframeTitle: "Lorem Ipsun title",
+              graphSumIframeSrc: "/vzory/graph-sample?time=sum",
+              graphSumframeTitle: "Lorem Ipsun 2 title",
+              tableIframeSrc: "/vzory/interactive-table-sample-2",
+              tableIframeTitle: "Lorem Ipsun 3 title",
+              methodicsHtml: "<p class='govuk-body'>Lorem ipsum ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu tellus suscipit, condimentum arcu a, sollicitudin quam. Fusce tempor facilisis dui vitae iaculis. Sed ac sodales turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu tellus suscipit, condimentum arcu a, sollicitudin quam. Fusce tempor facilisis dui vitae iaculis. Sed ac sodales turpis.</p><p class='govuk-body'>Loipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu tellus suscipit, condimentum arcu a, sollicitudin quam. Fusce tempor facilisis dui vitae iaculis. Sed ac sodales turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu tellus suscipit, condimentum arcu a, sollicitudin quam. Fusce tempor facilisis dui vitae iaculis. Sed ac sodales turpis.</p><p class='govuk-body'>Loipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu tellus suscipit, condimentum arcu a, sollicitudin quam. Fusce tempor facilisis dui vitae iaculis. Sed ac sodales turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu tellus suscipit, condimentum arcu a, sollicitudin quam. Fusce tempor facilisis dui vitae iaculis. Sed ac sodales turpis.</p>",
+              download: {
+                  downloadTitle: "Stiahnuť údaje",
+                  items: [
+                      {
+                          title: "ako CSV (54 kB)",
+                          value: "/public/assets/data/PCR_denne_kumulat_AG-denne_kumulat.csv"
+                      },
+                      {
+                          title: "ako JSON (54 kB)",
+                          value: "/public/assets/data/PCR_denne_kumulat_AG-denne_kumulat.json"
+                      },
+                      {
+                          title: "ako XLSX (54 kB)",
+                          value: "/public/assets/data/PCR_denne_kumulat_AG-denne_kumulat.xlsx"
+                      }
+                  ]
+              },
+              share: {
+                  shareTitle: "Zdielať údaje",
+                  items: [
+                      {
+                          title: "Kopírovať link",
+                          class: "idsk-graph__copy-to-clickboard",
+                          value: "/komponenty/grafovy-komponent#graph1"
+                      },
+                      {
+                          title: "Emailom",
+                          class: "idsk-graph__send-link-by-email",
+                          value: "#graph1"
+                      },
+                      {
+                          title: "na Facebooku",
+                          class: "idsk-graph__share-on-facebook",
+                          value: "#graph1",
+                          target: "_blank"
+                      }
+                  ]
+              },
+              source: "Zdroj: NCZI"
+        }) }}
+        {% endset %}
+        {{exampleComponentHtml | safe}}
+      </div>
+      <pre class="language-markup"><code class="govuk-!-font-size-16 language-markup">{{ exampleComponentHtml }}</code></pre>
+    </div>
+
+    <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-m" id="priklady">Rozšírené príklady pre grafový komponent</h2>
+      <ul class="govuk-list">
+          <li><a href="/custom-components/graph">Rozšírené príklady grafového komponentu</a></li>
+      </ul>
+    </div>
+
+  </div>
+{% endblock %}
