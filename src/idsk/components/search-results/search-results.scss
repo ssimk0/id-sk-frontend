@@ -260,6 +260,16 @@
     }
   }
 
+  .idsk-search-results__subcards.govuk-grid-column-one-half {
+    @include mq(tablet) {
+      width: 100%;
+    }
+
+    @include mq($from: desktop) {
+      width: 50%;
+    }
+  }
+
   .idsk-search-results__subcards .idsk-heading-basic-variant {
     @include govuk-font($size: 16);
 
@@ -542,10 +552,10 @@
       padding-top: govuk-spacing(1);
       padding-bottom: govuk-spacing(2);
       border-bottom: 1px solid govuk-colour("mid-grey");
-      
+
       @include mq($from: desktop) {
         padding-left: govuk-spacing(2);
-      }      
+      }
     }
 
     .idsk-search-results__link-panel-button {
@@ -580,14 +590,14 @@
     background-position: 7px 10px;
     background-size: 17px;
     padding-left: govuk-spacing(6);
-    
+
     @include mq(tablet) {
       width: 190px;
     }
 
     @include mq($from: desktop) {
       width: 240px;
-    }   
+    }
   }
 
   .idsk-search-results--order__dropdown .govuk-select:focus {
