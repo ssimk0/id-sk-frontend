@@ -367,10 +367,9 @@
   }
 
   .idsk-search-results__button--forward {
-    margin-right: -15px;
+    right: 0;
     padding-right: 0;
-    float: right;
-    position: relative;
+    position: absolute;
     margin-bottom: govuk-spacing(3);
   }
 
