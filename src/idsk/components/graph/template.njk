@@ -10,8 +10,8 @@
                 <div class="govuk-radios govuk-radios--inline">
                     {% for radio in params.radioOptions %}
                         <div class="govuk-radios__item">
-                            <input class="govuk-radios__input idsk-graph__radio" name="{{ params.radioOptionsName }}" id="{{ params.radioOptionsName + '-' + loop.index }}" type="radio" value="{{ radio.value }}" {{ "checked=''" if loop.index == 1 }}>
-                            <label class="govuk-label govuk-radios__label" for="{{ params.radioOptionsName + '-' + loop.index }}">{{ radio.title }}</label>
+                            <input class="govuk-radios__input idsk-graph__radio" name="radio-{{ params.uniqueId }}" id="radio-{{ params.uniqueId + '-' + loop.index }}" type="radio" value="{{ radio.value }}" {{ "checked=''" if loop.index == 1 }}>
+                            <label class="govuk-label govuk-radios__label" for="radio-{{ params.uniqueId + '-' + loop.index }}">{{ radio.title }}</label>
                         </div>
                     {% endfor %}
                 </div>
@@ -27,32 +27,36 @@
         </div>
     </div>
 
+    
     {{ govukTabs({
+        "attributes": {
+            "data-activetab": params.activeTab
+        },
         "items": [
             {
                 "label": "Denné prírastky",
-                "id": "tab-1",
+                "id": params.uniqueId + "-1",
                 "panel": {
                     "html": "<iframe class='idsk-graph__iframe' data-src='" + params.graphDailyIframeSrc + "' src='" + params.graphDailyIframeSrc + "' title='" + params.graphDailyIframeTitle + "'></iframe>"
                 }
             },
             {
                 "label": "Celkovo",
-                "id": "tab-2",
+                "id": params.uniqueId + "-2",
                 "panel": {
                     "html": "<iframe class='idsk-graph__iframe' data-src='" + params.graphSumIframeSrc + "' src='" + params.graphSumIframeSrc + "' title='" + params.graphSumframeTitle + "'></iframe>"
                 }
             },
             {
                 "label": "Údaje",
-                "id": "tab-3",
+                "id": params.uniqueId + "-3",
                 "panel": {
                     "html": "<iframe class='idsk-graph__iframe' data-src='" + params.tableIframeSrc + "' src='" + params.tableIframeSrc + "' title='" + params.tableIframeTitle + "'></iframe>"
                 }
             },
             {
                 "label": "Metodika",
-                "id": "tab-4",
+                "id": params.uniqueId + "-4",
                 "panel": {
                     "html": params.methodicsHtml
                 }

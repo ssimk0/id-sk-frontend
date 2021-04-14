@@ -6,7 +6,7 @@ params:
 - name: uniqueId
   type: string
   required: true
-  description: unique id for komponent
+  description: unique id for component
 - name: title
   type: string
   required: true
@@ -24,10 +24,6 @@ params:
     type: string
     required: true
     description: value of radio button
-- name: radioOptionsName
-  type: string
-  required: true
-  description: The name of radio group
 - name: summary
   type: string
   required: true
@@ -122,7 +118,6 @@ examples:
   data:
     uniqueId: graph1
     title: Pozitívne testovaní
-    radioOptionsName: test-graph
     radioOptions:
     - title: PCR
       value: pcr
