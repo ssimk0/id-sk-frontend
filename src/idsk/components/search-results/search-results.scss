@@ -22,9 +22,13 @@
   }
 
   .idsk-search-results .govuk-select {
-    max-width: 100%;
+    max-width: 150px;
     width: -webkit-fill-available;
     background-color: govuk-colour("white");
+
+    @include mq($and: "(orientation: landscape)") {
+      max-width: 100%;
+    }
   }
 
   .idsk-search-results__filter.govuk-grid-column-one-quarter {
