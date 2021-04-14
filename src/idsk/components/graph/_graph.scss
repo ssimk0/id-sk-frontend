@@ -35,7 +35,7 @@
 
         &__summary {
             color: govuk-colour("dark-grey");
-            margin-bottom: govuk-spacing(4);
+            margin-bottom: govuk-spacing(2);
         }
 
         .idsk-graph__iframe {
@@ -59,17 +59,22 @@
                 @include govuk-font($size: 19);
 
                 text-decoration: none;
+                width: 130px;
 
                 @include mq($from: desktop) {
+                    display: inline-block;
                     text-decoration: underline;
+                    width: 155px;
                 }
 
                 svg {
-                    margin-left: govuk-spacing(4);
-                }
+                    position: absolute;
+                    right: 0;
+                    top: 5px;
 
-                &:first-child {
-                    margin-right: govuk-spacing(8);
+                    @include mq($from: desktop) {
+                        top: 7px;
+                    }
                 }
             }
 
@@ -78,6 +83,14 @@
                 display: inline-block;
                 position: relative;
                 margin-top: govuk-spacing(2);
+            }
+
+            &-download {
+                margin-right: govuk-spacing(8);
+
+                @include mq($from: desktop) {
+                    margin-right: govuk-spacing(8);
+                }
             }
 
             &-source {
@@ -103,7 +116,7 @@
                 width: 100%;
 
                 @include mq($from: desktop) {
-                    width: calc(100% - 50px);
+                    width: 100%;
                 }
 
                 li {
@@ -160,7 +173,7 @@
 
         .govuk-tabs__list {
             @include govuk-clearfix;
-            margin-bottom: govuk-spacing(2);
+            margin-bottom: govuk-spacing(3);
             border: none;
         }
 
@@ -172,7 +185,7 @@
             background-color: transparent;
             float: left;
             margin: 0;
-            padding-top: 0;
+            padding-top: govuk-spacing(2);
             padding-left: 0;
             padding-right: govuk-spacing(5);
             position: relative;

@@ -132,15 +132,18 @@ Graph.prototype.handleShareByFacebook = function (e) {
  */
 Graph.prototype.handleDropdownLinkClick = function (e) {
     e.preventDefault()
+
     var $el = e.target || e.srcElement;
     var $module = this.$module
+    var $link = $el.closest('.idsk-graph__meta-link-list')
+    var $dropdown = $link.parentElement.querySelector('.idsk-graph__meta-list')
+    var $dropdownDisplayProp = window.getComputedStyle($dropdown, null).display;
     var $dropdownLists = $module.querySelectorAll('.idsk-graph__meta-list')
-    var $displayValue = window.getComputedStyle($el.nextElementSibling, null).display;
 
     $dropdownLists.forEach(function ($dropdownList) {
         $dropdownList.style.display = 'none'
     })
-    $el.nextElementSibling.style.display = $displayValue == 'block' ? 'none' : 'block'
+    $dropdown.style.display = $dropdownDisplayProp == 'block' ? 'none' : 'block'
 
     document.addEventListener('click', this.$module.boundCheckDropdownOutsideClick, true);
 }

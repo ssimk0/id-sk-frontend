@@ -229,6 +229,12 @@
         var renderTable = function(){
             d3.json("/public/assets/data/PCR_denne_kumulat_AG-denne_kumulat.json").then(function (data) {
                 $currentData = data;
+                $currentData = $currentData.map(function ($d) {
+                    var $dashFormatDate = $d["Datum"].split(".").reverse().join("-")
+                    var $date = new Date($dashFormatDate)
+                    $d["Datum"] = $date.toISOString().slice(0, 10)
+                    return $d
+                });
                 RenderCustomTable();
             }) 
         }
