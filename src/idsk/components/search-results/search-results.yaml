@@ -333,31 +333,3 @@ examples:
         idFrom: 'datum-od'
         idTo: 'datum-do'
         isTextarea: true
-
-
-
-
-- name: default-rozsireny
-  data:
-    items:
-      - text: Úvod
-        link: "#uvod"
-        active: true
-      - text: Počet subjektov aktuálne
-        link: "#pocet-subjektov-aktualne"
-      - text: Odklad povinnej aktivácie
-        link: "#odklad-povinnej-aktivacie"
-      - text: Povinná elektronická komunikácia so štátom sa o necelý mesiac dotkne už aj poľovníkov a cirkví
-        link: "#povinna-elektronicka-komunikacia-so-statom-sa-o-necely-mesiac-dotkne-uz-aj-polovnikov-a-cirkvi"
-      - text: Odklad povinnej aktivácie
-        link: "#odklad-povinnej-aktivacie-1"
-      - text: Odklad povinnej aktivácie
-        link: "#odklad-povinnej-aktivacie-2"
-      - text: Odklad povinnej aktivácie
-        link: "#odklad-povinnej-aktivacie-3"
-      - text: Povinná elektronická komunikácia so štátom sa o necelý mesiac dotkne už aj poľovníkov a cirkví
-        link: "#povinna-elektronicka-komunikacia-so-statom-sa-o-necely-mesiac-dotkne-uz-aj-polovnikov-a-cirkvi-1"
-      - text: Odklad povinnej aktivácie
-        link: "#odklad-povinnej-aktivacie-4"
-      - text: Odklad povinnej aktivácie
-        link: "#odklad-povinnej-aktivacie-5"
