@@ -58,11 +58,11 @@
             &-link-list {
                 @include govuk-font($size: 19);
 
+                display: inline-block;
                 text-decoration: none;
                 width: 130px;
 
-                @include mq($from: desktop) {
-                    display: inline-block;
+                @include mq($from: tablet) {
                     text-decoration: underline;
                     width: 155px;
                 }
@@ -86,7 +86,7 @@
             }
 
             &-download {
-                margin-right: govuk-spacing(8);
+                margin-right: govuk-spacing(6);
 
                 @include mq($from: desktop) {
                     margin-right: govuk-spacing(8);
@@ -233,6 +233,13 @@
             display: block;
         }
 
+        .govuk-tabs__list-item--selected {
+            border: none;
+
+            .govuk-tabs__tab {
+                text-decoration: underline;
+            }
+        }
         .idsk-graph__section--selected {
             background-color: transparent;
             border: none;

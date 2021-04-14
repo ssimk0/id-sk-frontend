@@ -13,11 +13,6 @@ Graph.prototype.init = function () {
         return
     }
 
-    var $radioBtn = $module.querySelector('.idsk-graph__radio')
-    var $radiosName = $radioBtn.getAttribute('name')
-    var $selectedControlOption = $module.querySelector('input[name="' + $radiosName + '"]:checked').value
-    this.handleRadioButtonModeClick($selectedControlOption)
-
     var $radioOptions = $module.querySelectorAll('.idsk-graph__radio');
     if ($radioOptions) {
         nodeListForEach($radioOptions, function ($radioOption) {
@@ -55,10 +50,17 @@ Graph.prototype.init = function () {
             $tab.addEventListener('click', this.handleTabLinkClick.bind(this))
         }.bind(this))
 
-        var $activeTab = $module.querySelector('.govuk-tabs__tab[href="' + window.location.hash + '"]') || $tabs[0]
+        var $forcedActiveTab = $module.querySelector('.govuk-tabs').dataset.activetab
+        var $activeTab = $module.querySelector('.govuk-tabs__tab[href="' + window.location.hash + '"]') || $tabs[$forcedActiveTab || 0]
         this.showTab($activeTab)
+        console.log($activeTab.parentElement)
+        //       $activeTab.parentElement.click()
     }
 
+    var $radioBtn = $module.querySelector('.idsk-graph__radio')
+    var $radiosName = $radioBtn.getAttribute('name')
+    var $selectedControlOption = $module.querySelector('input[name="' + $radiosName + '"]:checked').value
+    this.handleRadioButtonModeClick($selectedControlOption)
 }
 
 /**
@@ -165,6 +167,8 @@ Graph.prototype.checkDropdownOutsideClick = function () {
  * @param {object} e 
  */
 Graph.prototype.handleTabLinkClick = function (e) {
+    e.preventDefault()
+
     var $tab = e.target || e.srcElement;
     var $module = this.$module
     var $activePanel = $module.querySelector('.idsk-graph__section-show')
