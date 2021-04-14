@@ -6,7 +6,9 @@
   .idsk-search-results {
     @include govuk-font($size: 19);
 
+    margin: 0 -15px;
     @include mq($from: desktop) {
+      margin: 0;
       .govuk-grid-column-one-quarter {
         width: 32%;
       }
@@ -551,6 +553,14 @@
     cursor: pointer;
     color: govuk-colour("blue");
     height: inherit;
+
+    @include mq(tablet) {
+      display: grid;
+    }
+    
+    @include mq($from: desktop) {
+      display: unset;
+    }
   }
 
   .idsk-search-results--expand {
@@ -603,12 +613,8 @@
     background-size: 17px;
     padding-left: govuk-spacing(6);
 
-    @include mq($and: "(orientation: landscape)") {
-      width: 156px;
-    }
-
     @include mq(tablet) {
-      width: 190px;
+      width: 96%;
     }
 
     @include mq($from: desktop) {
