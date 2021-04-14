@@ -215,6 +215,7 @@
     margin-left: govuk-spacing(3);
     width: 95%;
     display: inline-block;
+    position: relative;
 
     @include mq($from: tablet) {
       width: 100%;
@@ -363,6 +364,7 @@
     margin-right: -15px;
     padding-right: 0;
     float: right;
+    position: relative;
     margin-bottom: govuk-spacing(3);
   }
 
@@ -510,6 +512,7 @@
   .idsk-search-results__link-panel__title {
     text-decoration: none;
     color: govuk-colour("blue");
+    overflow: overlay;
     &:focus {
       @include govuk-focused-text;
     }
@@ -557,7 +560,7 @@
     @include mq(tablet) {
       display: grid;
     }
-    
+
     @include mq($from: desktop) {
       display: unset;
     }
@@ -715,6 +718,10 @@
 
   .idsk-search-results__list-item--active::before {
     top: 5px;
+  }
+
+  .idsk-option-select-filter {
+    display: flex;
   }
 
   .idsk-option-select-filter .govuk-checkboxes__label::before {
