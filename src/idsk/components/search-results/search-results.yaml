@@ -239,6 +239,7 @@ examples:
         id: 'tema'
         isRadio: true
         searchInputId: idsk-search-input__topic
+        searchInputTitle: Filter téma
         radios: 
           - name: Eurofondy 
             value: Eurofondy
@@ -257,6 +258,7 @@ examples:
         isRadio: true
         isSubtopic: true
         searchInputId: idsk-search-input__subtopic
+        searchInputTitle: Filter podtéma
         radios: 
           - name: Výzvy pre rozvoj regiónov
             value: Výzvy pre rozvoj regiónov
@@ -287,6 +289,7 @@ examples:
         isCheckBox: true
         filterClass: idsk-search-results__content-type-filter
         searchInputId: idsk-search-input__content-type
+        searchInputTitle: Filter typ obsahu
         checkBoxItems: 
           - value: Rozvoj regiónov
             text: Rozvoj regiónov

@@ -30,17 +30,11 @@
     @include mq(tablet) {
       width: 33%;
     }
-    @include mq($from: desktop) {
-      width: 25%;
-    }
   }
 
   .idsk-search-results__content.govuk-grid-column-three-quarters {
     @include mq(tablet) {
       width: 67%;
-    }
-    @include mq($from: desktop) {
-      width: 75%;
     }
   }
 
@@ -586,6 +580,14 @@
     background-position: 7px 10px;
     background-size: 17px;
     padding-left: govuk-spacing(6);
+    
+    @include mq(tablet) {
+      width: 190px;
+    }
+
+    @include mq($from: desktop) {
+      width: 240px;
+    }   
   }
 
   .idsk-search-results--order__dropdown .govuk-select:focus {
