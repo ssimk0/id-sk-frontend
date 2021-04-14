@@ -27,6 +27,7 @@
     max-width: 150px;
     width: -webkit-fill-available;
     background-color: govuk-colour("white");
+    width: -moz-available;
 
     @include mq(377px) {
       max-width: 200px;
