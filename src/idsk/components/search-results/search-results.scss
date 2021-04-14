@@ -39,13 +39,19 @@
 
   .idsk-search-results__filter.govuk-grid-column-one-quarter {
     @include mq(tablet) {
-      width: 33%;
+      width: 37%;
+    }
+    @include mq($from: desktop) {
+      width: 32%;
     }
   }
 
   .idsk-search-results__content.govuk-grid-column-three-quarters {
     @include mq(tablet) {
-      width: 67%;
+      width: 63%;
+    }
+    @include mq($from: desktop) {
+      width: 68%;
     }
   }
 
@@ -405,7 +411,11 @@
   .idsk-search-results__content__picked-filters__content-type,
   .idsk-search-results__content__picked-filters__date {
     min-height: 40px;
-    margin-top: -0.5px; //cause of border space
+    margin-top: govuk-spacing(3);
+
+    @include mq($from: tablet) {
+      margin-top: -0.5px; //cause of border space
+    }    
   }
 
   .idsk-search-results__before-date,
