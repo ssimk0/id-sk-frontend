@@ -603,6 +603,10 @@
     background-size: 17px;
     padding-left: govuk-spacing(6);
 
+    @include mq($and: "(orientation: landscape)") {
+      width: 156px;
+    }
+
     @include mq(tablet) {
       width: 190px;
     }
