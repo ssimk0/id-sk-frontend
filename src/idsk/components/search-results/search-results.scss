@@ -26,6 +26,24 @@
     background-color: govuk-colour("white");
   }
 
+  .idsk-search-results__filter.govuk-grid-column-one-quarter {
+    @include mq(tablet) {
+      width: 33%;
+    }
+    @include mq($from: desktop) {
+      width: 25%;
+    }
+  }
+
+  .idsk-search-results__content.govuk-grid-column-three-quarters {
+    @include mq(tablet) {
+      width: 67%;
+    }
+    @include mq($from: desktop) {
+      width: 75%;
+    }
+  }
+
   .idsk-search-results__filter {
     display: none;
 
@@ -429,7 +447,7 @@
     float: right;
     padding-top: 0;
 
-    @include mq($from: desktop) {
+    @include mq($from: tablet) {
       padding-right: 0;
       padding-top: govuk-spacing(1);
     }
@@ -524,12 +542,16 @@
     .idsk-search-results__list {
       max-height: 300px;
       overflow-y: auto;
+      overflow-x: hidden;
       transition: all 0.2s ease-in;
       margin-bottom: -5px;
       padding-top: govuk-spacing(1);
-      padding-left: govuk-spacing(2);
       padding-bottom: govuk-spacing(2);
       border-bottom: 1px solid govuk-colour("mid-grey");
+      
+      @include mq($from: desktop) {
+        padding-left: govuk-spacing(2);
+      }      
     }
 
     .idsk-search-results__link-panel-button {
