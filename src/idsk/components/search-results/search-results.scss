@@ -29,7 +29,7 @@
     background-color: govuk-colour("white");
 
     @include mq(377px) {
-      max-width: 163px;
+      max-width: 200px;
     }
 
     @include mq($and: "(orientation: landscape)") {
@@ -479,6 +479,7 @@
     @include mq($from: tablet) {
       padding-right: 0;
       padding-top: govuk-spacing(1);
+      margin-bottom: -10px;
     }
   }
 
