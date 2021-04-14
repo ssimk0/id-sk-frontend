@@ -212,7 +212,7 @@
     padding-top: govuk-spacing(3);
     margin-left: govuk-spacing(3);
     width: 95%;
-    display: inline-table;
+    display: inline-block;
 
     @include mq($from: tablet) {
       width: 100%;
@@ -557,6 +557,7 @@
     .idsk-search-results__list {
       max-height: 300px;
       overflow-y: auto;
+      position: relative;
       overflow-x: hidden;
       transition: all 0.2s ease-in;
       margin-bottom: -5px;
