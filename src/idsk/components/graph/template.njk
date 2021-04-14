@@ -1,6 +1,6 @@
 {% from "../../../govuk/components/tabs/macro.njk" import govukTabs %}
 
-<div data-module="idsk-graph" class="idsk-graph{{ ' ' + params.classes if params.classes }}" id="graph1">
+<div data-module="idsk-graph" class="idsk-graph{{ ' ' + params.classes if params.classes }}" id="{{ params.uniqueId }}">
     <div class="govuk-grid-row idsk-graph__heading">
         <div class="idsk-graph__title">
             <h2 class="govuk-heading-m">{{ params.title }}</h2>

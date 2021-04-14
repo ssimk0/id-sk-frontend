@@ -3,6 +3,10 @@ params:
   type: string
   required: false
   description: Classes to add to the interactive map.
+- name: uniqueId
+  type: string
+  required: true
+  description: unique id for komponent
 - name: title
   type: string
   required: true
@@ -65,6 +69,7 @@ params:
 examples:
 - name: " - ukážka mapového komponentu 1"
   data:
+    uniqueId: map-id
     title: Počet zaočkovaných ľudí (1. aj 2. dávkou)
     mapIframeSrc: "/vzory/interactive-map-sample"
     mapIframeTitle: Príkladová mapa na demonštráciu koponentu - interaktívna mapa
@@ -78,6 +83,7 @@ examples:
 
 - name: " - ukážka mapového komponentu 2"
   data:
+    uniqueId: map-id-1
     title: Koronavírus na Slovensku
     mapIframeSrc: "/vzory/interactive-map-sample"
     mapIframeTitle: "Príkladová mapa na demonštráciu koponentu - interaktívna mapa"

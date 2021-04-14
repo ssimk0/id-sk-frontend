@@ -3,6 +3,10 @@ params:
   type: string
   required: false
   description: Classes to add to the graph component.
+- name: uniqueId
+  type: string
+  required: true
+  description: unique id for komponent
 - name: title
   type: string
   required: true
