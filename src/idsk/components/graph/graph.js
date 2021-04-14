@@ -53,8 +53,6 @@ Graph.prototype.init = function () {
         var $forcedActiveTab = $module.querySelector('.govuk-tabs').dataset.activetab
         var $activeTab = $module.querySelector('.govuk-tabs__tab[href="' + window.location.hash + '"]') || $tabs[$forcedActiveTab || 0]
         this.showTab($activeTab)
-        console.log($activeTab.parentElement)
-        //       $activeTab.parentElement.click()
     }
 
     var $radioBtn = $module.querySelector('.idsk-graph__radio')
