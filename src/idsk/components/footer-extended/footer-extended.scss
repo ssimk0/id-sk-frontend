@@ -141,6 +141,10 @@
 
     .idsk-footer-extended-main-content {
         width: 100%;
+
+        .govuk-grid-column-one-half {
+            padding: 0;
+        }
     }
 
     .idsk-footer-extended .govuk-heading-m {
@@ -172,8 +176,10 @@
     }
 
     #idsk-footer-extended-feedback {
+        margin: 0 -15px;
         @include mq($from: tablet) {
             height: 70px;
+            
         }
 
         @media screen and (min-width: 670px) {
@@ -409,7 +415,6 @@
 
     .idsk-footer-extended-feedback-container {
         overflow: hidden;
-        margin: 0px -15px;
         padding: 0;
 
         @include mq($from: tablet) {
@@ -443,9 +448,6 @@
     .idsk-footer-extended-main-content .govuk-grid-column-one-third,
     .idsk-footer-extended-main-content .govuk-grid-column-full {
         padding: 0;
-        @include mq($from: tablet) {
-            padding: 0px govuk-spacing(3) govuk-spacing(3) govuk-spacing(3);
-        }
     }
 
     .idsk-footer-extended-description-panel .govuk-grid-column-two-thirds {
