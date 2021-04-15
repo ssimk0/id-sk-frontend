@@ -167,18 +167,22 @@
                                     </h3>
                                     <div class="idsk-footer-extended-subtitle">
                                         <div class="govuk-grid-column-one-half">
-                                            {% for item in params.firstColumn.leftItems -%}
-                                                <li class="idsk-footer-extended-list-item">
-                                                    <a class="govuk-link" title="{{ item.name }}" href="{{ item.href }}">{{ item.name }}</a>
-                                                </li>
-                                            {%- endfor %}
+                                            <ul>
+                                                {% for item in params.firstColumn.leftItems -%}
+                                                    <li class="idsk-footer-extended-list-item">
+                                                        <a class="govuk-link" title="{{ item.name }}" href="{{ item.href }}">{{ item.name }}</a>
+                                                    </li>
+                                                {%- endfor %}
+                                            </ul>
                                         </div>
                                         <div class="govuk-grid-column-one-half ">
-                                            {% for item in params.firstColumn.rightItems -%}
-                                                <li class="idsk-footer-extended-list-item">
-                                                    <a class="govuk-link" title="{{ item.name }}" href="{{ item.href }}">{{ item.name }}</a>
-                                                </li>
-                                            {%- endfor %}
+                                            <ul>
+                                                {% for item in params.firstColumn.rightItems -%}
+                                                    <li class="idsk-footer-extended-list-item">
+                                                        <a class="govuk-link" title="{{ item.name }}" href="{{ item.href }}">{{ item.name }}</a>
+                                                    </li>
+                                                {%- endfor %}
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
@@ -189,11 +193,13 @@
                                         {% endif %}
                                     </h3>
                                     <div class="govuk-grid-column-three-thirds idsk-footer-extended-subtitle">
-                                        {% for item in params.secondColumn.items -%}
-                                            <li class="idsk-footer-extended-list-item">
-                                                <a class="govuk-link" title="{{ item.name }}" href="{{ item.href }}">{{ item.name }}</a>
-                                            </li>
-                                        {%- endfor %}
+                                        <ul>
+                                            {% for item in params.secondColumn.items -%}
+                                                <li class="idsk-footer-extended-list-item">
+                                                    <a class="govuk-link" title="{{ item.name }}" href="{{ item.href }}">{{ item.name }}</a>
+                                                </li>
+                                            {%- endfor %}
+                                        </ul>
                                     </div>
                                 </div>
                             {% endif %}
@@ -205,20 +211,24 @@
                                     <div class="idsk-footer-extended-subtitle">
                                         <div class="govuk-grid-column-one-half">
                                             {% if params.thirdColumn.leftItems %}
-                                                {% for item in params.thirdColumn.leftItems -%}
-                                                    <li class="idsk-footer-extended-list-item">
-                                                        <a class="govuk-link" title="{{ item.name }}" href="{{ item.href }}">{{ item.name }}</a>
-                                                    </li>
-                                                {%- endfor %}
+                                                <ul>
+                                                    {% for item in params.thirdColumn.leftItems -%}
+                                                        <li class="idsk-footer-extended-list-item">
+                                                            <a class="govuk-link" title="{{ item.name }}" href="{{ item.href }}">{{ item.name }}</a>
+                                                        </li>
+                                                    {%- endfor %}
+                                                </ul>
                                             {% endif %}
                                         </div>
                                         <div class="govuk-grid-column-one-half">
                                             {% if params.thirdColumn.rightItems %}
-                                                {% for item in params.thirdColumn.rightItems -%}
-                                                    <li class="idsk-footer-extended-list-item">
-                                                        <a class="govuk-link" title="{{ item.name }}" href="{{ item.href }}">{{ item.name }}</a>
-                                                    </li>
-                                                {%- endfor %}
+                                                <ul>
+                                                    {% for item in params.thirdColumn.rightItems -%}
+                                                        <li class="idsk-footer-extended-list-item">
+                                                            <a class="govuk-link" title="{{ item.name }}" href="{{ item.href }}">{{ item.name }}</a>
+                                                        </li>
+                                                    {%- endfor %}
+                                                </ul>
                                             {% endif %}
                                         </div>
                                     </div>
@@ -231,48 +241,50 @@
                                     </h3>
                                     <div class="govuk-grid-column-three-thirds idsk-footer-extended-subtitle">
                                         {% if params.fourthColumn.items %}
-                                            {% for item in params.fourthColumn.items -%}
-                                                <li class="idsk-footer-extended-list-item">
-                                                    <a class="govuk-link" title="{{ item.name }}" href="{{ item.href }}">{{ item.name }}</a>
-                                                </li>
-                                            {%- endfor %}
-                                        {% endif %}
-                                    </div>
-                                </div>
-                            {% endif %}
-                            <div class="govuk-grid-column-full">
-                                <div class="idsk-footer-extended-description-panel{{ ' idsk-footer-extended-description-panel-top-border' if params.firstColumn.title }}">
-                                    <div class="idsk-footer-extended-meta-item">
-                                        <ul class="idsk-footer-extended-inline-list ">
-                                            {% for subtitle in params.subtitles %}
-                                                <li class="idsk-footer-extended-inline-list-item">
-                                                    <a class="govuk-link" title="{{ subtitle.item }}" href="{{ subtitle.href }}">
-                                                        {{ subtitle.item }}
-                                                    </a>
-                                                </li>
-                                            {% endfor %}
                                         </ul>
-                                    </div>
-                                    <div class="govuk-grid-column-two-thirds idsk-footer-extended-info-links">
-                                        <p class="idsk-footer-extended-frame">Vytvorené v súlade s
-                                            <a class="govuk-link" title="Jednotným dizajn manuálom elektronických služieb." href="{{ params.designaddress if params.designaddress else '#' }}">
-                                                Jednotným dizajn manuálom elektronických služieb.
+                                        {% for item in params.fourthColumn.items -%}
+                                            <li class="idsk-footer-extended-list-item">
+                                                <a class="govuk-link" title="{{ item.name }}" href="{{ item.href }}">{{ item.name }}</a>
+                                            </li>
+                                        {%- endfor %}
+                                    </ul>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+                    <div class="govuk-grid-column-full">
+                        <div class="idsk-footer-extended-description-panel{{ ' idsk-footer-extended-description-panel-top-border' if params.firstColumn.title }}">
+                            <div class="idsk-footer-extended-meta-item">
+                                <ul class="idsk-footer-extended-inline-list ">
+                                    {% for subtitle in params.subtitles %}
+                                        <li class="idsk-footer-extended-inline-list-item">
+                                            <a class="govuk-link" title="{{ subtitle.item }}" href="{{ subtitle.href }}">
+                                                {{ subtitle.item }}
                                             </a>
-                                        </p>
-                                        <p class="idsk-footer-extended-frame">
-                                            Prevádzkovateľom služby je Ministerstvo investícií, regionálneho rozvoja a informatizácie SR.
-                                        </p>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="govuk-grid-column-two-thirds idsk-footer-extended-info-links">
+                                <p class="idsk-footer-extended-frame">Vytvorené v súlade s
+                                    <a class="govuk-link" title="Jednotným dizajn manuálom elektronických služieb." href="{{ params.designaddress if params.designaddress else '#' }}">
+                                        Jednotným dizajn manuálom elektronických služieb.
+                                    </a>
+                                </p>
+                                <p class="idsk-footer-extended-frame">
+                                    Prevádzkovateľom služby je Ministerstvo investícií, regionálneho rozvoja a informatizácie SR.
+                                </p>
+                            </div>
+                            <div class="govuk-grid-column-one-third idsk-footer-extended-logo-box">
+                                <a href="/" title="domov">
+                                    <div class="idsk-footer-extended-logo">
+                                        {% include params.assetsPath | default('../../assets/images/') + (params.logo if params.logo else "footer-extended-logo.svg") %}
                                     </div>
-                                    <div class="govuk-grid-column-one-third idsk-footer-extended-logo-box">
-                                        <a href="/" title="domov">
-                                            <div class="idsk-footer-extended-logo">
-                                                {% include params.assetsPath | default('../../assets/images/') + (params.logo if params.logo else "footer-extended-logo.svg") %}
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
+                                </a>
                             </div>
                         </div>
                     </div>
-                </footer>
+                </div>
             </div>
+        </footer>
+    </div>
