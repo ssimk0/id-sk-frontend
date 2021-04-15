@@ -232,7 +232,7 @@
                 $currentData = $currentData.map(function ($d) {
                     var $dashFormatDate = $d["Datum"].split(".").reverse().join("-")
                     var $date = new Date($dashFormatDate)
-                    $d["Datum"] = $date.toISOString().slice(0, 10)
+                    $d["Datum"] = $date.getFullYear() + '-' + ('0' + ($date.getMonth()+1)).slice(-2) + '-' + ('0' + $date.getDate()).slice(-2)
                     return $d
                 });
                 RenderCustomTable();
