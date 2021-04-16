@@ -105,7 +105,7 @@
         align-self: flex-end;
         flex-grow: 0;
         padding-top: 8px;
-        width: 265px;
+        width: 257px;
         height: 80px;
         @include mq(tablet) {
             height: 80%;
@@ -152,7 +152,7 @@
 
         .govuk-grid-column-one-third {
             padding-left: 0;
-            
+
             @include mq($from: tablet) {
                 padding-left: govuk-spacing(4);
             }
