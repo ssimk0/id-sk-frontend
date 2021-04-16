@@ -167,6 +167,9 @@ SearchResults.prototype.handleClickShowResultsButton = function (e) {
     var $showResultsButton = $module.querySelector('.idsk-search-results__show-results__button')
     var $contentContainer = $module.querySelector('.idsk-search-results__content')
     var $title = $module.querySelector('.idsk-search-results__title')
+    var $header = document.getElementsByTagName('header');
+    var $footer = document.getElementsByTagName('footer');
+    var $breadcrumbs = document.getElementsByClassName('govuk-breadcrumbs');
 
     $title.classList.remove('idsk-search-results--invisible__mobile')
     $contentContainer.classList.remove('idsk-search-results--invisible__mobile')
@@ -181,6 +184,11 @@ SearchResults.prototype.handleClickShowResultsButton = function (e) {
     $orderByDropdown.classList.remove('idsk-search-results--invisible__mobile')
     $resultsPerPage.classList.remove('idsk-search-results--invisible__mobile')
     $orderByDropdownMobile.classList.remove('idsk-search-results--invisible')
+    if ($header[0] && $footer[0] && $breadcrumbs[0]) {
+        $header[0].classList.remove('idsk-search-results--invisible__mobile')
+        $footer[0].classList.remove('idsk-search-results--invisible__mobile')
+        $breadcrumbs[0].classList.remove('idsk-search-results--invisible__mobile')
+    }
 }
 
 /**
@@ -266,6 +274,9 @@ SearchResults.prototype.handleClickFiltersButton = function (e) {
     var $pickedFiltersPanel = $module.querySelector('.idsk-search-results__content__picked-filters')
     var $showResultsButton = $module.querySelector('.idsk-search-results__show-results__button')
     var $title = $module.querySelector('.idsk-search-results__title')
+    var $header = document.getElementsByTagName('header');
+    var $footer = document.getElementsByTagName('footer');
+    var $breadcrumbs = document.getElementsByClassName('govuk-breadcrumbs');
 
     if (this.handleSomeFilterPicked.call(this)) {
         $showResultsButton.classList.remove('idsk-search-results--invisible')
@@ -281,6 +292,12 @@ SearchResults.prototype.handleClickFiltersButton = function (e) {
     $searchBar.classList.add('idsk-search-results--invisible__mobile')
     $orderByDropdown.classList.add('idsk-search-results--invisible__mobile')
     $resultsPerPage.classList.add('idsk-search-results--invisible__mobile')
+
+    if ($header[0] && $footer[0] && $breadcrumbs[0]) {
+        $header[0].classList.add('idsk-search-results--invisible__mobile')
+        $footer[0].classList.add('idsk-search-results--invisible__mobile')
+        $breadcrumbs[0].classList.add('idsk-search-results--invisible__mobile')
+    }
     $orderByDropdownMobile.classList.add('idsk-search-results--invisible')
 }
 
@@ -318,7 +335,7 @@ SearchResults.prototype.handleSearchItemsFromInput = function ($type, e) {
     }.bind(this))
     $items.forEach(function ($item) {
         var $labelItem = $item.querySelector('.govuk-' + $type + '__label')
-        
+
         if (!$labelItem.innerText.toLowerCase().includes($el.value.toLowerCase())) {
             $item.classList.add('idsk-search-results--invisible')
         }
