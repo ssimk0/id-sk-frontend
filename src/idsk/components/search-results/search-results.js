@@ -429,20 +429,20 @@ SearchResults.prototype.showResultCardsPerPage = function ($startIndex, $endInde
 
     if ($endIndex >= $module.resultCards.length) {
         $endIndex = $module.resultCards.length
-        $forwardButton.classList.add('idsk-search-results--invisible')
-        $backButton.classList.remove('idsk-search-results--invisible')
-        $forwardButtonMobile.classList.add('idsk-search-results--invisible')
-        $backButtonMobile.classList.remove('idsk-search-results--invisible')
+        $forwardButton.classList.add('idsk-search-results--hidden')
+        $backButton.classList.remove('idsk-search-results--hidden')
+        $forwardButtonMobile.classList.add('idsk-search-results--hidden')
+        $backButtonMobile.classList.remove('idsk-search-results--hidden')
     } else {
-        $forwardButton.classList.remove('idsk-search-results--invisible')
-        $forwardButtonMobile.classList.remove('idsk-search-results--invisible')
+        $forwardButton.classList.remove('idsk-search-results--hidden')
+        $forwardButtonMobile.classList.remove('idsk-search-results--hidden')
     }
 
     if ($startIndex < 0) {
         $startIndex = 0
     } else if ($startIndex > 0) {
-        $backButton.classList.remove('idsk-search-results--invisible')
-        $backButtonMobile.classList.remove('idsk-search-results--invisible')
+        $backButton.classList.remove('idsk-search-results--hidden')
+        $backButtonMobile.classList.remove('idsk-search-results--hidden')
     } else if ($startIndex == 0) {
         $module.currentPageNumber = 1
     }
@@ -452,9 +452,9 @@ SearchResults.prototype.showResultCardsPerPage = function ($startIndex, $endInde
     }
 
     // hide back button if 1st page is showed
-    if ($startIndex == 0 && !$backButton.classList.contains('idsk-search-results--invisible')) {
-        $backButton.classList.add('idsk-search-results--invisible')
-        $backButtonMobile.classList.add('idsk-search-results--invisible')
+    if ($startIndex == 0 && !$backButton.classList.contains('idsk-search-results--hidden')) {
+        $backButton.classList.add('idsk-search-results--hidden')
+        $backButtonMobile.classList.add('idsk-search-results--hidden')
     }
 
     var $numberOfPages = (($module.resultCards.length / $module.countOfCardsPerPage) | 0) + 1
@@ -587,6 +587,7 @@ SearchResults.prototype.createTopicInContainer = function ($choosenFiltersContai
 
     var $topicPicked = document.createElement('span')
     $topicPicked.setAttribute('class', $class)
+    $topicPicked.setAttribute('tabindex', "0")
     $topicPicked.setAttribute('data-source', $input)
     $topicPicked.innerHTML = $el.value + ' &#10005;';
     if ($insertBeforeFirst) {
