@@ -570,7 +570,7 @@
     display: none;
   }
 
-  .idsk-search-results--invisible__mobile {
+  .idsk-search-results--invisible__mobile, .idsk-header-extended.idsk-search-results--invisible__mobile {
     display: none;
 
     @include mq($from: tablet) {
