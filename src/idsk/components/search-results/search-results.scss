@@ -468,6 +468,14 @@
     }
   }
 
+  .idsk-search-results__after-date {
+    padding-right: govuk-spacing(1);
+
+    @include mq($from: tablet) {
+      padding-right: 0;
+    }
+  }
+
   .idsk-search-results__content__picked-filters__date span:first-child {
     display: block;
 
@@ -633,6 +641,10 @@
     @include mq($from: desktop) {
       display: unset;
     }
+  }
+
+  #datum-od {
+    margin-bottom: govuk-spacing(2);
   }
 
   .idsk-search-results--expand {
