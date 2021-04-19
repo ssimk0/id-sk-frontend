@@ -53,6 +53,8 @@
     
     <script>
 
+        var $map = {}
+        var $geoJSON = {}
         var $currentData = "";
         var $regionsMapping = {
             "SK042": 1,
@@ -104,12 +106,12 @@
                 $groupedData[d["region_id"]]["dose2_count"] += d["dose2_count"] 
             })
 
-            var $map = L.map("map");
+            $map = L.map("map");
             L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
                 attribution: "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
             }).addTo($map);
 
-            var $geoJSON = L.geoJson($krajeGeoJSON, {
+            $geoJSON = L.geoJson($krajeGeoJSON, {
                 onEachFeature: function (feature, layer) {
                     var $description = "<span class='interactive-map__region'>" + feature.properties.TXT + "</span><br>";
                     if (["dose1", "dose2"].includes($indicator)){
@@ -153,6 +155,10 @@
                 renderMap();
             });
         }
+
+        window.onresize = function() {
+            $map.fitBounds($geoJSON.getBounds())
+        };
     </script>
 
 </body>

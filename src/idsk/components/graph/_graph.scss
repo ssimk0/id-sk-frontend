@@ -59,11 +59,9 @@
                 @include govuk-font($size: 19);
 
                 display: inline-block;
-                text-decoration: none;
                 width: 130px;
 
                 @include mq($from: tablet) {
-                    text-decoration: underline;
                     width: 155px;
                 }
 
@@ -97,10 +95,10 @@
                 @include govuk-font($size: 19);
 
                 margin-left: 0;
-                margin-bottom: govuk-spacing(3);
 
                 @include mq($from: desktop) {
                     margin-left: auto;
+                    line-height: 45px;
                 }
             }
 
