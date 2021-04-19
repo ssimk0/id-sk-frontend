@@ -65,6 +65,10 @@
     }
   }
 
+  .idsk-search-results__filter.idsk-search-results-filter__filter-panel {
+    display: block;
+  }
+
   .idsk-search-results__filter .govuk-form-group {
     margin-bottom: 0;
     padding-right: govuk-spacing(1);
@@ -790,6 +794,10 @@
     .idsk-search-results__link-panel__title {
       @include govuk-focused-text;
     }
+  }
+
+  .idsk-search-results__link-panel:focus {
+    outline: none;
   }
 
   .idsk-search-results__list {

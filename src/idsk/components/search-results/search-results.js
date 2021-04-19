@@ -175,14 +175,16 @@ SearchResults.prototype.handleClickShowResultsButton = function (e) {
     $title.classList.remove('idsk-search-results--invisible__mobile')
     $contentContainer.classList.remove('idsk-search-results--invisible__mobile')
     $showResultsButton.classList.add('idsk-search-results--invisible')
-    $pickedFiltersPanel.classList.add('idsk-search-results--invisible')
+    $pickedFiltersPanel.classList.add('idsk-search-results--invisible__mobile')
     $filterBar.classList.remove('idsk-search-results--visible')
     $filterHeaderPanel.classList.remove('idsk-search-results--visible__mobile--inline')
     $searchResultsAll.classList.remove('idsk-search-results--invisible__mobile')
     $pagingMobile.classList.remove('idsk-search-results--invisible')
     $pagingDesktop.classList.remove('idsk-search-results--invisible__mobile')
     $searchBar.classList.remove('idsk-search-results--invisible__mobile')
-    $searchBarTitle.classList.remove('idsk-search-results--invisible__mobile')
+    if ($searchBarTitle) {
+        $searchBarTitle.classList.remove('idsk-search-results--invisible__mobile')
+    }
     $orderByDropdown.classList.remove('idsk-search-results--invisible__mobile')
     $resultsPerPage.classList.remove('idsk-search-results--invisible__mobile')
     $orderByDropdownMobile.classList.remove('idsk-search-results--invisible')
@@ -283,7 +285,7 @@ SearchResults.prototype.handleClickFiltersButton = function (e) {
 
     if (this.handleSomeFilterPicked.call(this)) {
         $showResultsButton.classList.remove('idsk-search-results--invisible')
-        $pickedFiltersPanel.classList.remove('idsk-search-results--invisible')
+        $pickedFiltersPanel.classList.remove('idsk-search-results--invisible__mobile')
     }
 
     $title.classList.add('idsk-search-results--invisible__mobile')
@@ -293,7 +295,9 @@ SearchResults.prototype.handleClickFiltersButton = function (e) {
     $pagingMobile.classList.add('idsk-search-results--invisible')
     $pagingDesktop.classList.add('idsk-search-results--invisible__mobile')
     $searchBar.classList.add('idsk-search-results--invisible__mobile')
-    $searchBarTitle.classList.add('idsk-search-results--invisible__mobile')
+    if ($searchBarTitle) {
+        $searchBarTitle.classList.add('idsk-search-results--invisible__mobile')
+    }
     $orderByDropdown.classList.add('idsk-search-results--invisible__mobile')
     $resultsPerPage.classList.add('idsk-search-results--invisible__mobile')
 
@@ -618,6 +622,7 @@ SearchResults.prototype.createTopicInContainer = function ($choosenFiltersContai
     }
 
     $pickedFiltersContainer.classList.remove('idsk-search-results--invisible')
+    $pickedFiltersContainer.classList.remove('idsk-search-results--invisible__mobile')
     $showResultsMobileButton.classList.remove('idsk-search-results--invisible')
     $turnFiltersOffMobileButton.classList.remove('idsk-search-results--invisible')
     this.handleCountForFiltersButton.call(this)
