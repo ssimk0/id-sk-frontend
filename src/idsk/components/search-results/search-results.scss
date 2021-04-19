@@ -341,9 +341,11 @@
 
   .idsk-search-results__content__picked-filters.govuk-grid-column-full {
     width: 96%;
+    padding-bottom: govuk-spacing(8);
 
     @include mq($from: tablet) {
       width: 100%;
+      padding-bottom: 0;
     }
   }
 
@@ -457,7 +459,7 @@
     }
   }
 
-  .idsk-search-results__content__picked-filters__date span:first-child {
+  .idsk-search-results__content__picked-filters__date button:first-child {
     display: block;
 
     @include mq($from: tablet) {
@@ -483,8 +485,13 @@
 
   .idsk-search-results__content__picked-filters__topics span,
   .idsk-search-results__content__picked-filters__content-type span,
-  .idsk-search-results__content__picked-filters__date span {
+  .idsk-search-results__content__picked-filters__date span,
+  .idsk-search-results__content__picked-filters__topics button,
+  .idsk-search-results__content__picked-filters__content-type button,
+  .idsk-search-results__content__picked-filters__date button {
     @include govuk-font($size: 19);
+
+    background: none;
   }
 
   .idsk-search-results--hidden {
@@ -570,7 +577,8 @@
     display: none;
   }
 
-  .idsk-search-results--invisible__mobile, .idsk-header-extended.idsk-search-results--invisible__mobile {
+  .idsk-search-results--invisible__mobile,
+  .idsk-header-extended.idsk-search-results--invisible__mobile {
     display: none;
 
     @include mq($from: tablet) {
@@ -696,7 +704,7 @@
     position: relative;
     width: 100%;
     height: 60px;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     -webkit-tap-highlight-color: transparent;
 
     &-button {
@@ -770,7 +778,7 @@
     }
   }
 
-  .idsk-search-results__link-panel:focus {
+  .idsk-search-results__link-panel-button:focus {
     outline: none;
 
     .idsk-search-results__link-panel__title {

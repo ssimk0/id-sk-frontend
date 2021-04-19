@@ -46,8 +46,8 @@
       }) }}
     </div>
     {% for item in params.filters %}
-      <div class="idsk-search-results__link-panel {{ item.filterClass if item.filterClass }}" tabindex = "0">
-        <button class="idsk-search-results__link-panel-button {{ 'idsk-search-results__subtopic' if item.isSubtopic }}" tabindex = "-1">
+      <div class="idsk-search-results__link-panel {{ item.filterClass if item.filterClass }}" tabindex = "-1">
+        <button class="idsk-search-results__link-panel-button {{ 'idsk-search-results__subtopic' if item.isSubtopic }}" tabindex = "0">
           <span class="idsk-search-results__link-panel__title">
             {{ item.name }}
           </span>

@@ -602,7 +602,7 @@ SearchResults.prototype.createTopicInContainer = function ($choosenFiltersContai
     var $turnFiltersOffMobileButton = this.$module.querySelector('.idsk-search-results__button--turn-filters-off')
     var $pickedFiltersContainer = this.$module.querySelector('.idsk-search-results__content__picked-filters')
 
-    var $topicPicked = document.createElement('span')
+    var $topicPicked = document.createElement('button')
     $topicPicked.setAttribute('class', $class)
     $topicPicked.setAttribute('tabindex', "0")
     $topicPicked.setAttribute('data-source', $input)
