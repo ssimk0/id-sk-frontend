@@ -428,6 +428,18 @@
 
     .idsk-intro-block__input {
       height: 40px;
+
+      @include mq($and: "(orientation: landscape)") {
+        @include govuk-font($size: 16);
+      }
+
+      @include mq($from: tablet) {
+        @include govuk-font($size: 19);
+      }
+    }
+    
+    .idsk-intro-block__input::placeholder {
+      color: govuk-colour("black");
     }
   }
 
