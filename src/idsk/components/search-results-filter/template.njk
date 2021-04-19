@@ -1,8 +1,8 @@
 
 <div data-module="idsk-search-results-filter" class="govuk-grid-column-one-third {{ params.classes if params.classes }}">
-    <div class="idsk-search-results__filter">
+    <div class="idsk-search-results__filter idsk-search-results-filter__filter-panel">
     {% for item in params.filters %}
-    <div class="idsk-search-results__link-panel idsk-search-results--expand {{ item.filterClass if item.filterClass }}">
+    <div class="idsk-search-results__link-panel idsk-search-results--expand {{ item.filterClass if item.filterClass }}" >
         <button class="idsk-search-results__link-panel-button {{ 'idsk-search-results__subtopic' if item.isSubtopic }}">
           <span class="idsk-search-results__link-panel__title">
             {{ item.name }}
