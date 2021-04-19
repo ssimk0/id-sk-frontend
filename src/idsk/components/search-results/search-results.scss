@@ -804,8 +804,8 @@
   }
 
   .idsk-option-select-filter .govuk-checkboxes__label::before {
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
     top: 2px;
 
     @include mq($from: tablet) {
@@ -815,8 +815,8 @@
   }
 
   .idsk-option-select-filter .govuk-checkboxes__label::after {
-    top: 12px;
-    left: 8px;
+    top: 15px;
+    left: 12px;
     width: 21px;
     box-sizing: border-box;
     height: 11px;
@@ -833,7 +833,11 @@
   }
 
   .idsk-option-select-filter .govuk-checkboxes__label {
-    padding: govuk-spacing(2) govuk-spacing(2) govuk-spacing(1);
+    padding: govuk-spacing(3) govuk-spacing(3) govuk-spacing(1);
+
+    @include mq($from: tablet) {
+      padding: govuk-spacing(2) govuk-spacing(2) govuk-spacing(1);
+    }
   }
 
   .idsk-option-select-filter .govuk-checkboxes--small .govuk-checkboxes__item {
