@@ -30,7 +30,7 @@
     width: -moz-available;
 
     @include mq(377px) {
-      max-width: 200px;
+      max-width: 190px;
     }
 
     @include mq($and: "(orientation: landscape)") {
