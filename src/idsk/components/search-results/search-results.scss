@@ -401,9 +401,14 @@
     padding-top: govuk-spacing(3);
   }
 
+  .idsk-intro-block__search span {
+    display: block;
+  }
+
   .idsk-search-results__filter .idsk-intro-block__search {
     height: 40px;
     padding-bottom: govuk-spacing(2);
+    padding-top: govuk-spacing(1);
     display: none;
 
     @include mq($from: tablet) {

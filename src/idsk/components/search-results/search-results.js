@@ -156,6 +156,7 @@ SearchResults.prototype.handleClickShowResultsButton = function (e) {
     var $module = this.$module
     var $filterBar = $module.querySelector('.idsk-search-results__filter')
     var $searchBar = $module.querySelector('.idsk-search-results .idsk-intro-block__search')
+    var $searchBarTitle = $module.querySelector('.idsk-search-results .idsk-intro-block__search__span')
     var $orderByDropdown = $module.querySelector('.idsk-search-results--order__dropdown')
     var $resultsPerPage = $module.querySelector('.idsk-search-results__filter-panel--mobile')
     var $orderByDropdownMobile = $module.querySelector('.idsk-search-results--order')
@@ -181,6 +182,7 @@ SearchResults.prototype.handleClickShowResultsButton = function (e) {
     $pagingMobile.classList.remove('idsk-search-results--invisible')
     $pagingDesktop.classList.remove('idsk-search-results--invisible__mobile')
     $searchBar.classList.remove('idsk-search-results--invisible__mobile')
+    $searchBarTitle.classList.remove('idsk-search-results--invisible__mobile')
     $orderByDropdown.classList.remove('idsk-search-results--invisible__mobile')
     $resultsPerPage.classList.remove('idsk-search-results--invisible__mobile')
     $orderByDropdownMobile.classList.remove('idsk-search-results--invisible')
@@ -264,6 +266,7 @@ SearchResults.prototype.handleClickFiltersButton = function (e) {
     var $module = this.$module
     var $filterBar = $module.querySelector('.idsk-search-results__filter')
     var $searchBar = $module.querySelector('.idsk-search-results .idsk-intro-block__search')
+    var $searchBarTitle = $module.querySelector('.idsk-search-results .idsk-intro-block__search__span')
     var $orderByDropdown = $module.querySelector('.idsk-search-results--order__dropdown')
     var $resultsPerPage = $module.querySelector('.idsk-search-results__filter-panel--mobile')
     var $orderByDropdownMobile = $module.querySelector('.idsk-search-results--order')
@@ -290,6 +293,7 @@ SearchResults.prototype.handleClickFiltersButton = function (e) {
     $pagingMobile.classList.add('idsk-search-results--invisible')
     $pagingDesktop.classList.add('idsk-search-results--invisible__mobile')
     $searchBar.classList.add('idsk-search-results--invisible__mobile')
+    $searchBarTitle.classList.add('idsk-search-results--invisible__mobile')
     $orderByDropdown.classList.add('idsk-search-results--invisible__mobile')
     $resultsPerPage.classList.add('idsk-search-results--invisible__mobile')
 

@@ -2,6 +2,15 @@
 {% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
 {% from "../../../src/idsk/components/search-results-filter/macro.njk" import idskSearchResultsFilter %}
 {% set pageName = "Filtre pre filtrovanie výsledkov vyhľadavania / kontaktov" %}
+{% block styles %}
+  <style>
+    @media(min-width: 48.0525em) {
+    .idsk-search-filter .govuk-grid-column-one-half img {
+        width: 75%;
+      }
+    }
+  </style>
+{% endblock %}
 {% block beforeContent %}
     {{ govukBreadcrumbs({
      "items": [
@@ -11,7 +20,7 @@
  }) }}
 {% endblock %}
 {% block content %}
-    <div class="govuk-width-container">
+    <div class="govuk-width-container idsk-search-filter">
         <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">{{pageName}}</h1>
         <p class="govuk-body">
             Filtrovací komponent bol navrhnutý špecificky pre použitie na podstránke s výsledkami všeobecného vyhľadávania alebo pre vyhľadávanie konkrétneho obsahu (napr. kontaktov, služieb a pod.).
@@ -265,8 +274,12 @@
         <p class="govuk-body">
             Najmä pri výsledkoch vyhľadávania by používateľ mal dostať možnosť filtrovať zobrazené výsledky aj podľa dátumu. Vypublikovaný obsah so sebou vždy nesie dátum vypublikovania resp. poslednej aktualizácie. Používateľ zadaním časového intervalu vie zobraziť len výsledky po, pred alebo medzi konkrétnym časom. V nápovede dajte používateľovi jasne vedieť, aký formát dátumu má použiť pre korektné filtrovanie.
         </p>
-        <img src="/public/assets/images/examples/searchResultsMobile1.png" class="idsk-search-results__image" alt="search-results-mobile-img" width="35%" height="550">    
-        <img src="/public/assets/images/examples/searchResultsMobile2.png" class="idsk-search-results__image" alt="search-results-mobile-img" width="35%" height="550">    
+        <div class="govuk-grid-column-one-half">
+            <img src="/public/assets/images/examples/searchResultsMobile1.png" class="idsk-search-results__image" alt="search-results-mobile-img" width="100%" height="550">    
+        </div>
+        <div class="govuk-grid-column-one-half">
+            <img src="/public/assets/images/examples/searchResultsMobile2.png" class="idsk-search-results__image" alt="search-results-mobile-img" width="100%" height="550">    
+        </div>
         <p class="govuk-body govuk-!-margin-top-5">
             Mobilné zobrazenie filtrov má rovnakú formu, ako mobilné zobrazenie menu. Počet zobrazených výsledkov je súčasťou konverzného tlačidla, ktoré používateľa vráti na podstránku s výsledkami vyhľadávania. Vrátiť sa môže používateľ aj prostredníctvom hyperlinkového odkazu “Späť na výsledky” vpravo hore. Používatelia majú taktiež možnosť vypnúť všetky aktivované filtre naraz prostredníctvom textového tlačidla “Vypnúť všetky filtre”.
         </p>
