@@ -459,7 +459,7 @@
     }
   }
 
-  .idsk-search-results__content__picked-filters__date button:first-child {
+  .idsk-search-results__content__picked-filters__date span:first-child {
     display: block;
 
     @include mq($from: tablet) {
@@ -645,6 +645,7 @@
       #datum-od.govuk-input,
       #datum-do.govuk-input {
         width: 90%;
+        display: block;
 
         @include mq($from: tablet) {
           width: 98%;
@@ -833,10 +834,12 @@
   }
 
   .idsk-option-select-filter .govuk-checkboxes__label {
-    padding: govuk-spacing(3) govuk-spacing(3) govuk-spacing(1);
+    padding: govuk-spacing(3) govuk-spacing(4) govuk-spacing(1);
+    margin-bottom: govuk-spacing(3);
 
     @include mq($from: tablet) {
-      padding: govuk-spacing(2) govuk-spacing(2) govuk-spacing(1);
+      padding: govuk-spacing(1) govuk-spacing(2) govuk-spacing(1);
+      margin-bottom: 0;
     }
   }
 
