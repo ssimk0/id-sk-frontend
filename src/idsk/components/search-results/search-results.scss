@@ -454,7 +454,7 @@
   .idsk-search-results__content__picked-filters__content-type,
   .idsk-search-results__content__picked-filters__date {
     min-height: 40px;
-    margin-top: govuk-spacing(2);
+    margin-top: govuk-spacing(4);
 
     @include mq($from: tablet) {
       margin-top: -0.5px; //cause of border space
