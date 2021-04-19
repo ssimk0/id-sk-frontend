@@ -25,6 +25,7 @@
         <script src="/vendor/html5-shiv/html5shiv.js"></script>
     <![endif]-->
 
+    <script src="/public/assets/js/plotly-locale-sk.min.js"></script>
     <script src="/public/assets/js/plotly-latest.min.js"></script>
     {# var $krajeGeoJSON #}
     <script src="/public/assets/data/krajeGeoJSON.js"></script>
@@ -97,29 +98,42 @@
                 })
                 var $layout = {
                     height: 276,
+                    hovermode: "x unified",
+                    barmode: 'stack',
                     xaxis: {
                         type: "date",
                         ticks: "outside",
+                    },
+                    yaxis: {
+                        gridcolor: "#DEE0E2",
                     },
                     paper_bgcolor: "rgba(0,0,0,0)",
                     plot_bgcolor: "rgba(0,0,0,0)",
                     showlegend: true,
 	                legend: {
-                        "orientation": "h"
+                        "orientation": "h",
+                        y: -0.2,
                     },
                     margin: {
                         l: 35,
                         r: 20,
-                        b: 0,
+                        b: 50,
                         t: 0,
                         pad: 0
-                    }
+                    },
+                    modebar: {
+                        bgcolor: "transparent",
+                        color: "rgba(0,0,0,1)",
+                        activecolor: "#003078",
+                    },
                 }
                 var $config = {
+                    locale: "sk",
+                    displaylogo: false,
                     responsive: true,
                     modeBarButtonsToRemove: ["autoScale2d", "lasso2d", "pan2d", "select2d", "toggleSpikelines", "hoverCompareCartesian", "zoom2d", "hoverClosestCartesian"],
                 }
-                Plotly.plot($gd, $data, $layout, $config)
+                Plotly.newPlot($gd, $data, $layout, $config)
             })
         }
 
