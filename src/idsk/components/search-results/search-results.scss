@@ -454,7 +454,7 @@
   .idsk-search-results__content__picked-filters__content-type,
   .idsk-search-results__content__picked-filters__date {
     min-height: 40px;
-    margin-top: govuk-spacing(4);
+    margin-top: govuk-spacing(6);
 
     @include mq($from: tablet) {
       margin-top: -0.5px; //cause of border space
@@ -700,7 +700,7 @@
   }
 
   .idsk-search-results__list .idsk-search-results__search__input {
-    width: 240px;
+    width: 97%;
     background-image: govuk-image-url("loupe.svg");
     background-repeat: no-repeat;
     background-position: 7px 10px;
