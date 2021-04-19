@@ -167,6 +167,9 @@ SearchResults.prototype.handleClickShowResultsButton = function (e) {
     var $showResultsButton = $module.querySelector('.idsk-search-results__show-results__button')
     var $contentContainer = $module.querySelector('.idsk-search-results__content')
     var $title = $module.querySelector('.idsk-search-results__title')
+    var $header = document.getElementsByTagName('header');
+    var $footer = document.getElementsByTagName('footer');
+    var $breadcrumbs = document.getElementsByClassName('govuk-breadcrumbs');
 
     $title.classList.remove('idsk-search-results--invisible__mobile')
     $contentContainer.classList.remove('idsk-search-results--invisible__mobile')
@@ -181,6 +184,11 @@ SearchResults.prototype.handleClickShowResultsButton = function (e) {
     $orderByDropdown.classList.remove('idsk-search-results--invisible__mobile')
     $resultsPerPage.classList.remove('idsk-search-results--invisible__mobile')
     $orderByDropdownMobile.classList.remove('idsk-search-results--invisible')
+    if ($header[0] && $footer[0] && $breadcrumbs[0]) {
+        $header[0].classList.remove('idsk-search-results--invisible__mobile')
+        $footer[0].classList.remove('idsk-search-results--invisible__mobile')
+        $breadcrumbs[0].classList.remove('idsk-search-results--invisible__mobile')
+    }
 }
 
 /**
@@ -266,6 +274,9 @@ SearchResults.prototype.handleClickFiltersButton = function (e) {
     var $pickedFiltersPanel = $module.querySelector('.idsk-search-results__content__picked-filters')
     var $showResultsButton = $module.querySelector('.idsk-search-results__show-results__button')
     var $title = $module.querySelector('.idsk-search-results__title')
+    var $header = document.getElementsByTagName('header');
+    var $footer = document.getElementsByTagName('footer');
+    var $breadcrumbs = document.getElementsByClassName('govuk-breadcrumbs');
 
     if (this.handleSomeFilterPicked.call(this)) {
         $showResultsButton.classList.remove('idsk-search-results--invisible')
@@ -281,6 +292,12 @@ SearchResults.prototype.handleClickFiltersButton = function (e) {
     $searchBar.classList.add('idsk-search-results--invisible__mobile')
     $orderByDropdown.classList.add('idsk-search-results--invisible__mobile')
     $resultsPerPage.classList.add('idsk-search-results--invisible__mobile')
+
+    if ($header[0] && $footer[0] && $breadcrumbs[0]) {
+        $header[0].classList.add('idsk-search-results--invisible__mobile')
+        $footer[0].classList.add('idsk-search-results--invisible__mobile')
+        $breadcrumbs[0].classList.add('idsk-search-results--invisible__mobile')
+    }
     $orderByDropdownMobile.classList.add('idsk-search-results--invisible')
 }
 
@@ -318,7 +335,7 @@ SearchResults.prototype.handleSearchItemsFromInput = function ($type, e) {
     }.bind(this))
     $items.forEach(function ($item) {
         var $labelItem = $item.querySelector('.govuk-' + $type + '__label')
-        
+
         if (!$labelItem.innerText.toLowerCase().includes($el.value.toLowerCase())) {
             $item.classList.add('idsk-search-results--invisible')
         }
@@ -429,20 +446,20 @@ SearchResults.prototype.showResultCardsPerPage = function ($startIndex, $endInde
 
     if ($endIndex >= $module.resultCards.length) {
         $endIndex = $module.resultCards.length
-        $forwardButton.classList.add('idsk-search-results--invisible')
-        $backButton.classList.remove('idsk-search-results--invisible')
-        $forwardButtonMobile.classList.add('idsk-search-results--invisible')
-        $backButtonMobile.classList.remove('idsk-search-results--invisible')
+        $forwardButton.classList.add('idsk-search-results--hidden')
+        $backButton.classList.remove('idsk-search-results--hidden')
+        $forwardButtonMobile.classList.add('idsk-search-results--hidden')
+        $backButtonMobile.classList.remove('idsk-search-results--hidden')
     } else {
-        $forwardButton.classList.remove('idsk-search-results--invisible')
-        $forwardButtonMobile.classList.remove('idsk-search-results--invisible')
+        $forwardButton.classList.remove('idsk-search-results--hidden')
+        $forwardButtonMobile.classList.remove('idsk-search-results--hidden')
     }
 
     if ($startIndex < 0) {
         $startIndex = 0
     } else if ($startIndex > 0) {
-        $backButton.classList.remove('idsk-search-results--invisible')
-        $backButtonMobile.classList.remove('idsk-search-results--invisible')
+        $backButton.classList.remove('idsk-search-results--hidden')
+        $backButtonMobile.classList.remove('idsk-search-results--hidden')
     } else if ($startIndex == 0) {
         $module.currentPageNumber = 1
     }
@@ -452,9 +469,9 @@ SearchResults.prototype.showResultCardsPerPage = function ($startIndex, $endInde
     }
 
     // hide back button if 1st page is showed
-    if ($startIndex == 0 && !$backButton.classList.contains('idsk-search-results--invisible')) {
-        $backButton.classList.add('idsk-search-results--invisible')
-        $backButtonMobile.classList.add('idsk-search-results--invisible')
+    if ($startIndex == 0 && !$backButton.classList.contains('idsk-search-results--hidden')) {
+        $backButton.classList.add('idsk-search-results--hidden')
+        $backButtonMobile.classList.add('idsk-search-results--hidden')
     }
 
     var $numberOfPages = (($module.resultCards.length / $module.countOfCardsPerPage) | 0) + 1
@@ -585,8 +602,9 @@ SearchResults.prototype.createTopicInContainer = function ($choosenFiltersContai
     var $turnFiltersOffMobileButton = this.$module.querySelector('.idsk-search-results__button--turn-filters-off')
     var $pickedFiltersContainer = this.$module.querySelector('.idsk-search-results__content__picked-filters')
 
-    var $topicPicked = document.createElement('span')
+    var $topicPicked = document.createElement('button')
     $topicPicked.setAttribute('class', $class)
+    $topicPicked.setAttribute('tabindex', "0")
     $topicPicked.setAttribute('data-source', $input)
     $topicPicked.innerHTML = $el.value + ' &#10005;';
     if ($insertBeforeFirst) {

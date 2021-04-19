@@ -7,6 +7,10 @@ params:
   type: string
   required: false
   description: page headline
+- name: mainSearchShow
+  type: boolean
+  required: false
+  description: determines whether should be showed big search or small one in filters section
 - name: dropdownResults
   type: array
   required: false
@@ -142,6 +146,7 @@ params:
 examples:
 - name: default
   data:
+    mainSearchShow: true
     headline: Výsledky vyhľadávania
     searchResultsCard:
       - heading: Lorem ipsum dolor sit amet, consectetur adipisc
