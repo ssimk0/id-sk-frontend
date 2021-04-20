@@ -36,13 +36,18 @@
         body {
             margin: 0;
         }
+        [id^=legend] rect{
+            width: 200px;
+        }
+        .legend .traces:nth-child(2) {
+            transform: translate(100px, 14px);
+        }
+
     </style>
 </head>
 <body>
     <div id="graph"></div>
     <script>
-
-        var $gd;
         var $params = new URL(location.href).searchParams
         var $time = $params.get("time")
         var $types = $params.get("type")
@@ -50,11 +55,9 @@
 
         var renderGraph = function() {
             var $d3 = Plotly.d3;
-            var WIDTH_IN_PERCENT_OF_PARENT = 100,
-                HEIGHT_IN_PERCENT_OF_PARENT = 100;
             var $gd3 = $d3.select("#graph")
 
-            $gd = $gd3.node();
+            var $gd = $gd3.node();
 
             $d3.json("/public/assets/data/PCR_denne_kumulat_AG-denne_kumulat.json", function($d){
                 
@@ -111,7 +114,7 @@
                     plot_bgcolor: "rgba(0,0,0,0)",
                     showlegend: true,
 	                legend: {
-                        "orientation": "h",
+                        orientation: "h",
                         y: -0.2,
                     },
                     margin: {
@@ -144,10 +147,6 @@
                 renderGraph()
             })
         }
-
-        window.onresize = function() {
-            Plotly.Plots.resize($gd);
-        };
     </script>
 
 </body>
