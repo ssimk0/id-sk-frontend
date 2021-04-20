@@ -86,6 +86,7 @@ Graph.prototype.handleRadioButtonModeClick = function (e) {
  * @param {object} e 
  */
 Graph.prototype.handleShareByCopyToClickboardClick = function (e) {
+    e.preventDefault()
     var textarea = document.createElement('textarea');
     textarea.textContent = location.href;
     textarea.style.position = 'fixed';  // Prevent scrolling to bottom of page in Microsoft Edge.
