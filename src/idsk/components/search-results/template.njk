@@ -1,0 +1,201 @@
+<div class="idsk-search-results {{ params.classes if params.classes }}" data-module="idsk-search-results">
+  <div class="govuk-grid-column-full idsk-search-results__title">
+    <h1 class="govuk-heading-xl">{{params.headline}}
+    </h1>
+  </div>        
+  <div class="govuk-grid-column-full idsk-intro-block__search {{'idsk-search-results--visible__mobile--inline' if not params.mainSearchShow}}">
+    <input class="govuk-input govuk-input--width-30 idsk-intro-block__input" name="test-width-30" type="text" placeholder="Zadajte hľadaný výraz" aria-describedby="input-width-30-hint"/>
+    <button type="submit" class="govuk-button idsk-intro-block__search__button">
+      <svg width="31" height="30" viewbox="0 0 31 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M21.0115 13.103C21.0115 17.2495 17.5484 20.6238 13.2928 20.6238C9.03714 20.6238 5.57404 17.2495 5.57404 13.103C5.57404 8.95643 9.03714 5.58212 13.2928 5.58212C17.5484 5.58212 21.0115 8.95643 21.0115 13.103ZM29.833 27.0702C29.833 26.4994 29.5918 25.9455 29.1955 25.5593L23.2858 19.8012C24.6814 17.8371 25.4223 15.4868 25.4223 13.103C25.4223 6.57259 19.995 1.28451 13.2928 1.28451C6.59058 1.28451 1.16333 6.57259 1.16333 13.103C1.16333 19.6333 6.59058 24.9214 13.2928 24.9214C15.7394 24.9214 18.1515 24.1995 20.1673 22.8398L26.077 28.5811C26.4732 28.984 27.0418 29.219 27.6276 29.219C28.8337 29.219 29.833 28.2453 29.833 27.0702Z" fill="white"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.75708 13.103C0.75708 6.35398 6.36621 0.888672 13.2928 0.888672C20.2194 0.888672 25.8285 6.35398 25.8285 13.103C25.8285 15.4559 25.1301 17.7778 23.8094 19.7516L29.4827 25.2794C29.9551 25.7396 30.2392 26.3943 30.2392 27.0702C30.2392 28.464 29.058 29.6149 27.6276 29.6149C26.9347 29.6149 26.2611 29.3385 25.787 28.8584L20.1168 23.3497C18.0909 24.6367 15.7078 25.3172 13.2928 25.3172C6.36621 25.3172 0.75708 19.8519 0.75708 13.103ZM13.2928 1.68034C6.81494 1.68034 1.56958 6.7912 1.56958 13.103C1.56958 19.4147 6.81494 24.5256 13.2928 24.5256C15.6581 24.5256 17.9892 23.8275 19.9361 22.5143L20.2144 22.3265L26.3704 28.3071C26.6886 28.6308 27.1506 28.8232 27.6276 28.8232C28.6093 28.8232 29.4267 28.0267 29.4267 27.0702C29.4267 26.6046 29.2285 26.1513 28.9082 25.8392L22.7588 19.8475L22.9518 19.5759C24.2996 17.679 25.016 15.4076 25.016 13.103C25.016 6.7912 19.7706 1.68034 13.2928 1.68034ZM13.2928 5.97796C9.26151 5.97796 5.98029 9.17504 5.98029 13.103C5.98029 17.0309 9.26151 20.228 13.2928 20.228C17.3241 20.228 20.6053 17.0309 20.6053 13.103C20.6053 9.17504 17.3241 5.97796 13.2928 5.97796ZM5.16779 13.103C5.16779 8.73781 8.81278 5.18629 13.2928 5.18629C17.7728 5.18629 21.4178 8.73781 21.4178 13.103C21.4178 17.4681 17.7728 21.0196 13.2928 21.0196C8.81278 21.0196 5.16779 17.4681 5.16779 13.103Z" fill="white"/>
+      </svg>
+    </button>
+  </div>
+  <div class="idsk-search-results__filter-header-panel govuk-grid-column-full idsk-search-results--invisible">
+    <div class="govuk-heading-xl idsk-search-results--half-width">
+      <span>Filtre
+      </span>
+    </div>
+    <div class="idsk-search-results--half-width">
+      <button class="idsk-search-results__button--back-to-results" type="button">Späť na výsledky
+      </button>
+    </div>
+  </div>
+  <div class="idsk-search-results__filter govuk-grid-column-one-quarter">
+    {% if not params.mainSearchShow %}
+    <span class="idsk-intro-block__search__span">Vyhľadávanie </span>
+    <div class="idsk-intro-block__search">
+      <input class="govuk-input govuk-input--width-30 idsk-intro-block__input" name="test-width-30" type="text" placeholder="Zadajte hľadaný výraz" aria-describedby="input-width-30-hint"/>
+      <button type="submit" class="govuk-button idsk-intro-block__search__button">
+        <svg width="40" height="27" viewbox="12 0 35 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M21.0115 13.103C21.0115 17.2495 17.5484 20.6238 13.2928 20.6238C9.03714 20.6238 5.57404 17.2495 5.57404 13.103C5.57404 8.95643 9.03714 5.58212 13.2928 5.58212C17.5484 5.58212 21.0115 8.95643 21.0115 13.103ZM29.833 27.0702C29.833 26.4994 29.5918 25.9455 29.1955 25.5593L23.2858 19.8012C24.6814 17.8371 25.4223 15.4868 25.4223 13.103C25.4223 6.57259 19.995 1.28451 13.2928 1.28451C6.59058 1.28451 1.16333 6.57259 1.16333 13.103C1.16333 19.6333 6.59058 24.9214 13.2928 24.9214C15.7394 24.9214 18.1515 24.1995 20.1673 22.8398L26.077 28.5811C26.4732 28.984 27.0418 29.219 27.6276 29.219C28.8337 29.219 29.833 28.2453 29.833 27.0702Z" fill="white"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M0.75708 13.103C0.75708 6.35398 6.36621 0.888672 13.2928 0.888672C20.2194 0.888672 25.8285 6.35398 25.8285 13.103C25.8285 15.4559 25.1301 17.7778 23.8094 19.7516L29.4827 25.2794C29.9551 25.7396 30.2392 26.3943 30.2392 27.0702C30.2392 28.464 29.058 29.6149 27.6276 29.6149C26.9347 29.6149 26.2611 29.3385 25.787 28.8584L20.1168 23.3497C18.0909 24.6367 15.7078 25.3172 13.2928 25.3172C6.36621 25.3172 0.75708 19.8519 0.75708 13.103ZM13.2928 1.68034C6.81494 1.68034 1.56958 6.7912 1.56958 13.103C1.56958 19.4147 6.81494 24.5256 13.2928 24.5256C15.6581 24.5256 17.9892 23.8275 19.9361 22.5143L20.2144 22.3265L26.3704 28.3071C26.6886 28.6308 27.1506 28.8232 27.6276 28.8232C28.6093 28.8232 29.4267 28.0267 29.4267 27.0702C29.4267 26.6046 29.2285 26.1513 28.9082 25.8392L22.7588 19.8475L22.9518 19.5759C24.2996 17.679 25.016 15.4076 25.016 13.103C25.016 6.7912 19.7706 1.68034 13.2928 1.68034ZM13.2928 5.97796C9.26151 5.97796 5.98029 9.17504 5.98029 13.103C5.98029 17.0309 9.26151 20.228 13.2928 20.228C17.3241 20.228 20.6053 17.0309 20.6053 13.103C20.6053 9.17504 17.3241 5.97796 13.2928 5.97796ZM5.16779 13.103C5.16779 8.73781 8.81278 5.18629 13.2928 5.18629C17.7728 5.18629 21.4178 8.73781 21.4178 13.103C21.4178 17.4681 17.7728 21.0196 13.2928 21.0196C8.81278 21.0196 5.16779 17.4681 5.16779 13.103Z" fill="white"/>
+        </svg>
+      </button>
+    </div>  
+    {% endif %}
+    <div class="idsk-search-results--order__dropdown">
+      {% from "../../../govuk/components/select/macro.njk" import govukSelect %}
+      {{ govukSelect({
+        id: "sort",
+        name: "sort",
+        label: {
+        text: "Zoradiť podľa"
+      },
+        items: params.dropdownItems
+      }) }}
+    </div>
+    {% for item in params.filters %}
+      <div class="idsk-search-results__link-panel {{ item.filterClass if item.filterClass }}" tabindex = "-1">
+        <button class="idsk-search-results__link-panel-button {{ 'idsk-search-results__subtopic' if item.isSubtopic }}" tabindex = "0">
+          <span class="idsk-search-results__link-panel__title">
+            {{ item.name }}
+          </span>
+          <span class="idsk-search-results__link-panel--span"></span>
+        </button>
+        <div class="idsk-search-results__list idsk-search-results--hidden">
+          {% if item.isRadio %}
+            {% if item.radios.length > 10 %}
+              <input class="govuk-input idsk-search-results__search__input" type="text" title="{{item.searchInputId}}" name="{{item.searchInputId}}" id="{{item.searchInputId}}">
+            {% endif %}
+            {% from "../../components/customer-surveys-radios/macro.njk" import idskCustomerSurveysRadios %}
+            {{ idskCustomerSurveysRadios({
+              counter : 0,
+              id : item.id,
+              group: item.group,
+              feedbackOptions: 
+              item.radios
+            }) }}
+          {% endif %}
+          {% if item.isCheckBox %}
+            {% if item.checkBoxItems.length > 10 %}
+              <input class="govuk-input idsk-search-results__search__input" type="text" title="{{item.searchInputTitle}}" name="{{item.searchInputId}}" id="{{item.searchInputId}}">
+            {% endif %}
+            <div class="idsk-option-select-filter {{ params.classes if params.classes }}">
+              {% from "checkboxes/macro.njk" import govukCheckboxes %}
+              {{ govukCheckboxes({
+                "name": "colours",
+                "classes": "govuk-checkboxes--small",
+                "items": item.checkBoxItems
+              }) }}
+            </div>
+          {% endif %}
+          {% if item.isTextarea %}
+            <span class="idsk-search-results__date__span">Zobraziť len výsledky aktualizované po
+            </span>
+            <span class="idsk-search-results__date__span__example">Napr. 2005, alebo 8.3.2021
+            </span>
+            <input class="govuk-input" type="text" name="{{item.idFrom}}" id="{{item.idFrom}}">
+              <span class="idsk-search-results__date__span">Zobraziť len výsledky aktualizované pred
+              </span>
+              <span class="idsk-search-results__date__span__example">Napr. 2005, alebo 8.3.2021
+              </span>
+            <input class="govuk-input" type="text" name="{{item.idTo}}" id="{{item.idTo}}">
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="idsk-search-results__content govuk-grid-column-three-quarters">
+    <div class="govuk-grid-column-one-quarter">
+      <span class="idsk-search-results__content__number-of-results">{{ params.searchResultsCard.length }}
+        výsledkov</span>
+    </div>
+    <div class="govuk-grid-column-two-quarters idsk-search-results__filter-panel--mobile">
+      <button class="idsk-search-results__filters__button" title="Filtre">Filtre
+      </button>
+      <div class="idsk-search-results__per-page">
+        <span>Výsledky na stranu</span>
+        {% from "../../../govuk/components/select/macro.njk" import govukSelect %}
+        {{ govukSelect({
+          id: "sort",
+          name: "sort",
+          items: params.dropdownResults
+        }) }}
+      </div>
+    </div>
+    <div class="idsk-search-results--order">
+      {% from "../../../govuk/components/select/macro.njk" import govukSelect %}
+      {{ govukSelect({
+        id: "sort",
+        name: "sort",
+        label: {
+        html: "Zoradiť <strong>" + params.searchResultsCard.length + " výsledkov</strong> podľa"
+      },
+        items: params.dropdownItems
+      }) }}
+    </div>
+    <div class="idsk-search-results__page-number--mobile govuk-grid-column-full">
+      <button type="button" class="idsk-search-results__button--back__mobile">
+        <svg width="20" height="15" viewBox="0 0 20 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7.44417 14.6753C7.84229 14.2311 7.84229 13.5134 7.44417 13.0691L3.49368 8.63774H18.9792C19.5406 8.63774 20 8.12512 20 7.49858C20 6.87203 19.5406 6.35941 18.9792 6.35941H3.49368L7.45438 1.93943C7.85249 1.49516 7.85249 0.777482 7.45438 0.333207C7.05627 -0.111069 6.41317 -0.111069 6.01506 0.333207L0.298584 6.70116C-0.0995279 7.14543 -0.0995279 7.86311 0.298584 8.30739L6.00485 14.6753C6.40296 15.1082 7.05627 15.1082 7.44417 14.6753Z" fill="#0065B3"/>
+        </svg>
+      </button>
+      <span class="idsk-search-results__page-number__mobile">Strana 2 z 15</span>
+      <button type="button" class="idsk-search-results__button--forward__mobile">
+        <svg width="20" height="15" viewBox="0 0 20 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12.5558 0.324663C12.1577 0.768939 12.1577 1.48662 12.5558 1.93089L16.5063 6.36226L1.0208 6.36226C0.45936 6.36226 1.90735e-06 6.87488 1.90735e-06 7.50142C1.90735e-06 8.12797 0.45936 8.64059 1.0208 8.64059L16.5063 8.64059L12.5456 13.0606C12.1475 13.5048 12.1475 14.2225 12.5456 14.6668C12.9437 15.1111 13.5868 15.1111 13.9849 14.6668L19.7014 8.29884C20.0995 7.85457 20.0995 7.13689 19.7014 6.69261L13.9952 0.324663C13.597 -0.108221 12.9437 -0.108221 12.5558 0.324663Z" fill="#0065B3"/>
+        </svg>
+      </button>
+    </div>
+    <div class="idsk-search-results__content__picked-filters govuk-grid-column-full idsk-search-results--invisible__mobile">
+      <div class="idsk-search-results__content__picked-filters__topics idsk-search-results--invisible">
+        <span class="idsk-search-results__text">{{params.firstFilterLabel if params.firstFilterLabel else 'Len v témach'}}</span>
+      </div>
+      <div class="idsk-search-results__content__picked-filters__content-type idsk-search-results--invisible">
+        <span class="idsk-search-results__text">{{params.secondFilterLabel if params.secondFilterLabel else 'Typ obsahu'}}</span>
+      </div>
+      <div class="idsk-search-results__content__picked-filters__date idsk-search-results--invisible"></div>
+      <button class="idsk-search-results__button--turn-filters-off govuk-grid-column-full idsk-search-results--invisible" type="button">Vypnúť všetky filtre
+      </button>
+    </div>
+    <div class="govuk-grid-column-full idsk-search-results__show-results__button idsk-search-results--invisible">
+      <button class="govuk-button idsk-search-results__button-show-results" type="button">Zobraziť
+        {{ params.searchResultsCard.length }}
+        výsledkov
+      </button>
+    </div>
+    <div class="idsk-search-results__content__all">
+      {% for item in params.searchResultsCard %}
+        <div class="idsk-search-results__card">
+          {% from "../../components/card/macro.njk" import idskCard %}
+          {{ idskCard({ 
+            "type": "basic-variant", 
+            "link": "#",
+            "heading": item.heading,
+            "description": item.description,
+            "date": { "date": "1.7.2020", "link": "#" }          
+          }) }}
+          {% for subcard in item.subcards %}
+          <div class="govuk-grid-column-one-half idsk-search-results__subcards">
+            {% from "../../components/card/macro.njk" import idskCard %}
+            {{ idskCard({ 
+              "type": "basic-variant", 
+              "link": "#",
+              "heading": subcard.heading,
+              "description": subcard.description,
+              "date": { "date": "1.7.2020", "link": "#" }          
+            }) }}
+          </div>
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+    <div class="idsk-search-results__content__page-changer govuk-grid-column-full">
+      <button type="button" class="idsk-search-results__button--back">
+        <svg class="idsk-search-results__button__svg--previous" width="20" height="15" viewbox="0 -2 25 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7.2925 13.8005C7.6825 13.4105 7.6825 12.7805 7.2925 12.3905L3.4225 8.50047H18.5925C19.1425 8.50047 19.5925 8.05047 19.5925 7.50047C19.5925 6.95047 19.1425 6.50047 18.5925 6.50047H3.4225L7.3025 2.62047C7.6925 2.23047 7.6925 1.60047 7.3025 1.21047C6.9125 0.820469 6.2825 0.820469 5.8925 1.21047L0.2925 6.80047C-0.0975 7.19047 -0.0975 7.82047 0.2925 8.21047L5.8825 13.8005C6.2725 14.1805 6.9125 14.1805 7.2925 13.8005Z" fill="#0065B3"/>
+        </svg>Zobraziť predchádzajúce
+      </button>
+      <button type="button" class="idsk-search-results__button--forward">
+        Zobraziť ďalšie<svg class="idsk-search-results__button__svg--next" width="20" height="13" viewbox="-5 0 25 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12.5558 0.281376C12.1577 0.666414 12.1577 1.2884 12.5558 1.67344L16.5063 5.51395L1.0208 5.51395C0.45936 5.51395 1.90735e-06 5.95823 1.90735e-06 6.50123C1.90735e-06 7.04424 0.45936 7.48851 1.0208 7.48851L16.5063 7.48851L12.5456 11.3192C12.1475 11.7042 12.1475 12.3262 12.5456 12.7112C12.9437 13.0963 13.5868 13.0963 13.9849 12.7112L19.7014 7.19233C20.0995 6.80729 20.0995 6.1853 19.7014 5.80027L13.9952 0.281376C13.597 -0.0937901 12.9437 -0.0937901 12.5558 0.281376Z" fill="#0065B3"/>
+        </svg>
+      </button>
+      <div class="idsk-search-results__page-number govuk-grid-column-full">
+        <span>Strana 2 z 15</span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -10,12 +10,12 @@
   {# {% include "../partials/banner.njk" %} #}
   {% from "../../../src/idsk/components/header/macro.njk" import idskHeader %}
   {{ idskHeader({"logo": true, "serviceName": "Jednotný dizajn manuál elektronických služieb"}) }}
-  
+
   {% from "phase-banner/macro.njk" import govukPhaseBanner %}
   <div class="govuk-width-container">
   {{ govukPhaseBanner({
     "tag": {
-      "text": "ver. 2.4.0"
+      "text": "ver. 2.5.0"
     },
     "html": "Nová verzia ID-SK Frontend nahradzuje pôvodnú verziu. Dokumentáciu staršej verzie nájdete na <a class=\"govuk-link\" href=\"https:\/\/github.com\/id-sk\/idsk_elements\" target=\"_blank\">ID-SK Elements</a>"
   }) }}
@@ -26,7 +26,7 @@
 {% block footer %}
   {% from "../../../src/idsk/components/footer/macro.njk" import idskFooter %}
   {{ idskFooter({
-    "logo": true, 
+    "logo": true,
     "meta": {
       "copy": "Prevádzkovateľom služby je Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky. Kontakná osoba <a class=\"govuk-link\" href=\"mailto:idsk@vicepremier.gov.sk\">idsk@vicepremier.gov.sk</a>.<br> Vytvorené v súlade s Jednotným dizajn manuálom elektronických služieb.",
       "footerLogoLink": "https://www.mirri.gov.sk/",
