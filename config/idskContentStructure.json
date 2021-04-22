@@ -43,6 +43,7 @@
     "zoznamy-uloh": "Zoznamy úloh"
   },
   "componentsUsage": {
+    "adresa": "adresa",
     "chyby-a-validacia": "Chyby a validácia",
     "farby": "Farby",
     "search-filter": "Filtre pre filtrovanie výsledkov vyhľadavania / kontaktov",
