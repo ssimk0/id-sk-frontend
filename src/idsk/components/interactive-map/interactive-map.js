@@ -84,8 +84,8 @@ InteractiveMap.prototype.renderData = function () {
         $module.querySelector('.idsk-interactive-map__current-time-period').innerText = $timePeriod
     }
 
-    $mapEl.src = `${$mapSrc}?indicator=${$indicatorValue}&time=${$timePeriodValue}`
-    $tableEl.src = `${$tableSrc}?indicator=${$indicatorValue}&time=${$timePeriodValue}`
+    $mapEl.src = $mapSrc + '?indicator=' + $indicatorValue + '&time=' + $timePeriodValue
+    $tableEl.src = $tableSrc + '?indicator=' + $indicatorValue + '&time=' + $timePeriodValue
 }
 
 export default InteractiveMap

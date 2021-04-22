@@ -76,7 +76,7 @@ Graph.prototype.handleRadioButtonModeClick = function (e) {
     var $iframeGraphs = this.$module.querySelectorAll('.idsk-graph__iframe')
     $iframeGraphs.forEach(function ($iframeGraph) {
         var $iframeSrc = $iframeGraph.dataset.src
-        var $srcParam = $iframeSrc.indexOf('?') < 0 ? `?type=${$value}` : `&type=${$value}`
+        var $srcParam = $iframeSrc.indexOf('?') < 0 ? '?type=' + $value : '&type=' + $value
         $iframeGraph.src = $iframeSrc + $srcParam
     })
 }
@@ -111,7 +111,7 @@ Graph.prototype.handleShareByEmailClick = function (e) {
     var $module = this.$module
     var $subject = $module.querySelector('.idsk-graph__title h2').innerText
     var $body = 'Kliknite na odkaz vyššie alebo ho skopírujte a vložte do prehliadača: ' + location.href
-    var $mailto = `mailto:?Subject=${$subject}&body=${$body}`
+    var $mailto = 'mailto:?Subject=' + $subject + '&body=' + $body
 
     $el.href = $mailto
 }
@@ -172,7 +172,7 @@ Graph.prototype.handleTabLinkClick = function (e) {
     var $module = this.$module
     var $activePanel = $module.querySelector('.idsk-graph__section-show')
     var $activePanelId = $activePanel.getAttribute('id')
-    var $activeTabLink = $module.querySelector(`a[href="#${$activePanelId}"]`)
+    var $activeTabLink = $module.querySelector('a[href="#' + $activePanelId + '"]')
     var $activeTabLi = $activeTabLink.closest('.govuk-tabs__list-item')
 
     $activePanel.classList.remove('idsk-graph__section-show')
