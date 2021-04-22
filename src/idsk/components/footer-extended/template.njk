@@ -1,5 +1,5 @@
 <div data-module="idsk-footer-extended">
-    <footer class="idsk-footer-extended {{ "idsk-footer-extended--up-button-enabled" if params.upButtonEnabled }} {{ params.classes if params.classes }}" role="contentinfo">
+    <footer class="idsk-footer-extended {{ " idsk-footer-extended--up-button-enabled" if params.upButtonEnabled }} {{ params.classes if params.classes }}" role="contentinfo">
         {% if params.upButtonEnabled == "true" %}
             <div class="idsk-footer-extended-up-button-div" id="footer-extended-up-button">
                 <div class="govuk-width-container">
@@ -74,28 +74,27 @@
             <div id="idsk-footer-extended-feedback-content">
                 <div class="govuk-width-container">
                     <div class="govuk-grid-row">
-                        <div class="govuk-grid-column-full">
-                            <div id="idsk-footer-extended-help-form" class="idsk-footer-extended-feedback-hidden idsk-footer-extended-display-hidden">
-                                <div id="idsk-help-container" class="idsk-footer-extended-feedback-container">
-                                    <div class="govuk-grid-column-full">
-                                        <div class="idsk-footer-extended-feedback-question-container">
-                                            <div class="govuk-grid-column-two-thirds idsk-footer-extended-help-form-header-mobile">
-                                                <h3 class="govuk-heading-x">
-                                                    Pomôžte nám zlepšiť mirri.gov.sk
-                                                </h3>
-                                            </div>
-                                            <div class="govuk-grid-column-one-third idsk-footer-extended-close-button-mobile">
-                                                <button id="idsk-footer-extended-close-help-form-button" type="button" class="idsk-footer-extended-feedback-button idsk-footer-extended-help-button">
-                                                    Zatvoriť
-                                                </button>
-                                            </div>
+                        <div id="idsk-footer-extended-help-form" class="idsk-footer-extended-feedback-hidden idsk-footer-extended-display-hidden">
+                            <div id="idsk-help-container" class="idsk-footer-extended-feedback-container">
+                                <div class="govuk-grid-column-full">
+                                    <div class="idsk-footer-extended-feedback-question-container">
+                                        <div class="govuk-grid-column-two-thirds idsk-footer-extended-help-form-header-mobile">
+                                            <h3 class="govuk-heading-x">
+                                                Pomôžte nám zlepšiť mirri.gov.sk
+                                            </h3>
                                         </div>
-                                        <p class="idsk-footer-extended-form-text">
-                                            Aby sme vedeli zlepšiť obsah na tejto stránke, chceli by sme vedieť o Vašej skúsenosti so stránkou. Pošleme Vám link na formulár spätnej väzby. Jeho vyplnenie Vám zaberie iba 2 minúty.
-                                        </p>
-                                        <br>
+                                        <div class="govuk-grid-column-one-third idsk-footer-extended-close-button-mobile">
+                                            <button id="idsk-footer-extended-close-help-form-button" type="button" class="idsk-footer-extended-feedback-button idsk-footer-extended-help-button">
+                                                Zatvoriť
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <p class="idsk-footer-extended-form-text">
+                                        Aby sme vedeli zlepšiť obsah na tejto stránke, chceli by sme vedieť o Vašej skúsenosti so stránkou. Pošleme Vám link na formulár spätnej väzby. Jeho vyplnenie Vám zaberie iba 2 minúty.
+                                    </p>
+                                    <br>
                                         <div class="idsk-footer-extended-feedback-button">
-                                            <a href="{{params.fillFeedbackLink if params.fillFeedbackLink else '/custom-components/customer-surveys/basic/preview'}}" id="fill-feedback-help-form" title="Vyplniť prieskum" type="submit" role="button" class="idsk-button" data-module="idsk-button">
+                                            <a href="{{ params.fillFeedbackLink if params.fillFeedbackLink else '/custom-components/customer-surveys/basic/preview' }}" id="fill-feedback-help-form" title="Vyplniť prieskum" type="submit" role="button" class="idsk-button" data-module="idsk-button">
                                                 Vyplniť prieskum
                                             </a>
                                         </div>
@@ -121,22 +120,21 @@
                                             Prosím nevpisujte žiadne osobné informácie (meno, kontakt a iné).
                                         </p>
                                         <br>
-                                        <div class="idsk-footer-extended-close-button">
-                                            {% from "../../../govuk/components/select/macro.njk" import govukSelect %}
-                                            {{ govukSelect({
+                                            <div class="idsk-footer-extended-close-button">
+                                                {% from "../../../govuk/components/select/macro.njk" import govukSelect %}
+                                                {{ govukSelect({
                                     id: "sort",
                                     name: "sort",
                                     label: {
                                     text: " Aký typ chyby ste našli?"
                                 },
                                     items: params.dropdownItems
-                                }) 
-                                }}
-                                        </div>
-                                        <div>
-                                            <br>
-                                            {% from "../../components/character-count/macro.njk" import idskCharacterCount %}
-                                            {{ idskCharacterCount({
+                                }) }}
+                                            </div>
+                                            <div>
+                                                <br>
+                                                    {% from "../../components/character-count/macro.njk" import idskCharacterCount %}
+                                                    {{ idskCharacterCount({
                                 name: "with-hint",
                                 id: "with-hint",
                                 maxlength: params.characterLength,
@@ -146,137 +144,147 @@
                                 hint: {
                                     text: ""
                                     }
-                                }) 
-                                }}
-                                        </div>
-                                        <div class="idsk-footer-extended-feedback-button">
-                                            <button id="submit-button-error-form" type="submit" class="idsk-button" data-module="idsk-button">
-                                                Odoslať
-                                            </button>
+                                }) }}
+                                                </div>
+                                                <div class="idsk-footer-extended-feedback-button">
+                                                    <button id="submit-button-error-form" type="submit" class="idsk-button" data-module="idsk-button">
+                                                        Odoslať
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        {% endif %}
-        <div class="idsk-footer-extended-main-content">
-            <div class="govuk-width-container">
-                {% if params.firstColumn.title %}
-                    <div class="govuk-grid-column-two-thirds">
-                        <h3 class="govuk-heading-m ">
-                            {{ params.firstColumn.title }}
-                        </h3>
-                        <div class="govuk-grid-row idsk-footer-extended-subtitle">
-                            <div class="govuk-grid-column-one-half">
-                                {% for item in params.firstColumn.leftItems -%}
-                                    <li class="idsk-footer-extended-list-item">
-                                        <a class="govuk-link" title="{{ item.name }}" href="{{item.href}}">{{ item.name }}</a>
-                                    </li>
-                                {%- endfor %}
-                            </div>
-                            <div class="govuk-grid-column-one-half ">
-                                {% for item in params.firstColumn.rightItems -%}
-                                    <li class="idsk-footer-extended-list-item">
-                                        <a class="govuk-link" title="{{ item.name }}" href="{{item.href}}">{{ item.name }}</a>
-                                    </li>
-                                {%- endfor %}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="govuk-grid-column-one-third">
-                        <h3 class="govuk-heading-m">
-                            {% if params.secondColumn.title %}
-                                {{ params.secondColumn.title }}
-                            {% endif %}
-                        </h3>
-                        <div class="govuk-grid-column-three-thirds idsk-footer-extended-subtitle">
-                            {% for item in params.secondColumn.items -%}
-                                <li class="idsk-footer-extended-list-item">
-                                    <a class="govuk-link" title="{{ item.name }}" href="{{item.href}}">{{ item.name }}</a>
-                                </li>
-                            {%- endfor %}
-                        </div>
-                    </div>
-                {% endif %}
-                {% if params.thirdColumn.title %}
-                    <div class="govuk-grid-column-two-thirds">
-                        <h3 class="govuk-heading-m ">
-                            {{ params.thirdColumn.title }}
-                        </h3>
-                        <div class="govuk-grid-row idsk-footer-extended-subtitle">
-                            <div class="govuk-grid-column-one-half">
-                                {% if params.thirdColumn.leftItems %}
-                                    {% for item in params.thirdColumn.leftItems -%}
-                                        <li class="idsk-footer-extended-list-item">
-                                            <a class="govuk-link" title="{{ item.name }}" href="{{item.href}}">{{ item.name }}</a>
-                                        </li>
-                                    {%- endfor %}
-                                {% endif %}
-                            </div>
-                            <div class="govuk-grid-column-one-half">
-                                {% if params.thirdColumn.rightItems %}
-                                    {% for item in params.thirdColumn.rightItems -%}
-                                        <li class="idsk-footer-extended-list-item">
-                                            <a class="govuk-link" title="{{ item.name }}" href="{{item.href}}">{{ item.name }}</a>
-                                        </li>
-                                    {%- endfor %}
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="govuk-grid-column-one-third">
-                        <h3 class="govuk-heading-m">
-                            {% if params.fourthColumn.title %}
-                                {{ params.fourthColumn.title }}
-                            {% endif %}
-                        </h3>
-                        <div class="govuk-grid-column-three-thirds idsk-footer-extended-subtitle">
-                            {% if params.fourthColumn.items %}
-                                {% for item in params.fourthColumn.items -%}
-                                    <li class="idsk-footer-extended-list-item">
-                                        <a class="govuk-link" title="{{ item.name }}" href="{{item.href}}">{{ item.name }}</a>
-                                    </li>
-                                {%- endfor %}
-                            {% endif %}
-                        </div>
-                    </div>
-                {% endif %}
-                <div class="govuk-grid-column-full">
-                    <div class="idsk-footer-extended-description-panel{{' idsk-footer-extended-description-panel-top-border' if params.firstColumn.title}}">
-                        <div class="idsk-footer-extended-meta-item">
-                            <ul class="idsk-footer-extended-inline-list ">
-                                {% for subtitle in params.subtitles %}
-                                    <li class="idsk-footer-extended-inline-list-item">
-                                        <a class="govuk-link" title="{{ subtitle.item }}" href="{{subtitle.href}}">
-                                            {{ subtitle.item }}
-                                        </a>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                        <div class="govuk-grid-column-two-thirds idsk-footer-extended-info-links">
-                            <p class="idsk-footer-extended-frame">Vytvorené v súlade s
-                                <a class="govuk-link" title="Jednotným dizajn manuálom elektronických služieb." href="{{ params.designaddress if params.designaddress else '#'  }}">
-                                    Jednotným dizajn manuálom elektronických služieb.
-                                </a>
-                            </p>
-                            <p class="idsk-footer-extended-frame">
-                                Prevádzkovateľom služby je Ministerstvo investícií, regionálneho rozvoja a informatizácie SR.
-                            </p>
-                        </div>
-                        <div class="govuk-grid-column-one-third idsk-footer-extended-logo-box">
-                            <a href="/" title="domov">
-                                <div class="idsk-footer-extended-logo">
-                                    {% include params.assetsPath | default('../../assets/images/') + (params.logo if params.logo else "footer-extended-logo.svg") %}
+                    {% endif %}
+                    <div class="idsk-footer-extended-main-content">
+                        <div class="govuk-width-container">
+                            {% if params.firstColumn.title %}
+                                <div class="govuk-grid-column-two-thirds">
+                                    <h3 class="govuk-heading-m ">
+                                        {{ params.firstColumn.title }}
+                                    </h3>
+                                    <div class="idsk-footer-extended-subtitle">
+                                        <div class="govuk-grid-column-one-half">
+                                            <ul>
+                                                {% for item in params.firstColumn.leftItems -%}
+                                                    <li class="idsk-footer-extended-list-item">
+                                                        <a class="govuk-link" title="{{ item.name }}" href="{{ item.href }}">{{ item.name }}</a>
+                                                    </li>
+                                                {%- endfor %}
+                                            </ul>
+                                        </div>
+                                        <div class="govuk-grid-column-one-half ">
+                                            <ul>
+                                                {% for item in params.firstColumn.rightItems -%}
+                                                    <li class="idsk-footer-extended-list-item">
+                                                        <a class="govuk-link" title="{{ item.name }}" href="{{ item.href }}">{{ item.name }}</a>
+                                                    </li>
+                                                {%- endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
-                            </a>
+                                <div class="govuk-grid-column-one-third">
+                                    <h3 class="govuk-heading-m">
+                                        {% if params.secondColumn.title %}
+                                            {{ params.secondColumn.title }}
+                                        {% endif %}
+                                    </h3>
+                                    <div class="govuk-grid-column-three-thirds idsk-footer-extended-subtitle">
+                                        <ul>
+                                            {% for item in params.secondColumn.items -%}
+                                                <li class="idsk-footer-extended-list-item">
+                                                    <a class="govuk-link" title="{{ item.name }}" href="{{ item.href }}">{{ item.name }}</a>
+                                                </li>
+                                            {%- endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            {% endif %}
+                            {% if params.thirdColumn.title %}
+                                <div class="govuk-grid-column-two-thirds">
+                                    <h3 class="govuk-heading-m ">
+                                        {{ params.thirdColumn.title }}
+                                    </h3>
+                                    <div class="idsk-footer-extended-subtitle">
+                                        <div class="govuk-grid-column-one-half">
+                                            {% if params.thirdColumn.leftItems %}
+                                                <ul>
+                                                    {% for item in params.thirdColumn.leftItems -%}
+                                                        <li class="idsk-footer-extended-list-item">
+                                                            <a class="govuk-link" title="{{ item.name }}" href="{{ item.href }}">{{ item.name }}</a>
+                                                        </li>
+                                                    {%- endfor %}
+                                                </ul>
+                                            {% endif %}
+                                        </div>
+                                        <div class="govuk-grid-column-one-half">
+                                            {% if params.thirdColumn.rightItems %}
+                                                <ul>
+                                                    {% for item in params.thirdColumn.rightItems -%}
+                                                        <li class="idsk-footer-extended-list-item">
+                                                            <a class="govuk-link" title="{{ item.name }}" href="{{ item.href }}">{{ item.name }}</a>
+                                                        </li>
+                                                    {%- endfor %}
+                                                </ul>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="govuk-grid-column-one-third">
+                                    <h3 class="govuk-heading-m">
+                                        {% if params.fourthColumn.title %}
+                                            {{ params.fourthColumn.title }}
+                                        {% endif %}
+                                    </h3>
+                                    <div class="govuk-grid-column-three-thirds idsk-footer-extended-subtitle">
+                                        {% if params.fourthColumn.items %}
+                                        </ul>
+                                        {% for item in params.fourthColumn.items -%}
+                                            <li class="idsk-footer-extended-list-item">
+                                                <a class="govuk-link" title="{{ item.name }}" href="{{ item.href }}">{{ item.name }}</a>
+                                            </li>
+                                        {%- endfor %}
+                                    </ul>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+                    <div class="govuk-grid-column-full">
+                        <div class="idsk-footer-extended-description-panel{{ ' idsk-footer-extended-description-panel-top-border' if params.firstColumn.title }}">
+                            <div class="idsk-footer-extended-meta-item">
+                                <ul class="idsk-footer-extended-inline-list ">
+                                    {% for subtitle in params.subtitles %}
+                                        <li class="idsk-footer-extended-inline-list-item">
+                                            <a class="govuk-link" title="{{ subtitle.item }}" href="{{ subtitle.href }}">
+                                                {{ subtitle.item }}
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="govuk-grid-column-two-thirds idsk-footer-extended-info-links">
+                                <p class="idsk-footer-extended-frame">Vytvorené v súlade s
+                                    <a class="govuk-link" title="Jednotným dizajn manuálom elektronických služieb." href="{{ params.designaddress if params.designaddress else '#' }}">
+                                        Jednotným dizajn manuálom elektronických služieb.
+                                    </a>
+                                </p>
+                                <p class="idsk-footer-extended-frame">
+                                    Prevádzkovateľom služby je Ministerstvo investícií, regionálneho rozvoja a informatizácie SR.
+                                </p>
+                            </div>
+                            <div class="govuk-grid-column-one-third idsk-footer-extended-logo-box">
+                                <a href="/" title="domov">
+                                    <div class="idsk-footer-extended-logo">
+                                        {% include params.assetsPath | default('../../assets/images/') + (params.logo if params.logo else "footer-extended-logo.svg") %}
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </footer>
-</div>
+        </footer>
+    </div>

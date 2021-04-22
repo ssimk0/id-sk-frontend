@@ -47,7 +47,6 @@
         margin-right: -3px;
         font-style: normal;
         font-weight: normal;
-        color: govuk-colour("dark-grey");
 
         @include mq($from: desktop) {
             height: 68px;

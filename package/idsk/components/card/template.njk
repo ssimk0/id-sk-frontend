@@ -4,10 +4,10 @@
     {% if params.date and params.tags %}
         {% set tags = '' %}
         {% for tag in params.tags %}
-            {% set tags = tags + '<span class="idsk-card-meta idsk-card-meta-tag"><a href="' + tag.link + '" class="govuk-link">' + tag.tag  + '</a></span>' %}
+            {% set tags = tags + '<span class="idsk-card-meta idsk-card-meta-tag"><a href="' + tag.link + '" class="govuk-link" title="' + tag.tag  + '">' + tag.tag  + '</a></span>' %}
         {% endfor %}
     <div class="idsk-card-meta-container">
-        <span class="idsk-card-meta idsk-card-meta-date"><a href="{{params.date.link}}" class="govuk-link">{{params.date.date}}</a></span> {{ tags | safe }}
+        <span class="idsk-card-meta idsk-card-meta-date"><a href="{{params.date.link}}" class="govuk-link" title="Pridané dňa: {{ params.date.date }}">{{params.date.date}}</a></span> {{ tags | safe }}
     </div>
     {% endif %}
 {% endset %}
@@ -15,7 +15,7 @@
 <div class="idsk-card idsk-card-{{ type }}">
 
     {% if params.imgSrc %}
-    <a href="{{params.link}}">
+    <a href="{{params.link}}" title="{{ params.heading }}">
         <img class="idsk-card-img idsk-card-img-{{type}}" width="100%" src="{{ params.imgSrc }}" alt="{{ params.heading }}" aria-hidden="true" />
     </a>
     {% endif %}
@@ -26,7 +26,7 @@
         {% endif %}
 
         <div class="idsk-heading idsk-heading-{{ type }}">
-            <a href="{{params.link}}" class="idsk-card-title govuk-link">{{ params.heading }}</a>
+            <a href="{{params.link}}" class="idsk-card-title govuk-link" title="{{ params.heading }}">{{ params.heading }}</a>
         </div>
 
         {% if params.description %}
@@ -36,8 +36,8 @@
         </p>
         {% else %}
         <div class="idsk-body idsk-body-{{ type }}">
-            <a href="{{params.link}}" class="idsk-card-title govuk-link">
-                {{ params.description}}
+            <a href="{{params.link}}" class="idsk-card-title govuk-link" title="{{ params.description }}">
+                {{ params.description }}
             </a> 
         </div>
         {% endif %}

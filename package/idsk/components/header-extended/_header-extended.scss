@@ -151,7 +151,7 @@
   @include mq($until: desktop) {
     .idsk-header-extended.idsk-header-extended--shrink {
       .idsk-header-extended__logo {
-        padding-bottom: govuk-spacing(1);
+        padding-bottom: govuk-spacing(3);
       }
 
       .idsk-header-extended__logotype-crown,

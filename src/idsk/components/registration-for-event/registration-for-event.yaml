@@ -2,7 +2,7 @@ params:
 - name: classes
   type: string
   required: false
-  description: Classes to add to the accordion.
+  description: Classes to add to the registration for event.
 - name: heading
   type: string
   required: true

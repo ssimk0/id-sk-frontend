@@ -8,8 +8,12 @@ import Crossroad from "./components/crossroad/crossroad";
 import CustomerSurveys from "./components/customer-surveys/customer-surveys";
 import HeaderExtended from './components/header-extended/header-extended';
 import InPageNavigation from './components/in-page-navigation/in-page-navigation';
+import SearchResults from './components/search-results/search-results';
+import SearchResultsFilter from './components/search-results-filter/search-results-filter';
 import Stepper from './components/stepper/stepper';
 import RegistrationForEvent from './components/registration-for-event/registration-for-event';
+import InteractiveMap from './components/interactive-map/interactive-map';
+import Graph from './components/graph/graph';
 
 function initAll(options) {
   // Set the options to an empty object by default if no options are passed.
@@ -64,6 +68,14 @@ function initAll(options) {
   var $inPageNavigation = scope.querySelector('[data-module="idsk-in-page-navigation"]');
   new InPageNavigation($inPageNavigation).init();
 
+  var $searchResults = scope.querySelector('[data-module="idsk-search-results"]');
+  new SearchResults($searchResults).init();
+
+  var $searchResultsFilters = scope.querySelectorAll('[data-module="idsk-search-results-filter"]');
+  nodeListForEach($searchResultsFilters, function ($searchResultsFilter) {
+    new SearchResultsFilter($searchResultsFilter).init();
+  })
+
   var $steppers = scope.querySelectorAll('[data-module="idsk-stepper"]');
   nodeListForEach($steppers, function ($stepper) {
     new Stepper($stepper).init();
@@ -74,9 +86,20 @@ function initAll(options) {
     new RegistrationForEvent($registrationForEvent).init();
   })
 
+  var $interactiveMaps = scope.querySelectorAll('[data-module="idsk-interactive-map"]');
+  nodeListForEach($interactiveMaps, function ($interactiveMap) {
+    new InteractiveMap($interactiveMap).init();
+  })
+
+  var $graphs = scope.querySelectorAll('[data-module="idsk-graph"]');
+  nodeListForEach($graphs, function ($graph) {
+    new Graph($graph).init();
+  })
+
   // Init all GOVUK components js
   initAllGOVUKjs(options);
 }
+
 
 export {
   initAll,
@@ -88,6 +111,10 @@ export {
   FooterExtended,
   HeaderExtended,
   InPageNavigation,
+  SearchResults,
+  SearchResultsFilter,
+  RegistrationForEvent,
+  InteractiveMap,
   Stepper,
-  RegistrationForEvent 
+  Graph
 }
