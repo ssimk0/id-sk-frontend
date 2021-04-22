@@ -2578,7 +2578,6 @@ FooterExtended.prototype.init = function () {
     var $closeErrorFormButton = $module.querySelector('#idsk-footer-extended-close-error-form-button');
     var $closeHelpFormButton = $module.querySelector('#idsk-footer-extended-close-help-form-button');
     var $textAreaCharacterCount = $module.querySelector('#idsk-footer-extended-error-form #with-hint');
-    var $fillFeedbackButton = $module.querySelector('#fill-feedback-help-form');
     var $submitErrorButton = $module.querySelector('#submit-button-error-form');
     var $writeUsButton = $module.querySelector('#idsk-footer-extended-write-us-button');
     var $upButton = $module.querySelector("#footer-extended-up-button");
@@ -2599,10 +2598,6 @@ FooterExtended.prototype.init = function () {
 
     if ($closeErrorFormButton) {
         $closeErrorFormButton.addEventListener('click', this.handleCloseErrorFormButtonClick.bind(this));
-    }
-
-    if ($fillFeedbackButton) {
-        $fillFeedbackButton.addEventListener('click', this.handleSubmitButtonClick.bind(this));
     }
 
     if ($submitErrorButton) {
@@ -2938,9 +2933,14 @@ function Crossroad($module) {
 Crossroad.prototype.init = function () {
   var $module = this.$module;
   var $items = this.$items;
+  var $uncollapseButton = $module.querySelector('#idsk-crossroad__uncollapse-button');
 
   if (!$module || !$items) {
     return;
+  }
+
+  if ($uncollapseButton) {
+    $uncollapseButton.addEventListener('click', this.handleShowItems.bind(this));
   }
 
   nodeListForEach(
@@ -2955,6 +2955,267 @@ Crossroad.prototype.handleItemClick = function (e) {
   var $item = e.target;
   $item.setAttribute("aria-current", "true");
 };
+
+Crossroad.prototype.setAriaLabel = function (arr) {
+  arr.forEach(function (item) {
+    if (item.classList.contains('idsk-crossroad__arria-hidden')) {
+      item.setAttribute("aria-hidden", "true");
+      toggleClass(item, 'idsk-crossroad__arria-hidden');
+    } else if (item.getAttribute("aria-hidden") == "true") {
+      item.setAttribute("aria-hidden", "false");
+      toggleClass(item, 'idsk-crossroad__arria-hidden');
+    }
+  });
+};
+
+Crossroad.prototype.handleShowItems = function (e) {
+  var $crossroadItems = this.$module.querySelectorAll('.idsk-crossroad__item');
+  var $uncollapseButton = this.$module.querySelector('#idsk-crossroad__uncollapse-button');
+  var $uncollapseDiv = this.$module.querySelector('.idsk-crossroad__uncollapse-div');
+  var $crossroadTitles = this.$module.querySelectorAll('.idsk-crossroad-title');
+  var $crossroadSubtitles = this.$module.querySelectorAll('.idsk-crossroad-subtitle');
+
+  $crossroadItems.forEach(function (crossroadItem) {
+    toggleClass(crossroadItem, 'idsk-crossroad__item--two-columns-show');
+  });
+
+  this.setAriaLabel($crossroadTitles);
+  this.setAriaLabel($crossroadSubtitles);
+
+  $uncollapseButton.innerHTML = $uncollapseButton.textContent == 'Zobraziť viac' ? 'Zobraziť menej' : 'Zobraziť viac';
+
+  toggleClass(e.srcElement, 'idsk-crossroad__colapse--button-show');
+  toggleClass($uncollapseDiv, 'idsk-crossroad__collapse--shadow');
+  toggleClass($uncollapseDiv, 'idsk-crossroad__collapse--arrow');
+};
+
+function CustomerSurveys($module) {
+    this.$module = $module;
+}
+
+CustomerSurveys.prototype.init = function () {
+    var $module = this.$module;
+    var $nextButton = $module.querySelector('#idsk-customer-surveys__send-button');
+    var $previousButton = $module.querySelector('#idsk-customer-surveys__previous-button');
+    var $textAreaFirst = $module.querySelector('.idsk-customer-surveys-text-area #first');
+    var $textAreaSecond = $module.querySelector('.idsk-customer-surveys-text-area #second');
+    var $textAreaThird = $module.querySelector('.idsk-customer-surveys-text-area #third');
+    var $textAreaFourth = $module.querySelector('.idsk-customer-surveys-text-area #fourth');
+    var $radioButtonWork = $module.querySelector('.idsk-customer-survey__radio--work');
+    var $radioButtonPrivate = $module.querySelector('.idsk-customer-survey__radio--private');
+    var $counter = 7;
+    $module.sendButtonDisabled = new Array(7);
+    $module.textAreaMap = new Map();
+
+    if (!$module) {
+        return;
+    }
+
+    this.handleCounterOfSubtitles.call(this, $counter);
+    this.enableNextButtonForAllSteps.call(this);
+
+    if ($radioButtonWork) {
+        $radioButtonWork.addEventListener('click', this.handleRadioButtonWorkClick.bind(this));
+    }
+
+    if ($radioButtonPrivate) {
+        $radioButtonPrivate.addEventListener('click', this.handleRadioButtonPrivateClick.bind(this));
+    }
+
+    if ($nextButton) {
+        $nextButton.addEventListener('click', this.handleNextButtonClick.bind(this));
+    }
+
+    if ($previousButton) {
+        $previousButton.addEventListener('click', this.handlePreviousButtonClick.bind(this));
+    }
+
+    if ($textAreaFirst) {
+        $module.textAreaMap.set('first', 1);
+        $textAreaFirst.addEventListener('input', this.handleStatusOfCharacterCountButton.bind(this));
+    }
+
+    if ($textAreaSecond) {
+        $module.textAreaMap.set('second', 2);
+        $textAreaSecond.addEventListener('input', this.handleStatusOfCharacterCountButton.bind(this));
+    }
+
+    if ($textAreaThird) {
+        $module.textAreaMap.set('third', 4);
+        $textAreaThird.addEventListener('input', this.handleStatusOfCharacterCountButton.bind(this));
+    }
+
+    if ($textAreaFourth) {
+        $module.textAreaMap.set('fourth', 5);
+        $textAreaFourth.addEventListener('input', this.handleStatusOfCharacterCountButton.bind(this));
+    }
+};
+CustomerSurveys.prototype.enableNextButtonForAllSteps = function (e) {
+    for (var index = 0; index < this.$module.sendButtonDisabled.length; index++) {
+        this.$module.sendButtonDisabled[index] = false;
+    }
+};
+
+CustomerSurveys.prototype.handleStatusOfCharacterCountButton = function (e) {
+    var $module = this.$module;
+    var $name = e.srcElement.id;
+    var $textAreaCharacterCount = $module.querySelector('#' + $name);
+    var $remainingCharacterCountMessage = $module.querySelector('#' + $name + '-info');
+    var $submitButton = $module.querySelector('#idsk-customer-surveys__send-button');
+
+    setTimeout(function () {
+        if ($textAreaCharacterCount.classList.contains('govuk-textarea--error') || $remainingCharacterCountMessage.classList.contains('govuk-error-message')) {
+            $submitButton.disabled = true;
+        } else {
+            $submitButton.disabled = false;
+            // changing value of global variable for disabling button, in case of walk through steps and comming back to this textarea.
+            $module.sendButtonDisabled[$module.textAreaMap.get($name)] = false;
+        }
+    }, 300);
+};
+
+CustomerSurveys.prototype.handleCounterOfSubtitles = function ($counter) {
+    var $subtitles = this.$module.querySelectorAll('.idsk-customer-surveys--subtitle');
+    var i;
+
+    // remove previous indexing, cause amount of steps could change
+    // adding new indexing
+    for (i = 0; i < $counter; i++) {
+        $subtitles[i].textContent = $subtitles[i].textContent.substring(3);
+        $subtitles[i].innerHTML = (i + 1) + '. ' + $subtitles[i].textContent;
+    }
+};
+
+CustomerSurveys.prototype.handleRadioButtonWorkClick = function (e) {
+    var $textArea = this.$module.querySelector('.idsk-customer-survey__text-area--work');
+    var $subtitle = this.$module.querySelector('.idsk-customer-survey__subtitle--work');
+
+    $subtitle.classList.add('idsk-customer-surveys--subtitle');
+    $textArea.classList.remove('idsk-customer-surveys--hidden');
+    this.handleCounterOfSubtitles.call(this, 8);
+};
+
+CustomerSurveys.prototype.clearTextArea = function ($textArea) {
+    var $text = $textArea.querySelector('.govuk-textarea');
+    var $hint = $textArea.querySelector('.govuk-character-count__message');
+
+    $text.value = "";
+    if ($text.classList.contains('govuk-textarea--error')) {
+        $text.classList.remove('govuk-textarea--error');
+        $hint.classList.remove('govuk-error-message');
+        $hint.classList.add('govuk-hint');
+        $hint.innerHTML = "Zostáva Vám 200 znakov";
+    }
+};
+
+CustomerSurveys.prototype.handleRadioButtonPrivateClick = function (e) {
+    var $textArea = this.$module.querySelector('.idsk-customer-survey__text-area--work');
+    var $subtitle = this.$module.querySelector('.idsk-customer-survey__subtitle--work');
+    var $nextButton = this.$module.querySelector('#idsk-customer-surveys__send-button');
+
+    $nextButton.disabled = false;
+    $subtitle.classList.remove('idsk-customer-surveys--subtitle');
+    $textArea.classList.add('idsk-customer-surveys--hidden');
+    this.clearTextArea.call(this, $textArea);
+    this.handleCounterOfSubtitles.call(this, 7);
+};
+
+CustomerSurveys.prototype.handlePreviousButtonClick = function (e) {
+    var $module = this.$module;
+    var $steps = $module.querySelectorAll('.idsk-customer-surveys__step');
+    var i;
+    var $nextButton = $module.querySelector('#idsk-customer-surveys__send-button');
+    var $previousButton = $module.querySelector('#idsk-customer-surveys__previous-button');
+    var $startIcon = $module.querySelectorAll('.idsk-button__start-icon');
+    var $nextButtonText = $module.querySelector('.idsk-customer-surveys__send-button');
+
+    $previousButton.blur();
+    // showing and hiding steps, once step is set to be showed return is called.
+    // changing names of buttons, disabling
+    for (i = 1; i < $steps.length - 1; i++) {
+        if ($previousButton.textContent == "Späť" && $steps[1].classList.contains('idsk-customer-surveys--show')) {
+            $previousButton.innerHTML = 'Odísť';
+            $nextButtonText.innerHTML = 'Začať';
+            toggleClass($startIcon[0], 'idsk-customer-surveys__icon--hidden');
+            $previousButton.onclick = function () {
+                location.href = "/";
+            };
+        }
+        if ($nextButtonText.textContent.includes("Odoslať odpovede")) {
+            $nextButtonText.innerHTML = 'Ďalej';
+            toggleClass($startIcon[0], 'idsk-customer-surveys__icon--hidden');
+        }
+        if ($steps[i].classList.contains('idsk-customer-surveys--show')) {
+            if ($nextButton.disabled) {
+                $module.sendButtonDisabled[i] = true;
+                $nextButton.disabled = false;
+            }
+            $steps[i].classList.remove('idsk-customer-surveys--show');
+            toggleClass($steps[i], 'idsk-customer-surveys--hidden');
+            toggleClass($steps[i - 1], 'idsk-customer-surveys--hidden');
+            $steps[i - 1].classList.add('idsk-customer-surveys--show');
+            return;
+        }
+    }};
+
+CustomerSurveys.prototype.handleNextButtonClick = function (e) {
+    var $module = this.$module;
+    var $steps = $module.querySelectorAll('.idsk-customer-surveys__step');
+    var i;
+    var $buttonsDiv = $module.querySelector('.idsk-customer-surveys__buttons');
+    var $nextButton = $module.querySelector('#idsk-customer-surveys__send-button');
+    var $previousButton = $module.querySelector('#idsk-customer-surveys__previous-button');
+    var $startIcon = $module.querySelectorAll('.idsk-button__start-icon');
+    var $nextButtonText = $module.querySelector('.idsk-customer-surveys__send-button');
+
+    $nextButton.blur();
+    if ($nextButtonText.textContent.includes("Začať")) {
+        $nextButtonText.innerHTML = 'Ďalej';        toggleClass($startIcon[0], 'idsk-customer-surveys__icon--hidden');
+        // uncheck all radiobuttons 
+        this.handleRadioButtonPrivateClick.call(this);
+
+        var $radios = $module.querySelectorAll('.govuk-radios__input');
+        for (var i = 0; i < $radios.length; i++) {
+            $radios[i].checked = false;
+        }
+        // clear all textAreas
+        var $textAreas = $module.querySelectorAll('.idsk-customer-surveys-text-area');
+        for (var i = 0; i < $textAreas.length; i++) {
+            this.clearTextArea.call(this, $textAreas[i]);
+        }
+        this.enableNextButtonForAllSteps.call(this);
+    }
+
+    if ($nextButtonText.textContent.includes("Odoslať odpovede")) {
+        $buttonsDiv.classList.add('idsk-customer-surveys--hidden');
+    }
+
+    // showing and hiding steps, once step is set to be showed return is called.
+    // changing names of buttons, disabling
+    for (i = 0; i < $steps.length - 1; i++) {
+        if ($steps[i].classList.contains('idsk-customer-surveys--show')) {
+            if ($module.sendButtonDisabled[i + 1]) {
+                $nextButton.disabled = true;
+            } else {
+                $nextButton.disabled = false;
+            }
+            $steps[i].classList.remove('idsk-customer-surveys--show');
+            toggleClass($steps[i], 'idsk-customer-surveys--hidden');
+            toggleClass($steps[i + 1], 'idsk-customer-surveys--hidden');
+            $steps[i + 1].classList.add('idsk-customer-surveys--show');
+            if (i == 4) {
+                $nextButtonText.innerHTML = 'Odoslať odpovede';
+                toggleClass($startIcon[0], 'idsk-customer-surveys__icon--hidden');
+            }
+            if (i == 0) {
+                $previousButton.innerHTML = 'Späť';
+                $previousButton.onclick = function () {
+                    location.href = "#";
+                };
+            }
+            return;
+        }
+    }};
 
 /**
  * Header for extended websites
@@ -2984,23 +3245,20 @@ HeaderExtended.prototype.init = function () {
         $toggleSearchInputComponent.addEventListener('focusout', this.handleSearchComponentClick.bind(this));
     }
 
-    // check for language selector
-    var $toggleLanguageSelector = $module.querySelector('.idsk-js-header-extended-language-toggle');
-    if ($toggleLanguageSelector) {
-        // Handle $toggleLanguageSelect click events
-        $toggleLanguageSelector.addEventListener('focus', this.handleLanguageSelectorClick.bind(this));
-        $toggleLanguageSelector.addEventListener('blur', this.handleLanguageSelectorClick.bind(this));
+    // check for language switcher
+    var $toggleLanguageSwitcher = $module.querySelector('.idsk-js-header-extended-language-toggle');
+    if ($toggleLanguageSwitcher) {
+        // Handle $toggleLanguageSwitcher click events
+        $toggleLanguageSwitcher.addEventListener('click', this.handleLanguageSwitcherClick.bind(this));
     }
 
-    // check for submenu
-    var $toggleSubmenus = $module.querySelectorAll('.idsk-header-extended__link');
-    if ($toggleSubmenus) {
-        var $self = this;
-        // Handle $toggleSubmenu click events
-        nodeListForEach$1($toggleSubmenus, function ($toggleSubmenu) {
-            $toggleSubmenu.addEventListener('focus', $self.handleSubmenuClick2.bind($self));
-            $toggleSubmenu.addEventListener('blur', $self.handleSubmenuClick.bind($self));
-        });
+    // check for menu items
+    var $menuItems = $module.querySelectorAll('.idsk-header-extended__link');
+    if ($menuItems) {
+        // Handle $menuItem click events
+        nodeListForEach$1($menuItems, function ($menuItem) {
+            $menuItem.addEventListener('click', this.handleSubmenuClick.bind(this));
+        }.bind(this));
     }
 
     // check for menu button and x-mark button
@@ -3012,6 +3270,9 @@ HeaderExtended.prototype.init = function () {
     }
 
     window.addEventListener('scroll', this.scrollFunction.bind(this));
+
+    $module.boundCheckBlurMenuItemClick = this.checkBlurMenuItemClick.bind(this);
+    $module.boundCheckBlurLanguageSwitcherClick = this.checkBlurLanguageSwitcherClick.bind(this);
 };
 
 /**
@@ -3032,12 +3293,22 @@ HeaderExtended.prototype.handleSearchComponentClick = function (e) {
 
 /**
  * Handle open/hide language switcher
- * @param {object} e 
+ * @param {object} e
  */
-HeaderExtended.prototype.handleLanguageSelectorClick = function (e) {
+HeaderExtended.prototype.handleLanguageSwitcherClick = function (e) {
     var $toggleButton = e.target || e.srcElement;
     var $target = $toggleButton.closest('.idsk-header-extended__language');
     toggleClass($target, 'idsk-header-extended__language--active');
+    document.addEventListener('click', this.$module.boundCheckBlurLanguageSwitcherClick, true);
+};
+
+/**
+ * handle click outside language switcher or "blur" the item link
+ */
+HeaderExtended.prototype.checkBlurLanguageSwitcherClick = function () {
+    var $target = this.$module.querySelectorAll('.idsk-header-extended__language');
+    $target[0].classList.remove('idsk-header-extended__language--active');
+    document.removeEventListener('click', this.$module.boundCheckBlurLanguageSwitcherClick, true);
 };
 
 /**
@@ -3047,22 +3318,23 @@ HeaderExtended.prototype.handleLanguageSelectorClick = function (e) {
 HeaderExtended.prototype.handleSubmenuClick = function (e) {
     var $srcEl = e.target || e.srcElement;
     var $toggleButton = $srcEl.closest('.idsk-header-extended__navigation-item');
-    toggleClass($toggleButton, 'idsk-header-extended__navigation-item--active');
-};/**
- * Handle open/hide submenu
- * @param {object} e 
- */
-
-HeaderExtended.prototype.handleSubmenuClick2 = function (e) {
-    var $srcEl = e.target || e.srcElement;
-    var $toggleButton = $srcEl.closest('.idsk-header-extended__navigation-item');
     var $currActiveList = this.$module.querySelectorAll('.idsk-header-extended__navigation-item--active');
 
     if ($currActiveList.length > 0) {
         $currActiveList[0].classList.remove('idsk-header-extended__navigation-item--active');
     }
-    
     toggleClass($toggleButton, 'idsk-header-extended__navigation-item--active');
+
+    document.addEventListener('click', this.$module.boundCheckBlurMenuItemClick, true);
+};
+
+/**
+ * handle click outside menu or "blur" the item link
+ */
+HeaderExtended.prototype.checkBlurMenuItemClick = function () {
+    var $currActiveList = this.$module.querySelectorAll('.idsk-header-extended__navigation-item--active');
+    $currActiveList[0].classList.remove('idsk-header-extended__navigation-item--active');
+    document.removeEventListener('click', this.$module.boundCheckBlurMenuItemClick, true);
 };
 
 /**
@@ -3224,6 +3496,1437 @@ InPageNavigation.prototype.changeCurrentLink = function (el) {
     $linkPanelText.innerText = $articleTitle.innerText;
 };
 
+function SearchResults($module) {
+    this.$module = $module;
+}
+
+SearchResults.prototype.init = function () {
+    // Check for module
+    if (!this.$module) {
+        return
+    }
+    var $module = this.$module;
+    $module.resultCards = new Array();
+    $module.countOfCardsPerPage = new Number();
+    $module.currentPageNumber = new Number();
+    $module.subTopicButton = $module.querySelector('.idsk-search-results__subtopic');
+
+    if ($module.subTopicButton) {
+        $module.subTopicButton.disabled = true;
+    }
+
+    // Check for button
+    var $links = $module.querySelectorAll('.idsk-search-results__link');
+    if (!$links) {
+        return
+    }
+
+    var $resultsPerPageDropdown = $module.querySelector('.idsk-search-results__content .govuk-select');
+    if (!$resultsPerPageDropdown) {
+        return
+    }
+
+    var $backButton = $module.querySelector('.idsk-search-results__button--back');
+    if (!$backButton) {
+        return
+    }
+
+    var $forwardButton = $module.querySelector('.idsk-search-results__button--forward');
+    if (!$forwardButton) {
+        return
+    }
+
+    var $backButtonMobile = $module.querySelector('.idsk-search-results__button--back__mobile');
+    if (!$backButton) {
+        return
+    }
+
+    var $forwardButtonMobile = $module.querySelector('.idsk-search-results__button--forward__mobile');
+    if (!$forwardButton) {
+        return
+    }
+
+    $module.resultCards = $module.querySelectorAll('.idsk-search-results__card');
+    if (!$module.resultCards) {
+        return
+    }
+
+    var $linkPanelButtons = $module.querySelectorAll('.idsk-search-results__link-panel-button');
+    if (!$linkPanelButtons) {
+        return
+    }
+
+    var $filtersButtonMobile = $module.querySelector('.idsk-search-results__filters__button');
+    if (!$filtersButtonMobile) {
+        return
+    }
+
+    var $turnFiltersOffButtonMobile = $module.querySelector('.idsk-search-results__button--turn-filters-off');
+    if (!$turnFiltersOffButtonMobile) {
+        return
+    }
+
+    var $showResultsButtonMobile = $module.querySelector('.idsk-search-results__button-show-results');
+    if (!$showResultsButtonMobile) {
+        return
+    }
+
+    var $backToResultsButtonMobile = $module.querySelector('.idsk-search-results__button--back-to-results');
+    if (!$backToResultsButtonMobile) {
+        return
+    }
+
+    var $radioButtonsInput = $module.querySelectorAll('.idsk-search-results__filter .govuk-radios__input ');
+    if (!$radioButtonsInput) {
+        return
+    }
+
+    var $contentTypeCheckBoxes = $module.querySelectorAll('.idsk-search-results__filter .govuk-checkboxes__input ');
+    if (!$contentTypeCheckBoxes) {
+        return
+    }
+
+    var $dateFrom = $module.querySelector('#datum-od');
+    var $dateTo = $module.querySelector('#datum-do');
+
+
+    var $topicSearchInput = $module.querySelector('#idsk-search-input__topic');
+    if ($topicSearchInput) {
+        $topicSearchInput.addEventListener('keyup', this.handleSearchItemsFromInput.bind(this, 'radios'));
+    }
+
+    var $subtopicSearchInput = $module.querySelector('#idsk-search-input__subtopic');
+    if ($subtopicSearchInput) {
+        $subtopicSearchInput.addEventListener('keyup', this.handleSearchItemsFromInput.bind(this, 'radios'));
+    }
+
+    var $contentTypeSearchInput = $module.querySelector('#idsk-search-input__content-type');
+    if ($contentTypeSearchInput) {
+        $contentTypeSearchInput.addEventListener('keyup', this.handleSearchItemsFromInput.bind(this, 'checkboxes'));
+    }
+
+    if ($dateFrom) {
+        $dateFrom.addEventListener('focusout', this.handleFillDate.bind(this, 'from'));
+        $dateTo.addEventListener('focusout', this.handleFillDate.bind(this, 'to'));
+    }
+
+    $backButton.addEventListener('click', this.handleClickPreviousPage.bind(this));
+    $forwardButton.addEventListener('click', this.handleClickNextPage.bind(this));
+    $backButtonMobile.addEventListener('click', this.handleClickPreviousPage.bind(this));
+    $forwardButtonMobile.addEventListener('click', this.handleClickNextPage.bind(this));
+    $filtersButtonMobile.addEventListener('click', this.handleClickFiltersButton.bind(this));
+    $turnFiltersOffButtonMobile.addEventListener('click', this.handleClickTurnFiltersOffButton.bind(this));
+    $showResultsButtonMobile.addEventListener('click', this.handleClickShowResultsButton.bind(this));
+    $backToResultsButtonMobile.addEventListener('click', this.handleClickShowResultsButton.bind(this));
+    $module.boundHandleClickLinkPanel = this.handleClickLinkPanel.bind(this);
+
+    // set selected value in dropdown
+    $module.countOfCardsPerPage = $resultsPerPageDropdown.value;
+    $module.currentPageNumber = 1;
+    this.showResultCardsPerPage.call(this, 0, $resultsPerPageDropdown.value);
+    $resultsPerPageDropdown.addEventListener('change', this.handleClickResultsPerPageDropdown.bind(this));
+    $filtersButtonMobile.innerText = 'Filtre(0)';
+
+    $linkPanelButtons.forEach(function ($button) {
+        $button.addEventListener('click', $module.boundHandleClickLinkPanel, true);
+    }.bind(this));
+
+    $radioButtonsInput.forEach(function ($input) {
+        $input.addEventListener('click', this.handleClickRadioButton.bind(this), true);
+    }.bind(this));
+
+    $contentTypeCheckBoxes.forEach(function ($checkBox) {
+        $checkBox.addEventListener('click', this.handleClickContentTypeCheckBox.bind(this), true);
+    }.bind(this));
+};
+
+/**
+ * function for handling show results button and 'back to results' button in mobile view
+ * hiding and showing elements - mobile version only
+ * 
+ */
+SearchResults.prototype.handleClickShowResultsButton = function (e) {
+    var $module = this.$module;
+    var $filterBar = $module.querySelector('.idsk-search-results__filter');
+    var $searchBar = $module.querySelector('.idsk-search-results .idsk-intro-block__search');
+    var $searchBarTitle = $module.querySelector('.idsk-search-results .idsk-intro-block__search__span');
+    var $orderByDropdown = $module.querySelector('.idsk-search-results--order__dropdown');
+    var $resultsPerPage = $module.querySelector('.idsk-search-results__filter-panel--mobile');
+    var $orderByDropdownMobile = $module.querySelector('.idsk-search-results--order');
+    var $pagingMobile = $module.querySelector('.idsk-search-results__page-number--mobile');
+    var $pagingDesktop = $module.querySelector('.idsk-search-results__content__page-changer');
+    var $searchResultsAll = $module.querySelector('.idsk-search-results__content__all');
+    var $filterHeaderPanel = $module.querySelector('.idsk-search-results__filter-header-panel');
+    var $pickedFiltersPanel = $module.querySelector('.idsk-search-results__content__picked-filters');
+    var $showResultsButton = $module.querySelector('.idsk-search-results__show-results__button');
+    var $contentContainer = $module.querySelector('.idsk-search-results__content');
+    var $title = $module.querySelector('.idsk-search-results__title');
+    var $header = document.getElementsByTagName('header');
+    var $footer = document.getElementsByTagName('footer');
+    var $breadcrumbs = document.getElementsByClassName('govuk-breadcrumbs');
+
+    $title.classList.remove('idsk-search-results--invisible__mobile');
+    $contentContainer.classList.remove('idsk-search-results--invisible__mobile');
+    $showResultsButton.classList.add('idsk-search-results--invisible');
+    $pickedFiltersPanel.classList.add('idsk-search-results--invisible__mobile');
+    $filterBar.classList.remove('idsk-search-results--visible');
+    $filterHeaderPanel.classList.remove('idsk-search-results--visible__mobile--inline');
+    $searchResultsAll.classList.remove('idsk-search-results--invisible__mobile');
+    $pagingMobile.classList.remove('idsk-search-results--invisible');
+    $pagingDesktop.classList.remove('idsk-search-results--invisible__mobile');
+    $searchBar.classList.remove('idsk-search-results--invisible__mobile');
+    if ($searchBarTitle) {
+        $searchBarTitle.classList.remove('idsk-search-results--invisible__mobile');
+    }
+    $orderByDropdown.classList.remove('idsk-search-results--invisible__mobile');
+    $resultsPerPage.classList.remove('idsk-search-results--invisible__mobile');
+    $orderByDropdownMobile.classList.remove('idsk-search-results--invisible');
+    if ($header[0] && $footer[0] && $breadcrumbs[0]) {
+        $header[0].classList.remove('idsk-search-results--invisible__mobile');
+        $footer[0].classList.remove('idsk-search-results--invisible__mobile');
+        $breadcrumbs[0].classList.remove('idsk-search-results--invisible__mobile');
+    }
+};
+
+/**
+ * function for handling whether is some filter picked, because of hiding and showing elements in container with picked items
+ * returns boolean
+ * 
+ */
+SearchResults.prototype.handleSomeFilterPicked = function (e) {
+    var $module = this.$module;
+    var $contentContainer = $module.querySelector('.idsk-search-results__content');
+    var $pickedTopics = $module.querySelectorAll('.idsk-search-results__picked-topic');
+    var $pickedContentTypes = $module.querySelectorAll('.idsk-search-results__picked-content-type');
+    var $pickedDates = $module.querySelectorAll('.idsk-search-results__picked-date');
+    var $isFilterPicked = $pickedTopics.length > 0 || $pickedContentTypes.length > 0 || $pickedDates.length > 0;
+
+    if ($isFilterPicked) {
+        $contentContainer.classList.remove('idsk-search-results--invisible__mobile');
+    } else {
+        $contentContainer.classList.add('idsk-search-results--invisible__mobile');
+    }
+
+    return $isFilterPicked
+};
+
+/**
+ * function for counting selected filters, for mobile button 'Filters' purposes
+ * 
+ */
+SearchResults.prototype.handleCountForFiltersButton = function (e) {
+    var $module = this.$module;
+    var $pickedTopics = $module.querySelectorAll('.idsk-search-results__picked-topic');
+    var $pickedContentTypes = $module.querySelectorAll('.idsk-search-results__picked-content-type');
+    var $pickedDates = $module.querySelectorAll('.idsk-search-results__picked-date');
+    var $filtersButtonMobile = $module.querySelector('.idsk-search-results__filters__button');
+    var $countOfPickedFilters = $pickedTopics.length + $pickedContentTypes.length + $pickedDates.length;
+
+    $filtersButtonMobile.innerText = 'Filtre(' + $countOfPickedFilters + ')';
+};
+
+/**
+ * function for disabling all picked filters
+ * 
+ */
+SearchResults.prototype.handleClickTurnFiltersOffButton = function (e) {
+    var $module = this.$module;
+    var $contentContainer = $module.querySelector('.idsk-search-results__content');
+    var $pickedTopics = $module.querySelectorAll('.idsk-search-results__picked-topic');
+    var $pickedContentTypes = $module.querySelectorAll('.idsk-search-results__picked-content-type');
+    var $pickedDates = $module.querySelectorAll('.idsk-search-results__picked-date');
+    var $filtersButtonMobile = $module.querySelector('.idsk-search-results__filters__button');
+
+    $contentContainer.classList.add('idsk-search-results--invisible__mobile');
+    $filtersButtonMobile.innerText = 'Filtre(0)';
+
+    $pickedTopics.forEach(function ($topic) {
+        this.handleRemovePickedTopic.call(this, $topic);
+    }.bind(this));
+
+    $pickedContentTypes.forEach(function ($contentType) {
+        this.handleRemovePickedContentType.call(this, $contentType);
+    }.bind(this));
+
+    $pickedDates.forEach(function ($date) {
+        this.handleRemovePickedDate.call(this, $date);
+    }.bind(this));
+};
+
+/**
+ * function for changing view for mobile after click on "Filters" button
+ * 
+ */
+SearchResults.prototype.handleClickFiltersButton = function (e) {
+    var $module = this.$module;
+    var $filterBar = $module.querySelector('.idsk-search-results__filter');
+    var $searchBar = $module.querySelector('.idsk-search-results .idsk-intro-block__search');
+    var $searchBarTitle = $module.querySelector('.idsk-search-results .idsk-intro-block__search__span');
+    var $orderByDropdown = $module.querySelector('.idsk-search-results--order__dropdown');
+    var $resultsPerPage = $module.querySelector('.idsk-search-results__filter-panel--mobile');
+    var $orderByDropdownMobile = $module.querySelector('.idsk-search-results--order');
+    var $pagingMobile = $module.querySelector('.idsk-search-results__page-number--mobile');
+    var $pagingDesktop = $module.querySelector('.idsk-search-results__content__page-changer');
+    var $searchResultsAll = $module.querySelector('.idsk-search-results__content__all');
+    var $filterHeaderPanel = $module.querySelector('.idsk-search-results__filter-header-panel');
+    var $pickedFiltersPanel = $module.querySelector('.idsk-search-results__content__picked-filters');
+    var $showResultsButton = $module.querySelector('.idsk-search-results__show-results__button');
+    var $title = $module.querySelector('.idsk-search-results__title');
+    var $header = document.getElementsByTagName('header');
+    var $footer = document.getElementsByTagName('footer');
+    var $breadcrumbs = document.getElementsByClassName('govuk-breadcrumbs');
+
+    if (this.handleSomeFilterPicked.call(this)) {
+        $showResultsButton.classList.remove('idsk-search-results--invisible');
+        $pickedFiltersPanel.classList.remove('idsk-search-results--invisible__mobile');
+    }
+
+    $title.classList.add('idsk-search-results--invisible__mobile');
+    $filterBar.classList.add('idsk-search-results--visible');
+    $filterHeaderPanel.classList.add('idsk-search-results--visible__mobile--inline');
+    $searchResultsAll.classList.add('idsk-search-results--invisible__mobile');
+    $pagingMobile.classList.add('idsk-search-results--invisible');
+    $pagingDesktop.classList.add('idsk-search-results--invisible__mobile');
+    $searchBar.classList.add('idsk-search-results--invisible__mobile');
+    if ($searchBarTitle) {
+        $searchBarTitle.classList.add('idsk-search-results--invisible__mobile');
+    }
+    $orderByDropdown.classList.add('idsk-search-results--invisible__mobile');
+    $resultsPerPage.classList.add('idsk-search-results--invisible__mobile');
+
+    if ($header[0] && $footer[0] && $breadcrumbs[0]) {
+        $header[0].classList.add('idsk-search-results--invisible__mobile');
+        $footer[0].classList.add('idsk-search-results--invisible__mobile');
+        $breadcrumbs[0].classList.add('idsk-search-results--invisible__mobile');
+    }
+    $orderByDropdownMobile.classList.add('idsk-search-results--invisible');
+};
+
+SearchResults.prototype.handleClickPreviousPage = function (e) {
+    var $module = this.$module;
+
+    location.href = "#";
+    $module.currentPageNumber = $module.currentPageNumber - 1;
+    this.showResultCardsPerPage.call(this, $module.countOfCardsPerPage * ($module.currentPageNumber - 1), $module.countOfCardsPerPage * $module.currentPageNumber);
+};
+
+SearchResults.prototype.handleClickNextPage = function (e) {
+    var $module = this.$module;
+
+    location.href = "#";
+    $module.currentPageNumber = $module.currentPageNumber + 1;
+    this.showResultCardsPerPage.call(this, $module.countOfCardsPerPage * ($module.currentPageNumber - 1), $module.countOfCardsPerPage * $module.currentPageNumber);
+};
+
+SearchResults.prototype.handleClickResultsPerPageDropdown = function (e) {
+    var $el = e.target || e.srcElement;
+    var $module = this.$module;
+
+    $module.countOfCardsPerPage = $el.value;
+    this.showResultCardsPerPage.call(this, 0, $el.value);
+};
+
+SearchResults.prototype.handleSearchItemsFromInput = function ($type, e) {
+    var $el = e.target || e.srcElement;
+    var $linkPanelButton = $el.closest('.idsk-search-results__link-panel');
+
+    var $items = $linkPanelButton.querySelectorAll('.govuk-' + $type + '__item');
+    $items.forEach(function ($item) {
+        $item.classList.remove('idsk-search-results--invisible');
+    }.bind(this));
+    $items.forEach(function ($item) {
+        var $labelItem = $item.querySelector('.govuk-' + $type + '__label');
+
+        if (!$labelItem.innerText.toLowerCase().includes($el.value.toLowerCase())) {
+            $item.classList.add('idsk-search-results--invisible');
+        }
+    }.bind(this));
+};
+
+SearchResults.prototype.handleFillDate = function ($period, e) {
+    var $el = e.target || e.srcElement;
+    var $module = this.$module;
+    var $choosenDatesInFiltersContainer = $module.querySelector('.idsk-search-results__content__picked-filters__date');
+    var $class = 'idsk-search-results__picked-date';
+    var $dateElementInContainer = $choosenDatesInFiltersContainer.querySelector('[data-source="' + $el.id + '"]');
+    var $contentContainer = $module.querySelector('.idsk-search-results__content');
+
+    if ($el.value == '' || !($el.value.match(/^(\d{1,2})\.(\d{1,2})\.(\d{4})$/) || $el.value.match(/^(\d{4})$/))) {
+        return;
+    }
+
+    if ($el.value && !$dateElementInContainer) {
+        var $contentTypePicked = this.createTopicInContainer.call(this, $choosenDatesInFiltersContainer, $el.id, $class, $el, $el.id == 'datum-od' ? true : false);
+    } else if ($dateElementInContainer) {
+        $contentTypePicked = $dateElementInContainer;
+        $contentTypePicked.innerHTML = $el.value + ' &#10005;';
+    }
+
+    $contentContainer.classList.remove('idsk-search-results--invisible__mobile');
+    $contentTypePicked.addEventListener('click', this.handleRemovePickedDate.bind(this));
+    $el.value = '';
+    $choosenDatesInFiltersContainer.classList.remove('idsk-search-results--invisible');
+    this.checkValuesInDateContainer.call(this);
+    this.changeBackgroundForPickedFilters.call(this);
+};
+
+SearchResults.prototype.handleRemovePickedDate = function (e) {
+    var $el = e.target || e.srcElement || e;
+
+    $el.remove();
+    this.handleSomeFilterPicked.call(this);
+    this.checkValuesInDateContainer.call(this);
+    this.handleCountForFiltersButton.call(this);
+    this.changeBackgroundForPickedFilters.call(this);
+};
+
+SearchResults.prototype.createSpanElement = function ($class, $text) {
+    var $spanElement = document.createElement('span');
+    $spanElement.setAttribute('class', $class);
+    $spanElement.innerHTML = $text;
+
+    return $spanElement
+};
+
+/**
+ * function for checking whether is there any date items selected in container
+ * 
+ */
+SearchResults.prototype.checkValuesInDateContainer = function (e) {
+    var $choosenDatesInFiltersContainer = this.$module.querySelector('.idsk-search-results__content__picked-filters__date');
+    var $beforeDateClass = 'idsk-search-results__before-date';
+    var $afterDateClass = 'idsk-search-results__after-date';
+    var $beforeDateSpan = $choosenDatesInFiltersContainer.querySelector('.' + $beforeDateClass);
+    var $afterDateSpan = $choosenDatesInFiltersContainer.querySelector('.' + $afterDateClass);
+
+
+    $beforeDateSpan ? $beforeDateSpan.remove() : false;
+    $afterDateSpan ? $afterDateSpan.remove() : false;
+
+    if (!$choosenDatesInFiltersContainer.querySelector('[data-source="datum-od"]') && !$choosenDatesInFiltersContainer.querySelector('[data-source="datum-do"]')) {
+        $choosenDatesInFiltersContainer.classList.add('idsk-search-results--invisible');
+        return
+    }
+
+    if ($choosenDatesInFiltersContainer.querySelector('[data-source="datum-od"]') && $choosenDatesInFiltersContainer.querySelector('[data-source="datum-do"]')) {
+        var $beforeDateSpan = this.createSpanElement.call(this, $beforeDateClass, 'Naposledy aktualizované medzi ');
+        var $afterDateSpan = this.createSpanElement.call(this, $afterDateClass, 'a ');
+
+        $choosenDatesInFiltersContainer.insertBefore($beforeDateSpan, $choosenDatesInFiltersContainer.querySelector('[data-source="datum-od"]'));
+        $choosenDatesInFiltersContainer.insertBefore($afterDateSpan, $choosenDatesInFiltersContainer.querySelector('[data-source="datum-do"]'));
+    } else if ($choosenDatesInFiltersContainer.querySelector('[data-source="datum-od"]')) {
+        var $beforeDateSpan = this.createSpanElement.call(this, $beforeDateClass, 'Naposledy aktualizované po ');
+        $choosenDatesInFiltersContainer.insertBefore($beforeDateSpan, $choosenDatesInFiltersContainer.querySelector('[data-source="datum-od"]'));
+
+    } else if ($choosenDatesInFiltersContainer.querySelector('[data-source="datum-do"]')) {
+        var $afterDateSpan = this.createSpanElement.call(this, $afterDateClass, 'Naposledy aktualizované pred ');
+        $choosenDatesInFiltersContainer.insertBefore($afterDateSpan, $choosenDatesInFiltersContainer.querySelector('[data-source="datum-do"]'));
+    }
+};
+
+/**
+ * function for changing number of cards on page
+ * 
+ */
+SearchResults.prototype.showResultCardsPerPage = function ($startIndex, $endIndex) {
+    var $module = this.$module;
+    var $backButton = $module.querySelector('.idsk-search-results__button--back');
+    var $forwardButton = $module.querySelector('.idsk-search-results__button--forward');
+    var $pageNumber = $module.querySelector('.idsk-search-results__page-number');
+    var $backButtonMobile = $module.querySelector('.idsk-search-results__button--back__mobile');
+    var $forwardButtonMobile = $module.querySelector('.idsk-search-results__button--forward__mobile');
+    var $pageNumberMobile = $module.querySelector('.idsk-search-results__page-number__mobile');
+    var $i;
+
+    //hide all cards
+    $module.resultCards.forEach(function ($card) {
+        if (!$card.classList.contains('idsk-search-results--invisible')) {
+            $card.classList.add('idsk-search-results--invisible');
+        }
+    }.bind(this));
+
+    if ($endIndex >= $module.resultCards.length) {
+        $endIndex = $module.resultCards.length;
+        $forwardButton.classList.add('idsk-search-results--hidden');
+        $backButton.classList.remove('idsk-search-results--hidden');
+        $forwardButtonMobile.classList.add('idsk-search-results--hidden');
+        $backButtonMobile.classList.remove('idsk-search-results--hidden');
+    } else {
+        $forwardButton.classList.remove('idsk-search-results--hidden');
+        $forwardButtonMobile.classList.remove('idsk-search-results--hidden');
+    }
+
+    if ($startIndex < 0) {
+        $startIndex = 0;
+    } else if ($startIndex > 0) {
+        $backButton.classList.remove('idsk-search-results--hidden');
+        $backButtonMobile.classList.remove('idsk-search-results--hidden');
+    } else if ($startIndex == 0) {
+        $module.currentPageNumber = 1;
+    }
+
+    for ($i = $startIndex; $i < $endIndex; $i++) {
+        $module.resultCards[$i].classList.remove('idsk-search-results--invisible');
+    }
+
+    // hide back button if 1st page is showed
+    if ($startIndex == 0 && !$backButton.classList.contains('idsk-search-results--hidden')) {
+        $backButton.classList.add('idsk-search-results--hidden');
+        $backButtonMobile.classList.add('idsk-search-results--hidden');
+    }
+
+    var $numberOfPages = (($module.resultCards.length / $module.countOfCardsPerPage) | 0) + 1;
+    $pageNumber.innerText = 'Strana ' + $module.currentPageNumber + ' z ' + $numberOfPages;
+    $pageNumberMobile.innerText = 'Strana ' + $module.currentPageNumber + ' z ' + $numberOfPages;
+};
+
+/**
+ * An event handler for click event on $linkPanel - collapse or expand filter
+ * @param {object} e 
+ */
+SearchResults.prototype.handleClickLinkPanel = function (e) {
+    var $el = e.target || e.srcElement;
+    var $linkPanelButton = $el.closest('.idsk-search-results__link-panel');
+    var $contentPanel = $linkPanelButton.querySelector('.idsk-search-results__list');
+
+    toggleClass($contentPanel, 'idsk-search-results--hidden');
+    toggleClass($linkPanelButton, 'idsk-search-results--expand');
+};
+
+/**
+ * An event handler for click event on radio button
+ * @param {object} e 
+ */
+SearchResults.prototype.handleClickRadioButton = function (e) {
+    var $el = e.target || e.srcElement;
+    var $module = this.$module;
+    var $linkPanelButton = $el.closest('.idsk-search-results__link-panel');
+    var $buttonCaption = $linkPanelButton.querySelector('.idsk-search-results__link-panel--span');
+    var $choosenFiltersContainer = $module.querySelector('.idsk-search-results__content__picked-filters__topics');
+    var $radios = $el.closest('.govuk-radios');
+    var $filterContainer = $choosenFiltersContainer.querySelector('[data-source="' + $radios.dataset.id + '"]');
+    var $class = 'idsk-search-results__picked-topic';
+    var $contentContainer = $module.querySelector('.idsk-search-results__content');
+
+    // creating or renaming new span element for picked topic
+    if ($el.value && !$filterContainer) {
+        var $topicPicked = this.createTopicInContainer.call(this, $choosenFiltersContainer, $radios.dataset.id, $class, $el, false);
+        if ($module.subTopicButton) {
+            $module.subTopicButton.disabled = false;
+        }
+    } else if ($filterContainer.dataset.source == $radios.dataset.id) {
+        $topicPicked = $filterContainer;
+        $topicPicked.innerHTML = $el.value + ' &#10005;';
+    } else if ($filterContainer.dataset.source != $radios.dataset.id) {
+        var $topicPicked = this.createTopicInContainer.call(this, $choosenFiltersContainer, $radios.dataset.id, $class, $el, false);
+    }
+
+    $contentContainer.classList.remove('idsk-search-results--invisible__mobile');
+    $choosenFiltersContainer.classList.remove('idsk-search-results--invisible');
+    $topicPicked.removeEventListener('click', this.handleRemovePickedTopic.bind(this), true);
+    $topicPicked.addEventListener('click', this.handleRemovePickedTopic.bind(this));
+    this.changeBackgroundForPickedFilters.call(this);
+    $buttonCaption.innerText = '1 vybraté';
+};
+
+SearchResults.prototype.handleClickContentTypeCheckBox = function (e) {
+    var $el = e.target || e.srcElement;
+    var $module = this.$module;
+    var $linkPanelButton = $el.closest('.idsk-search-results__link-panel');
+    var $choosenFiltersContainer = $module.querySelector('.idsk-search-results__content__picked-filters__content-type');
+    var $checkBoxes = $el.closest('.govuk-checkboxes');
+    var $class = 'idsk-search-results__picked-content-type';
+    var $contentContainer = $module.querySelector('.idsk-search-results__content');
+
+    if ($el.checked) {
+        var $contentTypePicked = this.createTopicInContainer.call(this, $choosenFiltersContainer, $el.id, $class, $el, false);
+        $contentTypePicked.addEventListener('click', this.handleRemovePickedContentType.bind(this));
+    } else {
+        var $itemToRemove = $module.querySelector('[data-source="' + $el.id + '"]');
+        $itemToRemove.remove();
+    }
+
+    $contentContainer.classList.remove('idsk-search-results--invisible__mobile');
+    $choosenFiltersContainer.classList.remove('idsk-search-results--invisible');
+    this.handleCountOfPickedContentTypes.call(this, $checkBoxes, $linkPanelButton);
+    this.changeBackgroundForPickedFilters.call(this);
+};
+
+SearchResults.prototype.handleRemovePickedContentType = function (e) {
+    var $el = e.target || e.srcElement || e;
+    var $checkBoxes = this.$module.querySelector('.idsk-search-results__content-type-filter .govuk-checkboxes');
+    var $checkBoxToRemove = $checkBoxes.querySelector('#' + $el.dataset.source);
+    var $linkPanelButton = $checkBoxes.closest('.idsk-search-results__link-panel');
+
+    $checkBoxToRemove.checked = false;
+    $el.remove();
+    this.handleSomeFilterPicked.call(this);
+    this.handleCountOfPickedContentTypes.call(this, $checkBoxes, $linkPanelButton);
+    this.handleCountForFiltersButton.call(this);
+    this.changeBackgroundForPickedFilters.call(this);
+};
+
+/**
+ * function for counting selected checkboxes in content type filter
+ * @param {object} $checkBoxes 
+ * @param {object} $linkPanelButton
+ */
+SearchResults.prototype.handleCountOfPickedContentTypes = function ($checkBoxes, $linkPanelButton) {
+    var $choosenFiltersContainer = this.$module.querySelector('.idsk-search-results__content__picked-filters__content-type');
+    var $buttonCaption = $linkPanelButton.querySelector('.idsk-search-results__link-panel--span');
+    var $counter = 0;
+
+    if ($checkBoxes) {
+        $checkBoxes.querySelectorAll('.govuk-checkboxes__input').forEach(function ($checkBox) {
+            if ($checkBox.checked) {
+                $counter = $counter + 1;
+            }
+        }.bind(this));
+    }
+    if ($counter == 0) {
+        $buttonCaption.innerText = '';
+        $choosenFiltersContainer.classList.add('idsk-search-results--invisible');
+    } else {
+        $buttonCaption.innerText = $counter + ' vybraté';
+    }
+};
+
+/**
+ * function for creating element in container, in case of date we need param $insertBeforeFirst to check whether it should be on first position or not
+ * @param {object} $choosenFiltersContainer
+ * @param {object} $input
+ * @param {object} $el
+ * @param {boolean} $insertBeforeFirst 
+ */
+SearchResults.prototype.createTopicInContainer = function ($choosenFiltersContainer, $input, $class, $el, $insertBeforeFirst) {
+    var $showResultsMobileButton = this.$module.querySelector('.idsk-search-results__show-results__button');
+    var $turnFiltersOffMobileButton = this.$module.querySelector('.idsk-search-results__button--turn-filters-off');
+    var $pickedFiltersContainer = this.$module.querySelector('.idsk-search-results__content__picked-filters');
+
+    var $topicPicked = document.createElement('button');
+    $topicPicked.setAttribute('class', $class);
+    $topicPicked.setAttribute('tabindex', "0");
+    $topicPicked.setAttribute('data-source', $input);
+    $topicPicked.innerHTML = $el.value + ' &#10005;';
+    if ($insertBeforeFirst) {
+        $choosenFiltersContainer.prepend($topicPicked);
+    } else {
+        $choosenFiltersContainer.appendChild($topicPicked);
+    }
+
+    $pickedFiltersContainer.classList.remove('idsk-search-results--invisible');
+    $pickedFiltersContainer.classList.remove('idsk-search-results--invisible__mobile');
+    $showResultsMobileButton.classList.remove('idsk-search-results--invisible');
+    $turnFiltersOffMobileButton.classList.remove('idsk-search-results--invisible');
+    this.handleCountForFiltersButton.call(this);
+
+    return $topicPicked
+};
+
+/**
+ * function for setting grey background for odd elements in picked topics container
+ * 
+ */
+SearchResults.prototype.changeBackgroundForPickedFilters = function (e) {
+    var $module = this.$module;
+    var $pickedFiltersContainer = $module.querySelector('.idsk-search-results__content__picked-filters');
+    var $notEmptySections = $pickedFiltersContainer.querySelectorAll('div:not(.idsk-search-results--invisible)');
+
+    if ($notEmptySections.length == 0) {
+        return
+    }
+
+    $notEmptySections.forEach(function ($section) {
+        $section.classList.remove('idsk-search-results--grey');
+        $section.classList.remove('idsk-search-results--border');
+    }.bind(this));
+
+    var $i;
+    for ($i = 0; $i < $notEmptySections.length; $i++) {
+        if ($i == 0 || $i == 2) {
+            $notEmptySections[$i].classList.add('idsk-search-results--grey');
+        }
+    }
+
+    $notEmptySections[$notEmptySections.length - 1].classList.add('idsk-search-results--border');
+};
+
+/**
+ * function for disabling 'subtopic' filter, in case of removing topic filter
+ * 
+ */
+SearchResults.prototype.disableSubtopic = function (e) {
+    var $contentPanel = this.$module.subTopicButton.parentElement.querySelector('.idsk-search-results__list');
+
+    this.$module.subTopicButton.parentElement.classList.remove('idsk-search-results--expand');
+    $contentPanel.classList.add('idsk-search-results--hidden');
+    if (this.$module.subTopicButton) {
+        this.$module.subTopicButton.disabled = true;
+    }
+};
+
+SearchResults.prototype.handleRemovePickedTopic = function (e) {
+    var $el = e.target || e.srcElement || e;
+    var $choosenFiltersContainer = this.$module.querySelector('.idsk-search-results__content__picked-filters__topics');
+
+    if ($el.dataset.source == 'tema') {
+        var $subTopic = $choosenFiltersContainer.querySelector('[data-source="podtema"]');
+        if ($subTopic) {
+            this.removeTopic.call(this, $subTopic, true);
+        } else {
+            if (this.$module.subTopicButton) {
+                this.disableSubtopic.call(this);
+            }
+        }
+        $choosenFiltersContainer.classList.add('idsk-search-results--invisible');
+    }
+
+    this.removeTopic.call(this, $el, false);
+};
+
+SearchResults.prototype.removeTopic = function ($el, $disableFilter) {
+    var $radios = this.$module.querySelector('[data-id="' + $el.dataset.source + '"]');
+    var $buttonCaption = $radios.closest('.idsk-search-results__link-panel');
+
+    $buttonCaption.querySelector('.idsk-search-results__link-panel--span').innerText = '';
+    $radios.querySelectorAll('.govuk-radios__input').forEach(function ($radio) {
+        $radio.checked = false;
+    }.bind(this));
+
+    if ($disableFilter && this.$module.subTopicButton) {
+        this.disableSubtopic.call(this);
+    }
+
+    $el.remove();
+    this.handleSomeFilterPicked.call(this);
+    this.handleCountForFiltersButton.call(this);
+    this.changeBackgroundForPickedFilters.call(this);
+};
+
+function SearchResultsFilter($module) {
+    this.$module = $module;
+}
+
+SearchResultsFilter.prototype.init = function () {
+    // Check for module
+    var $module = this.$module;
+    if (!$module) {
+        return
+    }
+
+    var $linkPanelButtons = $module.querySelectorAll('.idsk-search-results__link-panel-button');
+    if (!$linkPanelButtons) {
+        return
+    }
+
+    var $topicSearchInput = $module.querySelector('#idsk-search-input__topic');
+    if ($topicSearchInput) {
+        $topicSearchInput.addEventListener('keyup', this.handleSearchItemsFromInput.bind(this, 'radios'));
+    }
+
+    var $subtopicSearchInput = $module.querySelector('#idsk-search-input__subtopic');
+    if ($subtopicSearchInput) {
+        $subtopicSearchInput.addEventListener('keyup', this.handleSearchItemsFromInput.bind(this, 'radios'));
+    }
+
+    var $contentTypeSearchInput = $module.querySelector('#idsk-search-input__content-type');
+    if ($contentTypeSearchInput) {
+        $contentTypeSearchInput.addEventListener('keyup', this.handleSearchItemsFromInput.bind(this, 'checkboxes'));
+    }
+
+    var $radioButtonsInput = $module.querySelectorAll('.idsk-search-results__filter .govuk-radios__input ');
+    if (!$radioButtonsInput) {
+        return
+    }
+
+    var $contentTypeCheckBoxes = $module.querySelectorAll('.idsk-search-results__filter .govuk-checkboxes__input ');
+    if (!$contentTypeCheckBoxes) {
+        return
+    }
+
+    $radioButtonsInput.forEach(function ($input) {
+        $input.addEventListener('click', this.handleClickRadioButton.bind(this), true);
+    }.bind(this));
+
+    $contentTypeCheckBoxes.forEach(function ($checkBox) {
+        $checkBox.addEventListener('click', this.handleClickContentTypeCheckBox.bind(this), true);
+    }.bind(this));
+
+    $linkPanelButtons.forEach(function ($button) {
+        $button.addEventListener('click', this.handleClickLinkPanel.bind(this));
+    }.bind(this));
+};
+
+SearchResultsFilter.prototype.handleClickRadioButton = function (e) {
+    var $el = e.target || e.srcElement;
+    var $linkPanelButton = $el.closest('.idsk-search-results__link-panel');
+    var $buttonCaption = $linkPanelButton.querySelector('.idsk-search-results__link-panel--span');
+    
+    $buttonCaption.innerText = '1 vybraté';
+};
+
+SearchResultsFilter.prototype.handleClickContentTypeCheckBox = function (e) {
+    var $el = e.target || e.srcElement;
+    var $linkPanelButton = $el.closest('.idsk-search-results__link-panel');
+    var $checkBoxes = $el.closest('.govuk-checkboxes');
+
+    this.handleCountOfPickedContentTypes.call(this, $checkBoxes, $linkPanelButton);
+};
+
+SearchResultsFilter.prototype.handleCountOfPickedContentTypes = function ($checkBoxes, $linkPanelButton) {
+    var $buttonCaption = $linkPanelButton.querySelector('.idsk-search-results__link-panel--span');
+    var $counter = 0;
+
+    if ($checkBoxes) {
+        $checkBoxes.querySelectorAll('.govuk-checkboxes__input').forEach(function ($checkBox) {
+            if ($checkBox.checked) {
+                $counter = $counter + 1;
+            }
+        }.bind(this));
+    }
+    if ($counter == 0) {
+        $buttonCaption.innerText = '';
+    } else {
+        $buttonCaption.innerText = $counter + ' vybraté';
+    }
+};
+
+SearchResultsFilter.prototype.handleSearchItemsFromInput = function ($type, e) {
+    var $el = e.target || e.srcElement;
+    var $linkPanelButton = $el.closest('.idsk-search-results__link-panel');
+    var $items = $linkPanelButton.querySelectorAll('.govuk-' + $type + '__item');
+    $items.forEach(function ($item) {
+        $item.classList.remove('idsk-search-results--invisible');
+    }.bind(this));
+    $items.forEach(function ($item) {
+        var $labelItem = $item.querySelector('.govuk-' + $type + '__label');
+        
+        if (!$labelItem.innerText.toLowerCase().includes($el.value.toLowerCase())) {
+            $item.classList.add('idsk-search-results--invisible');
+        }
+    }.bind(this));
+};
+
+/**
+ * An event handler for click event on $linkPanel - collapse or expand filter
+ * @param {object} e 
+ */
+SearchResultsFilter.prototype.handleClickLinkPanel = function (e) {
+    var $el = e.target || e.srcElement;
+    var $linkPanelButton = $el.closest('.idsk-search-results__link-panel');
+    var $contentPanel = $linkPanelButton.querySelector('.idsk-search-results__list');
+
+    toggleClass($contentPanel, 'idsk-search-results--hidden');
+    toggleClass($linkPanelButton, 'idsk-search-results--expand');
+};
+
+function Stepper($module) {
+  this.$module = $module;
+  this.$moduleId = $module.getAttribute('id');
+  this.$sections = $module.querySelectorAll('.idsk-stepper__section');
+  this.$links = $module.querySelectorAll('.idsk-stepper__section-content .govuk-link');
+  this.$openAllButton = '';
+  this.$browserSupportsSessionStorage = $helper.checkForSessionStorage();
+
+  this.$controlsClass = 'idsk-stepper__controls';
+  this.$openAllClass = 'idsk-stepper__open-all';
+  this.$iconClass = 'idsk-stepper__icon';
+
+  this.$sectionHeaderClass = 'idsk-stepper__section-header';
+  this.$sectionHeaderFocusedClass = 'idsk-stepper__section-header--focused';
+  this.$sectionHeadingClass = 'idsk-stepper__section-heading';
+  this.$sectionSummaryClass = 'idsk-stepper__section-summary';
+  this.$sectionButtonClass = 'idsk-stepper__section-button';
+  this.$sectionExpandedClass = 'idsk-stepper__section--expanded';
+}
+
+// Initialize component
+Stepper.prototype.init = function () {
+  // Check for module
+  if (!this.$module) {
+    return
+  }
+
+  this.initControls();
+  this.initSectionHeaders();
+
+  nodeListForEach(
+    this.$links,
+    function ($link) {
+      $link.addEventListener('click', this.handleItemLink.bind(this));
+      $link.addEventListener('blur', this.handleItemLinkBlur.bind(this));
+    }.bind(this)
+  );
+
+  // See if "Zobraziť všetko" button text should be updated
+  var $areAllSectionsOpen = this.checkIfAllSectionsOpen();
+  this.updateOpenAllButton($areAllSectionsOpen);
+};
+
+// Initialise controls and set attributes
+Stepper.prototype.initControls = function () {
+  // Create "Zobraziť všetko" button and set attributes
+  this.$openAllButton = document.createElement('button');
+  this.$openAllButton.setAttribute('type', 'button');
+  this.$openAllButton.innerHTML = 'Zobraziť všetko <span class="govuk-visually-hidden">sections</span>';
+  this.$openAllButton.setAttribute('class', this.$openAllClass);
+  this.$openAllButton.setAttribute('aria-expanded', 'false');
+  this.$openAllButton.setAttribute('type', 'button');
+
+  // Create control wrapper and add controls to it
+  var $accordionControls = this.$module.querySelector('.idsk-stepper__controls');
+  $accordionControls.appendChild(this.$openAllButton);
+   
+  // Handle events for the controls
+  this.$openAllButton.addEventListener('click', this.onOpenOrCloseAllToggle.bind(this));
+};
+
+// Initialise section headers
+Stepper.prototype.initSectionHeaders = function () {
+  // Loop through section headers
+  nodeListForEach(this.$sections, function ($section, $i) {
+    // Set header attributes
+    var $header = $section.querySelector('.' + this.$sectionHeaderClass);
+    this.initHeaderAttributes($header, $i);
+
+    this.setExpanded(this.isExpanded($section), $section);
+
+    // Handle events
+    $header.addEventListener('click', this.onSectionToggle.bind(this, $section));
+
+    // See if there is any state stored in sessionStorage and set the sections to
+    // open or closed.
+    this.setInitialState($section);
+  }.bind(this));
+};
+
+Stepper.prototype.handleItemLink = function (e) {
+  var $link = e.target || e.srcElement;
+  var $currentSection = $link.closest('.idsk-stepper__section');
+  $currentSection.classList.add('idsk-stepper__bolder-line');
+};
+
+Stepper.prototype.handleItemLinkBlur = function (e) {
+  var $link = e.target || e.srcElement;
+  var $currentSection = $link.closest('.idsk-stepper__section');
+  $currentSection.classList.remove('idsk-stepper__bolder-line'); 
+};
+
+// Set individual header attributes
+Stepper.prototype.initHeaderAttributes = function ($headerWrapper, index) {
+  var $module = this.$module;
+  var $span = $headerWrapper.querySelector('.' + this.$sectionButtonClass);
+  var $heading = $headerWrapper.querySelector('.' + this.$sectionHeadingClass);
+  var $summary = $headerWrapper.querySelector('.' + this.$sectionSummaryClass);
+
+  if (!$span) {
+    return;
+  }
+
+  // Copy existing span element to an actual button element, for improved accessibility.
+  var $button = document.createElement('button');
+  $button.setAttribute('type', 'button');
+  $button.setAttribute('id', this.$moduleId + '-heading-' + (index + 1));
+  $button.setAttribute('aria-controls', this.$moduleId + '-content-' + (index + 1));
+
+  // Copy all attributes (https://developer.mozilla.org/en-US/docs/Web/API/Element/attributes) from $span to $button
+  for (var i = 0; i < $span.attributes.length; i++) {
+    var $attr = $span.attributes.item(i);
+    $button.setAttribute($attr.nodeName, $attr.nodeValue);
+  }
+
+  $button.addEventListener('focusin', function (e) {
+    if (!$headerWrapper.classList.contains($module.$sectionHeaderFocusedClass)) {
+      $headerWrapper.className += ' ' + $module.$sectionHeaderFocusedClass;
+    }
+  });
+
+  $button.addEventListener('blur', function (e) {
+    $headerWrapper.classList.remove($module.$sectionHeaderFocusedClass);
+  });
+
+  if (typeof ($summary) !== 'undefined' && $summary !== null) {
+    $button.setAttribute('aria-describedby', this.$moduleId + '-summary-' + (index + 1));
+  }
+
+  // $span could contain HTML elements (see https://www.w3.org/TR/2011/WD-html5-20110525/content-models.html#phrasing-content)
+  $button.innerHTML = $span.innerHTML;
+
+  $heading.removeChild($span);
+  $heading.appendChild($button);
+
+  // Add "+/-" icon
+  var $icon = document.createElement('span');
+  $icon.className = this.$iconClass;
+  $icon.setAttribute('aria-hidden', 'true');
+
+  $heading.appendChild($icon);
+};
+
+// When section toggled, set and store state
+Stepper.prototype.onSectionToggle = function ($section) {
+  var $expanded = this.isExpanded($section);
+  this.setExpanded(!$expanded, $section);
+
+  // Store the state in sessionStorage when a change is triggered
+  this.storeState($section);
+};
+
+// When Open/Zatvoriť všetko toggled, set and store state
+Stepper.prototype.onOpenOrCloseAllToggle = function () {
+  var $self = this;
+  var $sections = this.$sections;
+  var $nowExpanded = !this.checkIfAllSectionsOpen();
+
+  nodeListForEach($sections, function ($section) {
+    $self.setExpanded($nowExpanded, $section);
+    // Store the state in sessionStorage when a change is triggered
+    $self.storeState($section);
+  });
+
+  $self.updateOpenAllButton($nowExpanded);
+};
+
+// Set section attributes when opened/closed
+Stepper.prototype.setExpanded = function ($expanded, $section) {
+  var $button = $section.querySelector('.' + this.$sectionButtonClass);
+  if (!$button) {
+    return;
+  }
+  $button.setAttribute('aria-expanded', $expanded);
+
+  if ($expanded) {
+    $section.classList.add(this.$sectionExpandedClass);
+  } else {
+    $section.classList.remove(this.$sectionExpandedClass);
+  }
+
+  // See if "Zobraziť všetko" button text should be updated
+  var $areAllSectionsOpen = this.checkIfAllSectionsOpen();
+  this.updateOpenAllButton($areAllSectionsOpen);
+};
+
+// Get state of section
+Stepper.prototype.isExpanded = function ($section) {
+  return $section.classList.contains(this.$sectionExpandedClass)
+};
+
+// Check if all sections are open
+Stepper.prototype.checkIfAllSectionsOpen = function () {
+  // Get a count of all the Accordion sections
+  var $sectionsCount = this.$sections.length;
+  // Get a count of all Accordion sections that are expanded
+  var $expandedSectionCount = this.$module.querySelectorAll('.' + this.$sectionExpandedClass).length;
+  var $areAllSectionsOpen = $sectionsCount === $expandedSectionCount;
+
+  return $areAllSectionsOpen
+};
+
+// Update "Zobraziť všetko" button
+Stepper.prototype.updateOpenAllButton = function ($expanded) {
+  var $newButtonText = $expanded ? 'Zatvoriť všetko' : 'Zobraziť všetko';
+  $newButtonText += '<span class="govuk-visually-hidden"> sections</span>';
+  this.$openAllButton.setAttribute('aria-expanded', $expanded);
+  this.$openAllButton.innerHTML = $newButtonText;
+};
+
+// Check for `window.sessionStorage`, and that it actually works.
+var $helper = {
+  checkForSessionStorage: function () {
+    var $testString = 'this is the test string';
+    var $result;
+    try {
+      window.sessionStorage.setItem($testString, $testString);
+      $result = window.sessionStorage.getItem($testString) === $testString.toString();
+      window.sessionStorage.removeItem($testString);
+      return $result
+    } catch (exception) {
+      if ((typeof console === 'undefined' || typeof console.log === 'undefined')) {
+        console.log('Notice: sessionStorage not available.');
+      }
+    }
+  }
+};
+
+// Set the state of the accordions in sessionStorage
+Stepper.prototype.storeState = function ($section) {
+  if (this.$browserSupportsSessionStorage) {
+    // We need a unique way of identifying each content in the accordion. Since
+    // an `#id` should be unique and an `id` is required for `aria-` attributes
+    // `id` can be safely used.
+    var $button = $section.querySelector('.' + this.$sectionButtonClass);
+
+    if ($button) {
+      var $contentId = $button.getAttribute('aria-controls');
+      var $contentState = $button.getAttribute('aria-expanded');
+
+      if (typeof $contentId === 'undefined' && (typeof console === 'undefined' || typeof console.log === 'undefined')) {
+        console.error(new Error('No aria controls present in accordion section heading.'));
+      }
+
+      if (typeof $contentState === 'undefined' && (typeof console === 'undefined' || typeof console.log === 'undefined')) {
+        console.error(new Error('No aria expanded present in accordion section heading.'));
+      }
+
+      // Only set the state when both `contentId` and `contentState` are taken from the DOM.
+      if ($contentId && $contentState) {
+        window.sessionStorage.setItem($contentId, $contentState);
+      }
+    }
+  }
+};
+
+// Read the state of the accordions from sessionStorage
+Stepper.prototype.setInitialState = function ($section) {
+  if (this.$browserSupportsSessionStorage) {
+    var $button = $section.querySelector('.' + this.$sectionButtonClass);
+
+    if ($button) {
+      var $contentId = $button.getAttribute('aria-controls');
+      var $contentState = $contentId ? window.sessionStorage.getItem($contentId) : null;
+
+      if ($contentState !== null) {
+        this.setExpanded($contentState === 'true', $section);
+      }
+    }
+  }
+};
+
+function RegistrationForEvent($module) {
+    this.$module = $module;
+}
+
+RegistrationForEvent.prototype.init = function () {
+    // Check for module
+    var $module = this.$module;
+    if (!$module) {
+        return
+    }
+
+    // Check for button
+    var $submitButtons = $module.querySelectorAll('.idsk-registration-for-event-js-submit');
+    if (!$submitButtons) {
+        return
+    }
+
+    // Handle $submitButtons click events
+    $submitButtons.forEach(function ($submitButton) {
+        $submitButton.addEventListener('click', this.handleSubmitClick.bind(this));
+    }.bind(this));
+};
+
+RegistrationForEvent.prototype.handleSubmitClick = function (e) {
+    e.preventDefault();
+
+    var $module = this.$module;
+    var $form = $module.querySelector('.idsk-registration-for-event__form');
+    var $thankYouMsg = $module.querySelector('.idsk-registration-for-event__thank-you-msg');
+    var $requiredFormItems = $module.querySelectorAll('[required]');
+    var $valid = true;
+    var emailRegex = /\S+@\S+\.\S+/;
+
+    $requiredFormItems.forEach(function ($item) {
+        var $formGroup = $item.closest('.govuk-form-group');
+
+        if (!$item.checkValidity() || $item.type === 'email' && !emailRegex.test($item.value)) {
+            $formGroup.querySelector('.govuk-error-message').style.display = 'block';
+            $formGroup.classList.add('govuk-form-group--error');
+            $item.classList.add('govuk-input--error');
+            $valid = false;
+        } else {
+            $formGroup.querySelector('.govuk-error-message').style.display = 'none';
+            $formGroup.classList.remove('govuk-form-group--error');
+            $item.classList.remove('govuk-input--error');
+        }
+    });
+
+    if ($valid) {
+        $thankYouMsg.style.display = 'block';
+        $form.style.display = 'none';
+    }
+};
+
+function InteractiveMap($module) {
+    this.$module = $module;
+    this.$currentData = null;
+    this.$currentMode = '';
+}
+
+InteractiveMap.prototype.init = function () {
+    // Check for module
+    var $module = this.$module;
+    if (!$module) {
+        return
+    }
+
+    var $radioMap = $module.querySelector('.idsk-intereactive-map__radio-map');
+    if ($radioMap) {
+        $radioMap.addEventListener('click', this.handleRadioButtonModeClick.bind(this, 'map'));
+    }
+
+    var $radioTable = $module.querySelector('.idsk-intereactive-map__radio-table');
+    if ($radioTable) {
+        $radioTable.addEventListener('click', this.handleRadioButtonModeClick.bind(this, 'table'));
+    }
+
+    var $selectTimePeriod = $module.querySelector('.idsk-interactive-map__select-time-period');
+    if ($selectTimePeriod) {
+        $selectTimePeriod.addEventListener('change', this.renderData.bind(this));
+    }
+
+    var $selectIndicator = $module.querySelector('.idsk-interactive-map__select-indicator');
+    if ($selectIndicator) {
+        $selectIndicator.addEventListener('change', this.renderData.bind(this));
+    }
+
+    var $radioBtn = $module.querySelector('.govuk-radios__input');
+    var $radiosName = $radioBtn.getAttribute('name');
+    var $selectedControlOption = $module.querySelector('input[name="' + $radiosName + '"]:checked').value;
+    this.handleRadioButtonModeClick($selectedControlOption);
+    this.renderData();
+};
+
+InteractiveMap.prototype.handleRadioButtonModeClick = function (type) {
+
+    var $type = type;
+    var $module = this.$module;
+
+    if (this.$currentMode === $type) {
+        return;
+    }
+
+    this.$currentMode = $type;
+
+    if ($type === 'table') {
+        $module.querySelector('.idsk-interactive-map__table').style.display = 'block';
+        $module.querySelector('.idsk-interactive-map__map').style.display = 'none';
+    } else if ($type === 'map') {
+        $module.querySelector('.idsk-interactive-map__map').style.display = 'block';
+        $module.querySelector('.idsk-interactive-map__table').style.display = 'none';
+
+        setTimeout(function () {
+            $module.querySelector('.idsk-interactive-map__map-iframe').contentWindow.dispatchEvent(new Event('resize'));
+        }, 0);
+    }
+};
+
+InteractiveMap.prototype.renderData = function () {
+    var $module = this.$module;
+    var $tableEl = $module.querySelector('.idsk-interactive-map__table-iframe');
+    var $tableSrc = $tableEl.dataset.src;
+    var $mapEl = $module.querySelector('.idsk-interactive-map__map-iframe');
+    var $mapSrc = $mapEl.dataset.src;
+    var $timePeriodSelect = $module.querySelector('.idsk-interactive-map__select-time-period');
+    var $timePeriodValue = $timePeriodSelect.options[$timePeriodSelect.selectedIndex].value;
+    var $timePeriod = $timePeriodSelect.options[$timePeriodSelect.selectedIndex].text;
+    var $indicatorSelect = $module.querySelector('.idsk-interactive-map__select-indicator');
+
+    if ($indicatorSelect) {
+        var $indicatorValue = $indicatorSelect.options[$indicatorSelect.selectedIndex].value;
+        var $indicatorText = $indicatorSelect.options[$indicatorSelect.selectedIndex].text;
+
+        $module.querySelector('.idsk-interactive-map__current-indicator').innerText = $indicatorText;
+        $module.querySelector('.idsk-interactive-map__current-time-period').innerText = $timePeriod;
+    }
+
+    $mapEl.src = $mapSrc + '?indicator=' + $indicatorValue + '&time=' + $timePeriodValue;
+    $tableEl.src = $tableSrc + '?indicator=' + $indicatorValue + '&time=' + $timePeriodValue;
+};
+
+function Graph($module) {
+    this.$module = $module;
+}
+
+Graph.prototype.init = function () {
+    // Check for module
+    var $module = this.$module;
+    if (!$module) {
+        return
+    }
+
+    var $radioOptions = $module.querySelectorAll('.idsk-graph__radio');
+    if ($radioOptions) {
+        nodeListForEach$1($radioOptions, function ($radioOption) {
+            $radioOption.addEventListener('change', this.handleRadioButtonModeClick.bind(this));
+        }.bind(this));
+    }
+
+    var $shareButtonByCopyToClickboard = $module.querySelector('.idsk-graph__copy-to-clickboard');
+    if ($shareButtonByCopyToClickboard) {
+        $shareButtonByCopyToClickboard.addEventListener('click', this.handleShareByCopyToClickboardClick.bind(this));
+    }
+
+    var $shareButtonByEmail = $module.querySelector('.idsk-graph__send-link-by-email');
+    if ($shareButtonByEmail) {
+        $shareButtonByEmail.addEventListener('click', this.handleShareByEmailClick.bind(this));
+    }
+
+    var $shareButtonByFacebook = $module.querySelector('.idsk-graph__share-on-facebook');
+    if ($shareButtonByFacebook) {
+        $shareButtonByFacebook.addEventListener('click', this.handleShareByFacebook.bind(this));
+    }
+
+    var $dropdownLinks = $module.querySelectorAll('.idsk-graph__meta-link-list');
+    if ($dropdownLinks) {
+        nodeListForEach$1($dropdownLinks, function ($dropdownLink) {
+            $dropdownLink.addEventListener('click', this.handleDropdownLinkClick.bind(this));
+        }.bind(this));
+
+        $module.boundCheckDropdownOutsideClick = this.checkDropdownOutsideClick.bind(this);
+    }
+
+    var $tabs = $module.querySelectorAll('.govuk-tabs__tab');
+    if ($tabs) {
+        nodeListForEach$1($tabs, function ($tab) {
+            $tab.addEventListener('click', this.handleTabLinkClick.bind(this));
+        }.bind(this));
+
+        var $forcedActiveTab = $module.querySelector('.govuk-tabs').dataset.activetab;
+        var $activeTab = $module.querySelector('.govuk-tabs__tab[href="' + window.location.hash + '"]') || $tabs[$forcedActiveTab || 0];
+        this.showTab($activeTab);
+    }
+
+    var $radioBtn = $module.querySelector('.idsk-graph__radio');
+    var $radiosName = $radioBtn.getAttribute('name');
+    var $selectedControlOption = $module.querySelector('input[name="' + $radiosName + '"]:checked').value;
+    this.handleRadioButtonModeClick($selectedControlOption);
+};
+
+/**
+ * Handle click on radio buttons
+ * @param {object} e 
+ */
+Graph.prototype.handleRadioButtonModeClick = function (e) {
+    var $el = e.target || e.srcElement;
+
+    if (!$el) {
+        return
+    }
+
+    var $value = $el.getAttribute('value');
+    var $iframeGraphs = this.$module.querySelectorAll('.idsk-graph__iframe');
+    $iframeGraphs.forEach(function ($iframeGraph) {
+        var $iframeSrc = $iframeGraph.dataset.src;
+        var $srcParam = $iframeSrc.indexOf('?') < 0 ? '?type=' + $value : '&type=' + $value;
+        $iframeGraph.src = $iframeSrc + $srcParam;
+    });
+};
+
+/**
+ * Handle click on copy link to clickboard
+ * @param {object} e 
+ */
+Graph.prototype.handleShareByCopyToClickboardClick = function (e) {
+    e.preventDefault();
+    var textarea = document.createElement('textarea');
+    textarea.textContent = location.href;
+    textarea.style.position = 'fixed';  // Prevent scrolling to bottom of page in Microsoft Edge.
+    document.body.appendChild(textarea);
+    textarea.select();
+
+    try {
+        return document.execCommand('copy');  // Security exception may be thrown by some browsers.
+    } catch (ex) {
+        return false;
+    } finally {
+        document.body.removeChild(textarea);
+    }
+};
+
+/**
+ * Handle click on share link by email
+ * @param {object} e 
+ */
+Graph.prototype.handleShareByEmailClick = function (e) {
+    var $el = e.target || e.srcElement;
+    var $module = this.$module;
+    var $subject = $module.querySelector('.idsk-graph__title h2').innerText;
+    var $body = 'Kliknite na odkaz vyššie alebo ho skopírujte a vložte do prehliadača: ' + location.href;
+    var $mailto = 'mailto:?Subject=' + $subject + '&body=' + $body;
+
+    $el.href = $mailto;
+};
+
+/**
+ * Handle click on share by facebook link
+ * @param {object} e 
+ */
+Graph.prototype.handleShareByFacebook = function (e) {
+    var $el = e.target || e.srcElement;
+    var $shareLink = 'https://www.facebook.com/sharer/sharer.php?u=' + location.href;
+
+    $el.href = $shareLink;
+};
+
+/**
+ * Handle click on link and show drop down list
+ * @param {object} e 
+ */
+Graph.prototype.handleDropdownLinkClick = function (e) {
+    e.preventDefault();
+
+    var $el = e.target || e.srcElement;
+    var $module = this.$module;
+    var $link = $el.closest('.idsk-graph__meta-link-list');
+    var $dropdown = $link.parentElement.querySelector('.idsk-graph__meta-list');
+    var $dropdownDisplayProp = window.getComputedStyle($dropdown, null).display;
+    var $dropdownLists = $module.querySelectorAll('.idsk-graph__meta-list');
+
+    $dropdownLists.forEach(function ($dropdownList) {
+        $dropdownList.style.display = 'none';
+    });
+    $dropdown.style.display = $dropdownDisplayProp == 'block' ? 'none' : 'block';
+
+    document.addEventListener('click', this.$module.boundCheckDropdownOutsideClick, true);
+};
+
+/**
+ * handle click outside dropdown menu
+ */
+Graph.prototype.checkDropdownOutsideClick = function () {
+    var $module = this.$module;
+    var $dropdownLists = $module.querySelectorAll('.idsk-graph__meta-list');
+    $dropdownLists.forEach(function ($dropdownList) {
+        $dropdownList.style.display = 'none';
+    });
+    document.removeEventListener('click', $module.boundCheckDropdownOutsideClick, false);
+};
+
+/**
+ * Handle click on Tab -> show related section
+ * @param {object} e 
+ */
+Graph.prototype.handleTabLinkClick = function (e) {
+    e.preventDefault();
+
+    var $tab = e.target || e.srcElement;
+    var $module = this.$module;
+    var $activePanel = $module.querySelector('.idsk-graph__section-show');
+    var $activePanelId = $activePanel.getAttribute('id');
+    var $activeTabLink = $module.querySelector('a[href="#' + $activePanelId + '"]');
+    var $activeTabLi = $activeTabLink.closest('.govuk-tabs__list-item');
+
+    $activePanel.classList.remove('idsk-graph__section-show');
+    $activeTabLi.classList.remove('idsk-graph__section--selected');
+
+    this.showTab($tab);
+};
+
+/**
+ * Show section based on tab
+ * @param {object} $tab 
+ */
+Graph.prototype.showTab = function ($tab) {
+    var $href = $tab.getAttribute('href');
+    var $hash = $href.slice($href.indexOf('#'), $href.length);
+    var $hash = $href.slice($href.indexOf('#'), $href.length);
+    var $panel = this.$module.querySelector($hash);
+    var $tabLi = $tab.closest('.govuk-tabs__list-item');
+
+    $tabLi.classList.add('idsk-graph__section--selected');
+    $panel.classList.add('idsk-graph__section-show');
+};
+
 function initAll$1(options) {
   // Set the options to an empty object by default if no options are passed.
   options = typeof options !== "undefined" ? options : {};
@@ -3263,6 +4966,11 @@ function initAll$1(options) {
     new Crossroad($crossroad).init();
   });
 
+  var $customerSurveys = scope.querySelectorAll('[data-module="idsk-customer-surveys"]');
+  nodeListForEach($customerSurveys, function ($customerSurveys) {
+    new CustomerSurveys($customerSurveys).init();
+  });
+
   // Find first Header-extended module to enhance.
   var $headersExtended = scope.querySelectorAll('[data-module="idsk-header-extended"]');
   nodeListForEach($headersExtended, function ($headerExtended) {
@@ -3272,6 +4980,34 @@ function initAll$1(options) {
   var $inPageNavigation = scope.querySelector('[data-module="idsk-in-page-navigation"]');
   new InPageNavigation($inPageNavigation).init();
 
+  var $searchResults = scope.querySelector('[data-module="idsk-search-results"]');
+  new SearchResults($searchResults).init();
+
+  var $searchResultsFilters = scope.querySelectorAll('[data-module="idsk-search-results-filter"]');
+  nodeListForEach($searchResultsFilters, function ($searchResultsFilter) {
+    new SearchResultsFilter($searchResultsFilter).init();
+  });
+
+  var $steppers = scope.querySelectorAll('[data-module="idsk-stepper"]');
+  nodeListForEach($steppers, function ($stepper) {
+    new Stepper($stepper).init();
+  });
+
+  var $registrationForEvents = scope.querySelectorAll('[data-module="idsk-registration-for-event"]');
+  nodeListForEach($registrationForEvents, function ($registrationForEvent) {
+    new RegistrationForEvent($registrationForEvent).init();
+  });
+
+  var $interactiveMaps = scope.querySelectorAll('[data-module="idsk-interactive-map"]');
+  nodeListForEach($interactiveMaps, function ($interactiveMap) {
+    new InteractiveMap($interactiveMap).init();
+  });
+
+  var $graphs = scope.querySelectorAll('[data-module="idsk-graph"]');
+  nodeListForEach($graphs, function ($graph) {
+    new Graph($graph).init();
+  });
+
   // Init all GOVUK components js
   initAll(options);
 }
@@ -3280,9 +5016,16 @@ exports.initAll = initAll$1;
 exports.Button = Button$1;
 exports.CharacterCount = CharacterCount$1;
 exports.Crossroad = Crossroad;
+exports.CustomerSurveys = CustomerSurveys;
 exports.Feedback = Feedback;
 exports.FooterExtended = FooterExtended;
 exports.HeaderExtended = HeaderExtended;
 exports.InPageNavigation = InPageNavigation;
+exports.SearchResults = SearchResults;
+exports.SearchResultsFilter = SearchResultsFilter;
+exports.RegistrationForEvent = RegistrationForEvent;
+exports.InteractiveMap = InteractiveMap;
+exports.Stepper = Stepper;
+exports.Graph = Graph;
 
 })));
