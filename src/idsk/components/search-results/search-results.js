@@ -127,7 +127,6 @@ SearchResults.prototype.init = function () {
     $module.boundHandleClickLinkPanel = this.handleClickLinkPanel.bind(this)
 
     // set selected value in dropdown
-    $resultsPerPageDropdown.value = 5
     $module.countOfCardsPerPage = $resultsPerPageDropdown.value
     $module.currentPageNumber = 1
     this.showResultCardsPerPage.call(this, 0, $resultsPerPageDropdown.value)
