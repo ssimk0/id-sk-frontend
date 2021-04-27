@@ -137,7 +137,7 @@ SearchResults.prototype.init = function () {
     $module.currentPageNumber = 1
     this.showResultCardsPerPage.call(this, 0, $resultsPerPageDropdown.value)
     $resultsPerPageDropdown.addEventListener('change', this.handleClickResultsPerPageDropdown.bind(this))
-    $filtersButtonMobile.innerText = 'Filtre(0)'
+    $filtersButtonMobile.innerText = $filtersButtonMobile.title + '(0)'
 
     $linkPanelButtons.forEach(function ($button) {
         $button.addEventListener('click', $module.boundHandleClickLinkPanel, true)
@@ -240,7 +240,7 @@ SearchResults.prototype.handleCountForFiltersButton = function (e) {
     var $filtersButtonMobile = $module.querySelector('.idsk-search-results__filters__button')
     var $countOfPickedFilters = $pickedTopics.length + $pickedContentTypes.length + $pickedDates.length
 
-    $filtersButtonMobile.innerText = 'Filtre(' + $countOfPickedFilters + ')'
+    $filtersButtonMobile.innerText = $filtersButtonMobile.title + '(' + $countOfPickedFilters + ')'
 }
 
 /**
@@ -256,7 +256,7 @@ SearchResults.prototype.handleClickTurnFiltersOffButton = function (e) {
     var $filtersButtonMobile = $module.querySelector('.idsk-search-results__filters__button')
 
     $contentContainer.classList.add('idsk-search-results--invisible__mobile')
-    $filtersButtonMobile.innerText = 'Filtre(0)'
+    $filtersButtonMobile.innerText = $filtersButtonMobile.title + '(0)'
 
     $pickedTopics.forEach(function ($topic) {
         this.handleRemovePickedTopic.call(this, $topic);
@@ -427,17 +427,17 @@ SearchResults.prototype.checkValuesInDateContainer = function (e) {
     }
 
     if ($choosenDatesInFiltersContainer.querySelector('[data-source="datum-od"]') && $choosenDatesInFiltersContainer.querySelector('[data-source="datum-do"]')) {
-        var $beforeDateSpan = this.createSpanElement.call(this, $beforeDateClass, 'Naposledy aktualizované medzi ');
+        var $beforeDateSpan = this.createSpanElement.call(this, $beforeDateClass, $choosenDatesInFiltersContainer.dataset.lines + ' ' + $choosenDatesInFiltersContainer.dataset.middle);
         var $afterDateSpan = this.createSpanElement.call(this, $afterDateClass, 'a ');
 
         $choosenDatesInFiltersContainer.insertBefore($beforeDateSpan, $choosenDatesInFiltersContainer.querySelector('[data-source="datum-od"]'));
         $choosenDatesInFiltersContainer.insertBefore($afterDateSpan, $choosenDatesInFiltersContainer.querySelector('[data-source="datum-do"]'));
     } else if ($choosenDatesInFiltersContainer.querySelector('[data-source="datum-od"]')) {
-        var $beforeDateSpan = this.createSpanElement.call(this, $beforeDateClass, 'Naposledy aktualizované po ');
+        var $beforeDateSpan = this.createSpanElement.call(this, $beforeDateClass, $choosenDatesInFiltersContainer.dataset.lines + ' ' + $choosenDatesInFiltersContainer.dataset.after);
         $choosenDatesInFiltersContainer.insertBefore($beforeDateSpan, $choosenDatesInFiltersContainer.querySelector('[data-source="datum-od"]'));
 
     } else if ($choosenDatesInFiltersContainer.querySelector('[data-source="datum-do"]')) {
-        var $afterDateSpan = this.createSpanElement.call(this, $afterDateClass, 'Naposledy aktualizované pred ');
+        var $afterDateSpan = this.createSpanElement.call(this, $afterDateClass, $choosenDatesInFiltersContainer.dataset.lines + ' ' + $choosenDatesInFiltersContainer.dataset.before);
         $choosenDatesInFiltersContainer.insertBefore($afterDateSpan, $choosenDatesInFiltersContainer.querySelector('[data-source="datum-do"]'));
     }
 }
@@ -494,8 +494,10 @@ SearchResults.prototype.showResultCardsPerPage = function ($startIndex, $endInde
     }
 
     var $numberOfPages = (($module.resultCards.length / $module.countOfCardsPerPage) | 0) + 1
-    $pageNumber.innerText = 'Strana ' + $module.currentPageNumber + ' z ' + $numberOfPages
-    $pageNumberMobile.innerText = 'Strana ' + $module.currentPageNumber + ' z ' + $numberOfPages
+    var $pageNumberSpan = $module.querySelector('.idsk-search-results__page-number span')
+    var $pageNumberText = $pageNumberSpan.dataset.lines.replace("$value1", $module.currentPageNumber).replace("$value2", $numberOfPages)
+    $pageNumberSpan.innerText = $pageNumberText
+    $pageNumberMobile.innerText = $pageNumberText
 }
 
 /**
@@ -544,7 +546,7 @@ SearchResults.prototype.handleClickRadioButton = function (e) {
     $topicPicked.removeEventListener('click', this.handleRemovePickedTopic.bind(this), true);
     $topicPicked.addEventListener('click', this.handleRemovePickedTopic.bind(this));
     this.changeBackgroundForPickedFilters.call(this)
-    $buttonCaption.innerText = '1 vybraté'
+    $buttonCaption.innerText = '1 ' + $buttonCaption.dataset.lines
 }
 
 SearchResults.prototype.handleClickContentTypeCheckBox = function (e) {
@@ -605,7 +607,7 @@ SearchResults.prototype.handleCountOfPickedContentTypes = function ($checkBoxes,
         $buttonCaption.innerText = ''
         $choosenFiltersContainer.classList.add('idsk-search-results--invisible')
     } else {
-        $buttonCaption.innerText = $counter + ' vybraté'
+        $buttonCaption.innerText = $counter + ' ' + $buttonCaption.dataset.lines
     }
 }
 
