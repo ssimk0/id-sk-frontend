@@ -113,7 +113,13 @@ SearchResults.prototype.init = function () {
 
     if ($dateFrom) {
         $dateFrom.addEventListener('focusout', this.handleFillDate.bind(this, 'from'))
+        if ($dateFrom.value != '') {
+            this.handleFillDate.call(this, 'from', $dateFrom)
+        }
         $dateTo.addEventListener('focusout', this.handleFillDate.bind(this, 'to'))
+        if ($dateTo.value != '') {
+            this.handleFillDate.call(this, 'to', $dateTo)
+        }
     }
 
     $backButton.addEventListener('click', this.handleClickPreviousPage.bind(this))
@@ -139,10 +145,16 @@ SearchResults.prototype.init = function () {
 
     $radioButtonsInput.forEach(function ($input) {
         $input.addEventListener('click', this.handleClickRadioButton.bind(this), true)
+        if ($input.checked) {
+            this.handleClickRadioButton.call(this, $input)
+        }
     }.bind(this))
 
     $contentTypeCheckBoxes.forEach(function ($checkBox) {
         $checkBox.addEventListener('click', this.handleClickContentTypeCheckBox.bind(this), true)
+        if ($checkBox.checked) {
+            this.handleClickContentTypeCheckBox.call(this, $checkBox)
+        }
     }.bind(this))
 }
 
@@ -350,7 +362,7 @@ SearchResults.prototype.handleSearchItemsFromInput = function ($type, e) {
 }
 
 SearchResults.prototype.handleFillDate = function ($period, e) {
-    var $el = e.target || e.srcElement
+    var $el = e.target || e.srcElement || e
     var $module = this.$module
     var $choosenDatesInFiltersContainer = $module.querySelector('.idsk-search-results__content__picked-filters__date')
     var $class = 'idsk-search-results__picked-date'
@@ -504,7 +516,7 @@ SearchResults.prototype.handleClickLinkPanel = function (e) {
  * @param {object} e 
  */
 SearchResults.prototype.handleClickRadioButton = function (e) {
-    var $el = e.target || e.srcElement
+    var $el = e.target || e.srcElement || e
     var $module = this.$module
     var $linkPanelButton = $el.closest('.idsk-search-results__link-panel')
     var $buttonCaption = $linkPanelButton.querySelector('.idsk-search-results__link-panel--span')
@@ -536,7 +548,7 @@ SearchResults.prototype.handleClickRadioButton = function (e) {
 }
 
 SearchResults.prototype.handleClickContentTypeCheckBox = function (e) {
-    var $el = e.target || e.srcElement
+    var $el = e.target || e.srcElement || e
     var $module = this.$module
     var $linkPanelButton = $el.closest('.idsk-search-results__link-panel')
     var $choosenFiltersContainer = $module.querySelector('.idsk-search-results__content__picked-filters__content-type')
