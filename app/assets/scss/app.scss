@@ -9,182 +9,218 @@ $govuk-show-breakpoints: false;
 // copied from Bootstrap 4
 // Credit: Nicolas Gallagher and SUIT CSS.
 // Hack for Benchmark presentation
-// only for ratio 16:9 
+// only for ratio 16:9
 
 .embed-responsive {
-    position: relative;
-    display: block;
-    width: 100%;
-    padding: 0;
-    overflow: hidden;
-  
+  display: block;
+  position: relative;
+  width: 100%;
+  margin-top: govuk-spacing(3);
+  margin-bottom: govuk-spacing(3);
+  padding: 0;
+  overflow: hidden;
+
+  @include govuk-media-query(tablet) {
     margin-top: govuk-spacing(3);
     margin-bottom: govuk-spacing(3);
-  
-    @include govuk-media-query(tablet) {
-      margin-top: govuk-spacing(3);
-      margin-bottom: govuk-spacing(3);
-    }
-  
-    &::before {
-      display: block;
-      content: "";
-      padding-top: 56.25%;
-    }
-  
-    .embed-responsive-item,
-    iframe,
-    embed,
-    object,
-    video {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
   }
 
-  .example:after {
+  &:before {
     content: "";
     display: block;
-    clear: both; }
-  
-  .site-wrapper {
-    max-width: 960px;
-    margin: 0 15px; }
-    @media (min-width: 641px) {
-      .site-wrapper {
-        margin: 0 30px; } }
-    @media (min-width: 1020px) {
-      .site-wrapper {
-        margin: 0 auto; } }
-  
-  .visually-hidden,
-  .visuallyhidden {
+    padding-top: 56.25%;
+  }
+
+  .embed-responsive-item,
+  iframe,
+  embed,
+  object,
+  video {
     position: absolute;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    width: 1px;
-    margin: -1px;
-    padding: 0;
-    border: 0; }
-  
-  .site-wrapper #content {
-    margin: 0; }
-  
-  .elements-index .heading-medium {
-    margin: 1em 0 0 0; }
-  
-  .elements-index .divider {
-    margin-top: 4em; }
-  
-  @media (min-width: 641px) {
-    main > .heading-xlarge {
-      margin-top: 1.25em;
-      margin-bottom: 0.625em; } }
-  
-  .heading-contents {
-    margin-top: 3em; }
-  
-  .list-contents li {
-    font-family: "Source Sans Pro", "Arial", sans-serif;
-    font-weight: 400;
-    text-transform: none;
-    font-size: 14px;
-    line-height: 1.14286; }
-    @media (min-width: 641px) {
-      .list-contents li {
-        font-size: 16px;
-        line-height: 1.25; } }
-  
-  .lead-in {
-    margin-bottom: 0; }
-  
-  .list-bullet {
-    margin-bottom: 45px; }
-  
-  .list-underline {
-    border-top: 1px solid #bfc1c3; }
-  
-  .list-underline li {
-    border-bottom: 1px solid #bfc1c3;
-    padding: 2px 0 3px 0; }
-  
-  .list-underline a {
-    text-decoration: none; }
-  
-  .no-top-margin {
-    margin-top: 0; }
-  
-  .example {
-    position: relative;
-    overflow: hidden;
-    border: 1px solid #bfc1c3;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    padding-top: 30px;
-    padding-right: 15px;
-    padding-bottom: 15px;
-    padding-left: 15px; 
-    }
-    @media (min-width: 641px) {
-      .example {
-        padding-top: 45px;
-        padding-right: 30px;
-        padding-bottom: 30px;
-        padding-left: 30px; } }
-    .example:before {
-      content: "PRÍKLAD";
-      position: absolute;
-      top: 0;
-      left: 0;
-      padding: 0.21053em 0.78947em 0.21053em 0.78947em;
-      font-family: "Source Sans Pro", "Arial", sans-serif;
-      font-weight: 400;
-      text-transform: none;
-      font-size: 12px;
-      line-height: 1.25;
-      background: #bfc1c3;
-      color: white; }
-      @media (min-width: 641px) {
-        .example:before {
-          font-size: 14px;
-          line-height: 1.42857; } }
-    .example .highlight { 
-      font-style: normal;
-      color: #0076c0; }
-    .example .list-bullet {
-      margin-bottom: 20px; }
-  
-  .example-grid p {
+    top: 0;
+    bottom: 0;
+    left: 0;
     width: 100%;
-    background-color: #7DADD3;
-    background-image: repeating-linear-gradient(180deg, #7DADD3, #7DADD3 15px, #B7CFE1 15px, #B7CFE1 30px);
-    margin-bottom: 0;
-    height: 30px;
-    overflow: hidden;
-    text-indent: -999em; }
-    @media (min-width: 641px) {
-      .example-grid p {
-        height: 60px; } }
+    height: 100%;
+    border: 0;
+  }
+}
+
+.example:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.site-wrapper {
+  max-width: 960px;
+  margin: 0 15px;
+}
+@media (min-width: 641px) {
+  .site-wrapper {
+    margin: 0 30px;
+  }
+}
+@media (min-width: 1020px) {
+  .site-wrapper {
+    margin: 0 auto;
+  }
+}
+
+.visually-hidden,
+.visuallyhidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  border: 0;
+}
+
+// #content {
+//   margin: 0;
+// }
+
+.elements-index .heading-medium {
+  margin: 1em 0 0;
+}
+
+.elements-index .divider {
+  margin-top: 4em;
+}
+
+@media (min-width: 641px) {
+  main > .heading-xlarge {
+    margin-top: 1.25em;
+    // margin-bottom: 0.625em;
+  }
+}
+
+.heading-contents {
+  margin-top: 3em;
+}
+
+.list-contents li {
+  font-family: "Source Sans Pro", "Arial", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.14286;
+  text-transform: none;
+}
+@media (min-width: 641px) {
+  .list-contents li {
+    font-size: 16px;
+    line-height: 1.25;
+  }
+}
+
+.lead-in {
+  margin-bottom: 0;
+}
+
+.list-bullet {
+  margin-bottom: 45px;
+}
+
+.list-underline {
+  border-top: 1px solid #bfc1c3;
+}
+
+.list-underline li {
+  padding: 2px 0 3px;
+  border-bottom: 1px solid #bfc1c3;
+}
+
+.list-underline a {
+  text-decoration: none;
+}
+
+.no-top-margin {
+  margin-top: 0;
+}
+
+.example {
+  position: relative;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-top: 30px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  overflow: hidden;
+  border: 1px solid #bfc1c3;
+}
+@media (min-width: 641px) {
+  .example {
+    padding-top: 45px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    padding-left: 30px;
+  }
+}
+
+.example:before {
+  content: "PRÍKLAD";
+  position: absolute;
+  top: 0;
+  left: 0;
+  // padding: 0.21053em 0.78947em;
+  color: #ffffff;
+  background: #bfc1c3;
+  font-family: "Source Sans Pro", "Arial", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.25;
+  text-transform: none;
+}
+@media (min-width: 641px) {
+  .example:before {
+    font-size: 14px;
+    line-height: 1.42857;
+  }
+}
+
+.example .highlight {
+  color: #0076c0;
+  font-style: normal;
+}
+
+.example .list-bullet {
+  margin-bottom: 20px;
+}
+
+.example-grid p {
+  width: 100%;
+  height: 30px;
+  margin-bottom: 0;
+  overflow: hidden;
+  background-color: #7dadd3;
+  background-image: repeating-linear-gradient(180deg, #7dadd3, #7dadd3 15px, #b7cfe1 15px, #b7cfe1 30px);
+  text-indent: -999em;
+}
+
+@media (min-width: 641px) {
+  .example-grid p {
+    height: 60px;
+  }
+}
 
 .example-images img {
   max-width: 100%;
-  vertical-align: top; }
+  vertical-align: top;
+}
 
-  .example-mobile {
-    padding-right: 0;
-    padding-left: 0;
+.example-mobile {
+  padding-right: 0;
+  padding-left: 0;
 
-    iframe {
-      border: none;
-      width: 100%;
-    }
+  iframe {
+    width: 100%;
+    border: none;
   }
+}
 
 // 3. Colour
 // ==========================================================================
@@ -195,10 +231,10 @@ $govuk-show-breakpoints: false;
   height: 60px;
   border-radius: 100%;
   @include govuk-media-query(mobile) {
-    clear: both;
-    float: left;
     margin-right: govuk-spacing(3);
     margin-bottom: govuk-spacing(3);
+    float: left;
+    clear: both;
   }
   @include govuk-media-query(tablet) {
     margin: 0 auto govuk-spacing(3) auto;
@@ -209,8 +245,8 @@ $govuk-show-breakpoints: false;
 // Colour swatch layout
 .swatch-wrapper {
   @include govuk-media-query(tablet) {
-    float: left;
     width: 20%;
+    float: left;
     text-align: center;
   }
 
@@ -219,8 +255,8 @@ $govuk-show-breakpoints: false;
   }
 
   ul {
-    list-style-type: none;
     padding-bottom: govuk-spacing(3);
+    list-style-type: none;
     @include govuk-media-query(mobile) {
       min-height: 50px;
       padding-top: 10px;
@@ -229,16 +265,17 @@ $govuk-show-breakpoints: false;
       padding-left: 0;
     }
   }
+
   li {
     font-size: 16px;
     line-height: 1.25;
   }
+
   b {
-  font-weight: bold;
-  text-transform: uppercase;
+    font-weight: bold;
+    text-transform: uppercase;
   }
 }
-
 
 @mixin color-swatches {
   @each $color in $_idsk-colour-palette-modern {
@@ -253,17 +290,8 @@ $govuk-show-breakpoints: false;
 // Generate swatch classes for each colour in palette list
 @include color-swatches;
 
-.example-grid p {
-  width: 100%;
-  background-color: #7DADD3;
-  background-image: repeating-linear-gradient(180deg, #7DADD3, #7DADD3 15px, #B7CFE1 15px, #B7CFE1 30px);
-  margin-bottom: 0;
-  height: 30px;
-  overflow: hidden;
-  text-indent: -999em;
-}
-  @media (min-width: 641px) {
-    .example-grid p {
-      height: 60px;
-    }
+@media (min-width: 641px) {
+  .example-grid p {
+    height: 60px;
   }
+}

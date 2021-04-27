@@ -13,6 +13,7 @@ const configPaths = require('../../../config/paths.json')
 const { renderSass } = require('../../../lib/jest-helpers')
 
 const readFile = util.promisify(fs.readFile)
+const componentNames = lib.allComponents.slice()
 
 describe('package/', () => {
   it('should contain the expected files', () => {
@@ -50,6 +51,7 @@ describe('package/', () => {
         'package.json',
         'govuk-prototype-kit.config.json',
         '**/macro-options.json',
+        '**/fixtures.json',
         'README.md'
       ]
 
@@ -113,30 +115,60 @@ describe('package/', () => {
       await renderSass({ file: allScssFile })
     })
   })
-
-  /* describe('component', () => {
-    const componentNames = lib.allComponents.slice()
-
-    it.each(componentNames)(`'%s' should have macro-options.json that contains JSON`, (name) => {
-      const filePath = path.join(configPaths.package, 'idsk', 'components', name, 'macro-options.json')
+  /*
+  describe('component', () => {
+    it.each(componentNames)('\'%s\' should have macro-options.json that contains JSON', (name) => {
+      const filePath = path.join(configPaths.package, 'govuk', 'components', name, 'macro-options.json')
       return readFile(filePath, 'utf8')
         .then((data) => {
           var parsedData = JSON.parse(data)
+
           // We expect the component JSON to contain "name", "type", "required", "description"
-          expect(parsedData).toEqual(
-            expect.arrayContaining([
+          expect(parsedData).toBeInstanceOf(Array)
+          parsedData.forEach((option) => {
+            expect(option).toEqual(
               expect.objectContaining({
                 name: expect.any(String),
                 type: expect.any(String),
                 required: expect.any(Boolean),
                 description: expect.any(String)
               })
-            ])
-          )
+            )
+          })
         })
         .catch(error => {
           throw error
         })
     })
-  }) */
+  })
+
+  describe('fixtures', () => {
+    it.each(componentNames)('\'%s\' should have fixtures.json that contains JSON', (name) => {
+      const filePath = path.join(configPaths.package, 'govuk', 'components', name, 'fixtures.json')
+      return readFile(filePath, 'utf8')
+        .then((data) => {
+          var parsedData = JSON.parse(data)
+          // We expect the component JSON to contain "component" and an array of "fixtures" with "name", "options", and "html"
+          expect(parsedData).toEqual(
+            expect.objectContaining({
+              component: name,
+              fixtures: expect.any(Object)
+            })
+          )
+
+          parsedData.fixtures.forEach((fixture) => {
+            expect(fixture).toEqual({
+              name: expect.any(String),
+              options: expect.any(Object),
+              html: expect.any(String),
+              hidden: expect.any(Boolean)
+            })
+          })
+        })
+        .catch(error => {
+          throw error
+        })
+    })
+  }) 
+  */
 })

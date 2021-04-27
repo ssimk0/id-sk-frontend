@@ -50,6 +50,7 @@ describe('@mixin govuk-typography-common', () => {
     const sass = `
     @import "settings/all";
     @import "helpers/all";
+    @import "tools/ie8";
 
     :root {
       @include govuk-typography-common;
@@ -62,9 +63,9 @@ describe('@mixin govuk-typography-common', () => {
     const results = await renderSass({ data: sass, ...sassConfig })
     const resultsString = results.css.toString()
 
-    expect(resultsString).toContain(`@font-face`)
-    expect(resultsString).toContain(`font-family: "GDS Transport"`)
-    expect(resultsString).toContain(`font-family: "GDS Transport"`)
+    expect(resultsString).toContain('@font-face')
+    expect(resultsString).toContain('font-family: "GDS Transport"')
+    expect(resultsString).toContain('font-family: "GDS Transport"')
   })
   it('should not output a @font-face declaration when the user has changed their font', async () => {
     const sass = `
@@ -84,9 +85,9 @@ describe('@mixin govuk-typography-common', () => {
     const results = await renderSass({ data: sass, ...sassConfig })
     const resultsString = results.css.toString()
 
-    expect(resultsString).not.toContain(`@font-face`)
-    expect(resultsString).not.toContain(`font-family: "GDS Transport"`)
-    expect(resultsString).not.toContain(`font-family: "ntatabularnumbers"`)
+    expect(resultsString).not.toContain('@font-face')
+    expect(resultsString).not.toContain('font-family: "GDS Transport"')
+    expect(resultsString).not.toContain('font-family: "ntatabularnumbers"')
   })
   it('should not output a @font-face declaration when the user wants compatibility with GOV.UK Template', async () => {
     const sass = `
@@ -105,9 +106,9 @@ describe('@mixin govuk-typography-common', () => {
     const results = await renderSass({ data: sass, ...sassConfig })
     const resultsString = results.css.toString()
 
-    expect(resultsString).not.toContain(`@font-face`)
-    expect(resultsString).toContain(`font-family: "nta"`)
-    expect(resultsString).toContain(`font-family: "ntatabularnumbers"`)
+    expect(resultsString).not.toContain('@font-face')
+    expect(resultsString).toContain('font-family: "nta"')
+    expect(resultsString).toContain('font-family: "ntatabularnumbers"')
   })
   it('should not output a @font-face declaration when the user has turned off this feature', async () => {
     const sass = `
@@ -126,9 +127,31 @@ describe('@mixin govuk-typography-common', () => {
     const results = await renderSass({ data: sass, ...sassConfig })
     const resultsString = results.css.toString()
 
-    expect(resultsString).not.toContain(`@font-face`)
-    expect(resultsString).toContain(`font-family: "GDS Transport"`)
-    expect(resultsString).toContain(`font-family: "GDS Transport"`)
+    expect(resultsString).not.toContain('@font-face')
+    expect(resultsString).toContain('font-family: "GDS Transport"')
+    expect(resultsString).toContain('font-family: "GDS Transport"')
+  })
+  it('should not output a @font-face declaration when the browser is IE8', async () => {
+    const sass = `
+    $govuk-is-ie8: true;
+
+    @import "settings/all";
+    @import "helpers/all";
+    @import "tools/ie8";
+
+    :root {
+      @include govuk-typography-common;
+    }
+    :root {
+      @include govuk-typography-common($font-family: $govuk-font-family-tabular);
+    }
+    `
+
+    const results = await renderSass({ data: sass, ...sassConfig })
+    const resultsString = results.css.toString()
+
+    expect(resultsString).not.toContain('@font-face')
+    expect(resultsString).toContain('font-family: "GDS Transport"')
   })
 })
 

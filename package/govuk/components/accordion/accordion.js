@@ -17,7 +17,7 @@ import { nodeListForEach } from '../../common'
 import '../../vendor/polyfills/Function/prototype/bind'
 import '../../vendor/polyfills/Element/prototype/classList'
 
-function Accordion ($module) {
+function Accordion($module) {
   this.$module = $module
   this.moduleId = $module.getAttribute('id')
   this.$sections = $module.querySelectorAll('.govuk-accordion__section')
@@ -135,8 +135,8 @@ Accordion.prototype.initHeaderAttributes = function ($headerWrapper, index) {
   icon.className = this.iconClass
   icon.setAttribute('aria-hidden', 'true')
 
-  $heading.appendChild(icon)
-}
+  $button.appendChild(icon);
+};
 
 // When section toggled, set and store state
 Accordion.prototype.onSectionToggle = function ($section) {

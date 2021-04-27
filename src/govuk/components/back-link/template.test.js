@@ -16,16 +16,6 @@ describe('back-link component', () => {
     expect(results).toHaveNoViolations()
   })
 
-  it.skip('fails to render if the required fields are not included', () => {
-    // TODO: href is a required field but the component does not error,
-    // when it is not passed
-    expect(() => {
-      render('back-link', {
-        text: 'Example'
-      })
-    }).toThrow()
-  })
-
   it('renders the default example with an anchor, href and text correctly', () => {
     const $ = render('back-link', examples.default)
 
@@ -36,64 +26,42 @@ describe('back-link component', () => {
   })
 
   it('renders classes correctly', () => {
-    const $ = render('back-link', {
-      classes: 'app-back-link--custom-class',
-      href: '#',
-      html: '<b>Back</b>'
-    })
+    const $ = render('back-link', examples.classes)
 
     const $component = $('.govuk-back-link')
     expect($component.hasClass('app-back-link--custom-class')).toBeTruthy()
   })
 
   it('renders custom text correctly', () => {
-    const $ = render('back-link', {
-      href: '#',
-      text: 'Home'
-    })
+    const $ = render('back-link', examples['with custom text'])
 
     const $component = $('.govuk-back-link')
-    expect($component.html()).toEqual('Home')
+    expect($component.html()).toEqual('Back to home')
   })
 
   it('renders escaped html when passed to text', () => {
-    const $ = render('back-link', {
-      href: '#',
-      text: '<b>Home</b>'
-    })
+    const $ = render('back-link', examples['html as text'])
 
     const $component = $('.govuk-back-link')
     expect($component.html()).toEqual('&lt;b&gt;Home&lt;/b&gt;')
   })
 
   it('renders html correctly', () => {
-    const $ = render('back-link', {
-      href: '#',
-      html: '<b>Back</b>'
-    })
+    const $ = render('back-link', examples.html)
 
     const $component = $('.govuk-back-link')
     expect($component.html()).toEqual('<b>Back</b>')
   })
 
   it('renders default text correctly', () => {
-    const $ = render('back-link', {
-      href: '#'
-    })
+    const $ = render('back-link', examples.default)
 
     const $component = $('.govuk-back-link')
     expect($component.html()).toEqual('Back')
   })
 
   it('renders attributes correctly', () => {
-    const $ = render('back-link', {
-      attributes: {
-        'data-test': 'attribute',
-        'aria-label': 'Back to home'
-      },
-      href: '#',
-      html: 'Back'
-    })
+    const $ = render('back-link', examples.attributes)
 
     const $component = $('.govuk-back-link')
     expect($component.attr('data-test')).toEqual('attribute')

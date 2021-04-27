@@ -2,7 +2,7 @@
     {
         "name": "id",
         "type": "string",
-        "required": false,
+        "required": true,
         "description": "This is used for the main component and to compose id attribute for each item."
     },
     {
@@ -14,7 +14,7 @@
     {
         "name": "items",
         "type": "array",
-        "required": true,
+        "required": false,
         "description": "An array of input objects with name, value and classes.",
         "params": [
             {
@@ -32,7 +32,7 @@
             {
                 "name": "label",
                 "type": "string",
-                "required": true,
+                "required": false,
                 "description": "Item-specific label text. If provided, this will be used instead of `name` for item label text."
             },
             {
@@ -45,7 +45,7 @@
                 "name": "autocomplete",
                 "type": "string",
                 "required": false,
-                "description": "Attribute to [identify input purpose](https://www.w3.org/WAI/WCAG21/Understanding/identify-input-purpose.html), for instance \"postal-code\" or \"username\". See [autofill](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill) for full list of attributes that can be used."
+                "description": "Attribute to [identify input purpose](https://www.w3.org/WAI/WCAG21/Understanding/identify-input-purpose.html), for instance \"bday-day\". See [autofill](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill) for full list of attributes that can be used."
             },
             {
                 "name": "pattern",
@@ -78,7 +78,7 @@
         "name": "errorMessage",
         "type": "object",
         "required": false,
-        "description": "Options for the error message.",
+        "description": "Options for the error message component. The error message component will not display if you use a falsy value for `errorMessage`, for example `false` or `null`.",
         "isComponent": true
     },
     {

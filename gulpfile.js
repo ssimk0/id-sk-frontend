@@ -7,7 +7,6 @@ const taskArguments = require('./tasks/gulp/task-arguments')
 
 // Gulp sub-tasks
 require('./tasks/gulp/clean.js')
-require('./tasks/gulp/lint.js')
 require('./tasks/gulp/compile-assets.js')
 require('./tasks/gulp/nodemon.js')
 require('./tasks/gulp/watch.js')
@@ -15,6 +14,7 @@ require('./tasks/gulp/watch.js')
 require('./tasks/gulp/copy-to-destination.js')
 require('./tasks/gulp/asset-version.js')
 require('./tasks/gulp/sassdoc.js')
+require('./tasks/gulp/stylelint.js')
 
 // Umbrella scripts tasks for preview ---
 // Runs js lint and compilation
@@ -24,7 +24,7 @@ gulp.task('scripts', gulp.series(
 ))
 
 // Umbrella styles tasks for preview ----
-// Runs js lint and compilation
+// Runs scss lint and compilation
 // --------------------------------------
 gulp.task('styles', gulp.series(
   'scss:lint',

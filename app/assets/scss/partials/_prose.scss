@@ -1,5 +1,4 @@
 .app-prose-scope {
-
   h1 {
     @extend %govuk-heading-xl;
   }
@@ -58,6 +57,7 @@
   }
 }
 
-pre[class*=language-] {
-  margin: 1em 0 2em 0!important;
+// stylelint-disable declaration-no-important
+pre[class*="language-"] {
+  margin: 1em 0 2em !important;
 }

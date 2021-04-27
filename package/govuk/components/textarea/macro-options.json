@@ -12,6 +12,12 @@
         "description": "The name of the textarea, which is submitted with the form data."
     },
     {
+        "name": "spellcheck",
+        "type": "boolean",
+        "required": false,
+        "description": "Optional field to enable or disable the spellcheck attribute on the textarea."
+    },
+    {
         "name": "rows",
         "type": "string",
         "required": false,
@@ -47,7 +53,7 @@
         "name": "errorMessage",
         "type": "object",
         "required": false,
-        "description": "Options for the errorMessage component (e.g. text).",
+        "description": "Options for the error message component. The error message component will not display if you use a falsy value for `errorMessage`, for example `false` or `null`.",
         "isComponent": true
     },
     {
