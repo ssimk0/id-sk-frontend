@@ -71,7 +71,6 @@
 
   .idsk-search-results__filter .govuk-form-group {
     margin-bottom: 0;
-    padding-right: govuk-spacing(1);
   }
 
   .idsk-search-results__content .govuk-grid-column-two-quarters {
@@ -104,10 +103,9 @@
     }
 
     .govuk-label {
-      white-space: pre;
-      margin-left: -15px;
+      white-space: nowrap;
       padding-right: govuk-spacing(2);
-      margin-top: -11px;
+      margin-top: govuk-spacing(2);
     }
 
     .govuk-form-group {
@@ -115,6 +113,7 @@
       width: -webkit-fill-available;
       margin-bottom: -15px;
       border-bottom: 1px solid govuk-colour("black");
+      padding-bottom: govuk-spacing(3);
     }
   }
 
@@ -437,7 +436,7 @@
         @include govuk-font($size: 19);
       }
     }
-    
+
     .idsk-intro-block__input::placeholder {
       color: govuk-colour("black");
     }
