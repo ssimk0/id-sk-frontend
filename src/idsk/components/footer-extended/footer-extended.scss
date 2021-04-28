@@ -307,12 +307,11 @@
 
     .idsk-footer-extended-display-hidden {
         visibility: hidden;
-        height: 0;
     }
 
     .idsk-footer-extended-feedback-hidden {
         max-height: 0;
-        transition: max-height 0.7s ease-out;
+        transition: max-height 0.1s ease-out;
     }
 
     .idsk-footer-extended-open {
@@ -423,6 +422,10 @@
         .idsk-footer-extended {
             margin-right: 0;
         }
+    }
+
+    .idsk-footer-extended-display-hidden .idsk-footer-extended-feedback-container {
+        max-height: 0;
     }
 
     .idsk-footer-extended-feedback-container {
