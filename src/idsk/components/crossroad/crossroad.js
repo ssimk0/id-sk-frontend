@@ -62,7 +62,7 @@ Crossroad.prototype.handleShowItems = function (e) {
   this.setAriaLabel($crossroadTitles);
   this.setAriaLabel($crossroadSubtitles);
 
-  $uncollapseButton.innerHTML = $uncollapseButton.textContent == 'Zobraziť viac' ? 'Zobraziť menej' : 'Zobraziť viac';
+  $uncollapseButton.innerHTML = $uncollapseButton.textContent == $uncollapseButton.dataset.line1 ? $uncollapseButton.dataset.line2 : $uncollapseButton.dataset.line1;
 
   toggleClass(e.srcElement, 'idsk-crossroad__colapse--button-show');
   toggleClass($uncollapseDiv, 'idsk-crossroad__collapse--shadow');

@@ -117,7 +117,7 @@ CustomerSurveys.prototype.clearTextArea = function ($textArea) {
         $text.classList.remove('govuk-textarea--error');
         $hint.classList.remove('govuk-error-message');
         $hint.classList.add('govuk-hint');
-        $hint.innerHTML = "Zostáva Vám 200 znakov";
+        $hint.innerHTML = $textArea.dataset.lines;
     }
 }
 
@@ -146,16 +146,16 @@ CustomerSurveys.prototype.handlePreviousButtonClick = function (e) {
     // showing and hiding steps, once step is set to be showed return is called.
     // changing names of buttons, disabling
     for (i = 1; i < $steps.length - 1; i++) {
-        if ($previousButton.textContent == "Späť" && $steps[1].classList.contains('idsk-customer-surveys--show')) {
-            $previousButton.innerHTML = 'Odísť';
-            $nextButtonText.innerHTML = 'Začať';
+        if ($previousButton.textContent == $previousButton.dataset.line2 && $steps[1].classList.contains('idsk-customer-surveys--show')) {
+            $previousButton.innerHTML = $previousButton.dataset.line1;
+            $nextButtonText.innerHTML = $nextButtonText.dataset.line1;
             toggleClass($startIcon[0], 'idsk-customer-surveys__icon--hidden');
             $previousButton.onclick = function () {
                 location.href = "/";
             };
         }
-        if ($nextButtonText.textContent.includes("Odoslať odpovede")) {
-            $nextButtonText.innerHTML = 'Ďalej';
+        if ($nextButtonText.textContent.includes($nextButtonText.dataset.line3)) {
+            $nextButtonText.innerHTML = $nextButtonText.dataset.line2;
             toggleClass($startIcon[0], 'idsk-customer-surveys__icon--hidden');
         }
         if ($steps[i].classList.contains('idsk-customer-surveys--show')) {
@@ -183,8 +183,8 @@ CustomerSurveys.prototype.handleNextButtonClick = function (e) {
     var $nextButtonText = $module.querySelector('.idsk-customer-surveys__send-button');
 
     $nextButton.blur();
-    if ($nextButtonText.textContent.includes("Začať")) {
-        $nextButtonText.innerHTML = 'Ďalej';;
+    if ($nextButtonText.textContent.includes($nextButtonText.dataset.line1)) {
+        $nextButtonText.innerHTML = $nextButtonText.dataset.line2;
         toggleClass($startIcon[0], 'idsk-customer-surveys__icon--hidden');
         // uncheck all radiobuttons 
         this.handleRadioButtonPrivateClick.call(this);
@@ -201,7 +201,7 @@ CustomerSurveys.prototype.handleNextButtonClick = function (e) {
         this.enableNextButtonForAllSteps.call(this);
     }
 
-    if ($nextButtonText.textContent.includes("Odoslať odpovede")) {
+    if ($nextButtonText.textContent.includes($nextButtonText.dataset.line3)) {
         $buttonsDiv.classList.add('idsk-customer-surveys--hidden');
     }
 
@@ -219,11 +219,11 @@ CustomerSurveys.prototype.handleNextButtonClick = function (e) {
             toggleClass($steps[i + 1], 'idsk-customer-surveys--hidden');
             $steps[i + 1].classList.add('idsk-customer-surveys--show');
             if (i == 4) {
-                $nextButtonText.innerHTML = 'Odoslať odpovede';
+                $nextButtonText.innerHTML = $nextButtonText.dataset.line3;
                 toggleClass($startIcon[0], 'idsk-customer-surveys__icon--hidden');
             }
             if (i == 0) {
-                $previousButton.innerHTML = 'Späť';
+                $previousButton.innerHTML = $previousButton.dataset.line2;
                 $previousButton.onclick = function () {
                     location.href = "#";
                 };
