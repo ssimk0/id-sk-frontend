@@ -156,6 +156,9 @@ SearchResults.prototype.init = function () {
             this.handleClickContentTypeCheckBox.call(this, $checkBox)
         }
     }.bind(this))
+
+    this.handleClickFiltersButton.call(this)
+    this.handleClickShowResultsButton.call(this)
 }
 
 /**
@@ -627,6 +630,7 @@ SearchResults.prototype.createTopicInContainer = function ($choosenFiltersContai
     $topicPicked.setAttribute('class', $class)
     $topicPicked.setAttribute('tabindex', "0")
     $topicPicked.setAttribute('data-source', $input)
+    $topicPicked.setAttribute('data-id', $el.id)
     $topicPicked.innerHTML = $el.value + ' &#10005;';
     if ($insertBeforeFirst) {
         $choosenFiltersContainer.prepend($topicPicked);
