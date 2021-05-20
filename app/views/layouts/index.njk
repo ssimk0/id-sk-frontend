@@ -1,5 +1,5 @@
 {% extends "layout.njk" %}
-{% from "accordion/macro.njk" import govukAccordion %}
+{% from "../../../src/idsk/components/accordion/macro.njk" import idskAccordion %}
 
 {% block content %}
 
@@ -74,7 +74,7 @@
       </ul>
     {% endset %}
 
-    {{ govukAccordion({
+    {{ idskAccordion({
       "id": "default-example",
       "classes": "govuk-!-margin-bottom-9",
       "attributes": {
@@ -141,7 +141,7 @@
 
     <h2 class="govuk-heading-m">GOV.UK Frontend</h2>
     <p class="govuk-body">Prevzaté komponenty, vzory a ukážky z GOV.UK Frontend a ich dokumentácia (obsah je v&nbsp;anglickom jazyku)</p>
-    {{ govukAccordion({
+    {{ idskAccordion({
       "id": "default-example2",
       "classes": "govuk-!-margin-bottom-9",
       "attributes": {
