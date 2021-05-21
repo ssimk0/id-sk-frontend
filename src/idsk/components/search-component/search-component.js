@@ -18,7 +18,7 @@ SearchComponent.prototype.init = function () {
     } 
 
     $searchInputs.forEach(function ($searchInput) {
-        $searchInput.addEventListener('keyup', this.handleSearchInput.bind(this))
+        $searchInput.addEventListener('change', this.handleSearchInput.bind(this))
     }.bind(this))
 
 }
