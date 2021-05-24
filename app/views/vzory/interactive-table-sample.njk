@@ -239,8 +239,9 @@
         var renderTable = function(){
             d3.json("/public/assets/data/vaccinations-by-region.json").then(function (data) {
                 $currentData = data.page;
+                var $firstRecordPublishedOn = $currentData[0]["published_on"];
                 if (Number($timePeriod)) {
-                    var $cutoffDate = new Date();
+                    var $cutoffDate = new Date($firstRecordPublishedOn);
                     $cutoffDate.setDate($cutoffDate.getDate() - Number($timePeriod));
                     $currentData = $currentData.filter(function(d) {
                         var $date = new Date(d["published_on"])
