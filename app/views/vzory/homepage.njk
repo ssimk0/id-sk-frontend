@@ -315,40 +315,42 @@
   </p>
 
   <div class="govuk-grid-row">
-    {{ idskCrossroad({
-        "columns": 2,
-        "classes": "govuk-clearfix",
-        "items": [
+    <div class="govuk-grid-column-full">
+      {{ idskCrossroad({
+          "columns": 2,
+          "classes": "govuk-clearfix",
+          "items": [
             { "title": 'Implementácia EŠIF', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' },
             { "title": 'Hodnotenie EŠIF', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' },
             { "title": 'Monitorovanie EŠIF', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' },
             { "title": 'IT monitorovací systém pre EŠIF', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' }
-        ]
-    }) }}
+          ]
+      }) }}
+    </div>
   </div>
 
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-one-half govuk-!-padding-left-0 govuk-!-margin-top-4">
-      <h3 class="govuk-heading-m govuk-!-margin-top-2 govuk-!-margin-left-3">Ministerstvo ako prijímateľ EŠIF</h3>
+    <div class="govuk-grid-column-one-half govuk-!-margin-top-4">
+      <h3 class="govuk-heading-m govuk-!-margin-top-2">Ministerstvo ako prijímateľ EŠIF</h3>
       {{ idskCrossroad({
         "columns": 1,
         "classes": "govuk-clearfix",
         "items": [
-            { "title": 'OP Integrovaná infraštruktúra', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' },
-            { "title": 'OP Technická pomoc', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' },
-            { "title": 'Integrovaný regionálny operačný program', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' }
+          { "title": 'OP Integrovaná infraštruktúra', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' },
+          { "title": 'OP Technická pomoc', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' },
+          { "title": 'Integrovaný regionálny operačný program', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' }
         ]
       }) }}
     </div>
-    <div class="govuk-grid-column-one-half govuk-!-padding-left-0 govuk-!-margin-top-4">
-      <h3 class="govuk-heading-m govuk-!-margin-top-2 govuk-!-margin-left-3">Ministerstvo ako poskytovateľ EŠIF</h3>
+    <div class="govuk-grid-column-one-half govuk-!-margin-top-4">
+      <h3 class="govuk-heading-m govuk-!-margin-top-2">Ministerstvo ako poskytovateľ EŠIF</h3>
       {{ idskCrossroad({
         "columns": 1,
         "classes": "govuk-clearfix",
         "items": [
-            { "title": 'PO7 Informačná spoločnosť', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' },
-            { "title": 'Nórske fondy', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' },
-            { "title": 'IROP', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' }
+          { "title": 'PO7 Informačná spoločnosť', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' },
+          { "title": 'Nórske fondy', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' },
+          { "title": 'IROP', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' }
         ]
       }) }}
     </div>
@@ -378,7 +380,7 @@
       <p class="govuk-body-m">Všetky informácie o príprave, revízii a realizácii Európskych štrukturálnych fondov (EŠIF) v podmienkach SR na jendom mieste. Viac informácií nájdete na <a class="govuk-link" href="#" title="podstránke Informatizácia">podstránke Informatizácia</a>.</p>
     </div>
 
-    <div class="govuk-grid-column-one-half govuk-!-padding-left-0">
+    <div class="govuk-grid-column-one-half">
       {{ idskCrossroad({
         "columns": 1,
         "items": [
@@ -425,15 +427,17 @@
         Všetky informácie o príprave, revízii a realizácii Európskych štrukturálnych fondov (EŠIF) v podmienkach SR na jendom mieste. Viac informácií nájdete na <a class="govuk-link" href="#" title="podstránke Informatizácia">podstránke Informatizácia</a>.
       </p>
     </div>
-    {{ idskCrossroad({
-      "columns": 2,
-      "items": [
-        { "title": 'Národný investičný plán', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' },
-        { "title": 'Agenda 2030', "subtitle": 'Inteligentné mesto, zdravá budúcnosť. Inšpirujte sa.', "link": '#' },
-        { "title": 'Podpora inovácií', "subtitle": 'Zistite, ako Vám moderný štát môže ušetriť čas a peniaze.', "link": '#' },
-        { "title": 'Inovačná diplomacia', "subtitle": 'Zistite, ako Vám moderný štát môže ušetriť čas a peniaze.', "link": '#' }
-      ]
-    }) }}
+    <div class="govuk-grid-column-full">
+      {{ idskCrossroad({
+        "columns": 2,
+        "items": [
+          { "title": 'Národný investičný plán', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' },
+          { "title": 'Agenda 2030', "subtitle": 'Inteligentné mesto, zdravá budúcnosť. Inšpirujte sa.', "link": '#' },
+          { "title": 'Podpora inovácií', "subtitle": 'Zistite, ako Vám moderný štát môže ušetriť čas a peniaze.', "link": '#' },
+          { "title": 'Inovačná diplomacia', "subtitle": 'Zistite, ako Vám moderný štát môže ušetriť čas a peniaze.', "link": '#' }
+        ]
+      }) }}
+    </div>
   </div>
   
   <hr class="idsk-hr-separator govuk-!-margin-bottom-6">
@@ -445,17 +449,19 @@
         Všetky informácie o príprave, revízii a realizácii Európskych štrukturálnych fondov (EŠIF) v podmienkach SR na jendom mieste. Viac informácií nájdete na <a class="govuk-link" href="#" title="podstránke Regionálny rozvoj">podstránke Regionálny rozvoj</a>.
       </p>
     </div>
-    {{ idskCrossroad({
-      "columns": 2,
-      "items": [
-        { "title": 'Zdroje financovania', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' },
-        { "title": 'Strategické dokumenty', "subtitle": 'Inteligentné mesto, zdravá budúcnosť. Inšpirujte sa.', "link": '#' },
-        { "title": 'Metodické usmernenia a vzorové dokumenty', "subtitle": 'Zistite, ako Vám moderný štát môže ušetriť čas a peniaze.', "link": '#' },
-        { "title": 'Najmenej rozvinuté okresy', "subtitle": 'Zistite, ako Vám moderný štát môže ušetriť čas a peniaze.', "link": '#' },
-        { "title": 'Legislatíva a uznesenia', "subtitle": 'Zistite, ako Vám moderný štát môže ušetriť čas a peniaze.', "link": '#' },
-        { "title": 'Kontakty', "subtitle": 'Zistite, ako Vám moderný štát môže ušetriť čas a peniaze.', "link": '#' }
-      ]
-    }) }}
+    <div class="govuk-grid-column-full">
+      {{ idskCrossroad({
+        "columns": 2,
+        "items": [
+          { "title": 'Zdroje financovania', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' },
+          { "title": 'Strategické dokumenty', "subtitle": 'Inteligentné mesto, zdravá budúcnosť. Inšpirujte sa.', "link": '#' },
+          { "title": 'Metodické usmernenia a vzorové dokumenty', "subtitle": 'Zistite, ako Vám moderný štát môže ušetriť čas a peniaze.', "link": '#' },
+          { "title": 'Najmenej rozvinuté okresy', "subtitle": 'Zistite, ako Vám moderný štát môže ušetriť čas a peniaze.', "link": '#' },
+          { "title": 'Legislatíva a uznesenia', "subtitle": 'Zistite, ako Vám moderný štát môže ušetriť čas a peniaze.', "link": '#' },
+          { "title": 'Kontakty', "subtitle": 'Zistite, ako Vám moderný štát môže ušetriť čas a peniaze.', "link": '#' }
+        ]
+      }) }}
+    </div>
   </div>
   
   <div class="idsk-blue-banner">
@@ -543,27 +549,29 @@
         Slovensko je neodlučnou súčasťou európskeho digitálneho priestoru, ktorý pomáha formovať strategické smerovanie digitalizácie u nás. Viac informácií nájdete na <a class="govuk-link" href="#" title="podstránke Informatizácia">na podstránke Informatizácia</a>.
       </p>
     </div>
-    {{ idskCrossroad({
-      "columns": 2,
-      "hideTiles": true,
-      "items": [
-        { "title": 'Financovanie ITVS', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' },
-        { "title": 'Prevádzka a rozvoj ITVS', "subtitle": 'Inteligentné mesto, zdravá budúcnosť. Inšpirujte sa.', "link": '#' },
-        { "title": 'Prevádzka a rozvoj ITVS', "subtitle": 'Inteligentné mesto, zdravá budúcnosť. Inšpirujte sa.', "link": '#' },
-        { "title": 'Prevádzka a rozvoj ITVS', "subtitle": 'Inteligentné mesto, zdravá budúcnosť. Inšpirujte sa.', "link": '#' },
-        { "title": 'Prevádzka a rozvoj ITVS', "subtitle": 'Inteligentné mesto, zdravá budúcnosť. Inšpirujte sa.', "link": '#' },
-        { "title": 'Prevádzka a rozvoj ITVS', "subtitle": 'Inteligentné mesto, zdravá budúcnosť. Inšpirujte sa.', "link": '#' },
-        { "title": 'Prevádzka a rozvoj ITVS', "subtitle": 'Inteligentné mesto, zdravá budúcnosť. Inšpirujte sa.', "link": '#' },
-        { "title": 'Prevádzka a rozvoj ITVS', "subtitle": 'Inteligentné mesto, zdravá budúcnosť. Inšpirujte sa.', "link": '#' },
-        { "title": 'Strategické dokumenty', "subtitle": 'Subtitle for 3rd element', "link": '#' },
-        { "title": 'Aktuality z informatizácie', "subtitle": 'Subtitle for 4th element', "link": '#' },
-        { "title": 'G2G služby', "subtitle": 'Subtitle for 5th element', "link": '#' },
-        { "title": 'Manažment údajov', "subtitle": 'Zistite, ako Vám moderný štát môže ušetriť čas a peniaze.', "link": '#' },
-        { "title": 'MIRRI digitálne projekty', "subtitle": 'Zistite, ako Vám moderný štát môže ušetriť čas a peniaze.', "link": '#' },
-        { "title": 'Informatizácia v európskom kontexte ', "subtitle": 'Zistite, ako Vám moderný štát môže ušetriť čas a peniaze.', "link": '#' },
-        { "title": 'Pracovné skupiny', "subtitle": 'Zistite, ako Vám moderný štát môže ušetriť čas a peniaze.', "link": '#' }
-      ]
-    }) }}
+    <div class="govuk-grid-column-full">
+      {{ idskCrossroad({
+        "columns": 2,
+        "hideTiles": true,
+        "items": [
+          { "title": 'Financovanie ITVS', "subtitle": 'Všetky informácie o eurofondoch na jednom mieste.', "link": '#' },
+          { "title": 'Prevádzka a rozvoj ITVS', "subtitle": 'Inteligentné mesto, zdravá budúcnosť. Inšpirujte sa.', "link": '#' },
+          { "title": 'Prevádzka a rozvoj ITVS', "subtitle": 'Inteligentné mesto, zdravá budúcnosť. Inšpirujte sa.', "link": '#' },
+          { "title": 'Prevádzka a rozvoj ITVS', "subtitle": 'Inteligentné mesto, zdravá budúcnosť. Inšpirujte sa.', "link": '#' },
+          { "title": 'Prevádzka a rozvoj ITVS', "subtitle": 'Inteligentné mesto, zdravá budúcnosť. Inšpirujte sa.', "link": '#' },
+          { "title": 'Prevádzka a rozvoj ITVS', "subtitle": 'Inteligentné mesto, zdravá budúcnosť. Inšpirujte sa.', "link": '#' },
+          { "title": 'Prevádzka a rozvoj ITVS', "subtitle": 'Inteligentné mesto, zdravá budúcnosť. Inšpirujte sa.', "link": '#' },
+          { "title": 'Prevádzka a rozvoj ITVS', "subtitle": 'Inteligentné mesto, zdravá budúcnosť. Inšpirujte sa.', "link": '#' },
+          { "title": 'Strategické dokumenty', "subtitle": 'Subtitle for 3rd element', "link": '#' },
+          { "title": 'Aktuality z informatizácie', "subtitle": 'Subtitle for 4th element', "link": '#' },
+          { "title": 'G2G služby', "subtitle": 'Subtitle for 5th element', "link": '#' },
+          { "title": 'Manažment údajov', "subtitle": 'Zistite, ako Vám moderný štát môže ušetriť čas a peniaze.', "link": '#' },
+          { "title": 'MIRRI digitálne projekty', "subtitle": 'Zistite, ako Vám moderný štát môže ušetriť čas a peniaze.', "link": '#' },
+          { "title": 'Informatizácia v európskom kontexte ', "subtitle": 'Zistite, ako Vám moderný štát môže ušetriť čas a peniaze.', "link": '#' },
+          { "title": 'Pracovné skupiny', "subtitle": 'Zistite, ako Vám moderný štát môže ušetriť čas a peniaze.', "link": '#' }
+        ]
+      }) }}
+    </div>
   </div>
 {% endblock %}
 
