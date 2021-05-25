@@ -34,9 +34,10 @@ function Accordion ($module) {
   this.sectionExpandedClass = 'govuk-accordion__section--expanded'
 
   this.$openAllButton = $module.querySelector("#accordionButton")
+  this.$sectionSpan = $module.querySelector(".section-span")
   this.openTitle = this.$openAllButton.dataset.openTitle
   this.closeTitle = this.$openAllButton.dataset.closeTitle
-  //this.closeTitle = $module.getAttribute("closeTitle")
+  this.sectionTitle = this.$sectionSpan.dataset.sectionTitle
 }
 
 // Initialize component
@@ -187,7 +188,7 @@ Accordion.prototype.checkIfAllSectionsOpen = function () {
 // Update "Open all" button
 Accordion.prototype.updateOpenAllButton = function (expanded) {
   var newButtonText = expanded ? this.closeTitle : this.openTitle
-  newButtonText += '<span class="govuk-visually-hidden"> sections</span>'
+  newButtonText += '<span class="govuk-visually-hidden section-span"> '+ this.sectionTitle +'</span>'
   this.$openAllButton.setAttribute('aria-expanded', expanded)
   this.$openAllButton.innerHTML = newButtonText
 }

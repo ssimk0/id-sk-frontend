@@ -7,10 +7,14 @@ params:
   type: string
   required: true
   description: Open button title, for support multiple languages
-  - name: closeTitle
+- name: closeTitle
   type: string
   required: true
   description: Close button title, for support multiple languages
+- name: sectionTitle
+  type: string
+  required: true
+  description: Span section title text, for support multiple languages
 - name: headingLevel
   type: integer
   required: false
