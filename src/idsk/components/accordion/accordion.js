@@ -33,8 +33,8 @@ function Accordion ($module) {
   this.sectionButtonClass = 'govuk-accordion__section-button'
   this.sectionExpandedClass = 'govuk-accordion__section--expanded'
 
-  this.$openAllButton = $module.querySelector("#accordionButton")
-  this.$sectionSpan = $module.querySelector(".section-span")
+  this.$openAllButton = $module.querySelector(".govuk-accordion__open-all")
+  this.$sectionSpan = $module.querySelector(".govuk-accordion__controls-span")
   this.openTitle = this.$openAllButton.dataset.openTitle
   this.closeTitle = this.$openAllButton.dataset.closeTitle
   this.sectionTitle = this.$sectionSpan.dataset.sectionTitle
