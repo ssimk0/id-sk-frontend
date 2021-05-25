@@ -483,7 +483,6 @@
   .js-enabled .idsk-header-extended {
     @include mq($until: desktop) {
       position: fixed;
-      position: sticky;
       top: 0;
       padding-top: govuk-spacing(3);
       width: 100vw;
@@ -675,6 +674,11 @@
               }
             }
           }
+        }
+
+        .idsk-header-extended__hr {
+          border: none;
+          border-top: 2px solid govuk-colour("white");
         }
 
         .idsk-header-extended__mobile .idsk-header-extended__language {
