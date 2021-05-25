@@ -87,7 +87,6 @@
       border-bottom: none;
       display: inline-flex;
       float: right;
-      margin-right: -15px;
     }
   }
 
@@ -234,9 +233,13 @@
     display: inline-block;
     position: relative;
 
-    @include mq($from: tablet) {
-      width: 100%;
+    @include mq(tablet) {
+      width: 96.5%;
       border-top: 2px solid govuk-colour("black");
+    }
+
+    @include mq($from: desktop) { 
+      width: 97.6%;
     }
   }
 
@@ -346,9 +349,13 @@
     width: 96%;
     padding-bottom: govuk-spacing(8);
 
-    @include mq($from: tablet) {
-      width: 100%;
+    @include mq(tablet) {
+      width: 96.5%;
       padding-bottom: 0;
+    }
+
+    @include mq($from: desktop) {
+      width: 97.6%;
     }
   }
 
