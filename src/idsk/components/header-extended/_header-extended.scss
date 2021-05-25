@@ -551,6 +551,12 @@
       }
     }
 
+    @include mq($until: desktop) {
+      &-notification {
+        padding-top: 91px;
+      }
+    }
+
     &.idsk-header-extended--show-mobile-menu {
       @include mq($until: desktop) {
         height: 100%;
