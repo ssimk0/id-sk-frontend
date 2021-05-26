@@ -210,6 +210,19 @@
     margin-bottom: 0;
   }
 
+  @media (max-width: 641px) {
+    .idsk-stepper__circle{
+      width: 26px;
+      height: 26px;
+    }
+  }
+
+  @media (max-width: 641px) {
+    .idsk-stepper__circle--number{
+      line-height: 0.9rem;
+    }
+  }
+
   // JavaScript enabled
   .js-enabled {
     .idsk-stepper {
