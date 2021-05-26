@@ -15,6 +15,7 @@ import Stepper from './components/stepper/stepper';
 import RegistrationForEvent from './components/registration-for-event/registration-for-event';
 import InteractiveMap from './components/interactive-map/interactive-map';
 import Graph from './components/graph/graph';
+import Accordion from './components/accordion/accordion';
 
 function initAll(options) {
   // Set the options to an empty object by default if no options are passed.
@@ -102,6 +103,11 @@ function initAll(options) {
     new Graph($graph).init();
   })
 
+  var $accordions = scope.querySelectorAll('[data-module="idsk-accordion"]');
+  nodeListForEach($accordions, function ($accordion){
+    new Accordion($accordion).init();
+  })
+
   // Init all GOVUK components js
   initAllGOVUKjs(options);
 }
@@ -123,5 +129,6 @@ export {
   RegistrationForEvent,
   InteractiveMap,
   Stepper,
-  Graph
+  Graph,
+  Accordion
 }
