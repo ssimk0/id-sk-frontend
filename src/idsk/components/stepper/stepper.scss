@@ -140,8 +140,8 @@
     z-index: 5;
     top: 19px;
     left: -50px;
-    width: 32px;
-    height: 32px;
+    width: 26px;
+    height: 26px;
     color: govuk-colour("black");
     background: govuk-colour("white");
     border-radius: 100px;
@@ -149,6 +149,8 @@
 
     @include mq(tablet) {
       top: 24px;
+      width: 32px;
+      height: 32px;
     }
 
     @include mq($from: desktop) {
@@ -171,9 +173,11 @@
     @include govuk-font($size: 19, $weight: bold);
     border: solid 2px govuk-colour("grey-5");
     padding-top: 3px;
+    line-height: 0.9rem;
 
     @include mq($from: tablet) {
       padding-top: 1px;
+      line-height: 1.5rem;
     }
   }
 
@@ -208,19 +212,6 @@
   // Remove the bottom margin from the last item inside the content
   .idsk-stepper__section-content > :last-child {
     margin-bottom: 0;
-  }
-
-  @include mq ($from: mobile) {
-    .idsk-stepper__circle{
-      width: 26px;
-      height: 26px;
-    }
-  }
-
-  @include mq ($from: mobile) {
-    .idsk-stepper__circle--number{
-      line-height: 0.9rem;
-    }
   }
 
   // JavaScript enabled
