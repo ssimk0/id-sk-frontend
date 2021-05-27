@@ -6,27 +6,18 @@
 
 @include govuk-exports("idsk/component/card") {
   .idsk-card {
-    &-basic,
-    &-basic-variant,
-    &-hero,
-    &-profile-horizontal,
-    &-secondary,
-    &-secondary-horizontal {
-      @include govuk-grid-column("full");
-      padding: 0;
+    display: inline-block;
+    margin-bottom: govuk-spacing(3);
+    position: relative;
+
+    @include mq($from: tablet) {
+      margin-bottom: govuk-spacing(6);
     }
 
-    &-secondary {
-      @include mq($from: tablet) {
-        @include govuk-grid-column("one-third");
-        padding: 0;
-      }
-    }
-
-    &-simple,
-    &-profile-vertical {
+    &-simple {
       @include govuk-grid-column("one-third");
       padding: 0;
+      float: none;
     }
   }
 
@@ -42,38 +33,37 @@
   }
 
   .idsk-card-img {
-    @include govuk-responsive-padding(2, "bottom");
-
     &-hero {
       @include govuk-grid-column("one-half");
       padding: 0;
+      float: none;
 
       @include mq($from: tablet) {
-        padding: 0 govuk-spacing(3) 0 0;
+        padding-right: govuk-spacing(3);
       }
     }
 
-    &-secondary,
-    &-secondary-horizontal {
-      width: 33.3%;
-      float: left;
-    }
-
-    &-secondary {
-      @include mq($from: tablet) {
-        @include govuk-grid-column("full");
-        padding: 0 0 govuk-spacing(2) 0;
-      }
-    }
-
+    &-secondary-horizontal,
     &-profile-horizontal {
-      @include govuk-grid-column("one-third");
-      padding: 0;
+      box-sizing: border-box;
+      float: left;
+      padding-right: govuk-spacing(3);
+      padding-bottom: govuk-spacing(3);
+      width: 100%;
+
+      @include mq($from: tablet) {
+        padding-bottom: 0;
+        width: 33%;
+      }
     }
   }
 
   .idsk-card-underline {
     text-decoration: underline;
+  }
+
+  .idsk-card-meta-container {
+    padding-bottom: govuk-spacing(2);
   }
 
   .idsk-card-meta {
@@ -113,29 +103,28 @@
   .idsk-card-content {
     &-hero {
       @include govuk-grid-column("one-half");
+      float: none;
       padding: 0;
 
       @include mq($from: tablet) {
-        padding: 0 govuk-spacing(3) 0 0;
+        padding: 0 0 0 govuk-spacing(3);
       }
     }
 
     &-profile-horizontal {
       @include govuk-grid-column("two-thirds");
+      float: none;
     }
 
-    &-secondary,
     &-secondary-horizontal {
-      width: 66.6%;
+      width: 100%;
       box-sizing: border-box;
-      padding-left: govuk-spacing(2);
+      padding-left: 0;
       float: left;
-    }
 
-    &-secondary {
       @include mq($from: tablet) {
-        @include govuk-grid-column("full");
-        padding: 0;
+        width: 67%;
+        padding-left: govuk-spacing(3);
       }
     }
 
@@ -147,7 +136,6 @@
   }
 
   .idsk-heading {
-    @include govuk-responsive-padding(2, "top");
     @include govuk-responsive-padding(2, "bottom");
 
     &-basic-variant,
@@ -178,6 +166,7 @@
 
   .idsk-body {
     margin-top: 0;
+    margin-bottom: 0;
 
     &-basic,
     &-basic-variant,
