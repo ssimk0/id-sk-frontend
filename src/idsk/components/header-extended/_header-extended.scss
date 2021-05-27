@@ -100,6 +100,17 @@
         @include govuk-focused-text;
       }
     }
+
+    & img,
+    & svg {
+      height: 100%;
+      max-height: 50px;
+      max-width: 100%;
+
+      @include mq($from: desktop) {
+        max-height: 100px;
+      }
+    }
   }
 
   /// logo svg image
@@ -107,13 +118,11 @@
     max-width: 246px;
     position: relative;
     fill: currentColor;
-    vertical-align: top;
 
     &-fallback-image {
       width: 36px;
       height: 32px;
       border: 0;
-      vertical-align: middle;
     }
   }
 
@@ -579,8 +588,6 @@
 
         .idsk-header-extended__mobile .idsk-header-extended__logo {
           z-index: 12;
-          padding-bottom: govuk-spacing(3);
-          padding-right: govuk-spacing(7);
 
           &type-crown,
           &type-crown-mobile {
@@ -588,7 +595,6 @@
           }
 
           &type-crown-mobile-navigation {
-            height: auto;
             max-width: 246px;
             display: flex;
           }
