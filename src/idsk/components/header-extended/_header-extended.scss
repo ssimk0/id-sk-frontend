@@ -576,9 +576,11 @@
         .idsk-header-extended__mobile {
           display: block;
           width: calc(100% - 30px);
+          height: calc(100% - 30px);
 
           @include mq($from: tablet) {
             width: calc(100% - 60px);
+            height: calc(100% - 45px);
           }
         }
 
