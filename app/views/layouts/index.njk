@@ -4,7 +4,7 @@
 {% block content %}
 
   <h1 class="govuk-heading-xl">
-    ID-SK Frontend – Jednotný dizajn manuál elektronických služieb
+    ID-SK Frontend – Jednotný dizajn manuál elektronických služieb a webových sídiel
   </h1>
 
   <div class="govuk-grid-row">
@@ -36,6 +36,14 @@
       <ul class="govuk-list">
         {% for pageName, pageTitle in idskPatternsContent %}
           <li><a href="/vzory/{{ pageName }}" class="govuk-link">{{ pageTitle | replace("-", " ") | capitalize | safe }}</a></li>
+        {% endfor %}
+      </ul>
+    {% endset %}
+
+    {% set idskUsageExamples %}
+      <ul class="govuk-list">
+        {% for pageName, pageTitle in idskUsageExamples %}
+          <li><a href="/priklady-pouzitia/{{ pageName }}" class="govuk-link">{{ pageTitle | replace("-", " ") | capitalize | safe }}</a></li>
         {% endfor %}
       </ul>
     {% endset %}
@@ -112,6 +120,17 @@
           },
           "content": {
             "html": idskPatternsContent
+          }
+        },
+        {
+          "heading": {
+            "text": "Príklady použitia ID-SK"
+          },
+          "summary": {
+            "text": "Používanie a adaptácia návrhových vzorov"
+          },
+          "content": {
+            "html": idskUsageExamples
           }
         },
         {

@@ -42,6 +42,10 @@
     "zhrnutie": "Zhrnutie",
     "zoznamy-uloh": "Zoznamy úloh"
   },
+  "usageExamples": {
+    "webove-portaly": "Webové portály",
+    "sluzby": "Služby"
+  },
   "componentsUsage": {
     "adresa": "adresa",
     "chyby-a-validacia": "Chyby a validácia",
