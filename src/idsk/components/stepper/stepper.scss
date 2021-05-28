@@ -18,7 +18,7 @@
       left: -46px;
       border-bottom: solid 2px govuk-colour("grey-5");
       @include mq(tablet) {
-        left: -41px;
+        left: -43px;
       }
       @include mq($from: desktop) {
         left: -40px;
@@ -74,7 +74,7 @@
       top: 35px;
       left: -38px;
       @include mq(tablet) {
-        left: -33px;
+        left: -35px;
       }
       @include mq($from: desktop) {
         left: -32px;
