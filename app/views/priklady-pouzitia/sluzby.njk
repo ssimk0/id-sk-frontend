@@ -4,12 +4,10 @@
 {% set pageName = "Služby" %}
 
 {% block beforeContent %}
-{{ govukBreadcrumbs({
-"items": [
-{ text: 'ID-SK frontend', href: '/' + legacyQuery },
-{ text: pageName }
-]
-}) }}
+  {{ govukBreadcrumbs({"items": [
+    { text: 'ID-SK frontend', href: '/' + legacyQuery },
+    { text: pageName }]
+  }) }}
 {% endblock %}
 
 {% block content %}
@@ -40,11 +38,14 @@
     <p class="govuk-body">
       <a href="https://konecneuzivatel.sk/">konecne uzivatel</a>
     </p>
+  </div>
 
+  <div class="govuk-grid-column-full">
     <h3 class="govuk-heading-l">automat.gov.sk</h3>
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
     <p class="govuk-body">Služba zobrazujúca prehľad opatrení proti epidémii koronavírusu v jednotlivých okresoch.</p>
-
-
 
     <h4 class="govuk-heading-s">Odkaz</h4>
     <p class="govuk-body"><a href="https://automat.gov.sk/">https://automat.gov.sk/</a></p>
@@ -57,17 +58,21 @@
   </div>
 </div>
 
-<div class="govuk-grid-row">
+<div class="govuk-grid-row  govuk-!-margin-bottom-7">
   <div class="govuk-grid-column-full">
-    <img src="" alt="">
+    <img src="/public/assets/images/sluzby/covid-automat.png" width="100%" alt="">
   </div>
 </div>
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <h3 class="govuk-heading-l">E-hranica</h3>
+
+    <div class="govuk-grid-column-full">
+      <h3 class="govuk-heading-l">E-hranica</h3>
+    </div>
+
+    <div class="govuk-grid-column-two-thirds">
     <p class="govuk-body">Služba umožňujúca registráciu pri príchode zo zahraničia počas núdzového stavu.</p>
-  
+
     <h4 class="govuk-heading-s">Odkaz</h4>
     <p class="govuk-body"><a href="https://korona.gov.sk/ehranica/">https://korona.gov.sk/ehranica/</a></p>
 
@@ -79,18 +84,22 @@
   </div>
 </div>
 
-<div class="govuk-grid-row">
+<div class="govuk-grid-row govuk-!-margin-bottom-7">
   <div class="govuk-grid-column-full">
-    <img src="" alt="">
+    <img src="/public/assets/images/sluzby/registracia-pri-prichode.png" width="100%" alt="">
   </div>
 </div>
 
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <h3 class="govuk-heading-l">Registrácia na očkovanie proti COVID-19</h3>
-    <p class="govuk-body">Služba pre registráciu na očkovanie proti koronavírusu, vrátane tzv. "čakárne".</p>
   
+  <div class="govuk-grid-column-full">
+    <h3 class="govuk-heading-l">Registrácia na očkovanie proti COVID-19</h3>
+  </div>
+    
+    <div class="govuk-grid-column-two-thirds">
+    <p class="govuk-body">Služba pre registráciu na očkovanie proti koronavírusu, vrátane tzv. "čakárne".</p>
+
     <h4 class="govuk-heading-s">Odkaz</h4>
     <p class="govuk-body"><a href="https://vakcinacia.nczisk.sk/">https://vakcinacia.nczisk.sk/</a></p>
 
@@ -102,17 +111,22 @@
   </div>
 </div>
 
-<div class="govuk-grid-row">
+<div class="govuk-grid-row govuk-!-margin-bottom-7">
   <div class="govuk-grid-column-full">
-    <img src="" alt="">
+    <img src="/public/assets/images/sluzby/registracia-ockovanie.png" width="100%" alt="">
   </div>
 </div>
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <h3 class="govuk-heading-l">Darca krvi</h3>
-    <p class="govuk-body">Táto stránka Vás prevedie 5-krokovým formulárom, na konci ktorého si stiahnete predvyplnený dotazník pre darcov krvi, plazmy a krvných buniek v PDF formáte</p>
   
+  <div class="govuk-grid-column-full">
+    <h3 class="govuk-heading-l">Darca krvi</h3>
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+    <p class="govuk-body">Táto stránka Vás prevedie 5-krokovým formulárom, na konci ktorého si stiahnete predvyplnený
+      dotazník pre darcov krvi, plazmy a krvných buniek v PDF formáte</p>
+
     <h4 class="govuk-heading-s">Odkaz</h4>
     <p class="govuk-body"><a href="https://darcakrvi.sk/">https://darcakrvi.sk/</a></p>
 
@@ -124,18 +138,23 @@
   </div>
 </div>
 
-<div class="govuk-grid-row">
+<div class="govuk-grid-row govuk-!-margin-bottom-7">
   <div class="govuk-grid-column-full">
-    <img src="" alt="">
+    <img src="/public/assets/images/sluzby/darca-krvi.png" width="100%" alt="">
   </div>
 </div>
 
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <h3 class="govuk-heading-l">Konečne použivateľ</h3>
-    <p class="govuk-body">Modelová služba, ako si dodávateľ predstavuje implementáciu ID-SK pre službu zápisu konečného užívateľa do obchodného registra.</p>
   
+  <div class="govuk-grid-column-full">
+    <h3 class="govuk-heading-l">Konečne používateľ</h3>
+</div>
+
+    <div class="govuk-grid-column-two-thirds">
+    <p class="govuk-body">Modelová služba, ako si dodávateľ predstavuje implementáciu ID-SK pre službu zápisu konečného
+      užívateľa do obchodného registra.</p>
+
     <h4 class="govuk-heading-s">Odkaz</h4>
     <p class="govuk-body"><a href="https://konecneuzivatel.sk/">https://konecneuzivatel.sk/</a></p>
 
@@ -147,9 +166,11 @@
   </div>
 </div>
 
-<div class="govuk-grid-row">
+<div class="govuk-grid-row govuk-!-margin-bottom-7">
   <div class="govuk-grid-column-full">
-    <img src="" alt="">
+    <img src="/public/assets/images/sluzby/konecne-uzivatel.png" width="100%" alt="">
   </div>
 </div>
+
+
 {% endblock %}
