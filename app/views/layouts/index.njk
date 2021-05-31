@@ -43,7 +43,7 @@
     {% set idskUsageExamples %}
       <ul class="govuk-list">
         {% for pageName, pageTitle in idskUsageExamples %}
-          <li><a href="/priklady-pouzitia/{{ pageName }}" class="govuk-link">{{ pageTitle | replace("-", " ") | capitalize | safe }}</a></li>
+          <li><a href="/priklady-pouzitia/{{ pageName }}" class="govuk-link" title="{{ pageTitle | replace('-', ' ') }}">{{ pageTitle | replace("-", " ") | capitalize | safe }}</a></li>
         {% endfor %}
       </ul>
     {% endset %}
