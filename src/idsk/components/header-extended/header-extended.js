@@ -23,6 +23,8 @@ HeaderExtended.prototype.init = function () {
     if ($searchComponents) {
         nodeListForEach($searchComponents, function ($searchComponent) {
             $searchComponent.addEventListener('change', this.handleSearchChange.bind(this))
+            // trigger change event
+            $searchComponent.dispatchEvent(new Event('change'));
         }.bind(this))
     }
 
