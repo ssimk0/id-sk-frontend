@@ -23,9 +23,9 @@ HeaderExtended.prototype.init = function () {
     if ($searchComponents) {
         nodeListForEach($searchComponents, function ($searchComponent) {
             $searchComponent.addEventListener('change', this.handleSearchChange.bind(this))
+            // trigger change event
+            $searchComponent.dispatchEvent(new Event('change'));
         }.bind(this))
-        // trigger change event
-        $searchComponents.dispatchEvent(new Event('change'));
     }
 
     // check for language switcher
