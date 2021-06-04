@@ -104,15 +104,19 @@
         order: 1;
         align-self: flex-end;
         flex-grow: 0;
-        padding-top: 8px;
-        width: 257px;
-        height: 80px;
-        @include mq(tablet) {
-            height: 80%;
+        padding: govuk-spacing(6) 0;
+        width: 100%;
+        max-width: 250px;
+
+        @include mq($from: tablet) {
+            padding-top: 0;
         }
-        @include mq($from: desktop) {
-            width: 103%;
-            height: 80%;
+
+        & img,
+        & svg {
+            height: 100%;
+            max-height: 150px;
+            width: 100%;
         }
     }
 
@@ -236,9 +240,7 @@
 
     .idsk-footer-extended-logo-box {
         text-align: -webkit-center;
-        @include mq($from: tablet) {
-            text-align: none;
-        }
+        padding-right: 0;
     }
 
     _:-ms-fullscreen,
@@ -311,7 +313,7 @@
 
     .idsk-footer-extended-feedback-hidden {
         max-height: 0;
-        transition: max-height 0.7s ease-out;
+        transition: max-height 0.1s ease-out;
     }
 
     .idsk-footer-extended-open {
@@ -422,6 +424,10 @@
         .idsk-footer-extended {
             margin-right: 0;
         }
+    }
+
+    .idsk-footer-extended-display-hidden .idsk-footer-extended-feedback-container {
+        max-height: 0;
     }
 
     .idsk-footer-extended-feedback-container {

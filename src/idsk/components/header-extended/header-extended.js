@@ -19,23 +19,30 @@ HeaderExtended.prototype.init = function () {
     }
 
     // check for search component
-    var $toggleSearchComponent = $module.querySelector('.idsk-header-extended__search');
-    var $toggleSearchInputComponent = $module.querySelector('.idsk-header-extended__search-form input');
-    if ($toggleSearchComponent && $toggleSearchInputComponent) {
-        // Handle $toggleSearchComponent click and blur events
-        $toggleSearchComponent.addEventListener('focus', this.handleSearchComponentClick.bind(this));
-        // both blur events needed
-        // if form is shown, but has not been focused, inputs blur won't be fired, then trigger this one
-        $toggleSearchComponent.addEventListener('focusout', this.handleSearchComponentClick.bind(this));
-        // if form is shown, and has been focused, trigger this one
-        $toggleSearchInputComponent.addEventListener('focusout', this.handleSearchComponentClick.bind(this));
+    var $searchComponents = $module.querySelectorAll('.idsk-header-extended__search');
+    if ($searchComponents) {
+        nodeListForEach($searchComponents, function ($searchComponent) {
+            $searchComponent.addEventListener('change', this.handleSearchChange.bind(this))
+            // trigger change event
+            $searchComponent.dispatchEvent(new Event('change'));
+        }.bind(this))
     }
 
     // check for language switcher
-    var $toggleLanguageSwitcher = $module.querySelector('.idsk-js-header-extended-language-toggle');
-    if ($toggleLanguageSwitcher) {
+    var $toggleLanguageSwitchers = $module.querySelectorAll('.idsk-header-extended__language-button');
+    if ($toggleLanguageSwitchers) {
         // Handle $toggleLanguageSwitcher click events
-        $toggleLanguageSwitcher.addEventListener('click', this.handleLanguageSwitcherClick.bind(this));
+        nodeListForEach($toggleLanguageSwitchers, function ($toggleLanguageSwitcher) {
+            $toggleLanguageSwitcher.addEventListener('click', this.handleLanguageSwitcherClick.bind(this));
+            $toggleLanguageSwitcher.addEventListener('focus', this.handleLanguageSwitcherClick.bind(this));
+        }.bind(this))
+
+        // close language list if i left the last item from langauge list e.g. if user use tab key for navigations
+        var $lastLanguageItems = $module.querySelectorAll('.idsk-header-extended__language-list-item:last-child .idsk-header-extended__language-list-link');
+        nodeListForEach($lastLanguageItems, function ($lastLanguageItem) {
+            $lastLanguageItem.addEventListener('blur', this.checkBlurLanguageSwitcherClick.bind(this));
+        }.bind(this))
+
     }
 
     // check for menu items
@@ -44,15 +51,16 @@ HeaderExtended.prototype.init = function () {
         // Handle $menuItem click events
         nodeListForEach($menuItems, function ($menuItem) {
             $menuItem.addEventListener('click', this.handleSubmenuClick.bind(this));
+            $menuItem.addEventListener('focus', this.handleSubmenuClick.bind(this));
         }.bind(this))
     }
 
-    // check for menu button and x-mark button
+    // check for menu button and close menu button
     var $hamburgerMenuButton = $module.querySelector('.idsk-js-header-extended-side-menu');
-    var $xMarkMenuButton = $module.querySelector('.idsk-header-extended-x-mark');
-    if ($hamburgerMenuButton && $xMarkMenuButton) {
-        $hamburgerMenuButton.addEventListener('click', this.handleMobilMenu.bind(this));
-        $xMarkMenuButton.addEventListener('click', this.handleMobilMenu.bind(this));
+    var $closeMenuButton = $module.querySelector('.idsk-header-extended__mobile-close');
+    if ($hamburgerMenuButton && $closeMenuButton) {
+        $hamburgerMenuButton.addEventListener('click', this.showMobilMenu.bind(this));
+        $closeMenuButton.addEventListener('click', this.hideMobilMenu.bind(this));
     }
 
     window.addEventListener('scroll', this.scrollFunction.bind(this));
@@ -62,18 +70,17 @@ HeaderExtended.prototype.init = function () {
 }
 
 /**
- * Handle focus/blur on search component - show/hide search form, hide/show search text wrapper
+ * Hide label if search input is not empty
  * @param {object} e 
  */
-HeaderExtended.prototype.handleSearchComponentClick = function (e) {
-    var $el = e.target || e.srcElement;
-    var $target = $el.closest('.idsk-header-extended__search');
-    var $relatedTarget = e.relatedTarget ? (e.relatedTarget).closest('.idsk-header-extended__search-form') : e.relatedTarget;
-    var $searchForm = $target.querySelector('.idsk-header-extended__search-form');
-    if (e.type === 'focus') {
-        $target.classList.add('idsk-header-extended__search--active')
-    } else if (e.type === 'focusout' && $relatedTarget !== $searchForm) {
-        $target.classList.remove('idsk-header-extended__search--active')
+HeaderExtended.prototype.handleSearchChange = function (e) {
+    var $searchInput = e.target || e.srcElement;
+    var $search = $searchInput.closest('.idsk-header-extended__search')
+    var $searchLabel = $search.querySelector('label')
+    if ($searchInput.value) {
+        $searchLabel.classList.add('idsk-header-extended__search-input--focus')
+    } else {
+        $searchLabel.classList.remove('idsk-header-extended__search-input--focus')
     }
 }
 
@@ -83,8 +90,9 @@ HeaderExtended.prototype.handleSearchComponentClick = function (e) {
  */
 HeaderExtended.prototype.handleLanguageSwitcherClick = function (e) {
     var $toggleButton = e.target || e.srcElement;
-    var $target = $toggleButton.closest('.idsk-header-extended__language');
-    toggleClass($target, 'idsk-header-extended__language--active');
+    //var $target = $toggleButton.closest('.idsk-header-extended__language');
+    this.$activeSearch = $toggleButton.closest('.idsk-header-extended__language');
+    toggleClass(this.$activeSearch, 'idsk-header-extended__language--active');
     document.addEventListener('click', this.$module.boundCheckBlurLanguageSwitcherClick, true);
 }
 
@@ -92,8 +100,8 @@ HeaderExtended.prototype.handleLanguageSwitcherClick = function (e) {
  * handle click outside language switcher or "blur" the item link
  */
 HeaderExtended.prototype.checkBlurLanguageSwitcherClick = function () {
-    var $target = this.$module.querySelectorAll('.idsk-header-extended__language');
-    $target[0].classList.remove('idsk-header-extended__language--active');
+    //var $target = this.$module.querySelectorAll('.idsk-header-extended__language');
+    this.$activeSearch.classList.remove('idsk-header-extended__language--active');
     document.removeEventListener('click', this.$module.boundCheckBlurLanguageSwitcherClick, true);
 }
 
@@ -124,11 +132,20 @@ HeaderExtended.prototype.checkBlurMenuItemClick = function () {
 }
 
 /**
- * Show/hide mobil menu
+ * Show mobil menu
  * @param {object} e
  */
-HeaderExtended.prototype.handleMobilMenu = function (e) {
-    toggleClass(this.$module, "idsk-header-extended--show-mobile-menu")
+HeaderExtended.prototype.showMobilMenu = function (e) {
+    this.$module.classList.add("idsk-header-extended--show-mobile-menu")
+    document.getElementsByTagName("body")[0].style.overflow = "hidden"
+}
+/**
+ * Hide mobil menu
+ * @param {object} e
+ */
+HeaderExtended.prototype.hideMobilMenu = function (e) {
+    this.$module.classList.remove("idsk-header-extended--show-mobile-menu")
+    document.getElementsByTagName("body")[0].style.overflow = "visible"
 }
 
 /**

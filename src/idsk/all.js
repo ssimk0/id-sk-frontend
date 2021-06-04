@@ -8,12 +8,14 @@ import Crossroad from "./components/crossroad/crossroad";
 import CustomerSurveys from "./components/customer-surveys/customer-surveys";
 import HeaderExtended from './components/header-extended/header-extended';
 import InPageNavigation from './components/in-page-navigation/in-page-navigation';
+import SearchComponent from './components/search-component/search-component';
 import SearchResults from './components/search-results/search-results';
 import SearchResultsFilter from './components/search-results-filter/search-results-filter';
 import Stepper from './components/stepper/stepper';
 import RegistrationForEvent from './components/registration-for-event/registration-for-event';
 import InteractiveMap from './components/interactive-map/interactive-map';
 import Graph from './components/graph/graph';
+import Accordion from './components/accordion/accordion';
 
 function initAll(options) {
   // Set the options to an empty object by default if no options are passed.
@@ -76,6 +78,11 @@ function initAll(options) {
     new SearchResultsFilter($searchResultsFilter).init();
   })
 
+  var $searchComponents = scope.querySelectorAll('[data-module="idsk-search-component"]');
+  nodeListForEach($searchComponents, function ($searchComponent) {
+    new SearchComponent($searchComponent).init();
+  })
+
   var $steppers = scope.querySelectorAll('[data-module="idsk-stepper"]');
   nodeListForEach($steppers, function ($stepper) {
     new Stepper($stepper).init();
@@ -96,6 +103,11 @@ function initAll(options) {
     new Graph($graph).init();
   })
 
+  var $accordions = scope.querySelectorAll('[data-module="idsk-accordion"]');
+  nodeListForEach($accordions, function ($accordion){
+    new Accordion($accordion).init();
+  })
+
   // Init all GOVUK components js
   initAllGOVUKjs(options);
 }
@@ -111,10 +123,12 @@ export {
   FooterExtended,
   HeaderExtended,
   InPageNavigation,
+  SearchComponent,
   SearchResults,
   SearchResultsFilter,
   RegistrationForEvent,
   InteractiveMap,
   Stepper,
-  Graph
+  Graph,
+  Accordion
 }

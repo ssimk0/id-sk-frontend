@@ -59,7 +59,7 @@
     logoSmall: "logo-mirri-small-farebne.svg",
     logoWhite: "logo-mirri-biele.svg",
     logoSmallWhite: "logo-mirri-small-biele.svg",
-    logoGrid: 'govuk-grid-column-two-thirds',
+    logoGrid: "govuk-grid-column-one-third",
     navigation: [
         {
             link: '#1',
@@ -164,53 +164,60 @@
     <hr class="idsk-hr-separator govuk-!-margin-bottom-6">
 
     <h2 class="govuk-heading-l">Aktuality</h2>
-    <div class="govuk-grid-row govuk-!-padding-bottom-4">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
         {{ idskCard({ 
-            "type": "hero", 
-            "imgSrc": "/public/assets/images/examples/ministerstvo-aktuality-cover.png", 
+            "type": "hero",
+            "imgSrc": "/public/assets/images/examples/ministerstvo-aktuality-cover.png",
             "link": "#",
             "heading": "Podpora najmenej rozvinutých okresov: Nové výzvy po novom!",
             "description": "Lorem ipsum dolor sit amet, consenctetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             "date": { "date": "1.7.2020", "link": "#" },
             "tags": [ { "tag": "Tag 1", "link": "#" }, { "tag": "Tag 2", "link": "#" } ]
         }) }}
+      </div>
     </div>
     <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third">
         {{ idskCard({ 
-            "type": "secondary", 
-            "imgSrc": "/public/assets/images/examples/ministerstvo-aktuality-cover.png", 
+            "type": "secondary",
+            "imgSrc": "/public/assets/images/examples/ministerstvo-aktuality-cover.png",
             "link": "#",
             "heading": "Podpora najmenej rozvinutých okresov: Nové výzvy po novom!",
             "description": "Lorem ipsum dolor sit amet, consenctetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             "date": { "date": "1.7.2020", "link": "#" },
             "tags": [ { "tag": "Tag 1", "link": "#" }, { "tag": "Tag 2", "link": "#" } ]
         }) }}
-
+      </div>
+      <div class="govuk-grid-column-one-third">
         {{ idskCard({ 
-            "type": "secondary", 
-            "imgSrc": "/public/assets/images/examples/ministerstvo-aktuality-cover.png", 
+            "type": "secondary",
+            "imgSrc": "/public/assets/images/examples/ministerstvo-aktuality-cover.png",
             "link": "#",
             "heading": "Podpora najmenej rozvinutých okresov: Nové výzvy po novom!",
             "description": "Lorem ipsum dolor sit amet, consenctetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             "date": { "date": "1.7.2020", "link": "#" },
             "tags": [ { "tag": "Tag 1", "link": "#" }, { "tag": "Tag 2", "link": "#" } ]
         }) }}
-
+      </div>
+      <div class="govuk-grid-column-one-third">
         {{ idskCard({ 
-            "type": "secondary", 
-            "imgSrc": "/public/assets/images/examples/ministerstvo-aktuality-cover.png", 
+            "type": "secondary",
+            "imgSrc": "/public/assets/images/examples/ministerstvo-aktuality-cover.png",
             "link": "#",
             "heading": "Podpora najmenej rozvinutých okresov: Nové výzvy po novom!",
             "description": "Lorem ipsum dolor sit amet, consenctetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             "date": { "date": "1.7.2020", "link": "#" },
             "tags": [ { "tag": "Tag 1", "link": "#" }, { "tag": "Tag 2", "link": "#" } ]
         }) }}
+      </div>
     </div>
 
     <hr class="idsk-hr-separator govuk-!-margin-bottom-6">
 
     <h2 class="govuk-heading-l">Agenda 2030</h2>
     <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
         {{ idskCrossroad({
             "columns": 2,
             "classes": "govuk-clearfix",
@@ -223,6 +230,7 @@
                 { "title": 'Zhodnotenie doterajšieho pokroku v implementácií Agendy 2020', "subtitle": 'Štandardizované postupy a dokumenty pre začatie druhej fázy projektového riadenia a postup pre získanie hodnotenia projektu', "link": '#' }
             ]
         }) }}
+      </div>
     </div>
 
     <p class="govuk-caption-l govuk-!-margin-bottom-6">

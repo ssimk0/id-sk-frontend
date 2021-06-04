@@ -68,18 +68,22 @@
                     Sekundárnu kartičku použite v jednom bloku spolu so základnou kartičkou alebo s hero kartičkou. V jednom bloku môžete  aj iba sekundárne kartičky no odporúčame ich používať po základnej, alebo po hero kartičke. Názov článku musí byť výstižný, maximálne na 4 riadky. Popis článku maximálne na 6 riadkov. Použite maximálne 2 tagy tak, aby sa zmestili do jedného riadku spolu s dátum publikovania článku.
                 </p>
                 <div class="example example-error">
-                    {% set exampleComponentHtml %}
-                        {{ idskCard({ 
-                            "type": "secondary", 
-                            "imgSrc": "/public/assets/images/examples/ministerstvo-aktuality-cover.png", 
-                            "link": "#",
-                            "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do",
-                            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-                            "date": { "date": "1.7.2020", "link": "#" },
-                            "tags": [ { "tag": "Tag 1", "link": "#" }, { "tag": "Tag 2", "link": "#" } ]
-                        }) }}
-                    {% endset %}
-                    {{exampleComponentHtml | safe}}
+                    <div class="govuk-grid-row">
+                        <div class="govuk-grid-column-one-third">
+                            {% set exampleComponentHtml %}
+                                {{ idskCard({ 
+                                    "type": "secondary", 
+                                    "imgSrc": "/public/assets/images/examples/ministerstvo-aktuality-cover.png", 
+                                    "link": "#",
+                                    "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do",
+                                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+                                    "date": { "date": "1.7.2020", "link": "#" },
+                                    "tags": [ { "tag": "Tag 1", "link": "#" }, { "tag": "Tag 2", "link": "#" } ]
+                                }) }}
+                            {% endset %}
+                            {{exampleComponentHtml | safe}}
+                        </div>
+                    </div>
                 </div>
                 <pre class=" language-markup"><code class="govuk-!-font-size-16  language-markup">{{ exampleComponentHtml }}</code></pre>
             </div>
@@ -196,16 +200,20 @@
                     Kartičku použite, keď chcete umiestniť viacero profilových kartičiek vedľa seba. Po kliknutí na meno sa zobrazí stránka so životopisom. Po kliknutí na rolu/post/funkciu sa zobrazí stránka so všeobecným popisom povinností a kompetencií danej funkcie.
                 </p>
                 <div class="example example-error">
-                    {% set exampleComponentHtml %}
-                        {{ idskCard({ 
-                            "type": "profile-vertical",
-                            "link": "#", 
-                            "imgSrc": "/public/assets/images/examples/the-pooh-bear.jpg", 
-                            "heading": "Macko Pú",
-                            "description": "Štátny tajomník medu a radosti"
-                        }) }}
-                    {% endset %}
-                    {{exampleComponentHtml | safe}}
+                    <div class="govuk-grid-row">
+                        <div class="govuk-grid-column-one-third">
+                            {% set exampleComponentHtml %}
+                                {{ idskCard({ 
+                                    "type": "profile-vertical",
+                                    "link": "#", 
+                                    "imgSrc": "/public/assets/images/examples/the-pooh-bear.jpg", 
+                                    "heading": "Macko Pú",
+                                    "description": "Štátny tajomník medu a radosti"
+                                }) }}
+                            {% endset %}
+                            {{exampleComponentHtml | safe}}
+                        </div>
+                    </div>
                 </div>
                 <pre class=" language-markup"><code class="govuk-!-font-size-16  language-markup">{{ exampleComponentHtml }}</code></pre>
             </div>

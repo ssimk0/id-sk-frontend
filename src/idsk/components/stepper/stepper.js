@@ -62,16 +62,16 @@ Stepper.prototype.init = function () {
 
 // Initialise controls and set attributes
 Stepper.prototype.initControls = function () {
+  var $accordionControls = this.$module.querySelector('.idsk-stepper__controls');
   // Create "Zobraziť všetko" button and set attributes
   this.$openAllButton = document.createElement('button')
   this.$openAllButton.setAttribute('type', 'button')
-  this.$openAllButton.innerHTML = 'Zobraziť všetko <span class="govuk-visually-hidden">sections</span>'
+  this.$openAllButton.innerHTML = $accordionControls.dataset.line1 +' <span class="govuk-visually-hidden">sections</span>'
   this.$openAllButton.setAttribute('class', this.$openAllClass)
   this.$openAllButton.setAttribute('aria-expanded', 'false')
   this.$openAllButton.setAttribute('type', 'button')
 
   // Create control wrapper and add controls to it
-  var $accordionControls = this.$module.querySelector('.idsk-stepper__controls');
   $accordionControls.appendChild(this.$openAllButton)
    
   // Handle events for the controls
@@ -221,7 +221,8 @@ Stepper.prototype.checkIfAllSectionsOpen = function () {
 
 // Update "Zobraziť všetko" button
 Stepper.prototype.updateOpenAllButton = function ($expanded) {
-  var $newButtonText = $expanded ? 'Zatvoriť všetko' : 'Zobraziť všetko'
+  var $accordionControls = this.$module.querySelector('.idsk-stepper__controls');
+  var $newButtonText = $expanded ? $accordionControls.dataset.line2 : $accordionControls.dataset.line1
   $newButtonText += '<span class="govuk-visually-hidden"> sections</span>'
   this.$openAllButton.setAttribute('aria-expanded', $expanded)
   this.$openAllButton.innerHTML = $newButtonText
