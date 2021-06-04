@@ -781,7 +781,7 @@ Graph.prototype.handleShareByEmailClick = function (e) {
     var $el = e.target || e.srcElement;
     var $module = this.$module;
     var $subject = $module.querySelector('.idsk-graph__title h2').innerText;
-    var $body = 'Kliknite na odkaz vyššie alebo ho skopírujte a vložte do prehliadača: ' + location.href;
+    var $body = $subject.dataset.lines + location.href;
     var $mailto = 'mailto:?Subject=' + $subject + '&body=' + $body;
 
     $el.href = $mailto;

@@ -69,7 +69,13 @@
         "name": "logoSmallWhite",
         "type": "string",
         "required": true,
-        "description": "this logo will be shown on mobile/tablet after you click on menu button and if you are not on top of the page"
+        "description": "this logo will be shown on mobile/tablet after you click on menu button and if you are not on top of the pageň"
+    },
+    {
+        "name": "closeMobileMenuTitle",
+        "type": "string",
+        "required": false,
+        "description": "add custom title for \"Zavrieť menu\""
     },
     {
         "name": "search",
@@ -78,16 +84,16 @@
         "description": "Display or not the search bar",
         "params": [
             {
-                "name": "text",
-                "type": "string",
-                "required": false,
-                "description": "title of search bar"
-            },
-            {
-                "name": "placeholder",
+                "name": "label",
                 "type": "string",
                 "required": false,
                 "description": "text in placeholder"
+            },
+            {
+                "name": "button",
+                "type": "string",
+                "required": false,
+                "description": "text for search button"
             }
         ]
     },
@@ -236,8 +242,8 @@
         ]
     },
     {
-        "name": "notifications",
-        "type": "array",
+        "name": "notification",
+        "type": "object",
         "required": false,
         "params": [
             {

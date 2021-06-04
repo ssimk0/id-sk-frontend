@@ -793,7 +793,13 @@ SearchResults.prototype.init = function () {
 
     if ($dateFrom) {
         $dateFrom.addEventListener('focusout', this.handleFillDate.bind(this, 'from'));
+        if ($dateFrom.value != '') {
+            this.handleFillDate.call(this, 'from', $dateFrom);
+        }
         $dateTo.addEventListener('focusout', this.handleFillDate.bind(this, 'to'));
+        if ($dateTo.value != '') {
+            this.handleFillDate.call(this, 'to', $dateTo);
+        }
     }
 
     $backButton.addEventListener('click', this.handleClickPreviousPage.bind(this));
@@ -811,7 +817,7 @@ SearchResults.prototype.init = function () {
     $module.currentPageNumber = 1;
     this.showResultCardsPerPage.call(this, 0, $resultsPerPageDropdown.value);
     $resultsPerPageDropdown.addEventListener('change', this.handleClickResultsPerPageDropdown.bind(this));
-    $filtersButtonMobile.innerText = 'Filtre(0)';
+    $filtersButtonMobile.innerText = $filtersButtonMobile.title + '(0)';
 
     $linkPanelButtons.forEach(function ($button) {
         $button.addEventListener('click', $module.boundHandleClickLinkPanel, true);
@@ -819,11 +825,20 @@ SearchResults.prototype.init = function () {
 
     $radioButtonsInput.forEach(function ($input) {
         $input.addEventListener('click', this.handleClickRadioButton.bind(this), true);
+        if ($input.checked) {
+            this.handleClickRadioButton.call(this, $input);
+        }
     }.bind(this));
 
     $contentTypeCheckBoxes.forEach(function ($checkBox) {
         $checkBox.addEventListener('click', this.handleClickContentTypeCheckBox.bind(this), true);
+        if ($checkBox.checked) {
+            this.handleClickContentTypeCheckBox.call(this, $checkBox);
+        }
     }.bind(this));
+
+    this.handleClickFiltersButton.call(this);
+    this.handleClickShowResultsButton.call(this);
 };
 
 /**
@@ -834,7 +849,7 @@ SearchResults.prototype.init = function () {
 SearchResults.prototype.handleClickShowResultsButton = function (e) {
     var $module = this.$module;
     var $filterBar = $module.querySelector('.idsk-search-results__filter');
-    var $searchBar = $module.querySelector('.idsk-search-results .idsk-intro-block__search');
+    var $searchBar = $module.querySelector('.idsk-search-results .idsk-search-results__search-bar');
     var $searchBarTitle = $module.querySelector('.idsk-search-results .idsk-intro-block__search__span');
     var $orderByDropdown = $module.querySelector('.idsk-search-results--order__dropdown');
     var $resultsPerPage = $module.querySelector('.idsk-search-results__filter-panel--mobile');
@@ -908,7 +923,7 @@ SearchResults.prototype.handleCountForFiltersButton = function (e) {
     var $filtersButtonMobile = $module.querySelector('.idsk-search-results__filters__button');
     var $countOfPickedFilters = $pickedTopics.length + $pickedContentTypes.length + $pickedDates.length;
 
-    $filtersButtonMobile.innerText = 'Filtre(' + $countOfPickedFilters + ')';
+    $filtersButtonMobile.innerText = $filtersButtonMobile.title + '(' + $countOfPickedFilters + ')';
 };
 
 /**
@@ -924,7 +939,7 @@ SearchResults.prototype.handleClickTurnFiltersOffButton = function (e) {
     var $filtersButtonMobile = $module.querySelector('.idsk-search-results__filters__button');
 
     $contentContainer.classList.add('idsk-search-results--invisible__mobile');
-    $filtersButtonMobile.innerText = 'Filtre(0)';
+    $filtersButtonMobile.innerText = $filtersButtonMobile.title + '(0)';
 
     $pickedTopics.forEach(function ($topic) {
         this.handleRemovePickedTopic.call(this, $topic);
@@ -946,7 +961,7 @@ SearchResults.prototype.handleClickTurnFiltersOffButton = function (e) {
 SearchResults.prototype.handleClickFiltersButton = function (e) {
     var $module = this.$module;
     var $filterBar = $module.querySelector('.idsk-search-results__filter');
-    var $searchBar = $module.querySelector('.idsk-search-results .idsk-intro-block__search');
+    var $searchBar = $module.querySelector('.idsk-search-results .idsk-search-results__search-bar');
     var $searchBarTitle = $module.querySelector('.idsk-search-results .idsk-intro-block__search__span');
     var $orderByDropdown = $module.querySelector('.idsk-search-results--order__dropdown');
     var $resultsPerPage = $module.querySelector('.idsk-search-results__filter-panel--mobile');
@@ -1030,7 +1045,7 @@ SearchResults.prototype.handleSearchItemsFromInput = function ($type, e) {
 };
 
 SearchResults.prototype.handleFillDate = function ($period, e) {
-    var $el = e.target || e.srcElement;
+    var $el = e.target || e.srcElement || e;
     var $module = this.$module;
     var $choosenDatesInFiltersContainer = $module.querySelector('.idsk-search-results__content__picked-filters__date');
     var $class = 'idsk-search-results__picked-date';
@@ -1095,17 +1110,17 @@ SearchResults.prototype.checkValuesInDateContainer = function (e) {
     }
 
     if ($choosenDatesInFiltersContainer.querySelector('[data-source="datum-od"]') && $choosenDatesInFiltersContainer.querySelector('[data-source="datum-do"]')) {
-        var $beforeDateSpan = this.createSpanElement.call(this, $beforeDateClass, 'Naposledy aktualizované medzi ');
+        var $beforeDateSpan = this.createSpanElement.call(this, $beforeDateClass, $choosenDatesInFiltersContainer.dataset.lines + ' ' + $choosenDatesInFiltersContainer.dataset.middle);
         var $afterDateSpan = this.createSpanElement.call(this, $afterDateClass, 'a ');
 
         $choosenDatesInFiltersContainer.insertBefore($beforeDateSpan, $choosenDatesInFiltersContainer.querySelector('[data-source="datum-od"]'));
         $choosenDatesInFiltersContainer.insertBefore($afterDateSpan, $choosenDatesInFiltersContainer.querySelector('[data-source="datum-do"]'));
     } else if ($choosenDatesInFiltersContainer.querySelector('[data-source="datum-od"]')) {
-        var $beforeDateSpan = this.createSpanElement.call(this, $beforeDateClass, 'Naposledy aktualizované po ');
+        var $beforeDateSpan = this.createSpanElement.call(this, $beforeDateClass, $choosenDatesInFiltersContainer.dataset.lines + ' ' + $choosenDatesInFiltersContainer.dataset.after);
         $choosenDatesInFiltersContainer.insertBefore($beforeDateSpan, $choosenDatesInFiltersContainer.querySelector('[data-source="datum-od"]'));
 
     } else if ($choosenDatesInFiltersContainer.querySelector('[data-source="datum-do"]')) {
-        var $afterDateSpan = this.createSpanElement.call(this, $afterDateClass, 'Naposledy aktualizované pred ');
+        var $afterDateSpan = this.createSpanElement.call(this, $afterDateClass, $choosenDatesInFiltersContainer.dataset.lines + ' ' + $choosenDatesInFiltersContainer.dataset.before);
         $choosenDatesInFiltersContainer.insertBefore($afterDateSpan, $choosenDatesInFiltersContainer.querySelector('[data-source="datum-do"]'));
     }
 };
@@ -1162,8 +1177,10 @@ SearchResults.prototype.showResultCardsPerPage = function ($startIndex, $endInde
     }
 
     var $numberOfPages = (($module.resultCards.length / $module.countOfCardsPerPage) | 0) + 1;
-    $pageNumber.innerText = 'Strana ' + $module.currentPageNumber + ' z ' + $numberOfPages;
-    $pageNumberMobile.innerText = 'Strana ' + $module.currentPageNumber + ' z ' + $numberOfPages;
+    var $pageNumberSpan = $module.querySelector('.idsk-search-results__page-number span');
+    var $pageNumberText = $pageNumberSpan.dataset.lines.replace("$value1", $module.currentPageNumber).replace("$value2", $numberOfPages);
+    $pageNumberSpan.innerText = $pageNumberText;
+    $pageNumberMobile.innerText = $pageNumberText;
 };
 
 /**
@@ -1184,7 +1201,7 @@ SearchResults.prototype.handleClickLinkPanel = function (e) {
  * @param {object} e 
  */
 SearchResults.prototype.handleClickRadioButton = function (e) {
-    var $el = e.target || e.srcElement;
+    var $el = e.target || e.srcElement || e;
     var $module = this.$module;
     var $linkPanelButton = $el.closest('.idsk-search-results__link-panel');
     var $buttonCaption = $linkPanelButton.querySelector('.idsk-search-results__link-panel--span');
@@ -1212,11 +1229,11 @@ SearchResults.prototype.handleClickRadioButton = function (e) {
     $topicPicked.removeEventListener('click', this.handleRemovePickedTopic.bind(this), true);
     $topicPicked.addEventListener('click', this.handleRemovePickedTopic.bind(this));
     this.changeBackgroundForPickedFilters.call(this);
-    $buttonCaption.innerText = '1 vybraté';
+    $buttonCaption.innerText = '1 ' + $buttonCaption.dataset.lines;
 };
 
 SearchResults.prototype.handleClickContentTypeCheckBox = function (e) {
-    var $el = e.target || e.srcElement;
+    var $el = e.target || e.srcElement || e;
     var $module = this.$module;
     var $linkPanelButton = $el.closest('.idsk-search-results__link-panel');
     var $choosenFiltersContainer = $module.querySelector('.idsk-search-results__content__picked-filters__content-type');
@@ -1273,7 +1290,7 @@ SearchResults.prototype.handleCountOfPickedContentTypes = function ($checkBoxes,
         $buttonCaption.innerText = '';
         $choosenFiltersContainer.classList.add('idsk-search-results--invisible');
     } else {
-        $buttonCaption.innerText = $counter + ' vybraté';
+        $buttonCaption.innerText = $counter + ' ' + $buttonCaption.dataset.lines;
     }
 };
 
@@ -1293,6 +1310,7 @@ SearchResults.prototype.createTopicInContainer = function ($choosenFiltersContai
     $topicPicked.setAttribute('class', $class);
     $topicPicked.setAttribute('tabindex', "0");
     $topicPicked.setAttribute('data-source', $input);
+    $topicPicked.setAttribute('data-id', $el.id);
     $topicPicked.innerHTML = $el.value + ' &#10005;';
     if ($insertBeforeFirst) {
         $choosenFiltersContainer.prepend($topicPicked);
