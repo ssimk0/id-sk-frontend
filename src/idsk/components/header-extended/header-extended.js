@@ -138,6 +138,30 @@ HeaderExtended.prototype.checkBlurMenuItemClick = function () {
 HeaderExtended.prototype.showMobilMenu = function (e) {
     this.$module.classList.add("idsk-header-extended--show-mobile-menu")
     document.getElementsByTagName("body")[0].style.overflow = "hidden"
+
+    var $mobileMenuElements = this.$module.querySelectorAll('.idsk-header-extended__mobile')[0].querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])');
+    var $firstMenuElement = $mobileMenuElements[0];
+    var $lastMenuElement = $mobileMenuElements[$mobileMenuElements.length-1];
+    var KEYCODE_TAB = 9;
+    document.addEventListener('keydown', function(e) {
+        var isTabPressed = (e.key === 'Tab' || e.keyCode === KEYCODE_TAB);
+    
+        if (!isTabPressed) { 
+          return; 
+        }
+    
+        if ( e.shiftKey ) /* shift + tab */ {
+          if (document.activeElement === $firstMenuElement) {
+            $lastMenuElement.focus();
+              e.preventDefault();
+            }
+          } else /* tab */ {
+          if (document.activeElement === $lastMenuElement) {
+            $firstMenuElement.focus();
+              e.preventDefault();
+            }
+          }
+      });
 }
 /**
  * Hide mobil menu
