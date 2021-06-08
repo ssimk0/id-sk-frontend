@@ -28,4 +28,14 @@
       background-color: $govuk-focus-colour;
     }
   }
+
+  .govuk-skip-link--sticky {
+    @include mq($until: tablet) {
+      &:focus {
+        position: fixed;
+        z-index: 11;
+        width: 100%;
+      }
+    }
+  }
 }

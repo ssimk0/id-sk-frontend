@@ -31,7 +31,8 @@
     {% block skipLink %}
     {{ govukSkipLink({
         href: '#main-content',
-        text: 'Preskočiť na hlavný obsah'
+        text: 'Preskočiť na hlavný obsah',
+        class: "{{ skipLinkClass | default'''}}"
     }) }}
     {% endblock %}
 

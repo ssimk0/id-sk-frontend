@@ -755,6 +755,12 @@
       }
     }
   }
+
+  .govuk-skip-link--sticky:focus + .idsk-header-extended {
+    @include mq($until: tablet) {
+      top: 36px;
+    }
+  }
 }
 
 /// IE10+ CSS styles
