@@ -7,6 +7,14 @@
   </head>
   <body class="js-enabled govuk-!-margin-0">
 
+    {% block skipLink %}
+        {{ idskSkipLink({
+            href: '#main-content',
+            text: 'Preskočiť na hlavný obsah',
+            classes: 'govuk-skip-link--sticky'
+        }) }}
+    {% endblock %}
+
     {% from "../../../../src/idsk/components/header-extended/macro.njk" import idskHeaderExtended %}
     {{ idskHeaderExtended({
         classes: "idsk-header-extended--shrink",

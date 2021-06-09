@@ -1,5 +1,4 @@
 {% extends "layout.njk" %}
-{% set skipLinkClass = ".govuk-skip-link--sticky" %}
 {% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
 {% from "../../../src/idsk/components/header-extended/macro.njk" import idskHeaderExtended %}
 {% from "../../../src/idsk/components/intro-block/macro.njk" import idskIntroBlock %}
@@ -124,6 +123,14 @@
 
 
 </style>
+{% endblock %}
+
+{% block skipLink %}
+    {{ idskSkipLink({
+        href: '#main-content',
+        text: 'Preskočiť na hlavný obsah',
+        classes: 'govuk-skip-link--sticky'
+    }) }}
 {% endblock %}
 
 {% block header %}
