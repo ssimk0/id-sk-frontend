@@ -67,6 +67,37 @@ HeaderExtended.prototype.init = function () {
 
     $module.boundCheckBlurMenuItemClick = this.checkBlurMenuItemClick.bind(this);
     $module.boundCheckBlurLanguageSwitcherClick = this.checkBlurLanguageSwitcherClick.bind(this);
+
+
+    /* Create loop in mobile menu for tabbing elements */
+    //Get header extended mobile menu focusable elements
+    var $headerExtended = this.$module.querySelectorAll('.idsk-header-extended__mobile')[0];
+    var $mobileMenuElements = $headerExtended.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])');
+
+    var $firstMenuElement = $mobileMenuElements[0];
+    var $lastMenuElement = $mobileMenuElements[$mobileMenuElements.length - 1];
+    var KEYCODE_TAB = 9;
+    document.addEventListener('keydown', function (e) {
+        var isTabPressed = (e.key === 'Tab' || e.keyCode === KEYCODE_TAB);
+
+        if (!isTabPressed) {
+            return;
+        }
+
+        if (e.shiftKey) /* shift + tab */ {
+            if (document.activeElement === $firstMenuElement) {
+                $lastMenuElement.focus();
+                e.preventDefault();
+            }
+            /* tab */
+        } else if (document.activeElement === $lastMenuElement) {
+            $firstMenuElement.focus();
+            e.preventDefault();
+        }
+
+    });
+
+
 }
 
 /**
