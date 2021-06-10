@@ -69,6 +69,15 @@
         ]
     }) }}
 {% endblock %}
+
+{% block skipLink %}
+    {{ idskSkipLink({
+        href: '#main-content',
+        text: 'Preskočiť na hlavný obsah',
+        classes: 'govuk-skip-link--sticky'
+    }) }}
+{% endblock %}
+
 {% block header %}
     {{ idskHeaderExtended({
     headerTitle: "Domov",

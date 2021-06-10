@@ -16,6 +16,14 @@
   }) }}
 {% endblock %}
 
+{% block skipLink %}
+    {{ idskSkipLink({
+        href: '#main-content',
+        text: 'Preskočiť na hlavný obsah',
+        classes: 'govuk-skip-link--sticky'
+    }) }}
+{% endblock %}
+
 {% block header %}
   {{ idskHeaderExtended({
     logoGrid: "govuk-grid-column-one-third",

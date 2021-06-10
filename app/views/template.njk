@@ -1,4 +1,4 @@
-{% from "./../../src/govuk/components/skip-link/macro.njk" import govukSkipLink -%}
+{% from "./../../src/idsk/components/skip-link/macro.njk" import idskSkipLink -%}
 {% from "./../../src/govuk/components/header/macro.njk" import govukHeader -%}
 {% from "./../../src/govuk/components/footer/macro.njk" import govukFooter -%}
 {# specify absolute url for the static assets folder e.g. http://wwww.domain.com/assets #}
@@ -29,7 +29,7 @@
     {% block bodyStart %}{% endblock %}
 
     {% block skipLink %}
-    {{ govukSkipLink({
+    {{ idskSkipLink({
         href: '#main-content',
         text: 'Preskočiť na hlavný obsah'
     }) }}

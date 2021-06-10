@@ -755,6 +755,19 @@
       }
     }
   }
+
+  // Handle focus event on skip link
+  .govuk-skip-link--sticky:focus + .idsk-header-extended {
+    @include mq($until: desktop) {
+      top: 2.467rem;
+    }
+  } 
+
+  .govuk-skip-link--sticky:focus ~ .idsk-header-extended-notification {
+    @include mq($until: desktop) {
+      padding-top: 7.938rem;
+    }
+  } 
 }
 
 /// IE10+ CSS styles
