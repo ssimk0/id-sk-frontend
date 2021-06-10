@@ -3,7 +3,7 @@
 @import "../../../govuk/helpers/all";
 
 @include govuk-exports("idsk/component/skip-link") {
-  .govuk-skip-link {
+  .idsk-skip-link {
     @include govuk-visually-hidden-focusable;
     @include govuk-typography-common;
     @include govuk-link-style-text;
@@ -29,7 +29,7 @@
     }
   }
 
-  .govuk-skip-link--sticky {
+  .idsk-skip-link--sticky {
     @include mq($until: desktop) {
       &:focus {
         position: fixed !important;
