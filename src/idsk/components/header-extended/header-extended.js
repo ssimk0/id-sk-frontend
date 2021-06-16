@@ -8,6 +8,8 @@ import { toggleClass } from '../../common'
  */
 function HeaderExtended($module) {
     this.$module = $module;
+    this.$lastMenuElement = '';
+    this.$firstMenuElement = '';
 }
 
 HeaderExtended.prototype.init = function () {
@@ -59,50 +61,15 @@ HeaderExtended.prototype.init = function () {
     var $hamburgerMenuButton = $module.querySelector('.idsk-js-header-extended-side-menu');
     var $closeMenuButton = $module.querySelector('.idsk-header-extended__mobile-close');
     if ($hamburgerMenuButton && $closeMenuButton) {
-        $hamburgerMenuButton.addEventListener('click', function () {
-            this.showMobilMenu();
-            if (document.activeElement == $hamburgerMenuButton) {
-                $lastMenuElement.focus();
-            }
-        }.bind(this));
-        $closeMenuButton.addEventListener('click', this.hideMobilMenu.bind(this));
+        this.initMobileMenuTabbing();
+        $hamburgerMenuButton.addEventListener('click', this.showMobileMenu.bind(this));
+        $closeMenuButton.addEventListener('click', this.hideMobileMenu.bind(this));
     }
 
     window.addEventListener('scroll', this.scrollFunction.bind(this));
 
     $module.boundCheckBlurMenuItemClick = this.checkBlurMenuItemClick.bind(this);
     $module.boundCheckBlurLanguageSwitcherClick = this.checkBlurLanguageSwitcherClick.bind(this);
-
-
-    /* Create loop in mobile menu for tabbing elements */
-    //Get header extended mobile menu focusable elements
-    var $headerExtended = this.$module.querySelectorAll('.idsk-header-extended__mobile')[0];
-    var $mobileMenuElements = $headerExtended.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])');
-
-    var $firstMenuElement = $mobileMenuElements[0];
-    var $lastMenuElement = $mobileMenuElements[$mobileMenuElements.length - 1];
-    var KEYCODE_TAB = 9;
-    document.addEventListener('keydown', function (e) {
-        var isTabPressed = (e.key === 'Tab' || e.keyCode === KEYCODE_TAB);
-
-        if (!isTabPressed) {
-            return;
-        }
-
-        if (e.shiftKey) /* shift + tab */ {
-            if (document.activeElement === $firstMenuElement) {
-                $lastMenuElement.focus();
-                e.preventDefault();
-            }
-            /* tab */
-        } else if (document.activeElement === $lastMenuElement) {
-            $firstMenuElement.focus();
-            e.preventDefault();
-        }
-
-    });
-
-
 }
 
 /**
@@ -168,20 +135,59 @@ HeaderExtended.prototype.checkBlurMenuItemClick = function () {
 }
 
 /**
- * Show mobil menu
+ * Show mobile menu
  * @param {object} e
  */
-HeaderExtended.prototype.showMobilMenu = function (e) {
-    this.$module.classList.add("idsk-header-extended--show-mobile-menu")
-    document.getElementsByTagName("body")[0].style.overflow = "hidden"
+HeaderExtended.prototype.showMobileMenu = function (e) {
+    var $hamburgerMenuButton = this.$module.querySelector('.idsk-js-header-extended-side-menu');
+
+    this.$module.classList.add("idsk-header-extended--show-mobile-menu");
+    document.getElementsByTagName("body")[0].style.overflow = "hidden";
+    if (document.activeElement == $hamburgerMenuButton) {
+        this.$lastMenuElement.focus();
+    }
 }
 /**
- * Hide mobil menu
+ * Hide mobile menu
  * @param {object} e
  */
-HeaderExtended.prototype.hideMobilMenu = function (e) {
-    this.$module.classList.remove("idsk-header-extended--show-mobile-menu")
-    document.getElementsByTagName("body")[0].style.overflow = "visible"
+HeaderExtended.prototype.hideMobileMenu = function (e) {
+    var $hamburgerMenuButton = this.$module.querySelector('.idsk-js-header-extended-side-menu');
+
+    this.$module.classList.remove("idsk-header-extended--show-mobile-menu");
+    document.getElementsByTagName("body")[0].style.overflow = "visible";
+    $hamburgerMenuButton.focus();
+}
+
+/**
+ * Create loop in mobile menu for tabbing elements
+ */
+HeaderExtended.prototype.initMobileMenuTabbing = function () {
+    //Get header extended mobile menu focusable elements
+    var $headerExtended = this.$module.querySelectorAll('.idsk-header-extended__mobile')[0];
+    var $mobileMenuElements = $headerExtended.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])');
+    this.$firstMenuElement = $mobileMenuElements[0];
+    this.$lastMenuElement = $mobileMenuElements[$mobileMenuElements.length - 1];
+    var KEYCODE_TAB = 9;
+
+    document.addEventListener('keydown', function (e) {
+        var isTabPressed = (e.key === 'Tab' || e.keyCode === KEYCODE_TAB);
+
+        if (!isTabPressed) {
+            return;
+        }
+
+        if (e.shiftKey) { // shift + tab
+            if (document.activeElement === this.$firstMenuElement) {
+                this.$lastMenuElement.focus();
+                e.preventDefault();
+            }
+        } else if (document.activeElement === this.$lastMenuElement) { // tab
+            this.$firstMenuElement.focus();
+            e.preventDefault();
+        }
+
+    }.bind(this));
 }
 
 /**
