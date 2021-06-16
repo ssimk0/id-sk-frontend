@@ -164,6 +164,8 @@
   .idsk-header-extended__search {
     @include govuk-font($size: 16);
 
+    padding-right: govuk-spacing(4);
+
     &-label {
       color: govuk-colour("black");
       position: absolute;
@@ -203,7 +205,7 @@
   .idsk-header-extended__language {
     @include govuk-font($size: 19);
 
-    padding: 0 govuk-spacing(3) govuk-spacing(1) govuk-spacing(4);
+    padding: 0 govuk-spacing(3) govuk-spacing(1) 0;
 
     &--active .idsk-header-extended__language-button::after {
       transition: transform 0.2s;

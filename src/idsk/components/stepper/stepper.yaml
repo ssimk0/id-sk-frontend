@@ -61,7 +61,6 @@ examples:
 - name: default
   data:
     id: default-example
-    classes: myClass
     mainTitle: "Narodenie dieťaťa: krok po kroku"
     subtitle: Pred narodením dieťaťa
     caption: Čo je potrebné vybaviť a zariadieť keď sa Vám má narodiť dieťa ? 

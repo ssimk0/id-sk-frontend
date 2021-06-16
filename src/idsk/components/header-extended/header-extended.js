@@ -59,7 +59,12 @@ HeaderExtended.prototype.init = function () {
     var $hamburgerMenuButton = $module.querySelector('.idsk-js-header-extended-side-menu');
     var $closeMenuButton = $module.querySelector('.idsk-header-extended__mobile-close');
     if ($hamburgerMenuButton && $closeMenuButton) {
-        $hamburgerMenuButton.addEventListener('click', this.showMobilMenu.bind(this));
+        $hamburgerMenuButton.addEventListener('click', function () {
+            this.showMobilMenu();
+            if (document.activeElement == $hamburgerMenuButton) {
+                $lastMenuElement.focus();
+            }
+        }.bind(this));
         $closeMenuButton.addEventListener('click', this.hideMobilMenu.bind(this));
     }
 

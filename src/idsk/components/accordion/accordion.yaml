@@ -65,7 +65,6 @@ examples:
 - name: default
   data:
     id: default-example
-    classes: myClass
     attributes:
       data-attribute: value
     items:
