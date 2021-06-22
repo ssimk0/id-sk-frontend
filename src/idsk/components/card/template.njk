@@ -26,7 +26,7 @@
         {% endif %}
 
         <div class="idsk-heading idsk-heading-{{ type }}">
-            <a href="{{params.link}}" class="idsk-card-title govuk-link idsk-card-underline" title="{{ params.heading }}">{{ params.heading }}</a>
+            <a href="{{params.link}}" class="idsk-card-title govuk-link" title="{{ params.heading }}">{{ params.heading }}</a>
         </div>
 
         {% if params.description %}
@@ -36,7 +36,7 @@
         </p>
         {% else %}
         <div class="idsk-body idsk-body-{{ type }}">
-            <a href="{{params.link}}" class="idsk-card-title govuk-link idsk-card-underline" title="{{ params.description }}">
+            <a href="{{params.link}}" class="idsk-card-title govuk-link" title="{{ params.description }}">
                 {{ params.description }}
             </a> 
         </div>
