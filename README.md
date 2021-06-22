@@ -23,7 +23,7 @@ Môžete si tiež stiahnuť skompilované a minifikované prvky (CSS, Javascript
 Po inštalácii budete môcť vo vašej službe používať kód z dizajn systému ID-SK.
 
 ## Podpora prehliadačov
-ID-SK Frontend vám umožní budovať služby, ktoré sú v súlade s pokynmi uvedenými v [metodickom usmernení](https://idsk-preview.herokuapp.com/uvod/metodika-ucd).
+ID-SK Frontend vám umožní budovať služby, ktoré sú v súlade s pokynmi uvedenými v [metodickom usmernení](https://idsk.gov.sk/uvod/metodika-ucd).
 ID-SK Frontend oficiálne podporuje nasledovné prehliadače:
 
 | Operačný systém | Prehliadač | Podpora |
@@ -48,7 +48,7 @@ ID-SK Frontend oficiálne podporuje nasledovné prehliadače:
 V prípade, že v aplikácii generujete CSS súbory, ktorých súčasťou sú ID-SK štýly, na podporu prehliadača Internet Explorer 8 je potrebné vygenerovať a zahrnúť aj separátne štýly.
 
 ## Asistenčné technológie
-ID-SK Frontend vám umožní budovať služby, ktoré sú v súlade s pokynmi uvedenými v [metodickom usmernení](https://idsk-preview.herokuapp.com/uvod/metodika-ucd).
+ID-SK Frontend vám umožní budovať služby, ktoré sú v súlade s pokynmi uvedenými v [metodickom usmernení](https://idsk.gov.sk/uvod/metodika-ucd).
 
 ID-SK Frontend oficiálne podporuje nasledovné asistenčné technológie:
 
