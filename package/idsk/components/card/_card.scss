@@ -30,7 +30,7 @@
   .idsk-card-title {
     cursor: pointer;
     margin: 0;
-    text-decoration: none;
+    text-decoration: underline;
 
     &:hover {
       color: govuk-colour("black");
@@ -67,10 +67,6 @@
       @include govuk-grid-column("one-third");
       padding: 0;
     }
-  }
-
-  .idsk-card-underline {
-    text-decoration: underline;
   }
 
   .idsk-card-meta {
