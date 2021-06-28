@@ -199,7 +199,12 @@ rules:
 
   # Rule no-misspelled-properties will enforce the correct spelling of CSS properties and prevent the use of unknown CSS properties.
   # https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-misspelled-properties.md
-  no-misspelled-properties: 2
+  no-misspelled-properties: 
+    - 2
+    - 'extra-properties':
+        - 'text-underline-offset'
+        - 'text-decoration-thickness'
+        - 'text-decoration-skip-ink'
 
   # Rule no-qualifying-elements will enforce that selectors are not allowed to have qualifying elements.
   # https://github.com/sasstools/sass-lint/blob/master/docs/rules/no-qualifying-elements.md
