@@ -149,7 +149,7 @@ $govuk-new-link-styles: true;
       text-transform: none;
       font-size: 12px;
       line-height: 1.25;
-      background: #bfc1c3;
+      background: govuk-colour("black");
       color: white; }
       @media (min-width: 641px) {
         .example:before {
@@ -268,3 +268,39 @@ $govuk-new-link-styles: true;
       height: 60px;
     }
   }
+
+
+// Overide prism.js code colours
+.token.punctuation{
+  color: govuk-colour("dark-blue") !important;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: govuk-colour("dark-blue") !important;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: govuk-colour("green") !important;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: govuk-colour("red") !important;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: govuk-colour("grey-4") !important;
+}
