@@ -32,9 +32,11 @@
                                         <div>
                                             <button id="idsk-footer-extended-feedback-yes-button" type="button" class="idsk-footer-extended-feedback-text-answers idsk-footer-extended-help-button">
                                                 Áno
+                                                <span class="govuk-visually-hidden">Boli tieto informácie pre vás užitočné?</span>
                                             </button>
                                             <button id="idsk-footer-extended-feedback-no-button" type="button" class="idsk-footer-extended-feedback-text-answers idsk-footer-extended-help-button">
                                                 Nie
+                                                <span class="govuk-visually-hidden">Boli tieto informácie pre vás užitočné?</span>
                                             </button>
                                         </div>
                                     </div>
@@ -241,7 +243,7 @@
                                     </h3>
                                     <div class="govuk-grid-column-three-thirds idsk-footer-extended-subtitle">
                                         {% if params.fourthColumn.items %}
-                                        </ul>
+                                        <ul>
                                         {% for item in params.fourthColumn.items -%}
                                             <li class="idsk-footer-extended-list-item">
                                                 <a class="govuk-link" title="{{ item.name }}" href="{{ item.href }}">{{ item.name }}</a>

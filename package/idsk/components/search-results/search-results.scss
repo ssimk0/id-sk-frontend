@@ -71,7 +71,6 @@
 
   .idsk-search-results__filter .govuk-form-group {
     margin-bottom: 0;
-    padding-right: govuk-spacing(1);
   }
 
   .idsk-search-results__content .govuk-grid-column-two-quarters {
@@ -90,7 +89,6 @@
       display: -ms-inline-flexbox;
       display: inline-flex;
       float: right;
-      margin-right: -15px;
     }
   }
 
@@ -110,10 +108,9 @@
     }
 
     .govuk-label {
-      white-space: pre;
-      margin-left: -15px;
+      white-space: nowrap;
       padding-right: govuk-spacing(2);
-      margin-top: -11px;
+      margin-top: govuk-spacing(2);
     }
 
     .govuk-form-group {
@@ -123,6 +120,7 @@
       width: -webkit-fill-available;
       margin-bottom: -15px;
       border-bottom: 1px solid govuk-colour("black");
+      padding-bottom: govuk-spacing(3);
     }
   }
 
@@ -248,9 +246,13 @@
     display: inline-block;
     position: relative;
 
-    @include mq($from: tablet) {
-      width: 100%;
+    @include mq(tablet) {
+      width: 96.5%;
       border-top: 2px solid govuk-colour("black");
+    }
+
+    @include mq($from: desktop) { 
+      width: 97.6%;
     }
   }
 
@@ -360,9 +362,13 @@
     width: 96%;
     padding-bottom: govuk-spacing(8);
 
-    @include mq($from: tablet) {
-      width: 100%;
+    @include mq(tablet) {
+      width: 96.5%;
       padding-bottom: 0;
+    }
+
+    @include mq($from: desktop) {
+      width: 97.6%;
     }
   }
 
@@ -439,6 +445,7 @@
     .idsk-intro-block__search__button {
       height: 40px;
       width: 40px;
+      z-index: 1;
     }
 
     .idsk-intro-block__input {
@@ -452,23 +459,23 @@
         @include govuk-font($size: 19);
       }
     }
-    
+
     .idsk-intro-block__input::-webkit-input-placeholder {
       color: govuk-colour("black");
     }
-    
+
     .idsk-intro-block__input::-moz-placeholder {
       color: govuk-colour("black");
     }
-    
+
     .idsk-intro-block__input:-ms-input-placeholder {
       color: govuk-colour("black");
     }
-    
+
     .idsk-intro-block__input::-ms-input-placeholder {
       color: govuk-colour("black");
     }
-    
+
     .idsk-intro-block__input::placeholder {
       color: govuk-colour("black");
     }

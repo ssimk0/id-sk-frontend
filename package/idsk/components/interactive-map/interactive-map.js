@@ -716,10 +716,7 @@ InteractiveMap.prototype.handleRadioButtonModeClick = function (type) {
     } else if ($type === 'map') {
         $module.querySelector('.idsk-interactive-map__map').style.display = 'block';
         $module.querySelector('.idsk-interactive-map__table').style.display = 'none';
-
-        setTimeout(function () {
-            $module.querySelector('.idsk-interactive-map__map-iframe').contentWindow.dispatchEvent(new Event('resize'));
-        }, 0);
+        $module.querySelector('.idsk-interactive-map__map-iframe').src += ""; // reload content - reset map boundaries
     }
 };
 
