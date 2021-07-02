@@ -12,6 +12,10 @@ $govuk-new-link-styles: true;
 // Hack for Benchmark presentation
 // only for ratio 16:9 
 
+video, img { 
+  width: 100%; 
+}
+
 .embed-responsive {
     position: relative;
     display: block;
