@@ -758,6 +758,11 @@
     }
   }
 
+  .idsk-header-extended__language--current-text img,
+  .idsk-header-extended__language-list-link img {
+    width: 15%;
+  }
+
   // Handle focus event on skip link
   .idsk-skip-link--sticky:focus + .idsk-header-extended {
     @include mq($until: tablet) {
@@ -767,14 +772,13 @@
     @include mq($from: tablet) {
       top: 2.53124rem;
     }
-  } 
-  
+  }
 
   .idsk-skip-link--sticky:focus ~ .idsk-header-extended-notification {
     @include mq($until: desktop) {
       padding-top: 7.938rem;
     }
-  } 
+  }
 }
 
 /// IE10+ CSS styles
