@@ -6,19 +6,30 @@
 @include govuk-exports("idsk/component/crossroad") {
   .idsk-crossroad-1 {
     @include govuk-grid-column("full");
+    padding: 0;
   }
 
   .idsk-crossroad-2 {
     @include mq(mobile) {
       @include govuk-grid-column("full");
+      padding: 0;
     }
 
     @include mq($and: "(orientation: landscape)") {
       @include govuk-grid-column("one-half");
+      padding: 0;
     }
 
     @include mq($from: desktop) {
       @include govuk-grid-column("one-half");
+      padding: 0;
+
+      &:first-child {
+        padding-right: govuk-spacing(3);
+      }
+      &:nth-child(2) {
+        padding-left: govuk-spacing(3);
+      }
     }
   }
 

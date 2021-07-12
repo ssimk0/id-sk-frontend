@@ -24,7 +24,7 @@
   .idsk-card-title {
     cursor: pointer;
     margin: 0;
-    text-decoration: none;
+    text-decoration: underline;
 
     &:hover {
       color: govuk-colour("black");
@@ -56,10 +56,6 @@
         width: 33%;
       }
     }
-  }
-
-  .idsk-card-underline {
-    text-decoration: underline;
   }
 
   .idsk-card-meta-container {
