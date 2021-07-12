@@ -104,13 +104,9 @@
         order: 1;
         align-self: flex-end;
         flex-grow: 0;
-        padding: govuk-spacing(6) 0;
+        margin: govuk-spacing(6) 0;
         width: 100%;
         max-width: 250px;
-
-        @include mq($from: tablet) {
-            padding-top: 0;
-        }
 
         & img,
         & svg {
