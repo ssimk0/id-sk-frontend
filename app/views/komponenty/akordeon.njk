@@ -15,7 +15,7 @@
         <span class="govuk-caption-xl">Webové komponenty</span>
         <h1 class="govuk-heading-xl">{{ pageName }}</h1>
         <p class="govuk-body-l">
-            Táto súčasť je v momentálne experimentálna, pretože na jej overenie je potrebný ďalší výskum.
+            Táto súčasť je momentálne experimentálna, pretože na jej overenie je potrebný ďalší výskum.
         </p>
         <p class="govuk-body-l">Komponent akordeón umožňuje používateľom zobraziť a skryť sekcie súvisiaceho obsahu na stránke.</p>
         <div class="govuk-grid-row">
@@ -45,7 +45,7 @@
                 <div class="example example-error">
                     {% set exampleComponentHtml %}
                     {{ idskAccordion({
-                "id": "default-example",
+                "id": "",
                 "classes": "",
                 "attributes": {
                 "data-attribute": "value"
@@ -56,7 +56,7 @@
                 "text": "Sekcia 1"
                 },
                 "summary": {
-                "text": "Toto je zrnutie obsahu 1."
+                "text": "Toto je zhrnutie obsahu 1."
                 },
                 "content": {
                 "html": "<p class='govuk-body'>Obsah prvej sekcie.</p>"
@@ -67,7 +67,7 @@
                 "text": "Sekcia 2"
                 },
                 "summary": {
-                "text": "Toto je zrnutie obsahu 2."
+                "text": "Toto je zhrnutie obsahu 2."
                 },
                 "content": {
                 "html": "<p class='govuk-body'>Obsah druhej sekcie.</p>"
@@ -78,7 +78,7 @@
                 "text": "Sekcia 3"
                 },
                 "summary": {
-                "text": "Toto je zrnutie obsahu 3."
+                "text": "Toto je zhrnutie obsahu 3."
                 },
                 "content": {
                 "html": "<p class='govuk-body'>Obsah tretej sekcie.</p>"
@@ -107,7 +107,7 @@
                     <li>použiť zoznam odkazov a umožniť používateľom rýchlo prejsť na konkrétne časti obsahu</li>
                 </ul>
                 <p class="govuk-body">
-                    Nepoužívajte akordeónový komponent, ak by obsah, ktorý by obsahovať, mohol spomalil načítanie stránky.
+                    Nepoužívajte akordeónový komponent, ak by obsah, ktorý by obsahoval, mohol spomalil načítanie stránky.
                 </p>
                 <p class="govuk-body">
                     Akordeóny fungujú najlepšie pre jednoduchý obsah a odkazy. Nepoužívajte akordeóny na rozdelenie série otázok do sekcií.
