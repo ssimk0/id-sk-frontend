@@ -24,19 +24,19 @@
 
             <h2 class="govuk-heading-s">Obsah:</h2>
             <ul class="govuk-list">
-                <li><a href="#typography-font">Písmo</a></li>
-                <li><a href="#typography-headings">Nadpisy</a></li>
-                <li><a href="#typography-lead-paragraph">Úvodný odsek</a></li>
-                <li><a href="#typography-body-copy">Hlavný text</a></li>
-                <li><a href="#typography-links">Textové odkazy</a></li>
-                <li><a href="#typography-lists">Zoznamy</a></li>
-                <li><a href="#typography-inset-text">Vsadený text</a></li>
-                <li><a href="#typography-legal-text">Právny text</a></li>
-                <li><a href="#typography-hidden-text">Skrytý text (postupné zverejňovanie)</a></li>
+                <li><a class="govuk-link" href="#typography-font" title="Písmo">Písmo</a></li>
+                <li><a class="govuk-link" href="#typography-headings" title="Nadpisy">Nadpisy</a></li>
+                <li><a class="govuk-link" href="#typography-lead-paragraph" title="Úvodný odsek">Úvodný odsek</a></li>
+                <li><a class="govuk-link" href="#typography-body-copy" title="Hlavný text">Hlavný text</a></li>
+                <li><a class="govuk-link" href="#typography-links" title="Textové odkazy">Textové odkazy</a></li>
+                <li><a class="govuk-link" href="#typography-lists" title="Zoznamy">Zoznamy</a></li>
+                <li><a class="govuk-link" href="#typography-inset-text" title="Vsadený text">Vsadený text</a></li>
+                <li><a class="govuk-link" href="#typography-legal-text" title="Právny text">Právny text</a></li>
+                <li><a class="govuk-link" href="#typography-hidden-text" title="Skrytý text (postupné zverejňovanie)">Skrytý text (postupné zverejňovanie)</a></li>
             </ul>
 
             <h3 class="govuk-heading-m" id="typography-font">Písmo</h3>
-            <p class="govuk-body">Odporúčame používať písmo <strong>Source Sans Pro</strong>. Tento typ písma je voľne dostupný, môžete si ho stiahnuť napríklad v databáze <a href="https://fonts.google.com/specimen/Source+Sans+Pro">Google Fonts</a>.</p>
+            <p class="govuk-body">Odporúčame používať písmo <strong>Source Sans Pro</strong>. Tento typ písma je voľne dostupný, môžete si ho stiahnuť napríklad v databáze <a class="govuk-link" href="https://fonts.google.com/specimen/Source+Sans+Pro" title="Google Fonts">Google Fonts</a>.</p>
             <p class="govuk-body">Pre prípad nedostupnosti typu písma, ponúknite používateľovi typograficky podobnú alternatívu skupiny bezpätkového písma. Príklad: “font-family: Source Sans Pro, sans-serif;”.</p>
             <p class="govuk-body">Pri tvorbe textov dodržujte pravidlá slovenského pravopisu a používania interpunkcie.</p>
 
@@ -118,7 +118,7 @@
             <h3 class="govuk-heading-m" id="typography-links">Textové odkazy</h3>
             <ul class="govuk-list govuk-list-bullet">
                 <li>Odkazy v hlavnom texte by mali byť modré a mali by byť odlíšené od zvyšného textu tým, že budú buď podčiarknuté alebo inak zvýraznené (nie len farebne).</li>
-                <li>Farby pre odkazy nájdete vo <a href="/komponenty/farby">farebnej palete</a>.</li>
+                <li>Farby pre odkazy nájdete vo <a class="govuk-link" href="/komponenty/farby" title="farebnej palete">farebnej palete</a>.</li>
                 <li>Samostatne stojace odkazy (bez okolitého textu) by nemali končiť bodkou.</li>
                 <li>Text každého odkazu by ste mali vytvoriť tak, aby výstižne popisoval cieľ nezávisle na okolitom kontexte. Cieľ odkazu by mal byť zrejmý už zo samotného textu odkazu. Pre jednoznačnú identifikáciu odkazu použite atribút <code class="code">„title“</code> prvku
                     <code class="code">&lt;a&gt;</code>. Nepoužívajte odkazy v tvare „kliknite tu“, „sem“, „celý text článku“ bez toho, aby tento text bol doplnený atribútom <code class="code">„title“</code> prvku <code class="code">&lt;a&gt;</code> s doplňujúcou informáciou.</li>
@@ -130,14 +130,14 @@
             <div class="example example-error govuk-body">
             {% set exampleComponentHtml %}
 <p>
-  <a href="#">19 px odkaz bez obklopujúceho textu</a>
+  <a class="govuk-link" href="#" title="19 px odkaz bez obklopujúceho textu">19 px odkaz bez obklopujúceho textu</a>
 </p>
 
 <p>
-  <a href="#">19 px odkaz v hlavnom texte</a>. Za textovou linkou pokračuje textový odsek.
+  <a class="govuk-link" href="#" title="19 px odkaz v hlavnom texte">19 px odkaz v hlavnom texte</a>. Za textovou linkou pokračuje textový odsek.
 </p>
 
-<a href="#" class="link-back">Späť</a>
+<a class="govuk-link link-back" href="#" title="Späť">Späť</a>
             {% endset %}
             {{exampleComponentHtml | safe}}
             </div>
@@ -170,9 +170,9 @@
 </ol>
 
 <ul class="govuk-list">
-  <li><a href="#">Súvisiaci odkaz</a></li>
-  <li><a href="#">Súvisiaci odkaz</a></li>
-  <li><a href="#">Súvisiaci odkaz</a></li>
+  <li><a class="govuk-link" href="#" title="Súvisiaci odkaz">Súvisiaci odkaz</a></li>
+  <li><a class="govuk-link" href="#" title="Súvisiaci odkaz">Súvisiaci odkaz</a></li>
+  <li><a class="govuk-link" href="#" title="Súvisiaci odkaz">Súvisiaci odkaz</a></li>
 </ul>
             {% endset %}
             {{exampleComponentHtml | safe}}
@@ -246,7 +246,7 @@
         <div class="govuk-grid-column-two-thirds">
             <div class="govuk-inset-text">
                 <p>
-                    Ak používate HTML5 elementy, budete potrebovať knižnicu pre  <a href="http://caniuse.com/#feat=details" rel="external">staršie prehliadače</a>.
+                    Ak používate HTML5 elementy, budete potrebovať knižnicu pre  <a class="govuk-link" href="http://caniuse.com/#feat=details" rel="external" title="staršie prehliadače">staršie prehliadače</a>.
                 </p>
                 <p>
                     Uistite sa, že váš zdrojový kód zodpovedá príkladu vyššie.
