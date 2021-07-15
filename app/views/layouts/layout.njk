@@ -17,31 +17,39 @@
     "tag": {
       "text": "ver. 2.6.0"
     },
-    "html": "Nová verzia ID-SK Frontend nahradzuje pôvodnú verziu. Dokumentáciu staršej verzie nájdete na <a class=\"govuk-link\" href=\"https:\/\/github.com\/id-sk\/idsk_elements\" target=\"_blank\">ID-SK Elements</a>"
+    "html": "Nová verzia ID-SK Frontend nahradzuje pôvodnú verziu. Dokumentáciu staršej verzie nájdete na <a class=\"govuk-link\" href=\"https:\/\/github.com\/id-sk\/idsk_elements\" target=\"_blank\" title=\"ID-SK Elements\">ID-SK Elements</a>"
   }) }}
   </div>
 
 {% endblock %}
 
 {% block footer %}
-  {% from "../../../src/idsk/components/footer/macro.njk" import idskFooter %}
-  {{ idskFooter({
-    "logo": true,
-    "meta": {
-      "copy": "Prevádzkovateľom služby je Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky. Kontakná osoba <a class=\"govuk-link\" href=\"mailto:idsk@vicepremier.gov.sk\">idsk@vicepremier.gov.sk</a>.<br> Vytvorené v súlade s Jednotným dizajn manuálom elektronických služieb.",
-      "footerLogoLink": "https://www.mirri.gov.sk/",
-      "items": [
-      {
-        "href": "https://github.com/id-sk/id-sk-frontend/issues",
-        "text": "Všimli ste si chybu alebo máte podnet na zlepšenie?"
-      },
-      {
-        "href": "https://github.com/id-sk/id-sk-frontend",
-        "text": "ID-SK Frontend GitHub"
-      }
-    ]
+  {% from "../../../src/idsk/components/footer-extended/macro.njk" import idskFooterExtended %}
+  {{ idskFooterExtended({
+    characterLength : 350,
+    showFeedback : "true",
+    upButtonEnabled : "true",
+    logo: "footer-extended-logo.svg",
+    dropdownItems: [
+    {
+      value: "published",
+      text: "Validačná chyba"
+    },
+    {
+      value: "updated",
+      text: "Gramatická chyba",
+      selected: true
+    },
+    {
+      value: "views",
+      text: "Chyba responzivity"
+    },
+    {
+      value: "comments",
+      text: "Chyba iná"
     }
-  }) }}
+    ]
+  })  }}
 {% endblock %}
 
 {% block bodyEnd %}
