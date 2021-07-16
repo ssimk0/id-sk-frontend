@@ -9,6 +9,11 @@ params:
     required: false
     description: Determines whether feedback bar should be displayed.
 
+  - name: showFeedbackMessage
+    type: string
+    required: false
+    description: Determines whether feedback message should be displayed.
+
   - name: upButtonEnabled
     type: string
     required: false

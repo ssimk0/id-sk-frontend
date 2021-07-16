@@ -26,9 +26,12 @@ FooterExtended.prototype.init = function () {
     var $writeUsButton = $module.querySelector('#idsk-footer-extended-write-us-button');
     var $upButton = $module.querySelector("#footer-extended-up-button");
 
-    if ($yesButton && $noButton && $errorButton) {
+    if ($yesButton && $noButton) {
         $yesButton.addEventListener('click', this.handleYesButtonClick.bind(this));
         $noButton.addEventListener('click', this.handleNoButtonClick.bind(this));
+    }
+
+    if ($errorButton) {
         $errorButton.addEventListener('click', this.handleErrorButtonClick.bind(this));
     }
 
@@ -79,6 +82,10 @@ FooterExtended.prototype.handleSubmitButtonClick = function (e) {
     toggleClass($infoQuestion, 'idsk-footer-extended-heart');
     toggleClass($heartSymbol, 'idsk-footer-extended-heart-visible');
     toggleClass($feedbackQuestion, 'idsk-footer-extended-display-none');
+
+    var $selection = this.$module.querySelector('#sort');
+    
+
 }
 
 FooterExtended.prototype.handleStatusOfCharacterCountButton = function (e) {
