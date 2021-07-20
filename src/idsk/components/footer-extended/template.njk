@@ -111,7 +111,7 @@
                                         <div class="idsk-footer-extended-feedback-question-container">
                                             <div class="govuk-grid-column-two-thirds idsk-footer-extended-help-form-header-mobile">
                                                 <h3 class="govuk-heading-x">
-                                                    Pomôžte nám zlepšiť mirri.gov.sk
+                                                    {% if params.feedbackHeading %} {{ params.feedbackHeading }} {% else %} Pomôžte nám zlepšiť mirri.gov.sk {% endif %}
                                                 </h3>
                                             </div>
                                             <div class="govuk-grid-column-one-third idsk-footer-extended-close-button-mobile">
