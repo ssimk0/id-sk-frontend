@@ -150,6 +150,7 @@
                                     }
                                 }) }}
                                                 </div>
+                                                <div id="feedback-info" data-email="{{ params.feedbackEmail if params.feedbackEmail else 'idsk@vicepremier.gov.sk' }}" data-subject="{{ params.feedbackSubject if params.feedbackSubject else 'Nahlásenie chyby'}}">{{ params.feedbackMessage if params.feedbackMessage else 'Dobrý deň, na stránke idsk.gov.sk máte problém týkajúci sa: issue. Popis chyby: description' }}</div>
                                                 <div class="idsk-footer-extended-feedback-button">
                                                     <button id="submit-button-error-form" type="submit" class="idsk-button" data-module="idsk-button">
                                                         Odoslať

@@ -85,13 +85,15 @@ FooterExtended.prototype.handleSubmitButtonClick = function (e) {
 
     var $selection = this.$module.querySelector('#sort');
     var $issueTextArea = this.$module.querySelector('#with-hint');
+    var $feedbackInfo = this.$module.querySelector('#feedback-info');
 
     var selectedOption = $selection.value;
     var issueText = $issueTextArea.value;
 
-    var email = 'idsk@vicepremier.gov.sk';
-    var subject = 'Nahlásenie chyby';
-    var emailBody = 'Dobrý deň,' + '%0D%0A%0D%0A' + 'na stránke idsk.gov.sk máte problém týkajúci sa: ' + selectedOption + '.' + '%0D%0A' + 'Popis chyby: ' + issueText ;
+    var email = $feedbackInfo.getAttribute("data-email");
+    var subject = $feedbackInfo.getAttribute("data-subject");
+    var emailBody = $feedbackInfo.textContent;
+    emailBody = emailBody.replace("issue", selectedOption).replace("description", issueText);
     document.location = "mailto:"+email+"?subject="+subject+"&body="+emailBody;
             
 }
