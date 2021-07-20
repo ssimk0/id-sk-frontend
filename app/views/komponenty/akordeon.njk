@@ -23,25 +23,53 @@
                 <h2 class="govuk-heading-s">Obsah:</h2>
                 <ul class="govuk-list">
                     <li>
-                        <a href="#kedy-pouzivat-akordeon" class="govuk-link" title="Kedy použiť tento komponent">Kedy použiť tento komponent</a>
+                        <a class="govuk-link" href="#kedy-pouzivat-akordeon" title="Kedy použiť tento komponent">Kedy použiť tento komponent</a>
                     </li>
                     <li>
-                        <a href="#kedy-nepouzivat-akordeon" class="govuk-link" title="Kedy tento komponent nepoužívať">Kedy tento komponent nepoužívať</a>
+                        <a class="govuk-link" href="#kedy-nepouzivat-akordeon" title="Kedy tento komponent nepoužívať">Kedy tento komponent nepoužívať</a>
+                    </li>
+                    <li>
+                        <a class="govuk-link" href="#akordeon-so-zhrnutim-obsahu" title="Kedy tento komponent nepoužívať">Akordeón so zhrnutím obsahu</a>
+                    </li>
+                    <li>
+                        <a class="govuk-link" href="#akordeon-bez-zhrnutia-obsahu" title="Kedy tento komponent nepoužívať">Akordeón bez zhrnutia obsahu</a>
                     </li>
                 </ul>
                 <h3 class="govuk-heading-m" id="kedy-pouzivat-akordeon">Kedy použiť tento komponent</h3>
                 <p class="govuk-body">
                     Akordeón používajte, iba ak existuje dôkaz, že je pre používateľov užitočné:</p>
                 <ul class="govuk-list govuk-list--bullet">
-                    <li>zobraziť prehľad viacerých súvisiacich častí obsahu</li>
-                    <li>podľa potreby tieto sekcie zobraziť a skryť</li>
+                    <li>zobraziť prehľad viacerých súvisiacich častí obsahu,</li>
+                    <li>podľa potreby tieto sekcie zobraziť a skryť.</li>
                 </ul>
                 <p class="govuk-body">
-                    Akordeón môže dobre slúžiť pre ľudí, ktorí pravidelne používajú služby, napríklad pre používateľov systémov, ktorí
-                    potrebujú rýchlo vykonať podobné úlohy.
+                    Akordeón je vhodný najmä pre používateľov, ktorí potrebujú vykonávať podobné úlohy z jedného miesta.
                 </p>
             </div>
+
+            <div class="govuk-grid-column-two-thirds">
+                <h3 class="govuk-heading-m" id="kedy-nepouzivat-akordeon">Kedy tento komponent nepoužívať</h3>
+                <p class="govuk-body">
+                    Akordeóny skrývajú obsah pred používateľmi a nie každý si ich všimne alebo pochopí, ako fungujú. Z tohto dôvodu
+                    nepoužívajte akordeón pre obsah, ktorý je nevyhnutný pre všetkých používateľov.</p>
+                <p class="govuk-body">
+                    Najskôr vyskúšajte svoj obsah bez akordeónu. Zvážte, či nie je lepšie:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>zjednodušiť a zmenšiť množstvo obsahu,</li>
+                    <li>rozdeliť obsah na viac stránok,</li>
+                    <li>uchovávať obsah na jednej stránke oddelenej hlavičkami,</li>
+                    <li>použiť zoznam odkazov a umožniť používateľom rýchlo prejsť na konkrétne časti obsahu.</li>
+                </ul>
+                <p class="govuk-body">
+                    Nepoužívajte akordeónový komponent, ak by obsah, ktorý by obsahoval, mohol spomalil načítanie stránky.
+                </p>
+                <p class="govuk-body">
+                    Akordeóny fungujú najlepšie pre jednoduchý obsah a odkazy. Nepoužívajte akordeóny na rozdelenie série otázok do sekcií.
+                    Namiesto toho použite samostatné stránky.</p>
+            </div>
+
             <div class="govuk-grid-column-full">
+                <h3 class="govuk-heading-m" id="akordeon-so-zhrnutim-obsahu">Akordeón so zhrnutím obsahu</h3>
                 <div class="example example-error">
                     {% set exampleComponentHtml %}
                     {{ idskAccordion({
@@ -93,26 +121,52 @@
                 <pre
                 class=" language-markup"><code class="govuk-!-font-size-16  language-markup">{{ exampleComponentHtml }}</code></pre>
             </div>
-            <div class="govuk-grid-column-two-thirds">
-                <h3 class="govuk-heading-m" id="kedy-nepouzivat-akordeon">Kedy tento komponent nepoužívať</h3>
-                <p class="govuk-body">
-                    Akordeóny skrývajú obsah pred používateľmi a nie každý si ich všimne alebo pochopí, ako fungujú. Z tohto dôvodu
-                    nepoužívajte akordeón pre obsah, ktorý je nevyhnutný pre všetkých používateľov.</p>
-                <p class="govuk-body">
-                    Najskôr vyskúšajte svoj obsah bez akordeónu. Zvážte, či nie je lepšie:</p>
-                <ul class="govuk-list govuk-list--bullet">
-                    <li>zjednodušiť a zmenšiť množstvo obsahu</li>
-                    <li>rozdeliť obsah na viac stránok</li>
-                    <li>uchovávať obsah na jednej stránke oddelenej hlavičkami</li>
-                    <li>použiť zoznam odkazov a umožniť používateľom rýchlo prejsť na konkrétne časti obsahu</li>
-                </ul>
-                <p class="govuk-body">
-                    Nepoužívajte akordeónový komponent, ak by obsah, ktorý by obsahoval, mohol spomalil načítanie stránky.
-                </p>
-                <p class="govuk-body">
-                    Akordeóny fungujú najlepšie pre jednoduchý obsah a odkazy. Nepoužívajte akordeóny na rozdelenie série otázok do sekcií.
-                    Namiesto toho použite samostatné stránky.</p>
+
+            <div class="govuk-grid-column-full">
+                <h3 class="govuk-heading-m" id="akordeon-bez-zhrnutia-obsahu">Akordeón bez zhrnutia obsahu</h3>
+                <div class="example example-error">
+                    {% set exampleComponentHtml %}
+                    {{ idskAccordion({
+                "id": "",
+                "classes": "",
+                "attributes": {
+                "data-attribute": "value"
+                },
+                "items": [
+                {
+                "heading": {
+                "text": "Sekcia 1"
+                },
+                "content": {
+                "html": "<p class='govuk-body'>Obsah prvej sekcie.</p>"
+                }
+                },
+                {
+                "heading": {
+                "text": "Sekcia 2"
+                },
+                "content": {
+                "html": "<p class='govuk-body'>Obsah druhej sekcie.</p>"
+                }
+                },
+                {
+                "heading": {
+                "text": "Sekcia 3"
+                },
+                "content": {
+                "html": "<p class='govuk-body'>Obsah tretej sekcie.</p>"
+                }
+                }
+
+                ]
+                }) }}
+                    {% endset %}
+                    {{ exampleComponentHtml | safe }}
+                </div>
+                <pre
+                class=" language-markup"><code class="govuk-!-font-size-16  language-markup">{{ exampleComponentHtml }}</code></pre>
             </div>
+
         </div>
     </div>
 {% endblock %}
