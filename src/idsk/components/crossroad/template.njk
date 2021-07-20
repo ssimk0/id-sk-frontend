@@ -21,7 +21,7 @@
                 or (loop.index > ((loop.length / numberOfCols)) ++ (numberOfShowedTiles-1) and numberOfCols == 2 and colIndex == 1) or (loop.index > 4 and numberOfCols == 1) else false }}{% endset %}
             {% endif %}
             <div class="idsk-crossroad__item {{ classes }}">
-                <a href="{{item.link}}" class="idsk-crossroad-title" title="{{ item.title }}" aria-hidden="{{aria}}">{{ item.title }}
+                <a href="{{item.link}}" class="govuk-link idsk-crossroad-title" title="{{ item.title }}" aria-hidden="{{aria}}">{{ item.title }}
                 </a>
                 <p class="idsk-crossroad-subtitle" aria-hidden="{{aria}}">{{ item.subtitle }}</p>
                 <hr class="idsk-crossroad-line" aria-hidden="true"/>
