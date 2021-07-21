@@ -27,25 +27,27 @@
   {% from "../../../src/idsk/components/footer-extended/macro.njk" import idskFooterExtended %}
   {{ idskFooterExtended({
     characterLength : 350,
+    feedbackHeading : "Pomôžte nám zlepšiť jednotný dizajn manuál",
     showFeedback : "true",
+    showFeedbackMessage : "false",
     upButtonEnabled : "true",
     logo: "footer-extended-logo.svg",
     dropdownItems: [
     {
-      value: "published",
+      value: "Validačná chyba",
       text: "Validačná chyba"
     },
     {
-      value: "updated",
+      value: "Gramatická chyba",
       text: "Gramatická chyba",
       selected: true
     },
     {
-      value: "views",
+      value: "Chyba responzivity",
       text: "Chyba responzivity"
     },
     {
-      value: "comments",
+      value: "Chyba iná",
       text: "Chyba iná"
     }
     ]
