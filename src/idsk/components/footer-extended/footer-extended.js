@@ -85,15 +85,15 @@ FooterExtended.prototype.handleSubmitButtonClick = function (e) {
 
     var $selection = this.$module.querySelector('#sort');
     var $issueTextArea = this.$module.querySelector('#with-hint');
-    var $feedbackInfo = this.$module.querySelector('#feedback-info');
+    var $feedbackInfo = this.$module.querySelector('.idsk-footer-extended__feedback-info');
 
     var selectedOption = $selection.value;
     var issueText = $issueTextArea.value;
-
+    
     var email = $feedbackInfo.getAttribute("data-email");
     var subject = $feedbackInfo.getAttribute("data-subject");
     var emailBody = $feedbackInfo.textContent;
-    emailBody = emailBody.replace("issue", selectedOption).replace("description", issueText);
+    emailBody = emailBody.replace("%issue%", selectedOption).replace("%description%", issueText);
     document.location = "mailto:"+email+"?subject="+subject+"&body="+emailBody;
             
 }
