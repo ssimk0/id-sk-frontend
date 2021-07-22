@@ -4,6 +4,8 @@
     "metodika-ucd": "Metodické usmernenie",
     "principy": "10 princípov tvorby elektronických služieb podľa ID-SK",
     "ako-zacat-s-vyvojom": "Ako začať s vývojom",
+    "instalacia-pomocou-npm": "Inštalácia ID-SK Frontend pomocou NPM",
+    "instalacia-pomocou-dist": "Inštalácia ID-SK Frontend z dist",
     "changelog": "Aktualizácia z ID-SK Elements na ID-SK Frontend",
     "nastroje-pre-dizajnerov": "Nástroje pre dizajnérov"
   },
