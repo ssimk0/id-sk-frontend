@@ -16,7 +16,7 @@
 {% block content %}
 
 {% set states = {
-    'Bez pseudo triedy': ':button',
+    'Bez pseudo triedy': '',
     'Stav visited': ':visited',
     'Stav hover': ':hover',
     'Stav active': ':active',
@@ -38,14 +38,16 @@
             <h2 class="govuk-heading-s">Obsah:</h2>
             <ul class="govuk-list">
                 <li><a class="govuk-link" href="#button-text" title="Text tlačidla">Text tlačidla</a></li>
+                <li><a class="govuk-link" href="#button-alignment" title="Zarovnanie tlačidla">Zarovnanie tlačidla</a></li>
                 <li><a class="govuk-link" href="#button-default" title="Základné tlačidlá">Základné tlačidlo</a></li>
                 <li><a class="govuk-link" href="#button-start-now" title="Spúšťacie tlačidlo">Spúšťacie tlačidlo</a></li>
-                <li><a class="govuk-link" href="#button-alignment" title="Zarovnanie tlačidla">Zarovnanie tlačidla</a></li>
-                <li><a class="govuk-link" href="#button-disabled" title="Neaktívne tlačidlá">Neaktívne tlačidlá</a></li>
+                <li><a class="govuk-link" href="#button-secondary" title="Vedľajšie tlačidlo">Vedľajšie tlačidlo</a></li>
+                <li><a class="govuk-link" href="#button-warning" title="Výstražné tlačidlo">Výstražné tlačidlo</a></li>
+                <li><a class="govuk-link" href="#button-disabled" title="Neaktívne tlačidlo">Neaktívne tlačidlo</a></li>
                 <li><a class="govuk-link" href="#creating-buttons" title="Vytváranie tlačidiel">Vytváranie tlačidiel</a></li>
             </ul>
 
-            <h3 class="govuk-heading-m" id="button-text">Text tlačidiel</h3>
+            <h3 class="govuk-heading-m" id="button-text">Text tlačidla</h3>
             <p class="govuk-body">
                 Text v tlačidle by mal byť krátky a opisovať akciu, ktorá nastane po stlačení daného tlačidla.
             </p>
@@ -145,7 +147,7 @@
         </div>
 
         <div class="govuk-grid-column-two-thirds">
-            <h3 class="govuk-heading-m" id="button-disabled">Vedľajšie tlačidlo</h3>
+            <h3 class="govuk-heading-m" id="button-secondary">Vedľajšie tlačidlo</h3>
             <p class="govuk-body">Vedľajšie tlačidlá používajte na vykonanie vedľajších úloh na stránke.</p>
             <p class="govuk-body">Vyvarujte sa použitiu priveľa vedľajších tlačidiel. Veľké množstvo tlačidiel môže byť pre používateľa mätúce a môže viesť k zablúdeniu na stránke. Aj keď napriek tomu budete potrebovať použiť viacero tlačidiel na stránke tak v prvom rade skúste zjednodušiť stránku alebo jej obsah rozdeliť na ďalšie podstránky.</p>
             <p class="govuk-body">Vedľajśie tlačidlá používajú triedu <code class="govuk-!-font-size-16  language-markup">idsk-button--secondary</code>.</p>
@@ -188,8 +190,8 @@
             <div class="example example-error">
             {% set exampleComponentHtml %}
 {{ idskButton({
-    text: "Výstražné tlačidlo",
-    classes: "idsk-button--warning"
+    text: "Vedľajšie tlačidlo",
+    classes: "idsk-button--secondary"
   }) }}
             {% endset %}
             {{exampleComponentHtml | safe}}
@@ -209,7 +211,7 @@
         </div>
 
         <div class="govuk-grid-column-two-thirds">
-            <h3 class="govuk-heading-m" id="button-disabled">Neaktívne tlačidlá</h3>
+            <h3 class="govuk-heading-m" id="button-disabled">Neaktívne tlačidlo</h3>
             
             <p class="govuk-body">Neaktívne tlačidlá by sa nemali používať, ak na to nie je vážny dôvod.</p>
             <p class="govuk-body">Ak už musíte použiť neaktívne tlačidlo, uistite sa, že jeho dizajn vyzerá tak, že sa naň nedá kliknúť (používa sa 50% priehľadnosť).</p>
