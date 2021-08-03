@@ -13,7 +13,7 @@ $govuk-new-link-styles: true;
 // only for ratio 16:9 
 
 video, img { 
-  width: 100%; 
+  max-width: 100%; 
 }
 
 .embed-responsive {
