@@ -83,7 +83,7 @@
         <div class="govuk-grid-column-two-thirds">
             <h3 class="govuk-heading-m" id="button-default">Základné tlačidlo</h3>
             <p class="govuk-body">Základné tlačidlá sa používajú na vykonanie hlavnej akcie na stránke.</p>
-            <p class="govuk-body">Snažte sa vyhnúť použitiu viacerých základných tlačidiel na jednej stránke. Je to pretože používateľ môže byť zmäťený a nebude vedieť ktoré tlačidlo treba použiť.</p>
+            <p class="govuk-body">Snažte sa vyhnúť použitiu viacerých základných tlačidiel na jednej stránke. Je to pretože používateľ môže byť zmätený a nebude vedieť, ktoré tlačidlo treba použiť.</p>
             <p class="govuk-body">Základná trieda pre tlačidlá je <code class="govuk-!-font-size-16  language-markup">idsk-button</code>. Táto trieda by mala byť vždy prvá a ďalej by mali nasledovať viac špecifické triedy.</p>
             <p class="govuk-body">Tlačidlá by mali obsahovať <code class="govuk-!-font-size-16  language-markup">data-module="idsk-button"</code> kvôli inicializácií tlačidiel na stránke.</p>
         </div>
@@ -149,8 +149,8 @@
         <div class="govuk-grid-column-two-thirds">
             <h3 class="govuk-heading-m" id="button-secondary">Vedľajšie tlačidlo</h3>
             <p class="govuk-body">Vedľajšie tlačidlá používajte na vykonanie vedľajších úloh na stránke.</p>
-            <p class="govuk-body">Vyvarujte sa použitiu priveľa vedľajších tlačidiel. Veľké množstvo tlačidiel môže byť pre používateľa mätúce a môže viesť k zablúdeniu na stránke. Aj keď napriek tomu budete potrebovať použiť viacero tlačidiel na stránke tak v prvom rade skúste zjednodušiť stránku alebo jej obsah rozdeliť na ďalšie podstránky.</p>
-            <p class="govuk-body">Vedľajśie tlačidlá používajú triedu <code class="govuk-!-font-size-16  language-markup">idsk-button--secondary</code>.</p>
+            <p class="govuk-body">Vyvarujte sa použitiu priveľa vedľajších tlačidiel. Veľké množstvo tlačidiel môže byť pre používateľa mätúce a môže viesť k zblúdeniu na stránke. Aj keď napriek tomu budete potrebovať použiť viacero tlačidiel na stránke tak v prvom rade skúste zjednodušiť stránku alebo jej obsah rozdeliť na ďalšie podstránky.</p>
+            <p class="govuk-body">Vedľajšie tlačidlá používajú triedu <code class="govuk-!-font-size-16  language-markup">idsk-button--secondary</code>.</p>
         </div>
 
         <div class="govuk-grid-column-full">
@@ -179,10 +179,10 @@
 
         <div class="govuk-grid-column-two-thirds">
             <h3 class="govuk-heading-m" id="button-warning">Výstražné tlačidlo</h3>
-            <p class="govuk-body">Výstražné tlačidlo je navrhnuté tak aby používateľ dobre zvážil jeho klinutie naň. Najlepšie fungujú keď sa často nevyskytujú na stránke.</p>
-            <p class="govuk-body">Používajte ich na miestach kde nie je možné sa vrátiť späť alebo napraviť prípadné zmeny ako napríklad zmazanie účtu.</p>
-            <p class="govuk-body">Výstražné tlačidlo je tiež možné použiť ako druhotné kde prvý krok je vykonaný cez základné tlačidlo a výstražné sa zobrazí až následne spolu s dialógovým oknom kde bude otázka či naozaj si želáme uskutočniť danú operáciu.</p>
-            <p class="govuk-body">Text výstražného tlačidla by mal byť obzvlášť výstižní pretože stánku môže používať aj zrakovo znevýhodnená osoba a taktiež sa môže stať že niekto nepochpí význam danej farby.</p>
+            <p class="govuk-body">Výstražné tlačidlo je navrhnuté tak aby používateľ dobre zvážil jeho kliknutie naň. Najlepšie fungujú keď sa často nevyskytujú na stránke.</p>
+            <p class="govuk-body">Používajte ich na miestach kde nie je možné sa vrátiť späť alebo napraviť prípadné zmeny, ako napríklad zmazanie účtu.</p>
+            <p class="govuk-body">Výstražné tlačidlo je tiež možné použiť, ako druhotné kde prvý krok je vykonaný cez základné tlačidlo a výstražné sa zobrazí až následne spolu s dialógovým oknom kde bude otázka či naozaj si želáme uskutočniť danú operáciu.</p>
+            <p class="govuk-body">Text výstražného tlačidla by mal byť obzvlášť výstižní pretože stánku môže používať aj zrakovo znevýhodnená osoba a taktiež sa môže stať, že niekto nepochopí význam danej farby.</p>
             <p class="govuk-body">Výstražné tlačidlá používajú triedu <code class="govuk-!-font-size-16  language-markup">idsk-button--warning</code>.</p>
         </div>
 
@@ -239,6 +239,10 @@
             <p class="govuk-body">
                 Pri programovaní tlačidiel použite z toolkitu JDMES Sass mixin štýl tlačidiel, ktorý nájdete vo frontend toolkite na JDMES v súbore <a class="govuk-link" href="https://github.com/alphagov/govuk_frontend_toolkit/blob/master/stylesheets/design-patterns/_buttons.scss" rel="external" title="buttons.scss">buttons.scss</a>.
             </p>
+            <p class="govuk-body">
+                Pri vytváraní tlačidiel dbajte tiež na to, aby sa za tlačidlom nenachádzal obrázok prípadne,
+                aby tlačidlo nebolo inak upravované.
+            </p>
         </div>
 
         <div class="govuk-grid-column-full">
@@ -276,13 +280,6 @@
 
             </div>
             <pre class=" language-markup"><code class="govuk-!-font-size-16  language-markup">{{ exampleComponentHtml }}</code></pre>
-        </div>
-
-        <div class="govuk-grid-column-two-thirds">
-            <p class="govuk-body">
-                Pri vytváraní tlačidiel dbajte tiež na to, aby sa za tlačidlom nenachádzal obrázok prípadne,
-                aby tlačidlo nebolo inak upravované.
-            </p>
         </div>
 
     </div>
