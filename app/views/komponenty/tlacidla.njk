@@ -39,7 +39,7 @@
             <ul class="govuk-list">
                 <li><a class="govuk-link" href="#button-text" title="Text tlačidla">Text tlačidla</a></li>
                 <li><a class="govuk-link" href="#button-alignment" title="Zarovnanie tlačidla">Zarovnanie tlačidla</a></li>
-                <li><a class="govuk-link" href="#button-default" title="Základné tlačidlá">Základné tlačidlo</a></li>
+                <li><a class="govuk-link" href="#button-default" title="Hlavné tlačidlá">Hlavné tlačidlo</a></li>
                 <li><a class="govuk-link" href="#button-start-now" title="Spúšťacie tlačidlo">Spúšťacie tlačidlo</a></li>
                 <li><a class="govuk-link" href="#button-secondary" title="Vedľajšie tlačidlo">Vedľajšie tlačidlo</a></li>
                 <li><a class="govuk-link" href="#button-warning" title="Výstražné tlačidlo">Výstražné tlačidlo</a></li>
@@ -81,9 +81,9 @@
         </div>
 
         <div class="govuk-grid-column-two-thirds">
-            <h3 class="govuk-heading-m" id="button-default">Základné tlačidlo</h3>
-            <p class="govuk-body">Základné tlačidlá sa používajú na vykonanie hlavnej akcie na stránke.</p>
-            <p class="govuk-body">Snažte sa vyhnúť použitiu viacerých základných tlačidiel na jednej stránke. Je to pretože používateľ môže byť zmätený a nebude vedieť, ktoré tlačidlo treba použiť.</p>
+            <h3 class="govuk-heading-m" id="button-default">Hlavné tlačidlo</h3>
+            <p class="govuk-body">Hlavné tlačidlá sa používajú na vykonanie hlavnej akcie na stránke.</p>
+            <p class="govuk-body">Snažte sa vyhnúť použitiu viacerých hlavných tlačidiel na jednej stránke. Je to pretože používateľ môže byť zmätený a nebude vedieť, ktoré tlačidlo treba použiť.</p>
             <p class="govuk-body">Základná trieda pre tlačidlá je <code class="govuk-!-font-size-16  language-markup">idsk-button</code>. Táto trieda by mala byť vždy prvá a ďalej by mali nasledovať viac špecifické triedy.</p>
             <p class="govuk-body">Tlačidlá by mali obsahovať <code class="govuk-!-font-size-16  language-markup">data-module="idsk-button"</code> kvôli inicializácií tlačidiel na stránke.</p>
         </div>
@@ -101,7 +101,7 @@
         </div>
 
         <div class="govuk-grid-column-two-thirds">
-        <h3 class="govuk-heading-m" id="button-default">Design základného tlačidla pri jednotlivých stavoch</h3>
+        <h3 class="govuk-heading-m" id="button-default">Design hlavného tlačidla pri jednotlivých stavoch</h3>
 
         {% for state_description, state_class in states %}
         
@@ -190,8 +190,8 @@
             <div class="example example-error">
             {% set exampleComponentHtml %}
 {{ idskButton({
-    text: "Vedľajšie tlačidlo",
-    classes: "idsk-button--secondary"
+    text: "Výstražné tlačidlo",
+    classes: "idsk-button--warning"
   }) }}
             {% endset %}
             {{exampleComponentHtml | safe}}
