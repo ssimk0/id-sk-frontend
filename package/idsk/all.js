@@ -2502,7 +2502,7 @@ Feedback.prototype.init = function () {
         return;
     }
 
-    var $textAreaCharacterCount = $module.querySelector('#idsk-feedback__question-bar #with-hint');
+    var $textAreaCharacterCount = $module.querySelector('#idsk-feedback__question-bar #feedback');
     var $sendButton = $module.querySelector('#idsk-feedback__send-button');
     var $radioButtons = $module.querySelectorAll('.idsk-feedback__radio-button');
 
@@ -2544,8 +2544,8 @@ Feedback.prototype.handleRadioButtonClick = function (e) {
 };
 
 Feedback.prototype.handleStatusOfCharacterCountButton = function (e) {
-    var $textAreaCharacterCount = this.$module.querySelector('#with-hint');
-    var $remainingCharacterCountMessage = this.$module.querySelector('#with-hint-info');
+    var $textAreaCharacterCount = this.$module.querySelector('#feedback');
+    var $remainingCharacterCountMessage = this.$module.querySelector('#feedback-info');
 
     var $submitButton = this.$module.querySelector('#idsk-feedback__send-button');
 
@@ -2582,9 +2582,12 @@ FooterExtended.prototype.init = function () {
     var $writeUsButton = $module.querySelector('#idsk-footer-extended-write-us-button');
     var $upButton = $module.querySelector("#footer-extended-up-button");
 
-    if ($yesButton && $noButton && $errorButton) {
+    if ($yesButton && $noButton) {
         $yesButton.addEventListener('click', this.handleYesButtonClick.bind(this));
         $noButton.addEventListener('click', this.handleNoButtonClick.bind(this));
+    }
+
+    if ($errorButton) {
         $errorButton.addEventListener('click', this.handleErrorButtonClick.bind(this));
     }
 
@@ -2635,6 +2638,20 @@ FooterExtended.prototype.handleSubmitButtonClick = function (e) {
     toggleClass($infoQuestion, 'idsk-footer-extended-heart');
     toggleClass($heartSymbol, 'idsk-footer-extended-heart-visible');
     toggleClass($feedbackQuestion, 'idsk-footer-extended-display-none');
+
+    var $selection = this.$module.querySelector('#sort');
+    var $issueTextArea = this.$module.querySelector('#with-hint');
+    var $feedbackInfo = this.$module.querySelector('.idsk-footer-extended__feedback-info');
+
+    var selectedOption = $selection.value;
+    var issueText = $issueTextArea.value;
+    
+    var email = $feedbackInfo.getAttribute("data-email");
+    var subject = $feedbackInfo.getAttribute("data-subject");
+    var emailBody = $feedbackInfo.textContent;
+    emailBody = emailBody.replace("%issue%", selectedOption).replace("%description%", issueText);
+    document.location = "mailto:"+email+"?subject="+subject+"&body="+emailBody;
+            
 };
 
 FooterExtended.prototype.handleStatusOfCharacterCountButton = function (e) {
@@ -3223,6 +3240,8 @@ CustomerSurveys.prototype.handleNextButtonClick = function (e) {
  */
 function HeaderExtended($module) {
     this.$module = $module;
+    this.$lastMenuElement = '';
+    this.$firstMenuElement = '';
 }
 
 HeaderExtended.prototype.init = function () {
@@ -3274,8 +3293,9 @@ HeaderExtended.prototype.init = function () {
     var $hamburgerMenuButton = $module.querySelector('.idsk-js-header-extended-side-menu');
     var $closeMenuButton = $module.querySelector('.idsk-header-extended__mobile-close');
     if ($hamburgerMenuButton && $closeMenuButton) {
-        $hamburgerMenuButton.addEventListener('click', this.showMobilMenu.bind(this));
-        $closeMenuButton.addEventListener('click', this.hideMobilMenu.bind(this));
+        this.initMobileMenuTabbing();
+        $hamburgerMenuButton.addEventListener('click', this.showMobileMenu.bind(this));
+        $closeMenuButton.addEventListener('click', this.hideMobileMenu.bind(this));
     }
 
     window.addEventListener('scroll', this.scrollFunction.bind(this));
@@ -3347,20 +3367,59 @@ HeaderExtended.prototype.checkBlurMenuItemClick = function () {
 };
 
 /**
- * Show mobil menu
+ * Show mobile menu
  * @param {object} e
  */
-HeaderExtended.prototype.showMobilMenu = function (e) {
+HeaderExtended.prototype.showMobileMenu = function (e) {
+    var $hamburgerMenuButton = this.$module.querySelector('.idsk-js-header-extended-side-menu');
+
     this.$module.classList.add("idsk-header-extended--show-mobile-menu");
     document.getElementsByTagName("body")[0].style.overflow = "hidden";
+    if (document.activeElement == $hamburgerMenuButton) {
+        this.$lastMenuElement.focus();
+    }
 };
 /**
- * Hide mobil menu
+ * Hide mobile menu
  * @param {object} e
  */
-HeaderExtended.prototype.hideMobilMenu = function (e) {
+HeaderExtended.prototype.hideMobileMenu = function (e) {
+    var $hamburgerMenuButton = this.$module.querySelector('.idsk-js-header-extended-side-menu');
+
     this.$module.classList.remove("idsk-header-extended--show-mobile-menu");
     document.getElementsByTagName("body")[0].style.overflow = "visible";
+    $hamburgerMenuButton.focus();
+};
+
+/**
+ * Create loop in mobile menu for tabbing elements
+ */
+HeaderExtended.prototype.initMobileMenuTabbing = function () {
+    //Get header extended mobile menu focusable elements
+    var $headerExtended = this.$module.querySelectorAll('.idsk-header-extended__mobile')[0];
+    var $mobileMenuElements = $headerExtended.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])');
+    this.$firstMenuElement = $mobileMenuElements[0];
+    this.$lastMenuElement = $mobileMenuElements[$mobileMenuElements.length - 1];
+    var KEYCODE_TAB = 9;
+
+    document.addEventListener('keydown', function (e) {
+        var isTabPressed = (e.key === 'Tab' || e.keyCode === KEYCODE_TAB);
+
+        if (!isTabPressed) {
+            return;
+        }
+
+        if (e.shiftKey) { // shift + tab
+            if (document.activeElement === this.$firstMenuElement) {
+                this.$lastMenuElement.focus();
+                e.preventDefault();
+            }
+        } else if (document.activeElement === this.$lastMenuElement) { // tab
+            this.$firstMenuElement.focus();
+            e.preventDefault();
+        }
+
+    }.bind(this));
 };
 
 /**
