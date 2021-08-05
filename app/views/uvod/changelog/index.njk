@@ -4,82 +4,260 @@
 {% set pageName = "Changelog" %}
 
 {% block beforeContent %}
-  {{ govukBreadcrumbs({
-    "items": [
-    { text: 'ID-SK frontend', href: '/' + legacyQuery },
-    { text: pageName }
-    ]
-  }) }}
-{% endblock %}  
+{{ govukBreadcrumbs({
+"items": [
+{ text: 'ID-SK frontend', href: '/' + legacyQuery },
+{ text: pageName }
+]
+}) }}
+{% endblock %}
 
 {% block content %}
-  <div class="govuk-width-container">
+<div class="govuk-width-container">
 
     <span class="govuk-caption-xl">Úvod</span>
     <h1 class="govuk-heading-xl">{{pageName}}</h1>
 
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds govuk-body">
-          <table class="govuk-table">
-            <thead class="govuk-table__head">
-                <tr class="govuk-table__row">
-                    <th scope="col" class="govuk-table__header">2018</th>
-                </tr>
-            </thead>
-            <tbody class="govuk-table__body">
 
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell"><a class="govuk-link" href="https://github.com/id-sk/id-sk-frontend/releases/tag/v2.0.0" target="_blank" rel="noopener noreferrer">v2.0.0</a></td>
-                </tr>
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell"><a class="govuk-link" href="https://github.com/id-sk/id-sk-frontend/releases/tag/v1.3.0" target="_blank" rel="noopener noreferrer">v1.3.0</a></td>
-                </tr>
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell"><a class="govuk-link" href="https://github.com/id-sk/id-sk-frontend/releases/tag/v1.2.0" target="_blank" rel="noopener noreferrer">v1.2.0</a></td>
-                </tr>
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell"><a class="govuk-link" href="https://github.com/id-sk/id-sk-frontend/releases/tag/v1.1.1" target="_blank" rel="noopener noreferrer">v1.1.1</a></td>
-                </tr>
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell"><a class="govuk-link" href="https://github.com/id-sk/id-sk-frontend/releases/tag/v1.1.0" target="_blank" rel="noopener noreferrer">v1.1.0</a></td>
-                </tr>
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell"><a class="govuk-link" href="https://github.com/id-sk/id-sk-frontend/releases/tag/v1.0.0" target="_blank" rel="noopener noreferrer">v1.0.0</a></td>
-                </tr>
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell"><a class="govuk-link" href="https://github.com/id-sk/id-sk-frontend/releases/tag/v0.0.32" target="_blank" rel="noopener noreferrer">v0.0.32</a></td>
-                </tr>
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell"><a class="govuk-link" href="https://github.com/id-sk/id-sk-frontend/releases/tag/v0.0.31-alpha" target="_blank" rel="noopener noreferrer">v0.0.31-alpha</a></td>
-                </tr>
-                <tr class="govuk-table__row">
-                    <td class="govuk-table__cell"><a class="govuk-link" href="https://github.com/id-sk/id-sk-frontend/releases/tag/v0.0.30-alpha" target="_blank" rel="noopener noreferrer">v0.0.30-alpha</a></td>
-                </tr>
-                <tr class="govuk-table__row">
-                    <td class="govuk-table__cell"><a class="govuk-link" href="https://github.com/id-sk/id-sk-frontend/releases/tag/v0.0.29-alpha" target="_blank" rel="noopener noreferrer">v0.0.29-alpha</a></td>
-                </tr>
-                <tr class="govuk-table__row">
-                    <td class="govuk-table__cell"><a class="govuk-link" href="https://github.com/id-sk/id-sk-frontend/releases/tag/v0.0.28-alpha" target="_blank" rel="noopener noreferrer">v0.0.28-alpha</a></td>
-                </tr>
-                <tr class="govuk-table__row">
-                    <td class="govuk-table__cell"><a class="govuk-link" href="https://github.com/id-sk/id-sk-frontend/releases/tag/v0.0.27-alpha" target="_blank" rel="noopener noreferrer">v0.0.27-alpha</a></td>
-                </tr>
-                <tr class="govuk-table__row">
-                    <td class="govuk-table__cell"><a class="govuk-link" href="https://github.com/id-sk/id-sk-frontend/releases/tag/v0.0.26-alpha" target="_blank" rel="noopener noreferrer">v0.0.26-alpha</a></td>
-                </tr>
-                <tr class="govuk-table__row">
-                    <td class="govuk-table__cell"><a class="govuk-link" href="https://github.com/id-sk/id-sk-frontend/releases/tag/v0.0.25-alpha" target="_blank" rel="noopener noreferrer">v0.0.25-alpha</a></td>
-                </tr>
-                <tr class="govuk-table__row">
-                    <td class="govuk-table__cell"><a class="govuk-link" href="https://github.com/id-sk/id-sk-frontend/releases/tag/v0.0.24-alpha" target="_blank" rel="noopener noreferrer">v0.0.24-alpha</a></td>
-                </tr>
+            <p class="govuk-body-l">Zoznam všetkých verzií IDSK dizajn systému:</p>
 
-            </tbody>
+            <table class="govuk-table">
+                <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                        <th scope="col" class="govuk-table__header">2021</th>
+                    </tr>
+                </thead>
+                <tbody class="govuk-table__body">
+
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a class="govuk-link"
+                                href="https://github.com/id-sk/id-sk-frontend/releases/tag/2.6.0"
+                                target="_blank" rel="noopener noreferrer">2.6.0</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a class="govuk-link"
+                                href="https://github.com/id-sk/id-sk-frontend/releases/tag/2.5.0"
+                                target="_blank" rel="noopener noreferrer">2.5.0</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a class="govuk-link"
+                                href="https://github.com/id-sk/id-sk-frontend/releases/tag/2.4.0"
+                                target="_blank" rel="noopener noreferrer">2.4.0</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a class="govuk-link"
+                                href="https://github.com/id-sk/id-sk-frontend/releases/tag/2.3.0"
+                                target="_blank" rel="noopener noreferrer">2.3.0</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a class="govuk-link"
+                                href="https://github.com/id-sk/id-sk-frontend/releases/tag/2.2.0"
+                                target="_blank" rel="noopener noreferrer">2.2.0</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a class="govuk-link"
+                                href="https://github.com/id-sk/id-sk-frontend/releases/tag/2.1.0"
+                                target="_blank" rel="noopener noreferrer">2.1.0</a></td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+            <table class="govuk-table">
+                <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                        <th scope="col" class="govuk-table__header">2020</th>
+                    </tr>
+                </thead>
+                <tbody class="govuk-table__body">
+
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a class="govuk-link"
+                                href="https://github.com/id-sk/id-sk-frontend/releases/tag/v2.0.1-alpha.0" target="_blank"
+                                rel="noopener noreferrer">v2.0.1-alpha.0</a></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="govuk-table">
+                <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                        <th scope="col" class="govuk-table__header">2019</th>
+                    </tr>
+                </thead>
+                <tbody class="govuk-table__body">
+
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a class="govuk-link"
+                                href="https://github.com/id-sk/id-sk-frontend/releases/tag/v3.0.0" target="_blank"
+                                rel="noopener noreferrer">v3.0.0</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a class="govuk-link"
+                                href="https://github.com/id-sk/id-sk-frontend/releases/tag/v2.12.0" target="_blank"
+                                rel="noopener noreferrer">v2.12.0</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a class="govuk-link"
+                                href="https://github.com/id-sk/id-sk-frontend/releases/tag/v2.11.0"
+                                target="_blank" rel="noopener noreferrer">v2.11.0</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a class="govuk-link"
+                                href="https://github.com/id-sk/id-sk-frontend/releases/tag/v2.10.0"
+                                target="_blank" rel="noopener noreferrer">v2.10.0</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a class="govuk-link"
+                                href="https://github.com/id-sk/id-sk-frontend/releases/tag/v2.9.0"
+                                target="_blank" rel="noopener noreferrer">v2.9.0</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a class="govuk-link"
+                                href="https://github.com/id-sk/id-sk-frontend/releases/tag/v2.8.0"
+                                target="_blank" rel="noopener noreferrer">v2.8.0</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a class="govuk-link"
+                                href="https://github.com/id-sk/id-sk-frontend/releases/tag/v2.7.0"
+                                target="_blank" rel="noopener noreferrer">v2.7.0</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a class="govuk-link"
+                                href="https://github.com/id-sk/id-sk-frontend/releases/tag/v2.6.0"
+                                target="_blank" rel="noopener noreferrer">v2.6.0</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a class="govuk-link"
+                                href="https://github.com/id-sk/id-sk-frontend/releases/tag/v2.5.1"
+                                target="_blank" rel="noopener noreferrer">v2.5.1</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a class="govuk-link"
+                                href="https://github.com/id-sk/id-sk-frontend/releases/tag/v2.5.0"
+                                target="_blank" rel="noopener noreferrer">v2.5.0</a></td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+            <table class="govuk-table">
+                <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                        <th scope="col" class="govuk-table__header">2018</th>
+                    </tr>
+                </thead>
+                <tbody class="govuk-table__body">
+
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a class="govuk-link"
+                                href="https://github.com/id-sk/id-sk-frontend/releases/tag/v2.4.1" target="_blank"
+                                rel="noopener noreferrer">v2.4.1</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a class="govuk-link"
+                                href="https://github.com/id-sk/id-sk-frontend/releases/tag/v2.4.0" target="_blank"
+                                rel="noopener noreferrer">v2.4.0</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a class="govuk-link"
+                                href="https://github.com/id-sk/id-sk-frontend/releases/tag/v2.3.0" target="_blank"
+                                rel="noopener noreferrer">v2.3.0</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a class="govuk-link"
+                                href="https://github.com/id-sk/id-sk-frontend/releases/tag/v2.2.0" target="_blank"
+                                rel="noopener noreferrer">v2.2.0</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a class="govuk-link"
+                                href="https://github.com/id-sk/id-sk-frontend/releases/tag/v2.1.0" target="_blank"
+                                rel="noopener noreferrer">v2.1.0</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a class="govuk-link"
+                                href="https://github.com/id-sk/id-sk-frontend/releases/tag/v2.0.0" target="_blank"
+                                rel="noopener noreferrer">v2.0.0</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a class="govuk-link"
+                                href="https://github.com/id-sk/id-sk-frontend/releases/tag/v1.3.0" target="_blank"
+                                rel="noopener noreferrer">v1.3.0</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a class="govuk-link"
+                                href="https://github.com/id-sk/id-sk-frontend/releases/tag/v1.2.0" target="_blank"
+                                rel="noopener noreferrer">v1.2.0</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a class="govuk-link"
+                                href="https://github.com/id-sk/id-sk-frontend/releases/tag/v1.1.1" target="_blank"
+                                rel="noopener noreferrer">v1.1.1</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a class="govuk-link"
+                                href="https://github.com/id-sk/id-sk-frontend/releases/tag/v1.1.0" target="_blank"
+                                rel="noopener noreferrer">v1.1.0</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a class="govuk-link"
+                                href="https://github.com/id-sk/id-sk-frontend/releases/tag/v1.0.0" target="_blank"
+                                rel="noopener noreferrer">v1.0.0</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a class="govuk-link"
+                                href="https://github.com/id-sk/id-sk-frontend/releases/tag/v0.0.32" target="_blank"
+                                rel="noopener noreferrer">v0.0.32</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a class="govuk-link"
+                                href="https://github.com/id-sk/id-sk-frontend/releases/tag/v0.0.31-alpha"
+                                target="_blank" rel="noopener noreferrer">v0.0.31-alpha</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a class="govuk-link"
+                                href="https://github.com/id-sk/id-sk-frontend/releases/tag/v0.0.30-alpha"
+                                target="_blank" rel="noopener noreferrer">v0.0.30-alpha</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a class="govuk-link"
+                                href="https://github.com/id-sk/id-sk-frontend/releases/tag/v0.0.29-alpha"
+                                target="_blank" rel="noopener noreferrer">v0.0.29-alpha</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a class="govuk-link"
+                                href="https://github.com/id-sk/id-sk-frontend/releases/tag/v0.0.28-alpha"
+                                target="_blank" rel="noopener noreferrer">v0.0.28-alpha</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a class="govuk-link"
+                                href="https://github.com/id-sk/id-sk-frontend/releases/tag/v0.0.27-alpha"
+                                target="_blank" rel="noopener noreferrer">v0.0.27-alpha</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a class="govuk-link"
+                                href="https://github.com/id-sk/id-sk-frontend/releases/tag/v0.0.26-alpha"
+                                target="_blank" rel="noopener noreferrer">v0.0.26-alpha</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a class="govuk-link"
+                                href="https://github.com/id-sk/id-sk-frontend/releases/tag/v0.0.25-alpha"
+                                target="_blank" rel="noopener noreferrer">v0.0.25-alpha</a></td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell"><a class="govuk-link"
+                                href="https://github.com/id-sk/id-sk-frontend/releases/tag/v0.0.24-alpha"
+                                target="_blank" rel="noopener noreferrer">v0.0.24-alpha</a></td>
+                    </tr>
+
+                </tbody>
             </table>
 
 
         </div>
     </div>
 
-  </div>
+</div>
 {% endblock %}
