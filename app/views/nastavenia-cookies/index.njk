@@ -67,6 +67,7 @@
   }) }}
 
   {{ idskButton({
+  "classes": "save-cookie-settings",
   "text": "Uložiť nastavenia"
   }) }}
 
@@ -74,4 +75,8 @@
     </div>
 
   </div>
+{% endblock %}
+
+{% block bodyEnd %}
+  <script src="public/assets/js/nastavenia-cookies.js"></script>
 {% endblock %}
