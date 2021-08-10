@@ -54,7 +54,7 @@
   }) }}
 
   {{ govukCheckboxes({
-    idPrefix: "ga-cookies",
+    idPrefix: "preferences-cookies",
     items: [
       {
         text: "Preferenčné súbory cookie"
@@ -77,6 +77,3 @@
   </div>
 {% endblock %}
 
-{% block bodyEnd %}
-  <script src="public/assets/js/nastavenia-cookies.js"></script>
-{% endblock %}
