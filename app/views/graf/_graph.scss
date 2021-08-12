@@ -1,6 +1,6 @@
-@import "../../../govuk/settings/all";
-@import "../../../govuk/tools/all";
-@import "../../../govuk/helpers/all";
+@import "../../../package/govuk/settings/all";
+@import "../../../package/govuk/tools/all";
+@import "../../../package/govuk/helpers/all";
 
 @include govuk-exports("idsk/component/graph") {
     .idsk-graph {

@@ -1,7 +1,9 @@
 {% extends "layout.njk" %}
 {% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
-{% from "../../../src/idsk/components/graph/macro.njk" import idskGraph %}
+{% from "../graf/macro.njk" import graph %}
+
 {% set pageName = "Grafový komponent" %}
+
 {% block beforeContent %}
   {{ govukBreadcrumbs({
     "items": [
@@ -10,6 +12,7 @@
     ]
   }) }}
 {% endblock %}
+
 {% block content %}
   <span class="govuk-caption-xl">Webové komponenty</span>
   <h1 class="govuk-heading-xl">{{pageName}}</h1>
@@ -83,7 +86,7 @@
 
       <div class="example example-error">
         {% set exampleComponentHtml %}
-          {{ idskGraph({
+          {{ graph({
               uniqueId: "graph1",
               title: "Pozitívne testovaní",
               radioOptions: [
@@ -158,77 +161,6 @@
         Ďalším tlačidlom je zobrazenie údajov prostredníctvom tabuľkového zobrazenie údajov. Namiesto grafu sa zobrazia údaje v tabuľkové forme, z ktorých je vytvorený graf. Údaje v tabuľke je možné zoraďovať.
       </p>
 
-      <div class="example example-error">
-        {% set exampleComponentHtml %}
-          {{ idskGraph({
-              uniqueId: "graph2",
-              title: "Pozitívne testovaní",
-              radioOptions: [
-                  {
-                      title: "PCR",
-                      value: "pcr"
-                  },
-                  {
-                      title: "Antigén",
-                      value: "antigen"
-                  },
-                  {
-                      title: "PCR + Antigén",
-                      value: "pcr-antigen"
-                  }
-              ],
-              activeTab: "2",
-              summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu tellus suscipit, condimentum arcu a, sollicitudin quam. Fusce tempor facilisis dui vitae iaculis. Sed ac sodales turpis.",
-              graphDailyIframeSrc: "/vzory/graph-sample",
-              graphDailyIframeTitle: "Lorem Ipsun title",
-              graphSumIframeSrc: "/vzory/graph-sample?time=sum",
-              graphSumframeTitle: "Lorem Ipsun 2 title",
-              tableIframeSrc: "/vzory/interactive-table-sample-2",
-              tableIframeTitle: "Lorem Ipsun 3 title",
-              methodicsHtml: "<p class='govuk-body'>Lorem ipsum ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu tellus suscipit, condimentum arcu a, sollicitudin quam. Fusce tempor facilisis dui vitae iaculis. Sed ac sodales turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu tellus suscipit, condimentum arcu a, sollicitudin quam. Fusce tempor facilisis dui vitae iaculis. Sed ac sodales turpis.</p><p class='govuk-body'>Loipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu tellus suscipit, condimentum arcu a, sollicitudin quam. Fusce tempor facilisis dui vitae iaculis. Sed ac sodales turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu tellus suscipit, condimentum arcu a, sollicitudin quam. Fusce tempor facilisis dui vitae iaculis. Sed ac sodales turpis.</p><p class='govuk-body'>Loipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu tellus suscipit, condimentum arcu a, sollicitudin quam. Fusce tempor facilisis dui vitae iaculis. Sed ac sodales turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu tellus suscipit, condimentum arcu a, sollicitudin quam. Fusce tempor facilisis dui vitae iaculis. Sed ac sodales turpis.</p>",
-              download: {
-                  downloadTitle: "Stiahnuť údaje",
-                  items: [
-                      {
-                          title: "ako CSV (54 kB)",
-                          value: "/public/assets/data/PCR_denne_kumulat_AG-denne_kumulat.csv"
-                      },
-                      {
-                          title: "ako JSON (54 kB)",
-                          value: "/public/assets/data/PCR_denne_kumulat_AG-denne_kumulat.json"
-                      },
-                      {
-                          title: "ako XLSX (54 kB)",
-                          value: "/public/assets/data/PCR_denne_kumulat_AG-denne_kumulat.xlsx"
-                      }
-                  ]
-              },
-              share: {
-                  shareTitle: "Zdielať údaje",
-                  items: [
-                      {
-                          title: "Kopírovať link",
-                          class: "idsk-graph__copy-to-clickboard",
-                          value: "/komponenty/grafovy-komponent#graph2"
-                      },
-                      {
-                          title: "Emailom",
-                          class: "idsk-graph__send-link-by-email",
-                          value: "#graph2"
-                      },
-                      {
-                          title: "na Facebooku",
-                          class: "idsk-graph__share-on-facebook",
-                          value: "#graph2",
-                          target: "_blank"
-                      }
-                  ]
-              },
-              source: "Zdroj: NCZI"
-        }) }}
-        {% endset %}
-        {{exampleComponentHtml | safe}}
-      </div>
       <pre class="language-markup"><code class="govuk-!-font-size-16 language-markup">{{ exampleComponentHtml }}</code></pre>
 
       <h4 class="govuk-heading-s">Metodika</h4>
@@ -236,77 +168,6 @@
         Po kliknutí sa zobrazí podrobná metodika - napríklad zberu údajov. Tu je priestor na popísanie ako sa údaje zbierajú, pre popis úzkych miest - kde môžu vznikať diskrepancie a oneskorenia a ako sú ošetrené a podobne.
       </p>
 
-      <div class="example example-error">
-        {% set exampleComponentHtml %}
-          {{ idskGraph({
-              uniqueId: "graph3",
-              title: "Pozitívne testovaní",
-              radioOptions: [
-                  {
-                      title: "PCR",
-                      value: "pcr"
-                  },
-                  {
-                      title: "Antigén",
-                      value: "antigen"
-                  },
-                  {
-                      title: "PCR + Antigén",
-                      value: "pcr-antigen"
-                  }
-              ],
-              activeTab: "3",
-              summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu tellus suscipit, condimentum arcu a, sollicitudin quam. Fusce tempor facilisis dui vitae iaculis. Sed ac sodales turpis.",
-              graphDailyIframeSrc: "/vzory/graph-sample",
-              graphDailyIframeTitle: "Lorem Ipsun title",
-              graphSumIframeSrc: "/vzory/graph-sample?time=sum",
-              graphSumframeTitle: "Lorem Ipsun 2 title",
-              tableIframeSrc: "/vzory/interactive-table-sample-2",
-              tableIframeTitle: "Lorem Ipsun 3 title",
-              methodicsHtml: "<p class='govuk-body'>Lorem ipsum ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu tellus suscipit, condimentum arcu a, sollicitudin quam. Fusce tempor facilisis dui vitae iaculis. Sed ac sodales turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu tellus suscipit, condimentum arcu a, sollicitudin quam. Fusce tempor facilisis dui vitae iaculis. Sed ac sodales turpis.</p><p class='govuk-body'>Loipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu tellus suscipit, condimentum arcu a, sollicitudin quam. Fusce tempor facilisis dui vitae iaculis. Sed ac sodales turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu tellus suscipit, condimentum arcu a, sollicitudin quam. Fusce tempor facilisis dui vitae iaculis. Sed ac sodales turpis.</p><p class='govuk-body'>Loipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu tellus suscipit, condimentum arcu a, sollicitudin quam. Fusce tempor facilisis dui vitae iaculis. Sed ac sodales turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu tellus suscipit, condimentum arcu a, sollicitudin quam. Fusce tempor facilisis dui vitae iaculis. Sed ac sodales turpis.</p>",
-              download: {
-                  downloadTitle: "Stiahnuť údaje",
-                  items: [
-                      {
-                          title: "ako CSV (54 kB)",
-                          value: "/public/assets/data/PCR_denne_kumulat_AG-denne_kumulat.csv"
-                      },
-                      {
-                          title: "ako JSON (54 kB)",
-                          value: "/public/assets/data/PCR_denne_kumulat_AG-denne_kumulat.json"
-                      },
-                      {
-                          title: "ako XLSX (54 kB)",
-                          value: "/public/assets/data/PCR_denne_kumulat_AG-denne_kumulat.xlsx"
-                      }
-                  ]
-              },
-              share: {
-                  shareTitle: "Zdielať údaje",
-                  items: [
-                      {
-                          title: "Kopírovať link",
-                          class: "idsk-graph__copy-to-clickboard",
-                          value: "/komponenty/grafovy-komponent#graph3"
-                      },
-                      {
-                          title: "Emailom",
-                          class: "idsk-graph__send-link-by-email",
-                          value: "#graph3"
-                      },
-                      {
-                          title: "na Facebooku",
-                          class: "idsk-graph__share-on-facebook",
-                          value: "#graph3",
-                          target: "_blank"
-                      }
-                  ]
-              },
-              source: "Zdroj: NCZI"
-        }) }}
-        {% endset %}
-        {{exampleComponentHtml | safe}}
-      </div>
       <pre class="language-markup"><code class="govuk-!-font-size-16 language-markup">{{ exampleComponentHtml }}</code></pre>
 
       <h3 class="govuk-heading-s">Vysvetlivky</h3>
@@ -335,4 +196,7 @@
     </div>
 
   </div>
+{% endblock %}
+{% block bodyEnd %}
+  <script type="module" src="/public/assets/js/graph.js"></script>
 {% endblock %}

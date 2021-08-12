@@ -1,6 +1,6 @@
-import '../../../govuk/vendor/polyfills/Function/prototype/bind'
-import '../../../govuk/vendor/polyfills/Event' // addEventListener and event.target normaliziation
-import { nodeListForEach } from '../../../govuk/common'
+import '/package/govuk/vendor/polyfills/Function/prototype/bind'
+import '/package/govuk/vendor/polyfills/Event' // addEventListener and event.target normaliziation
+import { nodeListForEach } from '/package/govuk/common'
 
 function Graph($module) {
     this.$module = $module
@@ -196,4 +196,3 @@ Graph.prototype.showTab = function ($tab) {
     $panel.classList.add('idsk-graph__section-show')
 }
 
-export default Graph
