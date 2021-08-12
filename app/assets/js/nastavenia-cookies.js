@@ -33,12 +33,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
     function addGa(){
         //Google analytics scripts
         var gaScriptSrc = document.createElement("script");
-        gaScriptSrc.type = "text/javascript";
+        gaScriptSrc.async = true;
         gaScriptSrc.id = "ga-script-src";
         gaScriptSrc.src = "https://www.googletagmanager.com/gtag/js?id=G-WR6TZ5RBNF";
 
         var gaScript = document.createElement("script");
-        gaScript.type = "text/javascript";
         gaScript.id = "ga-script"
         gaScript.innerHTML = 
         `window.dataLayer = window.dataLayer || [];
@@ -47,8 +46,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
         gtag('config', 'G-WR6TZ5RBNF');`;
 
         var head = document.getElementsByTagName('head')[0];
-        head.appendChild(gaScript);
-        head.appendChild(gaScriptSrc)
+        head.insertBefore(gaScript, head.firstChild);
+        head.insertBefore(gaScriptSrc, head.firstChild);
     }
 
     function removeGa(){
