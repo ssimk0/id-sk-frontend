@@ -5,30 +5,30 @@ var $radioOptions = $module.querySelectorAll('.idsk-graph__radio');
 if ($radioOptions) {
     for (var index = 0; index < $radioOptions.length; index++) {
         const $radioOption = $radioOptions[index];
-        $radioOption.addEventListener('change', (e) => handleRadioButtonModeClick(e));
+        $radioOption.addEventListener('change', function(e){handleRadioButtonModeClick(e)});
     }
 }
 
 var $shareButtonByCopyToClickboard = $module.querySelector('.idsk-graph__copy-to-clickboard')
 if ($shareButtonByCopyToClickboard) {
-    $shareButtonByCopyToClickboard.addEventListener('click', (e) => handleShareByCopyToClickboardClick(e));
+    $shareButtonByCopyToClickboard.addEventListener('click', function(e){handleShareByCopyToClickboardClick(e)});
 }
 
 var $shareButtonByEmail = $module.querySelector('.idsk-graph__send-link-by-email')
 if ($shareButtonByEmail) {
-    $shareButtonByEmail.addEventListener('click', (e) => handleShareByEmailClick(e))
+    $shareButtonByEmail.addEventListener('click', function(e){handleShareByEmailClick(e)})
 }
 
 var $shareButtonByFacebook = $module.querySelector('.idsk-graph__share-on-facebook')
 if ($shareButtonByFacebook) {
-    $shareButtonByFacebook.addEventListener('click', (e) => handleShareByFacebook(e))
+    $shareButtonByFacebook.addEventListener('click', function(e){handleShareByFacebook(e)})
 }
 
 var $dropdownLinks = $module.querySelectorAll('.idsk-graph__meta-link-list')
 if ($dropdownLinks) {
     for (var index = 0; index < $dropdownLinks.length; index++) {
         const $dropdownLink = $dropdownLinks[index];
-        $dropdownLink.addEventListener('click', (e) => handleDropdownLinkClick(e))
+        $dropdownLink.addEventListener('click', function(e){handleDropdownLinkClick(e)})
     }
 
     $module.boundCheckDropdownOutsideClick = checkDropdownOutsideClick();
@@ -38,7 +38,7 @@ var $tabs = $module.querySelectorAll('.govuk-tabs__tab')
 if ($tabs) {
     for (var index = 0; index < $tabs.length; index++) {
         const $tab = $tabs[index];
-        $tab.addEventListener('click', (e) => handleTabLinkClick(e));
+        $tab.addEventListener('click', function(e){handleTabLinkClick(e)});
     }
 
     var $forcedActiveTab = $module.querySelector('.govuk-tabs').dataset.activetab

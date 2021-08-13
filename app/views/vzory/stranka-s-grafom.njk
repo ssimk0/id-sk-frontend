@@ -70,8 +70,6 @@
       <pre class="language-markup"><code class="govuk-!-font-size-16 language-markup">{{ exampleComponentHtml }}</code></pre>
     </div>  
 
-    
-
     <div class="govuk-grid-column-full">
       <h2 class="govuk-heading-m" id="ako-funguje-graf">Ako funguje graf?</h2>
 
@@ -79,14 +77,17 @@
       <p class="govuk-body">
         Môžete použiť prepínače na prepínanie súvisiacich javov - napríklad PCR testy, antigénové testy a podobne. Ak javy spolu nesúvisia, vytvorte pre ne samostatné grafy.
       </p>
+
       <h3 class="govuk-heading-s">Popis</h3>
       <p class="govuk-body">
         Do popisu uvádzajte čo graf zobrazuje - aký jav a podľa čoho sa zobrazuje - napríklad počet nakazených COVID-19 na Slovensku podľa dátumu. Ak si to údaje vyžadujú, pridajte do popisu aj doplňujúce informácie.
       </p>
+
       <h3 class="govuk-heading-s">Tlačidlá</h3>
       <p class="govuk-body">
         Nad grafovým oknom sú textové tlačidlá.
       </p>
+
       <h4 class="govuk-heading-s">Pohľady na údaje</h4>
       <p class="govuk-body">
         Ak budete zobrazovať napríklad počet nakazených COVID-19 na Slovensku podľa dátumu je dobré ponúknuť používateľovi možnosť vidieť denné prírastky a taktiež ich kumulatívny počet, ktorý zobrazuje celkový stav.
@@ -106,10 +107,12 @@
       <p class="govuk-body">
         Po kliknutí na graf sa používateľovi zobrazia údaje v danom bode s popisom. Pod grafovým oknom sa umiestnite vysvetlivky. 
       </p>
+
       <h3 class="govuk-heading-s">Zdieľanie grafu</h3>
       <p class="govuk-body">
         Pod grafovým oknom môžete pridať aj link pre jednoduché zdieľanie vášho grafu na rôznyhc platformách. 
       </p>
+      
       <h3 class="govuk-heading-s">Zdrojové údaje a zdroj údajov</h3>
       <p class="govuk-body">
         Vždy pridajte ku grafu aj zdrojové údaje. Použite štandardné, strojovo spracovateľné údajové formáty ako napríklad csv, JSON, XML. Môžete dať používateľom na výber z viacerých formátov.
@@ -122,6 +125,7 @@
 
   </div>
 {% endblock %}
+
 {% block bodyEnd %}
   <script type="module" src="/public/assets/js/graph.js"></script>
 {% endblock %}
