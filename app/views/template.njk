@@ -14,9 +14,10 @@
       //Check if Google Analytics exist in localStorage if not create key and add default value to true
       if(!(window.localStorage.getItem('googleAnalytics'))){window.localStorage.setItem('googleAnalytics', 'true');}
       if(window.localStorage.getItem('googleAnalytics') == 'true'){
-        gtag('js', new Date());
-        gtag('config', 'G-WR6TZ5RBNF');
-        }
+        window['ga-disable-G-WR6TZ5RBNF'] = true;
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-WR6TZ5RBNF');
     </script>    
     <meta charset="utf-8" />
     <title>{% block pageTitle %}GID-SK Frontend{% endblock %}</title>
