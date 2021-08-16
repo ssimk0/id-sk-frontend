@@ -4,7 +4,7 @@ var $module = document.querySelectorAll('[data-module="idsk-graph"]')[0];
 var $radioOptions = $module.querySelectorAll('.idsk-graph__radio');
 if ($radioOptions) {
     for (var index = 0; index < $radioOptions.length; index++) {
-        const $radioOption = $radioOptions[index];
+        var $radioOption = $radioOptions[index];
         $radioOption.addEventListener('change', function(e){handleRadioButtonModeClick(e)});
     }
 }
@@ -27,7 +27,7 @@ if ($shareButtonByFacebook) {
 var $dropdownLinks = $module.querySelectorAll('.idsk-graph__meta-link-list')
 if ($dropdownLinks) {
     for (var index = 0; index < $dropdownLinks.length; index++) {
-        const $dropdownLink = $dropdownLinks[index];
+        var $dropdownLink = $dropdownLinks[index];
         $dropdownLink.addEventListener('click', function(e){handleDropdownLinkClick(e)})
     }
 
@@ -37,7 +37,7 @@ if ($dropdownLinks) {
 var $tabs = $module.querySelectorAll('.govuk-tabs__tab')
 if ($tabs) {
     for (var index = 0; index < $tabs.length; index++) {
-        const $tab = $tabs[index];
+        var $tab = $tabs[index];
         $tab.addEventListener('click', function(e){handleTabLinkClick(e)});
     }
 
