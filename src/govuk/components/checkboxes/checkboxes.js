@@ -37,6 +37,7 @@ Checkboxes.prototype.init = function () {
 }
 
 Checkboxes.prototype.setAttributes = function ($input) {
+  debugger;
   var inputIsChecked = $input.checked
   $input.setAttribute('aria-expanded', inputIsChecked)
 
@@ -48,7 +49,7 @@ Checkboxes.prototype.setAttributes = function ($input) {
 
 Checkboxes.prototype.handleClick = function (event) {
   var $target = event.target
-
+  debugger;
   // If a checkbox with aria-controls, handle click
   var isCheckbox = $target.getAttribute('type') === 'checkbox'
   var hasAriaControls = $target.getAttribute('aria-controls')

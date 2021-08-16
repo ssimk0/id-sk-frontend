@@ -4,7 +4,7 @@ var preferencesCheckbox = document.getElementById("preferences-cookies");
 
 (function intCookies(){
     if(window.localStorage.getItem('googleAnalytics') == 'true'){
-        if(gaCheckbox && !(window.getComputedStyle(gaCheckbox.nextElementSibling, ':after').getPropertyValue('opacity') == 1)){
+        if(gaCheckbox && !(gaCheckbox.checked)){
             gaCheckbox.setAttribute("checked"); 
             }
     }else{
@@ -13,7 +13,7 @@ var preferencesCheckbox = document.getElementById("preferences-cookies");
         }
     }
     if(window.localStorage.getItem('preferences') == 'true'){
-        if(preferencesCheckbox && !(window.getComputedStyle(preferencesCheckbox.nextElementSibling, ':after').getPropertyValue('opacity') == 1)){
+        if(preferencesCheckbox && !(preferencesCheckbox.checked)){
             preferencesCheckbox.setAttribute("checked", "checked"); 
             }
     }else{
@@ -28,13 +28,13 @@ var saveCookieButton = document.getElementsByClassName("save-cookie-settings")[0
 if(saveCookieButton){
     
     saveCookieButton.onclick = function () { 
-    if(window.getComputedStyle(gaCheckbox.nextElementSibling, ':after').getPropertyValue('opacity') == 1){
+    if(gaCheckbox.checked){
         window.localStorage.setItem('googleAnalytics', 'true');
     }else{
         window.localStorage.setItem('googleAnalytics', 'false'); 
     }
 
-    if(window.getComputedStyle(preferencesCheckbox.nextElementSibling, ':after').getPropertyValue('opacity') == 1){
+    if(preferencesCheckbox.checked){
         window.localStorage.setItem('preferences', 'true');
     }else{
         window.localStorage.setItem('preferences', 'false'); 
