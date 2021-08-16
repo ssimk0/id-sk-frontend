@@ -1,4 +1,71 @@
-{% from "../../../govuk/components/tabs/macro.njk" import govukTabs %}
+{% from "../../../../src/govuk/components/tabs/macro.njk" import govukTabs %}
+{% set params = {
+        uniqueId: "graph1",
+        title: "Pozitívne testovaní",
+        radioOptions: [
+            {
+                title: "PCR",
+                value: "pcr"
+            },
+            {
+                title: "Antigén",
+                value: "antigen"
+            },
+            {
+                title: "PCR + Antigén",
+                value: "pcr-antigen"
+            }
+        ],
+        activeTab: "0",
+        summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu tellus suscipit, condimentum arcu a, sollicitudin quam. Fusce tempor facilisis dui vitae iaculis. Sed ac sodales turpis.",
+        graphDailyIframeSrc: "/vzory/graph-sample",
+        graphDailyIframeTitle: "Lorem Ipsun title",
+        graphSumIframeSrc: "/vzory/graph-sample?time=sum",
+        graphSumframeTitle: "Lorem Ipsun 2 title",
+        tableIframeSrc: "/vzory/interactive-table-sample-2",
+        tableIframeTitle: "Lorem Ipsun 3 title",
+        methodicsHtml: "<p class='govuk-body'>Lorem ipsum ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu tellus suscipit, condimentum arcu a, sollicitudin quam. Fusce tempor facilisis dui vitae iaculis. Sed ac sodales turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu tellus suscipit, condimentum arcu a, sollicitudin quam. Fusce tempor facilisis dui vitae iaculis. Sed ac sodales turpis.</p><p class='govuk-body'>Loipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu tellus suscipit, condimentum arcu a, sollicitudin quam. Fusce tempor facilisis dui vitae iaculis. Sed ac sodales turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu tellus suscipit, condimentum arcu a, sollicitudin quam. Fusce tempor facilisis dui vitae iaculis. Sed ac sodales turpis.</p><p class='govuk-body'>Loipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu tellus suscipit, condimentum arcu a, sollicitudin quam. Fusce tempor facilisis dui vitae iaculis. Sed ac sodales turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu tellus suscipit, condimentum arcu a, sollicitudin quam. Fusce tempor facilisis dui vitae iaculis. Sed ac sodales turpis.</p>",
+        download: {
+            downloadTitle: "Stiahnuť údaje",
+            items: [
+                {
+                    title: "ako CSV (54 kB)",
+                    value: "/public/assets/data/PCR_denne_kumulat_AG-denne_kumulat.csv"
+                },
+                {
+                    title: "ako JSON (54 kB)",
+                    value: "/public/assets/data/PCR_denne_kumulat_AG-denne_kumulat.json"
+                },
+                {
+                    title: "ako XLSX (54 kB)",
+                    value: "/public/assets/data/PCR_denne_kumulat_AG-denne_kumulat.xlsx"
+                }
+            ]
+        },
+        share: {
+            shareTitle: "Zdielať údaje",
+            items: [
+                {
+                    title: "Kopírovať link",
+                    class: "idsk-graph__copy-to-clickboard",
+                    value: "/komponenty/grafovy-komponent#graph2"
+                },
+                {
+                    title: "Emailom",
+                    class: "idsk-graph__send-link-by-email",
+                    value: "#graph2"
+                },
+                {
+                    title: "na Facebooku",
+                    class: "idsk-graph__share-on-facebook",
+                    value: "#graph2",
+                    target: "_blank"
+                }
+            ]
+        },
+        source: "Zdroj: NCZI"
+} %}
+
 
 <div data-module="idsk-graph" class="idsk-graph{{ ' ' + params.classes if params.classes }}" id="{{ params.uniqueId }}">
     <div class="govuk-grid-row idsk-graph__heading">

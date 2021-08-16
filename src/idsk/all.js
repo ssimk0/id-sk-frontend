@@ -14,7 +14,6 @@ import SearchResultsFilter from './components/search-results-filter/search-resul
 import Stepper from './components/stepper/stepper';
 import RegistrationForEvent from './components/registration-for-event/registration-for-event';
 import InteractiveMap from './components/interactive-map/interactive-map';
-import Graph from './components/graph/graph';
 import Accordion from './components/accordion/accordion';
 
 function initAll(options) {
@@ -98,11 +97,6 @@ function initAll(options) {
     new InteractiveMap($interactiveMap).init();
   })
 
-  var $graphs = scope.querySelectorAll('[data-module="idsk-graph"]');
-  nodeListForEach($graphs, function ($graph) {
-    new Graph($graph).init();
-  })
-
   var $accordions = scope.querySelectorAll('[data-module="idsk-accordion"]');
   nodeListForEach($accordions, function ($accordion){
     new Accordion($accordion).init();
@@ -129,6 +123,5 @@ export {
   RegistrationForEvent,
   InteractiveMap,
   Stepper,
-  Graph,
   Accordion
 }
