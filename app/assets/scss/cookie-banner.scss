@@ -46,3 +46,9 @@
       outline: none;
     }
   }
+  @media (min-width: 1020px) {
+    .idsk-cookie-banner__example{
+      margin-right: govuk-spacing(6);
+      margin-left: govuk-spacing(6);
+    }
+  }
