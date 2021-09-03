@@ -7,35 +7,47 @@
 @include govuk-exports("idsk/component/intro-block") {
     .idsk-intro-block {
         @include govuk-font($size: 16);
-    }
 
-    .idsk-intro-block .govuk-heading-xl {
-        margin-bottom: 0;
-        @include mq($from: desktop) {
-            @include govuk-font($size: 36, $weight: bold);
+        .govuk-heading-xl {
+                margin-bottom: 0;
+                @include mq($from: desktop) {
+                    @include govuk-font($size: 36, $weight: bold);
+                }
+            }
+
+        .govuk-heading-l {
+            margin-bottom: 0;
+
+            @include mq($from: tablet) {
+                @include govuk-font($size: 24, $weight: bold);
+            }
         }
-    }
 
-    .idsk-intro-block .govuk-heading-l {
-        margin-bottom: 0;
+        .govuk-body{
+            margin-bottom: govuk-spacing(8);
 
-        @include mq($from: tablet) {
-            @include govuk-font($size: 24, $weight: bold);
+            @include mq($until: mobile) {
+                margin-bottom: govuk-spacing(4);
+            }
+        
         }
-    }
 
-    .idsk-intro-block .app-pane-grey {
-        background-color: govuk-colour("light-grey");
-    }
-
-    .idsk-intro-block__subtitle {
-        color: govuk-colour("black");
-        padding-bottom: govuk-spacing(5);
-
-        @include mq($from: desktop) {
-            @include govuk-font($size: 19);
+        .app-pane-grey {
+            background-color: govuk-colour("light-grey");
         }
+
+        .govuk-grid-column-one-third-from-desktop{
+            @include mq($from: desktop){
+               width: calc(33.3333% - 50px); 
+            }
+        }
+
+        .govuk-heading-m{
+            font-size: 24px;
+        }
+
     }
+
 
     .idsk-intro-block__list__ul {
         margin-top: 0;
@@ -50,7 +62,6 @@
         display: inline-block;
         margin-right: govuk-spacing(6);
         margin-bottom: govuk-spacing(2);
-        text-decoration-line: underline;
 
         @include mq($from: desktop) {
             margin-right: govuk-spacing(3);
@@ -64,6 +75,23 @@
     .idsk-intro-block__list__li .govuk-link:active,
     .idsk-intro-block__list__li .govuk-link:link {
         color: govuk-colour("dark-grey");
+    }
+
+    .idsk-intro-block__side-menu{
+        @include mq($from: desktop){
+            margin-left: govuk-spacing(8);
+        }
+       
+
+        .govuk-heading-s{
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+
+        &.app-pane-grey,
+        &.app-pane-blue{
+            padding-top: govuk-spacing(3);
+        }
     }
 
     .idsk-intro-block__side-menu__default__ul {
@@ -132,26 +160,6 @@
         }
     }
 
-    #idsk-intro-block__side-menu__default .govuk-heading-l {
-        margin: 0;
-        float: unset;
-        margin-bottom: -15px;
-
-        @include mq($from: desktop) {
-            text-align: right;
-            margin: 0 0 -30px 0px;
-        }
-    }
-
-    #idsk-intro-block__side-menu__default {
-        width: auto;
-
-        @include mq($from: desktop) {
-            float: right;
-            width: 26%;
-        }
-    }
-
     #idsk-intro-block__side-menu__title .govuk-heading-l {
         padding-top: govuk-spacing(3);
         margin-bottom: govuk-spacing(2);
@@ -176,29 +184,9 @@
         }
     }
 
-    .idsk-intro-block__side-menu {
-        @include mq($from: tablet) {
-            margin: 0 govuk-spacing(3);
-        }
-    }
-
     .idsk-intro-block__side-menu__span {
         padding-top: govuk-spacing(3);
         padding-right: govuk-spacing(1);
-    }
-
-    #idsk-intro-block__side-menu__default .govuk-heading-l,
-    .idsk-intro-block__side-menu .govuk-heading-l {
-        text-transform: uppercase;
-    }
-
-    .idsk-intro-block__side-menu #idsk-intro-block__side-menu__default {
-        padding-top: govuk-spacing(2);
-
-        @include mq($from: tablet) {
-            padding-left: govuk-spacing(3);
-            padding-bottom: govuk-spacing(3);
-        }
     }
 
     .idsk-intro-block__bottom-menu__li {
@@ -207,8 +195,6 @@
         padding-bottom: govuk-spacing(2);
 
         @include mq($from: desktop) {
-            @include govuk-font($size: 19);
-
             display: inline-grid;
             padding-bottom: 0;
             padding-right: govuk-spacing(4);
@@ -216,7 +202,7 @@
     }
 
     .app-pane-grey {
-        .govuk-heading-l,
+        .govuk-heading-s,
         .idsk-intro-block__side-menu__a,
         .idsk-intro-block__side-menu__li {
             color: govuk-colour("black");
