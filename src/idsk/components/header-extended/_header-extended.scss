@@ -756,6 +756,12 @@
         }
       }
     }
+
+    &.idsk-header-extended--cookie{
+      @include mq($until: desktop) {
+        position: absolute;
+      }
+    }
   }
 
   .idsk-header-extended__language--current-text img,
