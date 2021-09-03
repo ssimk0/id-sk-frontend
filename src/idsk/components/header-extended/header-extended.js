@@ -84,19 +84,18 @@ HeaderExtended.prototype.init = function () {
             if(headerPosition < (-cookieBannerHeight)){
                 $module.classList.remove('idsk-header-extended--cookie');
                 $module.style.top = '0px';
-            }
-            if(headerPosition < 0 && headerPosition >= (-cookieBannerHeight)){
+            }else{
                 $module.classList.add('idsk-header-extended--cookie');
                 $module.style.top = cookieBannerHeight.toString() + 'px';
             }
         });
 
         // cookie resize handler
-        const ro = new ResizeObserver(entries => {
+        var resizeObserver = new ResizeObserver(entries => {
             $module.style.top = $cookieBanner.offsetHeight.toString() + 'px';
           });
 
-          ro.observe($cookieBanner);
+          resizeObserver.observe($cookieBanner);
 
     }
     
