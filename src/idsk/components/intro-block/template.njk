@@ -3,9 +3,9 @@
         <div class="govuk-grid-row {{ params.classContainer }}">
             <div class="govuk-grid-column-full govuk-grid-column-two-thirds-from-desktop">
                 <h2 class="govuk-heading-m">
-                    {{ params.headline if params.headline else "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky"}}
+                    {{ params.headline if params.headline else "Vitajte na MIRRI SR"}}
                 </h2>
-                <p class="govuk-body">{{ params.mainTitle if params.mainTitle else "Vitajte na stránke Ministerstva investícií, regionálneho rozvoja a informatizácie. Dozvedieť sa"}}
+                <p class="govuk-body">{% if params.mainTitle %} params.mainTitle {% else %} Dozvedieť sa <a class='govuk-link' href='#' title='viac o ministerstve'>viac o ministerstve</a>. {% endif %}
                     {% if params.mainTitleLinkLabel %}
                     <a class="govuk-link" href="{{ params.moreInfoAboutMinistryLink if params.moreInfoAboutMinistryLink else '#'  }}">
                         {{ params.mainTitleLinkLabel if params.mainTitleLinkLabel else "viac o ministerstve."}}</a>

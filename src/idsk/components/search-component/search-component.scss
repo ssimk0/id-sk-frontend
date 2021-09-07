@@ -11,12 +11,12 @@
       @include govuk-font($size: 19);
       position: absolute;
       padding-left: govuk-spacing(2);
-      padding-top: govuk-spacing(3);
+      padding-top: govuk-spacing(2);
       cursor: text;
-      background: govuk-colour("grey-4");
+      color: govuk-colour("grey-1");
 
       @include mq($from: desktop) {
-        padding-top: govuk-spacing(4);
+        padding-top: 8px;
       }
 
       &.idsk-intro-block-site-search-text-small {
@@ -30,15 +30,14 @@
   .idsk-search-component__input {
     @include govuk-font($size: 19);
 
-    height: 53px;
-    border: none;
-    background: govuk-colour("grey-4");
+    height: 40px;
+    border: 1px solid govuk-colour("black");
     margin-right: -3px;
     font-style: normal;
     font-weight: normal;
 
     @include mq($from: desktop) {
-      height: 68px;
+      height: 40px;
     }
   }
 
@@ -50,13 +49,11 @@
   }
 
   .idsk-search-component__button {
-    width: 55px;
-    height: 53px;
+    width: 44px;
+    height: 40px;
 
-    @include mq($from: desktop) {
-      width: 67px;
-      height: 68px;
-    }
+    background-color: govuk-colour("blue");
+    box-shadow: none;
   }
 
   .idsk-search-component__input--small {
@@ -69,8 +66,8 @@
     z-index: 2;
 
     svg {
-      height: 22px;
-      width: 18px;
+      height: 18,14px;
+      width: 18,14px;
     }
   }
 
