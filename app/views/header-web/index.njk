@@ -1,0 +1,7 @@
+{% extends "layout.njk" %}
+
+
+{% block header %}
+    {% from "../../../src/idsk/components/header-web/macro.njk" import idskHeaderWeb %}
+    {{ idskHeaderWeb() }}
+{% endblock %}
