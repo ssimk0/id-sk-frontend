@@ -24,10 +24,9 @@
         }
 
         .govuk-body{
-            margin-bottom: govuk-spacing(8);
-
-            @include mq($until: mobile) {
                 margin-bottom: govuk-spacing(4);
+            @include mq($from: desktop) {
+                margin-bottom: govuk-spacing(8);
             }
         
         }
@@ -84,8 +83,13 @@
        
 
         .govuk-heading-s{
-            font-weight: 400;
-            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 18px;
+
+            @include mq($from: desktop){
+                font-weight: 400;
+                text-transform: uppercase;
+            }
         }
 
         &.app-pane-grey,
