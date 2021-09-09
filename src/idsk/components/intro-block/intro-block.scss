@@ -83,14 +83,17 @@
        
 
         .govuk-heading-s{
-            font-weight: 700;
-            font-size: 18px;
 
             @include mq($from: desktop){
                 font-weight: 400;
-                font-size: 19px;
                 margin-bottom: govuk-spacing(2);
                 text-transform: uppercase;
+            }
+
+            @include mq($until: tablet){
+                font-weight: 700;
+                font-size: 18px;
+                line-height: 20px; 
             }
         }
 
