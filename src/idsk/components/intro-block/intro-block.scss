@@ -6,7 +6,7 @@
 
 @include govuk-exports("idsk/component/intro-block") {
     .idsk-intro-block {
-        @include govuk-font($size: 16);
+        @include govuk-font($size: 19);
 
         .govuk-heading-xl {
                 margin-bottom: 0;
