@@ -58,7 +58,7 @@ params:
     description: headline of page.
 
   - name: mainTitle
-    type: string
+    type: html
     required: false
     description: title of page.
 
@@ -70,7 +70,7 @@ params:
 examples:
   - name: basic
     data:
-      mainTitle : Vitajte na stránke Ministerstva investícií, regionálneho rozvoja a informatizácie. Dozvedieť sa
+      mainTitle : Dozvedieť sa <a class='govuk-link' href='#' title='viac o ministerstve'>viac o ministerstve</a>.
       bottomMenu:
         - href: "#"
           item: Eurofondy
@@ -99,7 +99,7 @@ examples:
 
   - name: extended
     data:
-      mainTitle : Vitajte na stránke Ministerstva investícií, regionálneho rozvoja a informatizácie. Dozvedieť sa
+      mainTitle : Dozvedieť sa <a class='govuk-link' href='#' title='viac o ministerstve'>viac o ministerstve</a>.
       bottomMenu:
         - href: "#"
           item: Eurofondy
@@ -129,7 +129,7 @@ examples:
 
   - name: without search
     data:
-      mainTitle : Vitajte na stránke Ministerstva investícií, regionálneho rozvoja a informatizácie. Dozvedieť sa
+      mainTitle : Dozvedieť sa <a class='govuk-link' href='#' title='viac o ministerstve'>viac o ministerstve</a>.
       bottomMenu:
         - href: "#"
           item: Eurofondy
