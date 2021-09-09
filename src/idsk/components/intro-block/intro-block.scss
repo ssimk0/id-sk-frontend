@@ -88,6 +88,8 @@
 
             @include mq($from: desktop){
                 font-weight: 400;
+                font-size: 19px;
+                margin-bottom: govuk-spacing(2);
                 text-transform: uppercase;
             }
         }
