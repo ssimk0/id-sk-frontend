@@ -7,6 +7,7 @@ import CharacterCount from "./components/character-count/character-count";
 import Crossroad from "./components/crossroad/crossroad";
 import CustomerSurveys from "./components/customer-surveys/customer-surveys";
 import HeaderExtended from './components/header-extended/header-extended';
+import HeaderWeb from './components/header-web/header-web';
 import InPageNavigation from './components/in-page-navigation/in-page-navigation';
 import SearchComponent from './components/search-component/search-component';
 import SearchResults from './components/search-results/search-results';
@@ -66,6 +67,11 @@ function initAll(options) {
     new HeaderExtended($headerExtended).init();
   });
 
+  var $headersWeb = scope.querySelectorAll('[data-module="idsk-header-web"]');
+  nodeListForEach($headersWeb, function ($headerWeb) {
+    new HeaderWeb($headerWeb).init();
+  });
+
   var $inPageNavigation = scope.querySelector('[data-module="idsk-in-page-navigation"]');
   new InPageNavigation($inPageNavigation).init();
 
@@ -116,6 +122,7 @@ export {
   Feedback,
   FooterExtended,
   HeaderExtended,
+  HeaderWeb,
   InPageNavigation,
   SearchComponent,
   SearchResults,

@@ -1,5 +1,43 @@
+{# brand bar #}
+{% set brandBar %}
+        {% set brand = params.brand %}
+        {% for language in brand.languages|sort(attribute='text') %}
+                {% if language.selected %}
+                        {% set currentLanguage = language %}
+                {% endif %}
+        {% endfor %}
+        
+        <div class="idsk-header-web__brand govuk-grid-row">
+                <div class="idsk-header-web__container {{ params.containerClasses | default('govuk-width-container') }}">
+                        <div class="govuk-grid-column-two-thirds">
+                        <p class="idsk-header-web__brand-gestor govuk-body-s">
+                                        {{ brand.gestor if brand.gestor else 'Oficiálna stránka <a class="govuk-link" href="#" title="slovenského e-govermentu">slovenského e-govermentu</a>' | safe }}  
+                        </p> 
+                        </div>
+                        <div class="govuk-grid-column-one-third">
+                                <button class="idsk-header-web__brand-language-button"><span>{{ currentLanguage if currentLanguage else 'Slovenčina' }}</span>
+                                        <ul class="idsk-header-web__brand-language-list">
+                                                {% for language in brand.languages|sort(attribute='text') %}
+                                                <li class="idsk-header-web__brand-language-list-item">
+                                                        <a class="idsk-header-extended__language-list-link" title="{{ language.text }}" href="{{ language.link }}">
+                                                                {{ language.text }}
+                                                        </a>
+                                                </li>
+                                                {% endfor %}
+                                        </ul>
+                                </button>
+                                
+                                
+                                
+                        </div>
+                </div>
+        </div>
+{% endset %}
+
 <header class="idsk-header-web {{ params.classes if params.classes }}" data-module="idsk-header-web"
         {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
-    
+          {{ brandBar | safe}}      
+        
+        
     
 </header>

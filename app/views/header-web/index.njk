@@ -3,5 +3,30 @@
 
 {% block header %}
     {% from "../../../src/idsk/components/header-web/macro.njk" import idskHeaderWeb %}
-    {{ idskHeaderWeb() }}
+    {{ idskHeaderWeb({
+        brand: {
+            languages: [
+                {
+                    text: "Slovenčina",
+                    selected: true,
+                    link: "#"
+                },
+                {
+                    text: "Deutsch",
+                    selected: false,
+                    link: "#"
+                },
+                {
+                    text: "English",
+                    selected: false,
+                    link: "#"
+                },
+                {
+                    text: "Español",
+                    selected: false,
+                    link: "#"
+                }
+            ]
+        }
+    }) }}
 {% endblock %}

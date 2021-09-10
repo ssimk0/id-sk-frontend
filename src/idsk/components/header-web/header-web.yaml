@@ -1,0 +1,32 @@
+params:
+- name: classes
+  type: string
+  required: false
+  description: Classes to add to the header container.
+- name: attributes
+  type: object
+  required: false
+  description: HTML attributes (for example data attributes) to add to the header container.
+- name: brand
+  type: object
+  required: false
+  description: BrandBar object including language selector
+  params: 
+  - name: languages
+    type: array
+    required: true
+    description: Other language options
+    params: 
+    - name: text
+      type: string
+      required: true
+      description: Name of language
+    - name: selected
+      type: boolean
+      required: true
+      description: If language is selected
+    - name: link
+      type: string
+      required: false
+      description: link to english mutation
+  
