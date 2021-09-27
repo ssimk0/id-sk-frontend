@@ -39,6 +39,26 @@ HeaderWeb.prototype.init = function () {
             $toggleLanguageSwitcher.addEventListener('focus', this.handleLanguageSwitcherClick.bind(this));
         }.bind(this))
 
+        // close language list if i left the last item from langauge list e.g. if user use tab key for navigations
+        var $lastLanguageItems = $module.querySelectorAll('.idsk-header-web__brand-language-list-item:last-child .idsk-header-extended__language-list-link');
+        nodeListForEach($lastLanguageItems, function ($lastLanguageItem) {
+            $lastLanguageItem.addEventListener('blur', this.checkBlurLanguageSwitcherClick.bind(this));
+        }.bind(this))
+
+    }
+
+    $module.boundCheckBlurLanguageSwitcherClick = this.checkBlurLanguageSwitcherClick.bind(this);
+
+    // check for e-goverment button
+    var $toggleEgovermentSwitch = $module.querySelectorAll('.idsk-header-web__brand-language');
+    if ($toggleLanguageSwitchers) {
+        // Handle $toggleEgovermentSwitch click events
+        nodeListForEach($toggleEgovermentSwitch, function ($toggleEgovermentSwitcher) {
+            $toggleEgovermentSwitcher.addEventListener('click', this.handleEgovermentSwitcherClick.bind(this));
+            $toggleEgovermentSwitcher.addEventListener('focus', this.handleEgovermentSwitcherClick.bind(this));
+        }.bind(this))
+
+        // close e-goverment banner if user focus next element
     }
 
     // check for menu items
@@ -115,9 +135,29 @@ HeaderWeb.prototype.handleSearchChange = function (e) {
  */
 HeaderWeb.prototype.handleLanguageSwitcherClick = function (e) {
     var $toggleButton = e.target || e.srcElement;
-    //var $target = $toggleButton.closest('.idsk-header-extended__language');
-    var $languageList = $toggleButton.querySelector('.idsk-header-web__brand-language-list');
-    toggleClass($languageList, 'idsk-header-web__brand-language-list--active');
+    this.$activeSearch = $toggleButton.closest('.idsk-header-web__brand-language');
+    toggleClass(this.$activeSearch, 'idsk-header-web__brand-language--active');
+    document.addEventListener('click', this.$module.boundCheckBlurLanguageSwitcherClick, true);
+}
+
+HeaderWeb.prototype.checkBlurLanguageSwitcherClick = function () {
+    this.$activeSearch.classList.remove('idsk-header-web__brand-language--active');
+    document.removeEventListener('click', this.$module.boundCheckBlurLanguageSwitcherClick, true);
+}
+
+/**
+ * Handle open/hide e-goverment statement switcher
+ * @param {object} e
+ */
+ HeaderWeb.prototype.handleEgovermentSwitcherClick = function (e) {
+    this.$toggleEgoverment = e.target || e.srcElement;
+    toggleClass($toggleEgoverment, 'idsk-header-web__brand-gestor-button--active');  
+    document.addEventListener('click', this.$module.boundCheckBlurLanguageSwitcherClick, true);
+}
+
+HeaderWeb.prototype.checkBlurLanguageSwitcherClick = function () {
+    this.$toggleEgoverment.classList.remove('idsk-header-web__brand-gestor-button--active');
+    document.removeEventListener('click', this.$module.boundCheckBlurLanguageSwitcherClick, true);
 }
 
 /**

@@ -1,4 +1,6 @@
-{# brand bar #}
+{% from "../button/macro.njk" import idskButton %}
+
+{# BRAND BAR #}
 {% set brandBar %}
         {% set brand = params.brand %}
         {% for language in brand.languages|sort(attribute='text') %}
@@ -7,37 +9,261 @@
                 {% endif %}
         {% endfor %}
         
-        <div class="idsk-header-web__brand govuk-grid-row">
-                <div class="idsk-header-web__container {{ params.containerClasses | default('govuk-width-container') }}">
-                        <div class="govuk-grid-column-two-thirds">
-                        <p class="idsk-header-web__brand-gestor govuk-body-s">
-                                        {{ brand.gestor if brand.gestor else 'Oficiálna stránka <a class="govuk-link" href="#" title="slovenského e-govermentu">slovenského e-govermentu</a>' | safe }}  
-                        </p> 
+        <div class="idsk-header-web__brand {{ 'idsk-header-web__brand--light' if brand.lightBackground }}">
+                <div class="govuk-width-container">
+                        <div class="govuk-grid-row">
+                                <div class="govuk-grid-column-full">
+                                        <div class="idsk-header-web__brand-gestor">
+                                                <div class="idsk-header-web__flag"></div>
+                                                <span class="govuk-body-s">
+                                                        {% if brand.gestorLink %}
+                                                                SK <a class="govuk-link" href="#" title="{{ brand.gestorLink }} ">e-Gov</a> 
+                                                        {% else %}
+                                                                SK <button class="idsk-header-web__brand-gestor-button">e-Gov<div class="idsk-header-web__link-arrow"></div></button>
+                                                        {% endif %}   
+                                                </span>
+                                        </div>
+                                        
+                                        <div class="idsk-header-web__brand-language">
+                                                <button class="idsk-header-web__brand-language-button">{{ currentLanguage if currentLanguage else 'Slovenčina' }}<div class="idsk-header-web__link-arrow"></div></button> 
+                                                <ul class="idsk-header-web__brand-language-list">
+                                                        {% for language in brand.languages|sort(attribute='text') %}
+                                                        <li class="idsk-header-web__brand-language-list-item">
+                                                                <a class="govuk-link idsk-header-extended__language-list-item-link" title="{{ language.text }}" href="{{ language.link }}">
+                                                                        {{ language.text }}
+                                                                </a>
+                                                        </li>
+                                                        {% endfor %}
+                                                </ul>  
+                                        </div>
+                                </div>        
+
                         </div>
-                        <div class="govuk-grid-column-one-third">
-                                <button class="idsk-header-web__brand-language-button"><span>{{ currentLanguage if currentLanguage else 'Slovenčina' }}</span>
-                                        <ul class="idsk-header-web__brand-language-list">
-                                                {% for language in brand.languages|sort(attribute='text') %}
-                                                <li class="idsk-header-web__brand-language-list-item">
-                                                        <a class="idsk-header-extended__language-list-link" title="{{ language.text }}" href="{{ language.link }}">
-                                                                {{ language.text }}
-                                                        </a>
-                                                </li>
-                                                {% endfor %}
-                                        </ul>
-                                </button>
-                                
-                                
-                                
+                        <div class="idsk-header-web__brand-dropdown">
+                                <div class="govuk-grid-row">
+                                        <div class="govuk-grid-column-one-half">
+                                                <p class="govuk-body-s">Doména Gov.sk je oficálna</p>
+                                                <p class="govuk-body-s">Slovak government websites always use a .gov.sk domain. Before sharing sensitive information online, make sure.</p>
+                                        </div>
+                                        <div class="govuk-grid-column-one-half">
+                                                <p class="govuk-body-s">Táto stránka je zabezpečená</p>
+                                                <p class="govuk-body-s">Slovak government websites always use a .gov.sk domain. Before sharing sensitive information online, make sure.</p>
+                                        </div>
+                                </div>  
+                        </div>
+                        
+                </div>
+                
+        </div>
+{% endset %}
+
+
+{# MAIN SECTION #}
+{% set mainSection %}
+
+        {% set main = params.main %}
+
+        <div class="idsk-header-web__main">
+                <div class="govuk-width-container">
+                        <div class="govuk-grid-row">
+
+                                <div class="govuk-grid-column-one-third">
+                                        <div class="idsk-header-web__main-headline">
+                                                {% if params.headerType == 'website' or params.headerType == 'projectWebsite' %}
+                                                        {% if main.logoSrc %}
+                                                                <img src="{{ main.logoSrc }}" alt="header logo" class="idsk-header-web__main-headline-logo">
+                                                        {% endif %}
+                                                        {% if main.title %}
+                                                                <h2 class="govuk-heading-m">{{ main.title }}</h2>
+                                                        {% endif %}
+                                                {% endif %}
+
+
+                                                {% if params.headerType == 'electronicService' %}
+                                                        <h2 class="govuk-heading-l">{{ main.title if main.title else 'Title text' }}</h2>
+                                                {% endif %}
+                                        </div>
+                                </div>
+
+                                <div class="govuk-grid-column-two-thirds">
+                                        <div class="idsk-header-web__main-action">
+
+                                                {% if params.headerType == 'website' or params.headerType == 'projectWebsite' %}
+                                                        {% if main.search %}
+                                                                <form class="idsk-header-web__main-action-search">
+                                                                        <label class="idsk-header-web__main-action-search-label" for="idsk-header-web__main-action-search-input">
+                                                                                {{ params.search.label if params.search.label else "Zadajte hľadaný výraz" }}
+                                                                        </label>
+                                                                        <input class="govuk-input govuk-!-display-inline-block" id="idsk-header-web__main-action-search-input" name="search"
+                                                                                type="text" aria-describedby="input-width-30-hint" aria-label="Zadajte hľadaný výraz" />
+                                                                        <button type="submit" class="govuk-button govuk-!-display-inline-block" data-module="govuk-button">
+                                                                                <span class="govuk-visually-hidden">{{ main.search.button if main.search.button else "Vyhľadať" }}</span>
+                                                                                <i aria-hidden="true" class="fas fa-search"></i>
+                                                                        </button>
+                                                                </form>
+                                                        {% endif %}
+                                                          
+                                                        
+                                                        {% if main.loginButton %} 
+                                                                {{ idskButton({
+                                                                        "text": main.loginButton.text if main.loginButton.text else 'Prihlásiť sa',
+                                                                        "type": "button",
+                                                                        "classes": main.loginButton.classes if main.loginButton.classes
+                                                                }) }} 
+                                                        {% endif %}
+
+                                                        {% if main.secondaryButton %}
+                                                                {{ idskButton({
+                                                                        "text": main.secondaryButton.text if main.secondaryButton.text else 'Tlačidlo',
+                                                                        "type": "button",
+                                                                        "classes": main.secondaryButton.classes if main.secondaryButton.classes
+                                                                }) }}
+                                                        {% endif %} 
+                                                         
+                                                        
+                                                {% endif %}
+
+
+                                                {% if params.headerType == 'electronicService' %}
+                                                        
+                                                {% endif %}
+                                        </div>
+                                </div>
                         </div>
                 </div>
         </div>
 {% endset %}
 
+
+{# NAV BAR #}
+{% set navBar %}
+
+        <div class="idsk-header-web__nav {{ 'idsk-header-web__nav--dark' if params.navBar.darkBackground }}">
+                <div class="govuk-width-container">
+                        <div class="govuk-grid-row">
+                                <div class="govuk-grid-column-full">
+                                      {% if params.navBar %}
+                                        {% set navigation = params.navBar.navigation %}
+                                        <nav>
+                                                <ul class="idsk-header-web__nav-list {{ params.navBar.classes if params.navBar.classes }}"
+                                                        aria-label="Top Level Navigation">
+                                                        {% for item in navigation %}
+                                                                <li class="idsk-header-web__nav-list-item">
+                                                                        <a class="govuk-link idsk-header-web__nav-list-item-link"
+                                                                                href="{{ item.link }}" {% for attribute, value in item.attributes %} {{attribute}}="{{value}}" {% endfor
+                                                                                %} title="{{ item.text }}">{{ item.text }}
+                                                                                {% if item.submenu %}
+                                                                                <div class="idsk-header-web__link-arrow"></div>
+                                                                                {% endif %}
+                                                                        </a>
+                                                                        {% if item.submenu and (item.submenu | length < 6) %}
+                                                                        
+                                                                        <div class="idsk-header-web__nav-submenulite">
+                                                                                <ul class="idsk-header-web__nav-submenulite-list">
+                                                                                        {% for subItem in item.submenu%}
+                                                                                                <li class="idsk-header-web__nav-submenulite-list-item"><a class="govuk-link idsk-header-web__nav-submenulite-list-item-link" href="{{ subItem.link }}" title="{{ subItem.text }}">
+                                                                                                        {{ subItem.text }}
+                                                                                                </a></li>
+                                                                                        {% endfor %}
+                                                                                </ul>
+                                                                        </div>
+                                                                        {% endif %}
+                                                                </li>
+                                                        {% endfor %}
+                                                </ul>
+                                        </nav>
+                                        {% endif %}  
+                                </div>
+                                
+                        </div>
+                </div>
+
+
+                {% for item in navigation %}
+                        {% if item.submenu | length > 5 %}
+                        <div class="idsk-header-web__nav-submenu">
+                                <div class="govuk-width-container">
+                                        <div class="govuk-grid-row">
+                                                          
+                                                <div class="govuk-grid-column-one-quarter">
+                                                        <ul class="idsk-header-web__nav-submenu-list">
+                                                                {% for subItem in item.submenu.slice(0, 3) %}
+                                                                        <li class="idsk-header-web__nav-submenu-list-item"><a class="govuk-link idsk-header-web__nav-submenu-list-item-link" href="{{ subItem.link }}" title="{{ subItem.text }}">
+                                                                                {{ subItem.text }}
+                                                                        </a></li>
+                                                                {% endfor %}
+                                                        </ul>
+                                                </div>
+                                                
+                                                
+                                                <div class="govuk-grid-column-one-quarter">
+                                                        <ul class="idsk-header-web__nav-submenu-list">
+                                                                {% for subItem in item.submenu.slice(3, 6) %}
+                                                                        <li class="idsk-header-web__nav-submenu-list-item"><a class="govuk-link idsk-header-web__nav-submenu-list-item-link" href="{{ subItem.link }}" title="{{ subItem.text }}">
+                                                                                {{ subItem.text }}
+                                                                        </a></li>
+                                                                {% endfor %}
+                                                        </ul>
+                                                </div>
+                                                
+                                                <div class="govuk-grid-column-one-quarter">
+                                                        <ul class="idsk-header-web__nav-submenu-list">
+                                                                {% for subItem in item.submenu.slice(6, 9) %}
+                                                                        <li class="idsk-header-web__nav-submenu-list-item"><a class="govuk-link idsk-header-web__nav-submenu-list-item-link" href="{{ subItem.link }}" title="{{ subItem.text }}">
+                                                                                {{ subItem.text }}
+                                                                        </a></li>
+                                                                {% endfor %}
+                                                        </ul>      
+                                                </div>        
+                                                
+                                                <div class="govuk-grid-column-one-quarter">
+                                                        <ul class="idsk-header-web__nav-submenu-list">
+                                                                {% for subItem in item.submenu.slice(9, 12) %}
+                                                                        <li class="idsk-header-web__nav-submenu-list-item"><a class="govuk-link idsk-header-web__nav-submenu-list-item-link" href="{{ subItem.link }}" title="{{ subItem.text }}">
+                                                                                {{ subItem.text }}
+                                                                        </a></li>
+                                                                {% endfor %}
+                                                        </ul>             
+                                                </div>    
+                                                        
+                                        </div>
+                                </div>
+                        </div>
+                        {% endif %}
+                {% endfor %}
+                
+        </div>
+
+{% endset %}
+
+
+{# BANNER #}
+{% set bannerSection %}
+{% set banner = params.banner %}
+        <div class="idsk-header-web__banner {{ 'idsk-header-web__banner--warning' if banner.warning }}">
+                <div class="govuk-width-container">
+                        <div class="govuk-grid-row">
+                                <div class="govuk-grid-column-full">
+                                        <span class="govuk-body-s idsk-header-web__banner-title">
+                                                {% if banner.warning %}
+                                                        <div class="idsk-header-web__warning-icon"></div>
+                                                {% endif %}
+                                                {{ banner.text if banner.text else 'It was popularised in the 1960s with the release of Letraset' }}
+                                        </span>
+                                </div>
+                        </div>
+                </div>
+        </div>
+{% endset %}
+
+
 <header class="idsk-header-web {{ params.classes if params.classes }}" data-module="idsk-header-web"
         {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
-          {{ brandBar | safe}}      
         
+        {{ brandBar | safe}}   
         
+        {{ mainSection | safe}}
+
+        {{ navBar | safe}}
     
 </header>

@@ -4,6 +4,7 @@
 {% block header %}
     {% from "../../../src/idsk/components/header-web/macro.njk" import idskHeaderWeb %}
     {{ idskHeaderWeb({
+        headerType: "website",
         brand: {
             languages: [
                 {
@@ -25,6 +26,57 @@
                     text: "Español",
                     selected: false,
                     link: "#"
+                }
+            ]
+        },
+
+        main: {
+            logoSrc: "/public/assets/images/header-web/logo-mirri-farebne.svg",
+            title: "IDSK.SK",
+            search: true,
+            loginButton: true,
+            secondaryButton: true
+        },
+
+        navBar: {
+            navigation: [
+                {
+                    link: '#1',
+                    text: 'Eurofondy'
+                },
+                {
+                    link: '#2',
+                    text: 'Regionálny rozvoj',
+                    submenu: [
+                        {
+                            link: '#1',
+                            text: 'Eurofondy'
+                        },
+                        {
+                            link: '#2',
+                            text: 'Regionálny rozvoj'
+                        },
+                        {
+                            link: '#3',
+                            text: 'Informatizácia'
+                        },
+                        {
+                            link: '#4',
+                            text: 'Investície'
+                        }
+                    ]
+                },
+                {
+                    link: '#3',
+                    text: 'Informatizácia'
+                },
+                {
+                    link: '#4',
+                    text: 'Investície'
+                },
+                {
+                    link: '#5',
+                    text: 'Inovácie'
                 }
             ]
         }
