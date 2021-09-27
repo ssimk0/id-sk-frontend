@@ -82,6 +82,8 @@
                                                 {% if params.headerType == 'electronicService' %}
                                                         <h2 class="govuk-heading-l">{{ main.title if main.title else 'Title text' }}</h2>
                                                 {% endif %}
+
+                                                <button class="idsk-button idsk-header-web__main-headline-menu-button">{{ main.menuBtnText if main.menuBtnText else 'Menu' }} <div class="idsk-header-web__menu-open"></div></button>
                                         </div>
                                 </div>
 
@@ -91,11 +93,8 @@
                                                 {% if params.headerType == 'website' or params.headerType == 'projectWebsite' %}
                                                         {% if main.search %}
                                                                 <form class="idsk-header-web__main-action-search">
-                                                                        <label class="idsk-header-web__main-action-search-label" for="idsk-header-web__main-action-search-input">
-                                                                                {{ params.search.label if params.search.label else "Zadajte hľadaný výraz" }}
-                                                                        </label>
                                                                         <input class="govuk-input govuk-!-display-inline-block" id="idsk-header-web__main-action-search-input" name="search"
-                                                                                type="text" aria-describedby="input-width-30-hint" aria-label="Zadajte hľadaný výraz" />
+                                                                                placeholder="{{ params.search.label if params.search.label else 'Zadajte hľadaný výraz' }}" type="text" aria-describedby="input-width-30-hint" aria-label="Zadajte hľadaný výraz" />
                                                                         <button type="submit" class="govuk-button govuk-!-display-inline-block" data-module="govuk-button">
                                                                                 <span class="govuk-visually-hidden">{{ main.search.button if main.search.button else "Vyhľadať" }}</span>
                                                                                 <i aria-hidden="true" class="fas fa-search"></i>
@@ -154,6 +153,7 @@
                                                                                 %} title="{{ item.text }}">{{ item.text }}
                                                                                 {% if item.submenu %}
                                                                                 <div class="idsk-header-web__link-arrow"></div>
+                                                                                <div class="idsk-header-web__link-arrow-mobile"></div>
                                                                                 {% endif %}
                                                                         </a>
                                                                         {% if item.submenu and (item.submenu | length < 6) %}

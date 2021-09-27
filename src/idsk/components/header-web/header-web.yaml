@@ -58,6 +58,10 @@ params:
     type: string
     required: true
     description: Header title text
+  - name: menuBtnText
+    type: string
+    required: false
+    description: Text for mobile menu button
   - name: search
     type: bolean
     required: false
