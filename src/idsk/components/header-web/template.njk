@@ -59,10 +59,41 @@
 
 
 {# MAIN SECTION #}
+{% set main = params.main %}
+{% set mainButtons %}
+        <div class="idsk-header-web__main--buttons">
+        {% if main.loginButton %} 
+                {{ idskButton({
+                        "text": main.loginButton.text if main.loginButton.text else 'Prihlásiť sa',
+                        "type": "button",
+                        "classes": main.loginButton.classes if main.loginButton.classes
+                }) }} 
+        {% endif %}
+
+        {% if main.secondaryButton %}
+                {{ idskButton({
+                        "text": main.secondaryButton.text if main.secondaryButton.text else 'Tlačidlo',
+                        "type": "button",
+                        "classes": main.secondaryButton.classes if main.secondaryButton.classes
+                }) }}
+        {% endif %}
+        </div>
+{% endset %}
+
+{% set searchInput %}
+        {% if main.search %}
+                <form class="idsk-header-web__main-action-search">
+                        <input class="govuk-input govuk-!-display-inline-block" id="idsk-header-web__main-action-search-input" name="search"
+                                placeholder="{{ params.search.label if params.search.label else 'Zadajte hľadaný výraz' }}" type="text" aria-describedby="input-width-30-hint" aria-label="Zadajte hľadaný výraz" />
+                        <button type="submit" class="govuk-button govuk-!-display-inline-block" data-module="govuk-button">
+                                <span class="govuk-visually-hidden">{{ main.search.button if main.search.button else "Vyhľadať" }}</span>
+                                <i aria-hidden="true" class="fas fa-search"></i>
+                        </button>
+                </form>
+        {% endif %}
+{% endset %}
+
 {% set mainSection %}
-
-        {% set main = params.main %}
-
         <div class="idsk-header-web__main">
                 <div class="govuk-width-container">
                         <div class="govuk-grid-row">
@@ -91,34 +122,9 @@
                                         <div class="idsk-header-web__main-action">
 
                                                 {% if params.headerType == 'website' or params.headerType == 'projectWebsite' %}
-                                                        {% if main.search %}
-                                                                <form class="idsk-header-web__main-action-search">
-                                                                        <input class="govuk-input govuk-!-display-inline-block" id="idsk-header-web__main-action-search-input" name="search"
-                                                                                placeholder="{{ params.search.label if params.search.label else 'Zadajte hľadaný výraz' }}" type="text" aria-describedby="input-width-30-hint" aria-label="Zadajte hľadaný výraz" />
-                                                                        <button type="submit" class="govuk-button govuk-!-display-inline-block" data-module="govuk-button">
-                                                                                <span class="govuk-visually-hidden">{{ main.search.button if main.search.button else "Vyhľadať" }}</span>
-                                                                                <i aria-hidden="true" class="fas fa-search"></i>
-                                                                        </button>
-                                                                </form>
-                                                        {% endif %}
-                                                          
                                                         
-                                                        {% if main.loginButton %} 
-                                                                {{ idskButton({
-                                                                        "text": main.loginButton.text if main.loginButton.text else 'Prihlásiť sa',
-                                                                        "type": "button",
-                                                                        "classes": main.loginButton.classes if main.loginButton.classes
-                                                                }) }} 
-                                                        {% endif %}
-
-                                                        {% if main.secondaryButton %}
-                                                                {{ idskButton({
-                                                                        "text": main.secondaryButton.text if main.secondaryButton.text else 'Tlačidlo',
-                                                                        "type": "button",
-                                                                        "classes": main.secondaryButton.classes if main.secondaryButton.classes
-                                                                }) }}
-                                                        {% endif %} 
-                                                         
+                                                        {{ searchInput | safe }}
+                                                        {{ mainButtons | safe }}
                                                         
                                                 {% endif %}
 
@@ -140,9 +146,12 @@
         <div class="idsk-header-web__nav {{ 'idsk-header-web__nav--dark' if params.navBar.darkBackground }}">
                 <div class="govuk-width-container">
                         <div class="govuk-grid-row">
+                                {% if params.navBar %}
+                                {% set navigation = params.navBar.navigation %}
                                 <div class="govuk-grid-column-full">
-                                      {% if params.navBar %}
-                                        {% set navigation = params.navBar.navigation %}
+                                   {{ searchInput | safe }}     
+                                </div>
+                                <div class="govuk-grid-column-full">
                                         <nav>
                                                 <ul class="idsk-header-web__nav-list {{ params.navBar.classes if params.navBar.classes }}"
                                                         aria-label="Top Level Navigation">
@@ -172,7 +181,11 @@
                                                         {% endfor %}
                                                 </ul>
                                         </nav>
-                                        {% endif %}  
+                                        {% endif %}    
+                                </div>
+
+                                <div class="govuk-grid-column-full">
+                                        {{ mainButtons | safe }}
                                 </div>
                                 
                         </div>
@@ -256,6 +269,13 @@
         </div>
 {% endset %}
 
+{# MOBILE MENU #}
+{% set mobileMenu %}
+
+        {{ brandBar | safe}}   
+        
+
+{% endset %}
 
 <header class="idsk-header-web {{ params.classes if params.classes }}" data-module="idsk-header-web"
         {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
