@@ -150,33 +150,36 @@
         var rejectButton = document.querySelector('.js-cookies-button-reject')
         var acceptedButtonHide = document.querySelector('.js-cookies-button-accepted-hide')
         var rejectedButtonHide = document.querySelector('.js-cookies-button-rejected-hide')
-        cookieBanner.hidden = (localStorage.getItem('acceptedCookieBanner') === 'true')
 
-      acceptButton.addEventListener('click', function (event) {
-        cookieMessage.hidden = true
-        cookieBannerAccepted.hidden = false
-        localStorage.setItem('acceptedCookieBanner', 'true')
-        event.preventDefault()
-      })
+        if(cookieBanner){
+        
+          cookieBanner.hidden = (localStorage.getItem('acceptedCookieBanner') === 'true')
 
-      rejectButton.addEventListener('click', function (event) {
-        cookieMessage.hidden = true
-        cookieBannerRejected.hidden = false
-        localStorage.setItem('googleAnalytics', 'false')
-        localStorage.setItem('acceptedCookieBanner', 'true')
-        event.preventDefault()
-      })
+          acceptButton.addEventListener('click', function (event) {
+            cookieMessage.hidden = true
+            cookieBannerAccepted.hidden = false
+            localStorage.setItem('acceptedCookieBanner', 'true')
+            event.preventDefault()
+          })
 
-      acceptedButtonHide.addEventListener('click', function (event) {
-        cookieBanner.hidden = true
-        event.preventDefault()
-      })
+          rejectButton.addEventListener('click', function (event) {
+            cookieMessage.hidden = true
+            cookieBannerRejected.hidden = false
+            localStorage.setItem('googleAnalytics', 'false')
+            localStorage.setItem('acceptedCookieBanner', 'true')
+            event.preventDefault()
+          })
 
-      rejectedButtonHide.addEventListener('click', function (event) {
-        cookieBanner.hidden = true
-        event.preventDefault()
-      })
+          acceptedButtonHide.addEventListener('click', function (event) {
+            cookieBanner.hidden = true
+            event.preventDefault()
+          })
 
+          rejectedButtonHide.addEventListener('click', function (event) {
+            cookieBanner.hidden = true
+            event.preventDefault()
+          })
+        }
     </script>
   </body>
 </html>
