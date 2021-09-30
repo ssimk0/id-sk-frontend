@@ -221,7 +221,7 @@ CustomerSurveys.prototype.handleNextButtonClick = function (e) {
             $steps[i + 1].classList.add('idsk-customer-surveys--show');
             if (i == 4) {
                 $nextButtonText.innerHTML = $nextButtonText.dataset.line3;
-                setTimeout(() => {
+                setTimeout(function () {
                     $nextButton.setAttribute('type', 'submit');
                 }, 500);
                 toggleClass($startIcon[0], 'idsk-customer-surveys__icon--hidden');
