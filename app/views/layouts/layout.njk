@@ -15,12 +15,11 @@
   <div class="govuk-width-container">
   {{ govukPhaseBanner({
     "tag": {
-      "text": "ver. 2.6.1"
+      "text": "ver. 2.6.2"
     },
     "html": "Nová verzia ID-SK Frontend nahradzuje pôvodnú verziu. Dokumentáciu staršej verzie nájdete na <a class=\"govuk-link\" href=\"https:\/\/github.com\/id-sk\/idsk_elements\" target=\"_blank\" title=\"ID-SK Elements\">ID-SK Elements</a>"
   }) }}
   </div>
-
 {% endblock %}
 
 {% block footer %}
@@ -32,6 +31,16 @@
     showFeedbackMessage : "false",
     upButtonEnabled : "true",
     logo: "footer-extended-logo.svg",
+    subtitles: [
+      {
+        item:"Cookies",
+        href:"/nastavenia-cookies"
+      }, 
+      {
+        item:"Ochrana osobných údajov",
+        href:"/ochrana-osobnych-udajov"
+      }
+    ],
     dropdownItems: [
     {
       value: "Validačná chyba",

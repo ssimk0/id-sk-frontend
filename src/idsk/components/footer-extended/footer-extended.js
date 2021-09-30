@@ -90,12 +90,13 @@ FooterExtended.prototype.handleSubmitButtonClick = function (e) {
     var selectedOption = $selection.value;
     var issueText = $issueTextArea.value;
     
-    var email = $feedbackInfo.getAttribute("data-email");
-    var subject = $feedbackInfo.getAttribute("data-subject");
-    var emailBody = $feedbackInfo.textContent;
-    emailBody = emailBody.replace("%issue%", selectedOption).replace("%description%", issueText);
-    document.location = "mailto:"+email+"?subject="+subject+"&body="+emailBody;
-            
+    if($feedbackInfo) {
+        var email = $feedbackInfo.getAttribute("data-email");
+        var subject = $feedbackInfo.getAttribute("data-subject");
+        var emailBody = $feedbackInfo.textContent;
+        emailBody = emailBody.replace("%issue%", selectedOption).replace("%description%", issueText);
+        document.location = "mailto:"+email+"?subject="+subject+"&body="+emailBody;   
+    }    
 }
 
 FooterExtended.prototype.handleStatusOfCharacterCountButton = function (e) {

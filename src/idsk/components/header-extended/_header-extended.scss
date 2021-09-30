@@ -185,6 +185,7 @@
     .govuk-input {
       height: 30px;
       width: 200px;
+      border: 1px solid govuk-colour("black");
 
       &:focus {
         z-index: 2;
@@ -192,12 +193,14 @@
     }
 
     .govuk-button {
-      height: 28px;
+      height: 30px;
       width: 28px;
       font-size: 12px;
       margin-left: -4px;
       padding-top: 7px;
       padding-left: govuk-spacing(1);
+      background-color: govuk-colour("blue");
+      box-shadow: none;
     }
   }
 
@@ -633,6 +636,7 @@
             height: 50px;
             max-width: 240px;
             width: 100%;
+            border: 1px solid govuk-colour("black");
 
             &.idsk-header-extended__search-input--focus,
             &:focus {
@@ -640,6 +644,7 @@
             }
           }
           .govuk-button {
+            margin-top: 1px;
             font-size: 19px;
             height: 48px;
             width: 48px;
@@ -754,6 +759,12 @@
             display: inline-block;
           }
         }
+      }
+    }
+
+    &.idsk-header-extended--cookie{
+      @include mq($until: desktop) {
+        position: absolute;
       }
     }
   }

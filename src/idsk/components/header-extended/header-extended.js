@@ -70,6 +70,37 @@ HeaderExtended.prototype.init = function () {
 
     $module.boundCheckBlurMenuItemClick = this.checkBlurMenuItemClick.bind(this);
     $module.boundCheckBlurLanguageSwitcherClick = this.checkBlurLanguageSwitcherClick.bind(this);
+
+    // check for cookies
+
+    if (!(window.localStorage.getItem('acceptedCookieBanner'))) {
+        $module.classList.add('idsk-header-extended--cookie');
+        var $cookieBanner = document.querySelector('.idsk-cookie-banner');
+
+        if($cookieBanner) {
+            // scroll handler
+            window.addEventListener('scroll', function() {
+                var headerPosition = document.body.getBoundingClientRect().top;
+                var cookieBannerHeight = $cookieBanner.offsetHeight;
+                if(headerPosition < (-cookieBannerHeight)){
+                    $module.classList.remove('idsk-header-extended--cookie');
+                    $module.style.top = '0px';
+                }else{
+                    $module.classList.add('idsk-header-extended--cookie');
+                    $module.style.top = cookieBannerHeight.toString() + 'px';
+                }
+            });
+
+            // cookie resize handler
+            var resizeObserver = new ResizeObserver(entries => {
+                $module.style.top = $cookieBanner.offsetHeight.toString() + 'px';
+            });
+
+            resizeObserver.observe($cookieBanner);
+        }
+
+    }
+    
 }
 
 /**
