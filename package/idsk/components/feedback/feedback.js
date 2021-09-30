@@ -687,7 +687,7 @@ Feedback.prototype.init = function () {
         return;
     }
 
-    var $textAreaCharacterCount = $module.querySelector('#idsk-feedback__question-bar #with-hint');
+    var $textAreaCharacterCount = $module.querySelector('#idsk-feedback__question-bar #feedback');
     var $sendButton = $module.querySelector('#idsk-feedback__send-button');
     var $radioButtons = $module.querySelectorAll('.idsk-feedback__radio-button');
 
@@ -729,8 +729,8 @@ Feedback.prototype.handleRadioButtonClick = function (e) {
 };
 
 Feedback.prototype.handleStatusOfCharacterCountButton = function (e) {
-    var $textAreaCharacterCount = this.$module.querySelector('#with-hint');
-    var $remainingCharacterCountMessage = this.$module.querySelector('#with-hint-info');
+    var $textAreaCharacterCount = this.$module.querySelector('#feedback');
+    var $remainingCharacterCountMessage = this.$module.querySelector('#feedback-info');
 
     var $submitButton = this.$module.querySelector('#idsk-feedback__send-button');
 

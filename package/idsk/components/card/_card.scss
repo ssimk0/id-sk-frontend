@@ -58,6 +58,10 @@
     }
   }
 
+  .idsk-card-meta-container {
+    padding-bottom: govuk-spacing(2);
+  }
+
   .idsk-card-meta {
     @include govuk-font($size: 16);
     color: govuk-colour("grey-1");

@@ -169,6 +169,8 @@
   .idsk-header-extended__search {
     @include govuk-font($size: 16);
 
+    padding-right: govuk-spacing(4);
+
     &-label {
       color: govuk-colour("black");
       position: absolute;
@@ -188,6 +190,7 @@
     .govuk-input {
       height: 30px;
       width: 200px;
+      border: 1px solid govuk-colour("black");
 
       &:focus {
         z-index: 2;
@@ -195,12 +198,14 @@
     }
 
     .govuk-button {
-      height: 28px;
+      height: 30px;
       width: 28px;
       font-size: 12px;
       margin-left: -4px;
       padding-top: 7px;
       padding-left: govuk-spacing(1);
+      background-color: govuk-colour("blue");
+      box-shadow: none;
     }
   }
 
@@ -208,7 +213,7 @@
   .idsk-header-extended__language {
     @include govuk-font($size: 19);
 
-    padding: 0 govuk-spacing(3) govuk-spacing(1) govuk-spacing(4);
+    padding: 0 govuk-spacing(3) govuk-spacing(1) 0;
 
     &--active .idsk-header-extended__language-button::after {
       -webkit-transition: -webkit-transform 0.2s;
@@ -658,6 +663,7 @@
             height: 50px;
             max-width: 240px;
             width: 100%;
+            border: 1px solid govuk-colour("black");
 
             &.idsk-header-extended__search-input--focus,
             &:focus {
@@ -665,6 +671,7 @@
             }
           }
           .govuk-button {
+            margin-top: 1px;
             font-size: 19px;
             height: 48px;
             width: 48px;
@@ -782,6 +789,34 @@
           }
         }
       }
+    }
+
+    &.idsk-header-extended--cookie{
+      @include mq($until: desktop) {
+        position: absolute;
+      }
+    }
+  }
+
+  .idsk-header-extended__language--current-text img,
+  .idsk-header-extended__language-list-link img {
+    width: 15%;
+  }
+
+  // Handle focus event on skip link
+  .idsk-skip-link--sticky:focus + .idsk-header-extended {
+    @include mq($until: tablet) {
+      top: 2.28124rem;
+    }
+
+    @include mq($from: tablet) {
+      top: 2.53124rem;
+    }
+  }
+
+  .idsk-skip-link--sticky:focus ~ .idsk-header-extended-notification {
+    @include mq($until: desktop) {
+      padding-top: 7.938rem;
     }
   }
 }

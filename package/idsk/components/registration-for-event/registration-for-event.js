@@ -525,8 +525,6 @@ RegistrationForEvent.prototype.init = function () {
 };
 
 RegistrationForEvent.prototype.handleSubmitClick = function (e) {
-    e.preventDefault();
-
     var $module = this.$module;
     var $form = $module.querySelector('.idsk-registration-for-event__form');
     var $thankYouMsg = $module.querySelector('.idsk-registration-for-event__thank-you-msg');
@@ -538,6 +536,8 @@ RegistrationForEvent.prototype.handleSubmitClick = function (e) {
         var $formGroup = $item.closest('.govuk-form-group');
 
         if (!$item.checkValidity() || $item.type === 'email' && !emailRegex.test($item.value)) {
+            e.preventDefault();
+
             $formGroup.querySelector('.govuk-error-message').style.display = 'block';
             $formGroup.classList.add('govuk-form-group--error');
             $item.classList.add('govuk-input--error');

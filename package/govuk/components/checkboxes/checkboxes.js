@@ -48,7 +48,6 @@ Checkboxes.prototype.setAttributes = function ($input) {
 
 Checkboxes.prototype.handleClick = function (event) {
   var $target = event.target
-
   // If a checkbox with aria-controls, handle click
   var isCheckbox = $target.getAttribute('type') === 'checkbox'
   var hasAriaControls = $target.getAttribute('aria-controls')

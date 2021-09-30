@@ -77,15 +77,11 @@
         display: block;
         margin-right: govuk-spacing(3);
         margin-bottom: govuk-spacing(1);
-        -webkit-text-decoration-line: underline;
-                text-decoration-line: underline;
     }
 
     .idsk-footer-extended-list-item {
         display: block;
         margin-bottom: govuk-spacing(3);
-        -webkit-text-decoration-line: underline;
-                text-decoration-line: underline;
     }
 
     .idsk-footer-extended-description-panel-top-border {
@@ -119,13 +115,9 @@
             align-self: flex-end;
         -ms-flex-positive: 0;
             flex-grow: 0;
-        padding: govuk-spacing(6) 0;
+        margin: govuk-spacing(6) 0;
         width: 100%;
         max-width: 250px;
-
-        @include mq($from: tablet) {
-            padding-top: 0;
-        }
 
         & img,
         & svg {
@@ -594,5 +586,9 @@
         50% {
             opacity: 0;
         }
+    }
+
+    .idsk-footer-extended__feedback-info{
+        display: none;
     }
 }

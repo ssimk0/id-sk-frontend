@@ -1763,7 +1763,6 @@ Checkboxes.prototype.setAttributes = function ($input) {
 
 Checkboxes.prototype.handleClick = function (event) {
   var $target = event.target;
-
   // If a checkbox with aria-controls, handle click
   var isCheckbox = $target.getAttribute('type') === 'checkbox';
   var hasAriaControls = $target.getAttribute('aria-controls');
@@ -2646,12 +2645,13 @@ FooterExtended.prototype.handleSubmitButtonClick = function (e) {
     var selectedOption = $selection.value;
     var issueText = $issueTextArea.value;
     
-    var email = $feedbackInfo.getAttribute("data-email");
-    var subject = $feedbackInfo.getAttribute("data-subject");
-    var emailBody = $feedbackInfo.textContent;
-    emailBody = emailBody.replace("%issue%", selectedOption).replace("%description%", issueText);
-    document.location = "mailto:"+email+"?subject="+subject+"&body="+emailBody;
-            
+    if($feedbackInfo) {
+        var email = $feedbackInfo.getAttribute("data-email");
+        var subject = $feedbackInfo.getAttribute("data-subject");
+        var emailBody = $feedbackInfo.textContent;
+        emailBody = emailBody.replace("%issue%", selectedOption).replace("%description%", issueText);
+        document.location = "mailto:"+email+"?subject="+subject+"&body="+emailBody;   
+    }    
 };
 
 FooterExtended.prototype.handleStatusOfCharacterCountButton = function (e) {
@@ -3160,6 +3160,7 @@ CustomerSurveys.prototype.handlePreviousButtonClick = function (e) {
         }
         if ($nextButtonText.textContent.includes($nextButtonText.dataset.line3)) {
             $nextButtonText.innerHTML = $nextButtonText.dataset.line2;
+            $nextButton.setAttribute('type', 'button');
             toggleClass($startIcon[0], 'idsk-customer-surveys__icon--hidden');
         }
         if ($steps[i].classList.contains('idsk-customer-surveys--show')) {
@@ -3223,6 +3224,9 @@ CustomerSurveys.prototype.handleNextButtonClick = function (e) {
             $steps[i + 1].classList.add('idsk-customer-surveys--show');
             if (i == 4) {
                 $nextButtonText.innerHTML = $nextButtonText.dataset.line3;
+                setTimeout(function () {
+                    $nextButton.setAttribute('type', 'submit');
+                }, 500);
                 toggleClass($startIcon[0], 'idsk-customer-surveys__icon--hidden');
             }
             if (i == 0) {
@@ -3302,6 +3306,37 @@ HeaderExtended.prototype.init = function () {
 
     $module.boundCheckBlurMenuItemClick = this.checkBlurMenuItemClick.bind(this);
     $module.boundCheckBlurLanguageSwitcherClick = this.checkBlurLanguageSwitcherClick.bind(this);
+
+    // check for cookies
+
+    if (!(window.localStorage.getItem('acceptedCookieBanner'))) {
+        $module.classList.add('idsk-header-extended--cookie');
+        var $cookieBanner = document.querySelector('.idsk-cookie-banner');
+
+        if ($cookieBanner) {
+            // scroll handler
+            window.addEventListener('scroll', function () {
+                var headerPosition = document.body.getBoundingClientRect().top;
+                var cookieBannerHeight = $cookieBanner.offsetHeight;
+                if (headerPosition < (-cookieBannerHeight)) {
+                    $module.classList.remove('idsk-header-extended--cookie');
+                    $module.style.top = '0px';
+                } else {
+                    $module.classList.add('idsk-header-extended--cookie');
+                    $module.style.top = cookieBannerHeight.toString() + 'px';
+                }
+            });
+
+            // cookie resize handler
+            var resizeObserver = new ResizeObserver(function () {
+                $module.style.top = $cookieBanner.offsetHeight.toString() + 'px';
+            });
+
+            resizeObserver.observe($cookieBanner);
+        }
+
+    }
+
 };
 
 /**
@@ -4746,8 +4781,6 @@ RegistrationForEvent.prototype.init = function () {
 };
 
 RegistrationForEvent.prototype.handleSubmitClick = function (e) {
-    e.preventDefault();
-
     var $module = this.$module;
     var $form = $module.querySelector('.idsk-registration-for-event__form');
     var $thankYouMsg = $module.querySelector('.idsk-registration-for-event__thank-you-msg');
@@ -4759,6 +4792,8 @@ RegistrationForEvent.prototype.handleSubmitClick = function (e) {
         var $formGroup = $item.closest('.govuk-form-group');
 
         if (!$item.checkValidity() || $item.type === 'email' && !emailRegex.test($item.value)) {
+            e.preventDefault();
+
             $formGroup.querySelector('.govuk-error-message').style.display = 'block';
             $formGroup.classList.add('govuk-form-group--error');
             $item.classList.add('govuk-input--error');
@@ -4858,200 +4893,6 @@ InteractiveMap.prototype.renderData = function () {
 
     $mapEl.src = $mapSrc + '?indicator=' + $indicatorValue + '&time=' + $timePeriodValue;
     $tableEl.src = $tableSrc + '?indicator=' + $indicatorValue + '&time=' + $timePeriodValue;
-};
-
-function Graph($module) {
-    this.$module = $module;
-}
-
-Graph.prototype.init = function () {
-    // Check for module
-    var $module = this.$module;
-    if (!$module) {
-        return
-    }
-
-    var $radioOptions = $module.querySelectorAll('.idsk-graph__radio');
-    if ($radioOptions) {
-        nodeListForEach$1($radioOptions, function ($radioOption) {
-            $radioOption.addEventListener('change', this.handleRadioButtonModeClick.bind(this));
-        }.bind(this));
-    }
-
-    var $shareButtonByCopyToClickboard = $module.querySelector('.idsk-graph__copy-to-clickboard');
-    if ($shareButtonByCopyToClickboard) {
-        $shareButtonByCopyToClickboard.addEventListener('click', this.handleShareByCopyToClickboardClick.bind(this));
-    }
-
-    var $shareButtonByEmail = $module.querySelector('.idsk-graph__send-link-by-email');
-    if ($shareButtonByEmail) {
-        $shareButtonByEmail.addEventListener('click', this.handleShareByEmailClick.bind(this));
-    }
-
-    var $shareButtonByFacebook = $module.querySelector('.idsk-graph__share-on-facebook');
-    if ($shareButtonByFacebook) {
-        $shareButtonByFacebook.addEventListener('click', this.handleShareByFacebook.bind(this));
-    }
-
-    var $dropdownLinks = $module.querySelectorAll('.idsk-graph__meta-link-list');
-    if ($dropdownLinks) {
-        nodeListForEach$1($dropdownLinks, function ($dropdownLink) {
-            $dropdownLink.addEventListener('click', this.handleDropdownLinkClick.bind(this));
-        }.bind(this));
-
-        $module.boundCheckDropdownOutsideClick = this.checkDropdownOutsideClick.bind(this);
-    }
-
-    var $tabs = $module.querySelectorAll('.govuk-tabs__tab');
-    if ($tabs) {
-        nodeListForEach$1($tabs, function ($tab) {
-            $tab.addEventListener('click', this.handleTabLinkClick.bind(this));
-        }.bind(this));
-
-        var $forcedActiveTab = $module.querySelector('.govuk-tabs').dataset.activetab;
-        var $activeTab = $module.querySelector('.govuk-tabs__tab[href="' + window.location.hash + '"]') || $tabs[$forcedActiveTab || 0];
-        this.showTab($activeTab);
-    }
-
-    var $radioBtn = $module.querySelector('.idsk-graph__radio');
-    var $radiosName = $radioBtn.getAttribute('name');
-    var $selectedControlOption = $module.querySelector('input[name="' + $radiosName + '"]:checked').value;
-    this.handleRadioButtonModeClick($selectedControlOption);
-};
-
-/**
- * Handle click on radio buttons
- * @param {object} e 
- */
-Graph.prototype.handleRadioButtonModeClick = function (e) {
-    var $el = e.target || e.srcElement;
-
-    if (!$el) {
-        return
-    }
-
-    var $value = $el.getAttribute('value');
-    var $iframeGraphs = this.$module.querySelectorAll('.idsk-graph__iframe');
-    $iframeGraphs.forEach(function ($iframeGraph) {
-        var $iframeSrc = $iframeGraph.dataset.src;
-        var $srcParam = $iframeSrc.indexOf('?') < 0 ? '?type=' + $value : '&type=' + $value;
-        $iframeGraph.src = $iframeSrc + $srcParam;
-    });
-};
-
-/**
- * Handle click on copy link to clickboard
- * @param {object} e 
- */
-Graph.prototype.handleShareByCopyToClickboardClick = function (e) {
-    e.preventDefault();
-    var textarea = document.createElement('textarea');
-    textarea.textContent = location.href;
-    textarea.style.position = 'fixed';  // Prevent scrolling to bottom of page in Microsoft Edge.
-    document.body.appendChild(textarea);
-    textarea.select();
-
-    try {
-        return document.execCommand('copy');  // Security exception may be thrown by some browsers.
-    } catch (ex) {
-        return false;
-    } finally {
-        document.body.removeChild(textarea);
-    }
-};
-
-/**
- * Handle click on share link by email
- * @param {object} e 
- */
-Graph.prototype.handleShareByEmailClick = function (e) {
-    var $el = e.target || e.srcElement;
-    var $module = this.$module;
-    var $subject = $module.querySelector('.idsk-graph__title h2').innerText;
-    var $body = $subject.dataset.lines + location.href;
-    var $mailto = 'mailto:?Subject=' + $subject + '&body=' + $body;
-
-    $el.href = $mailto;
-};
-
-/**
- * Handle click on share by facebook link
- * @param {object} e 
- */
-Graph.prototype.handleShareByFacebook = function (e) {
-    var $el = e.target || e.srcElement;
-    var $shareLink = 'https://www.facebook.com/sharer/sharer.php?u=' + location.href;
-
-    $el.href = $shareLink;
-};
-
-/**
- * Handle click on link and show drop down list
- * @param {object} e 
- */
-Graph.prototype.handleDropdownLinkClick = function (e) {
-    e.preventDefault();
-
-    var $el = e.target || e.srcElement;
-    var $module = this.$module;
-    var $link = $el.closest('.idsk-graph__meta-link-list');
-    var $dropdown = $link.parentElement.querySelector('.idsk-graph__meta-list');
-    var $dropdownDisplayProp = window.getComputedStyle($dropdown, null).display;
-    var $dropdownLists = $module.querySelectorAll('.idsk-graph__meta-list');
-
-    $dropdownLists.forEach(function ($dropdownList) {
-        $dropdownList.style.display = 'none';
-    });
-    $dropdown.style.display = $dropdownDisplayProp == 'block' ? 'none' : 'block';
-
-    document.addEventListener('click', this.$module.boundCheckDropdownOutsideClick, true);
-};
-
-/**
- * handle click outside dropdown menu
- */
-Graph.prototype.checkDropdownOutsideClick = function () {
-    var $module = this.$module;
-    var $dropdownLists = $module.querySelectorAll('.idsk-graph__meta-list');
-    $dropdownLists.forEach(function ($dropdownList) {
-        $dropdownList.style.display = 'none';
-    });
-    document.removeEventListener('click', $module.boundCheckDropdownOutsideClick, false);
-};
-
-/**
- * Handle click on Tab -> show related section
- * @param {object} e 
- */
-Graph.prototype.handleTabLinkClick = function (e) {
-    e.preventDefault();
-
-    var $tab = e.target || e.srcElement;
-    var $module = this.$module;
-    var $activePanel = $module.querySelector('.idsk-graph__section-show');
-    var $activePanelId = $activePanel.getAttribute('id');
-    var $activeTabLink = $module.querySelector('a[href="#' + $activePanelId + '"]');
-    var $activeTabLi = $activeTabLink.closest('.govuk-tabs__list-item');
-
-    $activePanel.classList.remove('idsk-graph__section-show');
-    $activeTabLi.classList.remove('idsk-graph__section--selected');
-
-    this.showTab($tab);
-};
-
-/**
- * Show section based on tab
- * @param {object} $tab 
- */
-Graph.prototype.showTab = function ($tab) {
-    var $href = $tab.getAttribute('href');
-    var $hash = $href.slice($href.indexOf('#'), $href.length);
-    var $hash = $href.slice($href.indexOf('#'), $href.length);
-    var $panel = this.$module.querySelector($hash);
-    var $tabLi = $tab.closest('.govuk-tabs__list-item');
-
-    $tabLi.classList.add('idsk-graph__section--selected');
-    $panel.classList.add('idsk-graph__section-show');
 };
 
 /*
@@ -5388,11 +5229,6 @@ function initAll$1(options) {
     new InteractiveMap($interactiveMap).init();
   });
 
-  var $graphs = scope.querySelectorAll('[data-module="idsk-graph"]');
-  nodeListForEach($graphs, function ($graph) {
-    new Graph($graph).init();
-  });
-
   var $accordions = scope.querySelectorAll('[data-module="idsk-accordion"]');
   nodeListForEach($accordions, function ($accordion){
     new Accordion$1($accordion).init();
@@ -5417,7 +5253,6 @@ exports.SearchResultsFilter = SearchResultsFilter;
 exports.RegistrationForEvent = RegistrationForEvent;
 exports.InteractiveMap = InteractiveMap;
 exports.Stepper = Stepper;
-exports.Graph = Graph;
 exports.Accordion = Accordion$1;
 
 })));

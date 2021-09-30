@@ -836,6 +836,7 @@ CustomerSurveys.prototype.handlePreviousButtonClick = function (e) {
         }
         if ($nextButtonText.textContent.includes($nextButtonText.dataset.line3)) {
             $nextButtonText.innerHTML = $nextButtonText.dataset.line2;
+            $nextButton.setAttribute('type', 'button');
             toggleClass($startIcon[0], 'idsk-customer-surveys__icon--hidden');
         }
         if ($steps[i].classList.contains('idsk-customer-surveys--show')) {
@@ -899,6 +900,9 @@ CustomerSurveys.prototype.handleNextButtonClick = function (e) {
             $steps[i + 1].classList.add('idsk-customer-surveys--show');
             if (i == 4) {
                 $nextButtonText.innerHTML = $nextButtonText.dataset.line3;
+                setTimeout(function () {
+                    $nextButton.setAttribute('type', 'submit');
+                }, 500);
                 toggleClass($startIcon[0], 'idsk-customer-surveys__icon--hidden');
             }
             if (i == 0) {

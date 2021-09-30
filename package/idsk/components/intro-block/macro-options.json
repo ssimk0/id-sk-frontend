@@ -77,7 +77,7 @@
     },
     {
         "name": "mainTitle",
-        "type": "string",
+        "type": "html",
         "required": false,
         "description": "title of page."
     },
