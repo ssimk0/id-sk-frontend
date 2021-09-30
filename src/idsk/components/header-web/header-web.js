@@ -31,38 +31,38 @@ HeaderWeb.prototype.init = function () {
     }
 
     // check for language switcher
-    var $toggleLanguageSwitchers = $module.querySelectorAll('.idsk-header-web__brand-language-button');
-    if ($toggleLanguageSwitchers) {
+    var $toggleLanguageSwitcher = $module.querySelector('.idsk-header-web__brand-language-button');
+    this.$toggleLanguageSwitcher = $toggleLanguageSwitcher;
+
+    if ($toggleLanguageSwitcher) {
         // Handle $toggleLanguageSwitcher click events
-        nodeListForEach($toggleLanguageSwitchers, function ($toggleLanguageSwitcher) {
-            $toggleLanguageSwitcher.addEventListener('click', this.handleLanguageSwitcherClick.bind(this));
-            $toggleLanguageSwitcher.addEventListener('focus', this.handleLanguageSwitcherClick.bind(this));
-        }.bind(this))
+        $toggleLanguageSwitcher.addEventListener('click', this.handleLanguageSwitcherClick.bind(this));
+        $toggleLanguageSwitcher.addEventListener('focus', this.handleLanguageSwitcherClick.bind(this));
 
         // close language list if i left the last item from langauge list e.g. if user use tab key for navigations
-        var $lastLanguageItems = $module.querySelectorAll('.idsk-header-web__brand-language-list-item:last-child .idsk-header-extended__language-list-link');
+        var $lastLanguageItems = $module.querySelectorAll('.idsk-header-web__brand-language-list-item:last-child .idsk-header-web__brand-language-list-item-link');
         nodeListForEach($lastLanguageItems, function ($lastLanguageItem) {
             $lastLanguageItem.addEventListener('blur', this.checkBlurLanguageSwitcherClick.bind(this));
         }.bind(this))
+
+        //
+        $module.addEventListener('keydown', this.handleBackTabbing.bind(this));
 
     }
 
     $module.boundCheckBlurLanguageSwitcherClick = this.checkBlurLanguageSwitcherClick.bind(this);
 
     // check for e-goverment button
-    var $toggleEgovermentSwitch = $module.querySelectorAll('.idsk-header-web__brand-language');
-    if ($toggleLanguageSwitchers) {
-        // Handle $toggleEgovermentSwitch click events
-        nodeListForEach($toggleEgovermentSwitch, function ($toggleEgovermentSwitcher) {
-            $toggleEgovermentSwitcher.addEventListener('click', this.handleEgovermentSwitcherClick.bind(this));
-            $toggleEgovermentSwitcher.addEventListener('focus', this.handleEgovermentSwitcherClick.bind(this));
+    var $eGovermentButtons = $module.querySelectorAll('.idsk-header-web__brand-gestor-button');
+    if ($eGovermentButtons) {
+        // Handle $eGovermentButton click event
+        nodeListForEach($eGovermentButtons, function ($eGovermentButton) {
+            $eGovermentButton.addEventListener('click', this.handleEgovermentClick.bind(this));
         }.bind(this))
-
-        // close e-goverment banner if user focus next element
     }
 
     // check for menu items
-    var $menuItems = $module.querySelectorAll('.idsk-header-extended__link');
+    var $menuItems = $module.querySelectorAll('.idsk-header-web__nav-list-item-link');
     if ($menuItems) {
         // Handle $menuItem click events
         nodeListForEach($menuItems, function ($menuItem) {
@@ -72,15 +72,10 @@ HeaderWeb.prototype.init = function () {
     }
 
     // check for menu button and close menu button
-    var $hamburgerMenuButton = $module.querySelector('.idsk-js-header-extended-side-menu');
-    var $closeMenuButton = $module.querySelector('.idsk-header-extended__mobile-close');
-    if ($hamburgerMenuButton && $closeMenuButton) {
-        this.initMobileMenuTabbing();
-        $hamburgerMenuButton.addEventListener('click', this.showMobileMenu.bind(this));
-        $closeMenuButton.addEventListener('click', this.hideMobileMenu.bind(this));
+    var $menuButton = $module.querySelector('.idsk-header-web__main-headline-menu-button');
+    if ($menuButton) {
+        $menuButton.addEventListener('click', this.showMobileMenu.bind(this));
     }
-
-    window.addEventListener('scroll', this.scrollFunction.bind(this));
 
     $module.boundCheckBlurMenuItemClick = this.checkBlurMenuItemClick.bind(this);
 
@@ -145,20 +140,29 @@ HeaderWeb.prototype.checkBlurLanguageSwitcherClick = function () {
     document.removeEventListener('click', this.$module.boundCheckBlurLanguageSwitcherClick, true);
 }
 
-/**
- * Handle open/hide e-goverment statement switcher
- * @param {object} e
- */
- HeaderWeb.prototype.handleEgovermentSwitcherClick = function (e) {
-    this.$toggleEgoverment = e.target || e.srcElement;
-    toggleClass($toggleEgoverment, 'idsk-header-web__brand-gestor-button--active');  
-    document.addEventListener('click', this.$module.boundCheckBlurLanguageSwitcherClick, true);
+HeaderWeb.prototype.handleBackTabbing = function (e) {
+    //shift was down when tab was pressed
+    if(e.shiftKey && e.keyCode == 9) { 
+        var $focusedElement = this.$module.querySelector(':focus');
+
+        if ($focusedElement == this.$toggleLanguageSwitcher) {
+            var languageList = this.$module.querySelector('.idsk-header-web__brand-language-list');
+            languageList.lastElementChild.focus();
+        }
+    }
 }
 
-HeaderWeb.prototype.checkBlurLanguageSwitcherClick = function () {
-    this.$toggleEgoverment.classList.remove('idsk-header-web__brand-gestor-button--active');
-    document.removeEventListener('click', this.$module.boundCheckBlurLanguageSwitcherClick, true);
+/**
+ * Handle open/hide e-goverment statement
+ * @param {object} e
+ */
+ HeaderWeb.prototype.handleEgovermentClick = function (e) {
+    var $eGovermentButton = this.$module.querySelector('.idsk-header-web__brand-gestor-button');
+    var $eGovermentDropdown = this.$module.querySelector('.idsk-header-web__brand-dropdown');
+    toggleClass($eGovermentDropdown, 'idsk-header-web__brand-dropdown--active');  
+    toggleClass($eGovermentButton, 'idsk-header-web__brand-gestor-button--active');
 }
+
 
 /**
  * Handle open/hide submenu
@@ -166,13 +170,13 @@ HeaderWeb.prototype.checkBlurLanguageSwitcherClick = function () {
  */
 HeaderWeb.prototype.handleSubmenuClick = function (e) {
     var $srcEl = e.target || e.srcElement;
-    var $toggleButton = $srcEl.closest('.idsk-header-extended__navigation-item');
-    var $currActiveList = this.$module.querySelectorAll('.idsk-header-extended__navigation-item--active');
+    var $toggleButton = $srcEl.closest('.idsk-header-web__nav-list-item');
+    var $currActiveList = this.$module.querySelectorAll('.idsk-header-web__nav-list-item--active');
 
     if ($currActiveList.length > 0) {
-        $currActiveList[0].classList.remove('idsk-header-extended__navigation-item--active');
+        $currActiveList[0].classList.remove('idsk-header-web__nav-list-item--active');
     }
-    toggleClass($toggleButton, 'idsk-header-extended__navigation-item--active');
+    toggleClass($toggleButton, 'idsk-header-web__nav-list-item--active');
 
     document.addEventListener('click', this.$module.boundCheckBlurMenuItemClick, true);
 }
@@ -181,8 +185,8 @@ HeaderWeb.prototype.handleSubmenuClick = function (e) {
  * handle click outside menu or "blur" the item link
  */
 HeaderWeb.prototype.checkBlurMenuItemClick = function () {
-    var $currActiveList = this.$module.querySelectorAll('.idsk-header-extended__navigation-item--active');
-    $currActiveList[0].classList.remove('idsk-header-extended__navigation-item--active');
+    var $currActiveList = this.$module.querySelectorAll('.idsk-header-web__nav-list-item--active');
+    $currActiveList[0].classList.remove('idsk-header-web__nav-list-item--active');
     document.removeEventListener('click', this.$module.boundCheckBlurMenuItemClick, true);
 }
 
@@ -191,13 +195,11 @@ HeaderWeb.prototype.checkBlurMenuItemClick = function () {
  * @param {object} e
  */
 HeaderWeb.prototype.showMobileMenu = function (e) {
-    var $hamburgerMenuButton = this.$module.querySelector('.idsk-js-header-extended-side-menu');
-
-    this.$module.classList.add("idsk-header-extended--show-mobile-menu");
-    document.getElementsByTagName("body")[0].style.overflow = "hidden";
-    if (document.activeElement == $hamburgerMenuButton) {
-        this.$lastMenuElement.focus();
-    }
+    var $menuButton = this.$module.querySelector('.idsk-header-web__main-headline-menu-button');
+    var $mobileMenu = this.$module.querySelector('.idsk-header-web__nav');
+    toggleClass($mobileMenu, 'idsk-header-web__nav--mobile');
+    toggleClass($menuButton, 'idsk-header-web__main-headline-menu-button--active');
+    
 }
 /**
  * Hide mobile menu

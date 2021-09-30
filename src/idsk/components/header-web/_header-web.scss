@@ -90,6 +90,20 @@
       width: 13px;
       height: 13px;
     }
+
+    &__menu-close {
+      background-color: govuk-colour("black");
+      -webkit-mask: url(/assets/images/header-web/close.svg) no-repeat center;
+      mask: url(/assets/images/header-web/close.svg) no-repeat center;
+
+      display: inline-block;
+      width: 13px;
+      height: 13px;
+    }
+
+    @include mq($until: tablet) {
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+    }
   }
 
   /* BRAND BAR */
@@ -129,7 +143,7 @@
       .idsk-header-web__link-arrow {
         background-color: $idsk-header-text-secondary;
       }
-  
+
       .idsk-header-web__flag {
         background-color: $idsk-header-text-secondary;
         margin: 12px govuk-spacing(2) 12px 0;
@@ -163,8 +177,8 @@
             background-color: govuk-colour("black");
           }
         }
-  
-        &––active {
+
+        &--active {
           .idsk-header-web__link-arrow {
             transition: transform 0.2s;
             transform: rotate(180deg);
@@ -182,6 +196,10 @@
       }
       .govuk-body-s:last-child {
         margin-bottom: govuk-spacing(4) ;
+      }
+
+      &--active {
+        display: initial;
       }
     }
 
@@ -243,27 +261,30 @@
 
       &-list {
         display: none;
-
         list-style: none;
         padding: govuk-spacing(2) 0;
         margin: 0;
         text-align: left;
         background-color: govuk-colour("white");
-      }
-    }
 
-    .idsk-header-extended__language-list-item-link {
-      color: govuk-colour("black");
-      display: block;
-      text-decoration: none;
-      padding: govuk-spacing(2);
+        &-item-link {
+          display: block;
+          text-decoration: none;
+          padding: govuk-spacing(2);
 
-      &:hover {
-        text-decoration: underline;
-      }
-      &:focus,
-      &:active {
-        box-shadow: none;
+          &:link,
+          &:visited {
+            color: govuk-colour("black");
+          }
+
+          &:hover {
+            text-decoration: underline;
+          }
+          &:focus,
+          &:active {
+            box-shadow: none;
+          }
+        }
       }
     }
 
@@ -296,11 +317,21 @@
     }
 
     &-headline {
-      margin: govuk-spacing(6) 0;
+      margin: 28px 0;
+      overflow: hidden;
+
+      & > a {
+        display: inline-block;
+  
+        &:focus,
+        &:active { 
+          @include govuk-focused-text;
+        }
+      }
 
       &-logo {
         float: left;
-        max-height: 40px;
+        height: 40px;
         margin-right: govuk-spacing(3);
 
         @include mq($until: tablet) {
@@ -319,26 +350,49 @@
       }
 
       @include mq($until: tablet) {
+        margin: govuk-spacing(4) 0;
+
         &-menu-button {
           display: block;
           background-color: $idsk-header-background-primary;
           width: auto;
           float: right;
-          box-shadow: none;
           border: 1px solid govuk-colour("black");
           color: govuk-colour("black");
           font-weight: 700;
           font-size: 18px;
-          padding-top: 6px;
+          padding-top: 5px;
           padding-bottom: 6px;
+          margin: 0;
 
           &:hover {
             background-color: $idsk-header-background-primary;
             color: govuk-colour("black");
           }
 
-          .idsk-header-web__menu-open {
+          &:focus,
+          &:active {
+            @include govuk-focused-text;
+          }
+
+          .idsk-header-web__menu-open,
+          .idsk-header-web__menu-close {
             margin-left: govuk-spacing(3);
+            margin-bottom: -1px;
+          }
+
+          .idsk-header-web__menu-close {
+            display: none;
+          }
+
+          &--active {
+            .idsk-header-web__menu-open {
+              display: none;
+            }
+
+            .idsk-header-web__menu-close {
+              display: inline-block;
+            }
           }
         }
       }
@@ -415,6 +469,12 @@
     list-style: none;
     border-top: 1px solid govuk-colour("grey-3");
 
+    &--mobile {
+      @include mq($until: tablet) {
+        display: none;
+      }
+    }
+
     .idsk-header-web__main--buttons,
     .idsk-header-web__main-action-search {
       display: none;
@@ -423,20 +483,6 @@
     .idsk-header-web__main--buttons {
       margin-top: govuk-spacing(4);
     }
-    
-
-    // &-separator {
-    //   display: none;
-
-    //   @include mq($until: tablet) {
-    //     display: block;
-    //     height: 2px;
-    //     width: 100%;
-    //     background-color: govuk-colour("grey-3");
-    //     margin-bottom: 18px;
-    //   }
-
-    // }
 
     &-list {
       list-style: none;
@@ -490,6 +536,45 @@
             box-shadow: none;
           }
         }
+
+        &--active {
+          background-color: $idsk-header-background-secondary;
+
+          .idsk-header-web__nav-list-item-link {
+
+            &:link,
+            &:hover,
+            &:visited {
+              color: $idsk-header-text-secondary;
+            }
+
+            &:focus,
+            &:active {
+              color: govuk-colour("black");
+
+              .idsk-header-web__link-arrow,
+              .idsk-header-web__link-arrow-mobile {
+                background-color: govuk-colour("black");
+              }
+            }
+
+            .idsk-header-web__link-arrow,
+            .idsk-header-web__link-arrow-mobile {
+              background-color: $idsk-header-text-secondary;
+            }
+          }
+          
+          .idsk-header-web__link-arrow,
+          .idsk-header-web__link-arrow-mobile {
+            transition: transform 0.2s;
+            transform: rotate(180deg);
+          }
+
+          .idsk-header-web__nav-submenu,
+          .idsk-header-web__nav-submenulite {
+            display: initial;
+          }
+        }
       }
     }
 
@@ -517,12 +602,8 @@
     @include mq($until: tablet) {
       border-top: none;
 
-      nav {
+      &-bar--buttons {
         border-bottom: 2px solid govuk-colour("grey-3");
-      }
-
-      .govuk-grid-column-full:last-child {
-        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
       }
 
       .idsk-header-web__main--buttons,
@@ -562,18 +643,24 @@
             }
           }
         }
-      }
-
-      
+      }      
     }
   }
 
-    /* navigation - submenu */
+    /* NAVIGATION - submenu */
     .idsk-header-web__nav-submenu {
+      width: 100vw;
+      position: absolute;
+      left: 0;
+
+      display: none;
 
       @include govuk-clearfix;
       background-color: $idsk-header-background-secondary;
-      display: none;
+
+      &-spacer {
+          height: 135px;
+      }
   
       &-list {
         background-color: $idsk-header-dark-blue;
@@ -584,7 +671,7 @@
           margin: 0;
         }
   
-        &-item-link{
+        &-item-link {
             padding: 12px govuk-spacing(4) 13px govuk-spacing(3);
             text-decoration: none;
             display: block;
@@ -605,13 +692,41 @@
             }
           }
       }
+
+      @include mq($until: tablet) {
+        position: initial;
+        width: initial;
+
+        &-list {
+          padding: 0;
+          background-color: $idsk-header-background-primary;
+
+          &-item-link {
+            padding: govuk-spacing(3) govuk-spacing(4) govuk-spacing(3) govuk-spacing(6) ;
+            font-size: 18px;
+            font-weight: 700;
+
+            &:link,
+            &:visited {
+              color: govuk-colour("black");
+            }
+          }
+        }
+
+        .govuk-grid-column-one-quarter{
+          padding: 0;
+        }
+
+        &-spacer {
+          display: none;
+        }
+      }
     }
 
-    /* navigation - submenulite */
+    /* NAVIGATION - submenulite */
   .idsk-header-web__nav-submenulite {
-
     position: relative;
-    left: govuk-spacing(3);
+    left: 0;
     display: none;
 
     &-list {
@@ -622,11 +737,10 @@
       @include mq($from: desktop) {
         position: absolute;
         padding: govuk-spacing(3) 0;
-        margin-top: govuk-spacing(3);
         width: 250px;
       }
 
-      &-item-link{
+      &-item-link {
           padding: govuk-spacing(2) govuk-spacing(4) govuk-spacing(2) govuk-spacing(3);
           display: inline-block;
           text-decoration: none;
@@ -648,6 +762,26 @@
             box-shadow: none;
           }
         }
+    }
+
+    @include mq($until: tablet) {
+      position: initial;
+
+      &-list {
+        padding: 0;
+        background-color: $idsk-header-background-primary;
+      }
+
+      .idsk-header-web__nav-submenulite-list-item-link {
+        padding: govuk-spacing(3) govuk-spacing(4) govuk-spacing(3) govuk-spacing(6) ;
+        font-size: 18px;
+        font-weight: 700;
+
+        &:link,
+        &:visited {
+            color: govuk-colour("black");
+          }
+      }
     }
   }
 
