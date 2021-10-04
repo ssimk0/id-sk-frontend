@@ -17,7 +17,7 @@
                                                 <div class="idsk-header-web__flag"></div>
                                                 <span class="govuk-body-s">
                                                         {% if brand.gestorLink %}
-                                                                SK <a class="govuk-link" href="#" title="{{ brand.gestorLink }} ">e-Gov</a> 
+                                                                SK <a class="govuk-link" href="{{ brand.gestorLink.hrefLink }}" title="{{ brand.gestorLink.text if brand.gestorLink.text else 'e-Gov' }}">{{ brand.gestorLink.text if brand.gestorLink.text else 'e-Gov' }}</a> 
                                                         {% else %}
                                                                 SK <button class="idsk-header-web__brand-gestor-button">e-Gov<div class="idsk-header-web__link-arrow"></div></button>
                                                         {% endif %}   
@@ -27,7 +27,7 @@
                                         <div class="idsk-header-web__brand-language">
                                                 <button class="idsk-header-web__brand-language-button">{{ currentLanguage if currentLanguage else 'Slovenčina' }}<div class="idsk-header-web__link-arrow"></div></button> 
                                                 <ul class="idsk-header-web__brand-language-list">
-                                                        {% for language in brand.languages|sort(attribute='text') %}
+                                                        {% for language in brand.languages | sort(attribute='text') %}
                                                         <li class="idsk-header-web__brand-language-list-item">
                                                                 <a class="govuk-link idsk-header-web__brand-language-list-item-link" title="{{ language.text }}" href="{{ language.link }}">
                                                                         {{ language.text }}
@@ -63,14 +63,31 @@
 {% set mainButtons %}
         <div class="idsk-header-web__main--buttons">
         {% if main.loginButton %} 
-                {{ idskButton({
-                        "text": main.loginButton.text if main.loginButton.text else 'Prihlásiť sa',
-                        "type": "button",
-                        "classes": main.loginButton.classes if main.loginButton.classes
-                }) }} 
+                <div class="idsk-header-web__main--login">
+                        {{ idskButton({
+                                "text": main.loginButton.text if main.loginButton.text else 'Prihlásiť sa',
+                                "type": "button",
+                                "classes": main.loginButton.classes if main.loginButton.classes
+                        }) }}
+                        <div class="idsk-header-web__main--login-action">
+                                <img class="idsk-header-web__main--login-action-profile-img" src="{{ main.loginButton.loggedIn.profileImg if main.loginButton.loggedIn.profileImg else '/public/assets/images/header-web/profile.svg' }}" alt="Profile image">
+                                <div class="idsk-header-web__main--login-action-text">
+                                        <span class="govuk-body-s idsk-header-web__main--login-action-text-user-name">{{ main.loginButton.loggedIn.userName if main.loginButton.loggedIn.userName else 'Ing. Jožko Veľký M.A' }}</span>
+                                        <div class="">
+                                                <a class="govuk-link idsk-header-web__main--login-action-text-logout" href="#" title="odhlásiť">{{ main.loginButton.logoutText if main.loginButton.logoutText else 'Odhlásiť' }}</a>
+                                                {% if main.loginButton.profileOption %} 
+                                                <span> | </span>
+                                                <a class="govuk-link idsk-header-web__main--login-action-text-profile" href="#" title="profil">{{ main.loginButton.profileOption if main.loginButton.profileOption != 'true' else 'Profil' }}</a>
+                                                {% endif %}     
+                                        </div>
+                                        
+                                </div>
+                        </div>
+                        
+                </div>
         {% endif %}
 
-        {% if main.secondaryButton %}
+        {% if main.secondaryButton and params.headerType !== 'electronicService' %}
                 {{ idskButton({
                         "text": main.secondaryButton.text if main.secondaryButton.text else 'Tlačidlo',
                         "type": "button",
@@ -98,7 +115,7 @@
                 <div class="govuk-width-container">
                         <div class="govuk-grid-row">
 
-                                <div class="govuk-grid-column-one-third">
+                                <div class="govuk-grid-column-full govuk-grid-column-one-third-from-desktop">
                                         
                                         <div class="idsk-header-web__main-headline">
                                                 <a href="/" title="home page button">
@@ -113,15 +130,23 @@
 
 
                                                         {% if params.headerType == 'electronicService' %}
-                                                                <h2 class="govuk-heading-l">{{ main.title if main.title else 'Title text' }}</h2>
+                                                                <h2 class="govuk-heading-m">{{ main.title if main.title else 'Title text' }}</h2>
                                                         {% endif %}    
                                                 </a> 
 
+                                                {% if params.navBar %}
                                                 <button class="idsk-button idsk-header-web__main-headline-menu-button">
                                                         {{ main.menuBtnText if main.menuBtnText else 'Menu' }}
                                                         <div class="idsk-header-web__menu-open"></div>
                                                         <div class="idsk-header-web__menu-close"></div>
                                                 </button>
+                                                {% else %}
+                                                <button class="idsk-button idsk-header-web__main-headline-menu-button">
+                                                        {{ main.menuBtnText if main.menuBtnText else 'Hľadaj' }}
+                                                        <div class="idsk-header-web__menu-open"></div>
+                                                        <div class="idsk-header-web__menu-close"></div>
+                                                </button>
+                                                {% endif %}
                                         </div>
                                          
                                 </div>
@@ -130,15 +155,10 @@
                                         <div class="idsk-header-web__main-action">
 
                                                 {% if params.headerType == 'website' or params.headerType == 'projectWebsite' %}
-                                                        
-                                                        {{ searchInput | safe }}
+                                                        {{ searchInput | safe }}   
+                                                        {{ mainButtons | safe }} 
+                                                {% else %}
                                                         {{ mainButtons | safe }}
-                                                        
-                                                {% endif %}
-
-
-                                                {% if params.headerType == 'electronicService' %}
-                                                        
                                                 {% endif %}
                                         </div>
                                 </div>
@@ -150,15 +170,17 @@
 
 {# NAV BAR #}
 {% set navBar %}
-
+        {% if params.navBar and params.headerType !== 'electronicService' %}
+        <div class="idsk-header-web__nav--divider"></div>
+        {% endif %}
         <div class="idsk-header-web__nav idsk-header-web__nav--mobile {{ 'idsk-header-web__nav--dark' if params.navBar.darkBackground }}">
                 <div class="govuk-width-container">
                         <div class="govuk-grid-row">
-                                {% if params.navBar %}
-                                {% set navigation = params.navBar.navigation %}
                                 <div class="govuk-grid-column-full">
                                    {{ searchInput | safe }}     
                                 </div>
+                                {% if params.navBar and params.headerType !== 'electronicService' %}
+                                {% set navigation = params.navBar.navigation %}
                                 <div class="govuk-grid-column-full">
                                         <nav class="{{ 'idsk-header-web__nav-bar--buttons' if main.loginButton or main.secondaryButton }}">
                                                 <ul class="idsk-header-web__nav-list {{ params.navBar.classes if params.navBar.classes }}"
@@ -190,7 +212,7 @@
                                                                                 <div class="govuk-width-container">
                                                                                         <div class="govuk-grid-row">
                                                                                                           
-                                                                                                <div class="govuk-grid-column-one-quarter">
+                                                                                                <div class="govuk-grid-column-full govuk-grid-column-one-quarter-from-desktop">
                                                                                                         <ul class="idsk-header-web__nav-submenu-list">
                                                                                                                 {% for subItem in item.submenu.slice(0, 3) %}
                                                                                                                         <li class="idsk-header-web__nav-submenu-list-item"><a class="govuk-link idsk-header-web__nav-submenu-list-item-link" href="{{ subItem.link }}" title="{{ subItem.text }}">
@@ -201,7 +223,7 @@
                                                                                                 </div>
                                                                                                 
                                                                                                 
-                                                                                                <div class="govuk-grid-column-one-quarter">
+                                                                                                <div class="govuk-grid-column-full govuk-grid-column-one-quarter-from-desktop">
                                                                                                         <ul class="idsk-header-web__nav-submenu-list">
                                                                                                                 {% for subItem in item.submenu.slice(3, 6) %}
                                                                                                                         <li class="idsk-header-web__nav-submenu-list-item"><a class="govuk-link idsk-header-web__nav-submenu-list-item-link" href="{{ subItem.link }}" title="{{ subItem.text }}">
@@ -211,7 +233,7 @@
                                                                                                         </ul>
                                                                                                 </div>
                                                                                                 
-                                                                                                <div class="govuk-grid-column-one-quarter">
+                                                                                                <div class="govuk-grid-column-full govuk-grid-column-one-quarter-from-desktop">
                                                                                                         <ul class="idsk-header-web__nav-submenu-list">
                                                                                                                 {% for subItem in item.submenu.slice(6, 9) %}
                                                                                                                         <li class="idsk-header-web__nav-submenu-list-item"><a class="govuk-link idsk-header-web__nav-submenu-list-item-link" href="{{ subItem.link }}" title="{{ subItem.text }}">
@@ -221,7 +243,7 @@
                                                                                                         </ul>      
                                                                                                 </div>        
                                                                                                 
-                                                                                                <div class="govuk-grid-column-one-quarter">
+                                                                                                <div class="govuk-grid-column-full govuk-grid-column-one-quarter-from-desktop">
                                                                                                         <ul class="idsk-header-web__nav-submenu-list">
                                                                                                                 {% for subItem in item.submenu.slice(9, 12) %}
                                                                                                                         <li class="idsk-header-web__nav-submenu-list-item"><a class="govuk-link idsk-header-web__nav-submenu-list-item-link" href="{{ subItem.link }}" title="{{ subItem.text }}">
@@ -240,71 +262,18 @@
                                                         {% endfor %}
                                                 </ul>
                                         </nav>
-                                        {% endif %}    
-                                </div>
-
-                                {% if main.loginButton or main.secondaryButton %} 
-                                <div class="govuk-grid-column-full">
-                                        {{ mainButtons | safe }}
                                 </div>
                                 {% endif %} 
                         </div>
-                </div>
 
-
-                <!-- {% for item in navigation %}
-                        {% if item.submenu | length > 5 %}
-                        <div class="idsk-header-web__nav-submenu">
-                                <div class="govuk-width-container">
-                                        <div class="govuk-grid-row">
-                                                          
-                                                <div class="govuk-grid-column-one-quarter">
-                                                        <ul class="idsk-header-web__nav-submenu-list">
-                                                                {% for subItem in item.submenu.slice(0, 3) %}
-                                                                        <li class="idsk-header-web__nav-submenu-list-item"><a class="govuk-link idsk-header-web__nav-submenu-list-item-link" href="{{ subItem.link }}" title="{{ subItem.text }}">
-                                                                                {{ subItem.text }}
-                                                                        </a></li>
-                                                                {% endfor %}
-                                                        </ul>
-                                                </div>
-                                                
-                                                
-                                                <div class="govuk-grid-column-one-quarter">
-                                                        <ul class="idsk-header-web__nav-submenu-list">
-                                                                {% for subItem in item.submenu.slice(3, 6) %}
-                                                                        <li class="idsk-header-web__nav-submenu-list-item"><a class="govuk-link idsk-header-web__nav-submenu-list-item-link" href="{{ subItem.link }}" title="{{ subItem.text }}">
-                                                                                {{ subItem.text }}
-                                                                        </a></li>
-                                                                {% endfor %}
-                                                        </ul>
-                                                </div>
-                                                
-                                                <div class="govuk-grid-column-one-quarter">
-                                                        <ul class="idsk-header-web__nav-submenu-list">
-                                                                {% for subItem in item.submenu.slice(6, 9) %}
-                                                                        <li class="idsk-header-web__nav-submenu-list-item"><a class="govuk-link idsk-header-web__nav-submenu-list-item-link" href="{{ subItem.link }}" title="{{ subItem.text }}">
-                                                                                {{ subItem.text }}
-                                                                        </a></li>
-                                                                {% endfor %}
-                                                        </ul>      
-                                                </div>        
-                                                
-                                                <div class="govuk-grid-column-one-quarter">
-                                                        <ul class="idsk-header-web__nav-submenu-list">
-                                                                {% for subItem in item.submenu.slice(9, 12) %}
-                                                                        <li class="idsk-header-web__nav-submenu-list-item"><a class="govuk-link idsk-header-web__nav-submenu-list-item-link" href="{{ subItem.link }}" title="{{ subItem.text }}">
-                                                                                {{ subItem.text }}
-                                                                        </a></li>
-                                                                {% endfor %}
-                                                        </ul>             
-                                                </div>    
-                                                        
-                                        </div>
+                        {% if main.loginButton or main.secondaryButton %} 
+                        <div class="govuk-grid-row">
+                                <div class="govuk-grid-column-full">
+                                        {{ mainButtons | safe }}
                                 </div>
                         </div>
-                        {% endif %}
-                {% endfor %} -->
-                
+                        {% endif %} 
+                </div>
         </div>
 
 {% endset %}
@@ -312,6 +281,7 @@
 
 {# BANNER #}
 {% set bannerSection %}
+{% if params.banner %}
 {% set banner = params.banner %}
         <div class="idsk-header-web__banner {{ 'idsk-header-web__banner--warning' if banner.warning }}">
                 <div class="govuk-width-container">
@@ -327,23 +297,19 @@
                         </div>
                 </div>
         </div>
+{% endif %}
 {% endset %}
 
-{# MOBILE MENU #}
-{% set mobileMenu %}
-
-        {{ brandBar | safe}}   
-        
-
-{% endset %}
 
 <header class="idsk-header-web {{ params.classes if params.classes }}" data-module="idsk-header-web"
         {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
         
-        {{ brandBar | safe}}   
+        {{ brandBar | safe }}   
         
-        {{ mainSection | safe}}
+        {{ mainSection | safe }}
 
-        {{ navBar | safe}}
+        {{ navBar | safe }}
+
+        {{ bannerSection | safe }}
     
 </header>

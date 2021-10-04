@@ -34,7 +34,10 @@
             logoSrc: "/public/assets/images/header-web/logo-mirri-farebne.svg",
             title: "IDSK.SK",
             search: true,
-            loginButton: true,
+            loginButton: {
+                loggedIn: true,
+                profileOption: "true"
+            },
             secondaryButton: true
         },
 
@@ -81,6 +84,14 @@
                         {
                             link: '#4',
                             text: 'Investície'
+                        },
+                        {
+                            link: '#3',
+                            text: 'Informatizácia'
+                        },
+                        {
+                            link: '#4',
+                            text: 'Investície'
                         }
                     ]
                 },
@@ -97,6 +108,10 @@
                     text: 'Inovácie'
                 }
             ]
+        },
+
+        banner: {
+            text: "bla bla bla"
         }
     }) }}
 {% endblock %}
