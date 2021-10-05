@@ -33,13 +33,14 @@
         main: {
             logoSrc: "/public/assets/images/header-web/logo-mirri-farebne.svg",
             title: "IDSK.SK",
-            search: true,
             loginButton: {
-                loggedIn: true,
-                profileOption: "true"
+                loggedIn: true
             },
-            secondaryButton: true
+            profileButton: true,
+            secondaryButton: false
         },
+
+       search: true,
 
         navBar: {
             navigation: [
@@ -111,7 +112,7 @@
         },
 
         banner: {
-            text: "bla bla bla"
+            text: "Nová verzia ID-SK Frontend nahradzuje pôvodnú verziu."
         }
     }) }}
 {% endblock %}

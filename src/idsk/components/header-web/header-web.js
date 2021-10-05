@@ -41,12 +41,10 @@ HeaderWeb.prototype.init = function () {
     $module.boundCheckBlurLanguageSwitcherClick = this.checkBlurLanguageSwitcherClick.bind(this);
 
     // check for e-goverment button
-    var $eGovermentButtons = $module.querySelectorAll('.idsk-header-web__brand-gestor-button');
-    if ($eGovermentButtons) {
+    var $eGovermentButton = $module.querySelector('.idsk-header-web__brand-gestor-button');
+    if ($eGovermentButton) {
         // Handle $eGovermentButton click event
-        nodeListForEach($eGovermentButtons, function ($eGovermentButton) {
-            $eGovermentButton.addEventListener('click', this.handleEgovermentClick.bind(this));
-        }.bind(this))
+        $eGovermentButton.addEventListener('click', this.handleEgovermentClick.bind(this));
     }
 
     // check for menu items
@@ -65,12 +63,10 @@ HeaderWeb.prototype.init = function () {
     }
 
     // check for mobile menu button
-    var $menuButtons = $module.querySelectorAll('.idsk-header-web__main-headline-menu-button');
-    if ($menuButtons.length > 0) {
-        nodeListForEach($menuButtons, function ($menuButton) {
-            $menuButton.addEventListener('click', this.showMobileMenu.bind(this));
-            this.menuBtnText = $menuButton.innerText.trim();
-        }.bind(this))
+    var $menuButton = $module.querySelector('.idsk-header-web__main-headline-menu-button');
+    if ($menuButton) {
+        $menuButton.addEventListener('click', this.showMobileMenu.bind(this));
+        this.menuBtnText = $menuButton.innerText.trim();
     }
 
     $module.boundCheckBlurMenuItemClick = this.checkBlurMenuItemClick.bind(this);
@@ -94,10 +90,8 @@ HeaderWeb.prototype.checkBlurLanguageSwitcherClick = function () {
 
 HeaderWeb.prototype.handleBackTabbing = function (e) {
     //shift was down when tab was pressed
-    if(e.shiftKey && e.keyCode == 9) { 
-        if (document.activeElement == this.$toggleLanguageSwitcher) {
-            this.$toggleLanguageSwitcher.parentNode.classList.remove('idsk-header-web__brand-language--active');
-        }
+    if(e.shiftKey && e.keyCode == 9 && document.activeElement == this.$toggleLanguageSwitcher) { 
+        this.$toggleLanguageSwitcher.parentNode.classList.remove('idsk-header-web__brand-language--active');  
     }
 }
 
@@ -168,16 +162,14 @@ HeaderWeb.prototype.checkBlurMenuItemClick = function () {
  * @param {object} e
  */
 HeaderWeb.prototype.showMobileMenu = function (e) {
+    var closeText = this.menuBtnText ? 'Zavrieť' : '';
     var $menuButton = this.$module.querySelector('.idsk-header-web__main-headline-menu-button');
     var $mobileMenu = this.$module.querySelector('.idsk-header-web__nav');
     toggleClass($mobileMenu, 'idsk-header-web__nav--mobile');
     toggleClass($menuButton, 'idsk-header-web__main-headline-menu-button--active');
-    
-    if($menuButton.classList.contains('idsk-header-web__main-headline-menu-button--active')){
-        $menuButton.childNodes[0].nodeValue = 'Zavrieť';
-    }else{
-        $menuButton.childNodes[0].nodeValue = this.menuBtnText;
-    }
+    var buttonIsActive = $menuButton.classList.contains('idsk-header-web__main-headline-menu-button--active');
+
+    $menuButton.childNodes[0].nodeValue = buttonIsActive ? closeText : this.menuBtnText;
 }
 
 export default HeaderWeb

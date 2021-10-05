@@ -11,13 +11,20 @@ params:
   type: object
   required: false
   description: HTML attributes (for example data attributes) to add to the header container.
+- name: assetsPath
+  type: string
+  required: false
+  description: The public path for the assets folder. If not provided it defaults to /public/assets/images/header-web
 
 - name: brand
   type: object
   required: false
   description: BrandBar object including language selector. It is voluntary for website, projectWebsite. For electronicService it is MANDATORY!!!
   params: 
-
+  - name: nationalEmblem
+    type: bolean
+    required: false
+    description: Allows you to use national Emblem
   - name: lightBackground
     type: bolean
     required: false
@@ -39,7 +46,6 @@ params:
       type: string
       required: false
       description: link to english mutation
-
   - name: gestorLink
     type: object
     required: false
@@ -71,23 +77,21 @@ params:
     type: string
     required: false
     description: Text for mobile menu button
-  - name: search
-    type: bolean
-    required: false
-    description: Allows you to use search bar if is needed
-    params: 
-    - name: button
-      type: string
-      required: true
-      description: Search button text for screen readers
-
   - name: loginButton
     type: object
     required: false
     description: Allows you to use login flow
     params: 
+    - name: text
+      type: string
+      required: false
+      description: Login button text
+    - name: classes
+      type: string
+      required: false
+      description: Here you can add your own classes to login button
     - name: loggedIn
-      type: bolean
+      type: object
       required: false
       description: User is loggedIn
       params:
@@ -99,24 +103,34 @@ params:
         type: string
         required: true
         description: User name
-
-    - name: profileOption
-      type: string
-      required: false
-      description: Type 'true' to show profile option or type custom text
+  - name: profileButton
+    type: object
+    required: false
+    description: Allows you to edit prifile button texts and classes
+    params:
     - name: text
       type: string
       required: false
-      description: Login button text
+      description: Second button text
     - name: classes
       type: string
       required: false
-      description: Classes of login button  
-
-  
-
+      description: Classes of second button
+  - name: logoutButton
+    type: object
+    required: false
+    description: Allows you to edit logout button texts and classes
+    params:
+    - name: text
+      type: string
+      required: false
+      description: Second button text
+    - name: classes
+      type: string
+      required: false
+      description: Classes of second button
   - name: secondaryButton
-    type: bolean
+    type: object
     required: false
     description: Allows you to use second button
     params: 
@@ -129,49 +143,63 @@ params:
       required: false
       description: Classes of second button
 
+- name: 
+  type: object
+  required: false
+  description: Allows you to use search bar if is needed
+  params: 
+  - name: placeHolder
+    type: string
+    required: false
+    description: Place holder text
+  - name: button
+    type: string
+    required: true
+    description: Search button text for screen readers
+
 - name: navBar
   type: object
   required: false
   description: NavBar object inlucing menu items. Maximum main menu items are 5 items and each main item can contain 12 submenu items. It is volutary for website and projectWebsite. Can not be used with electronicService.
   params:
-- name: darkBackground
-  type: bolean
-  required: false
-  description: Bolean value for dark background
-- name: classes
-  type: string
-  required: false
-  description: NavBar classes
-- name: navigation
-  type: array
-  required: false
-  description: list of navigation items
-  params:
-  - name: text
-    type: string
-    required: true
-    description: Text of the navigation item
-  - name: link
-    type: string
-    required: true
-    description: Url of the navigation item anchor. Both `href` and `text` attributes for navigation items need to be provided to create an item.
-  - name: attributes
-    type: object
+  - name: darkBackground
+    type: bolean
     required: false
-    description: HTML attributes (for example data attributes) to add to the navigation item anchor.
-  - name: submenu
+    description: Bolean value for dark background
+  - name: classes
+    type: string
+    required: false
+    description: NavBar classes
+  - name: navigation
     type: array
     required: false
-    description: array of submenu items
+    description: list of navigation items
     params:
     - name: text
       type: string
       required: true
-      description: Text of the submenu item
+      description: Text of the navigation item
     - name: link
       type: string
       required: true
-      description: Url of the submenu item anchor
+      description: Url of the navigation item anchor. Both `href` and `text` attributes for navigation items need to be provided to create an item.
+    - name: attributes
+      type: object
+      required: false
+      description: HTML attributes (for example data attributes) to add to the navigation item anchor.
+    - name: submenu
+      type: array
+      required: false
+      description: array of submenu items
+      params:
+      - name: text
+        type: string
+        required: true
+        description: Text of the submenu item
+      - name: link
+        type: string
+        required: true
+        description: Url of the submenu item anchor
 
 - name: banner
   type: object
@@ -186,5 +214,3 @@ params:
     type: bolean
     required: false
     description: Bolean value if its warning banner
-  
-  

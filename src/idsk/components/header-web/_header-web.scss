@@ -23,12 +23,12 @@
       height: 3px;
       background-image: linear-gradient(
         to right,
-        #ffffff 0%,
-        #ffffff 33.3%,
+        govuk-colour("white") 0%,
+        govuk-colour("white") 33.3%,
         #003183 33.3%,
         #003183 66.6%,
-        #d0190f 66.6%,
-        #d0190f 100%
+        govuk-colour("red") 66.6%,
+        govuk-colour("red") 100%
       );
       /* equivalent to (to right, white, white 50%, black 50%, black) */
       background-size: 150px 100%;
@@ -219,8 +219,6 @@
       }
     }
 
-
-
     /* language selector */
     &-language {
       float: right;
@@ -237,8 +235,17 @@
           position: absolute;
           z-index: 2;
           width: 150px;
-          box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
           border-radius: 8px;
+
+          @include mq($until: tablet) {
+            right: 0;
+            width: 130px;
+          }
+
+          @include mq($from: tablet) {
+            width: 140px;
+          }
         }
 
         .idsk-header-web__link-arrow {
@@ -324,6 +331,19 @@
   /* MAIN SECTION */
   .idsk-header-web__main {
 
+    @include mq($from: desktop) {
+
+      .govuk-grid-row {
+        display: flex;
+
+        .govuk-grid-column-two-thirds{
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+        }
+      }
+    }
+
     .govuk-grid-column-one-third{
       overflow: auto;
     }
@@ -333,15 +353,16 @@
     }
 
     &--login {
+      
+      .idsk-header-web__main--login-profilebtn,
+      .idsk-header-web__main--login-logoutbtn {
+        display: none;
+      }
 
       &-action {
         display: none;
         overflow: auto;
         margin-bottom: govuk-spacing(4);
-
-        & > * {
-          float: left;
-        }
 
         &-profile-img {
           height: 28px;
@@ -351,7 +372,7 @@
           margin-left: govuk-spacing(2);
 
           &-user-name {
-            font-size: 16px;
+            @include govuk-font($size: 16);
             font-weight: 700;
             margin-bottom: govuk-spacing(1);
           }
@@ -362,13 +383,29 @@
       }
 
       &--loggedIn {
-        .idsk-button {
+        .idsk-header-web__main--login-loginbtn {
           display: none;
         }
 
-        .idsk-header-web__main-profile-img,
-        .idsk-header-web__main-user-name {
+        a.idsk-header-web__main--login-profilebtn,
+        a.idsk-header-web__main--login-logoutbtn{
           display: initial;
+        }
+
+        .idsk-header-web__main--login-action {
+          display: flex;
+          align-items: center;
+        }
+
+        @include mq($until: desktop) {
+          .idsk-header-web__main--login-action-text:last-child div{
+            display: none;
+          }
+
+          button.idsk-header-web__main--login-profilebtn,
+          button.idsk-header-web__main--login-logoutbtn{
+            display: initial;
+          }
         }
       }
 
@@ -377,7 +414,7 @@
 
         &-action {
           margin-top: govuk-spacing(6);
-        margin-left: govuk-spacing(2);
+          margin-left: govuk-spacing(2);
         }
       }
     }
@@ -387,7 +424,9 @@
       margin: 28px 0;
 
       & > a {
-        display: inline-block;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
   
         &:focus,
         &:active { 
@@ -396,7 +435,6 @@
       }
 
       &-logo {
-        float: left;
         height: 40px;
         margin-right: govuk-spacing(3);
 
@@ -406,8 +444,7 @@
       }
 
       .govuk-heading-m {
-        float: left;
-        margin: govuk-spacing(1) 0;
+        margin: 0;
         color: $idsk-header-text-primary;
       }
 
@@ -416,11 +453,26 @@
       }
 
       @include mq($until: desktop) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         padding: govuk-spacing(4) 0;
         margin: 0;
 
+        a {
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+        }
+
+        .govuk-heading-m {
+          margin: 0;
+          float: none;
+        }
+
         &-menu-button {
-          display: block;
+          display: flex;
+          align-items: center;
           background-color: $idsk-header-background-primary;
           width: auto;
           float: right;
@@ -453,6 +505,10 @@
             display: none;
           }
 
+          &-service {
+            border: none;
+          }
+
           &--active {
             .idsk-header-web__menu-open {
               display: none;
@@ -460,6 +516,17 @@
 
             .idsk-header-web__menu-close {
               display: inline-block;
+            }
+
+            img{
+              display: none;
+            }
+          }
+
+          &-service {
+            .idsk-header-web__menu-close {
+              margin: 0;
+              padding: govuk-spacing(1) govuk-spacing(2);
             }
           }
         }
@@ -593,8 +660,6 @@
             background-color: govuk-colour("black");
             -webkit-mask: url(/assets/images/header-web/navigation-arrow.svg) no-repeat center;
             mask: url(/assets/images/header-web/navigation-arrow.svg) no-repeat center;
-
-            
             width: 10px;
             height: 10px;
             margin-left: govuk-spacing(2);
@@ -663,11 +728,6 @@
 
             .idsk-header-web__nav-submenu {
 
-              .govuk-grid-row {
-                margin-left: -(govuk-spacing(6));
-                margin-right: -(govuk-spacing(6));
-              }
-
               .govuk-grid-column-full {
                 margin-bottom: -1px;
                 padding: 0;
@@ -675,6 +735,12 @@
               .govuk-grid-column-full:last-child {
                 margin-bottom: 0;
               }
+            }
+          }
+          @include mq($from: tablet){
+            .govuk-grid-row {
+              margin-left: -(govuk-spacing(6));
+              margin-right: -(govuk-spacing(6));
             }
           }
         }
@@ -727,14 +793,14 @@
       }
       
       &-list {
-        margin: govuk-spacing(3) -15px govuk-spacing(3) -15px;
+        margin: govuk-spacing(3) -15px;
         &-item {
           &-link {
             font-size: 24px;
             font-weight: 700;
             width: 100%;
             box-sizing: border-box;
-            padding: govuk-spacing(2) govuk-spacing(4);
+            padding: govuk-spacing(2) govuk-spacing(3);
 
             .idsk-header-web__link-arrow {
               display: none;
