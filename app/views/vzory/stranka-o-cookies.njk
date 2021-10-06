@@ -1,0 +1,37 @@
+{% extends "layout.njk" %}
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+
+{% set pageName = "Stránka o cookies" %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    "items": [
+      { text: 'ID-SK frontend', href: '/' + legacyQuery },
+      { text: pageName }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <span class="govuk-caption-xl">Vzory</span>
+  <h1 class="govuk-heading-xl">{{pageName}}</h1>
+
+  <p class="govuk-body-l">Tento vzor je momentálne len experimentálny / skúšobný, stále prebieha proces výskumu a schválenia.</p>
+  <p class="govuk-body">Povedzte používateľom o cookies, ktoré im nastavíte na zariadení a nechajte ich potvrdiť alebo zamietnuť rôzne typy menej podstatných cookies.</p>
+
+  <h2 class="govuk-heading-m" id="kedy-pouzit-tento-vzor">Kedy je možné použiť tento vzor?</h2>
+  <p class="govuk-body">Používajte stránku cookies, keď chcete používateľa informovať o cookies alebo iných podobných technológiách, ktoré vaša služba / stránka používa a ukladá na zariadenie používateľa. Napríklad HTML5 lokálne úložisko.</p>
+
+  <h2 class="govuk-heading-m" id="ako-to-funguje">Ako to funguje?</h2>
+  <p class="govuk-body">Stránka vám pomôže byť transparentný smerom k používateľovi.</p>
+
+  <h2 class="govuk-heading-m" id="pripava-stranky">Príprava vašej stránky o cookies.</h2>
+  <p class="govuk-body">Stránku s cookies musíte vypublikovať v čase aktivácie alebo publikovania vašej služby / stránky v beta verzii. Cookie stránka musí byť jedinečná.</p>
+  <p class="govuk-body">Aplikujte nasledujúce kroky pri vytváraní vašej cookie stránky:</p>
+  <ul class="govuk-list govuk-list--bullet">
+      <li>Skontrolujte si cookies, ktoré používate</li>
+      <li>Kategorizujte si ich</li>
+      <li>Pripravte si stránku</li>
+  </ul>
+  
+{% endblock %}
