@@ -17,16 +17,29 @@
           {% if brand.nationalEmblem %}
             <div class="idsk-header-web__flag"></div>
           {% endif %}  
-          <span class="govuk-body-s">
+          <span class="govuk-body-s idsk-header-web__brand-gestor-text">
+            Oficiálna stránka
             {% if brand.gestorLink %}
-              SK 
-              <a class="govuk-link" href="{{ brand.gestorLink.hrefLink }}" title="{{ brand.gestorLink.text if brand.gestorLink.text else 'e-Gov' }}">
-                {{ brand.gestorLink.text if brand.gestorLink.text else 'e-Gov' }}
+              <a class="govuk-link" href="{{ brand.gestorLink.hrefLink }}" title="{{ brand.gestorLink.text if brand.gestorLink.text else 'slovenský e-goverment' }}">
+                {{ brand.gestorLink.text if brand.gestorLink.text else 'slovenského e-govermentu' }}
               </a>
             {% else %}
-              SK 
               <button class="idsk-header-web__brand-gestor-button">
-                e-Gov
+                slovenského e-govermentu
+                <div class="idsk-header-web__link-arrow"></div>
+              </button>
+            {% endif %}
+          </span>
+          {# MOBILE VERSION GESTOR LINK/BUTTON #}
+          <span class="govuk-body-s idsk-header-web__brand-gestor-text--mobile">
+            SK
+            {% if brand.gestorLink %}
+              <a class="govuk-link" href="{{ brand.gestorLink.hrefLink }}" title="{{ brand.gestorLink.text if brand.gestorLink.mobileText else 'e-Gov' }}">
+                {{ brand.gestorLink.mobileText if brand.gestorLink.mobileText else 'e-gov' }}
+              </a>
+            {% else %}
+              <button class="idsk-header-web__brand-gestor-button">
+                e-gov
                 <div class="idsk-header-web__link-arrow"></div>
               </button>
             {% endif %}
@@ -83,7 +96,7 @@
 {% set mainButtons %}
 <div class="idsk-header-web__main--buttons">
   {% if main.loginButton %}
-    <div class="idsk-header-web__main--login">
+    <div class="idsk-header-web__main--login {{ 'idsk-header-web__main--login--loggedIn' if main.loginButton.loggedIn }}">
       {{ idskButton({
         "text": main.loginButton.text if main.loginButton.text else 'Prihlásiť sa',
         "type": "button",

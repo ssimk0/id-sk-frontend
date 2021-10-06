@@ -55,6 +55,10 @@ params:
       type: string
       required: false
       description: Text of link
+    - name: mobileText
+      type: string
+      required: false
+      description: Text of link for mobile version
     - name: hrefLink
       type: string
       required: true
@@ -143,7 +147,7 @@ params:
       required: false
       description: Classes of second button
 
-- name: 
+- name: search
   type: object
   required: false
   description: Allows you to use search bar if is needed

@@ -41,10 +41,12 @@ HeaderWeb.prototype.init = function () {
     $module.boundCheckBlurLanguageSwitcherClick = this.checkBlurLanguageSwitcherClick.bind(this);
 
     // check for e-goverment button
-    var $eGovermentButton = $module.querySelector('.idsk-header-web__brand-gestor-button');
-    if ($eGovermentButton) {
+    var $eGovermentButtons = $module.querySelectorAll('.idsk-header-web__brand-gestor-button');
+    if ($eGovermentButtons.length > 0) {
         // Handle $eGovermentButton click event
-        $eGovermentButton.addEventListener('click', this.handleEgovermentClick.bind(this));
+        nodeListForEach($eGovermentButtons, function ($eGovermentButton) {
+            $eGovermentButton.addEventListener('click', this.handleEgovermentClick.bind(this));
+        }.bind(this))  
     }
 
     // check for menu items
@@ -100,10 +102,12 @@ HeaderWeb.prototype.handleBackTabbing = function (e) {
  * @param {object} e
  */
  HeaderWeb.prototype.handleEgovermentClick = function (e) {
-    var $eGovermentButton = this.$module.querySelector('.idsk-header-web__brand-gestor-button');
+    var $eGovermentButtons = this.$module.querySelectorAll('.idsk-header-web__brand-gestor-button');
     var $eGovermentDropdown = this.$module.querySelector('.idsk-header-web__brand-dropdown');
     toggleClass($eGovermentDropdown, 'idsk-header-web__brand-dropdown--active');  
-    toggleClass($eGovermentButton, 'idsk-header-web__brand-gestor-button--active');
+    nodeListForEach($eGovermentButtons, function ($eGovermentButton) {
+        toggleClass($eGovermentButton, 'idsk-header-web__brand-gestor-button--active');
+    }.bind(this))
 }
 
 

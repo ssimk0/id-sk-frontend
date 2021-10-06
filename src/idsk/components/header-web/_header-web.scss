@@ -121,7 +121,7 @@
       .govuk-body-s {
         display: inline-block;
       }
-  
+
       .govuk-body-s,
       .govuk-link {
         margin: govuk-spacing(2) 0;
@@ -182,6 +182,18 @@
             transition: transform 0.2s;
             transform: rotate(180deg);
           }
+        }
+      }
+
+      @include mq($until: desktop) {
+        .idsk-header-web__brand-gestor-text {
+          display: none;
+        }
+      }
+
+      @include mq($from: desktop) {
+        .idsk-header-web__brand-gestor-text--mobile {
+          display: none;
         }
       }
     }
