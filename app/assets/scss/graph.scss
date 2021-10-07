@@ -138,10 +138,6 @@
         box-shadow: 0 0 0 10px govuk-colour("mid-grey");
     }
 
-    .govuk-radios__item {
-        margin-bottom: 0;
-    }
-
     .idsk-graph .govuk-radios .govuk-radios__item:hover .govuk-radios__input:focus + .govuk-radios__label::before {
         box-shadow: 0 0 0 4px govuk-colour("yellow"), 0 0 0 10px govuk-colour("mid-grey");
     }
