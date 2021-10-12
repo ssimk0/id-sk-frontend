@@ -89,67 +89,121 @@
       <div class="govuk-grid-column-full">
         <div class="example example-error">
           {% set exampleComponentHtml %}
-            <div class="govuk-grid-row">
-              <div class="govuk-grid-column-two-thirds">
-                <h2 class="govuk-heading-l">Zmena cookie nastavení</h2>
-                <form action="/form-handler" method="post" novalidate>
-            
-                  <div class="govuk-form-group">
-                    <fieldset class="govuk-fieldset">
-                      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-                        Chcete prijať funkčné cookies?
-                      </legend>
-                      <div class="govuk-radios">
-                        <div class="govuk-radios__item">
-                          <input class="govuk-radios__input" id="functional-cookies" name="functional-cookies" type="radio" value="yes">
-                          <label class="govuk-label govuk-radios__label" for="functional-cookies">
-                            Áno
-                          </label>
-                        </div>
-                        <div class="govuk-radios__item">
-                          <input class="govuk-radios__input" id="functional-cookies-2" name="functional-cookies" type="radio" value="no" checked>
-                          <label class="govuk-label govuk-radios__label" for="functional-cookies-2">
-                            Nie
-                          </label>
-                        </div>
-                      </div>
-            
-                    </fieldset>
-                  </div>
-            
-                  <div class="govuk-form-group">
-                    <fieldset class="govuk-fieldset">
-                      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-                        Chcete priať analytické cookies?
-                      </legend>
-                      <div class="govuk-radios">
-                        <div class="govuk-radios__item">
-                          <input class="govuk-radios__input" id="analytics-cookies" name="analytics-cookies" type="radio" value="yes">
-                          <label class="govuk-label govuk-radios__label" for="analytics-cookies">
-                            Áno
-                          </label>
-                        </div>
-                        <div class="govuk-radios__item">
-                          <input class="govuk-radios__input" id="analytics-cookies-2" name="analytics-cookies" type="radio" value="no" checked>
-                          <label class="govuk-label govuk-radios__label" for="analytics-cookies-2">
-                            Nie
-                          </label>
-                        </div>
-                      </div>
-            
-                    </fieldset>
-                  </div>
-            
-                  <button class="govuk-button" data-module="govuk-button">
-                    Uložiť cookie nastavenia
-                  </button>
-                </form>
-              </div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-l">Zmena cookie nastavení</h2>
+    <form>
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+            Chcete prijať funkčné cookies?
+          </legend>
+          <div class="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="functional-cookies" name="functional-cookies" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="functional-cookies">
+                Áno
+              </label>
             </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="functional-cookies-2" name="functional-cookies" type="radio" value="no" checked>
+              <label class="govuk-label govuk-radios__label" for="functional-cookies-2">
+                Nie
+              </label>
+            </div>
+          </div>
+
+        </fieldset>
+      </div>
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+            Chcete priať analytické cookies?
+          </legend>
+          <div class="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="analytics-cookies" name="analytics-cookies" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="analytics-cookies">
+                Áno
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="analytics-cookies-2" name="analytics-cookies" type="radio" value="no" checked>
+              <label class="govuk-label govuk-radios__label" for="analytics-cookies-2">
+                Nie
+              </label>
+            </div>
+          </div>
+
+        </fieldset>
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">
+        Uložiť cookie nastavenia
+      </button>
+    </form>
+  </div>
+</div>
           {% endset %}
           {{exampleComponentHtml | safe}}
         </div>
         <pre class="language-markup"><code class="govuk-!-font-size-16 language-markup">{{ exampleComponentHtml }}</code></pre>
       </div>
+      <div class="govuk-grid-column-two-thirds">
+        <p class="govuk-body">Ak používateľ nastaví alebo zmení nastavenia cookies, použite zelený notifikačný banner na potvrdenie tejto aktivity. Taktiež im umožnite jednoduchý návrat na predchádzajúcu stránku.</p>
+      </div>
+      <div class="govuk-grid-column-full">
+        <div class="example example-error">
+          {% set exampleComponentHtml %}
+<div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+  <div class="govuk-notification-banner__header">
+    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+      Success
+    </h2>
+  </div>
+  <div class="govuk-notification-banner__content">
+    <p class="govuk-notification-banner__heading">
+      You’ve set your cookie preferences. <a class="govuk-notification-banner__link" href="#">Go back to the page you were looking at</a>.
+    </p>
+  </div>
+</div>
+          {% endset %}
+          {{exampleComponentHtml | safe}}
+        </div>
+        <pre class="language-markup"><code class="govuk-!-font-size-16 language-markup">{{ exampleComponentHtml }}</code></pre>
+      </div>
+
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-m" id="pouzitie-js-pri-udeleni-suhlasu">
+          Čo ak ste závislý od používania JavaScriptu pri možnosti udelenia súhlasu alebo odmietnutia na vašej stránke?
+        </h2>
+        <p class="govuk-body">Pokiaľ používateľove zariadenie nepodporuje JavaScript, ponúknite mu alternatívnu stránku cookies.</p>
+        <p class="govuk-body">Nahraďte výberovníky na súhlas s textom ako si používateľ povolí použitie JavaSript na svojom zariadení.</p>
+        
+        <h3 class="govuk-heading-s">Príklad: Zmeňte si svoje nastavenia cookies</h3>
+        <p class="govuk-body">Momentálne nemôžme zmeniť nastavenia cookies na vašom zariadení, pretože váš webový prehliadač nepodporuje JavaScript. Aby ste to zmenili, pokúste sa:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>zapnúť JavaScript v nastaveniach vášho prehliadača</li>
+          <li>obnovte si túto stránku v prehliadači</li>
+        </ul>
+
+        <h2 class="govuk-heading-m" id="aktualizacia-cookie-stranky">
+          Udržujte vašu stránku cookies aktuálnu a po zmenách vždy žiadajte súhlas nanovo
+        </h2>
+        <p class="govuk-body">Aktualizujte vašu stránku cookies aktuálnu po každej zmene v cookies.</p>
+        <p class="govuk-body">Vždy si ozrejmite:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>ako by ste mali označiť novú cookie</li>
+          <li>či potrebujete súhlas pre novú cookie od všetkých používateľov</li>
+        </ul>
+        <p class="govuk-body">Nový súhlas by ste mali žiadať ak:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>ak začínate používať nie základnú alebo kľúčovú cookie (napríklad ak začínate používať funkčné cookies)</li>
+          <li>ak začínate používať cookies, ktoré môžu zbierať citlivé dáta (napríklad informácie, ktoré sú pre používateľa špecifické (zdravotné informácie atď.)</li>
+          <li>ak idete už povolené cookies a dáta, ktoré s nimi zbierate, používať iným spôsobom aký mali pôvodný zámer</li>
+        </ul>
+        <p class="govuk-body">U používateľa nenastavujte žiadne cookies, ktoré nie sú základné alebo kľúčové, ak vám na to nedal súhlas.</p>
+      </div>  
   </div>
 {% endblock %}
