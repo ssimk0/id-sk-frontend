@@ -3,7 +3,8 @@
 {# BRAND BAR #}
 {% set brandBar %}
 {% set brand = params.brand %}
-{% for language in brand.languages|sort(attribute='text') %}
+{% set currentLanguage = "" %}
+{% for language in brand.languages %}
   {% if language.selected %}
     {% set currentLanguage = language %}
   {% endif %}
@@ -48,13 +49,14 @@
 
         <div class="idsk-header-web__brand-language">
           <button class="idsk-header-web__brand-language-button">
-            {{ currentLanguage if currentLanguage else 'Slovenčina'}}
+            {{ currentLanguage.text if currentLanguage else 'Slovenčina'}}
             <div class="idsk-header-web__link-arrow"></div>
           </button>
           <ul class="idsk-header-web__brand-language-list">
             {% for language in brand.languages | sort(attribute='text') %}
               <li class="idsk-header-web__brand-language-list-item">
-                <a class="govuk-link idsk-header-web__brand-language-list-item-link" title="{{ language.text }}"
+                <a class="govuk-link idsk-header-web__brand-language-list-item-link {{ 'idsk-header-web__brand-language-list-item-link--selected' if language.selected }}" 
+                  title="{{ language.text }}"
                   href="{{ language.link }}">
                   {{ language.text }}
                 </a>
@@ -69,11 +71,10 @@
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-one-half">
           <p class="govuk-body-s">
-            Doména Gov.sk je oficálna
+            Doména gov.sk je oficálna
           </p>
           <p class="govuk-body-s">
-            Slovak government websites always use a .gov.sk domain. Before sharing sensitive
-            information online, make sure.
+            Toto je oficiálna webová stránka orgánu verejnej moci Slovenskej republiky. Oficiálne stránky využívajú najmä doménu <a class="govuk-link" href="http://gov.sk/" target="_blank" title="gov.sk">gov.sk</a>. <a class="govuk-link" href="https://www.slovensko.sk/sk/agendy/agenda/_organy-verejnej-moci" target="_blank" title="odkazy na webové sídla orgánov verejnej moci">Odkazy na jednotlivé webové sídla orgánov verejnej moci nájdete na tomto odkaze</a>.
           </p>
         </div>
         <div class="govuk-grid-column-one-half">
@@ -81,8 +82,7 @@
             Táto stránka je zabezpečená
           </p>
           <p class="govuk-body-s">
-            Slovak government websites always use a .gov.sk domain. Before sharing sensitive
-            information online, make sure.
+            Buďte pozorní a vždy sa uistite, že zdieľate informácie iba cez zabezpečenú webovú stránku verejnej správy SR. Zabezpečená stránka vždy začína https:// pred názvom domény webového sídla.
           </p>
         </div>
       </div>
@@ -149,11 +149,11 @@
 {% endset %}
 
 {% set searchInput %}
-{% if params.search %}
+{% if params.search and params.headerType !== "electronicService" %}
   <form class="idsk-header-web__main-action-search">
     <input class="govuk-input govuk-!-display-inline-block" id="idsk-header-web__main-action-search-input" name="search"
-      placeholder="{{ params.search.placeHolder if params.search.placeHolder else 'Zadajte hľadaný výraz' }}" type="text"
-      aria-describedby="input-width-30-hint" aria-label="Zadajte hľadaný výraz" />
+      placeholder="{{ params.search.placeHolder if params.search.placeHolder else 'Zadajte hľadaný výraz' }}" type="search"
+      role="combobox" aria-describedby="input-width-30-hint" aria-label="Zadajte hľadaný výraz" />
     <button type="submit" class="govuk-button govuk-!-display-inline-block" data-module="govuk-button">
       <span class="govuk-visually-hidden">{{ params.search.button if params.search.button else "Vyhľadať" }}</span>
       <i aria-hidden="true" class="fas fa-search"></i>
@@ -195,7 +195,7 @@
               <div class="idsk-header-web__menu-open"></div>
               <div class="idsk-header-web__menu-close"></div>
             </button>
-          {% else %}
+          {% elif main.logginButton %}
             <button class="idsk-button idsk-header-web__main-headline-menu-button idsk-header-web__main-headline-menu-button-service">
               <img src="/assets/images/header-web/profile.svg" alt="Electronic service menu icon">
               <div class="idsk-header-web__menu-close"></div> 
@@ -206,12 +206,8 @@
 
       <div class="govuk-grid-column-two-thirds">
         <div class="idsk-header-web__main-action">
-          {% if params.headerType == 'website' or params.headerType == 'projectWebsite' %}
-            {{ searchInput | safe }}
-            {{ mainButtons | safe }}
-          {% else %}
-            {{ mainButtons | safe }}
-          {% endif %}
+          {{ searchInput | safe }}
+          {{ mainButtons | safe }}
         </div>
       </div>
     </div>
@@ -235,8 +231,8 @@
         <div class="govuk-grid-column-full">
           <nav class="{{ 'idsk-header-web__nav-bar--buttons' if main.loginButton or main.secondaryButton }}">
             <ul class="idsk-header-web__nav-list {{ params.navBar.classes if params.navBar.classes }}"
-              aria-label="Top Level Navigation">
-              {% for item in navigation %}
+              role="navigation" aria-label="Hlavná navigácia">
+              {% for item in navigation.slice(0, 5) %}
                 <li class="idsk-header-web__nav-list-item">
                   <a class="govuk-link idsk-header-web__nav-list-item-link" href="{{ item.link }}" {% for attribute, value
                     in item.attributes %} {{attribute}}="{{value}}" {% endfor %} title="{{ item.text }}">
@@ -247,13 +243,13 @@
                     {% endif %}
                   </a>
                   {% if item.submenu and (item.submenu | length < 6) %} 
-                    <div class="idsk-header-web__nav-submenulite">
+                    <div class="idsk-header-web__nav-submenulite" aria-label="Vnútorné menu">
                       <ul class="idsk-header-web__nav-submenulite-list">
-                        {% for subItem in item.submenu%}
+                        {% for subItem in item.submenu %}
                           <li class="idsk-header-web__nav-submenulite-list-item">
                             <a class="govuk-link idsk-header-web__nav-submenulite-list-item-link" href="{{ subItem.link }}"
                               title="{{ subItem.text }}">
-                              {{ subItem.text }}
+                              <span>{{ subItem.text }}</span>
                             </a>
                           </li>
                         {% endfor %}
@@ -261,64 +257,22 @@
                     </div>
 
                   {% elif item.submenu %}
-                    <div class="idsk-header-web__nav-submenu">
+                    <div class="idsk-header-web__nav-submenu" aria-label="Vnútorné menu">
                       <div class="govuk-width-container">
                         <div class="govuk-grid-row">
-                          <div class="govuk-grid-column-full govuk-grid-column-one-quarter-from-desktop">
-                            <ul class="idsk-header-web__nav-submenu-list">
-                              {% for subItem in item.submenu.slice(0, 3) %}
+                            <ul class="idsk-header-web__nav-submenu-list" aria-label="">
+                              {% for subItem in item.submenu.slice(0, 9) %}
                                 <li class="idsk-header-web__nav-submenu-list-item">
                                   <a class="govuk-link idsk-header-web__nav-submenu-list-item-link" href="{{ subItem.link }}"
                                     title="{{ subItem.text }}">
-                                    {{ subItem.text }}
+                                    <span>{{ subItem.text }}</span>
                                   </a>
                                 </li>
                               {% endfor %}
                             </ul>
-                          </div>
-
-                          <div class="govuk-grid-column-full govuk-grid-column-one-quarter-from-desktop">
-                            <ul class="idsk-header-web__nav-submenu-list">
-                              {% for subItem in item.submenu.slice(3, 6) %}
-                                <li class="idsk-header-web__nav-submenu-list-item">
-                                  <a class="govuk-link idsk-header-web__nav-submenu-list-item-link" href="{{ subItem.link }}"
-                                    title="{{ subItem.text }}">
-                                    {{ subItem.text }}
-                                  </a>
-                                </li>
-                              {% endfor %}
-                            </ul>
-                          </div>
-
-                          <div class="govuk-grid-column-full govuk-grid-column-one-quarter-from-desktop">
-                            <ul class="idsk-header-web__nav-submenu-list">
-                              {% for subItem in item.submenu.slice(6, 9) %}
-                                <li class="idsk-header-web__nav-submenu-list-item">
-                                  <a class="govuk-link idsk-header-web__nav-submenu-list-item-link" href="{{ subItem.link }}"
-                                    title="{{ subItem.text }}">
-                                    {{ subItem.text }}
-                                  </a>
-                                </li>
-                              {% endfor %}
-                            </ul>
-                          </div>
-
-                          <div class="govuk-grid-column-full govuk-grid-column-one-quarter-from-desktop">
-                            <ul class="idsk-header-web__nav-submenu-list">
-                              {% for subItem in item.submenu.slice(9, 12) %}
-                                <li class="idsk-header-web__nav-submenu-list-item">
-                                  <a class="govuk-link idsk-header-web__nav-submenu-list-item-link" href="{{ subItem.link }}"
-                                    title="{{ subItem.text }}">
-                                    {{ subItem.text }}
-                                  </a>
-                                </li>
-                              {% endfor %}
-                            </ul>
-                          </div>
                         </div>
                       </div>
                     </div>
-                    <div class="idsk-header-web__nav-submenu-spacer"></div>
                   {% endif %}
                 </li>
               {% endfor %}
