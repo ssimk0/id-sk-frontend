@@ -731,14 +731,19 @@
         }
 
         &--active {
-          background-color: $idsk-header-background-secondary;
+
+          @include mq($from: desktop) {
+            background-color: $idsk-header-background-secondary;
+          }
 
           .idsk-header-web__nav-list-item-link {
 
-            &:link,
-            &:hover,
-            &:visited {
-              color: $idsk-header-text-secondary;
+            @include mq($from: desktop) {
+              &:link,
+              &:hover,
+              &:visited {
+                color: $idsk-header-text-secondary;
+              }
             }
 
             &:focus,
@@ -868,7 +873,9 @@
       display: none;
 
       @include govuk-clearfix;
-      background-color: $idsk-header-background-secondary;
+      @include mq($from: desktop) {
+        background-color: $idsk-header-background-secondary;
+      }
   
       &-list {
         background-color: $idsk-header-dark-blue;
