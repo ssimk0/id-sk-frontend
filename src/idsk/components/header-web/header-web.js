@@ -18,6 +18,13 @@ HeaderWeb.prototype.init = function () {
         return;
     }
 
+    // chceck for banner
+    var $banner = $module.querySelector('.idsk-header-web__banner');
+    if ($banner) {
+        var $bannerCloseBtn = $banner.querySelector('.idsk-header-web__menu-close');
+        $bannerCloseBtn.addEventListener('click', this.handleCloseBanner.bind(this));
+    }
+
     // check for language switcher
     var $toggleLanguageSwitcher = $module.querySelector('.idsk-header-web__brand-language-button');
     this.$toggleLanguageSwitcher = $toggleLanguageSwitcher;
@@ -69,6 +76,16 @@ HeaderWeb.prototype.init = function () {
     }
 
     $module.boundCheckBlurMenuItemClick = this.checkBlurMenuItemClick.bind(this);
+}
+
+/**
+ * Handle close banner
+ * @param {object} e
+ */
+ HeaderWeb.prototype.handleCloseBanner = function (e) {
+    var $closeButton = e.target || e.srcElement;
+    var $banner = $closeButton.closest('.idsk-header-web__banner');
+    $banner.classList.add('idsk-header-web__banner--hide');
 }
 
 /**
