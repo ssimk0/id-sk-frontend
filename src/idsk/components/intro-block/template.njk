@@ -20,12 +20,11 @@
                       <div>
                           <ul class="idsk-intro-block__list__ul">
                               <li class="idsk-intro-block__bottom-menu__li govuk-caption-m">
-                                  <span>Hľadáte toto?
-                                  </span>
+                                  <span>Hľadáte toto?</span>
                               </li>
                               {% for bottomMenu in params.bottomMenu %}
                                   <li class="idsk-intro-block__list__li">
-                                      <a class="govuk-link idsk-intro-block__list__a" href="{{bottomMenu.href}}">
+                                      <a class="govuk-link idsk-intro-block__list__a" href="{{bottomMenu.href}}" title="{{bottomMenu.item}}">
                                           {{ bottomMenu.item }}
                                       </a>
                                   </li>
