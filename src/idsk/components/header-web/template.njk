@@ -1,5 +1,10 @@
 {% from "../button/macro.njk" import idskButton %}
 
+{# SLOVAK TRICOLOR #}
+{% set tricolor %}
+  <div class="idsk-header-web__tricolor"></div>
+{% endset %}
+
 {# BRAND BAR #}
 {% set brandBar %}
 {% set brand = params.brand %}
@@ -14,38 +19,40 @@
   <div class="govuk-width-container">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">
-        <div class="idsk-header-web__brand-gestor">
-          {% if brand.nationalEmblem %}
-            <div class="idsk-header-web__flag"></div>
-          {% endif %}  
-          <span class="govuk-body-s idsk-header-web__brand-gestor-text">
-            Oficiálna stránka
-            {% if brand.gestorLink %}
-              <a class="govuk-link" href="{{ brand.gestorLink.hrefLink }}" title="{{ brand.gestorLink.text if brand.gestorLink.text else 'slovenský e-goverment' }}">
-                {{ brand.gestorLink.text if brand.gestorLink.text else 'slovenského e-govermentu' }}
-              </a>
-            {% else %}
-              <button class="idsk-header-web__brand-gestor-button">
-                slovenského e-govermentu
-                <div class="idsk-header-web__link-arrow"></div>
-              </button>
-            {% endif %}
-          </span>
-          {# MOBILE VERSION GESTOR LINK/BUTTON #}
-          <span class="govuk-body-s idsk-header-web__brand-gestor-text--mobile">
-            SK
-            {% if brand.gestorLink %}
-              <a class="govuk-link" href="{{ brand.gestorLink.hrefLink }}" title="{{ brand.gestorLink.text if brand.gestorLink.mobileText else 'e-Gov' }}">
-                {{ brand.gestorLink.mobileText if brand.gestorLink.mobileText else 'e-gov' }}
-              </a>
-            {% else %}
-              <button class="idsk-header-web__brand-gestor-button">
-                e-gov
-                <div class="idsk-header-web__link-arrow"></div>
-              </button>
-            {% endif %}
-          </span>
-        </div>
+        {% if brand.gestor %}
+          <div class="idsk-header-web__brand-gestor">
+            {% if brand.gestor.nationalEmblem %}
+              <div class="idsk-header-web__flag"></div>
+            {% endif %}   
+            <span class="govuk-body-s idsk-header-web__brand-gestor-text">
+              Oficiálna stránka
+              {% if brand.gestor.gestorLink %}
+                <a class="govuk-link" href="{{ brand.gestor.gestorLink.hrefLink }}" title="{{ brand.gestor.gestorLink.text if brand.gestor.gestorLink.text else 'slovenský e-goverment' }}">
+                  {{ brand.gestor.gestorLink.text if brand.gestor.gestorLink.text else 'slovenského e-govermentu' }}
+                </a>
+              {% else %}
+                <button class="idsk-header-web__brand-gestor-button">
+                  slovenského e-govermentu
+                  <div class="idsk-header-web__link-arrow"></div>
+                </button>
+              {% endif %}
+            </span>
+            {# MOBILE VERSION GESTOR LINK/BUTTON #}
+            <span class="govuk-body-s idsk-header-web__brand-gestor-text--mobile">
+              SK
+              {% if brand.gestor.gestorLink %}
+                <a class="govuk-link" href="{{ brand.gestor.gestorLink.hrefLink }}" title="{{ brand.gestor.gestorLink.text if brand.gestor.gestorLink.mobileText else 'e-Gov' }}">
+                  {{ brand.gestor.gestorLink.mobileText if brand.gestor.gestorLink.mobileText else 'e-gov' }}
+                </a>
+              {% else %}
+                <button class="idsk-header-web__brand-gestor-button">
+                  e-gov
+                  <div class="idsk-header-web__link-arrow"></div>
+                </button>
+              {% endif %}
+            </span>
+          </div>
+        {% endif %}
 
         <div class="idsk-header-web__brand-language">
           <button class="idsk-header-web__brand-language-button">
@@ -195,7 +202,7 @@
               <div class="idsk-header-web__menu-open"></div>
               <div class="idsk-header-web__menu-close"></div>
             </button>
-          {% elif main.logginButton %}
+          {% elif main.loginButton %}
             <button class="idsk-button idsk-header-web__main-headline-menu-button idsk-header-web__main-headline-menu-button-service">
               <img src="/assets/images/header-web/profile.svg" alt="Electronic service menu icon">
               <div class="idsk-header-web__menu-close"></div> 
@@ -307,6 +314,7 @@
             {% endif %}
             {{ banner.text if banner.text else 'It was popularised in the 1960s with the release of Letraset' }}
           </span>
+          <div class="idsk-header-web__menu-close"></div>
         </div>
       </div>
     </div>
@@ -316,8 +324,9 @@
 
 <header class="idsk-header-web {{ params.classes if params.classes }}" data-module="idsk-header-web" {%- for attribute,
   value in params.attributes %} {{attribute}}="{{value}}" {% endfor %}>
+  {{ bannerSection | safe }}
+  {{ tricolor | safe }}
   {{ brandBar | safe }}
   {{ mainSection | safe }}
   {{ navBar | safe }}
-  {{ bannerSection | safe }}
 </header>

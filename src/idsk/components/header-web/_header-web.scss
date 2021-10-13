@@ -16,25 +16,6 @@
 
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
 
-    &::before {
-      content: "";
-      display: block;
-      width: 100%;
-      height: 3px;
-      background-image: linear-gradient(
-        to right,
-        govuk-colour("white") 0%,
-        govuk-colour("white") 33.3%,
-        #003183 33.3%,
-        #003183 66.6%,
-        govuk-colour("red") 66.6%,
-        govuk-colour("red") 100%
-      );
-      /* equivalent to (to right, white, white 50%, black 50%, black) */
-      background-size: 150px 100%;
-      background-repeat: repeat;
-    }
-
     &__flag {
       background-color: govuk-colour("black");
       -webkit-mask: url(/assets/images/header-web/flag.svg) no-repeat center;
@@ -102,6 +83,26 @@
       width: 13px;
       height: 13px;
     }
+  }
+
+  /* SLOVAK TRICOLOR */
+  .idsk-header-web__tricolor {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-image: linear-gradient(
+      to right,
+      govuk-colour("white") 0%,
+      govuk-colour("white") 33.3%,
+      #003183 33.3%,
+      #003183 66.6%,
+      govuk-colour("red") 66.6%,
+      govuk-colour("red") 100%
+    );
+    /* equivalent to (to right, white, white 50%, black 50%, black) */
+    background-size: 150px 100%;
+    background-repeat: repeat;
   }
 
   /* BRAND BAR */
@@ -756,8 +757,7 @@
               }
             }
 
-            .idsk-header-web__link-arrow,
-            .idsk-header-web__link-arrow-mobile {
+            .idsk-header-web__link-arrow {
               background-color: $idsk-header-text-secondary;
             }
           }
@@ -1047,6 +1047,16 @@
       margin: 0;
       font-weight: 700;
       display: inline-block;
+    }
+
+    .govuk-grid-column-full {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &--hide {
+      display: none;
     }
   }
 }
