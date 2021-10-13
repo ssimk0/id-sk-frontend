@@ -241,7 +241,7 @@
               role="navigation" aria-label="Hlavná navigácia">
               {% for item in navigation.slice(0, 5) %}
                 <li class="idsk-header-web__nav-list-item">
-                  <a class="govuk-link idsk-header-web__nav-list-item-link" href="{{ item.link }}" {% for attribute, value
+                  <a class="govuk-link idsk-header-web__nav-list-item-link" href="{{ item.link if not item.submenu else '#' + loop.index }}" {% for attribute, value
                     in item.attributes %} {{attribute}}="{{value}}" {% endfor %} title="{{ item.text }}">
                     {{ item.text }}
                     {% if item.submenu %}
@@ -250,8 +250,8 @@
                     {% endif %}
                   </a>
                   {% if item.submenu and (item.submenu | length < 6) %} 
-                    <div class="idsk-header-web__nav-submenulite" aria-label="Vnútorné menu">
-                      <ul class="idsk-header-web__nav-submenulite-list">
+                    <div class="idsk-header-web__nav-submenulite">
+                      <ul class="idsk-header-web__nav-submenulite-list" aria-label="Vnútorná navigácia">
                         {% for subItem in item.submenu %}
                           <li class="idsk-header-web__nav-submenulite-list-item">
                             <a class="govuk-link idsk-header-web__nav-submenulite-list-item-link" href="{{ subItem.link }}"
@@ -264,10 +264,10 @@
                     </div>
 
                   {% elif item.submenu %}
-                    <div class="idsk-header-web__nav-submenu" aria-label="Vnútorné menu">
+                    <div class="idsk-header-web__nav-submenu">
                       <div class="govuk-width-container">
                         <div class="govuk-grid-row">
-                            <ul class="idsk-header-web__nav-submenu-list" aria-label="">
+                            <ul class="idsk-header-web__nav-submenu-list"  aria-label="Vnútorná navigácia">
                               {% for subItem in item.submenu.slice(0, 9) %}
                                 <li class="idsk-header-web__nav-submenu-list-item">
                                   <a class="govuk-link idsk-header-web__nav-submenu-list-item-link" href="{{ subItem.link }}"
