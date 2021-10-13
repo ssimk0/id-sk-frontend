@@ -1,5 +1,4 @@
 {% extends "layout.njk" %}
-{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
 {% from "../../../src/idsk/components/header-extended/macro.njk" import idskHeaderExtended %}
 {% from "../../../src/idsk/components/intro-block/macro.njk" import idskIntroBlock %}
 {% from "../../../src/idsk/components/card/macro.njk" import idskCard %}
@@ -8,6 +7,10 @@
 
 {% block styles %}
   <style>
+    #main-content {
+      padding-top: 0;
+    }
+
     body {
       overflow-x: hidden;
     }
@@ -218,6 +221,7 @@
 
 {% block content %}
   {{ idskIntroBlock({
+    classBackground: "app-pane-grey",
     mainTitleLinkLabel: "viac o ministerstve",
     bottomMenu: [
       {
@@ -411,9 +415,7 @@
         <h4 class="govuk-heading-l govuk-!-margin-bottom-2">G2G služby</h4>
         <ul class="idsk-intro-block__side-menu__ul">
           <li class="idsk-intro-block__side-menu__li">
-            <a class="idsk-intro-block__side-menu__a" href="#"
-               title="Centrálny metainformačný systém verejnej správy (MetaIS)">Centrálny metainformačný systém verejnej
-              správy (MetaIS)</a>
+            <a class="idsk-intro-block__side-menu__a" href="#" title="Centrálny metainformačný systém verejnej správy (MetaIS)">Centrálny metainformačný systém verejnej správy (MetaIS)</a>
           </li>
           <li class="idsk-intro-block__side-menu__li">
             <a class="idsk-intro-block__side-menu__a" href="#" title="Zaručená konverzia">Zaručená konverzia</a>
@@ -465,9 +467,7 @@
     <div class="govuk-grid-column-full govuk-!-margin-bottom-5">
       <h2 class="govuk-heading-l">Regionálny rozvoj</h2>
       <p class="govuk-body-m">
-        Všetky informácie o príprave, revízii a realizácii Európskych štrukturálnych fondov (EŠIF) v podmienkach SR na
-        jendom mieste. Viac informácií nájdete na <a class="govuk-link" href="#" title="podstránke Regionálny rozvoj">podstránke
-          Regionálny rozvoj</a>.
+        Všetky informácie o príprave, revízii a realizácii Európskych štrukturálnych fondov (EŠIF) v podmienkach SR na jendom mieste. Viac informácií nájdete na <a class="govuk-link" href="#" title="podstránke Regionálny rozvoj">podstránke Regionálny rozvoj</a>.
       </p>
     </div>
     <div class="govuk-grid-column-full">
@@ -490,8 +490,7 @@
       <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6 idsk-blue-banner_description">
         <h2 class="govuk-heading-l">Inštitút digitálnych a rozvojových politík</h2>
         <div class="govuk-caption-l">
-          Všetky informácie o príprave, revízii a realizácii Európskych štrukturálnych fondov (EŠIF) v podmienkach SR na
-          jendom mieste.
+          Všetky informácie o príprave, revízii a realizácii Európskych štrukturálnych fondov (EŠIF) v podmienkach SR na jendom mieste.
         </div>
         <br>
         <a href="#" class="govuk-link" title="Zistiť viac o IDRP">Zistiť viac o IDRP</a>
@@ -507,80 +506,70 @@
     <div class="govuk-grid-column-full govuk-!-margin-bottom-5">
       <h2 class="govuk-heading-l">Podujatia</h2>
       <p class="govuk-body-m">
-        Najbližšie podujatia organizované ministerstvom a s podporou ministerstva. Informácií o všetkých udalostiach
-        nájdete na <a class="govuk-link" href="#" title="podstránke Podujatia">podstránke Podujatia</a>.
+        Najbližšie podujatia organizované ministerstvom a s podporou ministerstva. Informácií o všetkých udalostiach nájdete na <a class="govuk-link" href="#" title="podstránke Podujatia">podstránke Podujatia</a>.
       </p>
     </div>
   </div>
   <div class="govuk-grid-row">
-    <div class="idsk-events-list">
-      <div class="govuk-grid-column-one-third">
-        <div class="idsk-events-list__block">
-          <div class="idsk-events-list__event-title">
-            <a href="#" class="govuk-link govuk-heading-s"
-               title="Pandémia COVID-19 ešte viac zvýraznila potrebu urýchliť digitálnu transformáciu v Európe">Pandémia
-              COVID-19 ešte viac zvýraznila potrebu urýchliť digitálnu transformáciu v Európe</a>
+      <div class="idsk-events-list">
+        <div class="govuk-grid-column-one-third">
+          <div class="idsk-events-list__block">
+            <div class="idsk-events-list__event-title">
+              <a href="#" class="govuk-link govuk-heading-s" title="Pandémia COVID-19 ešte viac zvýraznila potrebu urýchliť digitálnu transformáciu v Európe">Pandémia COVID-19 ešte viac zvýraznila potrebu urýchliť digitálnu transformáciu v Európe</a>
+            </div>
+            <div class="idsk-events-list__event-desc">26.02.2021</div>
           </div>
-          <div class="idsk-events-list__event-desc">26.02.2021</div>
+        </div>
+        <div class="govuk-grid-column-one-third">
+          <div class="idsk-events-list__block">
+            <div class="idsk-events-list__event-title">
+              <a href="#" class="govuk-link govuk-heading-s" title="Hackaton - vytváranie šablóny webovej stránky">Hackaton - vytváranie šablóny webovej stránky</a>
+            </div>
+            <div class="idsk-events-list__event-desc">26.02.2021</div>
+          </div>
+        </div>
+        <div class="govuk-grid-column-one-third">
+          <div class="idsk-events-list__block">
+            <div class="idsk-events-list__event-title">
+              <a href="#" class="govuk-link govuk-heading-s" title="ID-SK workshop #6">ID-SK workshop #6</a>
+            </div>
+            <div class="idsk-events-list__event-desc">26.02.2021</div>
+          </div>
+        </div>
+        <div class="govuk-grid-column-one-third">
+          <div class="idsk-events-list__block">
+            <div class="idsk-events-list__event-title">
+              <a href="#" class="govuk-link govuk-heading-s" title="Pandémia COVID-19 ešte viac zvýraznila potrebu urýchliť digitálnu transformáciu v Európe">Pandémia COVID-19 ešte viac zvýraznila potrebu urýchliť digitálnu transformáciu v Európe</a>
+            </div>
+            <div class="idsk-events-list__event-desc">26.02.2021</div>
+          </div>
+        </div>
+        <div class="govuk-grid-column-one-third">
+          <div class="idsk-events-list__block">
+            <div class="idsk-events-list__event-title">
+              <a href="#" class="govuk-link govuk-heading-s" title="Hackaton - vytváranie šablóny webovej stránky">Hackaton - vytváranie šablóny webovej stránky</a>
+            </div>
+            <div class="idsk-events-list__event-desc">26.02.2021</div>
+          </div>
+        </div>
+        <div class="govuk-grid-column-one-third">
+          <div class="idsk-events-list__block">
+            <div class="idsk-events-list__event-title">
+              <a href="#" class="govuk-link govuk-heading-s" title="ID-SK workshop #6">ID-SK workshop #6</a>
+            </div>
+            <div class="idsk-events-list__event-desc">26.02.2021</div>
+          </div>
         </div>
       </div>
-      <div class="govuk-grid-column-one-third">
-        <div class="idsk-events-list__block">
-          <div class="idsk-events-list__event-title">
-            <a href="#" class="govuk-link govuk-heading-s" title="Hackaton - vytváranie šablóny webovej stránky">Hackaton
-              - vytváranie šablóny webovej stránky</a>
-          </div>
-          <div class="idsk-events-list__event-desc">26.02.2021</div>
-        </div>
-      </div>
-      <div class="govuk-grid-column-one-third">
-        <div class="idsk-events-list__block">
-          <div class="idsk-events-list__event-title">
-            <a href="#" class="govuk-link govuk-heading-s" title="ID-SK workshop #6">ID-SK workshop #6</a>
-          </div>
-          <div class="idsk-events-list__event-desc">26.02.2021</div>
-        </div>
-      </div>
-      <div class="govuk-grid-column-one-third">
-        <div class="idsk-events-list__block">
-          <div class="idsk-events-list__event-title">
-            <a href="#" class="govuk-link govuk-heading-s"
-               title="Pandémia COVID-19 ešte viac zvýraznila potrebu urýchliť digitálnu transformáciu v Európe">Pandémia
-              COVID-19 ešte viac zvýraznila potrebu urýchliť digitálnu transformáciu v Európe</a>
-          </div>
-          <div class="idsk-events-list__event-desc">26.02.2021</div>
-        </div>
-      </div>
-      <div class="govuk-grid-column-one-third">
-        <div class="idsk-events-list__block">
-          <div class="idsk-events-list__event-title">
-            <a href="#" class="govuk-link govuk-heading-s" title="Hackaton - vytváranie šablóny webovej stránky">Hackaton
-              - vytváranie šablóny webovej stránky</a>
-          </div>
-          <div class="idsk-events-list__event-desc">26.02.2021</div>
-        </div>
-      </div>
-      <div class="govuk-grid-column-one-third">
-        <div class="idsk-events-list__block">
-          <div class="idsk-events-list__event-title">
-            <a href="#" class="govuk-link govuk-heading-s" title="ID-SK workshop #6">ID-SK workshop #6</a>
-          </div>
-          <div class="idsk-events-list__event-desc">26.02.2021</div>
-        </div>
-      </div>
-    </div>
   </div>
 
   <hr class="idsk-hr-separator govuk-!-margin-bottom-6">
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full govuk-!-margin-bottom-5">
-      <h2 class="govuk-heading-l">Projekty a spolupráce MIRRI</h2>
+    <h2 class="govuk-heading-l">Projekty a spolupráce MIRRI</h2>
       <p class="govuk-body-m">
-        Slovensko je neodlučnou súčasťou európskeho digitálneho priestoru, ktorý pomáha formovať strategické smerovanie
-        digitalizácie u nás. Viac informácií nájdete na <a class="govuk-link" href="#"
-                                                           title="podstránke Informatizácia">na podstránke
-          Informatizácia</a>.
+        Slovensko je neodlučnou súčasťou európskeho digitálneho priestoru, ktorý pomáha formovať strategické smerovanie digitalizácie u nás. Viac informácií nájdete na <a class="govuk-link" href="#" title="podstránke Informatizácia">na podstránke Informatizácia</a>.
       </p>
     </div>
     <div class="govuk-grid-column-full">
