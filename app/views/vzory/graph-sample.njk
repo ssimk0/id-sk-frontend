@@ -68,7 +68,7 @@
             var $agKey = "AgPosit"
             var $pcrKey = $time === "sum" ? "Pocet.potvrdenych.PCR.testami" : "Dennych.PCR.prirastkov"
 
-            var request = $.ajax({
+            $.ajax({
                 url: urlToDownload,
                 success: function(csvFile) {
                     const output = Papa.parse(csvFile, {
