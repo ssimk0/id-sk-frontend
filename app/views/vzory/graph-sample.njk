@@ -54,9 +54,9 @@
         var $time = $params.get("time")
         var $types = $params.get("type")
         var $typesArr = $types === null || $types === ""  ? ["pcr"] : $types.split("-")
-        var urlToDownload = "https://raw.githubusercontent.com/Institut-Zdravotnych-Analyz/covid19-data/main/DailyStats/OpenData_Slovakia_Covid_DailyStats.csv"
 
         var renderGraph = function() {
+            var urlToDownload = "https://raw.githubusercontent.com/Institut-Zdravotnych-Analyz/covid19-data/main/DailyStats/OpenData_Slovakia_Covid_DailyStats.csv"
             var $d3 = Plotly.d3;
             var $gd3 = $d3.select("#graph")
 
@@ -64,23 +64,28 @@
             var $xAxisDate = []
             var $pcr = []
             var $ag = []
-            var $agKey = $time === "sum" ? "Kumulativne - AgPosit" : "AgPosit"
+            var $agValue = 0
+            var $agKey = "AgPosit"
             var $pcrKey = $time === "sum" ? "Pocet.potvrdenych.PCR.testami" : "Dennych.PCR.prirastkov"
 
-            $.ajax({
+            var request = $.ajax({
                 url: urlToDownload,
-                success: function(csv) {
-                    const output = Papa.parse(csv, {
+                success: function(csvFile) {
+                    const output = Papa.parse(csvFile, {
                       header: true,
                     });
                     if (output.data) {
-                      console.log(output.data);
-                      output.data.forEach(function($i) {
-                        var $date = new Date($i['Datum'])
+                      output.data.forEach(function($item) {
+                        var $date = new Date($item['Datum'])
 
                         $xAxisDate.push($date)
-                        //$ag.push($i[$agKey])
-                        $pcr.push($i[$pcrKey])
+                        $pcr.push($item[$pcrKey])
+
+                        // calculating sum for ag tests if needed
+                        $ag.push($agValue + parseInt($item[$agKey]))
+
+                        if ($time === "sum" && $item[$agKey]!= 'NA')
+                          $agValue += parseInt($item[$agKey])
                       })
 
                       var $bar = []
