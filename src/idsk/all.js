@@ -16,6 +16,7 @@ import Stepper from './components/stepper/stepper';
 import RegistrationForEvent from './components/registration-for-event/registration-for-event';
 import InteractiveMap from './components/interactive-map/interactive-map';
 import Accordion from './components/accordion/accordion';
+import Tabs from './components/tabs/tabs';
 
 function initAll(options) {
   // Set the options to an empty object by default if no options are passed.
@@ -108,6 +109,11 @@ function initAll(options) {
     new Accordion($accordion).init();
   })
 
+  var $tabs = scope.querySelectorAll('[data-module="idsk-tabs"]');
+  nodeListForEach($tabs, function ($tab){
+    new Tabs($tab).init();
+  })
+
   // Init all GOVUK components js
   initAllGOVUKjs(options);
 }
@@ -130,5 +136,6 @@ export {
   RegistrationForEvent,
   InteractiveMap,
   Stepper,
-  Accordion
+  Accordion,
+  Tabs
 }
