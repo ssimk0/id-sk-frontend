@@ -25,7 +25,7 @@
     {% if item %}
       {% set id = item.id if item.id else idPrefix + "-" + loop.index %}
       <section class="idsk-tabs__panel{% if loop.index > 1 %} idsk-tabs__panel--hidden{% endif %}" id="{{ id }}"{% for attribute, value in item.panel.attributes %} {{attribute}}="{{value}}"{% endfor %}>
-        <div class="govuk-caption-l idsk-tabs__mobile-tab {% if loop.index == 1 %}idsk-tabs__mobile-tab--selected{% endif %}">
+        <div class="govuk-caption-l idsk-tabs__mobile-tab {% if loop.index == 1 %}idsk-tabs__mobile-tab--selected{% endif %}" item="{{ loop.index0 }}">
           {{ item.label }}
           <div class="idsk-tabs__tab-arrow-mobile"></div>
         </div>

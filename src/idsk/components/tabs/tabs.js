@@ -39,7 +39,7 @@ Tabs.prototype.setup = function () {
     $item.setAttribute('role', 'presentation')
   })
 
-  nodeListForEach($tabs, function ($tab) {
+  nodeListForEach($tabs, function ($tab, i) {
     // Set HTML attributes
     this.setAttributes($tab)
 
@@ -49,6 +49,7 @@ Tabs.prototype.setup = function () {
 
     // Handle events
     $tab.addEventListener('click', $tab.boundTabClick, true)
+    $mobileTabs[i].addEventListener('click', $tab.boundTabClick, true)
     $tab.addEventListener('keydown', $tab.boundTabKeydown, true)
 
     // Remove old active panels
@@ -132,12 +133,15 @@ Tabs.prototype.unsetAttributes = function ($tab) {
 }
 
 Tabs.prototype.onTabClick = function (e) {
-  if (!e.target.classList.contains('idsk-tabs__tab')) {
+  if (!(e.target.classList.contains('idsk-tabs__tab') || e.target.classList.contains('idsk-tabs__mobile-tab'))) {
   // Allow events on child DOM elements to bubble up to tab parent
     return false
   }
   e.preventDefault()
   var $newTab = e.target
+  if ($newTab.nodeName == 'DIV'){
+    $newTab = this.$tabs[$newTab.getAttribute('item')]
+  }
   var $currentTab = this.getCurrentTab()
   this.hideTab($currentTab)
   this.showTab($newTab)
