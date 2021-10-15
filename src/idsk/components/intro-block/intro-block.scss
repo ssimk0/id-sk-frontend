@@ -34,9 +34,6 @@
           @include mq($from: desktop) {
             background-color: govuk-colour("light-grey");
           }
-          @include mq($until: tablet) {
-            padding: 0 govuk-spacing(3);
-          }
         }
 
         .govuk-grid-column-one-third-from-desktop {
@@ -102,8 +99,13 @@
     }
 
     .idsk-intro-block__side-menu{
+        padding: govuk-spacing(4);
         @include mq($from: desktop){
             margin-left: govuk-spacing(8);
+        }
+
+        @include mq($until: tablet) {
+          padding: 0 govuk-spacing(3);
         }
 
         .govuk-heading-s{
@@ -118,11 +120,6 @@
                 font-size: 18px;
                 line-height: 20px;
             }
-        }
-
-        &.app-pane-grey,
-        &.app-pane-blue{
-            padding: govuk-spacing(4);
         }
     }
 
@@ -152,17 +149,6 @@
 
     .idsk-intro-block__side-menu__li {
         padding-bottom: govuk-spacing(2);
-    }
-
-    .app-pane-blue .idsk-intro-block__side-menu__li:before {
-        content: "\2022";
-        color: govuk-colour("white");
-        display: inline-block;
-        margin-left: 0;
-        font-size: 40px;
-        margin-right: 10px;
-        line-height: 20px;
-        margin-top: -4px;
     }
 
     .idsk-intro-block__side-menu__ul .idsk-intro-block__side-menu__li {
@@ -226,33 +212,22 @@
         .govuk-heading-s {
             color: govuk-colour("black");
         }
-        .idsk-intro-block__side-menu__text {
-            margin-top: govuk-spacing(3);
-        }
     }
 
-    .app-pane-blue {
+    div.app-pane-blue {
+      @include mq($from: desktop) {
         background-color: govuk-colour("blue");
-    }
-
-    .app-pane-blue *{
-        color: govuk-colour("white");
       }
-
-    .app-pane-blue .idsk-intro-block__side-menu__span .idsk-intro-block__side-menu__circle {
-        fill: govuk-colour("white");
     }
 
     .app-pane-blue {
         .govuk-heading-l,
+        .govuk-heading-s,
         .idsk-intro-block__side-menu__a,
         .idsk-intro-block__side-menu__li {
+          @include mq($from: desktop) {
             color: govuk-colour("white");
-            font-weight: bold;
+          }
         }
-    }
-
-    .app-pane-blue .govuk-heading-l {
-        color: govuk-colour("white");
     }
 }
