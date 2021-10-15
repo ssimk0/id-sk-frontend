@@ -29,16 +29,12 @@
             downloadTitle: "Stiahnuť údaje",
             items: [
                 {
-                    title: "ako CSV (54 kB)",
-                    value: "/public/assets/data/PCR_denne_kumulat_AG-denne_kumulat.csv"
+                    title: "ako CSV",
+                    value: "https://raw.githubusercontent.com/Institut-Zdravotnych-Analyz/covid19-data/main/DailyStats/OpenData_Slovakia_Covid_DailyStats.csv"
                 },
                 {
-                    title: "ako JSON (54 kB)",
-                    value: "/public/assets/data/PCR_denne_kumulat_AG-denne_kumulat.json"
-                },
-                {
-                    title: "ako XLSX (54 kB)",
-                    value: "/public/assets/data/PCR_denne_kumulat_AG-denne_kumulat.xlsx"
+                    title: "ako XLSX",
+                    value: "https://github.com/Institut-Zdravotnych-Analyz/covid19-data/blob/main/DailyStats/OpenData_Slovakia_Covid_DailyStats.xlsx?raw=true"
                 }
             ]
         },
@@ -85,7 +81,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-one-half">
             <summary class="govuk-body-s idsk-graph__summary">
@@ -94,7 +90,6 @@
         </div>
     </div>
 
-    
     {{ govukTabs({
         "attributes": {
             "data-activetab": params.activeTab
