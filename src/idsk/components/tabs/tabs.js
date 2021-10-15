@@ -8,36 +8,20 @@ import { nodeListForEach } from '../../common'
 function Tabs ($module) {
   this.$module = $module
   this.$tabs = $module.querySelectorAll('.idsk-tabs__tab')
+  this.$mobileTabs = $module.querySelectorAll('.idsk-tabs__mobile-tab')
 
   this.keys = { left: 37, right: 39, up: 38, down: 40 }
   this.jsHiddenClass = 'idsk-tabs__panel--hidden'
 }
 
 Tabs.prototype.init = function () {
-  if (typeof window.matchMedia === 'function') {
-    this.setupResponsiveChecks()
-  } else {
-    this.setup()
-  }
-}
-
-Tabs.prototype.setupResponsiveChecks = function () {
-  this.mql = window.matchMedia('(min-width: 40.0625em)')
-  this.mql.addListener(this.checkMode.bind(this))
-  this.checkMode()
-}
-
-Tabs.prototype.checkMode = function () {
-  if (this.mql.matches) {
-    this.setup()
-  } else {
-    this.teardown()
-  }
+  this.setup()
 }
 
 Tabs.prototype.setup = function () {
   var $module = this.$module
   var $tabs = this.$tabs
+  var $mobileTabs = this.$mobileTabs
   var $tabList = $module.querySelector('.idsk-tabs__list')
   var $tabListItems = $module.querySelectorAll('.idsk-tabs__list-item')
 
@@ -48,6 +32,10 @@ Tabs.prototype.setup = function () {
   $tabList.setAttribute('role', 'tablist')
 
   nodeListForEach($tabListItems, function ($item) {
+    $item.setAttribute('role', 'presentation')
+  })
+
+  nodeListForEach($mobileTabs, function ($item) {
     $item.setAttribute('role', 'presentation')
   })
 
@@ -76,34 +64,6 @@ Tabs.prototype.setup = function () {
   window.addEventListener('hashchange', $module.boundOnHashChange, true)
 }
 
-Tabs.prototype.teardown = function () {
-  var $module = this.$module
-  var $tabs = this.$tabs
-  var $tabList = $module.querySelector('.idsk-tabs__list')
-  var $tabListItems = $module.querySelectorAll('.idsk-tabs__list-item')
-
-  if (!$tabs || !$tabList || !$tabListItems) {
-    return
-  }
-
-  $tabList.removeAttribute('role')
-
-  nodeListForEach($tabListItems, function ($item) {
-    $item.removeAttribute('role', 'presentation')
-  })
-
-  nodeListForEach($tabs, function ($tab) {
-    // Remove events
-    $tab.removeEventListener('click', $tab.boundTabClick, true)
-    $tab.removeEventListener('keydown', $tab.boundTabKeydown, true)
-
-    // Unset HTML attributes
-    this.unsetAttributes($tab)
-  }.bind(this))
-
-  // Remove hashchange event handler
-  window.removeEventListener('hashchange', $module.boundOnHashChange, true)
-}
 
 Tabs.prototype.onHashChange = function (e) {
   var hash = window.location.hash
