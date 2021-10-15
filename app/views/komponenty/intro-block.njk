@@ -36,6 +36,9 @@
                 <li>
                     <a class="govuk-link" href="#ukazka-uvodny-block-grey" title="Populárny obsah v úvodnom bloku">Populárny obsah v úvodnom bloku</a>
                 </li>
+                <li>
+                  <a class="govuk-link" href="#ukazka-uvodny-block-bez-navrhov" title="Úvodný blok bez návrhov vyhľadávania">Úvodný blok bez návrhov vyhľadávania</a>
+                </li>
             </ul>
             <h3 class="govuk-heading-m" id="skladba">Z čoho sa skladá úvodný blok?</h3>
             <p class="govuk-body">Skladá sa z:</p>
@@ -85,6 +88,15 @@
                 {% include "../komponenty/examples/exampleIntroBlock1.njk" %}
                 {% endset %}
                 {{exampleComponentHtml | safe}}
+            </div>
+        </div>
+        <div class="govuk-grid-column-full">
+            <h3 class="govuk-heading-m" id="ukazka-uvodny-block-bez-navrhov">Úvodný blok bez návrhov vyhľadávania</h3>
+            <div class="example">
+              {% set exampleComponentHtml %}
+                {% include "../komponenty/examples/exampleIntroBlock3.njk" %}
+              {% endset %}
+              {{exampleComponentHtml | safe}}
             </div>
         </div>
     </div>
