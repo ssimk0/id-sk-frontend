@@ -30,12 +30,6 @@
             }
         }
 
-        div.app-pane-grey {
-          @include mq($from: desktop) {
-            background-color: govuk-colour("light-grey");
-          }
-        }
-
         .govuk-grid-column-one-third-from-desktop {
             @include mq($from: desktop){
                width: calc(33.3333% - 50px);
@@ -64,6 +58,7 @@
       margin-bottom: 30px;
       @include mq($from: desktop) {
         margin-top: 50px;
+        margin-bottom: 50px;
       }
     }
 
@@ -102,6 +97,10 @@
         padding: govuk-spacing(4);
         @include mq($from: desktop){
             margin-left: govuk-spacing(8);
+        }
+
+        @include mq($from: desktop) {
+          background-color: govuk-colour("light-grey");
         }
 
         @include mq($until: tablet) {
@@ -218,6 +217,10 @@
       @include mq($from: desktop) {
         background-color: govuk-colour("blue");
       }
+    }
+
+    .app-pane-transparent{
+      background-color: transparent;
     }
 
     .app-pane-blue {

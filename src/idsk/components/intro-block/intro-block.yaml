@@ -65,7 +65,7 @@ params:
   - name: sideMenuTitle
     type: string
     required: false
-    description: title of side menu.  
+    description: title of side menu.
 
 examples:
   - name: basic
@@ -124,7 +124,7 @@ examples:
         - href: "#"
           item: Dokumenty
 
-      classBackground: "app-pane-grey"
+      classBackground: "app-pane-transparent"
       searchEnabled: true
 
   - name: without search
@@ -157,3 +157,21 @@ examples:
       searchEnabled: false
       classBackground: "app-pane-blue"
       headline: "Informatizácia"
+
+  - name: without bottom menu
+    data:
+      mainTitle : Dozvedieť sa <a class='govuk-link' href='#' title='viac o ministerstve'>viac o ministerstve</a>.
+
+      sideMenu:
+        - href: "#"
+          item: O eurofondoch
+        - href: "#"
+          item: Aktuality
+        - href: "#"
+          item: O ministerstve
+        - href: "#"
+          item: Aktuálne výzvy
+        - href: "#"
+          item: Dokumenty
+
+      searchEnabled: true
