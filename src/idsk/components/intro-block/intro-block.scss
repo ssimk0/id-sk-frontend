@@ -9,7 +9,7 @@
         @include govuk-font($size: 19);
 
         .govuk-heading-xl {
-                margin-bottom: 0;
+            margin-bottom: 0;
                 @include mq($from: desktop) {
                     @include govuk-font($size: 36, $weight: bold);
                 }
@@ -24,52 +24,74 @@
         }
 
         .govuk-body{
-                margin-bottom: govuk-spacing(4);
+            margin-bottom: govuk-spacing(4);
             @include mq($from: desktop) {
                 margin-bottom: govuk-spacing(8);
             }
-        
         }
 
-        .app-pane-grey {
+        div.app-pane-grey {
+          @include mq($from: desktop) {
             background-color: govuk-colour("light-grey");
+          }
         }
 
-        .govuk-grid-column-one-third-from-desktop{
+        .govuk-grid-column-one-third-from-desktop {
             @include mq($from: desktop){
-               width: calc(33.3333% - 50px); 
+               width: calc(33.3333% - 50px);
             }
         }
 
-        .govuk-heading-m{
-            font-size: 24px;
+        .govuk-heading-m {
+          font-size: 24px;
+          margin-top: govuk-spacing(4);
+
+          &.heading-bigger-margin{
+            @include mq($from: desktop) {
+              margin-top: 37px;
+            }
+          }
         }
 
+      & > .govuk-grid-row{
+        @include mq($from: desktop) {
+          display: flex;
+        }
+      }
     }
 
+    .idsk-search-component{
+      margin-bottom: 30px;
+      @include mq($from: desktop) {
+        margin-top: 50px;
+      }
+    }
 
     .idsk-intro-block__list__ul {
-        margin-top: 0;
-        margin-bottom: govuk-spacing(3);
         padding-left: 0;
         display: table;
+        margin-top: 0;
+        margin-bottom: govuk-spacing(4);
     }
 
     .idsk-intro-block__list__li {
         @include govuk-font($size: 16);
 
         display: inline-block;
-        margin-right: govuk-spacing(6);
+        margin-right: govuk-spacing(4);
         margin-bottom: govuk-spacing(2);
-
-        @include mq($from: desktop) {
-            margin-right: govuk-spacing(3);
-        }
     }
 
     .idsk-intro-block__list__a {
         white-space: nowrap;
-    }
+
+        @include mq($until: tablet) {
+          text-decoration: none;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
 
     .idsk-intro-block__list__li .govuk-link:active,
     .idsk-intro-block__list__li .govuk-link:link {
@@ -77,13 +99,16 @@
     }
 
     .idsk-intro-block__side-menu{
+        padding: govuk-spacing(4);
         @include mq($from: desktop){
             margin-left: govuk-spacing(8);
         }
-       
+
+        @include mq($until: tablet) {
+          padding: 0 govuk-spacing(3);
+        }
 
         .govuk-heading-s{
-
             @include mq($from: desktop){
                 font-weight: 400;
                 margin-bottom: govuk-spacing(2);
@@ -93,13 +118,8 @@
             @include mq($until: tablet){
                 font-weight: 700;
                 font-size: 18px;
-                line-height: 20px; 
+                line-height: 20px;
             }
-        }
-
-        &.app-pane-grey,
-        &.app-pane-blue{
-            padding-top: govuk-spacing(3);
         }
     }
 
@@ -128,29 +148,7 @@
     }
 
     .idsk-intro-block__side-menu__li {
-        padding-bottom: govuk-spacing(3);
-    }
-
-    .app-pane-blue .idsk-intro-block__side-menu__li:before {
-        content: "\2022";
-        color: govuk-colour("white");
-        display: inline-block;
-        margin-left: 0;
-        font-size: 40px;
-        margin-right: 10px;
-        line-height: 20px;
-        margin-top: -4px;
-    }
-
-    .app-pane-grey .idsk-intro-block__side-menu__li:before {
-        content: "\2022";
-        color: govuk-colour("black");
-        display: inline-block;
-        margin-left: 0;
-        font-size: 40px;
-        margin-right: 10px;
-        line-height: 20px;
-        margin-top: -4px;
+        padding-bottom: govuk-spacing(2);
     }
 
     .idsk-intro-block__side-menu__ul .idsk-intro-block__side-menu__li {
@@ -201,7 +199,7 @@
     .idsk-intro-block__bottom-menu__li {
         display: block;
         color: govuk-colour("black");
-        padding-bottom: govuk-spacing(2);
+        padding-bottom: govuk-spacing(3);
 
         @include mq($from: desktop) {
             display: inline-grid;
@@ -211,39 +209,25 @@
     }
 
     .app-pane-grey {
-        .govuk-heading-s,
-        .idsk-intro-block__side-menu__a,
-        .idsk-intro-block__side-menu__li {
+        .govuk-heading-s {
             color: govuk-colour("black");
-            font-weight: bold;
-        }
-        .idsk-intro-block__side-menu__text {
-            margin-top: govuk-spacing(3);
         }
     }
 
-    .app-pane-blue {
+    div.app-pane-blue {
+      @include mq($from: desktop) {
         background-color: govuk-colour("blue");
-    }
-
-    .app-pane-blue *{
-        color: govuk-colour("white");
       }
-
-    .app-pane-blue .idsk-intro-block__side-menu__span .idsk-intro-block__side-menu__circle {
-        fill: govuk-colour("white");
     }
 
     .app-pane-blue {
         .govuk-heading-l,
+        .govuk-heading-s,
         .idsk-intro-block__side-menu__a,
         .idsk-intro-block__side-menu__li {
+          @include mq($from: desktop) {
             color: govuk-colour("white");
-            font-weight: bold;
+          }
         }
-    }
-
-    .app-pane-blue .govuk-heading-l {
-        color: govuk-colour("white");
     }
 }
