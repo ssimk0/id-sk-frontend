@@ -13,26 +13,34 @@
         {% set id = item.id if item.id else idPrefix + "-" + loop.index %}
         <li class="idsk-tabs__list-item{% if loop.index == 1 %} idsk-tabs__list-item--selected{% endif %}">
           <a class="idsk-tabs__tab" href="#{{ id }}"
-            {%- for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+            {%- for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %} item="{{ loop.index0 }}">
             {{ item.label }}
           </a>
         </li>
       {% endif %}
     {% endfor %}
   </ul>
+  
+  <ul class="idsk-tabs__list--mobile" role="tablist">
+    {% for item in params.items %}
+      {% if item %}
+        {% set id = item.id if item.id else idPrefix + "-" + loop.index %}
+        <li class="idsk-tabs__list-item--mobile" role="presentation">
+          <button class="govuk-caption-l idsk-tabs__mobile-tab" item="{{ loop.index0 }}" role="tab" aria-controls="{{ id }}" aria-selected="false" href="#{{ id }}">
+            {{ item.label }}
+            <div class="idsk-tabs__tab-arrow-mobile"></div>
+          </button>
+          <section class="idsk-tabs__panel{% if loop.index > 1 %} idsk-tabs__panel--hidden{% endif %}" id="{{ id }}"{% for attribute, value in item.panel.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+            <div class="idsk-tabs__panel-content">
+              {{ item.panel.html | safe if item.panel.html else item.panel.text }}
+            </div>
+            <div class="idsk-tabs__mobile-tab-content idsk-tabs__mobile-tab-content--hidden">
+              {{ item.panel.html | safe if item.panel.html else item.panel.text }}
+            </div>
+          </section>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
   {% endif %}
-  {% for item in params.items %}
-    {% if item %}
-      {% set id = item.id if item.id else idPrefix + "-" + loop.index %}
-      <section class="idsk-tabs__panel{% if loop.index > 1 %} idsk-tabs__panel--hidden{% endif %}" id="{{ id }}"{% for attribute, value in item.panel.attributes %} {{attribute}}="{{value}}"{% endfor %}>
-        <div class="govuk-caption-l idsk-tabs__mobile-tab {% if loop.index == 1 %}idsk-tabs__mobile-tab--selected{% endif %}" item="{{ loop.index0 }}">
-          {{ item.label }}
-          <div class="idsk-tabs__tab-arrow-mobile"></div>
-        </div>
-        <div class="idsk-tabs__mobile-tab-content {% if loop.index > 1 %} idsk-tabs__mobile-tab-content--hidden{% endif %}">
-          {{ item.panel.html | safe if item.panel.html else item.panel.text }}
-        </div>
-      </section>
-    {% endif %}
-  {% endfor %}
 </div>

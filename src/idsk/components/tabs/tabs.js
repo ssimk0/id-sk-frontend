@@ -12,6 +12,7 @@ function Tabs ($module) {
 
   this.keys = { left: 37, right: 39, up: 38, down: 40 }
   this.jsHiddenClass = 'idsk-tabs__panel--hidden'
+  this.mobileTabHiddenClass = 'idsk-tabs__mobile-tab-content--hidden'
 }
 
 Tabs.prototype.init = function () {
@@ -45,12 +46,10 @@ Tabs.prototype.setup = function () {
 
     // Save bounded functions to use when removing event listeners during teardown
     $tab.boundTabClick = this.onTabClick.bind(this)
-    $tab.boundTabKeydown = this.onTabKeydown.bind(this)
 
     // Handle events
     $tab.addEventListener('click', $tab.boundTabClick, true)
     $mobileTabs[i].addEventListener('click', $tab.boundTabClick, true)
-    $tab.addEventListener('keydown', $tab.boundTabKeydown, true)
 
     // Remove old active panels
     this.hideTab($tab)
@@ -58,6 +57,7 @@ Tabs.prototype.setup = function () {
 
   // Show either the active tab according to the URL's hash or the first tab
   var $activeTab = this.getTab(window.location.hash) || this.$tabs[0]
+  this.toggleMobileTab($activeTab)
   this.showTab($activeTab)
 
   // Handle hashchange events
@@ -97,6 +97,18 @@ Tabs.prototype.showTab = function ($tab) {
   this.showPanel($tab)
 }
 
+Tabs.prototype.toggleMobileTab = function ($tab, currentTab = false) {
+  var $mobilePanel = this.getPanel($tab)
+  var $mobileTab = $mobilePanel.previousElementSibling
+  $mobileTab.classList.toggle('idsk-tabs__mobile-tab--selected')
+  $mobilePanel = $mobilePanel.querySelector('.idsk-tabs__mobile-tab-content')
+  $mobilePanel.classList.toggle(this.mobileTabHiddenClass)
+  if($mobileTab.classList.contains('idsk-tabs__mobile-tab--selected') && currentTab){
+    $mobileTab.classList.remove('idsk-tabs__mobile-tab--selected')
+    $mobilePanel.classList.add(this.mobileTabHiddenClass)
+  }
+}
+
 Tabs.prototype.getTab = function (hash) {
   return this.$module.querySelector('.idsk-tabs__tab[href="' + hash + '"]')
 }
@@ -104,11 +116,16 @@ Tabs.prototype.getTab = function (hash) {
 Tabs.prototype.setAttributes = function ($tab) {
   // set tab attributes
   var panelId = this.getHref($tab).slice(1)
+  var $mobileTab = this.$mobileTabs[$tab.getAttribute('item')]
   $tab.setAttribute('id', 'tab_' + panelId)
   $tab.setAttribute('role', 'tab')
   $tab.setAttribute('aria-controls', panelId)
   $tab.setAttribute('aria-selected', 'false')
-  $tab.setAttribute('tabindex', '-1')
+  // set mobile tab attributes
+  $mobileTab.setAttribute('id', 'tab_' + panelId)
+  $mobileTab.setAttribute('role', 'tab')
+  $mobileTab.setAttribute('aria-controls', panelId)
+  $mobileTab.setAttribute('aria-selected', 'false')
 
   // set panel attributes
   var $panel = this.getPanel($tab)
@@ -119,11 +136,16 @@ Tabs.prototype.setAttributes = function ($tab) {
 
 Tabs.prototype.unsetAttributes = function ($tab) {
   // unset tab attributes
+  var $mobileTab = this.$mobileTabs[$tab.getAttribute('item')]
   $tab.removeAttribute('id')
   $tab.removeAttribute('role')
   $tab.removeAttribute('aria-controls')
   $tab.removeAttribute('aria-selected')
-  $tab.removeAttribute('tabindex')
+  // unset mobile tab attributes
+  $mobileTab.removeAttribute('id')
+  $mobileTab.removeAttribute('role')
+  $mobileTab.removeAttribute('aria-controls')
+  $mobileTab.removeAttribute('aria-selected')
 
   // unset panel attributes
   var $panel = this.getPanel($tab)
@@ -139,10 +161,17 @@ Tabs.prototype.onTabClick = function (e) {
   }
   e.preventDefault()
   var $newTab = e.target
-  if ($newTab.nodeName == 'DIV'){
-    $newTab = this.$tabs[$newTab.getAttribute('item')]
-  }
   var $currentTab = this.getCurrentTab()
+
+  if ($newTab.nodeName == 'BUTTON'){
+    $newTab = this.$tabs[$newTab.getAttribute('item')]
+    if($newTab == $currentTab){
+      this.toggleMobileTab($currentTab)
+    }else{
+      this.toggleMobileTab($currentTab, true)
+      this.toggleMobileTab($newTab)
+    }
+  }
   this.hideTab($currentTab)
   this.showTab($newTab)
   this.createHistoryEntry($newTab)
@@ -158,49 +187,6 @@ Tabs.prototype.createHistoryEntry = function ($tab) {
   this.changingHash = true
   window.location.hash = this.getHref($tab).slice(1)
   $panel.id = id
-}
-
-Tabs.prototype.onTabKeydown = function (e) {
-  switch (e.keyCode) {
-    case this.keys.left:
-    case this.keys.up:
-      this.activatePreviousTab()
-      e.preventDefault()
-      break
-    case this.keys.right:
-    case this.keys.down:
-      this.activateNextTab()
-      e.preventDefault()
-      break
-  }
-}
-
-Tabs.prototype.activateNextTab = function () {
-  var currentTab = this.getCurrentTab()
-  var nextTabListItem = currentTab.parentNode.nextElementSibling
-  if (nextTabListItem) {
-    var nextTab = nextTabListItem.querySelector('.idsk-tabs__tab')
-  }
-  if (nextTab) {
-    this.hideTab(currentTab)
-    this.showTab(nextTab)
-    nextTab.focus()
-    this.createHistoryEntry(nextTab)
-  }
-}
-
-Tabs.prototype.activatePreviousTab = function () {
-  var currentTab = this.getCurrentTab()
-  var previousTabListItem = currentTab.parentNode.previousElementSibling
-  if (previousTabListItem) {
-    var previousTab = previousTabListItem.querySelector('.idsk-tabs__tab')
-  }
-  if (previousTab) {
-    this.hideTab(currentTab)
-    this.showTab(previousTab)
-    previousTab.focus()
-    this.createHistoryEntry(previousTab)
-  }
 }
 
 Tabs.prototype.getPanel = function ($tab) {
@@ -220,14 +206,14 @@ Tabs.prototype.hidePanel = function (tab) {
 
 Tabs.prototype.unhighlightTab = function ($tab) {
   $tab.setAttribute('aria-selected', 'false')
+  this.$mobileTabs[$tab.getAttribute('item')].setAttribute('aria-selected', 'false')
   $tab.parentNode.classList.remove('idsk-tabs__list-item--selected')
-  $tab.setAttribute('tabindex', '-1')
 }
 
 Tabs.prototype.highlightTab = function ($tab) {
   $tab.setAttribute('aria-selected', 'true')
+  this.$mobileTabs[$tab.getAttribute('item')].setAttribute('aria-selected', 'true')
   $tab.parentNode.classList.add('idsk-tabs__list-item--selected')
-  $tab.setAttribute('tabindex', '0')
 }
 
 Tabs.prototype.getCurrentTab = function () {
