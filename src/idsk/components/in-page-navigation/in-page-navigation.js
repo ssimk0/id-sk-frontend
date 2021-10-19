@@ -97,7 +97,6 @@ InPageNavigation.prototype.checkCloseClick = function (e) {
  * When the user scrolls down from the top of the document, set position to fixed
  */
 InPageNavigation.prototype.scrollFunction = function () {
-    console.log("scrolling")
     var $module = this.$module
     var $arrTitlesAndElems = this.$arrTitlesAndElems
     var $parentModule = $module.parentElement
