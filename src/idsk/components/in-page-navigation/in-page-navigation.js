@@ -64,7 +64,7 @@ InPageNavigation.prototype.handleClickLink = function (e) {
 
 /**
  * An event handler for click event on $linkPanel - collapse or expand in page navigation menu
- * @param {object} e 
+ * @param {object} e
  */
 InPageNavigation.prototype.handleClickLinkPanel = function (e) {
     var $module = this.$module
@@ -77,7 +77,7 @@ InPageNavigation.prototype.handleClickLinkPanel = function (e) {
 
 /**
  * close navigation if the user click outside navigation
- * @param {object} e 
+ * @param {object} e
  */
 InPageNavigation.prototype.checkCloseClick = function (e) {
     var $el = e.target || e.srcElement
@@ -137,6 +137,12 @@ InPageNavigation.prototype.changeCurrentLink = function (el) {
     })
     $currItem.classList.add('idsk-in-page-navigation__list-item--active')
     $linkPanelText.innerText = $articleTitle.innerText
+
+    // let active item be always visible
+    $currItem.scrollIntoView({
+      block: "nearest",
+      inline: "nearest"
+    });
 }
 
 export default InPageNavigation

@@ -32,6 +32,8 @@
         position: sticky;
         top: 0;
         width: govuk-grid-width(one-quarter);
+        overflow: auto;
+        height: 100vh;
       }
     }
   }
