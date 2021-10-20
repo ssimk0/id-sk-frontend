@@ -12,7 +12,7 @@
       {% if item %}
         {% set id = item.id if item.id else idPrefix + "-" + loop.index %}
         <li class="idsk-tabs__list-item{% if loop.index == 1 %} idsk-tabs__list-item--selected{% endif %}">
-          <a class="idsk-tabs__tab" href="#{{ id }}"
+          <a class="idsk-tabs__tab" href="#{{ id }}" title="{{ item.label }}"
             {%- for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %} item="{{ loop.index0 }}">
             {{ item.label }}
           </a>
