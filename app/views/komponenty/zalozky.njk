@@ -1,0 +1,71 @@
+{% extends "layout.njk" %}
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "../../../src/idsk/components/tabs/macro.njk" import idskTabs %}
+
+
+{% set pageName = "Záložky" %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    "items": [
+    { text: 'ID-SK frontend', href: '/' + legacyQuery },
+    { text: pageName }
+    ]
+  }) }}
+{% endblock %}  
+
+{% block content %}
+
+    {{ idskTabs({
+        "items": [
+            {
+            "label": "Posledný deň",
+            "id": "posledny-den",
+            "panel": {
+                "html": "
+                    <h2 class=\"govuk-heading-m\">Lorem Ipsum has been the industry's</h2>
+                    <p class='govuk-body'>Lorem Ipsum has been the industry's</p>
+                    <h2 class=\"govuk-heading-m\">Lorem Ipsum has been the industry's</h2>
+                    <h3 class=\"govuk-heading-s\">Lorem Ipsum has been the industry's</h3>
+                    <p class='govuk-body'>Lorem Ipsum has been the industry's standard dummy text ever since 00s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem</p>
+                "
+            }
+            },
+            {
+            "label": "Posledný týždeň",
+            "id": "posledny-tyzden",
+            "panel": {
+                "html": "
+                    <h2 class=\"govuk-heading-m\">Lorem Ipsum has been the industry's</h2>
+                    <p class='govuk-body'>Lorem Ipsum has been the industry's</p>
+                "
+            }
+            },
+            {
+            "label": "Posledný mesiac",
+            "id": "posledny-mesiac",
+            "panel": {
+                "html": "
+                    <h2 class=\"govuk-heading-m\">Lorem Ipsum has been the industry's</h2>
+                    <p class='govuk-body'>Lorem Ipsum has been the industry's</p>
+                    <h2 class=\"govuk-heading-m\">Lorem Ipsum has been the industry's</h2>
+                    <h3 class=\"govuk-heading-s\">Lorem Ipsum has been the industry's</h3>
+                    <p class='govuk-body'>Lorem Ipsum has been the industry's standard dummy text ever since 00s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem</p>
+                "
+            }
+            },
+            {
+            "label": "Posledný rok",
+            "id": "posledny-rok",
+            "panel": {
+                "html": "
+                    <h2 class=\"govuk-heading-m\">Lorem Ipsum has been the industry's</h2>
+                    <p class='govuk-body'>Lorem Ipsum has been the industry's</p>
+                    <h2 class=\"govuk-heading-m\">Lorem Ipsum has been the industry's</h2>
+                "
+            }
+            }
+        ]
+    }) }}
+
+{% endblock %}  
