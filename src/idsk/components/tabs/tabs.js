@@ -155,7 +155,7 @@ Tabs.prototype.unsetAttributes = function ($tab) {
 }
 
 Tabs.prototype.onTabClick = function (e) {
-  if (!(e.target.classList.contains('idsk-tabs__tab') || e.target.classList.contains('idsk-tabs__mobile-tab'))) {
+  if (!(e.target.classList.contains('idsk-tabs__tab') || e.target.classList.contains('idsk-tabs__mobile-tab') || e.target.classList.contains('idsk-tabs__tab-arrow-mobile'))) {
   // Allow events on child DOM elements to bubble up to tab parent
     return false
   }
@@ -163,6 +163,9 @@ Tabs.prototype.onTabClick = function (e) {
   var $newTab = e.target
   var $currentTab = this.getCurrentTab()
 
+  if($newTab.classList.contains('idsk-tabs__tab-arrow-mobile')){
+      $newTab = $newTab.parentElement
+    }
   if ($newTab.nodeName == 'BUTTON'){
     $newTab = this.$tabs[$newTab.getAttribute('item')]
     if($newTab == $currentTab){
