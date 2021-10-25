@@ -96,14 +96,21 @@ HeaderWeb.prototype.handleLanguageSwitcherClick = function (e) {
     var $toggleButton = e.target || e.srcElement;
     this.$activeSearch = $toggleButton.closest('.idsk-header-web__brand-language');
     toggleClass(this.$activeSearch, 'idsk-header-web__brand-language--active');
+    if(this.$activeSearch.classList.contains('idsk-header-web__brand-language--active')){
+        this.$activeSearch.firstElementChild.setAttribute('aria-expanded', 'true')
+        this.$activeSearch.firstElementChild.setAttribute('aria-label',  this.$activeSearch.firstElementChild.getAttribute('data-text-for-hide'))
+    }else{
+        this.$activeSearch.firstElementChild.setAttribute('aria-expanded', 'false')
+        this.$activeSearch.firstElementChild.setAttribute('aria-label',  this.$activeSearch.firstElementChild.getAttribute('data-text-for-show'))
+    }
     document.addEventListener('click', this.$module.boundCheckBlurLanguageSwitcherClick, true);
 }
 
 HeaderWeb.prototype.checkBlurLanguageSwitcherClick = function (e) {
     if(!(e.target.classList.contains('idsk-header-web__brand-language-button'))){
         this.$activeSearch.classList.remove('idsk-header-web__brand-language--active');
-        document.removeEventListener('click', this.$module.boundCheckBlurLanguageSwitcherClick, true); 
-    document.removeEventListener('click', this.$module.boundCheckBlurLanguageSwitcherClick, true);
+        this.$activeSearch.firstElementChild.setAttribute('aria-expanded', 'false')
+        this.$activeSearch.firstElementChild.setAttribute('aria-label',  this.$activeSearch.firstElementChild.getAttribute('data-text-for-show'))
         document.removeEventListener('click', this.$module.boundCheckBlurLanguageSwitcherClick, true); 
     }
 }
@@ -125,6 +132,13 @@ HeaderWeb.prototype.handleBackTabbing = function (e) {
     toggleClass($eGovermentDropdown, 'idsk-header-web__brand-dropdown--active');  
     nodeListForEach($eGovermentButtons, function ($eGovermentButton) {
         toggleClass($eGovermentButton, 'idsk-header-web__brand-gestor-button--active');
+        if($eGovermentButton.classList.contains('idsk-header-web__brand-gestor-button--active')){
+            $eGovermentButton.setAttribute('aria-expanded', 'true')
+            $eGovermentButton.setAttribute('aria-label', $eGovermentButton.getAttribute('data-text-for-hide'))          
+        }else{
+            $eGovermentButton.setAttribute('aria-expanded', 'false')
+            $eGovermentButton.setAttribute('aria-label', $eGovermentButton.getAttribute('data-text-for-show'))
+        }
     }.bind(this))
 }
 
@@ -140,13 +154,20 @@ HeaderWeb.prototype.handleSubmenuClick = function (e) {
     
     if($currActiveItem && $currActiveItem.isEqualNode($toggleButton)){
         $currActiveItem.classList.remove('idsk-header-web__nav-list-item--active');
+        if($toggleButton.childNodes[3]){
+          $currActiveItem.childNodes[1].setAttribute('aria-expanded', 'false')
+        $toggleButton.childNodes[1].setAttribute('aria-label', $toggleButton.childNodes[1].getAttribute('data-text-for-show'))   
+        }
     }else{
         if($currActiveItem){
             $currActiveItem.classList.remove('idsk-header-web__nav-list-item--active');
         }
         toggleClass($toggleButton, 'idsk-header-web__nav-list-item--active'); 
-    toggleClass($toggleButton, 'idsk-header-web__nav-list-item--active');
-        toggleClass($toggleButton, 'idsk-header-web__nav-list-item--active'); 
+
+        if($toggleButton.childNodes[3] && $toggleButton.classList.contains('idsk-header-web__nav-list-item--active')) {   
+            $toggleButton.childNodes[1].setAttribute('aria-expanded', 'true') 
+            $toggleButton.childNodes[1].setAttribute('aria-label', $toggleButton.childNodes[1].getAttribute('data-text-for-hide'))
+        }
     }
 
     document.addEventListener('click', this.$module.boundCheckBlurMenuItemClick.bind(this), true);
@@ -163,14 +184,19 @@ HeaderWeb.prototype.handleSubmenuClick = function (e) {
     }
 
     var submenuList = e.srcElement.parentElement.parentElement;
+    var $activeItem = submenuList.closest('.idsk-header-web__nav-list-item')
     // shift + tab
     if (e.shiftKey) {
         if (document.activeElement === submenuList.firstElementChild.firstElementChild) {
-            submenuList.closest('.idsk-header-web__nav-list-item').classList.remove('idsk-header-web__nav-list-item--active');
+            $activeItem.classList.remove('idsk-header-web__nav-list-item--active');
+            $activeItem.childNodes[1].setAttribute('aria-expanded', 'false'); 
+            $activeItem.childNodes[1].setAttribute('aria-label', $activeItem.childNodes[1].getAttribute('data-text-for-show')) 
         }
     // tab
     } else if (document.activeElement === submenuList.lastElementChild.lastElementChild) {
-        submenuList.closest('.idsk-header-web__nav-list-item').classList.remove('idsk-header-web__nav-list-item--active');
+        $activeItem.classList.remove('idsk-header-web__nav-list-item--active');
+        $activeItem.childNodes[1].setAttribute('aria-expanded', 'false'); 
+        $activeItem.childNodes[1].setAttribute('aria-label', $activeItem.childNodes[1].getAttribute('data-text-for-show')) 
     } 
 }
 
@@ -181,6 +207,10 @@ HeaderWeb.prototype.checkBlurMenuItemClick = function (e) {
     var $currActiveItem = this.$module.querySelector('.idsk-header-web__nav-list-item--active');
     if($currActiveItem && !(e.target.classList.contains('idsk-header-web__nav-list-item-link'))){
         $currActiveItem.classList.remove('idsk-header-web__nav-list-item--active');
+        if( $currActiveItem.childNodes[3] ){
+           $currActiveItem.childNodes[1].setAttribute('aria-expanded', 'false'); 
+           $currActiveItem.childNodes[1].setAttribute('aria-label', $currActiveItem.childNodes[1].getAttribute('data-text-for-show')) 
+        }
         document.removeEventListener('click', this.$module.boundCheckBlurMenuItemClick, true); 
     }
 }
