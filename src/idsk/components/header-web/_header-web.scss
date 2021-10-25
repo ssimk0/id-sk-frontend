@@ -602,6 +602,9 @@
           }
 
           .govuk-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             height: 40px;
             width: 44px;
             font-size: 17px;
@@ -617,6 +620,10 @@
 
             &:hover {
               background-color: govuk-colour("dark-blue");
+            }
+
+            &:active{
+              top: 0;
             }
           }
         }
@@ -1041,6 +1048,15 @@
 
     &--warning {
       background-color: govuk-colour("grey-4");
+
+      .idsk-header-web__banner-close {
+        &:focus,
+        &:focus-visible,
+        &:active {
+          outline: none;
+          @include govuk-focused-text;
+        }
+      }
     }
 
     &-title {
@@ -1057,6 +1073,19 @@
 
     &--hide {
       display: none;
+    }
+
+    &-close {
+      background-color: transparent;
+      border: none;
+      padding: govuk-spacing(1) govuk-spacing(1) 2px govuk-spacing(1);
+
+      &:focus,
+      &:focus-visible,
+      &:active {
+        outline: 1px solid govuk-colour("black");
+      }
+      
     }
   }
 }

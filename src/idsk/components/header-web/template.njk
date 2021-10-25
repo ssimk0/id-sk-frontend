@@ -31,7 +31,7 @@
                   {{ brand.gestor.gestorLink.text if brand.gestor.gestorLink.text else 'slovenského e-govermentu' }}
                 </a>
               {% else %}
-                <button class="idsk-header-web__brand-gestor-button">
+                <button class="idsk-header-web__brand-gestor-button" aria-label="Zobraziť informácie o stránke" aria-expanded="false" data-text-for-hide="Skryť informácie o stránke" data-text-for-show="Zobraziť informácie o stránke">
                   slovenského e-govermentu
                   <div class="idsk-header-web__link-arrow"></div>
                 </button>
@@ -45,7 +45,7 @@
                   {{ brand.gestor.gestorLink.mobileText if brand.gestor.gestorLink.mobileText else 'e-gov' }}
                 </a>
               {% else %}
-                <button class="idsk-header-web__brand-gestor-button">
+                <button class="idsk-header-web__brand-gestor-button" aria-label="Zobraziť informácie o stránke" aria-expanded="false" data-text-for-hide="Skryť informácie o stránke" data-text-for-show="Zobraziť informácie o stránke">
                   e-gov
                   <div class="idsk-header-web__link-arrow"></div>
                 </button>
@@ -55,7 +55,7 @@
         {% endif %}
 
         <div class="idsk-header-web__brand-language">
-          <button class="idsk-header-web__brand-language-button">
+          <button class="idsk-header-web__brand-language-button" aria-label="Rozbaliť jazykové menu" aria-expanded="false" data-text-for-hide="Skryť jazykové menu" data-text-for-show="Rozbaliť jazykové menu">
             {{ currentLanguage.text if currentLanguage else 'Slovenčina'}}
             <div class="idsk-header-web__link-arrow"></div>
           </button>
@@ -81,7 +81,7 @@
             Doména gov.sk je oficálna
           </p>
           <p class="govuk-body-s">
-            Toto je oficiálna webová stránka orgánu verejnej moci Slovenskej republiky. Oficiálne stránky využívajú najmä doménu <a class="govuk-link" href="http://gov.sk/" target="_blank" title="gov.sk">gov.sk</a>. <a class="govuk-link" href="https://www.slovensko.sk/sk/agendy/agenda/_organy-verejnej-moci" target="_blank" title="odkazy na webové sídla orgánov verejnej moci">Odkazy na jednotlivé webové sídla orgánov verejnej moci nájdete na tomto odkaze</a>.
+            Toto je oficiálna webová stránka orgánu verejnej moci Slovenskej republiky. Oficiálne stránky využívajú najmä doménu gov.sk. <a class="govuk-link" href="https://www.slovensko.sk/sk/agendy/agenda/_organy-verejnej-moci" target="_blank" title="odkazy na webové sídla orgánov verejnej moci">Odkazy na jednotlivé webové sídla orgánov verejnej moci nájdete na tomto odkaze</a>.
           </p>
         </div>
         <div class="govuk-grid-column-one-half">
@@ -161,7 +161,7 @@
     <input class="govuk-input govuk-!-display-inline-block" id="idsk-header-web__main-action-search-input" name="search"
       placeholder="{{ params.search.placeHolder if params.search.placeHolder else 'Zadajte hľadaný výraz' }}" type="search"
       role="combobox" aria-describedby="input-width-30-hint" aria-label="Zadajte hľadaný výraz" />
-    <button type="submit" class="govuk-button govuk-!-display-inline-block" data-module="govuk-button">
+    <button type="submit" class="govuk-button" data-module="govuk-button">
       <span class="govuk-visually-hidden">{{ params.search.button if params.search.button else "Vyhľadať" }}</span>
       <i aria-hidden="true" class="fas fa-search"></i>
     </button>
@@ -178,7 +178,7 @@
           <a href="/" title="home page button">
             {% if params.headerType == 'website' or params.headerType == 'projectWebsite' %}
               {% if main.logoSrc %}
-                <img src="{{ main.logoSrc }}" alt="header logo" class="idsk-header-web__main-headline-logo">
+                <img src="{{ main.logoSrc }}" alt="Logo poskytovateľa služby" class="idsk-header-web__main-headline-logo">
               {% endif %}
               {% if main.title %}
                 <h2 class="govuk-heading-m">{{ main.title }}</h2>
@@ -242,7 +242,8 @@
               {% for item in navigation.slice(0, 5) %}
                 <li class="idsk-header-web__nav-list-item">
                   <a class="govuk-link idsk-header-web__nav-list-item-link" href="{{ item.link if not item.submenu else '#' + loop.index }}" {% for attribute, value
-                    in item.attributes %} {{attribute}}="{{value}}" {% endfor %} title="{{ item.text }}">
+                    in item.attributes %} {{attribute}}="{{value}}" {% endfor %} title="{{ item.text }}" {% if item.submenu %} aria-label="Rozbaliť {{ item.text }} menu" aria-expanded="false"
+                    data-text-for-hide="Skryť {{ item.text }} menu" data-text-for-show="Rozbaliť {{ item.text }} menu" {% endif %}>
                     {{ item.text }}
                     {% if item.submenu %}
                       <div class="idsk-header-web__link-arrow"></div>
@@ -314,7 +315,7 @@
             {% endif %}
             {{ banner.text if banner.text else 'It was popularised in the 1960s with the release of Letraset' }}
           </span>
-          <div class="idsk-header-web__menu-close"></div>
+          <button class="idsk-header-web__banner-close" aria-label="Zavrieť banner"><div class="idsk-header-web__menu-close"></div></button>
         </div>
       </div>
     </div>
