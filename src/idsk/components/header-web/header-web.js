@@ -21,7 +21,7 @@ HeaderWeb.prototype.init = function () {
     // chceck for banner
     var $banner = $module.querySelector('.idsk-header-web__banner');
     if ($banner) {
-        var $bannerCloseBtn = $banner.querySelector('.idsk-header-web__menu-close');
+        var $bannerCloseBtn = $banner.querySelector('.idsk-header-web__banner-close');
         $bannerCloseBtn.addEventListener('click', this.handleCloseBanner.bind(this));
     }
 
