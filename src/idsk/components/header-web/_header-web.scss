@@ -10,7 +10,8 @@
   $idsk-header-link: govuk-colour("white") !default;
   $idsk-header-dark-blue: govuk-colour("dark-blue") !default;
 
-  $idsk-header-logo-height: 40px;
+  $idsk-header-logo-height: 50px;
+  $idsk-header-logo-height--mobile: 40px;
 
   .idsk-header-web {
 
@@ -115,8 +116,18 @@
         color: $idsk-header-text-secondary;
     }
 
+    .govuk-grid-column-full {
+      display: flex;
+      justify-content: space-between;
+    }
+
     &-gestor {
       float: left;
+      
+    .govuk-width-container {
+      position: absolute;
+      width: 100vw;
+    }
 
       .govuk-body-s {
         display: inline-block;
@@ -162,6 +173,7 @@
         border: none;
         color: $idsk-header-text-secondary;
         font-weight: 700;
+        cursor: pointer;
   
         &:hover {
           text-decoration: underline;
@@ -202,9 +214,15 @@
     &-dropdown {
       overflow: hidden;
       display: none;
+      position: relative;
       
       .govuk-link:focus {
         color: govuk-colour("black");
+      }
+
+      .govuk-width-container {
+        margin: 0;
+        width: 93vw;
       }
 
       .govuk-body-s:first-child {
@@ -233,6 +251,23 @@
             padding-top: govuk-spacing(4);
           }
         }
+      }
+
+      &--active {
+        display: initial;
+      }
+    }
+
+    &-spacer {
+      display: none;
+      height: 190px;
+
+      @include mq($until: tablet){
+        height: 280px;
+      }
+
+      @include mq($from: tablet, $until: desktop){
+        height: 202px;
       }
 
       &--active {
@@ -282,6 +317,7 @@
         border: none;
         color: $idsk-header-text-secondary;
         margin: 9px 0 9px 0;
+        cursor: pointer;
 
         &:hover {
           text-decoration: underline;
@@ -463,11 +499,11 @@
       }
 
       &-logo {
-        height: 40px;
+        height: $idsk-header-logo-height;
         margin-right: govuk-spacing(3);
 
         @include mq($until: desktop) {
-          height: 30px;
+          height: $idsk-header-logo-height--mobile;
         }
       }
 
@@ -1079,6 +1115,7 @@
       background-color: transparent;
       border: none;
       padding: govuk-spacing(1) govuk-spacing(1) 2px govuk-spacing(1);
+      cursor: pointer;
 
       &:focus,
       &:focus-visible,

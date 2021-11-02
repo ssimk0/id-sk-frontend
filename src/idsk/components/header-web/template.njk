@@ -51,7 +51,31 @@
                 </button>
               {% endif %}
             </span>
+
+            <div class="idsk-header-web__brand-dropdown">
+              <div class="govuk-width-container">
+                <div class="govuk-grid-row">
+                  <div class="govuk-grid-column-one-half">
+                    <h3 class="govuk-body-s">
+                      Doména gov.sk je oficálna
+                    </h3>
+                    <p class="govuk-body-s">
+                      Toto je oficiálna webová stránka orgánu verejnej moci Slovenskej republiky. Oficiálne stránky využívajú najmä doménu gov.sk. <a class="govuk-link" href="https://www.slovensko.sk/sk/agendy/agenda/_organy-verejnej-moci" target="_blank" title="odkazy na webové sídla orgánov verejnej moci">Odkazy na jednotlivé webové sídla orgánov verejnej moci nájdete na tomto odkaze</a>.
+                    </p>
+                  </div>
+                  <div class="govuk-grid-column-one-half">
+                    <h3 class="govuk-body-s">
+                      Táto stránka je zabezpečená
+                    </h3>
+                    <p class="govuk-body-s">
+                      Buďte pozorní a vždy sa uistite, že zdieľate informácie iba cez zabezpečenú webovú stránku verejnej správy SR. Zabezpečená stránka vždy začína https:// pred názvom domény webového sídla.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+          <div class="idsk-header-web__brand-spacer"></div>
         {% endif %}
 
         <div class="idsk-header-web__brand-language">
@@ -70,27 +94,6 @@
               </li>
             {% endfor %}
           </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="idsk-header-web__brand-dropdown">
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-one-half">
-          <p class="govuk-body-s">
-            Doména gov.sk je oficálna
-          </p>
-          <p class="govuk-body-s">
-            Toto je oficiálna webová stránka orgánu verejnej moci Slovenskej republiky. Oficiálne stránky využívajú najmä doménu gov.sk. <a class="govuk-link" href="https://www.slovensko.sk/sk/agendy/agenda/_organy-verejnej-moci" target="_blank" title="odkazy na webové sídla orgánov verejnej moci">Odkazy na jednotlivé webové sídla orgánov verejnej moci nájdete na tomto odkaze</a>.
-          </p>
-        </div>
-        <div class="govuk-grid-column-one-half">
-          <p class="govuk-body-s">
-            Táto stránka je zabezpečená
-          </p>
-          <p class="govuk-body-s">
-            Buďte pozorní a vždy sa uistite, že zdieľate informácie iba cez zabezpečenú webovú stránku verejnej správy SR. Zabezpečená stránka vždy začína https:// pred názvom domény webového sídla.
-          </p>
         </div>
       </div>
     </div>
@@ -175,10 +178,12 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full govuk-grid-column-one-third-from-desktop">
         <div class="idsk-header-web__main-headline">
-          <a href="/" title="home page button">
+          <a href="/" title="Odkaz na úvodnú stránku">
             {% if params.headerType == 'website' or params.headerType == 'projectWebsite' %}
               {% if main.logoSrc %}
-                <img src="{{ main.logoSrc }}" alt="Logo poskytovateľa služby" class="idsk-header-web__main-headline-logo">
+                <img src="{{ main.logoSrc }}" 
+                alt="{{ main.logoAlt if main.logoAlt else 'Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky' }}" 
+                class="idsk-header-web__main-headline-logo">
               {% endif %}
               {% if main.title %}
                 <h2 class="govuk-heading-m">{{ main.title }}</h2>
@@ -191,19 +196,22 @@
           </a>
 
           {% if params.navBar and params.headerType !== 'electronicService' %}
-            <button class="idsk-button idsk-header-web__main-headline-menu-button">
+            <button class="idsk-button idsk-header-web__main-headline-menu-button" aria-label="Rozbaliť menu" aria-expanded="false"
+            data-text-for-show="Rozbaliť menu" data-text-for-hide="Skryť menu">
               {{ main.menuBtnText if main.menuBtnText else 'Menu' }}
               <div class="idsk-header-web__menu-open"></div>
               <div class="idsk-header-web__menu-close"></div>
             </button>
           {% elif  params.headerType !== 'electronicService' %}
-            <button class="idsk-button idsk-header-web__main-headline-menu-button">
+            <button class="idsk-button idsk-header-web__main-headline-menu-button" aria-label="Rozbaliť menu" aria-expanded="false"
+            data-text-for-show="Rozbaliť menu" data-text-for-hide="Skryť menu">
               {{ main.menuBtnText if main.menuBtnText else 'Hľadaj' }}
               <div class="idsk-header-web__menu-open"></div>
               <div class="idsk-header-web__menu-close"></div>
             </button>
           {% elif main.loginButton %}
-            <button class="idsk-button idsk-header-web__main-headline-menu-button idsk-header-web__main-headline-menu-button-service">
+            <button class="idsk-button idsk-header-web__main-headline-menu-button idsk-header-web__main-headline-menu-button-service"
+            aria-label="Rozbaliť menu" aria-expanded="false" data-text-for-show="Rozbaliť menu" data-text-for-hide="Skryť menu">
               <img src="/assets/images/header-web/profile.svg" alt="Electronic service menu icon">
               <div class="idsk-header-web__menu-close"></div> 
             </button>
