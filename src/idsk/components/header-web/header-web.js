@@ -186,17 +186,17 @@ HeaderWeb.prototype.handleSubmenuClick = function (e) {
         return;
     }
 
-    var submenuList = e.srcElement.parentElement.parentElement;
-    var $activeItem = submenuList.closest('.idsk-header-web__nav-list-item')
+    var $submenuList = e.srcElement.parentElement.parentElement;
+    var $activeItem = $submenuList.closest('.idsk-header-web__nav-list-item')
     // shift + tab
     if (e.shiftKey) {
-        if (document.activeElement === submenuList.firstElementChild.firstElementChild) {
+        if (document.activeElement === $submenuList.firstElementChild.firstElementChild) {
             $activeItem.classList.remove('idsk-header-web__nav-list-item--active');
             $activeItem.childNodes[1].setAttribute('aria-expanded', 'false'); 
             $activeItem.childNodes[1].setAttribute('aria-label', $activeItem.childNodes[1].getAttribute('data-text-for-show')) 
         }
     // tab
-    } else if (document.activeElement === submenuList.lastElementChild.lastElementChild) {
+    } else if (document.activeElement === $submenuList.lastElementChild.lastElementChild) {
         $activeItem.classList.remove('idsk-header-web__nav-list-item--active');
         $activeItem.childNodes[1].setAttribute('aria-expanded', 'false'); 
         $activeItem.childNodes[1].setAttribute('aria-label', $activeItem.childNodes[1].getAttribute('data-text-for-show')) 
@@ -208,11 +208,11 @@ HeaderWeb.prototype.handleSubmenuClick = function (e) {
  */
  HeaderWeb.prototype.menuEscPressed = function (e) {
     if(e.key === "Escape") {
-        var menuList = e.srcElement.parentElement.parentElement;
-        if(menuList.classList.contains('idsk-header-web__nav-submenulite-list') || menuList.classList.contains('idsk-header-web__nav-submenu-list')){
-            menuList = menuList.closest('.idsk-header-web__nav-list')
+        var $menuList = e.srcElement.parentElement.parentElement;
+        if($menuList.classList.contains('idsk-header-web__nav-submenulite-list') || $menuList.classList.contains('idsk-header-web__nav-submenu-list')){
+            $menuList = $menuList.closest('.idsk-header-web__nav-list')
         }
-        var $activeItem = menuList.querySelector('.idsk-header-web__nav-list-item--active')
+        var $activeItem = $menuList.querySelector('.idsk-header-web__nav-list-item--active')
         $activeItem.classList.remove('idsk-header-web__nav-list-item--active');
         $activeItem.childNodes[1].setAttribute('aria-expanded', 'false'); 
         $activeItem.childNodes[1].setAttribute('aria-label', $activeItem.childNodes[1].getAttribute('data-text-for-show')) 
