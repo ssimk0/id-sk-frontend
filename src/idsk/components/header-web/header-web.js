@@ -48,6 +48,7 @@ HeaderWeb.prototype.init = function () {
 
     // check for e-goverment button
     var $eGovermentButtons = $module.querySelectorAll('.idsk-header-web__brand-gestor-button');
+    this.$eGovermentSpacer = $module.querySelector('.idsk-header-web__brand-spacer');
     if ($eGovermentButtons.length > 0) {
         // Handle $eGovermentButton click event
         nodeListForEach($eGovermentButtons, function ($eGovermentButton) {
@@ -64,6 +65,7 @@ HeaderWeb.prototype.init = function () {
             $menuItem.addEventListener('click', this.handleSubmenuClick.bind(this));
             if($menuItem.parentElement.querySelector('.idsk-header-web__nav-submenu') || $menuItem.parentElement.querySelector('.idsk-header-web__nav-submenulite')){
                 $menuItem.parentElement.lastElementChild.addEventListener('keydown', this.menuTabbing.bind(this));
+                $menuItem.parentElement.addEventListener('keydown', this.menuEscPressed.bind(this));
             }
         }.bind(this))
     }
@@ -129,7 +131,8 @@ HeaderWeb.prototype.handleBackTabbing = function (e) {
  HeaderWeb.prototype.handleEgovermentClick = function (e) {
     var $eGovermentButtons = this.$module.querySelectorAll('.idsk-header-web__brand-gestor-button');
     var $eGovermentDropdown = this.$module.querySelector('.idsk-header-web__brand-dropdown');
-    toggleClass($eGovermentDropdown, 'idsk-header-web__brand-dropdown--active');  
+    toggleClass($eGovermentDropdown, 'idsk-header-web__brand-dropdown--active');
+    toggleClass(this.$eGovermentSpacer, 'idsk-header-web__brand-spacer--active');
     nodeListForEach($eGovermentButtons, function ($eGovermentButton) {
         toggleClass($eGovermentButton, 'idsk-header-web__brand-gestor-button--active');
         if($eGovermentButton.classList.contains('idsk-header-web__brand-gestor-button--active')){
@@ -183,22 +186,38 @@ HeaderWeb.prototype.handleSubmenuClick = function (e) {
         return;
     }
 
-    var submenuList = e.srcElement.parentElement.parentElement;
-    var $activeItem = submenuList.closest('.idsk-header-web__nav-list-item')
+    var $submenuList = e.srcElement.parentElement.parentElement;
+    var $activeItem = $submenuList.closest('.idsk-header-web__nav-list-item')
     // shift + tab
     if (e.shiftKey) {
-        if (document.activeElement === submenuList.firstElementChild.firstElementChild) {
+        if (document.activeElement === $submenuList.firstElementChild.firstElementChild) {
             $activeItem.classList.remove('idsk-header-web__nav-list-item--active');
             $activeItem.childNodes[1].setAttribute('aria-expanded', 'false'); 
             $activeItem.childNodes[1].setAttribute('aria-label', $activeItem.childNodes[1].getAttribute('data-text-for-show')) 
         }
     // tab
-    } else if (document.activeElement === submenuList.lastElementChild.lastElementChild) {
+    } else if (document.activeElement === $submenuList.lastElementChild.lastElementChild) {
         $activeItem.classList.remove('idsk-header-web__nav-list-item--active');
         $activeItem.childNodes[1].setAttribute('aria-expanded', 'false'); 
         $activeItem.childNodes[1].setAttribute('aria-label', $activeItem.childNodes[1].getAttribute('data-text-for-show')) 
     } 
 }
+
+/**
+ * Remove active class from menu when user leaves menu with esc
+ */
+ HeaderWeb.prototype.menuEscPressed = function (e) {
+    if(e.key === "Escape") {
+        var $menuList = e.srcElement.parentElement.parentElement;
+        if($menuList.classList.contains('idsk-header-web__nav-submenulite-list') || $menuList.classList.contains('idsk-header-web__nav-submenu-list')){
+            $menuList = $menuList.closest('.idsk-header-web__nav-list')
+        }
+        var $activeItem = $menuList.querySelector('.idsk-header-web__nav-list-item--active')
+        $activeItem.classList.remove('idsk-header-web__nav-list-item--active');
+        $activeItem.childNodes[1].setAttribute('aria-expanded', 'false'); 
+        $activeItem.childNodes[1].setAttribute('aria-label', $activeItem.childNodes[1].getAttribute('data-text-for-show')) 
+    }
+ }
 
 /**
  * handle click outside menu or "blur" the item link
@@ -225,6 +244,13 @@ HeaderWeb.prototype.showMobileMenu = function (e) {
     var $mobileMenu = this.$module.querySelector('.idsk-header-web__nav');
     toggleClass($mobileMenu, 'idsk-header-web__nav--mobile');
     toggleClass($menuButton, 'idsk-header-web__main-headline-menu-button--active');
+    if(!$menuButton.classList.contains('idsk-header-web__main-headline-menu-button--active')){
+        $menuButton.setAttribute('aria-expanded', 'false'); 
+        $menuButton.setAttribute('aria-label', $menuButton.getAttribute('data-text-for-show'))
+    }else{
+        $menuButton.setAttribute('aria-expanded', 'true'); 
+        $menuButton.setAttribute('aria-label', $menuButton.getAttribute('data-text-for-hide'))
+    }
     var buttonIsActive = $menuButton.classList.contains('idsk-header-web__main-headline-menu-button--active');
 
     $menuButton.childNodes[0].nodeValue = buttonIsActive ? closeText : this.menuBtnText;

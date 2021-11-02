@@ -78,6 +78,10 @@ params:
     type: string
     required: false
     description: Allows you to overwrite the idsk.sk logo
+  - name: logoAlt
+    type: string
+    required: false
+    description: Allows you to use alt text for logo
   - name: title
     type: string
     required: true
