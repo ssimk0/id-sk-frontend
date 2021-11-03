@@ -227,3 +227,204 @@ params:
     type: bolean
     required: false
     description: Bolean value if its warning banner
+
+previewLayout: full-width
+
+examples:
+- name: " - hlavička pre webové sídla (bez banera)"
+  data:
+    headerType: "website"
+    brand: 
+      gestor: true
+      languages: 
+        - text: "Slovenčina"
+          selected: true,
+          link: "#"
+    
+        - text: "Deutsch"
+          link: "#"
+    
+        - text: "English"
+          link: "#"
+    
+        - text: "Español"
+          link: "#"
+          
+    main: 
+        logoSrc: "/public/assets/images/header-web/logo-mirri-farebne.svg"
+        loginButton: true
+        profileButton: true
+        secondaryButton: false
+
+    search: true
+
+    navBar: 
+        navigation: 
+          - text: 'Občan'
+            submenu:  
+              - link: '#1'
+                text: 'Eurofondy'
+            
+              - link: '#2'
+                text: 'Regionálny rozvoj'
+            
+              - link: '#3'
+                text: 'Informatizácia'
+            
+              - link: '#4'
+                text: 'Investície'
+                
+          - text: 'Podnikateľ'
+            submenu: 
+              - link: '#1'
+                text: 'Eurofondy'
+
+              - link: '#2'
+                text: 'Regionálny rozvoj'
+
+              - link: '#3'
+                text: 'Informatizácia'
+
+              - link: '#4'
+                text: 'Investície'
+
+              - link: '#3'
+                text: 'Informatizácia'
+
+              - link: '#4'
+                text: 'Investície'
+            
+          - link: '#3'
+            text: 'Dôchodca'
+
+          - link: '#4'
+            text: 'Elektronické služby'
+
+          - link: '#5'
+            text: 'Inovácie'
+
+
+- name: " - hlavička pre webové sídla (s banerom)"
+  data:
+    headerType: "website"
+    brand: 
+      gestor: true
+      languages: 
+        - text: "Slovenčina"
+          selected: true,
+          link: "#"
+    
+        - text: "Deutsch"
+          link: "#"
+    
+        - text: "English"
+          link: "#"
+    
+        - text: "Español"
+          link: "#" 
+    main: 
+        logoSrc: "/public/assets/images/header-web/logo-mirri-farebne.svg"
+        loginButton: true
+        profileButton: true
+        secondaryButton: false
+    search: true
+    navBar: 
+        navigation: 
+          - text: 'Občan'
+            submenu:  
+              - link: '#1'
+                text: 'Eurofondy'
+            
+              - link: '#2'
+                text: 'Regionálny rozvoj'
+            
+              - link: '#3'
+                text: 'Informatizácia'
+            
+              - link: '#4'
+                text: 'Investície'
+                
+          - text: 'Podnikateľ'
+            submenu: 
+              - link: '#1'
+                text: 'Eurofondy'
+
+              - link: '#2'
+                text: 'Regionálny rozvoj'
+
+              - link: '#3'
+                text: 'Informatizácia'
+
+              - link: '#4'
+                text: 'Investície'
+
+              - link: '#3'
+                text: 'Informatizácia'
+
+              - link: '#4'
+                text: 'Investície'
+            
+          - link: '#3'
+            text: 'Dôchodca'
+
+          - link: '#4'
+            text: 'Elektronické služby'
+
+          - link: '#5'
+            text: 'Inovácie'
+    banner: 
+      text: "Nová verzia ID-SK Frontend nahradzuje pôvodnú verziu."
+      warning: true
+    
+
+- name: " - hlavička pre elektronické služby (bez banera)"
+  data:
+    headerType: "electronicService"
+    brand: 
+      gestor: true
+      languages: 
+        - text: "Slovenčina"
+          selected: true,
+          link: "#"
+    
+        - text: "Deutsch"
+          link: "#"
+    
+        - text: "English"
+          link: "#"
+    
+        - text: "Español"
+          link: "#"  
+    main: 
+        title: "Ministerstvo investícií"
+        loginButton: true
+        profileButton: true
+        secondaryButton: false
+
+
+- name: " - hlavička pre elektronické služby (s banerom)"
+  data:
+    headerType: "electronicService"
+    brand: 
+      gestor: true
+      languages: 
+        - text: "Slovenčina"
+          selected: true,
+          link: "#"
+    
+        - text: "Deutsch"
+          link: "#"
+    
+        - text: "English"
+          link: "#"
+    
+        - text: "Español"
+          link: "#"       
+    main: 
+        title: "Ministerstvo investícií"
+        loginButton: true
+        profileButton: true
+        secondaryButton: false
+    banner: 
+      text: "Nová verzia ID-SK Frontend nahradzuje pôvodnú verziu."
+      warning: false
