@@ -1,0 +1,34 @@
+<div data-module="idsk-table-filter">
+  <div class="idsk-table-filter {{ params.classes if params.classes }}">
+    <div class="idsk-table-filter__panel">
+      <h2 class="govuk-heading-m idsk-filter__toggle">Filtrovať obsah</h2>
+      <div class="idsk-table-filter__content">
+        <div class="govuk-grid-row">
+          {% for item in params.filters %}
+            <div class="govuk-grid-column-one-third-from-desktop">
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="input-example">
+                  TableFilter 1
+                </label>
+                <input class="govuk-input" id="input-example" name="fullName" type="text" placeholder="TableFilter 1">
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <button type="submit" class="idsk-button" data-module="idsk-button">
+          Filtrovať vybrané(3)
+        </button>
+      </div>
+    </div>
+    <div class="idsk-table-filter__panel">
+      <h2 class="govuk-heading-m idsk-filter__toggle">Aktívny filter </h2>
+      <div class="govuk-clearfix idsk-table-filter__content">
+        <div class="idsk-table-filter__parameter govuk-body">Parameter 1<span class="idsk-table-filter__parameter-remove">✕</span></div>
+        <div class="idsk-table-filter__parameter govuk-body">Parametrik 2<span class="idsk-table-filter__parameter-remove">✕</span></div>
+        <div class="idsk-table-filter__parameter govuk-body">Parameter 3<span class="idsk-table-filter__parameter-remove">✕</span></div>
+        <div class="idsk-table-filter__parameter govuk-body">Parametricek 4<span class="idsk-table-filter__parameter-remove">✕</span></div>
+        <div class="idsk-table-filter__parameter govuk-body">Parameter 5<span class="idsk-table-filter__parameter-remove">✕</span></div>
+      </div>
+    </div>
+  </div>
+</div>

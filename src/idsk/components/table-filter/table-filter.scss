@@ -1,0 +1,67 @@
+@import "../../../govuk/settings/all";
+@import "../../../govuk/tools/all";
+@import "../../../govuk/helpers/all";
+@import "../../../govuk/helpers/typography";
+@import "../../../govuk/objects/grid";
+
+@include govuk-exports("idsk/component/filter") {
+  .idsk-table-filter {
+    .idsk-table-filter__panel {
+      padding: govuk-spacing(4);
+      background-color: govuk-colour("lighter-grey");
+
+      &:not(:last-child) {
+        margin-bottom: govuk-spacing(7);
+      }
+
+      .govuk-select {
+        width: 100%;
+      }
+
+      .idsk-table-filter__parameter {
+        padding: govuk-spacing(1) govuk-spacing(2);
+        background-color: govuk-colour("light-grey");
+        float: left;
+        margin-right: govuk-spacing(2);
+
+        .idsk-table-filter__parameter-remove {
+          margin-left: govuk-spacing(3);
+          font-size: 18px;
+          font-weight: bold;
+          transition: .1s;
+          display: inline-block;
+
+          &:hover {
+            transform: scale(.9);
+            cursor: pointer;
+          }
+        }
+      }
+
+      .idsk-table-filter__content {
+        height: 0;
+        overflow: hidden;
+        transition: height 0.4s ease;
+      }
+
+      .govuk-heading-m {
+        margin-bottom: 0;
+        transition: .4s;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      .idsk-button {
+        margin-bottom: 0;
+      }
+
+      &.idsk-table-filter--expanded {
+        .govuk-heading-m {
+          margin-bottom: govuk-spacing(4);
+        }
+      }
+    }
+  }
+}

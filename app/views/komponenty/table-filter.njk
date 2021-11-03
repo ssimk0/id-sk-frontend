@@ -1,0 +1,65 @@
+{% extends "layout.njk" %}
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+
+{% set pageName = "Tabuľkový filter" %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    "items": [
+      { text: 'ID-SK frontend', href: '/' + legacyQuery },
+      { text: pageName }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <span class="govuk-caption-xl">Webové komponenty</span>
+  <h1 class="govuk-heading-xl">{{ pageName }}</h1>
+  <p class="govuk-body-l">
+    Tabuľkový filter na filtrovanie
+  </p>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-s">Obsah:</h2>
+      <ul class="govuk-list">
+        <li>
+          <a class="govuk-link" href="#hmm" title="TITLE">Odkaz nesmerujúci na nič podstatné
+          </a>
+        </li>
+      </ul>
+      <h3 class="govuk-heading-m" id="hmm">TableFilter?</h3>
+      <p class="govuk-body">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam distinctio dolor eos et exercitationem explicabo facere fugit
+        illo laboriosam neque nisi nostrum perferendis quidem, rerum sit tempore vitae voluptatibus.
+      </p>
+    </div>
+  </div>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h3 class="govuk-heading-m" id="ukazka-uvodny-block-homepage">
+        Random filter, random príklad
+      </h3>
+      <p class="govuk-body">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci, cupiditate ea eligendi enim laboriosam molestiae nemo obcaecati officia omnis
+        perspiciatis porro ut veritatis? Accusamus autem beatae iste nam quam.
+      </p>
+
+      <div class="example">
+        {% set exampleComponentHtml %}
+          {% include "komponenty/examples/exampleTableFilter.njk" %}
+        {% endset %}
+        {{ exampleComponentHtml | safe }}
+      </div>
+    </div>
+  </div>
+  {# <div class="govuk-grid-row"> #}
+  {# <div class="govuk-grid-column-full"> #}
+  {# <h2 class="govuk-heading-l" id="priklady">Rozšírené príklady pre úvodný blok</h2> #}
+  {# <ul class="govuk-list"> #}
+  {# <li> #}
+  {# <a class="govuk-link" href="/custom-components/intro-block" title="Rozšírené príklady úvodného bloku">Rozšírené príklady úvodného bloku</a> #}
+  {# </li> #}
+  {# </ul> #}
+  {# </div> #}
+  {# </div> #}
+{% endblock %}
