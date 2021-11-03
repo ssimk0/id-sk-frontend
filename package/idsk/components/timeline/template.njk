@@ -32,17 +32,21 @@
                     </div>
                 </div>
             {% endif %}
-            <div class="idsk-timeline__content {{'idsk-timeline__content__caption--long' if event.caption[0].text.length > 80}}">
+            <div class="idsk-timeline__content {{ 'idsk-timeline__content__caption--long' if event.caption[0].text.length > 80 }}">
                 <div class="idsk-timeline__left-side">
                     <span class="govuk-body-m">{{ event.date }}</span>
                     <br>
-                        <span class="idsk-timeline__content__time">{{ event.time }}</span>
+                    <span class="idsk-timeline__content__time">{{ event.time }}</span>
                     </div>
                     <div class="idsk-timeline__middle">
                         <span class="idsk-timeline__vertical-line--circle"></span>
                     </div>
                     <div class="idsk-timeline__content__caption">
-                        <a class="{{'govuk-link' if event.caption[0].href else 'govuk-body'}}" {% if event.caption[0].href %} href="{{event.caption[0].href}}" {% endif %} title="{{ event.caption[0].text }}">{{ event.caption[0].text }}</a>
+                        {% if event.caption[0].href %}
+                            <a class="govuk-link" href="{{ event.caption[0].href }}" title="{{ event.caption[0].text }}">{{ event.caption[0].text }}</a>
+                        {% else %}
+                            <p class="govuk-body">{{ event.caption[0].text }}</p>
+                        {% endif %}
                     </div>
                 </div>
             {% endfor %}
