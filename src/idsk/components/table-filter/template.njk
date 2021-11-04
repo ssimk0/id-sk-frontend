@@ -1,9 +1,10 @@
 <div data-module="idsk-table-filter">
   <div class="idsk-table-filter {{ params.classes if params.classes }}">
     <div class="idsk-table-filter__panel idsk-table-filter__inputs">
-      <h2 class="govuk-heading-m idsk-filter-menu__toggle">Filtrovať obsah</h2>
+      <div class="idsk-table-filter__title govuk-heading-m">Filtrovať obsah</div>
+      <div class="govuk-body govuk-link idsk-filter-menu__toggle">Rozbaliť filter</div>
       <div class="idsk-table-filter__content">
-        <div class="govuk-grid-row">
+        <div class="govuk-grid-row idsk-table-filter__filter-inputs">
           {% for item in params.filters %}
             <div class="govuk-grid-column-one-third-from-desktop">
               <div class="govuk-form-group">
@@ -21,7 +22,8 @@
       </div>
     </div>
     <div class="idsk-table-filter__panel idsk-table-filter__active-filters">
-      <h2 class="govuk-heading-m idsk-filter-menu__toggle">Aktívny filter </h2>
+      <div class="govuk-body idsk-table-filter__title">Aktívny filter</div>
+      <div class="govuk-body govuk-link idsk-filter-menu__toggle">Rozbaliť filter</div>
       <div class="govuk-clearfix idsk-table-filter__content">
 
       </div>

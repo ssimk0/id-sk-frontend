@@ -11,7 +11,7 @@
       background-color: govuk-colour("lighter-grey");
 
       &:not(:last-child) {
-        margin-bottom: govuk-spacing(7);
+        margin-bottom: govuk-spacing(4);
       }
 
       .govuk-select {
@@ -23,6 +23,7 @@
         background-color: govuk-colour("light-grey");
         float: left;
         margin-right: govuk-spacing(2);
+        margin-bottom: govuk-spacing(2);
 
         .idsk-table-filter__parameter-remove {
           margin-left: govuk-spacing(3);
@@ -38,27 +39,44 @@
         }
       }
 
-      .idsk-table-filter__content {
-        height: 0;
-        overflow: hidden;
-        transition: height 0.4s ease;
+      .idsk-table-filter__title {
+        display: inline-block;
       }
 
-      .govuk-heading-m {
-        margin-bottom: 0;
-        transition: .4s;
+      .idsk-filter-menu__toggle {
+        float: right;
+        color: govuk-colour("blue");
 
         &:hover {
           cursor: pointer;
         }
       }
 
+      .idsk-table-filter__filter-inputs {
+        padding-bottom: 12px;
+      }
+
+      .idsk-table-filter__content {
+        height: 0;
+        overflow: hidden;
+        transition: height 0.4s ease;
+      }
+
+      .govuk-form-group {
+        margin-bottom: 18px;
+      }
+
       .idsk-button {
         margin-bottom: 0;
       }
 
+      .idsk-table-filter__title {
+        margin-bottom: 0;
+        transition: .4s;
+      }
+
       &.idsk-table-filter--expanded {
-        .govuk-heading-m {
+        .idsk-table-filter__title {
           margin-bottom: govuk-spacing(4);
         }
       }
