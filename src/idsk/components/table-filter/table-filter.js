@@ -91,8 +91,9 @@ TableFilter.prototype.renderActiveFilters = function (e) {
 TableFilter.prototype.handleClickSubmitFilter = function (e) {
   var self = this
 
-  // get all inputs
+  // get all inputs and selects
   var $inputs = this.$module.querySelectorAll(".idsk-table-filter__inputs input")
+  var $selects = this.$module.querySelectorAll(".idsk-table-filter__inputs select")
 
   // add values of inputs to $activeFilters if it is not empty
   self.$activeFilters = []
@@ -102,9 +103,18 @@ TableFilter.prototype.handleClickSubmitFilter = function (e) {
         id: $input.getAttribute('id'),
         name: $input.getAttribute('name'),
         value: $input.value,
-        title: $input.getAttribute('placeholder'),
       })
   })
+
+  $selects.forEach(function ($select) {
+    if ($select.value)
+      self.$activeFilters.push({
+        id: $select.value,
+        name: $select.getAttribute('name'),
+        value: $select.options[$select.selectedIndex].text,
+      })
+  })
+
 
   // add elements to active filters
   this.renderActiveFilters(this)
