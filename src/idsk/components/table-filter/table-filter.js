@@ -6,7 +6,7 @@ import {toggleClass} from "../../common";
 function TableFilter($module) {
   this.$module = $module
   this.$activeFilters = []
-  this.selectedFitlers = 0
+  this.selectedFitlersCount = 0
 }
 
 TableFilter.prototype.init = function () {
@@ -65,6 +65,10 @@ TableFilter.prototype.handleClickTogglePanel = function (e) {
   $content.style.height = ($content.style.height && $content.style.height !== "0px" ? "0" : $content.scrollHeight) + "px";
 }
 
+/**
+ * A function to remove filter from active filters
+ * @param {object} $filterToRemove
+ */
 TableFilter.prototype.removeActiveFilter = function ($filterToRemove) {
   this.$activeFilters = this.$activeFilters.filter(function ($filter) {
     return $filter.id !== $filterToRemove.id;
@@ -72,6 +76,10 @@ TableFilter.prototype.removeActiveFilter = function ($filterToRemove) {
   this.renderActiveFilters(this)
 }
 
+/**
+ * A function to add elements to DOM object
+ * @param {object} e
+ */
 TableFilter.prototype.renderActiveFilters = function (e) {
   var self = this
 
@@ -116,6 +124,17 @@ TableFilter.prototype.renderActiveFilters = function (e) {
 }
 
 /**
+ * A function to refresh number of selected filters
+ * @param {object} e
+ */
+TableFilter.prototype.renderSelectedFiltersCount = function (e) {
+  var counter = this.$module.querySelector("#submit-filter .count")
+  console.log(counter)
+  counter.innerHTML = this.selectedFitlersCount
+  console.log(counter)
+}
+
+/**
  * An event handler for click event on $submitButton - submit selected filters
  * @param {object} e
  */
@@ -146,7 +165,6 @@ TableFilter.prototype.handleClickSubmitFilter = function (e) {
       })
   })
 
-
   // add elements to active filters
   this.renderActiveFilters(this)
 }
@@ -156,7 +174,14 @@ TableFilter.prototype.handleClickSubmitFilter = function (e) {
  * @param {object} e
  */
 TableFilter.prototype.handleFilterValueChange = function (e) {
-  console.log("changed!")
+  var $el = e.target || e.srcElement
+  console.log($el.value)
+  if ($el.value)
+    this.selectedFitlersCount++
+  else
+    this.selectedFitlersCount--
+  console.log(this.selectedFitlersCount)
+  this.renderSelectedFiltersCount(this)
 }
 
 export default TableFilter
