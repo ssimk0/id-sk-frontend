@@ -6,6 +6,7 @@ import {toggleClass} from "../../common";
 function TableFilter($module) {
   this.$module = $module
   this.$activeFilters = []
+  this.selectedFitlers = 0
 }
 
 TableFilter.prototype.init = function () {
@@ -14,13 +15,22 @@ TableFilter.prototype.init = function () {
   if (!$module) {
     return
   }
+
+  // toggle for showing content
   var $toggleButtons = $module.querySelectorAll('.idsk-filter-menu__toggle')
   if (!$toggleButtons) {
     return
   }
 
-  var $submitButtons = $module.querySelectorAll('#submit-filter')
-  if (!$submitButtons) {
+  // submit all filters
+  var $submitFilters = $module.querySelectorAll('#submit-filter')
+  if (!$submitFilters) {
+    return
+  }
+
+  // all inputs for count of selected filters
+  var $filterInputs = $module.querySelectorAll('.govuk-input, .govuk-select')
+  if (!$filterInputs) {
     return
   }
 
@@ -30,10 +40,14 @@ TableFilter.prototype.init = function () {
     $button.click()
   }.bind(this))
 
-  $submitButtons.forEach(function ($button) {
+  $submitFilters.forEach(function ($button) {
     $button.addEventListener('click', this.handleClickSubmitFilter.bind(this))
     // TODO remove
     $button.click()
+  }.bind(this))
+
+  $filterInputs.forEach(function ($input) {
+    $input.addEventListener('change', this.handleFilterValueChange.bind(this))
   }.bind(this))
 }
 
@@ -75,6 +89,23 @@ TableFilter.prototype.renderActiveFilters = function (e) {
     $activeFilter.classList.add("idsk-table-filter__parameter", "govuk-body")
     $activeFilters.appendChild($activeFilter)
   })
+
+  // add remove everything button if some filter is activated else print none filter is activated
+  if (this.$activeFilters.length > 0) {
+    var $removeAllFilters = document.createElement("div")
+    $removeAllFilters.innerHTML = 'Zrušiť všetko (' + this.$activeFilters.length + ')<span class="idsk-table-filter__parameter-remove">✕</span>'
+    $removeAllFilters.addEventListener("click", function () {
+      self.$activeFilters = []
+      self.renderActiveFilters(self)
+    })
+    $removeAllFilters.classList.add("govuk-body", "govuk-link")
+    $activeFilters.appendChild($removeAllFilters)
+  } else {
+    var $info = document.createElement("div")
+    $info.classList.add("govuk-body")
+    $info.innerHTML = 'Žiadny filter nie je vybraný.'
+    $activeFilters.appendChild($info)
+  }
 
   // calc height of panel  if 'active filter' panel is expanded
   var $activeFiltersContainer = this.$module.querySelector('.idsk-table-filter__active-filters.idsk-table-filter--expanded .idsk-table-filter__content')
@@ -118,6 +149,14 @@ TableFilter.prototype.handleClickSubmitFilter = function (e) {
 
   // add elements to active filters
   this.renderActiveFilters(this)
+}
+
+/**
+ * An event handler for on change event on all inputs
+ * @param {object} e
+ */
+TableFilter.prototype.handleFilterValueChange = function (e) {
+  console.log("changed!")
 }
 
 export default TableFilter
