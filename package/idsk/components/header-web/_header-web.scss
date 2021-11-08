@@ -92,6 +92,25 @@
     display: block;
     width: 100%;
     height: 3px;
+    background-image: -webkit-gradient(
+      linear,
+      left top, right top,
+      from(govuk-colour("white")),
+      color-stop(33.3%, govuk-colour("white")),
+      color-stop(33.3%, #003183),
+      color-stop(66.6%, #003183),
+      color-stop(66.6%, govuk-colour("red")),
+      to(govuk-colour("red"))
+    );
+    background-image: -webkit-linear-gradient(
+      left,
+      govuk-colour("white") 0%,
+      govuk-colour("white") 33.3%,
+      #003183 33.3%,
+      #003183 66.6%,
+      govuk-colour("red") 66.6%,
+      govuk-colour("red") 100%
+    );
     background-image: linear-gradient(
       to right,
       govuk-colour("white") 0%,
@@ -117,8 +136,12 @@
     }
 
     .govuk-grid-column-full {
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
-      justify-content: space-between;
+      -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
     }
 
     &-gestor {
@@ -192,8 +215,13 @@
 
         &--active {
           .idsk-header-web__link-arrow {
+            -webkit-transition: -webkit-transform 0.2s;
+            transition: -webkit-transform 0.2s;
             transition: transform 0.2s;
-            transform: rotate(180deg);
+            transition: transform 0.2s, -webkit-transform 0.2s;
+            -webkit-transform: rotate(180deg);
+                -ms-transform: rotate(180deg);
+                    transform: rotate(180deg);
           }
         }
       }
@@ -305,8 +333,13 @@
         }
 
         .idsk-header-web__link-arrow {
+          -webkit-transition: -webkit-transform 0.2s;
+          transition: -webkit-transform 0.2s;
           transition: transform 0.2s;
-          transform: rotate(180deg);
+          transition: transform 0.2s, -webkit-transform 0.2s;
+          -webkit-transform: rotate(180deg);
+              -ms-transform: rotate(180deg);
+                  transform: rotate(180deg);
         }
       }
 
@@ -396,18 +429,30 @@
     @include mq($from: desktop) {
 
       .govuk-grid-row {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
 
         .govuk-grid-column-two-thirds{
+          display: -webkit-box;
+          display: -ms-flexbox;
           display: flex;
-          align-items: center;
-          justify-content: flex-end;
+          -webkit-box-align: center;
+              -ms-flex-align: center;
+                  align-items: center;
+          -webkit-box-pack: end;
+              -ms-flex-pack: end;
+                  justify-content: flex-end;
         }
       }
 
       .govuk-grid-column-one-third-from-desktop {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        align-items: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
       }
     }
 
@@ -456,8 +501,12 @@
         }
 
         .idsk-header-web__main--login-action {
+          display: -webkit-box;
+          display: -ms-flexbox;
           display: flex;
-          align-items: center;
+          -webkit-box-align: center;
+              -ms-flex-align: center;
+                  align-items: center;
         }
 
         @include mq($until: desktop) {
@@ -488,8 +537,12 @@
       margin: 28px 0;
 
       & > a {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        align-items: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
         text-decoration: none;
   
         &:focus,
@@ -517,15 +570,25 @@
       }
 
       @include mq($until: desktop) {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        align-items: center;
-        justify-content: space-between;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
         padding: govuk-spacing(4) 0;
         margin: 0;
 
         a {
+          display: -webkit-box;
+          display: -ms-flexbox;
           display: flex;
-          align-items: center;
+          -webkit-box-align: center;
+              -ms-flex-align: center;
+                  align-items: center;
           text-decoration: none;
         }
 
@@ -535,8 +598,12 @@
         }
 
         &-menu-button {
+          display: -webkit-box;
+          display: -ms-flexbox;
           display: flex;
-          align-items: center;
+          -webkit-box-align: center;
+              -ms-flex-align: center;
+                  align-items: center;
           background-color: $idsk-header-background-primary;
           width: auto;
           float: right;
@@ -599,8 +666,12 @@
     }
 
     &-action {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        align-items: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
 
         /* search bar */
         &-search {
@@ -618,8 +689,12 @@
           }
 
           @include govuk-font($size: 19);
+          display: -webkit-box;
+          display: -ms-flexbox;
           display: flex;
-          align-items: center;
+          -webkit-box-align: center;
+              -ms-flex-align: center;
+                  align-items: center;
           outline: 1px solid govuk-colour("black");
           margin: 30px 0;
 
@@ -638,9 +713,15 @@
           }
 
           .govuk-button {
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
             height: 40px;
             width: 44px;
             font-size: 17px;
@@ -807,8 +888,13 @@
           
           .idsk-header-web__link-arrow,
           .idsk-header-web__link-arrow-mobile {
+            -webkit-transition: -webkit-transform 0.2s;
+            transition: -webkit-transform 0.2s;
             transition: transform 0.2s;
-            transform: rotate(180deg);
+            transition: transform 0.2s, -webkit-transform 0.2s;
+            -webkit-transform: rotate(180deg);
+                -ms-transform: rotate(180deg);
+                    transform: rotate(180deg);
           }
 
           .idsk-header-web__nav-submenu,
@@ -925,10 +1011,18 @@
         list-style-type: none;
         
         @include mq($from: desktop) {
+          display: -webkit-box;
+          display: -ms-flexbox;
           display: flex;
-          flex-direction: row;
-          align-items: center;
-          flex-wrap: wrap;
+          -webkit-box-orient: horizontal;
+          -webkit-box-direction: normal;
+              -ms-flex-direction: row;
+                  flex-direction: row;
+          -webkit-box-align: center;
+              -ms-flex-align: center;
+                  align-items: center;
+          -ms-flex-wrap: wrap;
+              flex-wrap: wrap;
           padding: 0 0;
           margin: 0;
 
@@ -1102,9 +1196,15 @@
     }
 
     .govuk-grid-column-full {
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
     }
 
     &--hide {

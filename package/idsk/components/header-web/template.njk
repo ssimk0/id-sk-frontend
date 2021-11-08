@@ -1,11 +1,11 @@
-{% from "../button/macro.njk" import idskButton -%}
+{% from "../button/macro.njk" import idskButton %}
 
-{# SLOVAK TRICOLOR  -#}
+{# SLOVAK TRICOLOR #}
 {% set tricolor %}
   <div class="idsk-header-web__tricolor"></div>
-{% endset -%}
+{% endset %}
 
-{# BRAND BAR -#}
+{# BRAND BAR #}
 {% set brandBar %}
 {% set brand = params.brand %}
 {% set currentLanguage = "" %}
@@ -13,7 +13,7 @@
   {% if language.selected %}
     {% set currentLanguage = language %}
   {% endif %}
-{% endfor -%}
+{% endfor %}
 
 <div class="idsk-header-web__brand {{ 'idsk-header-web__brand--light' if brand.lightBackground }}">
   <div class="govuk-width-container">
@@ -37,7 +37,7 @@
                 </button>
               {% endif %}
             </span>
-            {# MOBILE VERSION GESTOR LINK/BUTTON -#}
+            {# MOBILE VERSION GESTOR LINK/BUTTON #}
             <span class="govuk-body-s idsk-header-web__brand-gestor-text--mobile">
               SK
               {% if brand.gestor.gestorLink %}
@@ -76,7 +76,7 @@
             </div>
           </div>
           <div class="idsk-header-web__brand-spacer"></div>
-        {% endif -%}
+        {% endif %}
 
         <div class="idsk-header-web__brand-language">
           <button class="idsk-header-web__brand-language-button" aria-label="Rozbaliť jazykové menu" aria-expanded="false" data-text-for-hide="Skryť jazykové menu" data-text-for-show="Rozbaliť jazykové menu">
@@ -99,9 +99,9 @@
     </div>
   </div>
 </div>
-{% endset -%}
+{% endset %}
 
-{# MAIN SECTION -#}
+{# MAIN SECTION #}
 {% set main = params.main %}
 {% set mainButtons %}
 <div class="idsk-header-web__main--buttons">
@@ -146,7 +146,7 @@
         "classes": "idsk-header-web__main--login-logoutbtn"
       }) }}
     </div>
-  {% endif -%}
+  {% endif %}
 
   {% if main.secondaryButton and params.headerType !== 'electronicService' %}
     {{ idskButton({
@@ -156,7 +156,7 @@
     }) }}
   {% endif %}
 </div>
-{% endset -%}
+{% endset %}
 
 {% set searchInput %}
 {% if params.search and params.headerType !== "electronicService" %}
@@ -170,7 +170,7 @@
     </button>
   </form>
 {% endif %}
-{% endset -%}
+{% endset %}
 
 {% set mainSection %}
 <div class="idsk-header-web__main">
@@ -188,7 +188,7 @@
               {% if main.title %}
                 <h2 class="govuk-heading-m">{{ main.title }}</h2>
               {% endif %}
-            {% endif -%}
+            {% endif %}
 
             {% if params.headerType == 'electronicService' %}
               <h2 class="govuk-heading-m">{{ main.title if main.title else 'Title text' }}</h2>
@@ -228,9 +228,9 @@
     </div>
   </div>
 </div>
-{% endset -%}
+{% endset %}
 
-{# NAV BAR -#}
+{# NAV BAR #}
 {% set navBar %}
 {% if params.navBar and params.headerType !== 'electronicService' %}
   <div class="idsk-header-web__nav--divider"></div>
@@ -307,9 +307,9 @@
   {% endif %}
   </div>
 </div>
-{% endset -%}
+{% endset %}
 
-{# BANNER -#}
+{# BANNER #}
 {% set bannerSection %}
 {% if params.banner %}
   {% set banner = params.banner %}
@@ -329,7 +329,7 @@
     </div>
   </div>
 {% endif %}
-{% endset -%}
+{% endset %}
 
 <header class="idsk-header-web {{ params.classes if params.classes }}" data-module="idsk-header-web" {%- for attribute,
   value in params.attributes %} {{attribute}}="{{value}}" {% endfor %}>

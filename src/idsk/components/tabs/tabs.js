@@ -5,7 +5,7 @@ import '../../../govuk/vendor/polyfills/Element/prototype/previousElementSibling
 import '../../../govuk/vendor/polyfills/Event' // addEventListener and event.target normaliziation
 import { nodeListForEach } from '../../common'
 
-function Tabs ($module) {
+function Tabs($module) {
   this.$module = $module
   this.$tabs = $module.querySelectorAll('.idsk-tabs__tab')
   this.$mobileTabs = $module.querySelectorAll('.idsk-tabs__mobile-tab')
@@ -97,13 +97,14 @@ Tabs.prototype.showTab = function ($tab) {
   this.showPanel($tab)
 }
 
-Tabs.prototype.toggleMobileTab = function ($tab, currentTab = false) {
+Tabs.prototype.toggleMobileTab = function ($tab, currentTab) {
+  currentTab = currentTab || false
   var $mobilePanel = this.getPanel($tab)
   var $mobileTab = $mobilePanel.previousElementSibling
   $mobileTab.classList.toggle('idsk-tabs__mobile-tab--selected')
   $mobilePanel = $mobilePanel.querySelector('.idsk-tabs__mobile-tab-content')
   $mobilePanel.classList.toggle(this.mobileTabHiddenClass)
-  if($mobileTab.classList.contains('idsk-tabs__mobile-tab--selected') && currentTab){
+  if ($mobileTab.classList.contains('idsk-tabs__mobile-tab--selected') && currentTab) {
     $mobileTab.classList.remove('idsk-tabs__mobile-tab--selected')
     $mobilePanel.classList.add(this.mobileTabHiddenClass)
   }
@@ -156,21 +157,21 @@ Tabs.prototype.unsetAttributes = function ($tab) {
 
 Tabs.prototype.onTabClick = function (e) {
   if (!(e.target.classList.contains('idsk-tabs__tab') || e.target.classList.contains('idsk-tabs__mobile-tab') || e.target.classList.contains('idsk-tabs__tab-arrow-mobile'))) {
-  // Allow events on child DOM elements to bubble up to tab parent
+    // Allow events on child DOM elements to bubble up to tab parent
     return false
   }
   e.preventDefault()
   var $newTab = e.target
   var $currentTab = this.getCurrentTab()
 
-  if($newTab.classList.contains('idsk-tabs__tab-arrow-mobile')){
-      $newTab = $newTab.parentElement
-    }
-  if ($newTab.nodeName == 'BUTTON'){
+  if ($newTab.classList.contains('idsk-tabs__tab-arrow-mobile')) {
+    $newTab = $newTab.parentElement
+  }
+  if ($newTab.nodeName == 'BUTTON') {
     $newTab = this.$tabs[$newTab.getAttribute('item')]
-    if($newTab == $currentTab){
+    if ($newTab == $currentTab) {
       this.toggleMobileTab($currentTab)
-    }else{
+    } else {
       this.toggleMobileTab($currentTab, true)
       this.toggleMobileTab($newTab)
     }
