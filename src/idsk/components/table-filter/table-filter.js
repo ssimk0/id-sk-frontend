@@ -63,6 +63,11 @@ TableFilter.prototype.handleClickTogglePanel = function (e) {
   // show content with slide down animation
   toggleClass($panel, 'idsk-table-filter--expanded')
   $content.style.height = ($content.style.height && $content.style.height !== "0px" ? "0" : $content.scrollHeight) + "px";
+  if ($content.style.height === "0px") {
+    $el.innerHTML = "Rozbaliť filter"
+  } else {
+    $el.innerHTML = "Zbaliť filter"
+  }
 }
 
 /**
@@ -175,12 +180,15 @@ TableFilter.prototype.handleClickSubmitFilter = function (e) {
  */
 TableFilter.prototype.handleFilterValueChange = function (e) {
   var $el = e.target || e.srcElement
+  var $self = this
   console.log($el.value)
-  if ($el.value)
-    this.selectedFitlersCount++
-  else
-    this.selectedFitlersCount--
-  console.log(this.selectedFitlersCount)
+  this.selectedFitlersCount = 0
+  var $allFilters = this.$module.querySelectorAll(".idsk-table-filter__inputs input, .idsk-table-filter__inputs select")
+  $allFilters.forEach(function ($filter) {
+    if ($filter.value)
+      $self.selectedFitlersCount++
+  })
+
   this.renderSelectedFiltersCount(this)
 }
 

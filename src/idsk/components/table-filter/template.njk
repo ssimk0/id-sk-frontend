@@ -1,3 +1,26 @@
+{% macro filters(filters) %}
+  {% for item in filters %}
+    <div class="govuk-grid-column-one-third-from-desktop">
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="{{ item.id }}">
+          {{ item.inputTitle }}
+        </label>
+
+        {% if item.options %}
+          <select class="govuk-select" id="{{ item.id }}" name="{{ item.id }}">
+            {% for option in item.options %}
+              <option {{ "selected" if option.selected == "True" }} {{ "disabled" if option.disabled == "True" }}
+                value="{{ option.value }}">{{ option.inputTitle }}</option>
+            {% endfor %}
+          </select>
+        {% else %}
+          <input class="govuk-input" id="{{ item.id }}" name="{{ item.id }}" type="text" placeholder="{{ item.inputTitle }}">
+        {% endif %}
+      </div>
+    </div>
+  {% endfor %}
+{% endmacro %}
+
 <div data-module="idsk-table-filter">
   <div class="idsk-table-filter {{ params.classes if params.classes }}">
     <div class="idsk-table-filter__panel idsk-table-filter__inputs">
@@ -5,27 +28,13 @@
       <div class="govuk-body govuk-link idsk-filter-menu__toggle">Rozbaliť filter</div>
       <div class="idsk-table-filter__content">
         <div class="govuk-grid-row idsk-table-filter__filter-inputs">
-          {% for item in params.filters %}
-            <div class="govuk-grid-column-one-third-from-desktop">
-              <div class="govuk-form-group">
-                <label class="govuk-label" for="{{ item.id }}">
-                  {{ item.inputTitle }}
-                </label>
-
-                {% if item.options %}
-                  <select class="govuk-select" id="{{ item.id }}" name="{{ item.id }}">
-                    {% for option in item.options %}
-                      <option {{ "selected" if option.selected == "True" }} {{ "disabled" if option.disabled == "True" }}
-                        value="{{ option.value }}">{{ option.inputTitle }}</option>
-                    {% endfor %}
-                  </select>
-                {% else %}
-                  <input class="govuk-input" id="{{ item.id }}" name="{{ item.id }}" type="text" placeholder="{{ item.inputTitle }}">
-                {% endif %}
-
-              </div>
-            </div>
-          {% endfor %}
+          {% if params.categories %}
+            {% for category in params.categories %}
+              {{ filters(category.filters) }}
+            {% endfor %}
+          {% else %}
+            {{ filters(params.filters) }}
+          {% endif %}
         </div>
         <button type="submit" class="idsk-button" id="submit-filter">
           Filtrovať vybrané (<span class="count">0</span>)
