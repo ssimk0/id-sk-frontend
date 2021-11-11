@@ -39,8 +39,13 @@ TableFilter.prototype.init = function () {
   }.bind(this))
 
   $filterInputs.forEach(function ($input) {
+    // for selects
     $input.addEventListener('change', this.handleFilterValueChange.bind(this))
-    $input.addEventListener('keypress', function (e) {
+    // for text inputs
+    $input.addEventListener('keyup', function (e) {
+      this.handleFilterValueChange(e)
+
+      // submit if key is enter
       if (e.key === 'Enter')
         this.handleSubmitFilter(this)
     }.bind(this));
@@ -117,7 +122,8 @@ TableFilter.prototype.removeAllActiveFilters = function (e) {
  */
 TableFilter.prototype.renderActiveFilters = function (e) {
   // remove all existing filters from array
-  var $activeFilters = this.$module.querySelector('.idsk-table-filter__active-filters .idsk-table-filter__content')
+  var $activeFiltersPanel = this.$module.querySelector('.idsk-table-filter__active-filters')
+  var $activeFilters = $activeFiltersPanel.querySelector('.idsk-table-filter__active-filters .idsk-table-filter__content')
   $activeFilters.innerHTML = '';
 
   // render all filters in active filters
@@ -133,17 +139,14 @@ TableFilter.prototype.renderActiveFilters = function (e) {
 
   // add remove everything button if some filter is activated else print none filter is activated
   if (this.$activeFilters.length > 0) {
+    $activeFiltersPanel.classList.remove("idsk-table-filter__active-filters__hide")
     var $removeAllFilters = document.createElement("div")
     $removeAllFilters.classList.add("govuk-body", "govuk-link")
     $removeAllFilters.innerHTML = 'Zrušiť všetko (' + this.$activeFilters.length + ')<span class="idsk-table-filter__parameter-remove">✕</span>'
     $removeAllFilters.addEventListener("click", this.removeAllActiveFilters.bind(this))
     $activeFilters.appendChild($removeAllFilters)
-  } else {
-    var $info = document.createElement("div")
-    $info.classList.add("govuk-body")
-    $info.innerHTML = 'Žiadny filter nie je vybraný.'
-    $activeFilters.appendChild($info)
-  }
+  } else
+    $activeFiltersPanel.classList.add("idsk-table-filter__active-filters__hide")
 
   // calc height of 'active filter' panel if panel is expanded
   var $activeFiltersContainer = this.$module.querySelector('.idsk-table-filter__active-filters.idsk-table-filter--expanded .idsk-table-filter__content')

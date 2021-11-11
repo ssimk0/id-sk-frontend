@@ -77,10 +77,16 @@
     }
 
     &__active-filters {
+      padding-bottom: govuk-spacing(3);
+
+      &__hide {
+        display: none;
+      }
+
       .idsk-table-filter__content > div {
         padding: govuk-spacing(1) 0;
         margin-right: govuk-spacing(2);
-        margin-bottom: govuk-spacing(2);
+        margin-bottom: govuk-spacing(3);
         float: left;
 
         &.govuk-link {
