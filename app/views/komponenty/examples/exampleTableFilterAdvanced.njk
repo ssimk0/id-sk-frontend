@@ -1,8 +1,9 @@
 {% from "../../../../src/idsk/components/table-filter/macro.njk" import idskTableFilter %}
 {{ idskTableFilter({
+  "id": "advanced-filter",
   "categories": [
     {
-      "name": "Bydlisko",
+      "title": "Bydlisko",
       "filters": [
         {
           "id": "filter1",
@@ -51,30 +52,79 @@
       ]
     },
     {
-      "name": "Parametre",
+      "title": "Názov inštitúcie",
       "filters": [
         {
-          "id": "filter1",
+          "id": "filter21",
           "inputTitle": "Filter 1"
         },
         {
-          "id": "filter2",
+          "id": "filter22",
           "inputTitle": "Filter 2"
         },
         {
-          "id": "filter3",
+          "id": "filter23",
           "inputTitle": "Filter 3"
         },
         {
-          "id": "filter4",
+          "id": "filter24",
           "inputTitle": "Filter 1"
         },
         {
-          "id": "filter5",
+          "id": "filter25",
           "inputTitle": "Filter 2"
         },
         {
-          "id": "filter6",
+          "id": "filter26",
+          "inputTitle": "Filter 6",
+          "options": [
+            {
+              "value": "",
+              "inputTitle": "Select filter"
+            },
+            {
+              "value": "filter6-1",
+              "inputTitle": "Filter 6-1"
+            },
+            {
+              "value": "filter6-2v",
+              "inputTitle": "Filter 6-2t",
+              "selected": "False"
+            },
+            {
+              "value": "filter6-2",
+              "inputTitle": "Filter 6-3",
+              "disabled": "True"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Parametre",
+      "filters": [
+        {
+          "id": "filter31",
+          "inputTitle": "Filter 1"
+        },
+        {
+          "id": "filter32",
+          "inputTitle": "Filter 2"
+        },
+        {
+          "id": "filter33",
+          "inputTitle": "Filter 3"
+        },
+        {
+          "id": "filter34",
+          "inputTitle": "Filter 1"
+        },
+        {
+          "id": "filter35",
+          "inputTitle": "Filter 2"
+        },
+        {
+          "id": "filter36",
           "inputTitle": "Filter 6",
           "options": [
             {

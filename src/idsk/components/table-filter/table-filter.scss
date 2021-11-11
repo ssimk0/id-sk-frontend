@@ -32,19 +32,13 @@
         transition: .4s;
       }
 
-      &.idsk-table-filter--expanded {
-        .idsk-table-filter__title {
-          margin-bottom: govuk-spacing(4);
-        }
-      }
-
       .idsk-filter-menu__toggle {
         float: right;
         margin-bottom: 0;
       }
 
       .idsk-table-filter__filter-inputs {
-        padding-bottom: 12px;
+        padding-bottom: 7px;
       }
 
       .idsk-table-filter__content {
@@ -59,6 +53,26 @@
 
       .idsk-button {
         margin-bottom: 0;
+      }
+    }
+
+    .idsk-table-filter--expanded > .idsk-table-filter__title {
+      margin-bottom: govuk-spacing(4);
+    }
+
+    &__category:not(&--expanded) {
+      margin-bottom: 32px;
+    }
+
+    &__category {
+      transition: .4s;
+
+      &:first-child {
+        margin-top: 18px;
+      }
+
+      .idsk-table-filter__filter-inputs {
+        padding-bottom: 5px;
       }
     }
 
@@ -92,7 +106,6 @@
           }
         }
       }
-
     }
   }
 }

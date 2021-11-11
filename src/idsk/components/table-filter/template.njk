@@ -21,22 +21,30 @@
   {% endfor %}
 {% endmacro %}
 
-<div data-module="idsk-table-filter">
+<div data-module="idsk-table-filter" id="{{ params.id }}">
   <div class="idsk-table-filter {{ params.classes if params.classes }}">
     <div class="idsk-table-filter__panel idsk-table-filter__inputs">
       <div class="idsk-table-filter__title govuk-heading-m">Filtrovať obsah</div>
       <div class="govuk-body govuk-link idsk-filter-menu__toggle">Rozbaliť filter</div>
       <div class="idsk-table-filter__content">
-        <div class="govuk-grid-row idsk-table-filter__filter-inputs">
-          {% if params.categories %}
-            {% for category in params.categories %}
-              {{ filters(category.filters) }}
-            {% endfor %}
-          {% else %}
+        {% if params.categories %}
+          {% for category in params.categories %}
+            <div class="idsk-table-filter__category">
+              <div class="idsk-table-filter__title govuk-heading-s">{{ category.title }} <span class="count"></span></div>
+              <div class="govuk-body govuk-link idsk-filter-menu__toggle">Rozbaliť filter</div>
+              <div class="idsk-table-filter__content">
+                <div class="govuk-grid-row idsk-table-filter__filter-inputs">
+                  {{ filters(category.filters) }}
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          <div class="govuk-grid-row idsk-table-filter__filter-inputs">
             {{ filters(params.filters) }}
-          {% endif %}
-        </div>
-        <button type="submit" class="idsk-button" id="submit-filter">
+          </div>
+        {% endif %}
+        <button type="submit" class="idsk-button submit-table-filter" disabled="disabled">
           Filtrovať vybrané (<span class="count">0</span>)
         </button>
       </div>
@@ -45,7 +53,7 @@
       <div class="govuk-body idsk-table-filter__title">Aktívny filter</div>
       <div class="govuk-body govuk-link idsk-filter-menu__toggle">Rozbaliť filter</div>
       <div class="govuk-clearfix idsk-table-filter__content">
-        <div class="idsk-table-filter__parameters"></div>
+        <div class="govuk-body">Žiadny filter nie je vybraný.</div>
       </div>
     </div>
   </div>

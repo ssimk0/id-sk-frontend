@@ -1,177 +1,141 @@
 params:
-  - name: bottomMenu
+  - name: id
+    type: string
+    required: false
+    description: Id of the table filter.
+
+  - name: filters
     type: array
     required: false
-    description: Array of navigation links for intro block.
+    description: Array of all filters
     params:
-      - name: item
+      - name: id
         type: string
+        required: true
+        description: ID of the filter
+      - name: inputTitle
+        type: string
+        required: true
+        description: Text for filters label
+      - name: options
+        type: array
         required: false
-        description: Name of navigation links
-      - name: href
-        type: html
-        required: false
-        description: Url address for navigation links
-
-  - name: sideMenu
+        description: Options if input should be select
+        params:
+          - name: value
+            type: string
+            required: true
+            description: Value of the option
+          - name: inputTitle
+            type: string
+            required: true
+            description: Text for the option
+          - name: disabled
+            type: boolean
+            required: false
+            description: True if option should be disabled
+          - name: selected
+            type: boolean
+            required: false
+            description: True if option should be selected by default
+  - name: categories
     type: array
-    required: false
-    description: Array of navigation links called Popular content for intro block.
     params:
-      - name: item
+      - name: title
         type: string
+        required: true
+        description: Title of the category
+      - name: filters
+        type: array
         required: false
-        description: Name of navigation links
-      - name: href
-        type: html
-        required: false
-        description: Url address for navigation links
-
-  - name: moreInfoAboutMinistryLink
-    type: link
-    required: false
-    description: link name for page of ministry.
-
-  - name: mainTitleLinkLabel
-    type: string
-    required: false
-    description: label for link on page of ministry.
-
-  - name: classContainer
-    type: class
-    required: false
-    description: class name for having govuk-width-container on page.
-
-  - name: classBackground
-    type: class
-    required: false
-    description: class name for changing background of side menu.
-
-  - name: searchEnabled
-    type: string
-    required: false
-    description: Determines whether search should be part of intro block.
-
-  - name: headline
-    type: string
-    required: false
-    description: headline of page.
-
-  - name: mainTitle
-    type: html
-    required: false
-    description: title of page.
-
-  - name: sideMenuTitle
-    type: string
-    required: false
-    description: title of side menu.
+        description: Array of all filters
+        params:
+          - name: id
+            type: string
+            required: true
+            description: ID of the filter
+          - name: inputTitle
+            type: string
+            required: true
+            description: Text for filters label
+          - name: options
+            type: array
+            required: false
+            description: Options if input should be select
+            params:
+              - name: value
+                type: string
+                required: true
+                description: Value of the option
+              - name: inputTitle
+                type: string
+                required: true
+                description: Text for the option
+              - name: disabled
+                type: boolean
+                required: false
+                description: True if option should be disabled
+              - name: selected
+                type: boolean
+                required: false
+                description: True if option should be selected by default
 
 examples:
-  - name: basic
+  - name: simple
     data:
-      mainTitle : Dozvedieť sa <a class='govuk-link' href='#' title='viac o ministerstve'>viac o ministerstve</a>.
-      bottomMenu:
-        - href: "#"
-          item: Eurofondy
-        - href: "#"
-          item: Kontakty
-        - href: "#"
-          item: Informatizácia
-        - href: "#"
-          item: Investície
-        - href: "#"
-          item: O ministerstve
+      id: "simple-filter"
+      filters:
+        - id: "filter1"
+          inputTitle: "Filter1"
+        - id: "filter2"
+          inputTitle: "Filter2"
+          options:
+           - value: ""
+             inputTitle: "Vyber filter"
+           - value: "filter2-1"
+             inputTitle: "Filter2-1"
+           - value: "filter2-2"
+             inputTitle: "Filter2-2"
+           - value: "filter2-3"
+             inputTitle: "Filter2-3"
 
-      sideMenu:
-        - href: "#"
-          item: O eurofondoch
-        - href: "#"
-          item: Aktuality
-        - href: "#"
-          item: O ministerstve
-        - href: "#"
-          item: Aktuálne výzvy
-        - href: "#"
-          item: Dokumenty
-
-      searchEnabled: true
-
-  - name: extended
+  - name: advanced
     data:
-      mainTitle : Dozvedieť sa <a class='govuk-link' href='#' title='viac o ministerstve'>viac o ministerstve</a>.
-      bottomMenu:
-        - href: "#"
-          item: Eurofondy
-        - href: "#"
-          item: Kontakty
-        - href: "#"
-          item: Informatizácia
-        - href: "#"
-          item: Investície
-        - href: "#"
-          item: O ministerstve
-
-      sideMenu:
-        - href: "#"
-          item: O eurofondoch
-        - href: "#"
-          item: Aktuality
-        - href: "#"
-          item: O ministerstve
-        - href: "#"
-          item: Aktuálne výzvy
-        - href: "#"
-          item: Dokumenty
-
-      classBackground: "app-pane-transparent"
-      searchEnabled: true
-
-  - name: without search
-    data:
-      mainTitle : Dozvedieť sa <a class='govuk-link' href='#' title='viac o ministerstve'>viac o ministerstve</a>.
-      bottomMenu:
-        - href: "#"
-          item: Eurofondy
-        - href: "#"
-          item: Kontakty
-        - href: "#"
-          item: Informatizácia
-        - href: "#"
-          item: Investície
-        - href: "#"
-          item: O ministerstve
-
-      sideMenu:
-        - href: "#"
-          item: Financovanie zo štátneho rozpočtu
-        - href: "#"
-          item: Riadenie kvality (QA) ITVS projektov
-        - href: "#"
-          item: Číselník životných situácií
-        - href: "#"
-          item: MetaIS
-        - href: "#"
-          item: Pracovná skupina Lepšie služby
-
-      searchEnabled: false
-      classBackground: "app-pane-blue"
-      headline: "Informatizácia"
-
-  - name: without bottom menu
-    data:
-      mainTitle : Dozvedieť sa <a class='govuk-link' href='#' title='viac o ministerstve'>viac o ministerstve</a>.
-
-      sideMenu:
-        - href: "#"
-          item: O eurofondoch
-        - href: "#"
-          item: Aktuality
-        - href: "#"
-          item: O ministerstve
-        - href: "#"
-          item: Aktuálne výzvy
-        - href: "#"
-          item: Dokumenty
-
-      searchEnabled: true
+      id: "advanced-filter"
+      categories:
+        - title: "Prvá kategória"
+          filters:
+           - id: "filter3"
+             inputTitle: "Filter3"
+           - id: "filter3"
+             inputTitle: "Filter3"
+             options:
+              - value: ""
+                inputTitle: "Vyber filter"
+              - value: "filter3-1"
+                inputTitle: "Filter3-1"
+                disabled: true
+              - value: "filter3-2"
+                inputTitle: "Filter3-2"
+                selected: true
+              - value: "filter3-3"
+                disabled: true
+                inputTitle: "Filter3-3"
+        - title: "Druhá kategória"
+          filters:
+           - id: "filter4"
+             inputTitle: "Filter4"
+           - id: "filter5"
+             inputTitle: "Filter5"
+             options:
+              - value: ""
+                inputTitle: "Vyber filter"
+              - value: "filter5-1"
+                inputTitle: "Filter5-1"
+                disabled: true
+              - value: "filter5-2"
+                inputTitle: "Filter5-2"
+                selected: true
+              - value: "filter5-3"
+                disabled: true
+                inputTitle: "Filter5-3"
