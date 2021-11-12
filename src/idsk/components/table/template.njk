@@ -1,0 +1,48 @@
+<table class="idsk-table
+  {%- if params.classes %} {{ params.classes }}{% endif %}" data-module="idsk-table" {% for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}
+  {% if params.head %} table-head = '{{ params.head | dump }}'{% endif %} {% if params.rows %} table-data = '{{ params.rows | dump }}'{% endif %}
+  {% if params.dataPath %} data-path='{{ params.dataPath }}'  {% endif %} {% if params.apiUrl %} api-url='{{ params.apiUrl }}'  {% endif %}
+  {% if params.dataFormat %} data-format='{{ params.dataFormat }}' {% endif %}>
+  {% if params.caption %}
+  <caption class="idsk-table__caption
+  {%- if params.captionClasses %} {{ params.captionClasses }}{% endif %}">{{ params.caption }}</caption>
+  {% endif %}
+  {% if params.head %}
+  <thead class="idsk-table__head">
+    <tr class="idsk-table__row">
+    {% for item in params.head %}
+      <th scope="col" class="idsk-table__header
+      {%- if item.format %} idsk-table__header--{{ item.format }}{% endif %}
+      {%- if item.classes %} {{ item.classes }}{% endif %}"
+      {%- if item.colspan %} colspan="{{ item.colspan }}"{% endif %}
+      {%- if item.rowspan %} rowspan="{{ item.rowspan }}"{% endif %}{% for attribute, value in item.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>{{ item.html |safe if item.html else item.text }}</th>
+    {% endfor %}
+    </tr>
+  </thead>
+  {% endif %}
+  <tbody class="idsk-table__body">
+    {% for row in params.rows %}
+      {% if row %}
+        <tr class="idsk-table__row">
+        {% for cell in row %}
+          {% set commonAttributes %}
+            {%- if cell.colspan %} colspan="{{ cell.colspan }}"{% endif %}
+            {%- if cell.rowspan %} rowspan="{{ cell.rowspan }}"{% endif %}{% for attribute, value in cell.attributes %} {{ attribute }}="{{ value }}"{% endfor %}
+          {% endset %}
+          {% if loop.first and params.firstCellIsHeader %}
+          <th scope="row" class="idsk-table__header{%- if cell.classes %} {{ cell.classes }}{% endif %}"
+            {{- commonAttributes | safe -}}
+          >{{ cell.html | safe if cell.html else cell.text }}</th>
+          {% else %}
+          <td class="idsk-table__cell
+            {%- if cell.format %} idsk-table__cell--{{ cell.format }}{% endif %}
+            {%- if cell.classes %} {{ cell.classes }}{% endif %}"
+            {{- commonAttributes | safe -}}
+          >{{ cell.html | safe if cell.html else cell.text }}</td>
+          {% endif %}
+        {% endfor %}
+        </tr>
+      {% endif %}
+    {% endfor %}
+  </tbody>
+</table>

@@ -1,0 +1,53 @@
+@import "../../../govuk/base";
+@import "../../../govuk/helpers/typography";
+
+@include govuk-exports("idsk/component/table") {
+  .idsk-table {
+    @include govuk-font($size: 19);
+    @include govuk-text-colour;
+    width: 100%;
+    @include govuk-responsive-margin(6, "bottom");
+
+    border-spacing: 0;
+    border-collapse: collapse;
+  }
+
+  .idsk-table__header {
+    @include govuk-typography-weight-bold;
+  }
+
+  .idsk-table__header,
+  .idsk-table__cell {
+    padding: govuk-spacing(2) govuk-spacing(4) govuk-spacing(2) 0;
+    border-bottom: 1px solid $govuk-border-colour;
+    text-align: left;
+    vertical-align: top;
+    // GOV.UK Elements sets the font-size and line-height for all headers and cells
+    // in tables.
+    @include govuk-compatibility(govuk_elements) {
+      font-size: inherit;
+      line-height: inherit;
+    }
+  }
+
+  .idsk-table__cell--numeric {
+    @include govuk-font($size: false, $tabular: true);
+  }
+
+  .idsk-table__header--numeric,
+  .idsk-table__cell--numeric {
+    text-align: right;
+  }
+
+  .idsk-table__header:last-child,
+  .idsk-table__cell:last-child {
+    padding-right: 0;
+  }
+
+  .idsk-table__caption {
+    @include govuk-typography-weight-bold;
+
+    display: table-caption;
+    text-align: left;
+  }
+}
