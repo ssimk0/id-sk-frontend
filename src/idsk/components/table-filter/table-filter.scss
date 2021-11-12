@@ -22,8 +22,8 @@
       padding: govuk-spacing(4);
       background-color: govuk-colour("lighter-grey");
 
-      &:not(:last-child) {
-        margin-bottom: govuk-spacing(2);
+      &:not(&:first-of-type) {
+        margin-top: govuk-spacing(2);
       }
 
       .idsk-table-filter__title {
@@ -72,7 +72,7 @@
       }
 
       .idsk-table-filter__filter-inputs {
-        padding-bottom: 5px;
+        padding-bottom: govuk-spacing(1);
       }
     }
 

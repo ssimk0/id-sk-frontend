@@ -1,53 +1,56 @@
 import '../../../govuk/vendor/polyfills/Function/prototype/bind'
 import '../../../govuk/vendor/polyfills/Event' // addEventListener and event.target normaliziation
 import {toggleClass} from "../../common";
+import {nodeListForEach} from "../../../../package/govuk/common";
 
 
 function TableFilter($module) {
   this.$module = $module
   this.selectedFitlersCount = 0
   this.$activeFilters = []
+
+  // get texts
+  this.$openFilterButton = $module.querySelector(".idsk-filter-menu__toggle")
+  this.openFilter = this.$openFilterButton.dataset.openFilter
+  this.closeFilter = this.$openFilterButton.dataset.closeFilter
+  this.removeAllFilters = $module.querySelector(".idsk-table-filter__active-filters").dataset.removeAllFilters
 }
 
 TableFilter.prototype.init = function () {
   // Check for module
   var $module = this.$module
-  if (!$module)
+  if (!$module) {
     return
+  }
 
-  // toggle for showing content
+  // button to toggle content
   var $toggleButtons = $module.querySelectorAll('.idsk-filter-menu__toggle')
-  if (!$toggleButtons)
-    return
 
-  // submit all filters
+  // button to submit all filters
   var $submitFilters = $module.querySelectorAll('.submit-table-filter')
-  if (!$submitFilters)
-    return
 
   // all inputs for count of selected filters
   var $filterInputs = $module.querySelectorAll('.govuk-input, .govuk-select')
-  if (!$filterInputs)
-    return
 
-  $toggleButtons.forEach(function ($button) {
+  nodeListForEach($toggleButtons, function ($button) {
     $button.addEventListener('click', this.handleClickTogglePanel.bind(this))
   }.bind(this))
 
-  $submitFilters.forEach(function ($button) {
+  nodeListForEach($submitFilters, function ($button) {
     $button.addEventListener('click', this.handleSubmitFilter.bind(this))
   }.bind(this))
 
-  $filterInputs.forEach(function ($input) {
+  nodeListForEach($filterInputs, function ($input) {
     // for selects
     $input.addEventListener('change', this.handleFilterValueChange.bind(this))
     // for text inputs
     $input.addEventListener('keyup', function (e) {
-      this.handleFilterValueChange(e)
-
-      // submit if key is enter
-      if (e.key === 'Enter')
+      // submit if key is enter else change count of used filters
+      if (e.key === 'Enter') {
         this.handleSubmitFilter(this)
+      } else {
+        this.handleFilterValueChange(e)
+      }
     }.bind(this));
   }.bind(this))
 }
@@ -80,7 +83,7 @@ TableFilter.prototype.handleClickTogglePanel = function (e) {
   $content.style.height = ($content.style.height && $content.style.height !== "0px" ? "0" : $content.scrollHeight) + "px";
 
   // set text for toggle
-  $el.innerHTML = ($content.style.height === "0px" ? "Rozbaliť" : "Zbaliť") + " filter"
+  $el.innerHTML = $content.style.height === "0px" ? this.openFilter : this.closeFilter
 }
 
 /**
@@ -91,8 +94,10 @@ TableFilter.prototype.removeActiveFilter = function ($filterToRemove) {
   var $filterToRemoveValue = this.$module.querySelector('.govuk-input[name="' + $filterToRemove.name + '"], .govuk-select[name="' + $filterToRemove.name + '"]')
   if ($filterToRemoveValue.tagName === "SELECT") {
     // if filter is select find option with empty value
-    $filterToRemoveValue.querySelectorAll("option").forEach((option, i) => {
-      if (option.value === "") $filterToRemoveValue.selectedIndex = i;
+    $filterToRemoveValue.querySelectorAll("option").forEach(function (option, index) {
+      if (option.value === "") {
+        $filterToRemoveValue.selectedIndex = index;
+      }
     });
   } else $filterToRemoveValue.value = ""
 
@@ -131,9 +136,11 @@ TableFilter.prototype.renderActiveFilters = function (e) {
     var $activeFilter = document.createElement("div")
     $activeFilter.classList.add("idsk-table-filter__parameter", "govuk-body")
     $activeFilter.innerHTML = $filter.value + '<span class="idsk-table-filter__parameter-remove">✕</span>'
+
     $activeFilter.querySelector('.idsk-table-filter__parameter-remove').addEventListener("click", function () {
       this.removeActiveFilter($filter)
     }.bind(this))
+
     $activeFilters.appendChild($activeFilter)
   }.bind(this))
 
@@ -142,11 +149,12 @@ TableFilter.prototype.renderActiveFilters = function (e) {
     $activeFiltersPanel.classList.remove("idsk-table-filter__active-filters__hide")
     var $removeAllFilters = document.createElement("div")
     $removeAllFilters.classList.add("govuk-body", "govuk-link")
-    $removeAllFilters.innerHTML = 'Zrušiť všetko (' + this.$activeFilters.length + ')<span class="idsk-table-filter__parameter-remove">✕</span>'
+    $removeAllFilters.innerHTML = this.removeAllFilters + ' (' + this.$activeFilters.length + ')<span class="idsk-table-filter__parameter-remove">✕</span>'
     $removeAllFilters.addEventListener("click", this.removeAllActiveFilters.bind(this))
     $activeFilters.appendChild($removeAllFilters)
-  } else
+  } else {
     $activeFiltersPanel.classList.add("idsk-table-filter__active-filters__hide")
+  }
 
   // calc height of 'active filter' panel if panel is expanded
   var $activeFiltersContainer = this.$module.querySelector('.idsk-table-filter__active-filters.idsk-table-filter--expanded .idsk-table-filter__content')
@@ -214,8 +222,9 @@ TableFilter.prototype.handleFilterValueChange = function (e) {
     var $allCategoryFilters = $category.querySelectorAll(".idsk-table-filter__inputs input, .idsk-table-filter__inputs select")
     var selectedCategoryFiltersCount = 0
     $allCategoryFilters.forEach(function ($filter) {
-      if ($filter.value)
+      if ($filter.value) {
         selectedCategoryFiltersCount++
+      }
     })
     $category.querySelector(".count").innerHTML = selectedCategoryFiltersCount ? "(" + selectedCategoryFiltersCount + ")" : ""
   }
@@ -224,8 +233,9 @@ TableFilter.prototype.handleFilterValueChange = function (e) {
   this.selectedFitlersCount = 0
   var $allFilters = this.$module.querySelectorAll(".idsk-table-filter__inputs input, .idsk-table-filter__inputs select")
   $allFilters.forEach(function ($filter) {
-    if ($filter.value)
+    if ($filter.value) {
       this.selectedFitlersCount++
+    }
   }.bind(this))
 
   // render count of selected filters

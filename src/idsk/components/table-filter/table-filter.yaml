@@ -3,7 +3,30 @@ params:
     type: string
     required: false
     description: Id of the table filter.
-
+  - name: openFilter
+    type: string
+    required: false
+    description: Change for another languages
+  - name: closeFilter
+    type: string
+    required: false
+    description: Change for another languages
+  - name: filterContentTitle
+    type: string
+    required: false
+    description: Change for another languages
+  - name: activeFiltersTitle
+    type: string
+    required: false
+    description: Change for another languages
+  - name: filterSelectedText
+    type: string
+    required: false
+    description: Change for another languages
+  - name: removeAllFilters
+    type: string
+    required: false
+    description: Change for another languages
   - name: filters
     type: array
     required: false
@@ -40,6 +63,7 @@ params:
             description: True if option should be selected by default
   - name: categories
     type: array
+    required: false
     params:
       - name: title
         type: string
