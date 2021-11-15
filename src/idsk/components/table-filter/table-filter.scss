@@ -1,0 +1,117 @@
+@import "../../../govuk/settings/all";
+@import "../../../govuk/tools/all";
+@import "../../../govuk/helpers/all";
+@import "../../../govuk/helpers/typography";
+@import "../../../govuk/objects/grid";
+
+@include govuk-exports("idsk/component/filter") {
+  .idsk-table-filter {
+    .govuk-select {
+      width: 100%;
+    }
+
+    .govuk-link {
+      color: govuk-colour("blue");
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    &__panel {
+      padding: govuk-spacing(4);
+      background-color: govuk-colour("lighter-grey");
+
+      &:not(&:first-of-type) {
+        margin-top: govuk-spacing(2);
+      }
+
+      .idsk-table-filter__title {
+        display: inline-block;
+        margin-bottom: 0;
+        transition: .4s;
+      }
+
+      .idsk-filter-menu__toggle {
+        float: right;
+        margin-bottom: 0;
+      }
+
+      .idsk-table-filter__filter-inputs {
+        padding-bottom: 7px;
+      }
+
+      .idsk-table-filter__content {
+        height: 0;
+        overflow: hidden;
+        transition: height 0.4s ease;
+      }
+
+      .govuk-form-group {
+        margin-bottom: 18px;
+      }
+
+      .idsk-button {
+        margin-bottom: 0;
+      }
+    }
+
+    .idsk-table-filter--expanded > .idsk-table-filter__title {
+      margin-bottom: govuk-spacing(4);
+    }
+
+    &__category:not(&--expanded) {
+      margin-bottom: 32px;
+    }
+
+    &__category {
+      transition: .4s;
+
+      &:first-child {
+        margin-top: 18px;
+      }
+
+      .idsk-table-filter__filter-inputs {
+        padding-bottom: govuk-spacing(1);
+      }
+    }
+
+    &__active-filters {
+      padding-bottom: govuk-spacing(3);
+
+      &__hide {
+        display: none;
+      }
+
+      .idsk-table-filter__content > div {
+        padding: govuk-spacing(1) 0;
+        margin-right: govuk-spacing(2);
+        margin-bottom: govuk-spacing(3);
+        float: left;
+
+        &.govuk-link {
+          font-weight: bold;
+        }
+
+        &.idsk-table-filter__parameter {
+          background-color: govuk-colour("light-grey");
+          padding-left: govuk-spacing(2);
+          padding-right: govuk-spacing(2);
+        }
+
+        .idsk-table-filter__parameter-remove {
+          margin-left: govuk-spacing(3);
+          font-size: 18px;
+          font-weight: bold;
+          transition: .1s;
+          display: inline-block;
+
+          &:hover {
+            transform: scale(.9);
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}

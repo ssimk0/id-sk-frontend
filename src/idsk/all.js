@@ -11,6 +11,7 @@ import HeaderWeb from './components/header-web/header-web';
 import InPageNavigation from './components/in-page-navigation/in-page-navigation';
 import SearchComponent from './components/search-component/search-component';
 import SearchResults from './components/search-results/search-results';
+import TableFilter from './components/table-filter/table-filter';
 import SearchResultsFilter from './components/search-results-filter/search-results-filter';
 import Stepper from './components/stepper/stepper';
 import RegistrationForEvent from './components/registration-for-event/registration-for-event';
@@ -114,6 +115,11 @@ function initAll(options) {
     new Tabs($tab).init();
   })
 
+  var $tableFilter = scope.querySelectorAll('[data-module="idsk-table-filter"]');
+  nodeListForEach($tableFilter, function ($tableFilter) {
+    new TableFilter($tableFilter).init();
+  })
+
   // Init all GOVUK components js
   initAllGOVUKjs(options);
 }
@@ -137,5 +143,6 @@ export {
   InteractiveMap,
   Stepper,
   Accordion,
-  Tabs
+  Tabs,
+  TableFilter
 }
