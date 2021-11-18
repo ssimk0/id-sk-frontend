@@ -238,7 +238,7 @@ examples:
       gestor: true
       languages: 
         - text: "Slovenčina"
-          selected: true,
+          selected: true
           link: "#"
     
         - text: "Deutsch"

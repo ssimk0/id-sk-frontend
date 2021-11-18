@@ -20,19 +20,18 @@ function Table ($module) {
         return
     }
 
-    var tableHead = $module.getAttribute('table-head');
-    var tableData = $module.getAttribute('table-data');
-
-    var dataPath = $module.getAttribute('data-path');
-    var apiUrl = $module.getAttribute('api-url');
-    var dataFormat = $module.getAttribute('data-format');
+    var $pritnTableBtn = $module.querySelector('.idsk-table__meta-print-button');
+    if ($pritnTableBtn) {
+      $pritnTableBtn.addEventListener('click', this.printTable.bind(this));
+    }
     
   }
 
-  Table.prototype.renderTable = function (tableHead, tableData, dataFormat = "json") {
-    if(dataFormat == "json"){
-        
-    }
+  Table.prototype.printTable = function () {
+    var $table = this.$module.querySelector('.idsk-table').outerHTML;
+    document.body.innerHTML = "<html><head><title></title></head><body>" + $table + "</body>";
+    window.print();
+    window.location.reload();
   }
 
   export default Table
