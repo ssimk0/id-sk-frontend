@@ -53,6 +53,9 @@ TableFilter.prototype.init = function () {
       }
     }.bind(this));
   }.bind(this))
+
+  // recalculate height of all expanded panels on window resize
+  window.addEventListener('resize', this.handleWindowResize.bind(this));
 }
 
 /**
@@ -65,12 +68,13 @@ TableFilter.prototype.handleClickTogglePanel = function (e) {
   var $content = $el.nextElementSibling
 
   // if panel is category, change size of whole panel with animation
-  if ($expandablePanel.classList.contains("idsk-table-filter__category")) {
+  var isCategory = $expandablePanel.classList.contains("idsk-table-filter__category")
+  if (isCategory) {
     var $categoryParent = $expandablePanel.parentNode
 
     // made more fluid animations for changed spacing with transition
-    var marginBottomTitle = 20
-    var marginBottomExpandedCategory = 32
+    var marginBottomTitle = isCategory ? 18 : 20
+    var marginBottomExpandedCategory = 25
     var newParentHeight = ($content.style.height && $content.style.height !== "0px")
       ? parseInt($categoryParent.style.height) - $content.scrollHeight - marginBottomTitle + marginBottomExpandedCategory
       : parseInt($categoryParent.style.height) + $content.scrollHeight + marginBottomTitle - marginBottomExpandedCategory
@@ -83,7 +87,15 @@ TableFilter.prototype.handleClickTogglePanel = function (e) {
   $content.style.height = ($content.style.height && $content.style.height !== "0px" ? "0" : $content.scrollHeight) + "px";
 
   // set text for toggle
-  $el.innerHTML = $content.style.height === "0px" ? this.openFilter : this.closeFilter
+  var hidden = $content.style.height === "0px"
+  $el.innerHTML = hidden ? this.openFilter : this.closeFilter
+
+  // toggle tabbable if content is shown or not
+  var $items = $content.querySelectorAll(":scope > .idsk-table-filter__filter-inputs input, :scope > .idsk-table-filter__filter-inputs select, .idsk-filter-menu__toggle")
+  var tabIndex = hidden ? -1 : 0
+  nodeListForEach($items, function ($filter) {
+    $filter.tabIndex = tabIndex
+  })
 }
 
 /**
@@ -131,11 +143,16 @@ TableFilter.prototype.renderActiveFilters = function (e) {
   var $activeFilters = $activeFiltersPanel.querySelector('.idsk-table-filter__active-filters .idsk-table-filter__content')
   $activeFilters.innerHTML = '';
 
+  // open filter if active filters was hidden before
+  if ($activeFiltersPanel.classList.contains("idsk-table-filter__active-filters__hide")) {
+    $activeFiltersPanel.classList.add("idsk-table-filter--expanded")
+  }
+
   // render all filters in active filters
   this.$activeFilters.forEach(function ($filter) {
     var $activeFilter = document.createElement("div")
     $activeFilter.classList.add("idsk-table-filter__parameter", "govuk-body")
-    $activeFilter.innerHTML = $filter.value + '<span class="idsk-table-filter__parameter-remove">✕</span>'
+    $activeFilter.innerHTML = $filter.value + '<button class="idsk-table-filter__parameter-remove" tabindex="0">✕</button>'
 
     $activeFilter.querySelector('.idsk-table-filter__parameter-remove').addEventListener("click", function () {
       this.removeActiveFilter($filter)
@@ -147,7 +164,7 @@ TableFilter.prototype.renderActiveFilters = function (e) {
   // add remove everything button if some filter is activated else print none filter is activated
   if (this.$activeFilters.length > 0) {
     $activeFiltersPanel.classList.remove("idsk-table-filter__active-filters__hide")
-    var $removeAllFilters = document.createElement("div")
+    var $removeAllFilters = document.createElement("button")
     $removeAllFilters.classList.add("govuk-body", "govuk-link")
     $removeAllFilters.innerHTML = this.removeAllFilters + ' (' + this.$activeFilters.length + ')<span class="idsk-table-filter__parameter-remove">✕</span>'
     $removeAllFilters.addEventListener("click", this.removeAllActiveFilters.bind(this))
@@ -240,6 +257,19 @@ TableFilter.prototype.handleFilterValueChange = function (e) {
 
   // render count of selected filters
   this.renderSelectedFiltersCount(this)
+}
+
+/**
+ * An event handler for window resize to change elements based on scrollHeight
+ * @param {object} e
+ */
+TableFilter.prototype.handleWindowResize = function (e) {
+  var $allExpandedPanels = this.$module.querySelectorAll(".idsk-table-filter--expanded")
+  nodeListForEach($allExpandedPanels, function ($panel) {
+    var $content = $panel.querySelector(".idsk-table-filter__content")
+    $content.style.height = "initial"; // to changing height from initial height
+    $content.style.height = $content.scrollHeight + "px";
+  })
 }
 
 export default TableFilter
