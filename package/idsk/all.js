@@ -3470,6 +3470,259 @@ HeaderExtended.prototype.scrollFunction = function () {
     }
 };
 
+/**
+ * Header for web websites
+ */
+function HeaderWeb($module) {
+    this.$module = $module;
+}
+
+HeaderWeb.prototype.init = function () {
+
+    var $module = this.$module;
+    // check for module
+    if (!$module) {
+        return;
+    }
+
+    // chceck for banner
+    var $banner = $module.querySelector('.idsk-header-web__banner');
+    if ($banner) {
+        var $bannerCloseBtn = $banner.querySelector('.idsk-header-web__banner-close');
+        $bannerCloseBtn.addEventListener('click', this.handleCloseBanner.bind(this));
+    }
+
+    // check for language switcher
+    var $toggleLanguageSwitcher = $module.querySelector('.idsk-header-web__brand-language-button');
+    this.$toggleLanguageSwitcher = $toggleLanguageSwitcher;
+
+    if ($toggleLanguageSwitcher) {
+        // Handle $toggleLanguageSwitcher click events
+        $toggleLanguageSwitcher.addEventListener('click', this.handleLanguageSwitcherClick.bind(this));
+
+        // close language list if i left the last item from langauge list e.g. if user use tab key for navigations
+        var $lastLanguageItems = $module.querySelectorAll('.idsk-header-web__brand-language-list-item:last-child .idsk-header-web__brand-language-list-item-link');
+        nodeListForEach$1($lastLanguageItems, function ($lastLanguageItem) {
+            $lastLanguageItem.addEventListener('blur', this.checkBlurLanguageSwitcherClick.bind(this));
+        }.bind(this));
+
+        // close language list if user back tabbing
+        $toggleLanguageSwitcher.addEventListener('keydown', this.handleBackTabbing.bind(this));
+
+    }
+
+    $module.boundCheckBlurLanguageSwitcherClick = this.checkBlurLanguageSwitcherClick.bind(this);
+
+    // check for e-goverment button
+    var $eGovermentButtons = $module.querySelectorAll('.idsk-header-web__brand-gestor-button');
+    this.$eGovermentSpacer = $module.querySelector('.idsk-header-web__brand-spacer');
+    if ($eGovermentButtons.length > 0) {
+        // Handle $eGovermentButton click event
+        nodeListForEach$1($eGovermentButtons, function ($eGovermentButton) {
+            $eGovermentButton.addEventListener('click', this.handleEgovermentClick.bind(this));
+        }.bind(this));  
+    }
+
+    // check for menu items
+    var $menuList = $module.querySelector('.idsk-header-web__nav-list');
+    var $menuItems = $module.querySelectorAll('.idsk-header-web__nav-list-item-link');
+    if ($menuItems && $menuList) {
+        // Handle $menuItem click events
+        nodeListForEach$1($menuItems, function ($menuItem) {
+            $menuItem.addEventListener('click', this.handleSubmenuClick.bind(this));
+            if($menuItem.parentElement.querySelector('.idsk-header-web__nav-submenu') || $menuItem.parentElement.querySelector('.idsk-header-web__nav-submenulite')){
+                $menuItem.parentElement.lastElementChild.addEventListener('keydown', this.menuTabbing.bind(this));
+                $menuItem.parentElement.addEventListener('keydown', this.menuEscPressed.bind(this));
+            }
+        }.bind(this));
+    }
+
+    // check for mobile menu button
+    var $menuButton = $module.querySelector('.idsk-header-web__main-headline-menu-button');
+    if ($menuButton) {
+        $menuButton.addEventListener('click', this.showMobileMenu.bind(this));
+        this.menuBtnText = $menuButton.innerText.trim();
+    }
+
+    $module.boundCheckBlurMenuItemClick = this.checkBlurMenuItemClick.bind(this);
+};
+
+/**
+ * Handle close banner
+ * @param {object} e
+ */
+ HeaderWeb.prototype.handleCloseBanner = function (e) {
+    var $closeButton = e.target || e.srcElement;
+    var $banner = $closeButton.closest('.idsk-header-web__banner');
+    $banner.classList.add('idsk-header-web__banner--hide');
+};
+
+/**
+ * Handle open/hide language switcher
+ * @param {object} e
+ */
+HeaderWeb.prototype.handleLanguageSwitcherClick = function (e) {
+    var $toggleButton = e.target || e.srcElement;
+    this.$activeSearch = $toggleButton.closest('.idsk-header-web__brand-language');
+    toggleClass(this.$activeSearch, 'idsk-header-web__brand-language--active');
+    if(this.$activeSearch.classList.contains('idsk-header-web__brand-language--active')){
+        this.$activeSearch.firstElementChild.setAttribute('aria-expanded', 'true');
+        this.$activeSearch.firstElementChild.setAttribute('aria-label',  this.$activeSearch.firstElementChild.getAttribute('data-text-for-hide'));
+    }else{
+        this.$activeSearch.firstElementChild.setAttribute('aria-expanded', 'false');
+        this.$activeSearch.firstElementChild.setAttribute('aria-label',  this.$activeSearch.firstElementChild.getAttribute('data-text-for-show'));
+    }
+    document.addEventListener('click', this.$module.boundCheckBlurLanguageSwitcherClick, true);
+};
+
+HeaderWeb.prototype.checkBlurLanguageSwitcherClick = function (e) {
+    if(!(e.target.classList.contains('idsk-header-web__brand-language-button'))){
+        this.$activeSearch.classList.remove('idsk-header-web__brand-language--active');
+        this.$activeSearch.firstElementChild.setAttribute('aria-expanded', 'false');
+        this.$activeSearch.firstElementChild.setAttribute('aria-label',  this.$activeSearch.firstElementChild.getAttribute('data-text-for-show'));
+        document.removeEventListener('click', this.$module.boundCheckBlurLanguageSwitcherClick, true); 
+    }
+};
+
+HeaderWeb.prototype.handleBackTabbing = function (e) {
+    //shift was down when tab was pressed
+    if(e.shiftKey && e.keyCode == 9 && document.activeElement == this.$toggleLanguageSwitcher) { 
+        this.$toggleLanguageSwitcher.parentNode.classList.remove('idsk-header-web__brand-language--active');  
+    }
+};
+
+/**
+ * Handle open/hide e-goverment statement
+ * @param {object} e
+ */
+ HeaderWeb.prototype.handleEgovermentClick = function (e) {
+    var $eGovermentButtons = this.$module.querySelectorAll('.idsk-header-web__brand-gestor-button');
+    var $eGovermentDropdown = this.$module.querySelector('.idsk-header-web__brand-dropdown');
+    toggleClass($eGovermentDropdown, 'idsk-header-web__brand-dropdown--active');
+    toggleClass(this.$eGovermentSpacer, 'idsk-header-web__brand-spacer--active');
+    nodeListForEach$1($eGovermentButtons, function ($eGovermentButton) {
+        toggleClass($eGovermentButton, 'idsk-header-web__brand-gestor-button--active');
+        if($eGovermentButton.classList.contains('idsk-header-web__brand-gestor-button--active')){
+            $eGovermentButton.setAttribute('aria-expanded', 'true');
+            $eGovermentButton.setAttribute('aria-label', $eGovermentButton.getAttribute('data-text-for-hide'));          
+        }else{
+            $eGovermentButton.setAttribute('aria-expanded', 'false');
+            $eGovermentButton.setAttribute('aria-label', $eGovermentButton.getAttribute('data-text-for-show'));
+        }
+    }.bind(this));
+};
+
+
+/**
+ * Handle open/hide submenu
+ * @param {object} e 
+ */
+HeaderWeb.prototype.handleSubmenuClick = function (e) {
+    var $srcEl = e.target || e.srcElement;
+    var $toggleButton = $srcEl.closest('.idsk-header-web__nav-list-item');
+    var $currActiveItem = this.$module.querySelector('.idsk-header-web__nav-list-item--active');
+    
+    if($currActiveItem && $currActiveItem.isEqualNode($toggleButton)){
+        $currActiveItem.classList.remove('idsk-header-web__nav-list-item--active');
+        if($toggleButton.childNodes[3]){
+          $currActiveItem.childNodes[1].setAttribute('aria-expanded', 'false');
+        $toggleButton.childNodes[1].setAttribute('aria-label', $toggleButton.childNodes[1].getAttribute('data-text-for-show'));   
+        }
+    }else{
+        if($currActiveItem){
+            $currActiveItem.classList.remove('idsk-header-web__nav-list-item--active');
+        }
+        toggleClass($toggleButton, 'idsk-header-web__nav-list-item--active'); 
+
+        if($toggleButton.childNodes[3] && $toggleButton.classList.contains('idsk-header-web__nav-list-item--active')) {   
+            $toggleButton.childNodes[1].setAttribute('aria-expanded', 'true'); 
+            $toggleButton.childNodes[1].setAttribute('aria-label', $toggleButton.childNodes[1].getAttribute('data-text-for-hide'));
+        }
+    }
+
+    document.addEventListener('click', this.$module.boundCheckBlurMenuItemClick.bind(this), true);
+};
+
+/**
+ * Remove active class from menu when user leaves menu with tabbing
+ */
+ HeaderWeb.prototype.menuTabbing = function (e) {
+    var isTabPressed = (e.key === 'Tab' || e.keyCode === 9);
+
+    if (!isTabPressed) {
+        return;
+    }
+
+    var $submenuList = e.srcElement.parentElement.parentElement;
+    var $activeItem = $submenuList.closest('.idsk-header-web__nav-list-item');
+    // shift + tab
+    if (e.shiftKey) {
+        if (document.activeElement === $submenuList.firstElementChild.firstElementChild) {
+            $activeItem.classList.remove('idsk-header-web__nav-list-item--active');
+            $activeItem.childNodes[1].setAttribute('aria-expanded', 'false'); 
+            $activeItem.childNodes[1].setAttribute('aria-label', $activeItem.childNodes[1].getAttribute('data-text-for-show')); 
+        }
+    // tab
+    } else if (document.activeElement === $submenuList.lastElementChild.lastElementChild) {
+        $activeItem.classList.remove('idsk-header-web__nav-list-item--active');
+        $activeItem.childNodes[1].setAttribute('aria-expanded', 'false'); 
+        $activeItem.childNodes[1].setAttribute('aria-label', $activeItem.childNodes[1].getAttribute('data-text-for-show')); 
+    } 
+};
+
+/**
+ * Remove active class from menu when user leaves menu with esc
+ */
+ HeaderWeb.prototype.menuEscPressed = function (e) {
+    if(e.key === "Escape") {
+        var $menuList = e.srcElement.parentElement.parentElement;
+        if($menuList.classList.contains('idsk-header-web__nav-submenulite-list') || $menuList.classList.contains('idsk-header-web__nav-submenu-list')){
+            $menuList = $menuList.closest('.idsk-header-web__nav-list');
+        }
+        var $activeItem = $menuList.querySelector('.idsk-header-web__nav-list-item--active');
+        $activeItem.classList.remove('idsk-header-web__nav-list-item--active');
+        $activeItem.childNodes[1].setAttribute('aria-expanded', 'false'); 
+        $activeItem.childNodes[1].setAttribute('aria-label', $activeItem.childNodes[1].getAttribute('data-text-for-show')); 
+    }
+ };
+
+/**
+ * handle click outside menu or "blur" the item link
+ */
+HeaderWeb.prototype.checkBlurMenuItemClick = function (e) {
+    var $currActiveItem = this.$module.querySelector('.idsk-header-web__nav-list-item--active');
+    if($currActiveItem && !(e.target.classList.contains('idsk-header-web__nav-list-item-link'))){
+        $currActiveItem.classList.remove('idsk-header-web__nav-list-item--active');
+        if( $currActiveItem.childNodes[3] ){
+           $currActiveItem.childNodes[1].setAttribute('aria-expanded', 'false'); 
+           $currActiveItem.childNodes[1].setAttribute('aria-label', $currActiveItem.childNodes[1].getAttribute('data-text-for-show')); 
+        }
+        document.removeEventListener('click', this.$module.boundCheckBlurMenuItemClick, true); 
+    }
+};
+
+/**
+ * Show mobile menu
+ * @param {object} e
+ */
+HeaderWeb.prototype.showMobileMenu = function (e) {
+    var closeText = this.menuBtnText ? 'Zavrieť' : '';
+    var $menuButton = this.$module.querySelector('.idsk-header-web__main-headline-menu-button');
+    var $mobileMenu = this.$module.querySelector('.idsk-header-web__nav');
+    toggleClass($mobileMenu, 'idsk-header-web__nav--mobile');
+    toggleClass($menuButton, 'idsk-header-web__main-headline-menu-button--active');
+    if(!$menuButton.classList.contains('idsk-header-web__main-headline-menu-button--active')){
+        $menuButton.setAttribute('aria-expanded', 'false'); 
+        $menuButton.setAttribute('aria-label', $menuButton.getAttribute('data-text-for-show'));
+    }else{
+        $menuButton.setAttribute('aria-expanded', 'true'); 
+        $menuButton.setAttribute('aria-label', $menuButton.getAttribute('data-text-for-hide'));
+    }
+    var buttonIsActive = $menuButton.classList.contains('idsk-header-web__main-headline-menu-button--active');
+
+    $menuButton.childNodes[0].nodeValue = buttonIsActive ? closeText : this.menuBtnText;
+};
+
 function InPageNavigation($module) {
     this.$module = $module;
 }
@@ -3533,7 +3786,7 @@ InPageNavigation.prototype.handleClickLink = function (e) {
 
 /**
  * An event handler for click event on $linkPanel - collapse or expand in page navigation menu
- * @param {object} e 
+ * @param {object} e
  */
 InPageNavigation.prototype.handleClickLinkPanel = function (e) {
     var $module = this.$module;
@@ -3546,7 +3799,7 @@ InPageNavigation.prototype.handleClickLinkPanel = function (e) {
 
 /**
  * close navigation if the user click outside navigation
- * @param {object} e 
+ * @param {object} e
  */
 InPageNavigation.prototype.checkCloseClick = function (e) {
     var $el = e.target || e.srcElement;
@@ -3606,6 +3859,12 @@ InPageNavigation.prototype.changeCurrentLink = function (el) {
     });
     $currItem.classList.add('idsk-in-page-navigation__list-item--active');
     $linkPanelText.innerText = $articleTitle.innerText;
+
+    // let active item be always visible
+    $currItem.scrollIntoView({
+      block: "nearest",
+      inline: "nearest"
+    });
 };
 
 function SearchComponent($module) {
@@ -5148,6 +5407,234 @@ Accordion$1.prototype.setInitialState = function ($section) {
   }
 };
 
+function Tabs$1($module) {
+  this.$module = $module;
+  this.$tabs = $module.querySelectorAll('.idsk-tabs__tab');
+  this.$mobileTabs = $module.querySelectorAll('.idsk-tabs__mobile-tab');
+
+  this.keys = { left: 37, right: 39, up: 38, down: 40 };
+  this.jsHiddenClass = 'idsk-tabs__panel--hidden';
+  this.mobileTabHiddenClass = 'idsk-tabs__mobile-tab-content--hidden';
+}
+
+Tabs$1.prototype.init = function () {
+  this.setup();
+};
+
+Tabs$1.prototype.setup = function () {
+  var $module = this.$module;
+  var $tabs = this.$tabs;
+  var $mobileTabs = this.$mobileTabs;
+  var $tabList = $module.querySelector('.idsk-tabs__list');
+  var $tabListItems = $module.querySelectorAll('.idsk-tabs__list-item');
+
+  if (!$tabs || !$tabList || !$tabListItems) {
+    return
+  }
+
+  $tabList.setAttribute('role', 'tablist');
+
+  nodeListForEach($tabListItems, function ($item) {
+    $item.setAttribute('role', 'presentation');
+  });
+
+  nodeListForEach($mobileTabs, function ($item) {
+    $item.setAttribute('role', 'presentation');
+  });
+
+  nodeListForEach($tabs, function ($tab, i) {
+    // Set HTML attributes
+    this.setAttributes($tab);
+
+    // Save bounded functions to use when removing event listeners during teardown
+    $tab.boundTabClick = this.onTabClick.bind(this);
+
+    // Handle events
+    $tab.addEventListener('click', $tab.boundTabClick, true);
+    $mobileTabs[i].addEventListener('click', $tab.boundTabClick, true);
+
+    // Remove old active panels
+    this.hideTab($tab);
+  }.bind(this));
+
+  // Show either the active tab according to the URL's hash or the first tab
+  var $activeTab = this.getTab(window.location.hash) || this.$tabs[0];
+  this.toggleMobileTab($activeTab);
+  this.showTab($activeTab);
+
+  // Handle hashchange events
+  $module.boundOnHashChange = this.onHashChange.bind(this);
+  window.addEventListener('hashchange', $module.boundOnHashChange, true);
+};
+
+
+Tabs$1.prototype.onHashChange = function (e) {
+  var hash = window.location.hash;
+  var $tabWithHash = this.getTab(hash);
+  if (!$tabWithHash) {
+    return
+  }
+
+  // Prevent changing the hash
+  if (this.changingHash) {
+    this.changingHash = false;
+    return
+  }
+
+  // Show either the active tab according to the URL's hash or the first tab
+  var $previousTab = this.getCurrentTab();
+
+  this.hideTab($previousTab);
+  this.showTab($tabWithHash);
+  $tabWithHash.focus();
+};
+
+Tabs$1.prototype.hideTab = function ($tab) {
+  this.unhighlightTab($tab);
+  this.hidePanel($tab);
+};
+
+Tabs$1.prototype.showTab = function ($tab) {
+  this.highlightTab($tab);
+  this.showPanel($tab);
+};
+
+Tabs$1.prototype.toggleMobileTab = function ($tab, currentTab) {
+  currentTab = currentTab || false;
+  var $mobilePanel = this.getPanel($tab);
+  var $mobileTab = $mobilePanel.previousElementSibling;
+  $mobileTab.classList.toggle('idsk-tabs__mobile-tab--selected');
+  $mobilePanel = $mobilePanel.querySelector('.idsk-tabs__mobile-tab-content');
+  $mobilePanel.classList.toggle(this.mobileTabHiddenClass);
+  if ($mobileTab.classList.contains('idsk-tabs__mobile-tab--selected') && currentTab) {
+    $mobileTab.classList.remove('idsk-tabs__mobile-tab--selected');
+    $mobilePanel.classList.add(this.mobileTabHiddenClass);
+  }
+};
+
+Tabs$1.prototype.getTab = function (hash) {
+  return this.$module.querySelector('.idsk-tabs__tab[href="' + hash + '"]')
+};
+
+Tabs$1.prototype.setAttributes = function ($tab) {
+  // set tab attributes
+  var panelId = this.getHref($tab).slice(1);
+  var $mobileTab = this.$mobileTabs[$tab.getAttribute('item')];
+  $tab.setAttribute('id', 'tab_' + panelId);
+  $tab.setAttribute('role', 'tab');
+  $tab.setAttribute('aria-controls', panelId);
+  $tab.setAttribute('aria-selected', 'false');
+  // set mobile tab attributes
+  $mobileTab.setAttribute('id', 'tab_' + panelId);
+  $mobileTab.setAttribute('role', 'tab');
+  $mobileTab.setAttribute('aria-controls', panelId);
+  $mobileTab.setAttribute('aria-selected', 'false');
+
+  // set panel attributes
+  var $panel = this.getPanel($tab);
+  $panel.setAttribute('role', 'tabpanel');
+  $panel.setAttribute('aria-labelledby', $tab.id);
+  $panel.classList.add(this.jsHiddenClass);
+};
+
+Tabs$1.prototype.unsetAttributes = function ($tab) {
+  // unset tab attributes
+  var $mobileTab = this.$mobileTabs[$tab.getAttribute('item')];
+  $tab.removeAttribute('id');
+  $tab.removeAttribute('role');
+  $tab.removeAttribute('aria-controls');
+  $tab.removeAttribute('aria-selected');
+  // unset mobile tab attributes
+  $mobileTab.removeAttribute('id');
+  $mobileTab.removeAttribute('role');
+  $mobileTab.removeAttribute('aria-controls');
+  $mobileTab.removeAttribute('aria-selected');
+
+  // unset panel attributes
+  var $panel = this.getPanel($tab);
+  $panel.removeAttribute('role');
+  $panel.removeAttribute('aria-labelledby');
+  $panel.classList.remove(this.jsHiddenClass);
+};
+
+Tabs$1.prototype.onTabClick = function (e) {
+  if (!(e.target.classList.contains('idsk-tabs__tab') || e.target.classList.contains('idsk-tabs__mobile-tab') || e.target.classList.contains('idsk-tabs__tab-arrow-mobile'))) {
+    // Allow events on child DOM elements to bubble up to tab parent
+    return false
+  }
+  e.preventDefault();
+  var $newTab = e.target;
+  var $currentTab = this.getCurrentTab();
+
+  if ($newTab.classList.contains('idsk-tabs__tab-arrow-mobile')) {
+    $newTab = $newTab.parentElement;
+  }
+  if ($newTab.nodeName == 'BUTTON') {
+    $newTab = this.$tabs[$newTab.getAttribute('item')];
+    if ($newTab == $currentTab) {
+      this.toggleMobileTab($currentTab);
+    } else {
+      this.toggleMobileTab($currentTab, true);
+      this.toggleMobileTab($newTab);
+    }
+  }
+  this.hideTab($currentTab);
+  this.showTab($newTab);
+  this.createHistoryEntry($newTab);
+};
+
+Tabs$1.prototype.createHistoryEntry = function ($tab) {
+  var $panel = this.getPanel($tab);
+
+  // Save and restore the id
+  // so the page doesn't jump when a user clicks a tab (which changes the hash)
+  var id = $panel.id;
+  $panel.id = '';
+  this.changingHash = true;
+  window.location.hash = this.getHref($tab).slice(1);
+  $panel.id = id;
+};
+
+Tabs$1.prototype.getPanel = function ($tab) {
+  var $panel = this.$module.querySelector(this.getHref($tab));
+  return $panel
+};
+
+Tabs$1.prototype.showPanel = function ($tab) {
+  var $panel = this.getPanel($tab);
+  $panel.classList.remove(this.jsHiddenClass);
+};
+
+Tabs$1.prototype.hidePanel = function (tab) {
+  var $panel = this.getPanel(tab);
+  $panel.classList.add(this.jsHiddenClass);
+};
+
+Tabs$1.prototype.unhighlightTab = function ($tab) {
+  $tab.setAttribute('aria-selected', 'false');
+  this.$mobileTabs[$tab.getAttribute('item')].setAttribute('aria-selected', 'false');
+  $tab.parentNode.classList.remove('idsk-tabs__list-item--selected');
+};
+
+Tabs$1.prototype.highlightTab = function ($tab) {
+  $tab.setAttribute('aria-selected', 'true');
+  this.$mobileTabs[$tab.getAttribute('item')].setAttribute('aria-selected', 'true');
+  $tab.parentNode.classList.add('idsk-tabs__list-item--selected');
+};
+
+Tabs$1.prototype.getCurrentTab = function () {
+  return this.$module.querySelector('.idsk-tabs__list-item--selected .idsk-tabs__tab')
+};
+
+// this is because IE doesn't always return the actual value but a relative full path
+// should be a utility function most prob
+// http://labs.thesedays.com/blog/2010/01/08/getting-the-href-value-with-jquery-in-ie/
+Tabs$1.prototype.getHref = function ($tab) {
+  var href = $tab.getAttribute('href');
+  var hash = href.slice(href.indexOf('#'), href.length);
+  return hash
+};
+
 function initAll$1(options) {
   // Set the options to an empty object by default if no options are passed.
   options = typeof options !== "undefined" ? options : {};
@@ -5198,6 +5685,11 @@ function initAll$1(options) {
     new HeaderExtended($headerExtended).init();
   });
 
+  var $headersWeb = scope.querySelectorAll('[data-module="idsk-header-web"]');
+  nodeListForEach($headersWeb, function ($headerWeb) {
+    new HeaderWeb($headerWeb).init();
+  });
+
   var $inPageNavigation = scope.querySelector('[data-module="idsk-in-page-navigation"]');
   new InPageNavigation($inPageNavigation).init();
 
@@ -5234,6 +5726,11 @@ function initAll$1(options) {
     new Accordion$1($accordion).init();
   });
 
+  var $tabs = scope.querySelectorAll('[data-module="idsk-tabs"]');
+  nodeListForEach($tabs, function ($tab){
+    new Tabs$1($tab).init();
+  });
+
   // Init all GOVUK components js
   initAll(options);
 }
@@ -5246,6 +5743,7 @@ exports.CustomerSurveys = CustomerSurveys;
 exports.Feedback = Feedback;
 exports.FooterExtended = FooterExtended;
 exports.HeaderExtended = HeaderExtended;
+exports.HeaderWeb = HeaderWeb;
 exports.InPageNavigation = InPageNavigation;
 exports.SearchComponent = SearchComponent;
 exports.SearchResults = SearchResults;
@@ -5254,5 +5752,6 @@ exports.RegistrationForEvent = RegistrationForEvent;
 exports.InteractiveMap = InteractiveMap;
 exports.Stepper = Stepper;
 exports.Accordion = Accordion$1;
+exports.Tabs = Tabs$1;
 
 })));
