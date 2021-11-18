@@ -176,7 +176,6 @@ examples:
         - text: "17.November"
         - text: "streda"
         - text: "Deň boja za slobodu a demokraciu"
-  
     printTable: true
 
 - name: "Zložitá tabuľka"
@@ -214,7 +213,6 @@ examples:
         - text: "17.November"
         - text: "streda"
         - text: "Deň boja za slobodu a demokraciu"
-  
     printTable: true
     source: 
         name: "vlada.gov.sk"

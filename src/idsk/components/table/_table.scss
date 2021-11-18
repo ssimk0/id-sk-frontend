@@ -103,28 +103,31 @@
       overflow: visible;
       padding: 0;
       width: 10px;
-    }
-    .arrowBtn:after {
-      border-style: solid;
-      border-width: 7px 6px 0;
-      border-color: #000 transparent transparent;
-      content: "";
-      margin-left: 4px;
-      position: absolute;
-      top: calc(50% + 2px);
-    }
-    .arrowBtn:before {
-      border-style: solid;
-      border-width: 7px 6px 0;
-      border-color: #000 transparent transparent;
-      content: "";
-      margin-left: 4px;
-      position: absolute;
-      top: calc(50% - 8px);
-      transform: rotate(180deg);
-    }
-    .arrowBtn:focus {
-      border: 1px solid #000;
+
+      &::after {
+        border-style: solid;
+        border-width: 7px 6px 0;
+        border-color: #000 transparent transparent;
+        content: "";
+        margin-left: 4px;
+        position: absolute;
+        top: calc(50% + 2px);
+      }
+
+      &::before {
+        border-style: solid;
+        border-width: 7px 6px 0;
+        border-color: #000 transparent transparent;
+        content: "";
+        margin-left: 4px;
+        position: absolute;
+        top: calc(50% - 8px);
+        transform: rotate(180deg);
+      }
+
+      &:focus {
+        border: 1px solid govuk-colour("black");
+      }
     }
   
     .des.arrowBtn:before,
