@@ -3,27 +3,22 @@ params:
     type: string
     required: false
     description: Main title of page.
-
   - name: feedbackQuestion
     type: string
     required: false
     description: Question for feedback.
-
   - name: feedbackQuestionForTextArea
     type: string
     required: false
     description: Question for feedback textarea.
-
   - name: feedbackThankNote
     type: string
     required: false
     description: Thank note after feedback was send.
-
   - name: characterLength
     type: int
     required: false
     description: Number of allowed characters in textarea.
-
   - name: feedbackOptions
     type: array
     required: true
@@ -59,5 +54,4 @@ examples:
           value: 4
         - name: Veľmi spokojný
           value: 5
-
       characterLength: 200
