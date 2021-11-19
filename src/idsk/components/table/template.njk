@@ -1,15 +1,17 @@
 {% from "../button/macro.njk" import idskButton %}
 <div data-module="idsk-table" id="{{ params.uniqueId }}">
   <div class="idsk-table__heading">
-    <div class="idsk-table__heading-with-caption">
-      {% if params.title %}
-        <h2 class="govuk-heading-l govuk-!-margin-bottom-4">{{ params.title }}</h2>
-      {% endif %}
-      {% if params.caption %}
-        <p class="govuk-body {%- if params.captionClasses %} {{ params.captionClasses }}{% endif %}">{{ params.caption }}</p>
-      {% endif %}
-    </div>
-    
+    {% if params.title or params.caption %}
+      <div>
+        {% if params.title %}
+          <h2 class="govuk-heading-l govuk-!-margin-bottom-4">{{ params.title }}</h2>
+        {% endif %}
+        {% if params.caption %}
+          <p class="govuk-body {%- if params.captionClasses %} {{ params.captionClasses }}{% endif %}">{{ params.caption }}</p>
+        {% endif %}
+      </div>
+    {% endif -%}
+
     {% if params.radioOptions %}
       <div class="idsk-table__heading-extended">
         <div class="govuk-form-group">
