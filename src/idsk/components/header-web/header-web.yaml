@@ -329,10 +329,8 @@ examples:
                 text: 'Investície'
           - link: '#3'
             text: 'Dôchodca'
-
           - link: '#4'
             text: 'Elektronické služby'
-
           - link: '#5'
             text: 'Inovácie'
       banner:
