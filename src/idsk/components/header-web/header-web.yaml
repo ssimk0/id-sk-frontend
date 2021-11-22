@@ -263,27 +263,20 @@ examples:
             submenu:
               - link: '#1'
                 text: 'Eurofondy'
-
               - link: '#2'
                 text: 'Regionálny rozvoj'
-
               - link: '#3'
                 text: 'Informatizácia'
-
               - link: '#4'
                 text: 'Investície'
-
               - link: '#3'
                 text: 'Informatizácia'
-
               - link: '#4'
                 text: 'Investície'
           - link: '#3'
             text: 'Dôchodca'
-
           - link: '#4'
             text: 'Elektronické služby'
-
           - link: '#5'
             text: 'Inovácie'
 
