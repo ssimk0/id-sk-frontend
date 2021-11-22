@@ -1,6 +1,6 @@
 {% extends "layout.njk" %}
 {% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
-{% from "../../../src/idsk/components/header-extended/macro.njk" import idskHeaderExtended %}
+{% from "../../../src/idsk/components/header-web/macro.njk" import idskHeaderWeb %}
 {% from "../../../src/idsk/components/intro-block/macro.njk" import idskIntroBlock %}
 
 {% set pageName = "Hlavička s úvodným blokom" %}
@@ -22,76 +22,56 @@
 {% endblock %}
 
 {% block header %}
-  {{ idskHeaderExtended({
-    logo: "logo-mirri-farebne.svg",
-    logoSmall: "logo-mirri-small-farebne.svg",
-    logoWhite: "logo-mirri-biele.svg",
-    logoSmallWhite: "logo-mirri-small-biele.svg",
-    logoGrid: "govuk-grid-column-one-third",
-    navigation: [
+  {{ idskHeaderWeb({
+    headerType: "website",
+    search: true,
+    brand: {
+      gestor: true,
+      languages: [
         {
-            link: '#1',
-            text: 'Eurofondy'
+          text: "Slovenčina",
+          selected: true,
+          link: "#1"
         },
         {
-            link: '#2',
-            text: 'Regionálny rozvoj',
-            active: true
+          text: "English",
+          link: "#2"
         },
         {
-            link: '#3',
-            text: 'Informatizácia'
-        },
-        {
-            link: '#4',
-            text: 'Investície'
-        },
-        {
-            link: '#5',
-            text: 'Inovácie'
+          text: "German",
+          link: "#3"
         }
-    ],
-    language: {
-        current: {
-            text: "slovenčina",
-            flag: "slovakia-flag-icon-16.png"
-        },
-        choices: [
-            {
-                flag: "united-states-of-america-flag-icon-16.png",
-                text: "english",
-                link: "#"
-            },
-            {
-                flag: "germany-flag-icon-16.png",
-                text: "german",
-                link: "#"
-            }
-        ]
+      ]
     },
-    socials: [
+    main: {
+      logoSrc: "/public/assets/images/header-web/logo-mirri-farebne.svg",
+      logoAlt: "ID-SK Frontend"
+    },
+    navBar: {
+      navigation: [
         {
-            icon: "fab fa-instagram",
-            link: "#",
-            text: "Instagram"
+          text: "Eurofondy",
+          link: "#1"
         },
         {
-            icon: "fab fa-linkedin-in",
-            link: "#",
-            text: "Linkedin"
+          text: "Regionálny rozvoj",
+          link: "#2"
         },
         {
-            icon: "fab fa-facebook-f",
-            link: "#",
-            text: "Facebook"
+          text: "Informatizácia",
+          link: "#3"
         },
         {
-            icon: "fab fa-twitter",
-            link: "#",
-            text: "Twitter"
+          text: "Investície",
+          link: "#4"
+        },
+        {
+          text: "Inovácie",
+          link: "#5"
         }
-    ]
-}) }}
+      ]
+    }
+  }) }}
 {% endblock %}
 
 {% block content %}

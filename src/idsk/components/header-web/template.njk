@@ -77,7 +77,7 @@
           </div>
           <div class="idsk-header-web__brand-spacer"></div>
         {% endif -%}
-        {% if not brand.hideLanguages %}
+        {% if brand.languages %}
           <div class="idsk-header-web__brand-language">
             <button class="idsk-header-web__brand-language-button" aria-label="Rozbaliť jazykové menu" aria-expanded="false" data-text-for-hide="Skryť jazykové menu" data-text-for-show="Rozbaliť jazykové menu">
               {{ currentLanguage.text if currentLanguage else 'Slovenčina'}}

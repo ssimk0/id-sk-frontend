@@ -1,6 +1,6 @@
 {% extends "layout.njk" %}
 {% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
-{% from "../../../src/idsk/components/header-extended/macro.njk" import idskHeaderExtended %}
+{% from "../../../src/idsk/components/header-web/macro.njk" import idskHeaderWeb %}
 {% from "../../../src/idsk/components/footer-extended/macro.njk" import idskFooterExtended %}
 {% from "../../../src/idsk/components/in-page-navigation/macro.njk" import idskInPageNavigation %}
 {% from "../../../src/idsk/components/stepper/macro.njk" import idskStepper %}
@@ -48,134 +48,55 @@
 {% endblock %}
 
 {% block header %}
-  {{ idskHeaderExtended({
-    logoGrid: "govuk-grid-column-one-third",
-    logo: "logo-mirri-farebne.svg",
-    logoSmall: "logo-mirri-small-farebne.svg",
-    logoWhite: "logo-mirri-biele.svg",
-    logoSmallWhite: "logo-mirri-small-biele.svg",
-    navigation:[
-      {
-        link: "#1",
-        text: "Eurofondy"
-      },
-      {
-        link: "#2",
-        text: "Informatizácia"
-      },
-      {
-        text: "Regionálny rozvoj",
-        link: "#3",
-        submenu: [
+  {{ idskHeaderWeb({
+    headerType: "website",
+    search: true,
+    brand: {
+      gestor: true,
+      languages: [
         {
-          link: "#3.1",
-          text: "O regionálnom rozvoji"
+          text: "Slovenčina",
+          selected: true,
+          link: "#1"
         },
         {
-          link: "#3.2",
-          text: "Zoznam úloh"
+          text: "English",
+          link: "#2"
         },
         {
-          link: "#3.3",
-          text: "Zabezpečenie dát"
-        },
-        {
-          link: "#3.4",
-          text: "Ochrana práv"
-        },
-        {
-          link: "#3.5",
-          text: "Kvapka nádeje"
-        },
-        {
-          link: "#3.6",
-          text: "Programy 6"
-        },
-        {
-          link: "#3.7",
-          text: "Programy 7"
-        },
-        {
-          link: "#3.8",
-          text: "Programy 8"
-        },
-        {
-          link: "#3.9",
-          text: "Programy 9"
-        },
-        {
-          link: "#3.10",
-          text: "Programy 10"
-        }
-      ]
-      },
-      {
-        link: "#4",
-        text: "Inovácie",
-        submenu: [
-        {
-          link: "#4.1",
-          text: "Aktuality 1"
-        },
-        {
-          link: "#4.2",
-          text: "Aktuality 2"
-        },
-        {
-          link: "#4.3",
-          text: "Aktuality 3"
-        },
-        {
-          link: "#4.4",
-          text: "Aktuality 4"
-        }
-      ]
-      },
-      {
-        link: "#5",
-        text: "Investície"
-      }
-    ],
-    language: {
-      current: {
-        text: "slovenčina",
-        flag: "slovakia-flag-icon-16.png"
-      },
-      choices: [
-        {
-          flag: "united-states-of-america-flag-icon-16.png",
-          text: "english",
-          link: "#"
-        },
-        {
-          flag: "germany-flag-icon-16.png",
-          text: "german",
-          link: "#"
+          text: "German",
+          link: "#3"
         }
       ]
     },
-    socials: [
-      {
-        icon: "fab fa-instagram",
-        link: "#",
-        text: "Instagram"
-      },
-      {
-        icon: "fab fa-linkedin-in",
-        link: "#",
-        text: "Linkedin"
-      },
-      {
-        icon: "fab fa-facebook-f",
-        link: "#",
-        text: "Facebook"
-      },
-      {
-        icon: "fab fa-twitter",
-        link: "#",
-        text: "Twitter"
-      }
-    ]    
+    main: {
+      logoSrc: "/public/assets/images/header-web/logo-mirri-farebne.svg",
+      logoAlt: "ID-SK Frontend"
+    },
+    navBar: {
+      navigation: [
+        {
+          text: "Eurofondy",
+          link: "#1"
+        },
+        {
+          text: "Regionálny rozvoj",
+          link: "#2"
+        },
+        {
+          text: "Informatizácia",
+          link: "#3"
+        },
+        {
+          text: "Investície",
+          link: "#4"
+        },
+        {
+          text: "Inovácie",
+          link: "#5"
+        }
+      ]
+    }
   }) }}
 {% endblock %}
 {% block content %}
@@ -216,7 +137,7 @@
         {
           text: "Súčasť životnej situácie",
           link: "#sucast-zivotnej-sitiacie"
-        },        
+        },
         {
           text: "Stepper",
           link: "#stepper"
@@ -284,7 +205,7 @@
       <div id="stepper">
         {{ idskStepper({
               "id": "default-example",
-              "subtitle": "Pred narodením dieťaťa",              
+              "subtitle": "Pred narodením dieťaťa",
               "attributes": {
               "data-attribute": "value"
               },
@@ -433,24 +354,24 @@
       logo: "footer-extended-logo.svg",
       subtitles: [
       {
-        item:"Pomoc", 
-        href:"#"}, 
+        item:"Pomoc",
+        href:"#"},
       {
         item:"Cookies",
         href:"#"
-      }, 
+      },
       {
         item:"Kontakty",
         href:"#"
-      }, 
-      { 
+      },
+      {
         item:"Mapa Stránky",
         href:"#"
-      }, 
+      },
       {
         item:"RSS",
         href:"#"
-      }, 
+      },
       {
         item:"Vyhlásenie o prístupnosti",
         href:"#"
@@ -475,6 +396,6 @@
         text: "Chyba iná"
       }
       ]
-    }) 
+    })
   }}
 {% endblock %}

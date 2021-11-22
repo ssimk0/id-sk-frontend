@@ -51,10 +51,6 @@ params:
         type: string
         required: true
         description: Link for href element
-  - name: hideLanguages
-    type: boolean
-    required: false
-    description: True if language selector should be hidden
   - name: languages
     type: array
     required: true
