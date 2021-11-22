@@ -20,7 +20,7 @@ params:
   type: object
   required: false
   description: BrandBar object including language selector. It is voluntary for website, projectWebsite. For electronicService it is MANDATORY!!!
-  params: 
+  params:
   - name: lightBackground
     type: bolean
     required: false
@@ -51,11 +51,15 @@ params:
         type: string
         required: true
         description: Link for href element
+  - name: hideLanguages
+    type: boolean
+    required: false
+    description: True if language selector should be hidden
   - name: languages
     type: array
     required: true
     description: Other language options
-    params: 
+    params:
     - name: text
       type: string
       required: true
@@ -73,7 +77,7 @@ params:
   type: object
   required: true
   description: MainSection object inlucing logo, title, search. It is MANDATORY for all types of pages.
-  params: 
+  params:
   - name: logoSrc
     type: string
     required: false
@@ -84,7 +88,7 @@ params:
     description: Allows you to use alt text for logo
   - name: title
     type: string
-    required: true
+    required: false
     description: Header title text
   - name: menuBtnText
     type: string
@@ -94,7 +98,7 @@ params:
     type: object
     required: false
     description: Allows you to use login flow
-    params: 
+    params:
     - name: text
       type: string
       required: false
@@ -146,7 +150,7 @@ params:
     type: object
     required: false
     description: Allows you to use second button
-    params: 
+    params:
     - name: text
       type: string
       required: false
@@ -160,7 +164,7 @@ params:
   type: object
   required: false
   description: Allows you to use search bar if is needed
-  params: 
+  params:
   - name: placeHolder
     type: string
     required: false
@@ -234,23 +238,23 @@ examples:
 - name: " - hlavička pre webové sídla (bez banera)"
   data:
     headerType: "website"
-    brand: 
+    brand:
       gestor: true
-      languages: 
+      languages:
         - text: "Slovenčina"
           selected: true,
           link: "#"
-    
+
         - text: "Deutsch"
           link: "#"
-    
+
         - text: "English"
           link: "#"
-    
+
         - text: "Español"
           link: "#"
-          
-    main: 
+
+    main:
         logoSrc: "/public/assets/images/header-web/logo-mirri-farebne.svg"
         loginButton: true
         profileButton: true
@@ -258,24 +262,24 @@ examples:
 
     search: true
 
-    navBar: 
-        navigation: 
+    navBar:
+        navigation:
           - text: 'Občan'
-            submenu:  
+            submenu:
               - link: '#1'
                 text: 'Eurofondy'
-            
+
               - link: '#2'
                 text: 'Regionálny rozvoj'
-            
+
               - link: '#3'
                 text: 'Informatizácia'
-            
+
               - link: '#4'
                 text: 'Investície'
-                
+
           - text: 'Podnikateľ'
-            submenu: 
+            submenu:
               - link: '#1'
                 text: 'Eurofondy'
 
@@ -293,7 +297,7 @@ examples:
 
               - link: '#4'
                 text: 'Investície'
-            
+
           - link: '#3'
             text: 'Dôchodca'
 
@@ -307,45 +311,45 @@ examples:
 - name: " - hlavička pre webové sídla (s banerom)"
   data:
     headerType: "website"
-    brand: 
+    brand:
       gestor: true
-      languages: 
+      languages:
         - text: "Slovenčina"
           selected: true,
           link: "#"
-    
+
         - text: "Deutsch"
           link: "#"
-    
+
         - text: "English"
           link: "#"
-    
+
         - text: "Español"
-          link: "#" 
-    main: 
+          link: "#"
+    main:
         logoSrc: "/public/assets/images/header-web/logo-mirri-farebne.svg"
         loginButton: true
         profileButton: true
         secondaryButton: false
     search: true
-    navBar: 
-        navigation: 
+    navBar:
+        navigation:
           - text: 'Občan'
-            submenu:  
+            submenu:
               - link: '#1'
                 text: 'Eurofondy'
-            
+
               - link: '#2'
                 text: 'Regionálny rozvoj'
-            
+
               - link: '#3'
                 text: 'Informatizácia'
-            
+
               - link: '#4'
                 text: 'Investície'
-                
+
           - text: 'Podnikateľ'
-            submenu: 
+            submenu:
               - link: '#1'
                 text: 'Eurofondy'
 
@@ -363,7 +367,7 @@ examples:
 
               - link: '#4'
                 text: 'Investície'
-            
+
           - link: '#3'
             text: 'Dôchodca'
 
@@ -372,30 +376,30 @@ examples:
 
           - link: '#5'
             text: 'Inovácie'
-    banner: 
+    banner:
       text: "Nová verzia ID-SK Frontend nahradzuje pôvodnú verziu."
       warning: true
-    
+
 
 - name: " - hlavička pre elektronické služby (bez banera)"
   data:
     headerType: "electronicService"
-    brand: 
+    brand:
       gestor: true
-      languages: 
+      languages:
         - text: "Slovenčina"
           selected: true,
           link: "#"
-    
+
         - text: "Deutsch"
           link: "#"
-    
+
         - text: "English"
           link: "#"
-    
+
         - text: "Español"
-          link: "#"  
-    main: 
+          link: "#"
+    main:
         title: "Ministerstvo investícií"
         loginButton: true
         profileButton: true
@@ -405,26 +409,26 @@ examples:
 - name: " - hlavička pre elektronické služby (s banerom)"
   data:
     headerType: "electronicService"
-    brand: 
+    brand:
       gestor: true
-      languages: 
+      languages:
         - text: "Slovenčina"
           selected: true,
           link: "#"
-    
+
         - text: "Deutsch"
           link: "#"
-    
+
         - text: "English"
           link: "#"
-    
+
         - text: "Español"
-          link: "#"       
-    main: 
+          link: "#"
+    main:
         title: "Ministerstvo investícií"
         loginButton: true
         profileButton: true
         secondaryButton: false
-    banner: 
+    banner:
       text: "Nová verzia ID-SK Frontend nahradzuje pôvodnú verziu."
       warning: false
