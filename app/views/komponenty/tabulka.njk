@@ -1,0 +1,110 @@
+{% extends "layout.njk" %}
+{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "../../../src/idsk/components/table/macro.njk" import idskTable %}
+
+{% set pageName = "Tabuľka" %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    "items": [
+    { text: 'ID-SK frontend', href: '/' + legacyQuery },
+    { text: pageName }
+    ]
+  }) }}
+{% endblock %}  
+
+{% block content %}
+    <div class="govuk-width-container">
+        <span class="govuk-caption-xl">Webové komponenty</span>
+        <h1 class="govuk-heading-xl">{{pageName}}</h1>
+        <p class="govuk-body-l">Tabuľku použite na jednoduchšie porovnávanie a hľadanie informácií pre používateľov.</p>
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+              {{ idskTable({
+                uniqueId: "priklad-1",
+                title: "Štátne sviatky",
+                caption: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+                head: [
+                  {
+                    text: "Dátum"
+                  },
+                  {
+                    text: "Deň"
+                  },
+                  {
+                    text: "Názov"
+                  }
+                ],
+                rows: [
+                  [
+                    {
+                      text: "1.Január"
+                    },
+                    {
+                      text: "piatok"
+                    },
+                    {
+                      text: "Deň vzniku Slovenskej republiky)"
+                    }
+                  ],
+                  [
+                    {
+                      text: "5.Júl"
+                    },
+                    {
+                      text: "pondelok"
+                    },
+                    {
+                      text: "Sviatok svätého Cyrila a Metoda"
+                    }
+                  ],
+                  [
+                    {
+                      text: "29.August"
+                    },
+                    {
+                      text: "nedeľa"
+                    },
+                    {
+                      text: "Výročie SNP"
+                    }
+                  ],
+                  [
+                    {
+                      text: "1.September"
+                    },
+                    {
+                      text: "streda"
+                    },
+                    {
+                      text: "Deň Ústavy Slovenskej republiky"
+                    }
+                  ],
+                  [
+                    {
+                      text: "17.November"
+                    },
+                    {
+                      text: "streda"
+                    },
+                    {
+                      text: "Deň boja za slobodu a demokraciu"
+                    }
+                  ]
+                ],
+                printTable: true,
+                source: 
+                  {
+                    name: "NCZI"
+                  }
+              }) }}
+            
+              <h2 class="govuk-heading-m">Rozšírené príklady pre tabuľku:</h2>
+              <p class="govuk-body">
+                <a class="govuk-link" href="/custom-components/table" title="Rozšírené príklady pre tabuľku">Rozšírené príklady</a>
+              </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
