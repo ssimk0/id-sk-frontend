@@ -12,7 +12,6 @@ params:
         type: html
         required: false
         description: Url address for navigation links
-
   - name: sideMenu
     type: array
     required: false
@@ -26,42 +25,34 @@ params:
         type: html
         required: false
         description: Url address for navigation links
-
   - name: moreInfoAboutMinistryLink
     type: link
     required: false
     description: link name for page of ministry.
-
   - name: mainTitleLinkLabel
     type: string
     required: false
     description: label for link on page of ministry.
-
   - name: classContainer
     type: class
     required: false
     description: class name for having govuk-width-container on page.
-
   - name: classBackground
     type: class
     required: false
     description: class name for changing background of side menu.
-
   - name: searchEnabled
     type: string
     required: false
     description: Determines whether search should be part of intro block.
-
   - name: headline
     type: string
     required: false
     description: headline of page.
-
   - name: mainTitle
     type: html
     required: false
     description: title of page.
-
   - name: sideMenuTitle
     type: string
     required: false
@@ -70,7 +61,7 @@ params:
 examples:
   - name: basic
     data:
-      mainTitle : Dozvedieť sa <a class='govuk-link' href='#' title='viac o ministerstve'>viac o ministerstve</a>.
+      mainTitle: Dozvedieť sa <a class='govuk-link' href='#' title='viac o ministerstve'>viac o ministerstve</a>.
       bottomMenu:
         - href: "#"
           item: Eurofondy
@@ -82,7 +73,6 @@ examples:
           item: Investície
         - href: "#"
           item: O ministerstve
-
       sideMenu:
         - href: "#"
           item: O eurofondoch
@@ -94,12 +84,11 @@ examples:
           item: Aktuálne výzvy
         - href: "#"
           item: Dokumenty
-
       searchEnabled: true
 
   - name: extended
     data:
-      mainTitle : Dozvedieť sa <a class='govuk-link' href='#' title='viac o ministerstve'>viac o ministerstve</a>.
+      mainTitle: Dozvedieť sa <a class='govuk-link' href='#' title='viac o ministerstve'>viac o ministerstve</a>.
       bottomMenu:
         - href: "#"
           item: Eurofondy
@@ -111,7 +100,6 @@ examples:
           item: Investície
         - href: "#"
           item: O ministerstve
-
       sideMenu:
         - href: "#"
           item: O eurofondoch
@@ -123,13 +111,12 @@ examples:
           item: Aktuálne výzvy
         - href: "#"
           item: Dokumenty
-
       classBackground: "app-pane-transparent"
       searchEnabled: true
 
   - name: without search
     data:
-      mainTitle : Dozvedieť sa <a class='govuk-link' href='#' title='viac o ministerstve'>viac o ministerstve</a>.
+      mainTitle: Dozvedieť sa <a class='govuk-link' href='#' title='viac o ministerstve'>viac o ministerstve</a>.
       bottomMenu:
         - href: "#"
           item: Eurofondy
@@ -141,7 +128,6 @@ examples:
           item: Investície
         - href: "#"
           item: O ministerstve
-
       sideMenu:
         - href: "#"
           item: Financovanie zo štátneho rozpočtu
@@ -153,15 +139,13 @@ examples:
           item: MetaIS
         - href: "#"
           item: Pracovná skupina Lepšie služby
-
       searchEnabled: false
       classBackground: "app-pane-blue"
       headline: "Informatizácia"
 
   - name: without bottom menu
     data:
-      mainTitle : Dozvedieť sa <a class='govuk-link' href='#' title='viac o ministerstve'>viac o ministerstve</a>.
-
+      mainTitle: Dozvedieť sa <a class='govuk-link' href='#' title='viac o ministerstve'>viac o ministerstve</a>.
       sideMenu:
         - href: "#"
           item: O eurofondoch
@@ -173,5 +157,4 @@ examples:
           item: Aktuálne výzvy
         - href: "#"
           item: Dokumenty
-
       searchEnabled: true
