@@ -1,6 +1,6 @@
 {% extends "layout.njk" %}
 {% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
-{% from "../../../src/idsk/components/header-extended/macro.njk" import idskHeaderExtended %}
+{% from "../../../src/idsk/components/header-web/macro.njk" import idskHeaderWeb %}
 {% from "../../../src/idsk/components/intro-block/macro.njk" import idskIntroBlock %}
 {% from "../../../src/idsk/components/card/macro.njk" import idskCard %}
 {% from "../../../src/idsk/components/crossroad/macro.njk" import idskCrossroad %}
@@ -62,33 +62,52 @@
 {% endblock %}
 
 {% block header %}
-  {{ idskHeaderExtended({
-    logo: "logo-mirri-farebne.svg",
-    logoSmall: "logo-mirri-small-farebne.svg",
-    logoWhite: "logo-mirri-biele.svg",
-    logoSmallWhite: "logo-mirri-small-biele.svg",
-    logoGrid: "govuk-grid-column-one-third",
-    navigation: [
+  {{ idskHeaderWeb({
+    headerType: "website",
+    search: true,
+    brand: {
+      gestor: true,
+      languages: [
         {
-            link: '#1',
-            text: 'Zdroje financovania'
+          text: "Slovenčina",
+          selected: true,
+          link: "#1"
         },
         {
-            link: '#2',
-            text: 'Investície',
-            active: true
+          text: "English",
+          link: "#2"
         },
         {
-            link: '#3',
-            text: 'Informatizácia'
+          text: "German",
+          link: "#3"
+        }
+      ]
+    },
+    main: {
+      logoSrc: "/public/assets/images/header-web/logo-mirri-farebne.svg",
+      logoAlt: "logo miri"
+    },
+    navBar: {
+      navigation: [
+        {
+          text: "Eurofondy",
+          link: "#1"
         },
         {
-            link: '#4',
-            text: 'Regionálny rozvoj'
+          text: "Regionálny rozvoj",
+          link: "#2"
         },
         {
-            link: '#5',
-            text: 'Eurofondy'
+          text: "Informatizácia",
+          link: "#3"
+        },
+        {
+          text: "Investície",
+          link: "#4"
+        },
+        {
+          text: "Inovácie",
+          link: "#5"
         }
       ]
     }
