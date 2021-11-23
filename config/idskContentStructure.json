@@ -61,21 +61,23 @@
     "search-filter": "Filtre pre filtrovanie výsledkov vyhľadavania / kontaktov",
     "formularove-prvky": "Formulárové prvky",
     "hlavicka": "Hlavička",
-    "footer-extended": "Patička pre webové sídla a spätná väzba",
-    "informacna-lista-lista-s-varovanim": "Informačná lišta / Lišta s varovaním",
-    "mapovy-komponent": "Mapový komponent",
     "icony-a-obrazky": "Ikony a obrázky",
-    "intro-block": "Úvodný blok pre webové sídla",
+    "informacna-lista-lista-s-varovanim": "Informačná lišta / Lišta s varovaním",
     "karta": "Karta",
+    "mapovy-komponent": "Mapový komponent",
     "in-page-navigation": "Navigácia na stránke",
     "oznacenie-verzie-sluzby": "Označenie verzie služby",
+    "footer-extended": "Patička pre webové sídla a spätná väzba",
     "razcestnik": "Rázcestník",
     "registracia-na-podujatie": "Registrácia na podujatie",
     "rozlozenie-stranky": "Rozloženie stránky",
     "stepper": "Stepper",
     "related-content": "Súvisiaci obsah",
+    "tabulkovy-filter": "Tabuľkový filter",
     "timeline": "Timeline",
     "tlacidla": "Tlačidlá",
-    "typografia": "Typografia"
+    "typografia": "Typografia",
+    "intro-block": "Úvodný blok pre webové sídla",
+    "zalozky": "Záložky"
   }
 }

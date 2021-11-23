@@ -3,22 +3,31 @@
 {% set htmlClasses = "app-no-canvas-background" %}
 {% set pageName = pageName %}
 
-{% block pageTitle %}ID-SK Frontend{{" - " + pageName if pageName}}{% endblock %}
+{% block pageTitle %}ID-SK Frontend{{ " - " + pageName if pageName }}{% endblock %}
 
 {# Turn the header and footer off #}
 {% block header %}
-  {# {% include "../partials/banner.njk" %} #}
-  {% from "../../../src/idsk/components/header/macro.njk" import idskHeader %}
-  {{ idskHeader({"logo": true, "serviceName": "Jednotný dizajn manuál elektronických služieb"}) }}
+
+  {% from "../../../src/idsk/components/header-web/macro.njk" import idskHeaderWeb %}
+  {{ idskHeaderWeb({
+    headerType: "website",
+    brand: {
+      gestor: true
+    },
+    main: {
+      logoSrc: "/public/assets/images/idsk-logo.svg",
+      logoAlt: "ID-SK Frontend"
+    }
+  }) }}
 
   {% from "phase-banner/macro.njk" import govukPhaseBanner %}
   <div class="govuk-width-container">
-  {{ govukPhaseBanner({
-    "tag": {
-      "text": "ver. 2.7.0"
-    },
-    "html": "Nová verzia ID-SK Frontend nahradzuje pôvodnú verziu. Dokumentáciu staršej verzie nájdete na <a class=\"govuk-link\" href=\"https:\/\/github.com\/id-sk\/idsk_elements\" target=\"_blank\" title=\"ID-SK Elements\">ID-SK Elements</a>"
-  }) }}
+    {{ govukPhaseBanner({
+      "tag": {
+        "text": "ver. 2.7.0"
+      },
+      "html": "Nová verzia ID-SK Frontend nahradzuje pôvodnú verziu. Dokumentáciu staršej verzie nájdete na <a class=\"govuk-link\" href=\"https:\/\/github.com\/id-sk\/idsk_elements\" target=\"_blank\" title=\"ID-SK Elements\">ID-SK Elements</a>"
+    }) }}
   </div>
 {% endblock %}
 
@@ -35,42 +44,46 @@
       {
         item:"Cookies",
         href:"/nastavenia-cookies"
-      }, 
+      },
       {
         item:"Ochrana osobných údajov",
         href:"/ochrana-osobnych-udajov"
       }
     ],
     dropdownItems: [
-    {
-      value: "Validačná chyba",
-      text: "Validačná chyba"
-    },
-    {
-      value: "Gramatická chyba",
-      text: "Gramatická chyba",
-      selected: true
-    },
-    {
-      value: "Chyba responzivity",
-      text: "Chyba responzivity"
-    },
-    {
-      value: "Chyba iná",
-      text: "Chyba iná"
-    }
+      {
+        value: "Validačná chyba",
+        text: "Validačná chyba"
+      },
+      {
+        value: "Gramatická chyba",
+        text: "Gramatická chyba",
+        selected: true
+      },
+      {
+        value: "Chyba responzivity",
+        text: "Chyba responzivity"
+      },
+      {
+        value: "Chyba iná",
+        text: "Chyba iná"
+      }
     ]
-  })  }}
+  }) }}
 {% endblock %}
 
 {% block bodyEnd %}
   {{ super() }}
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.15/iframeResizer.min.js" integrity="sha256-NZjCYaMfryuJQRMgekHuC02c/Wv4sMRzHG2zyhrVwKU=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.15/iframeResizer.min.js"
+          integrity="sha256-NZjCYaMfryuJQRMgekHuC02c/Wv4sMRzHG2zyhrVwKU=" crossorigin="anonymous"></script>
   <!--[if lte IE 8]>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.15/ie8.polyfils.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.15/ie8.polyfils.min.js"></script>
   <![endif]-->
   <script type="text/javascript">
-    var domReady = function(a,b,c){b=document,c='addEventListener';b[c]?b[c]('DOMContentLoaded',a):window.attachEvent('onload',a)}
+    var domReady = function (a, b, c) {
+      b = document, c = 'addEventListener';
+      b[c] ? b[c]('DOMContentLoaded', a) : window.attachEvent('onload', a)
+    }
     domReady(iFrameResize({}, '.js-component-preview'))
   </script>
   {% block scripts %}{% endblock %}

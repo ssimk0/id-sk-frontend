@@ -54,7 +54,7 @@
       }
     }
 
-    .idsk-search-component{
+    .idsk-search-component {
       margin-bottom: 30px;
       @include mq($from: desktop) {
         margin-top: 50px;
@@ -93,10 +93,10 @@
         color: govuk-colour("dark-grey");
     }
 
-    .idsk-intro-block__side-menu{
+    .idsk-intro-block__side-menu {
         padding: govuk-spacing(4);
-        @include mq($from: desktop){
-            margin-left: govuk-spacing(8);
+        @include mq($from: desktop) {
+            margin-left: 35px;
         }
 
         @include mq($from: desktop) {
@@ -107,14 +107,14 @@
           padding: 0 govuk-spacing(3);
         }
 
-        .govuk-heading-s{
-            @include mq($from: desktop){
+        .govuk-heading-s {
+            @include mq($from: desktop) {
                 font-weight: 400;
                 margin-bottom: govuk-spacing(2);
                 text-transform: uppercase;
             }
 
-            @include mq($until: tablet){
+            @include mq($until: tablet) {
                 font-weight: 700;
                 font-size: 18px;
                 line-height: 20px;
@@ -230,6 +230,10 @@
         .idsk-intro-block__side-menu__li {
           @include mq($from: desktop) {
             color: govuk-colour("white");
+
+            &:focus{
+              color: govuk-colour("black");
+            }
           }
         }
     }

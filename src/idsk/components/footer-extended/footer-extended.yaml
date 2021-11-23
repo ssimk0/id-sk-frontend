@@ -3,62 +3,50 @@ params:
     type: html
     required: false
     description: Url address for design page.
-
   - name: feedbackHeading
     type: string
     required: false
     description: Heading for feedback.
-
   - name: feedbackEmail
     type: string
     required: false
     description: Email for feedback.
-
   - name: feedbackSubject
     type: string
     required: false
     description: Subject for feedback.
-
   - name: feedbackMessage
     type: string
     required: false
     description: Message for feedback.
-
   - name: showFeedback
     type: string
     required: false
     description: Determines whether feedback bar should be displayed.
-
   - name: showFeedbackMessage
     type: string
     required: false
     description: Determines whether feedback message should be displayed.
-
   - name: upButtonEnabled
     type: string
     required: false
     description: Determines whether up button should be displayed.
-
   - name: feedbackButtonAddress
     type: html
     required: false
     description: Url address for feedback button.
-
   - name: fillFeedbackLink
     type: html
     required: false
     description: Url address for form to fill feedback.
-    
   - name: logo
     type: svg
     required: false
     description: Name of svg file for logo in footer.
-
   - name: assetsPath
     type: string
     required: false
     description: Relative path for assets folder.
-
   - name: firstColumn
     type: object
     required: false
@@ -76,7 +64,6 @@ params:
             type: string
             required: false
             description: Name of links in first column of footer extended
-
   - name: rightItems
     type: array
     required: false
@@ -86,7 +73,6 @@ params:
         type: string
         required: false
         description: Name of links in first column of footer extended
-
   - name: secondColumn
     type: array
     required: false
@@ -96,7 +82,6 @@ params:
         type: string
         required: false
         description: Name of links in second column of footer extended
-
   - name: thirdColumn
     type: array
     required: false
@@ -106,7 +91,6 @@ params:
         type: string
         required: false
         description: Name of links in third column of footer extended
-
   - name: fourthColumn
     type: array
     required: false
@@ -116,7 +100,6 @@ params:
         type: string
         required: false
         description: Name of links in fourth column of footer extended
-
   - name: subtitles
     type: array
     required: false
@@ -130,7 +113,6 @@ params:
         type: html
         required: false
         description: Url address for navigation links
-
   - name: dropdownItems
     type: array
     required: false
