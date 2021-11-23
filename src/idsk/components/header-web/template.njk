@@ -323,7 +323,9 @@
             {% endif %}
             {{ banner.text if banner.text else 'It was popularised in the 1960s with the release of Letraset' }}
           </span>
-          <button class="idsk-header-web__banner-close" aria-label="Zavrieť banner"><div class="idsk-header-web__menu-close"></div></button>
+          {% if (banner.closeBtn | dump | length === 0) or banner.closeBtn == true %}
+            <button class="idsk-header-web__banner-close" aria-label="Zavrieť banner"><div class="idsk-header-web__menu-close"></div></button>
+          {% endif %}
         </div>
       </div>
     </div>

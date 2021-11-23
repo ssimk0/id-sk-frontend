@@ -84,6 +84,12 @@
       width: 13px;
       height: 13px;
     }
+
+    @include mq($until: desktop) {
+      position: sticky;
+      top: 0;
+      left: 0;
+    }
   }
 
   /* SLOVAK TRICOLOR */
@@ -393,6 +399,8 @@
   /* MAIN SECTION */
   .idsk-header-web__main {
 
+    background-color: $idsk-header-background-primary;
+
     @include mq($from: desktop) {
 
       .govuk-grid-row {
@@ -693,6 +701,7 @@
   /* NAV BAR */
   .idsk-header-web__nav {
 
+    background-color: $idsk-header-background-primary;
     display: block;
     margin: 0;
     padding: 0;
@@ -909,7 +918,7 @@
 
     /* NAVIGATION - submenu */
     .idsk-header-web__nav-submenu {
-      width: 100vw;
+      width: 100%;
       position: absolute;
       z-index: 1;
       left: 0;
@@ -934,13 +943,22 @@
 
           &-item {
             width: 33.33%;
+            align-self: stretch;
+            display: flex;
+            align-items: center;
+
+            &-link {
+              width: 100%;
+              align-self: stretch;
+            }
           }
         }
   
         &-item-link {
             padding: 12px govuk-spacing(4) 13px govuk-spacing(3);
             text-decoration: none;
-            display: block;
+            display: flex;
+            align-items: center;
 
             span {
               overflow: hidden;

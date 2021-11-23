@@ -18,10 +18,10 @@ HeaderWeb.prototype.init = function () {
         return;
     }
 
-    // chceck for banner
-    var $banner = $module.querySelector('.idsk-header-web__banner');
-    if ($banner) {
-        var $bannerCloseBtn = $banner.querySelector('.idsk-header-web__banner-close');
+    // chceck for close banner button
+    var $bannerCloseBtn = $module.querySelector('.idsk-header-web__banner-close');
+
+    if ($bannerCloseBtn) {
         $bannerCloseBtn.addEventListener('click', this.handleCloseBanner.bind(this));
     }
 
@@ -65,16 +65,18 @@ HeaderWeb.prototype.init = function () {
             $menuItem.addEventListener('click', this.handleSubmenuClick.bind(this));
             if($menuItem.parentElement.querySelector('.idsk-header-web__nav-submenu') || $menuItem.parentElement.querySelector('.idsk-header-web__nav-submenulite')){
                 $menuItem.parentElement.lastElementChild.addEventListener('keydown', this.menuTabbing.bind(this));
-                $menuItem.parentElement.addEventListener('keydown', this.menuEscPressed.bind(this));
+                $menuItem.parentElement.addEventListener('keydown', this.navEscPressed.bind(this));
             }
         }.bind(this))
     }
 
     // check for mobile menu button
-    var $menuButton = $module.querySelector('.idsk-header-web__main-headline-menu-button');
-    if ($menuButton) {
-        $menuButton.addEventListener('click', this.showMobileMenu.bind(this));
-        this.menuBtnText = $menuButton.innerText.trim();
+    this.$menuButton = $module.querySelector('.idsk-header-web__main-headline-menu-button');
+    if (this.$menuButton) {
+        this.$menuButton.addEventListener('click', this.showMobileMenu.bind(this));
+        this.menuBtnText = this.$menuButton.innerText.trim();
+        this.initMobileMenuTabbing();
+        document.addEventListener('keydown', this.mobileMenuEscPressed.bind(this));
     }
 
     $module.boundCheckBlurMenuItemClick = this.checkBlurMenuItemClick.bind(this);
@@ -206,16 +208,18 @@ HeaderWeb.prototype.handleSubmenuClick = function (e) {
 /**
  * Remove active class from menu when user leaves menu with esc
  */
- HeaderWeb.prototype.menuEscPressed = function (e) {
+ HeaderWeb.prototype.navEscPressed = function (e) {
     if(e.key === "Escape") {
         var $menuList = e.srcElement.parentElement.parentElement;
         if($menuList.classList.contains('idsk-header-web__nav-submenulite-list') || $menuList.classList.contains('idsk-header-web__nav-submenu-list')){
             $menuList = $menuList.closest('.idsk-header-web__nav-list')
         }
         var $activeItem = $menuList.querySelector('.idsk-header-web__nav-list-item--active')
-        $activeItem.classList.remove('idsk-header-web__nav-list-item--active');
-        $activeItem.childNodes[1].setAttribute('aria-expanded', 'false'); 
-        $activeItem.childNodes[1].setAttribute('aria-label', $activeItem.childNodes[1].getAttribute('data-text-for-show')) 
+        if($activeItem) {
+           $activeItem.classList.remove('idsk-header-web__nav-list-item--active');
+            $activeItem.childNodes[1].setAttribute('aria-expanded', 'false'); 
+            $activeItem.childNodes[1].setAttribute('aria-label', $activeItem.childNodes[1].getAttribute('data-text-for-show'))  
+        }
     }
  }
 
@@ -238,22 +242,64 @@ HeaderWeb.prototype.checkBlurMenuItemClick = function (e) {
  * Show mobile menu
  * @param {object} e
  */
-HeaderWeb.prototype.showMobileMenu = function (e) {
+HeaderWeb.prototype.showMobileMenu = function () {
     var closeText = this.menuBtnText ? 'Zavrieť' : '';
-    var $menuButton = this.$module.querySelector('.idsk-header-web__main-headline-menu-button');
     var $mobileMenu = this.$module.querySelector('.idsk-header-web__nav');
     toggleClass($mobileMenu, 'idsk-header-web__nav--mobile');
-    toggleClass($menuButton, 'idsk-header-web__main-headline-menu-button--active');
-    if(!$menuButton.classList.contains('idsk-header-web__main-headline-menu-button--active')){
-        $menuButton.setAttribute('aria-expanded', 'false'); 
-        $menuButton.setAttribute('aria-label', $menuButton.getAttribute('data-text-for-show'))
+    toggleClass(this.$menuButton, 'idsk-header-web__main-headline-menu-button--active');
+    if(!this.$menuButton.classList.contains('idsk-header-web__main-headline-menu-button--active')){
+        this.$menuButton.setAttribute('aria-expanded', 'false'); 
+        this.$menuButton.setAttribute('aria-label', this.$menuButton.getAttribute('data-text-for-show'))
     }else{
-        $menuButton.setAttribute('aria-expanded', 'true'); 
-        $menuButton.setAttribute('aria-label', $menuButton.getAttribute('data-text-for-hide'))
+        this.$menuButton.setAttribute('aria-expanded', 'true'); 
+        this.$menuButton.setAttribute('aria-label', this.$menuButton.getAttribute('data-text-for-hide'))
     }
-    var buttonIsActive = $menuButton.classList.contains('idsk-header-web__main-headline-menu-button--active');
+    var buttonIsActive = this.$menuButton.classList.contains('idsk-header-web__main-headline-menu-button--active');
 
-    $menuButton.childNodes[0].nodeValue = buttonIsActive ? closeText : this.menuBtnText;
+    this.$menuButton.childNodes[0].nodeValue = buttonIsActive ? closeText : this.menuBtnText;
 }
+
+/**
+ * Create loop in mobile menu for tabbing elements
+ */
+ HeaderWeb.prototype.initMobileMenuTabbing = function () {
+     var $menuItems = this.$module.querySelector('.idsk-header-web__nav');
+     var $focusableElements = Array.from($menuItems.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])'))
+     .filter(function(s) {
+        return window.getComputedStyle(s).getPropertyValue('display') != 'none';
+        });
+     this.$menuButton = this.$module.querySelector('.idsk-header-web__main-headline-menu-button');
+     var $lastMenuItem = $focusableElements[$focusableElements.length - 1];
+     var KEYCODE_TAB = 9;
+
+     this.$menuButton.addEventListener('keydown', function (e) {
+        var isTabPressed = (e.key === 'Tab' || e.keyCode === KEYCODE_TAB);
+
+        if (isTabPressed && e.shiftKey && e.target.getAttribute('aria-expanded') == 'true') {
+            $lastMenuItem.focus();
+            e.preventDefault();
+        }
+    });
+
+    $lastMenuItem.addEventListener('keydown', function (e) {
+        var isTabPressed = (e.key === 'Tab' || e.keyCode === KEYCODE_TAB);
+
+        if (isTabPressed && !e.shiftKey) {
+            this.$menuButton.focus();
+            e.preventDefault();
+        }
+    });
+ }
+
+ /**
+ * Close mobile menu when ESC is pushed
+ */
+  HeaderWeb.prototype.mobileMenuEscPressed = function (e) {
+
+    if (e.key === "Escape" && this.$menuButton.getAttribute('aria-expanded') == 'true') {
+        this.showMobileMenu();
+    }
+
+  }
 
 export default HeaderWeb
