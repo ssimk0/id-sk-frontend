@@ -531,6 +531,9 @@
         background-color: govuk-colour("white");
         @include govuk-media-query($from: tablet) {
             height: 45px;
+            @supports (-moz-appearance:none) {
+                height: 44px;
+            }
         }
     }
 
