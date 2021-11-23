@@ -55,7 +55,7 @@ HeaderWeb.prototype.init = function () {
         // Handle $eGovermentButton click event
         nodeListForEach($eGovermentButtons, function ($eGovermentButton) {
             $eGovermentButton.addEventListener('click', this.handleEgovermentClick.bind(this));
-        }.bind(this))  
+        }.bind(this))
     }
 
     // check for menu items
@@ -116,13 +116,13 @@ HeaderWeb.prototype.checkBlurLanguageSwitcherClick = function (e) {
         this.$activeSearch.classList.remove('idsk-header-web__brand-language--active');
         this.$activeSearch.firstElementChild.setAttribute('aria-expanded', 'false')
         this.$activeSearch.firstElementChild.setAttribute('aria-label',  this.$activeSearch.firstElementChild.getAttribute('data-text-for-show'))
-        document.removeEventListener('click', this.$module.boundCheckBlurLanguageSwitcherClick, true); 
+        document.removeEventListener('click', this.$module.boundCheckBlurLanguageSwitcherClick, true);
     }
 }
 
 HeaderWeb.prototype.handleBackTabbing = function (e) {
     //shift was down when tab was pressed
-    if(e.shiftKey && e.keyCode == 9 && document.activeElement == this.$languageBtn) { 
+    if(e.shiftKey && e.keyCode == 9 && document.activeElement == this.$languageBtn) {
         this.handleLanguageSwitcherClick(e);
     }
 }
@@ -146,7 +146,7 @@ HeaderWeb.prototype.languegeEscPressed = function (e) {
         toggleClass($eGovermentButton, 'idsk-header-web__brand-gestor-button--active');
         if($eGovermentButton.classList.contains('idsk-header-web__brand-gestor-button--active')){
             $eGovermentButton.setAttribute('aria-expanded', 'true')
-            $eGovermentButton.setAttribute('aria-label', $eGovermentButton.getAttribute('data-text-for-hide'))          
+            $eGovermentButton.setAttribute('aria-label', $eGovermentButton.getAttribute('data-text-for-hide'))
         }else{
             $eGovermentButton.setAttribute('aria-expanded', 'false')
             $eGovermentButton.setAttribute('aria-label', $eGovermentButton.getAttribute('data-text-for-show'))
@@ -156,30 +156,30 @@ HeaderWeb.prototype.languegeEscPressed = function (e) {
 
 /**
  * Handle open/hide submenu
- * @param {object} e 
+ * @param {object} e
  */
 HeaderWeb.prototype.handleSubmenuClick = function (e) {
     var $srcEl = e.target || e.srcElement;
     var $toggleButton = $srcEl.closest('.idsk-header-web__nav-list-item');
     var $currActiveItem = this.$module.querySelector('.idsk-header-web__nav-list-item--active');
-    
+
     if($currActiveItem && $currActiveItem.isEqualNode($toggleButton)){
         $currActiveItem.classList.remove('idsk-header-web__nav-list-item--active');
         if($toggleButton.childNodes[3]){
           $currActiveItem.childNodes[1].setAttribute('aria-expanded', 'false')
-        $toggleButton.childNodes[1].setAttribute('aria-label', $toggleButton.childNodes[1].getAttribute('data-text-for-show'))   
+        $toggleButton.childNodes[1].setAttribute('aria-label', $toggleButton.childNodes[1].getAttribute('data-text-for-show'))
         }
     }else{
         if($currActiveItem){
             $currActiveItem.classList.remove('idsk-header-web__nav-list-item--active');
         }
-        toggleClass($toggleButton, 'idsk-header-web__nav-list-item--active'); 
+        toggleClass($toggleButton, 'idsk-header-web__nav-list-item--active');
 
-        if($toggleButton.childNodes[3] && $toggleButton.classList.contains('idsk-header-web__nav-list-item--active')) {   
-            $toggleButton.childNodes[1].setAttribute('aria-expanded', 'true') 
+        if($toggleButton.childNodes[3] && $toggleButton.classList.contains('idsk-header-web__nav-list-item--active')) {
+            $toggleButton.childNodes[1].setAttribute('aria-expanded', 'true')
             $toggleButton.childNodes[1].setAttribute('aria-label', $toggleButton.childNodes[1].getAttribute('data-text-for-hide'))
             if (window.screen.width <= 768){
-                //scroll element to top
+              $toggleButton.scrollIntoView({behavior: 'smooth'})
             }
         }
     }
@@ -203,15 +203,15 @@ HeaderWeb.prototype.handleSubmenuClick = function (e) {
     if (e.shiftKey) {
         if (document.activeElement === $submenuList.firstElementChild.firstElementChild) {
             $activeItem.classList.remove('idsk-header-web__nav-list-item--active');
-            $activeItem.childNodes[1].setAttribute('aria-expanded', 'false'); 
-            $activeItem.childNodes[1].setAttribute('aria-label', $activeItem.childNodes[1].getAttribute('data-text-for-show')) 
+            $activeItem.childNodes[1].setAttribute('aria-expanded', 'false');
+            $activeItem.childNodes[1].setAttribute('aria-label', $activeItem.childNodes[1].getAttribute('data-text-for-show'))
         }
     // tab
     } else if (document.activeElement === $submenuList.lastElementChild.lastElementChild) {
         $activeItem.classList.remove('idsk-header-web__nav-list-item--active');
-        $activeItem.childNodes[1].setAttribute('aria-expanded', 'false'); 
-        $activeItem.childNodes[1].setAttribute('aria-label', $activeItem.childNodes[1].getAttribute('data-text-for-show')) 
-    } 
+        $activeItem.childNodes[1].setAttribute('aria-expanded', 'false');
+        $activeItem.childNodes[1].setAttribute('aria-label', $activeItem.childNodes[1].getAttribute('data-text-for-show'))
+    }
 }
 
 /**
@@ -226,7 +226,7 @@ HeaderWeb.prototype.handleSubmenuClick = function (e) {
         var $activeItem = $menuList.querySelector('.idsk-header-web__nav-list-item--active')
         if($activeItem) {
             $activeItem.classList.remove('idsk-header-web__nav-list-item--active');
-            $activeItem.childNodes[1].setAttribute('aria-expanded', 'false'); 
+            $activeItem.childNodes[1].setAttribute('aria-expanded', 'false');
             $activeItem.childNodes[1].setAttribute('aria-label', $activeItem.childNodes[1].getAttribute('data-text-for-show'));
             $activeItem.childNodes[1].focus();
         } else if(this.$menuButton.getAttribute('aria-expanded') == 'true') {
@@ -244,10 +244,10 @@ HeaderWeb.prototype.checkBlurMenuItemClick = function (e) {
     if($currActiveItem && !(e.target.classList.contains('idsk-header-web__nav-list-item-link'))){
         $currActiveItem.classList.remove('idsk-header-web__nav-list-item--active');
         if( $currActiveItem.childNodes[3] ){
-           $currActiveItem.childNodes[1].setAttribute('aria-expanded', 'false'); 
-           $currActiveItem.childNodes[1].setAttribute('aria-label', $currActiveItem.childNodes[1].getAttribute('data-text-for-show')) 
+           $currActiveItem.childNodes[1].setAttribute('aria-expanded', 'false');
+           $currActiveItem.childNodes[1].setAttribute('aria-label', $currActiveItem.childNodes[1].getAttribute('data-text-for-show'))
         }
-        document.removeEventListener('click', this.$module.boundCheckBlurMenuItemClick, true); 
+        document.removeEventListener('click', this.$module.boundCheckBlurMenuItemClick, true);
     }
 }
 
@@ -261,10 +261,10 @@ HeaderWeb.prototype.showMobileMenu = function () {
     toggleClass($mobileMenu, 'idsk-header-web__nav--mobile');
     toggleClass(this.$menuButton, 'idsk-header-web__main-headline-menu-button--active');
     if(!this.$menuButton.classList.contains('idsk-header-web__main-headline-menu-button--active')){
-        this.$menuButton.setAttribute('aria-expanded', 'false'); 
+        this.$menuButton.setAttribute('aria-expanded', 'false');
         this.$menuButton.setAttribute('aria-label', this.$menuButton.getAttribute('data-text-for-show'))
     }else{
-        this.$menuButton.setAttribute('aria-expanded', 'true'); 
+        this.$menuButton.setAttribute('aria-expanded', 'true');
         this.$menuButton.setAttribute('aria-label', this.$menuButton.getAttribute('data-text-for-hide'))
     }
     var buttonIsActive = this.$menuButton.classList.contains('idsk-header-web__main-headline-menu-button--active');
