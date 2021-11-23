@@ -26,12 +26,15 @@ HeaderWeb.prototype.init = function () {
     }
 
     // check for language switcher
-    var $toggleLanguageSwitcher = $module.querySelector('.idsk-header-web__brand-language-button');
-    this.$toggleLanguageSwitcher = $toggleLanguageSwitcher;
+    this.$languageBtn = $module.querySelector('.idsk-header-web__brand-language-button');
 
-    if ($toggleLanguageSwitcher) {
-        // Handle $toggleLanguageSwitcher click events
-        $toggleLanguageSwitcher.addEventListener('click', this.handleLanguageSwitcherClick.bind(this));
+    if (this.$languageBtn) {
+        // Handle esc button press
+        var $languageSwitcher = $module.querySelector('.idsk-header-web__brand-language');
+        $languageSwitcher.addEventListener('keydown', this.languegeEscPressed.bind(this));
+
+        // Handle $languageBtn click events
+        this.$languageBtn.addEventListener('click', this.handleLanguageSwitcherClick.bind(this));
 
         // close language list if i left the last item from langauge list e.g. if user use tab key for navigations
         var $lastLanguageItems = $module.querySelectorAll('.idsk-header-web__brand-language-list-item:last-child .idsk-header-web__brand-language-list-item-link');
@@ -40,8 +43,7 @@ HeaderWeb.prototype.init = function () {
         }.bind(this))
 
         // close language list if user back tabbing
-        $toggleLanguageSwitcher.addEventListener('keydown', this.handleBackTabbing.bind(this));
-
+        this.$languageBtn.addEventListener('keydown', this.handleBackTabbing.bind(this));
     }
 
     $module.boundCheckBlurLanguageSwitcherClick = this.checkBlurLanguageSwitcherClick.bind(this);
@@ -65,9 +67,9 @@ HeaderWeb.prototype.init = function () {
             $menuItem.addEventListener('click', this.handleSubmenuClick.bind(this));
             if($menuItem.parentElement.querySelector('.idsk-header-web__nav-submenu') || $menuItem.parentElement.querySelector('.idsk-header-web__nav-submenulite')){
                 $menuItem.parentElement.lastElementChild.addEventListener('keydown', this.menuTabbing.bind(this));
-                $menuItem.parentElement.addEventListener('keydown', this.navEscPressed.bind(this));
             }
         }.bind(this))
+        $module.addEventListener('keydown', this.navEscPressed.bind(this));
     }
 
     // check for mobile menu button
@@ -76,7 +78,6 @@ HeaderWeb.prototype.init = function () {
         this.$menuButton.addEventListener('click', this.showMobileMenu.bind(this));
         this.menuBtnText = this.$menuButton.innerText.trim();
         this.initMobileMenuTabbing();
-        document.addEventListener('keydown', this.mobileMenuEscPressed.bind(this));
     }
 
     $module.boundCheckBlurMenuItemClick = this.checkBlurMenuItemClick.bind(this);
@@ -121,8 +122,14 @@ HeaderWeb.prototype.checkBlurLanguageSwitcherClick = function (e) {
 
 HeaderWeb.prototype.handleBackTabbing = function (e) {
     //shift was down when tab was pressed
-    if(e.shiftKey && e.keyCode == 9 && document.activeElement == this.$toggleLanguageSwitcher) { 
-        this.$toggleLanguageSwitcher.parentNode.classList.remove('idsk-header-web__brand-language--active');  
+    if(e.shiftKey && e.keyCode == 9 && document.activeElement == this.$languageBtn) { 
+        this.handleLanguageSwitcherClick(e);
+    }
+}
+
+HeaderWeb.prototype.languegeEscPressed = function (e) {
+    if(e.key === "Escape" && this.$languageBtn.getAttribute('aria-expanded') == 'true') {
+        this.handleLanguageSwitcherClick(e);
     }
 }
 
@@ -146,7 +153,6 @@ HeaderWeb.prototype.handleBackTabbing = function (e) {
         }
     }.bind(this))
 }
-
 
 /**
  * Handle open/hide submenu
@@ -172,6 +178,9 @@ HeaderWeb.prototype.handleSubmenuClick = function (e) {
         if($toggleButton.childNodes[3] && $toggleButton.classList.contains('idsk-header-web__nav-list-item--active')) {   
             $toggleButton.childNodes[1].setAttribute('aria-expanded', 'true') 
             $toggleButton.childNodes[1].setAttribute('aria-label', $toggleButton.childNodes[1].getAttribute('data-text-for-hide'))
+            if (window.screen.width <= 768){
+                //scroll element to top
+            }
         }
     }
 
@@ -216,9 +225,13 @@ HeaderWeb.prototype.handleSubmenuClick = function (e) {
         }
         var $activeItem = $menuList.querySelector('.idsk-header-web__nav-list-item--active')
         if($activeItem) {
-           $activeItem.classList.remove('idsk-header-web__nav-list-item--active');
+            $activeItem.classList.remove('idsk-header-web__nav-list-item--active');
             $activeItem.childNodes[1].setAttribute('aria-expanded', 'false'); 
-            $activeItem.childNodes[1].setAttribute('aria-label', $activeItem.childNodes[1].getAttribute('data-text-for-show'))  
+            $activeItem.childNodes[1].setAttribute('aria-label', $activeItem.childNodes[1].getAttribute('data-text-for-show'));
+            $activeItem.childNodes[1].focus();
+        } else if(this.$menuButton.getAttribute('aria-expanded') == 'true') {
+            // Hide mobile menu if navigation is not active
+            this.showMobileMenu();
         }
     }
  }
@@ -290,16 +303,5 @@ HeaderWeb.prototype.showMobileMenu = function () {
         }
     });
  }
-
- /**
- * Close mobile menu when ESC is pushed
- */
-  HeaderWeb.prototype.mobileMenuEscPressed = function (e) {
-
-    if (e.key === "Escape" && this.$menuButton.getAttribute('aria-expanded') == 'true') {
-        this.showMobileMenu();
-    }
-
-  }
 
 export default HeaderWeb
