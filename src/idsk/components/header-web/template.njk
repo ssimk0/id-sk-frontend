@@ -23,7 +23,7 @@
           <div class="idsk-header-web__brand-gestor">
             {% if brand.gestor.nationalEmblem %}
               <div class="idsk-header-web__flag"></div>
-            {% endif %}   
+            {% endif %}
             <span class="govuk-body-s idsk-header-web__brand-gestor-text">
               Oficiálna stránka
               {% if brand.gestor.gestorLink %}
@@ -77,24 +77,25 @@
           </div>
           <div class="idsk-header-web__brand-spacer"></div>
         {% endif -%}
-
-        <div class="idsk-header-web__brand-language">
-          <button class="idsk-header-web__brand-language-button" aria-label="Rozbaliť jazykové menu" aria-expanded="false" data-text-for-hide="Skryť jazykové menu" data-text-for-show="Rozbaliť jazykové menu">
-            {{ currentLanguage.text if currentLanguage else 'Slovenčina'}}
-            <div class="idsk-header-web__link-arrow"></div>
-          </button>
-          <ul class="idsk-header-web__brand-language-list">
-            {% for language in brand.languages | sort(attribute='text') %}
-              <li class="idsk-header-web__brand-language-list-item">
-                <a class="govuk-link idsk-header-web__brand-language-list-item-link {{ 'idsk-header-web__brand-language-list-item-link--selected' if language.selected }}" 
-                  title="{{ language.text }}"
-                  href="{{ language.link }}">
-                  {{ language.text }}
-                </a>
-              </li>
-            {% endfor %}
-          </ul>
-        </div>
+        {% if brand.languages %}
+          <div class="idsk-header-web__brand-language">
+            <button class="idsk-header-web__brand-language-button" aria-label="Rozbaliť jazykové menu" aria-expanded="false" data-text-for-hide="Skryť jazykové menu" data-text-for-show="Rozbaliť jazykové menu">
+              {{ currentLanguage.text if currentLanguage else 'Slovenčina'}}
+              <div class="idsk-header-web__link-arrow"></div>
+            </button>
+            <ul class="idsk-header-web__brand-language-list">
+              {% for language in brand.languages | sort(attribute='text') %}
+                <li class="idsk-header-web__brand-language-list-item">
+                  <a class="govuk-link idsk-header-web__brand-language-list-item-link {{ 'idsk-header-web__brand-language-list-item-link--selected' if language.selected }}"
+                    title="{{ language.text }}"
+                    href="{{ language.link }}">
+                    {{ language.text }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
       </div>
     </div>
   </div>
@@ -181,8 +182,8 @@
           <a href="/" title="Odkaz na úvodnú stránku">
             {% if params.headerType == 'website' or params.headerType == 'projectWebsite' %}
               {% if main.logoSrc %}
-                <img src="{{ main.logoSrc }}" 
-                alt="{{ main.logoAlt if main.logoAlt else 'Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky' }}" 
+                <img src="{{ main.logoSrc }}"
+                alt="{{ main.logoAlt if main.logoAlt else 'Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky' }}"
                 class="idsk-header-web__main-headline-logo">
               {% endif %}
               {% if main.title %}
@@ -213,7 +214,7 @@
             <button class="idsk-button idsk-header-web__main-headline-menu-button idsk-header-web__main-headline-menu-button-service"
             aria-label="Rozbaliť menu" aria-expanded="false" data-text-for-show="Rozbaliť menu" data-text-for-hide="Skryť menu">
               <img src="/assets/images/header-web/profile.svg" alt="Electronic service menu icon">
-              <div class="idsk-header-web__menu-close"></div> 
+              <div class="idsk-header-web__menu-close"></div>
             </button>
           {% endif %}
         </div>
@@ -258,7 +259,7 @@
                       <div class="idsk-header-web__link-arrow-mobile"></div>
                     {% endif %}
                   </a>
-                  {% if item.submenu and (item.submenu | length < 6) %} 
+                  {% if item.submenu and (item.submenu | length < 6) %}
                     <div class="idsk-header-web__nav-submenulite">
                       <ul class="idsk-header-web__nav-submenulite-list" aria-label="Vnútorná navigácia">
                         {% for subItem in item.submenu %}
