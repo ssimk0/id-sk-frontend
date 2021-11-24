@@ -33,7 +33,7 @@
               {% else %}
                 <button class="idsk-header-web__brand-gestor-button" aria-label="Zobraziť informácie o stránke" aria-expanded="false" data-text-for-hide="Skryť informácie o stránke" data-text-for-show="Zobraziť informácie o stránke">
                   slovenského e-govermentu
-                  <div class="idsk-header-web__link-arrow"></div>
+                  <span class="idsk-header-web__link-arrow"></span>
                 </button>
               {% endif %}
             </span>
@@ -47,7 +47,7 @@
               {% else %}
                 <button class="idsk-header-web__brand-gestor-button" aria-label="Zobraziť informácie o stránke" aria-expanded="false" data-text-for-hide="Skryť informácie o stránke" data-text-for-show="Zobraziť informácie o stránke">
                   e-gov
-                  <div class="idsk-header-web__link-arrow"></div>
+                  <span class="idsk-header-web__link-arrow"></span>
                 </button>
               {% endif %}
             </span>
@@ -120,7 +120,7 @@
           <span class="govuk-body-s idsk-header-web__main--login-action-text-user-name">
             {{ main.loginButton.loggedIn.userName if main.loginButton.loggedIn.userName else 'Ing. Jožko Veľký M.A' }}
           </span>
-          <div>
+          <div class="govuk-!-margin-bottom-1">
             <a class="govuk-link idsk-header-web__main--login-action-text-logout idsk-header-web__main--login-logoutbtn" href="#" title="odhlásiť">
               {{ main.loginButton.logoutText if main.loginButton.logoutText else 'Odhlásiť' }}
             </a>
@@ -317,14 +317,14 @@
     <div class="govuk-width-container">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
-          <span class="govuk-body-s idsk-header-web__banner-title">
+          <div class="govuk-body-s idsk-header-web__banner-title">
             {% if banner.warning %}
               <div class="idsk-header-web__warning-icon"></div>
             {% endif %}
             {{ banner.text if banner.text else 'It was popularised in the 1960s with the release of Letraset' }}
-          </span>
+          </div>
           {% if (banner.closeBtn | dump | length === 0) or banner.closeBtn == true %}
-            <button class="idsk-header-web__banner-close" aria-label="Zavrieť banner"><div class="idsk-header-web__menu-close"></div></button>
+            <button class="idsk-header-web__banner-close" aria-label="Zavrieť banner"><span class="idsk-header-web__menu-close"></span></button>
           {% endif %}
         </div>
       </div>

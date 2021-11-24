@@ -15,9 +15,6 @@
 
   .idsk-header-web {
     z-index: 9999;
-    max-height: 100vh;
-    overflow: auto;
-
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
 
     &__flag {
@@ -92,6 +89,8 @@
       position: sticky;
       top: 0;
       left: 0;
+      max-height: 100vh;
+      overflow: auto;
     }
   }
 
@@ -133,10 +132,10 @@
     &-gestor {
       float: left;
 
-    .govuk-width-container {
-      position: absolute;
-      width: 100vw;
-    }
+      .govuk-width-container {
+        position: absolute;
+        width: 100vw;
+      }
 
       .govuk-body-s {
         display: inline-block;
@@ -192,7 +191,6 @@
         &:active {
           @include govuk-focused-text;
           text-decoration: underline;
-          box-shadow: none;
 
           .idsk-header-web__link-arrow {
             background-color: govuk-colour("black");
@@ -335,7 +333,6 @@
         &:focus {
           @include govuk-focused-text;
           text-decoration: underline;
-          box-shadow: none;
 
           .idsk-header-web__link-arrow {
             background-color: govuk-colour("black");
@@ -373,10 +370,6 @@
 
           &:hover {
             text-decoration: underline;
-          }
-          &:focus,
-          &:active {
-            box-shadow: none;
           }
         }
       }
@@ -753,7 +746,6 @@
           white-space: nowrap;
           text-decoration: none;
           color: govuk-colour("black");
-          box-shadow: none;
           display: inline-block;
 
           .idsk-header-web__link-arrow-mobile {
@@ -778,7 +770,6 @@
           &:focus,
           &:active {
             @include govuk-focused-text;
-            box-shadow: none;
           }
 
           &:hover {
@@ -982,7 +973,6 @@
 
             &:focus,
             &:active {
-              box-shadow: none;
               color: govuk-colour("black");
             }
           }
@@ -1061,7 +1051,6 @@
           &:focus,
           &:active {
             @include govuk-focused-text;
-            box-shadow: none;
           }
 
           &:hover {
