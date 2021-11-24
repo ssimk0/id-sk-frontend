@@ -162,8 +162,9 @@
 {% if params.search and params.headerType !== "electronicService" %}
   <form class="idsk-header-web__main-action-search">
     <input class="govuk-input govuk-!-display-inline-block" id="idsk-header-web__main-action-search-input" name="search"
-      placeholder="{{ params.search.placeHolder if params.search.placeHolder else 'Zadajte hľadaný výraz' }}" type="search"
-      role="combobox" aria-describedby="input-width-30-hint" aria-label="Zadajte hľadaný výraz" />
+      placeholder="{{ params.search.placeHolder if params.search.placeHolder else 'Zadajte hľadaný výraz' }}" 
+      title="{{ params.search.placeHolder if params.search.placeHolder else 'Zadajte hľadaný výraz' }}" type="search"
+      aria-describedby="input-width-30-hint" aria-label="{{ params.search.placeHolder if params.search.placeHolder else 'Zadajte hľadaný výraz' }}" />
     <button type="submit" class="govuk-button" data-module="govuk-button">
       <span class="govuk-visually-hidden">{{ params.search.button if params.search.button else "Vyhľadať" }}</span>
       <i aria-hidden="true" class="fas fa-search"></i>
