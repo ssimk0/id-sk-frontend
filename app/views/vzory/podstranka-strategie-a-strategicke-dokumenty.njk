@@ -1,6 +1,6 @@
 {% extends "layout.njk" %}
 {% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
-{% from "../../../src/idsk/components/header-extended/macro.njk" import idskHeaderExtended %}
+{% from "../../../src/idsk/components/header-web/macro.njk" import idskHeaderWeb %}
 {% from "../../../src/idsk/components/crossroad/macro.njk" import idskCrossroad %}
 {% from "accordion/macro.njk" import govukAccordion %}
 {% from "../../../src/idsk/components/footer-extended/macro.njk" import idskFooterExtended %}
@@ -26,76 +26,56 @@
 {% endblock %}
 
 {% block header %}
-  {{ idskHeaderExtended({
-    logo: "logo-mirri-farebne.svg",
-    logoSmall: "logo-mirri-small-farebne.svg",
-    logoWhite: "logo-mirri-biele.svg",
-    logoSmallWhite: "logo-mirri-small-biele.svg",
-    logoGrid: "govuk-grid-column-one-third",
-    navigation: [
+  {{ idskHeaderWeb({
+    headerType: "website",
+    search: true,
+    brand: {
+      gestor: true,
+      languages: [
         {
-            link: '#1',
-            text: 'Zdroje financovania'
+          text: "Slovenčina",
+          selected: true,
+          link: "#1"
         },
         {
-            link: '#2',
-            text: 'Investície',
-            active: true
+          text: "English",
+          link: "#2"
         },
         {
-            link: '#3',
-            text: 'Informatizácia'
-        },
-        {
-            link: '#4',
-            text: 'Regionálny rozvoj'
-        },
-        {
-            link: '#5',
-            text: 'Eurofondy'
+          text: "German",
+          link: "#3"
         }
-    ],
-    language: {
-        current: {
-            text: "slovenčina",
-            flag: "slovakia-flag-icon-16.png"
-        },
-        choices: [
-            {
-                flag: "united-states-of-america-flag-icon-16.png",
-                text: "english",
-                link: "#"
-            },
-            {
-                flag: "germany-flag-icon-16.png",
-                text: "german",
-                link: "#"
-            }
-        ]
+      ]
     },
-    socials: [
+    main: {
+      logoSrc: "/public/assets/images/header-web/logo-mirri-farebne.svg",
+      logoAlt: "ID-SK Frontend"
+    },
+    navBar: {
+      navigation: [
         {
-            icon: "fab fa-instagram",
-            link: "#",
-            text: "Instagram"
+          text: "Eurofondy",
+          link: "#1"
         },
         {
-            icon: "fab fa-linkedin-in",
-            link: "#",
-            text: "Linkedin"
+          text: "Regionálny rozvoj",
+          link: "#2"
         },
         {
-            icon: "fab fa-facebook-f",
-            link: "#",
-            text: "Facebook"
+          text: "Informatizácia",
+          link: "#3"
         },
         {
-            icon: "fab fa-twitter",
-            link: "#",
-            text: "Twitter"
+          text: "Investície",
+          link: "#4"
+        },
+        {
+          text: "Inovácie",
+          link: "#5"
         }
-    ]    
-}) }}
+      ]
+    }
+  }) }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -151,7 +131,7 @@
         }) }}
       </div>
     </div>
-    
+
     <hr class="idsk-hr-separator govuk-!-margin-bottom-6">
 
     <h2 class="govuk-heading-l">eGovernment na Slovensku</h2>
@@ -377,37 +357,37 @@
       title: "Eurofondy",
       leftItems: [
         {
-          name:"O eurofondoch", 
-          href:"#"  
-        },
-        {
-          name:"Link small Regular 13/20", 
+          name:"O eurofondoch",
           href:"#"
         },
         {
-          name:"Link small Regular 14/20", 
+          name:"Link small Regular 13/20",
           href:"#"
         },
         {
-          name:"Link small Regular 15/20", 
+          name:"Link small Regular 14/20",
+          href:"#"
+        },
+        {
+          name:"Link small Regular 15/20",
           href:"#"
         }
       ],
       rightItems: [
         {
-          name:"Link small Regular 16/20", 
-          href:"#"  
-        },
-        {
-          name:"Link small Regular 17/20", 
+          name:"Link small Regular 16/20",
           href:"#"
         },
         {
-          name:"Link small Regular 18/20", 
+          name:"Link small Regular 17/20",
           href:"#"
         },
         {
-          name:"Link small Regular 19/20", 
+          name:"Link small Regular 18/20",
+          href:"#"
+        },
+        {
+          name:"Link small Regular 19/20",
           href:"#"
         }
       ]
@@ -417,59 +397,59 @@
       title: "Regionálny rozvoj",
       items: [
         {
-          name:"Link small Regular 20/20", 
-          href:"#"  
-        },
-        {
-          name:"Link small Regular 21/20", 
+          name:"Link small Regular 20/20",
           href:"#"
         },
         {
-          name:"Link small Regular 22/20", 
+          name:"Link small Regular 21/20",
           href:"#"
         },
         {
-          name:"Link small Regular 23/20", 
+          name:"Link small Regular 22/20",
+          href:"#"
+        },
+        {
+          name:"Link small Regular 23/20",
           href:"#"
         }
       ]
     },
-        
+
     thirdColumn: {
       title: "Informatizácia",
       leftItems: [
         {
-          name:"Link small Regular 12/20", 
-          href:"#"  
-        },
-        {
-          name:"Link small Regular 13/20", 
+          name:"Link small Regular 12/20",
           href:"#"
         },
         {
-          name:"Link small Regular 14/20", 
+          name:"Link small Regular 13/20",
           href:"#"
         },
         {
-          name:"Link small Regular 15/20", 
+          name:"Link small Regular 14/20",
+          href:"#"
+        },
+        {
+          name:"Link small Regular 15/20",
           href:"#"
         }
       ],
       rightItems: [
         {
-          name:"Link small Regular 16/20", 
-          href:"#"  
-        },
-        {
-          name:"Link small Regular 17/20", 
+          name:"Link small Regular 16/20",
           href:"#"
         },
         {
-          name:"Link small Regular 18/20", 
+          name:"Link small Regular 17/20",
           href:"#"
         },
         {
-          name:"Link small Regular 19/20", 
+          name:"Link small Regular 18/20",
+          href:"#"
+        },
+        {
+          name:"Link small Regular 19/20",
           href:"#"
         }
       ]
@@ -479,19 +459,19 @@
       title: "Investície",
       items: [
         {
-          name:"Link small Regular 28/20", 
-          href:"#"  
-        },
-        {
-          name:"Link small Regular 29/20", 
+          name:"Link small Regular 28/20",
           href:"#"
         },
         {
-          name:"Link small Regular 30/20", 
+          name:"Link small Regular 29/20",
           href:"#"
         },
         {
-          name:"Link small Regular 31/20", 
+          name:"Link small Regular 30/20",
+          href:"#"
+        },
+        {
+          name:"Link small Regular 31/20",
           href:"#"
         }
       ]
@@ -499,17 +479,17 @@
 
     subtitles: [
       {
-        item:"Pomoc", 
+        item:"Pomoc",
         href:"#"
-      }, 
+      },
       {
         item:"Cookies",
         href:"#"
-      }, 
+      },
       {
         item:"Kontakty",
         href:"#"
-      }, 
+      },
       {
         item:"Mapa Stránky",
         href:"#"
@@ -517,13 +497,13 @@
     ],
     dropdownItems: [
       {
-        text:"Gramatická chyba", 
+        text:"Gramatická chyba",
         value:"#"
       },
       {
         text:"chyba zobrazovania",
         value:"#"
-      }, 
+      },
       {
         text:"chyba obsahu",
         value:"#"

@@ -14,6 +14,10 @@
     .govuk-input:focus, .govuk-select:focus {
       outline-offset: -3px;
       box-shadow: inset 0 0 0 3px;
+      @supports (-moz-appearance:none) {
+        outline-offset: -2px;
+        box-shadow: inset 0 .5px 0 3px;
+      }
     }
 
     .govuk-link {
@@ -111,7 +115,7 @@
       @include govuk-media-query($until: tablet) {
         padding-top: govuk-spacing(3);
       }
-      
+
       padding-bottom: govuk-spacing(4);
       transition: .4s;
 

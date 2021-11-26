@@ -82,7 +82,7 @@ params:
         description: Allows you to use alt text for logo
       - name: title
         type: string
-        required: true
+        required: false
         description: Header title text
       - name: menuBtnText
         type: string

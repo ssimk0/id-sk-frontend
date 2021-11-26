@@ -526,9 +526,15 @@
     }
 
     .idsk-footer-extended-up-button-div {
-        height: 45px;
+        height: 40px;
         width: 100%;
         background-color: govuk-colour("white");
+        @include govuk-media-query($from: tablet) {
+            height: 45px;
+            @supports (-moz-appearance:none) {
+                height: 44px;
+            }
+        }
     }
 
     .idsk-footer-extended-up-button-a {
