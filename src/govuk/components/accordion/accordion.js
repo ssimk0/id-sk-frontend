@@ -18,6 +18,7 @@ import '../../vendor/polyfills/Function/prototype/bind'
 import '../../vendor/polyfills/Element/prototype/classList'
 
 function Accordion ($module) {
+  console.log("Govuk acordeon")
   this.$module = $module
   this.moduleId = $module.getAttribute('id')
   this.$sections = $module.querySelectorAll('.govuk-accordion__section')

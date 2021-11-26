@@ -3,7 +3,7 @@ const gulp = require('gulp')
 const paths = require('../../config/paths.json')
 
 gulp.task('sassdoc', function () {
-  return gulp.src([paths.src + '**/**/*.scss', paths.idsk_src + '**/**/*.scss', `!${paths.src}/vendor/*`])
+  return gulp.src([paths.src + '**/**/*.scss', paths.govuk_src + '**/**/*.scss', `!${paths.src}/vendor/*`])
     .pipe(sassdoc({
       dest: paths.sassdoc,
       groups: {

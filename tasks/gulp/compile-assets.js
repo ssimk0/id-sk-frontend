@@ -34,7 +34,7 @@ const destinationPath = function () {
   if (taskArguments.destination === 'dist' || taskArguments.destination === 'public') {
     return taskArguments.destination
   } else {
-    return `${taskArguments.destination}/idsk/`
+    return `${taskArguments.destination}/govuk/`
   }
 }
 
@@ -47,8 +47,8 @@ const errorHandler = function (error) {
   this.emit('end')
 }
 // different entry points for both streams below and depending on destination flag
-const compileStyleshet = isDist ? configPaths.idsk_src + 'all.scss' : configPaths.app + 'assets/scss/app.scss'
-const compileOldIeStyleshet = isDist ? configPaths.idsk_src + 'all-ie8.scss' : configPaths.app + 'assets/scss/app-ie8.scss'
+const compileStyleshet = isDist ? configPaths.govuk_src + 'all.scss' : configPaths.app + 'assets/scss/app.scss'
+const compileOldIeStyleshet = isDist ? configPaths.govuk_src + 'all-ie8.scss' : configPaths.app + 'assets/scss/app-ie8.scss'
 
 gulp.task('scss:compile', () => {
   const compile = gulp.src(compileStyleshet)
@@ -151,11 +151,11 @@ gulp.task('scss:compile', () => {
 // --------------------------------------
 gulp.task('js:compile', () => {
   // for dist/ folder we only want compiled 'all.js' file
-  const srcFiles = isDist ? configPaths.idsk_src + 'all.js' : configPaths.idsk_src + '**/*.js'
+  const srcFiles = isDist ? configPaths.govuk_src + 'all.js' : configPaths.govuk_src + '**/*.js'
 
   return gulp.src([
     srcFiles,
-    '!' + configPaths.idsk_src + '**/*.test.js'
+    '!' + configPaths.govuk_src + '**/*.test.js'
   ])
     .pipe(rollup({
       // Used to set the `window` global and UMD/AMD export name.

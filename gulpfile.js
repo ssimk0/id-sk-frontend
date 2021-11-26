@@ -27,7 +27,6 @@ gulp.task('scripts', gulp.series(
 // Runs js lint and compilation
 // --------------------------------------
 gulp.task('styles', gulp.series(
-  'scss:lint',
   'scss:compile'
 ))
 
@@ -35,7 +34,7 @@ gulp.task('styles', gulp.series(
 // Copies assets to taskArguments.destination (public)
 // --------------------------------------
 gulp.task('copy:assets', () => {
-  return gulp.src(paths.idsk_src + 'assets/**/*')
+  return gulp.src(paths.govuk_src + 'assets/**/*')
     .pipe(gulp.dest(taskArguments.destination + '/assets/'))
 })
 
@@ -51,7 +50,6 @@ gulp.task('copy:appAssets', () => {
 // Runs js, scss and accessibility tests
 // --------------------------------------
 gulp.task('test', gulp.series(
-  'scss:lint',
   'scss:compile'
 ))
 

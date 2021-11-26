@@ -20,9 +20,9 @@ const appViews = [
   configPaths.examples,
   configPaths.fullPageExamples,
   configPaths.components,
-  configPaths.idsk_components,
+  configPaths.govuk_components,
   configPaths.src,
-  configPaths.idsk_src,
+  configPaths.govuk_src,
   configPaths.node_modules,
 
   configPaths.uvod,
@@ -45,7 +45,7 @@ module.exports = (options) => {
 
   // make the function available as a filter for all templates
   env.addFilter('componentNameToMacroName', helperFunctions.componentNameToMacroName)
-  env.addFilter('idskComponentNameToMacroName', helperFunctions.idskComponentNameToMacroName)
+  env.addFilter('govukComponentNameToMacroName', helperFunctions.govukComponentNameToMacroName)
   env.addGlobal('markdown', require('marked'))
 
   // Set view engine
@@ -75,7 +75,7 @@ module.exports = (options) => {
   app.use('/vendor/govuk_frontend_toolkit/', express.static('node_modules/govuk_frontend_toolkit/javascripts/govuk/'))
   app.use('/vendor/jquery/', express.static('node_modules/jquery/dist'))
 
-  app.use('/assets', express.static(path.join(configPaths.src, 'assets')))
+  app.use('/assets', express.static(path.join(configPaths.govuk_src, 'assets')))
 
   // Turn form POSTs into data that can be used for validation.
   app.use(bodyParser.urlencoded({ extended: true }))
@@ -99,7 +99,7 @@ module.exports = (options) => {
   // Index page - render the component list template
   app.get('/', async function (req, res) {
     const components = fileHelper.allComponents
-    const idskComponents = fileHelper.allIdskComponents
+    const govukComponents = fileHelper.allGovukComponents
     const examples = await readdir(path.resolve(configPaths.examples))
     const fullPageExamples = fileHelper.fullPageExamples()
     const idskItroductionContent = idskContentStructure.introduction
@@ -109,7 +109,7 @@ module.exports = (options) => {
 
     res.render('index', {
       componentsDirectory: components,
-      idskComponentsDirectory: idskComponents,
+      govukComponentsDirectory: govukComponents,
       examplesDirectory: examples,
       fullPageExamples: fullPageExamples,
       idskItroductionContent: idskItroductionContent,
@@ -129,7 +129,7 @@ module.exports = (options) => {
   // Whenever the route includes a :component parameter, read the component data
   // from its YAML file
   app.param('custom_component', function (req, res, next, componentName) {
-    res.locals.idskComponentData = fileHelper.getIdskComponentData(componentName)
+    res.locals.idskComponentData = fileHelper.getGovukComponentData(componentName)
     next()
   })
 
@@ -235,11 +235,11 @@ module.exports = (options) => {
     }
 
     // Construct and evaluate the component with the data for this example
-    const macroName = helperFunctions.idskComponentNameToMacroName(componentName)
+    const macroName = helperFunctions.govukComponentNameToMacroName(componentName)
     const macroParameters = JSON.stringify(exampleConfig.data, null, '\t')
 
     res.locals.componentView = env.renderString(
-      `{% from '../../idsk/components/${componentName}/macro.njk' import ${macroName} %}
+      `{% from '../../govuk/components/${componentName}/macro.njk' import ${macroName} %}
       {{ ${macroName}(${macroParameters}) }}`
     )
 

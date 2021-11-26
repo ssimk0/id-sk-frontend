@@ -1,3 +1,4 @@
+console.log("IDSK js lets go")
 import { nodeListForEach } from "./common";
 import { initAll as initAllGOVUKjs } from "../govuk/all";
 import Button from "./components/button/button";
@@ -21,6 +22,7 @@ import Tabs from './components/tabs/tabs';
 import Table from './components/table/table';
 
 function initAll(options) {
+  console.log("initosIDSK")
   // Set the options to an empty object by default if no options are passed.
   options = typeof options !== "undefined" ? options : {};
 
@@ -120,7 +122,7 @@ function initAll(options) {
   nodeListForEach($tables, function ($table){
     new Table($table).init();
   })
-    
+
   var $tableFilter = scope.querySelectorAll('[data-module="idsk-table-filter"]');
   nodeListForEach($tableFilter, function ($tableFilter) {
     new TableFilter($tableFilter).init();

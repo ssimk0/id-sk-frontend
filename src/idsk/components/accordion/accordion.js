@@ -17,6 +17,7 @@ import '../../../govuk/vendor/polyfills/Function/prototype/bind'
 import '../../../govuk/vendor/polyfills/Element/prototype/classList'
 
 function Accordion ($module) {
+  console.log("accordeon started")
   this.$module = $module
   this.moduleId = $module.getAttribute('id')
   this.$sections = $module.querySelectorAll('.govuk-accordion__section')

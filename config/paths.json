@@ -13,10 +13,10 @@
   "package": "package/",
   "public": "public/",
   "sassdoc": "sassdoc/",
-  "src": "src/govuk/",
-    "idsk_src": "src/idsk/",
-    "components": "src/govuk/components/",
-    "idsk_components": "src/idsk/components/",
+  "src": "src/idsk/",
+    "govuk_src": "src/govuk/",
+    "components": "src/idsk/components/",
+    "govuk_components": "src/govuk/components/",
   "ports": {
     "app": 3000,
     "test": 8888
