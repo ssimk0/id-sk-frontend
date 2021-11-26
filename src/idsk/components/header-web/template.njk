@@ -203,7 +203,7 @@
               <div class="idsk-header-web__menu-open"></div>
               <div class="idsk-header-web__menu-close"></div>
             </button>
-          {% elif  params.headerType !== 'electronicService' %}
+          {% elif  params.headerType !== 'electronicService' and params.search %}
             <button class="idsk-button idsk-header-web__main-headline-menu-button" aria-label="Rozbaliť menu" aria-expanded="false"
             data-text-for-show="Rozbaliť menu" data-text-for-hide="Skryť menu">
               {{ main.menuBtnText if main.menuBtnText else 'Hľadaj' }}
