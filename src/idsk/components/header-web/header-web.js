@@ -41,16 +41,6 @@ HeaderWeb.prototype.init = function () {
 
       // close language list if user back tabbing
       $toggleLanguageSwitcher.addEventListener('keydown', this.handleBackTabbing.bind(this));
-
-
-      // close language list on esc button
-      nodeListForEach($module.querySelectorAll('.idsk-header-web__brand-language-list, .idsk-header-web__brand-language-button'), function ($node) {
-        $node.addEventListener('keydown', function (e) {
-          if (e.keyCode === 27) {
-            this.hideLanguagesList(this)
-          }
-        }.bind(this))
-      }.bind(this))
     }
 
     $module.boundCheckBlurLanguageSwitcherClick = this.checkBlurLanguageSwitcherClick.bind(this);
@@ -97,24 +87,6 @@ HeaderWeb.prototype.init = function () {
     var $closeButton = e.target || e.srcElement;
     var $banner = $closeButton.closest('.idsk-header-web__banner');
     $banner.classList.add('idsk-header-web__banner--hide');
-}
-
-/**
- * Handle open/hide language switcher
- * @param {object} e
- */
-HeaderWeb.prototype.handleLanguageSwitcherClick = function (e) {
-    var $toggleButton = e.target || e.srcElement;
-    this.$activeSearch = $toggleButton.closest('.idsk-header-web__brand-language');
-    toggleClass(this.$activeSearch, 'idsk-header-web__brand-language--active');
-    if(this.$activeSearch.classList.contains('idsk-header-web__brand-language--active')){
-        this.$activeSearch.firstElementChild.setAttribute('aria-expanded', 'true')
-        this.$activeSearch.firstElementChild.setAttribute('aria-label',  this.$activeSearch.firstElementChild.getAttribute('data-text-for-hide'))
-    } else {
-        this.$activeSearch.firstElementChild.setAttribute('aria-expanded', 'false')
-        this.$activeSearch.firstElementChild.setAttribute('aria-label',  this.$activeSearch.firstElementChild.getAttribute('data-text-for-show'))
-    }
-    document.addEventListener('click', this.$module.boundCheckBlurLanguageSwitcherClick, true);
 }
 
 /**
