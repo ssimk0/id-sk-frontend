@@ -151,11 +151,11 @@ gulp.task('scss:compile', () => {
 // --------------------------------------
 gulp.task('js:compile', () => {
   // for dist/ folder we only want compiled 'all.js' file
-  const srcFiles = isDist ? configPaths.govuk_src + 'all.js' : configPaths.govuk_src + '**/*.js'
+  const srcFiles = isDist ? configPaths.src + 'all.js' : configPaths.src + '**/*.js'
 
   return gulp.src([
     srcFiles,
-    '!' + configPaths.govuk_src + '**/*.test.js'
+    '!' + configPaths.src + '**/*.test.js'
   ])
     .pipe(rollup({
       // Used to set the `window` global and UMD/AMD export name.

@@ -32,14 +32,14 @@
       ID-SK
     </h1>
 
-    {% if idskComponentData.description %}
+    {% if componentData.description %}
       <div class="govuk-inset-text">
-        {{ idskComponentData.description | safe }}
+        {{ componentData.description | safe }}
       </div>
     {% endif %}
   </div>
 
   {% block examples %}
-    {{ showCustomExamples(componentName, componentNameHuman, idskComponentData, legacyQuery) }}
+    {{ showCustomExamples(componentName, componentNameHuman, componentData, legacyQuery) }}
   {% endblock %}
 {% endblock %}

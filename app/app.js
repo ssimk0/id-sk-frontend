@@ -13,6 +13,7 @@ const fileHelper = require('../lib/file-helper')
 const configPaths = require('../config/paths.json')
 const idskContentStructure = require('../config/idskContentStructure.json')
 
+
 // Set up views
 const appViews = [
   configPaths.layouts,
@@ -122,14 +123,14 @@ module.exports = (options) => {
   // Whenever the route includes a :component parameter, read the component data
   // from its YAML file
   app.param('component', function (req, res, next, componentName) {
-    res.locals.componentData = fileHelper.getComponentData(componentName)
+    res.locals.govukComponentData = fileHelper.getGovukComponentData(componentName)
     next()
   })
 
   // Whenever the route includes a :component parameter, read the component data
   // from its YAML file
   app.param('custom_component', function (req, res, next, componentName) {
-    res.locals.idskComponentData = fileHelper.getGovukComponentData(componentName)
+    res.locals.componentData = fileHelper.getComponentData(componentName)
     next()
   })
 
@@ -190,43 +191,9 @@ module.exports = (options) => {
     const componentName = req.params.component
     const requestedExampleName = req.params.example || 'default'
 
-    const previewLayout = res.locals.componentData.previewLayout || 'layout'
+    const previewLayout = res.locals.govukComponentData.previewLayout || 'layout'
 
-    const exampleConfig = res.locals.componentData.examples.find(
-      example => example.name.replace(/ /g, '-') === requestedExampleName
-    )
-
-    if (!exampleConfig) {
-      next()
-    }
-
-    // Construct and evaluate the component with the data for this example
-    const macroName = helperFunctions.componentNameToMacroName(componentName)
-    const macroParameters = JSON.stringify(exampleConfig.data, null, '\t')
-
-    res.locals.componentView = env.renderString(
-      `{% from '${componentName}/macro.njk' import ${macroName} %}
-      {{ ${macroName}(${macroParameters}) }}`
-    )
-
-    let bodyClasses = ''
-    if (req.query.iframe) {
-      bodyClasses = 'app-iframe-in-component-preview'
-    }
-
-    res.render('component-preview', { bodyClasses, previewLayout })
-  })
-
-  // Component example preview
-  app.get('/custom-components/:custom_component/:example*?/preview', function (req, res, next) {
-    // Find the data for the specified example (or the default example)
-
-    const componentName = req.params.custom_component
-    const requestedExampleName = req.params.example || 'default'
-
-    const previewLayout = res.locals.idskComponentData.previewLayout || 'layout'
-
-    const exampleConfig = res.locals.idskComponentData.examples.find(
+    const exampleConfig = res.locals.govukComponentData.examples.find(
       example => example.name.replace(/ /g, '-') === requestedExampleName
     )
 
@@ -251,10 +218,47 @@ module.exports = (options) => {
     res.render('component-preview', { bodyClasses, previewLayout })
   })
 
+  // Component example preview
+  app.get('/custom-components/:custom_component/:example*?/preview', function (req, res, next) {
+    // Find the data for the specified example (or the default example)
+
+    const componentName = req.params.custom_component
+    const requestedExampleName = req.params.example || 'default'
+
+    const previewLayout = res.locals.componentData.previewLayout || 'layout'
+
+    console.log(res.locals.componentData)
+
+    const exampleConfig = res.locals.componentData.examples.find(
+      example => example.name.replace(/ /g, '-') === requestedExampleName
+    )
+
+    if (!exampleConfig) {
+      next()
+    }
+
+    // Construct and evaluate the component with the data for this example
+    const macroName = helperFunctions.componentNameToMacroName(componentName)
+    const macroParameters = JSON.stringify(exampleConfig.data, null, '\t')
+
+    res.locals.componentView = env.renderString(
+      `{% from '../../idsk/components/${componentName}/macro.njk' import ${macroName} %}
+      {{ ${macroName}(${macroParameters}) }}`
+    )
+
+    let bodyClasses = ''
+    if (req.query.iframe) {
+      bodyClasses = 'app-iframe-in-component-preview'
+    }
+
+    res.render('component-preview', { bodyClasses, previewLayout })
+  })
+
   // Example view
   app.get('/examples/:example/:action?', function (req, res, next) {
     // Passing a random number used for the links so that they will be unique and not display as "visited"
     const randomPageHash = (Math.random() * 1000000).toFixed()
+    console.log(`${req.params.example}/${req.params.action || 'index'}`)
     res.render(`${req.params.example}/${req.params.action || 'index'}`, { randomPageHash }, function (error, html) {
       if (error) {
         next(error)
@@ -264,7 +268,7 @@ module.exports = (options) => {
     })
   })
 
-  // Example view
+  // Example view of full page
   app.get('/full-page-examples/:example/:action?', function (req, res, next) {
     // Passing a random number used for the links so that they will be unique and not display as "visited"
     const randomPageHash = (Math.random() * 1000000).toFixed()

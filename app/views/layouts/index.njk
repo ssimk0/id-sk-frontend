@@ -58,7 +58,7 @@
 
     {% set govukComponents %}
       <ul class="govuk-list" lang="sk">
-        {% for componentName in componentsDirectory | sort %}
+        {% for componentName in govukComponentsDirectory | sort %}
           {% if componentName != 'idsk' and componentName != 'custom' %}
             <li><a href="/components/{{ componentName }}" class="govuk-link">{{ componentName | replace("-", " ") | capitalize }}</a></li>
           {% endif %}
@@ -211,7 +211,7 @@
         }
       ]
     }) }}
-  
+
     </div>
   </div>
 {% endblock %}
