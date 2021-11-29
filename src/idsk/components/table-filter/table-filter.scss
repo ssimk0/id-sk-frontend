@@ -13,7 +13,7 @@
 
     .govuk-input:focus, .govuk-select:focus {
       outline: none;
-      border-color: govuk-colour("yellow");
+      border-color: $govuk-focus-colour;
       border-width: $govuk-focus-width;
       padding-left: calc(#{govuk-spacing(1)} - 1px);
       box-shadow: inset 0 0 0 $govuk-border-width-form-element $govuk-input-border-colour;
