@@ -12,12 +12,11 @@
     }
 
     .govuk-input:focus, .govuk-select:focus {
-      outline-offset: -3px;
-      box-shadow: inset 0 0 0 3px;
-      @supports (-moz-appearance:none) {
-        outline-offset: -2px;
-        box-shadow: inset 0 .5px 0 3px;
-      }
+      outline: none;
+      border-color: $govuk-focus-colour;
+      border-width: $govuk-focus-width;
+      padding-left: calc(#{govuk-spacing(1)} - 1px);
+      box-shadow: inset 0 0 0 $govuk-border-width-form-element $govuk-input-border-colour;
     }
 
     .govuk-link {
