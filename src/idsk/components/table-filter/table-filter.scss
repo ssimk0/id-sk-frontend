@@ -16,7 +16,7 @@
       border-color: $govuk-focus-colour;
       border-width: $govuk-focus-width;
       padding-left: calc(#{govuk-spacing(1)} - 1px);
-      box-shadow: inset 0 0 0 $govuk-border-width-form-element $govuk-input-border-colour;
+      box-shadow: inset 0 0 0 calc(#{$govuk-border-width-form-element} + 1px) $govuk-input-border-colour;
     }
 
     .govuk-link {
