@@ -239,24 +239,24 @@ Predvolené cesty pre assety sú `assets/images` a `assets/fonts`. **Ak majú va
 
 Ak chcete použiť iné cesty assetov, vykonajte tiež nasledovné kroky:
 
-1. Nastavte `$govuk-assets-path, $govuk-images-path` a `$govuk-fonts-path` do vášho projektového Sass súboru tak, aby odkazoval na príslušné adresáre v projekte (prepíše sa tým predvolené nastavenie v /node_modules/govuk-frontend/settings/_assets.scss). Uistite sa, že ste tak urobili pred importovaním govuk-frontend do vášho projektu – pozri [Importing styles](https://github.com/id-sk/id-sk-frontend/blob/master/docs/installation/installing-with-npm.md#importing-styles).
+1. Nastavte `$idsk-assets-path, $idsk-images-path` a `$idsk-fonts-path` do vášho projektového Sass súboru tak, aby odkazoval na príslušné adresáre v projekte (prepíše sa tým predvolené nastavenie v /node_modules/govuk-frontend/settings/_assets.scss). Uistite sa, že ste tak urobili pred importovaním govuk-frontend do vášho projektu – pozri [Importing styles](https://github.com/id-sk/id-sk-frontend/blob/master/docs/installation/installing-with-npm.md#importing-styles).
 
 Príklad 1:
 ``` SCSS
 // Include images from /application/assets/images and fonts from /application/assets/fonts
-$govuk-assets-path: '/application/assets';
+$idsk-assets-path: '/application/assets';
 @import  "govuk-frontend/govuk/all";
 ```
 Príklad 2:
 
 ``` SCSS
 // Include images from /images/govuk-frontend and fonts from /fonts
-$govuk-images-path: "/images/govuk-frontend/";
-$govuk-fonts-path: "/fonts/";
+$idsk-images-path: "/images/govuk-frontend/";
+$idsk-fonts-path: "/fonts/";
 @import  "govuk-frontend/govuk/all";
 ```
 
-2. Nepovinné: Môžete tiež prepísať pomocníkov, ktorí sa používajú na generovanie url adries assetov, napríklad ak používate sass-rails asset-pipeline. Môžete to urobiť nastavením `$govuk-image-url-function` na názov funkcie (funkcií), ktoré chcete použiť. Ďalšie informácie a príklady nájdete na stránke `src/govuk/settings/_assets.scss`.
+2. Nepovinné: Môžete tiež prepísať pomocníkov, ktorí sa používajú na generovanie url adries assetov, napríklad ak používate sass-rails asset-pipeline. Môžete to urobiť nastavením `$idsk-image-url-function` na názov funkcie (funkcií), ktoré chcete použiť. Ďalšie informácie a príklady nájdete na stránke `src/govuk/settings/_assets.scss`.
  
 ## Zahrnutie CSS a JavaScript
 

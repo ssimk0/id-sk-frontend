@@ -18,7 +18,7 @@ $idsk-assets-path: "/assets/" !default;
 /// @type String
 /// @access public
 
-$govuk-images-path: "#{$idsk-assets-path}images/" !default;
+$idsk-images-path: "#{$idsk-assets-path}images/" !default;
 
 /// Path to the fonts folder, with trailing slash.
 ///
@@ -39,7 +39,7 @@ $idsk-fonts-path: "#{$idsk-assets-path}fonts/" !default;
 /// @type String
 ///
 /// @example scss - Rails asset handling
-///   $govuk-image-url-function: 'image-url';
+///   $idsk-image-url-function: 'image-url';
 ///
 /// @example scss - Custom asset handling
 ///
@@ -48,11 +48,11 @@ $idsk-fonts-path: "#{$idsk-assets-path}fonts/" !default;
 ///     @return url('example.jpg');
 ///   }
 ///
-///   $govuk-image-url-function: 'my-url-handler';
+///   $idsk-image-url-function: 'my-url-handler';
 ///
 /// @access public
 
-$govuk-image-url-function: false !default;
+$idsk-image-url-function: false !default;
 
 /// Custom font URL function
 ///
