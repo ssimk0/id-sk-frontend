@@ -62,6 +62,7 @@ module.exports = (options) => {
     next()
   })
 
+  // Set up middleware to serve static assets
   app.use('/public', express.static(configPaths.public))
 
   app.use('/docs', express.static(configPaths.sassdoc))
