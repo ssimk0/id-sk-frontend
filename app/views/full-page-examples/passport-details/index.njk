@@ -13,11 +13,11 @@ scenario: >-
 {# This example is based of the "Passport details" pattern: https://design-system.service.gov.uk/patterns/question-pages/ #}
 {% extends "_generic.njk" %}
 
-{% from "back-link/macro.njk" import govukBackLink %}
-{% from "error-summary/macro.njk" import govukErrorSummary %}
-{% from "input/macro.njk" import govukInput %}
-{% from "date-input/macro.njk" import govukDateInput %}
-{% from "button/macro.njk" import govukButton %}
+{% from "../../../../src/govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "../../../../src/govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "../../../../src/govuk/components/input/macro.njk" import govukInput %}
+{% from "../../../../src/govuk/components/date-input/macro.njk" import govukDateInput %}
+{% from "../../../../src/govuk/components/button/macro.njk" import govukButton %}
 
 {% set pageTitle = "Passport details" %}
 {% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}

@@ -13,9 +13,9 @@ notes: The buttons and links on this page are not functional.
 {# This example is based of the live "Apply online for a UK passport" start page: https://www.gov.uk/apply-renew-passport #}
 {% extends "_generic.njk" %}
 
-{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
-{% from "button/macro.njk" import govukButton %}
-{% from "tabs/macro.njk" import govukTabs %}
+{% from "../../../../src/govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "../../../../src/govuk/components/button/macro.njk" import govukButton %}
+{% from "../../../../src/govuk/components/tabs/macro.njk" import govukTabs %}
 
 {% set pageTitle = "Apply online for a UK passport" %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}

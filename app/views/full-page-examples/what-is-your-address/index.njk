@@ -12,11 +12,11 @@ scenario: >-
 {# This example is based of the  "What is your home address?" example: https://design-system.service.gov.uk/patterns/addresses/multiple/index.html #}
 {% extends "_generic.njk" %}
 
-{% from "back-link/macro.njk" import govukBackLink %}
-{% from "error-summary/macro.njk" import govukErrorSummary %}
-{% from "fieldset/macro.njk" import govukFieldset %}
-{% from "input/macro.njk" import govukInput %}
-{% from "button/macro.njk" import govukButton %}
+{% from "../../../../src/govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "../../../../src/govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "../../../../src/govuk/components/fieldset/macro.njk" import govukFieldset %}
+{% from "../../../../src/govuk/components/input/macro.njk" import govukInput %}
+{% from "../../../../src/govuk/components/button/macro.njk" import govukButton %}
 
 {% set pageTitle = "What is your home address?" %}
 {% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - GOV.UK{% endblock %}

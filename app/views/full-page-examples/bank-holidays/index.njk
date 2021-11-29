@@ -15,10 +15,10 @@ notes: >-
 ---
 {% extends "_generic.njk" %}
 
-{% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
-{% from "tabs/macro.njk" import govukTabs %}
-{% from "panel/macro.njk" import govukPanel %}
-{% from "table/macro.njk" import govukTable %}
+{% from "../../../../src/govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "../../../../src/govuk/components/tabs/macro.njk" import govukTabs %}
+{% from "../../../../src/govuk/components/panel/macro.njk" import govukPanel %}
+{% from "../../../../src/govuk/components/table/macro.njk" import govukTable %}
 
 {% set pageTitle = "UK bank holidays" %}
 {% block pageTitle %}{{ pageTitle }} - GOV.UK{% endblock %}

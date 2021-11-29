@@ -21,12 +21,12 @@ notes: Based on https://www.signin.service.gov.uk/feedback
 ---
 {% extends "_generic.njk" %}
 
-{% from "warning-text/macro.njk" import govukWarningText %}
-{% from "radios/macro.njk" import govukRadios %}
-{% from "input/macro.njk" import govukInput %}
-{% from "character-count/macro.njk" import govukCharacterCount %}
-{% from "button/macro.njk" import govukButton %}
-{% from "error-summary/macro.njk" import govukErrorSummary %}
+{% from "../../../../src/govuk/components/warning-text/macro.njk" import govukWarningText %}
+{% from "../../../../src/govuk/components/radios/macro.njk" import govukRadios %}
+{% from "../../../../src/govuk/components/input/macro.njk" import govukInput %}
+{% from "../../../../src/govuk/components/character-count/macro.njk" import govukCharacterCount %}
+{% from "../../../../src/govuk/components/button/macro.njk" import govukButton %}
+{% from "../../../../src/govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 
 {% set pageTitle = "Send your feedback" %}
 {% block pageTitle %}{{ "Error: " if errors }}{{ pageTitle }} - Verify - GOV.UK{% endblock %}

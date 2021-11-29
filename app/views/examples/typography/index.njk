@@ -1,7 +1,7 @@
 {% extends "layout.njk" %}
 
-{% from "back-link/macro.njk" import govukBackLink %}
-{% from 'table/macro.njk' import govukTable %}
+{% from "../../../../src/govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "../../../../src/govuk/components/table/macro.njk" import govukTable %}
 
 {% block beforeContent %}
   {{ govukBackLink({
