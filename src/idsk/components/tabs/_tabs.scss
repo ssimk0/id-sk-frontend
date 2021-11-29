@@ -36,6 +36,7 @@
     margin: 0;
     padding: 0;
     list-style: none;
+    display: flex;
     @include govuk-responsive-margin(6, "bottom");
 
     @include mq($until: tablet){
@@ -145,7 +146,6 @@
     margin: 0;
     list-style: none;
   }
-  
 
   // JavaScript enabled
   .js-enabled {
@@ -164,13 +164,10 @@
 
       .idsk-tabs__list-item {
         position: relative;
-
         margin-right: govuk-spacing(1);
-        margin-bottom: 0;
+        margin-bottom: govuk-spacing(1);
         margin-left: 0;
         padding: govuk-spacing(2) govuk-spacing(4);
-
-        float: left;
         background-color: govuk-colour("light-grey", $legacy: "grey-4");
         text-align: center;
 

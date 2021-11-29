@@ -18,29 +18,32 @@ HeaderWeb.prototype.init = function () {
         return;
     }
 
-    // chceck for banner
-    var $banner = $module.querySelector('.idsk-header-web__banner');
-    if ($banner) {
-        var $bannerCloseBtn = $banner.querySelector('.idsk-header-web__banner-close');
+    // chceck for close banner button
+    var $bannerCloseBtn = $module.querySelector('.idsk-header-web__banner-close');
+
+    if ($bannerCloseBtn) {
         $bannerCloseBtn.addEventListener('click', this.handleCloseBanner.bind(this));
     }
 
     // check for language switcher
-    var $toggleLanguageSwitcher = $module.querySelector('.idsk-header-web__brand-language-button');
-    this.$toggleLanguageSwitcher = $toggleLanguageSwitcher;
+    this.$languageBtn = $module.querySelector('.idsk-header-web__brand-language-button');
 
-    if ($toggleLanguageSwitcher) {
-      // Handle $toggleLanguageSwitcher click events
-      $toggleLanguageSwitcher.addEventListener('click', this.handleLanguageSwitcherClick.bind(this));
+    if (this.$languageBtn) {
+        // Handle esc button press
+        var $languageSwitcher = $module.querySelector('.idsk-header-web__brand-language');
+        $languageSwitcher.addEventListener('keydown', this.languegeEscPressed.bind(this));
 
-      // close language list if i left the last item from langauge list e.g. if user use tab key for navigations
-      var $lastLanguageItems = $module.querySelectorAll('.idsk-header-web__brand-language-list-item:last-child .idsk-header-web__brand-language-list-item-link');
-      nodeListForEach($lastLanguageItems, function ($lastLanguageItem) {
-        $lastLanguageItem.addEventListener('blur', this.checkBlurLanguageSwitcherClick.bind(this));
-      }.bind(this))
+        // Handle $languageBtn click events
+        this.$languageBtn.addEventListener('click', this.handleLanguageSwitcherClick.bind(this));
 
-      // close language list if user back tabbing
-      $toggleLanguageSwitcher.addEventListener('keydown', this.handleBackTabbing.bind(this));
+        // close language list if i left the last item from langauge list e.g. if user use tab key for navigations
+        var $lastLanguageItems = $module.querySelectorAll('.idsk-header-web__brand-language-list-item:last-child .idsk-header-web__brand-language-list-item-link');
+        nodeListForEach($lastLanguageItems, function ($lastLanguageItem) {
+            $lastLanguageItem.addEventListener('blur', this.checkBlurLanguageSwitcherClick.bind(this));
+        }.bind(this))
+
+        // close language list if user back tabbing
+        this.$languageBtn.addEventListener('keydown', this.handleBackTabbing.bind(this));
     }
 
     $module.boundCheckBlurLanguageSwitcherClick = this.checkBlurLanguageSwitcherClick.bind(this);
@@ -64,16 +67,17 @@ HeaderWeb.prototype.init = function () {
             $menuItem.addEventListener('click', this.handleSubmenuClick.bind(this));
             if($menuItem.parentElement.querySelector('.idsk-header-web__nav-submenu') || $menuItem.parentElement.querySelector('.idsk-header-web__nav-submenulite')){
                 $menuItem.parentElement.lastElementChild.addEventListener('keydown', this.menuTabbing.bind(this));
-                $menuItem.parentElement.addEventListener('keydown', this.menuEscPressed.bind(this));
             }
         }.bind(this))
+        $module.addEventListener('keydown', this.navEscPressed.bind(this));
     }
 
     // check for mobile menu button
-    var $menuButton = $module.querySelector('.idsk-header-web__main-headline-menu-button');
-    if ($menuButton) {
-        $menuButton.addEventListener('click', this.showMobileMenu.bind(this));
-        this.menuBtnText = $menuButton.innerText.trim();
+    this.$menuButton = $module.querySelector('.idsk-header-web__main-headline-menu-button');
+    if (this.$menuButton) {
+        this.$menuButton.addEventListener('click', this.showMobileMenu.bind(this));
+        this.menuBtnText = this.$menuButton.innerText.trim();
+        this.initMobileMenuTabbing();
     }
 
     $module.boundCheckBlurMenuItemClick = this.checkBlurMenuItemClick.bind(this);
@@ -90,17 +94,21 @@ HeaderWeb.prototype.init = function () {
 }
 
 /**
- * Handle hide language switcher
+ * Handle open/hide language switcher
  * @param {object} e
  */
-HeaderWeb.prototype.hideLanguagesList = function (e) {
-  this.$activeSearch = this.$module.querySelector('.idsk-header-web__brand-language')
-
-  toggleClass(this.$activeSearch, 'idsk-header-web__brand-language--active');
-  this.$activeSearch.firstElementChild.setAttribute('aria-expanded', 'true')
-  this.$activeSearch.firstElementChild.setAttribute('aria-label',  this.$activeSearch.firstElementChild.getAttribute('data-text-for-hide'))
-
-  document.addEventListener('click', this.$module.boundCheckBlurLanguageSwitcherClick, true);
+HeaderWeb.prototype.handleLanguageSwitcherClick = function (e) {
+    var $toggleButton = e.target || e.srcElement;
+    this.$activeSearch = $toggleButton.closest('.idsk-header-web__brand-language');
+    toggleClass(this.$activeSearch, 'idsk-header-web__brand-language--active');
+    if(this.$activeSearch.classList.contains('idsk-header-web__brand-language--active')){
+        this.$activeSearch.firstElementChild.setAttribute('aria-expanded', 'true')
+        this.$activeSearch.firstElementChild.setAttribute('aria-label',  this.$activeSearch.firstElementChild.getAttribute('data-text-for-hide'))
+    }else{
+        this.$activeSearch.firstElementChild.setAttribute('aria-expanded', 'false')
+        this.$activeSearch.firstElementChild.setAttribute('aria-label',  this.$activeSearch.firstElementChild.getAttribute('data-text-for-show'))
+    }
+    document.addEventListener('click', this.$module.boundCheckBlurLanguageSwitcherClick, true);
 }
 
 HeaderWeb.prototype.checkBlurLanguageSwitcherClick = function (e) {
@@ -114,8 +122,14 @@ HeaderWeb.prototype.checkBlurLanguageSwitcherClick = function (e) {
 
 HeaderWeb.prototype.handleBackTabbing = function (e) {
     //shift was down when tab was pressed
-    if(e.shiftKey && e.keyCode == 9 && document.activeElement == this.$toggleLanguageSwitcher) {
-        this.$toggleLanguageSwitcher.parentNode.classList.remove('idsk-header-web__brand-language--active');
+    if(e.shiftKey && e.keyCode == 9 && document.activeElement == this.$languageBtn) {
+        this.handleLanguageSwitcherClick(e);
+    }
+}
+
+HeaderWeb.prototype.languegeEscPressed = function (e) {
+    if(e.key === "Escape" && this.$languageBtn.getAttribute('aria-expanded') == 'true') {
+        this.handleLanguageSwitcherClick(e);
     }
 }
 
@@ -139,7 +153,6 @@ HeaderWeb.prototype.handleBackTabbing = function (e) {
         }
     }.bind(this))
 }
-
 
 /**
  * Handle open/hide submenu
@@ -165,6 +178,9 @@ HeaderWeb.prototype.handleSubmenuClick = function (e) {
         if($toggleButton.childNodes[3] && $toggleButton.classList.contains('idsk-header-web__nav-list-item--active')) {
             $toggleButton.childNodes[1].setAttribute('aria-expanded', 'true')
             $toggleButton.childNodes[1].setAttribute('aria-label', $toggleButton.childNodes[1].getAttribute('data-text-for-hide'))
+            if (window.screen.width <= 768){
+              $toggleButton.scrollIntoView({behavior: 'smooth'})
+            }
         }
     }
 
@@ -201,16 +217,22 @@ HeaderWeb.prototype.handleSubmenuClick = function (e) {
 /**
  * Remove active class from menu when user leaves menu with esc
  */
- HeaderWeb.prototype.menuEscPressed = function (e) {
+ HeaderWeb.prototype.navEscPressed = function (e) {
     if(e.key === "Escape") {
         var $menuList = e.srcElement.parentElement.parentElement;
         if($menuList.classList.contains('idsk-header-web__nav-submenulite-list') || $menuList.classList.contains('idsk-header-web__nav-submenu-list')){
             $menuList = $menuList.closest('.idsk-header-web__nav-list')
         }
         var $activeItem = $menuList.querySelector('.idsk-header-web__nav-list-item--active')
-        $activeItem.classList.remove('idsk-header-web__nav-list-item--active');
-        $activeItem.childNodes[1].setAttribute('aria-expanded', 'false');
-        $activeItem.childNodes[1].setAttribute('aria-label', $activeItem.childNodes[1].getAttribute('data-text-for-show'))
+        if($activeItem) {
+            $activeItem.classList.remove('idsk-header-web__nav-list-item--active');
+            $activeItem.childNodes[1].setAttribute('aria-expanded', 'false');
+            $activeItem.childNodes[1].setAttribute('aria-label', $activeItem.childNodes[1].getAttribute('data-text-for-show'));
+            $activeItem.childNodes[1].focus();
+        } else if(this.$menuButton.getAttribute('aria-expanded') == 'true') {
+            // Hide mobile menu if navigation is not active
+            this.showMobileMenu();
+        }
     }
  }
 
@@ -233,22 +255,53 @@ HeaderWeb.prototype.checkBlurMenuItemClick = function (e) {
  * Show mobile menu
  * @param {object} e
  */
-HeaderWeb.prototype.showMobileMenu = function (e) {
+HeaderWeb.prototype.showMobileMenu = function () {
     var closeText = this.menuBtnText ? 'Zavrieť' : '';
-    var $menuButton = this.$module.querySelector('.idsk-header-web__main-headline-menu-button');
     var $mobileMenu = this.$module.querySelector('.idsk-header-web__nav');
     toggleClass($mobileMenu, 'idsk-header-web__nav--mobile');
-    toggleClass($menuButton, 'idsk-header-web__main-headline-menu-button--active');
-    if(!$menuButton.classList.contains('idsk-header-web__main-headline-menu-button--active')){
-        $menuButton.setAttribute('aria-expanded', 'false');
-        $menuButton.setAttribute('aria-label', $menuButton.getAttribute('data-text-for-show'))
+    toggleClass(this.$menuButton, 'idsk-header-web__main-headline-menu-button--active');
+    if(!this.$menuButton.classList.contains('idsk-header-web__main-headline-menu-button--active')){
+        this.$menuButton.setAttribute('aria-expanded', 'false');
+        this.$menuButton.setAttribute('aria-label', this.$menuButton.getAttribute('data-text-for-show'))
     }else{
-        $menuButton.setAttribute('aria-expanded', 'true');
-        $menuButton.setAttribute('aria-label', $menuButton.getAttribute('data-text-for-hide'))
+        this.$menuButton.setAttribute('aria-expanded', 'true');
+        this.$menuButton.setAttribute('aria-label', this.$menuButton.getAttribute('data-text-for-hide'))
     }
-    var buttonIsActive = $menuButton.classList.contains('idsk-header-web__main-headline-menu-button--active');
+    var buttonIsActive = this.$menuButton.classList.contains('idsk-header-web__main-headline-menu-button--active');
 
-    $menuButton.childNodes[0].nodeValue = buttonIsActive ? closeText : this.menuBtnText;
+    this.$menuButton.childNodes[0].nodeValue = buttonIsActive ? closeText : this.menuBtnText;
 }
+
+/**
+ * Create loop in mobile menu for tabbing elements
+ */
+ HeaderWeb.prototype.initMobileMenuTabbing = function () {
+     var $menuItems = this.$module.querySelector('.idsk-header-web__nav');
+     var $focusableElements = Array.from($menuItems.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])'))
+     .filter(function(s) {
+        return window.getComputedStyle(s).getPropertyValue('display') != 'none';
+        });
+     this.$menuButton = this.$module.querySelector('.idsk-header-web__main-headline-menu-button');
+     var $lastMenuItem = $focusableElements[$focusableElements.length - 1];
+     var KEYCODE_TAB = 9;
+
+     this.$menuButton.addEventListener('keydown', function (e) {
+        var isTabPressed = (e.key === 'Tab' || e.keyCode === KEYCODE_TAB);
+
+        if (isTabPressed && e.shiftKey && e.target.getAttribute('aria-expanded') == 'true') {
+            $lastMenuItem.focus();
+            e.preventDefault();
+        }
+    });
+
+    $lastMenuItem.addEventListener('keydown', function (e) {
+        var isTabPressed = (e.key === 'Tab' || e.keyCode === KEYCODE_TAB);
+
+        if (isTabPressed && !e.shiftKey) {
+            this.$menuButton.focus();
+            e.preventDefault();
+        }
+    });
+ }
 
 export default HeaderWeb

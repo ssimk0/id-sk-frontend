@@ -219,9 +219,14 @@ params:
         required: true
         description: Text of banner
       - name: warning
-        type: bolean
+        type: boolean
         required: false
         description: Bolean value if its warning banner
+      - name: closeBtn
+        type: boolean
+        required: false
+        description: Boolean value for close banner button
+
 
 previewLayout: full-width
 

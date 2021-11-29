@@ -27,13 +27,13 @@
             <span class="govuk-body-s idsk-header-web__brand-gestor-text">
               Oficiálna stránka
               {% if brand.gestor.gestorLink %}
-                <a class="govuk-link" href="{{ brand.gestor.gestorLink.hrefLink }}" title="{{ brand.gestor.gestorLink.text if brand.gestor.gestorLink.text else 'slovenský e-goverment' }}">
-                  {{ brand.gestor.gestorLink.text if brand.gestor.gestorLink.text else 'slovenského e-govermentu' }}
+                <a class="govuk-link" href="{{ brand.gestor.gestorLink.hrefLink }}" title="{{ brand.gestor.gestorLink.text if brand.gestor.gestorLink.text else 'verejná správa SR' }}">
+                  {{ brand.gestor.gestorLink.text if brand.gestor.gestorLink.text else 'verejnej správy SR' }}
                 </a>
               {% else %}
                 <button class="idsk-header-web__brand-gestor-button" aria-label="Zobraziť informácie o stránke" aria-expanded="false" data-text-for-hide="Skryť informácie o stránke" data-text-for-show="Zobraziť informácie o stránke">
-                  slovenského e-govermentu
-                  <div class="idsk-header-web__link-arrow"></div>
+                  verejnej správy SR
+                  <span class="idsk-header-web__link-arrow"></span>
                 </button>
               {% endif %}
             </span>
@@ -47,7 +47,7 @@
               {% else %}
                 <button class="idsk-header-web__brand-gestor-button" aria-label="Zobraziť informácie o stránke" aria-expanded="false" data-text-for-hide="Skryť informácie o stránke" data-text-for-show="Zobraziť informácie o stránke">
                   e-gov
-                  <div class="idsk-header-web__link-arrow"></div>
+                  <span class="idsk-header-web__link-arrow"></span>
                 </button>
               {% endif %}
             </span>
@@ -121,7 +121,7 @@
           <span class="govuk-body-s idsk-header-web__main--login-action-text-user-name">
             {{ main.loginButton.loggedIn.userName if main.loginButton.loggedIn.userName else 'Ing. Jožko Veľký M.A' }}
           </span>
-          <div>
+          <div class="govuk-!-margin-bottom-1">
             <a class="govuk-link idsk-header-web__main--login-action-text-logout idsk-header-web__main--login-logoutbtn" href="#" title="odhlásiť">
               {{ main.loginButton.logoutText if main.loginButton.logoutText else 'Odhlásiť' }}
             </a>
@@ -163,8 +163,9 @@
 {% if params.search and params.headerType !== "electronicService" %}
   <form class="idsk-header-web__main-action-search">
     <input class="govuk-input govuk-!-display-inline-block" id="idsk-header-web__main-action-search-input" name="search"
-      placeholder="{{ params.search.placeHolder if params.search.placeHolder else 'Zadajte hľadaný výraz' }}" type="search"
-      role="combobox" aria-describedby="input-width-30-hint" aria-label="Zadajte hľadaný výraz" />
+      placeholder="{{ params.search.placeHolder if params.search.placeHolder else 'Zadajte hľadaný výraz' }}" 
+      title="{{ params.search.placeHolder if params.search.placeHolder else 'Zadajte hľadaný výraz' }}" type="search"
+      aria-describedby="input-width-30-hint" aria-label="{{ params.search.placeHolder if params.search.placeHolder else 'Zadajte hľadaný výraz' }}" />
     <button type="submit" class="govuk-button" data-module="govuk-button">
       <span class="govuk-visually-hidden">{{ params.search.button if params.search.button else "Vyhľadať" }}</span>
       <i aria-hidden="true" class="fas fa-search"></i>
@@ -203,7 +204,7 @@
               <div class="idsk-header-web__menu-open"></div>
               <div class="idsk-header-web__menu-close"></div>
             </button>
-          {% elif  params.headerType !== 'electronicService' %}
+          {% elif  params.headerType !== 'electronicService' and params.search %}
             <button class="idsk-button idsk-header-web__main-headline-menu-button" aria-label="Rozbaliť menu" aria-expanded="false"
             data-text-for-show="Rozbaliť menu" data-text-for-hide="Skryť menu">
               {{ main.menuBtnText if main.menuBtnText else 'Hľadaj' }}
@@ -318,13 +319,15 @@
     <div class="govuk-width-container">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
-          <span class="govuk-body-s idsk-header-web__banner-title">
+          <div class="govuk-body-s idsk-header-web__banner-title">
             {% if banner.warning %}
               <div class="idsk-header-web__warning-icon"></div>
             {% endif %}
             {{ banner.text if banner.text else 'It was popularised in the 1960s with the release of Letraset' }}
-          </span>
-          <button class="idsk-header-web__banner-close" aria-label="Zavrieť banner"><div class="idsk-header-web__menu-close"></div></button>
+          </div>
+          {% if (banner.closeBtn | dump | length === 0) or banner.closeBtn == true %}
+            <button class="idsk-header-web__banner-close" aria-label="Zavrieť banner"><span class="idsk-header-web__menu-close"></span></button>
+          {% endif %}
         </div>
       </div>
     </div>
