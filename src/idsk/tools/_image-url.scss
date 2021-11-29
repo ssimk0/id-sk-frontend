@@ -1,0 +1,28 @@
+////
+/// @group tools
+////
+
+// Disable indentation linting in this file only
+// sass-lint:disable indentation
+
+/// Image URL
+///
+/// If a custom image-url handler is defined ($idsk-image-url-function) then
+/// it will be called, otherwise a url will be returned with the filename
+/// appended to the image path.
+///
+/// @param {String} Filename for the image to load
+/// @return {String} URL for the filename, wrapped in `url()`
+/// @access public
+
+@function idsk-image-url($filename) {
+  $use-custom-function: variable-exists("idsk-image-url-function")
+    and $idsk-image-url-function
+    and function-exists($idsk-image-url-function);
+
+  @if ($use-custom-function) {
+    @return call(get-function($idsk-image-url-function), $filename);
+  } @else {
+    @return url($idsk-images-path + $filename);
+  }
+}
