@@ -162,23 +162,25 @@
           margin-left: govuk-spacing(3);
           font-size: 18px;
           font-weight: bold;
-          transition: .1s;
           display: inline-block;
           padding-bottom: 0;
-          position: relative;
-          top: -1px;
           outline: none;
 
           &:hover {
-            transform: scale(.9);
             cursor: pointer;
           }
 
           &:focus {
             background-color: $govuk-focus-colour;
+            box-shadow: 0 $govuk-border-width-form-element 0 $govuk-input-border-colour;
             outline: none;
           }
         }
+      }
+
+      .idsk-table-filter__parameter-title {
+        position: relative;
+        top: -1px;
       }
     }
   }
