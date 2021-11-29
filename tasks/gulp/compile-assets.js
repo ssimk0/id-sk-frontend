@@ -30,11 +30,11 @@ const isDist = taskArguments.destination === 'dist' || false
 
 // Set the destination
 const destinationPath = function () {
-  // Public & Dist directories do no need namespaced with `govuk`
+  // Public & Dist directories do no need namespaced with `idsk`
   if (taskArguments.destination === 'dist' || taskArguments.destination === 'public') {
     return taskArguments.destination
   } else {
-    return `${taskArguments.destination}/govuk/`
+    return `${taskArguments.destination}/idsk/`
   }
 }
 
@@ -47,8 +47,8 @@ const errorHandler = function (error) {
   this.emit('end')
 }
 // different entry points for both streams below and depending on destination flag
-const compileStyleshet = isDist ? configPaths.govuk_src + 'all.scss' : configPaths.app + 'assets/scss/app.scss'
-const compileOldIeStyleshet = isDist ? configPaths.govuk_src + 'all-ie8.scss' : configPaths.app + 'assets/scss/app-ie8.scss'
+const compileStyleshet = isDist ? configPaths.src + 'all.scss' : configPaths.app + 'assets/scss/app.scss'
+const compileOldIeStyleshet = isDist ? configPaths.src + 'all-ie8.scss' : configPaths.app + 'assets/scss/app-ie8.scss'
 
 gulp.task('scss:compile', () => {
   const compile = gulp.src(compileStyleshet)

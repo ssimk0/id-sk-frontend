@@ -62,7 +62,6 @@ module.exports = (options) => {
     next()
   })
 
-  // Set up middleware to serve static assets
   app.use('/public', express.static(configPaths.public))
 
   app.use('/docs', express.static(configPaths.sassdoc))
@@ -76,7 +75,7 @@ module.exports = (options) => {
   app.use('/vendor/govuk_frontend_toolkit/', express.static('node_modules/govuk_frontend_toolkit/javascripts/govuk/'))
   app.use('/vendor/jquery/', express.static('node_modules/jquery/dist'))
 
-  app.use('/assets', express.static(path.join(configPaths.govuk_src, 'assets')))
+  app.use('/assets', express.static(path.join(configPaths.src, 'assets')))
 
   // Turn form POSTs into data that can be used for validation.
   app.use(bodyParser.urlencoded({ extended: true }))
@@ -120,14 +119,14 @@ module.exports = (options) => {
     })
   })
 
-  // Whenever the route includes a :component parameter, read the component data
+  // GOVUK components: Whenever the route includes a :component parameter, read the component data
   // from its YAML file
   app.param('component', function (req, res, next, componentName) {
     res.locals.govukComponentData = fileHelper.getGovukComponentData(componentName)
     next()
   })
 
-  // Whenever the route includes a :component parameter, read the component data
+  // IDSK components: Whenever the route includes a :component parameter, read the component data
   // from its YAML file
   app.param('custom_component', function (req, res, next, componentName) {
     res.locals.componentData = fileHelper.getComponentData(componentName)
@@ -227,8 +226,6 @@ module.exports = (options) => {
 
     const previewLayout = res.locals.componentData.previewLayout || 'layout'
 
-    console.log(res.locals.componentData)
-
     const exampleConfig = res.locals.componentData.examples.find(
       example => example.name.replace(/ /g, '-') === requestedExampleName
     )
@@ -258,7 +255,6 @@ module.exports = (options) => {
   app.get('/examples/:example/:action?', function (req, res, next) {
     // Passing a random number used for the links so that they will be unique and not display as "visited"
     const randomPageHash = (Math.random() * 1000000).toFixed()
-    console.log(`${req.params.example}/${req.params.action || 'index'}`)
     res.render(`${req.params.example}/${req.params.action || 'index'}`, { randomPageHash }, function (error, html) {
       if (error) {
         next(error)
@@ -268,7 +264,7 @@ module.exports = (options) => {
     })
   })
 
-  // Example view of full page
+  // Example view of full example page
   app.get('/full-page-examples/:example/:action?', function (req, res, next) {
     // Passing a random number used for the links so that they will be unique and not display as "visited"
     const randomPageHash = (Math.random() * 1000000).toFixed()

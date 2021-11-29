@@ -112,7 +112,7 @@
     color: $idsk-header-text-secondary;
 
     .govuk-body-s,
-    .govuk-link { 
+    .govuk-link {
         color: $idsk-header-text-secondary;
     }
 
@@ -123,7 +123,7 @@
 
     &-gestor {
       float: left;
-      
+
     .govuk-width-container {
       position: absolute;
       width: 100vw;
@@ -141,15 +141,15 @@
           margin: 11px 0;
         }
       }
-  
+
       .govuk-link:focus {
         color: govuk-colour("black");
-  
+
         .idsk-header-web__link-arrow {
           background-color: govuk-colour("black");
         }
       }
-  
+
       .idsk-header-web__link-arrow {
         background-color: $idsk-header-text-secondary;
       }
@@ -167,24 +167,24 @@
 
       &-button {
         @include govuk-font($size: 16);
-  
+
         padding: 0;
         background: none;
         border: none;
         color: $idsk-header-text-secondary;
         font-weight: 700;
         cursor: pointer;
-  
+
         &:hover {
           text-decoration: underline;
         }
-  
+
         &:focus,
         &:active {
           @include govuk-focused-text;
           text-decoration: underline;
           box-shadow: none;
-  
+
           .idsk-header-web__link-arrow {
             background-color: govuk-colour("black");
           }
@@ -215,7 +215,7 @@
       overflow: hidden;
       display: none;
       position: relative;
-      
+
       .govuk-link:focus {
         color: govuk-colour("black");
       }
@@ -246,7 +246,7 @@
 
         .govuk-grid-column-one-half:last-child {
           padding-bottom: govuk-spacing(4);
-          
+
           @include mq($from: tablet) {
             padding-top: govuk-spacing(4);
           }
@@ -416,7 +416,7 @@
     }
 
     &--login {
-      
+
       .idsk-header-web__main--login-profilebtn,
       .idsk-header-web__main--login-logoutbtn {
         display: none;
@@ -482,7 +482,7 @@
         }
       }
     }
-    
+
 
     &-headline {
       margin: 28px 0;
@@ -491,9 +491,9 @@
         display: flex;
         align-items: center;
         text-decoration: none;
-  
+
         &:focus,
-        &:active { 
+        &:active {
           @include govuk-focused-text;
         }
       }
@@ -588,14 +588,14 @@
           }
 
           &-service {
-            .idsk-header-web__menu-close {
+              .idsk-header-web__menu-close {
               margin: 0;
               padding: govuk-spacing(1) govuk-spacing(2);
             }
           }
         }
       }
-      
+
     }
 
     &-action {
@@ -672,7 +672,7 @@
           margin: 29px 0 govuk-spacing(6) govuk-spacing(2);
           padding: 9px 10px 8px;
         }
-      
+
         // mobile version
         @include mq($until: desktop) {
           float: none;
@@ -731,7 +731,7 @@
 
         @include mq($from: desktop) {
           display: inline-block;
-          border: none;  
+          border: none;
           float: left;
         }
 
@@ -804,7 +804,7 @@
               background-color: $idsk-header-text-secondary;
             }
           }
-          
+
           .idsk-header-web__link-arrow,
           .idsk-header-web__link-arrow-mobile {
             transition: transform 0.2s;
@@ -870,7 +870,7 @@
           float: right;
         }
       }
-      
+
       &-list {
         margin: govuk-spacing(3) -15px;
         &-item {
@@ -891,7 +891,7 @@
             }
           }
         }
-      }      
+      }
     }
 
     @include mq($from: tablet) {
@@ -901,7 +901,7 @@
 
         &-item-link {
           padding-left: govuk-spacing(6);
-          padding-right: govuk-spacing(6);  
+          padding-right: govuk-spacing(6);
         }
       }
     }
@@ -919,11 +919,11 @@
       @include mq($from: desktop) {
         background-color: $idsk-header-background-secondary;
       }
-  
+
       &-list {
         background-color: $idsk-header-dark-blue;
         list-style-type: none;
-        
+
         @include mq($from: desktop) {
           display: flex;
           flex-direction: row;
@@ -936,7 +936,7 @@
             width: 33.33%;
           }
         }
-  
+
         &-item-link {
             padding: 12px govuk-spacing(4) 13px govuk-spacing(3);
             text-decoration: none;
@@ -958,7 +958,7 @@
             &:hover {
               text-decoration: underline;
             }
-    
+
             &:focus,
             &:active {
               box-shadow: none;
@@ -1009,7 +1009,7 @@
     &-list {
       background-color: $idsk-header-dark-blue;
       list-style-type: none;
-      
+
 
       @include mq($from: desktop) {
         position: absolute;
@@ -1036,7 +1036,7 @@
           &:visited {
             color: $idsk-header-text-secondary;
           }
-          
+
           &:focus,
           &:active {
             @include govuk-focused-text;
@@ -1122,7 +1122,7 @@
       &:active {
         outline: 1px solid govuk-colour("black");
       }
-      
+
     }
   }
 }
