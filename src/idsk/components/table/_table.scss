@@ -126,7 +126,7 @@
       }
 
       &:focus {
-        border: 1px solid govuk-colour("black");
+        @include govuk-focused-text;
       }
     }
   
