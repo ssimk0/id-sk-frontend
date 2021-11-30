@@ -304,6 +304,7 @@
           @include mq($until: tablet) {
             right: 0;
             width: 130px;
+            position: fixed;
           }
 
           @include mq($from: tablet) {
@@ -599,7 +600,6 @@
           }
         }
       }
-
     }
 
     &-action {
@@ -1132,7 +1132,6 @@
       &:active {
         outline: 1px solid govuk-colour("black");
       }
-
     }
   }
 }
