@@ -39,6 +39,9 @@
         display: inline-block;
         margin-bottom: 0;
         transition: .4s;
+        @include govuk-media-query($until: 335px) {
+          font-size: 15px;
+        }
       }
 
       .idsk-filter-menu__toggle {
@@ -46,6 +49,9 @@
         margin-bottom: 0;
         padding: 0;
         border: none;
+        @include govuk-media-query($until: 335px) {
+          font-size: 14px;
+        }
       }
 
       .idsk-table-filter__filter-inputs {
