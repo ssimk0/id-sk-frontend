@@ -281,11 +281,11 @@ HeaderWeb.prototype.showMobileMenu = function () {
      .filter(function(s) {
         return window.getComputedStyle(s).getPropertyValue('display') != 'none';
         });
-     this.$menuButton = this.$module.querySelector('.idsk-header-web__main-headline-menu-button');
+     var $menuButton = this.$menuButton;
      var $lastMenuItem = $focusableElements[$focusableElements.length - 1];
      var KEYCODE_TAB = 9;
 
-     this.$menuButton.addEventListener('keydown', function (e) {
+     $menuButton.addEventListener('keydown', function (e) {
         var isTabPressed = (e.key === 'Tab' || e.keyCode === KEYCODE_TAB);
 
         if (isTabPressed && e.shiftKey && e.target.getAttribute('aria-expanded') == 'true') {
@@ -298,7 +298,7 @@ HeaderWeb.prototype.showMobileMenu = function () {
         var isTabPressed = (e.key === 'Tab' || e.keyCode === KEYCODE_TAB);
 
         if (isTabPressed && !e.shiftKey) {
-            this.$menuButton.focus();
+            $menuButton.focus();
             e.preventDefault();
         }
     });

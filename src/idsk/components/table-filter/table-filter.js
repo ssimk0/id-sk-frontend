@@ -1,19 +1,15 @@
 import '../../../govuk/vendor/polyfills/Function/prototype/bind'
 import '../../../govuk/vendor/polyfills/Event' // addEventListener and event.target normaliziation
-import {toggleClass} from "../../common";
-import {nodeListForEach} from "../../../../package/govuk/common";
+import { toggleClass } from '../../common'
+import { nodeListForEach } from '../../../../package/govuk/common'
 
-
-function TableFilter($module) {
+function TableFilter ($module) {
   this.$module = $module
   this.selectedFitlersCount = 0
   this.$activeFilters = []
 
   // get texts
-  this.$openFilterButton = $module.querySelector(".idsk-filter-menu__toggle")
-  this.openFilter = this.$openFilterButton.dataset.openFilter
-  this.closeFilter = this.$openFilterButton.dataset.closeFilter
-  this.removeAllFilters = $module.querySelector(".idsk-table-filter__active-filters").dataset.removeAllFilters
+  this.removeAllFiltersText = $module.querySelector('.idsk-table-filter__active-filters').dataset.removeAllFilters
 }
 
 TableFilter.prototype.init = function () {
@@ -51,11 +47,11 @@ TableFilter.prototype.init = function () {
       } else {
         this.handleFilterValueChange(e)
       }
-    }.bind(this));
+    }.bind(this))
   }.bind(this))
 
   // recalculate height of all expanded panels on window resize
-  window.addEventListener('resize', this.handleWindowResize.bind(this));
+  window.addEventListener('resize', this.handleWindowResize.bind(this))
 }
 
 /**
@@ -67,31 +63,35 @@ TableFilter.prototype.handleClickTogglePanel = function (e) {
   var $expandablePanel = $el.parentNode
   var $content = $el.nextElementSibling
 
+  // get texts from button dataset
+  var openText = $el.dataset.openText
+  var closeText = $el.dataset.closeText
+
   // if panel is category, change size of whole panel with animation
-  var isCategory = $expandablePanel.classList.contains("idsk-table-filter__category")
+  var isCategory = $expandablePanel.classList.contains('idsk-table-filter__category')
   if (isCategory) {
     var $categoryParent = $expandablePanel.parentNode
 
     // made more fluid animations for changed spacing with transition
     var marginBottomTitle = isCategory ? 18 : 20
     var marginBottomExpandedCategory = 25
-    var newParentHeight = ($content.style.height && $content.style.height !== "0px")
+    var newParentHeight = ($content.style.height && $content.style.height !== '0px')
       ? parseInt($categoryParent.style.height) - $content.scrollHeight - marginBottomTitle + marginBottomExpandedCategory
       : parseInt($categoryParent.style.height) + $content.scrollHeight + marginBottomTitle - marginBottomExpandedCategory
 
-    $categoryParent.style.height = newParentHeight + "px"
+    $categoryParent.style.height = newParentHeight + 'px'
   }
 
   // show element after toggle with slide down animation
   toggleClass($expandablePanel, 'idsk-table-filter--expanded')
-  $content.style.height = ($content.style.height && $content.style.height !== "0px" ? "0" : $content.scrollHeight) + "px";
+  $content.style.height = ($content.style.height && $content.style.height !== '0px' ? '0' : $content.scrollHeight) + 'px'
 
   // set text for toggle
-  var hidden = $content.style.height === "0px"
-  $el.innerHTML = hidden ? this.openFilter : this.closeFilter
+  var hidden = $content.style.height === '0px'
+  $el.innerHTML = hidden ? openText : closeText
 
   // toggle tabbable if content is shown or not
-  var $items = $content.querySelectorAll(":scope > .idsk-table-filter__filter-inputs input, :scope > .idsk-table-filter__filter-inputs select, .idsk-filter-menu__toggle")
+  var $items = $content.querySelectorAll(':scope > .idsk-table-filter__filter-inputs input, :scope > .idsk-table-filter__filter-inputs select, .idsk-filter-menu__toggle')
   var tabIndex = hidden ? -1 : 0
   nodeListForEach($items, function ($filter) {
     $filter.tabIndex = tabIndex
@@ -104,21 +104,21 @@ TableFilter.prototype.handleClickTogglePanel = function (e) {
  */
 TableFilter.prototype.removeActiveFilter = function ($filterToRemove) {
   var $filterToRemoveValue = this.$module.querySelector('.govuk-input[name="' + $filterToRemove.name + '"], .govuk-select[name="' + $filterToRemove.name + '"]')
-  if ($filterToRemoveValue.tagName === "SELECT") {
+  if ($filterToRemoveValue.tagName === 'SELECT') {
     // if filter is select find option with empty value
-    $filterToRemoveValue.querySelectorAll("option").forEach(function (option, index) {
-      if (option.value === "") {
-        $filterToRemoveValue.selectedIndex = index;
+    $filterToRemoveValue.querySelectorAll('option').forEach(function (option, index) {
+      if (option.value === '') {
+        $filterToRemoveValue.selectedIndex = index
       }
-    });
-  } else $filterToRemoveValue.value = ""
+    })
+  } else $filterToRemoveValue.value = ''
 
   // simulate change event of inputs to change count of active filters
-  $filterToRemoveValue.dispatchEvent(new Event('change'));
+  $filterToRemoveValue.dispatchEvent(new Event('change'))
 
   this.$activeFilters = this.$activeFilters.filter(function ($filter) {
-    return $filter.id !== $filterToRemove.id;
-  });
+    return $filter.id !== $filterToRemove.id
+  })
 
   this.renderActiveFilters(this)
 }
@@ -141,20 +141,20 @@ TableFilter.prototype.renderActiveFilters = function (e) {
   // remove all existing filters from array
   var $activeFiltersPanel = this.$module.querySelector('.idsk-table-filter__active-filters')
   var $activeFilters = $activeFiltersPanel.querySelector('.idsk-table-filter__active-filters .idsk-table-filter__content')
-  $activeFilters.innerHTML = '';
+  $activeFilters.innerHTML = ''
 
   // open filter if active filters was hidden before
-  if ($activeFiltersPanel.classList.contains("idsk-table-filter__active-filters__hide")) {
-    $activeFiltersPanel.classList.add("idsk-table-filter--expanded")
+  if ($activeFiltersPanel.classList.contains('idsk-table-filter__active-filters__hide')) {
+    $activeFiltersPanel.classList.add('idsk-table-filter--expanded')
   }
 
   // render all filters in active filters
   this.$activeFilters.forEach(function ($filter) {
-    var $activeFilter = document.createElement("div")
-    $activeFilter.classList.add("idsk-table-filter__parameter", "govuk-body")
-    $activeFilter.innerHTML = $filter.value + '<button class="idsk-table-filter__parameter-remove" tabindex="0">✕</button>'
+    var $activeFilter = document.createElement('div')
+    $activeFilter.classList.add('idsk-table-filter__parameter', 'govuk-body')
+    $activeFilter.innerHTML = '<span class="idsk-table-filter__parameter-title">' + $filter.value + '</span><button class="idsk-table-filter__parameter-remove" tabindex="0">✕</button>'
 
-    $activeFilter.querySelector('.idsk-table-filter__parameter-remove').addEventListener("click", function () {
+    $activeFilter.querySelector('.idsk-table-filter__parameter-remove').addEventListener('click', function () {
       this.removeActiveFilter($filter)
     }.bind(this))
 
@@ -163,21 +163,21 @@ TableFilter.prototype.renderActiveFilters = function (e) {
 
   // add remove everything button if some filter is activated else print none filter is activated
   if (this.$activeFilters.length > 0) {
-    $activeFiltersPanel.classList.remove("idsk-table-filter__active-filters__hide")
-    var $removeAllFilters = document.createElement("button")
-    $removeAllFilters.classList.add("govuk-body", "govuk-link")
-    $removeAllFilters.innerHTML = this.removeAllFilters + ' (' + this.$activeFilters.length + ')<span class="idsk-table-filter__parameter-remove">✕</span>'
-    $removeAllFilters.addEventListener("click", this.removeAllActiveFilters.bind(this))
+    $activeFiltersPanel.classList.remove('idsk-table-filter__active-filters__hide')
+    var $removeAllFilters = document.createElement('button')
+    $removeAllFilters.classList.add('govuk-body', 'govuk-link')
+    $removeAllFilters.innerHTML = '<span class="idsk-table-filter__parameter-title">' + this.removeAllFiltersText + ' (' + this.$activeFilters.length + ')</span><span class="idsk-table-filter__parameter-remove">✕</span>'
+    $removeAllFilters.addEventListener('click', this.removeAllActiveFilters.bind(this))
     $activeFilters.appendChild($removeAllFilters)
   } else {
-    $activeFiltersPanel.classList.add("idsk-table-filter__active-filters__hide")
+    $activeFiltersPanel.classList.add('idsk-table-filter__active-filters__hide')
   }
 
   // calc height of 'active filter' panel if panel is expanded
   var $activeFiltersContainer = this.$module.querySelector('.idsk-table-filter__active-filters.idsk-table-filter--expanded .idsk-table-filter__content')
   if ($activeFiltersContainer) {
-    $activeFiltersContainer.style.height = "initial"; // to changing height from initial height
-    $activeFiltersContainer.style.height = $activeFiltersContainer.scrollHeight + "px";
+    $activeFiltersContainer.style.height = 'initial' // to changing height from initial height
+    $activeFiltersContainer.style.height = $activeFiltersContainer.scrollHeight + 'px'
   }
 }
 
@@ -186,10 +186,10 @@ TableFilter.prototype.renderActiveFilters = function (e) {
  * @param {object} e
  */
 TableFilter.prototype.renderSelectedFiltersCount = function (e) {
-  var submitButton = this.$module.querySelector(".submit-table-filter")
+  var submitButton = this.$module.querySelector('.submit-table-filter')
   submitButton.disabled = this.selectedFitlersCount === 0
 
-  var counter = submitButton.querySelector(".count")
+  var counter = submitButton.querySelector('.count')
   counter.innerHTML = this.selectedFitlersCount
 }
 
@@ -199,8 +199,8 @@ TableFilter.prototype.renderSelectedFiltersCount = function (e) {
  */
 TableFilter.prototype.handleSubmitFilter = function (e) {
   // get all inputs and selects
-  var $inputs = this.$module.querySelectorAll(".idsk-table-filter__inputs input")
-  var $selects = this.$module.querySelectorAll(".idsk-table-filter__inputs select")
+  var $inputs = this.$module.querySelectorAll('.idsk-table-filter__inputs input')
+  var $selects = this.$module.querySelectorAll('.idsk-table-filter__inputs select')
 
   // add values of inputs to $activeFilters if it is not empty
   this.$activeFilters = []
@@ -234,21 +234,21 @@ TableFilter.prototype.handleFilterValueChange = function (e) {
   var $el = e.target || e.srcElement
 
   // if filter is in category get count of selected filters only from that category
-  var $category = $el.closest(".idsk-table-filter__category")
+  var $category = $el.closest('.idsk-table-filter__category')
   if ($category) {
-    var $allCategoryFilters = $category.querySelectorAll(".idsk-table-filter__inputs input, .idsk-table-filter__inputs select")
+    var $allCategoryFilters = $category.querySelectorAll('.idsk-table-filter__inputs input, .idsk-table-filter__inputs select')
     var selectedCategoryFiltersCount = 0
     $allCategoryFilters.forEach(function ($filter) {
       if ($filter.value) {
         selectedCategoryFiltersCount++
       }
     })
-    $category.querySelector(".count").innerHTML = selectedCategoryFiltersCount ? "(" + selectedCategoryFiltersCount + ")" : ""
+    $category.querySelector('.count').innerHTML = selectedCategoryFiltersCount ? '(' + selectedCategoryFiltersCount + ')' : ''
   }
 
   // get count of all selected filters
   this.selectedFitlersCount = 0
-  var $allFilters = this.$module.querySelectorAll(".idsk-table-filter__inputs input, .idsk-table-filter__inputs select")
+  var $allFilters = this.$module.querySelectorAll('.idsk-table-filter__inputs input, .idsk-table-filter__inputs select')
   $allFilters.forEach(function ($filter) {
     if ($filter.value) {
       this.selectedFitlersCount++
@@ -264,11 +264,11 @@ TableFilter.prototype.handleFilterValueChange = function (e) {
  * @param {object} e
  */
 TableFilter.prototype.handleWindowResize = function (e) {
-  var $allExpandedPanels = this.$module.querySelectorAll(".idsk-table-filter--expanded")
+  var $allExpandedPanels = this.$module.querySelectorAll('.idsk-table-filter--expanded')
   nodeListForEach($allExpandedPanels, function ($panel) {
-    var $content = $panel.querySelector(".idsk-table-filter__content")
-    $content.style.height = "initial"; // to changing height from initial height
-    $content.style.height = $content.scrollHeight + "px";
+    var $content = $panel.querySelector('.idsk-table-filter__content')
+    $content.style.height = 'initial' // to changing height from initial height
+    $content.style.height = $content.scrollHeight + 'px'
   })
 }
 

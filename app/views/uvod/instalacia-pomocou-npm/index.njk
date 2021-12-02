@@ -161,8 +161,8 @@
 
     <div class="govuk-grid-column-full">
       <pre class=" language-markup"><code class="  language-markup govuk-!-font-size-16">// application.scss
-  
-$govuk-global-styles: true;  
+
+$govuk-global-styles: true;
 @import  '@id-sk/frontend/idsk/all';</code></pre>
     </div>
 
@@ -365,8 +365,8 @@ if ($radio) {
           takúto štruktúru, nebudete musieť robiť nasledujúce kroky.</strong></p>
       <p>Ak chcete použiť iné cesty assetov, vykonajte tiež nasledovné kroky:</p>
       <ol class="govuk-list govuk-list--number">
-        <li>Nastavte <code class="  language-markup govuk-!-font-size-16">$govuk-assets-path, $govuk-images-path</code>
-          a <code class="  language-markup govuk-!-font-size-16">$govuk-fonts-path</code> do vášho projektového Sass
+        <li>Nastavte <code class="  language-markup govuk-!-font-size-16">$idsk-assets-path, $idsk-images-path</code>
+          a <code class="  language-markup govuk-!-font-size-16">$idsk-fonts-path</code> do vášho projektového Sass
           súboru tak, aby odkazoval na príslušné adresáre v projekte (prepíše sa tým predvolené nastavenie v
           /node_modules/govuk-frontend/settings/_assets.scss). Uistite sa, že ste tak urobili pred importovaním
           govuk-frontend do vášho projektu – pozri <a class="govuk-link"
@@ -378,13 +378,13 @@ if ($radio) {
     <div class="govuk-grid-column-full">
       <p class="govuk-body">Príklad 1:</p>
       <pre class=" language-markup"><code class="  language-markup govuk-!-font-size-16">// Include images from /application/assets/images and fonts from /application/assets/fonts
-$govuk-assets-path: '/application/assets';
+$idsk-assets-path: '/application/assets';
 @import  "govuk-frontend/govuk/all";</code></pre>
 
       <p class="govuk-body">Príklad 2:</p>
       <pre class=" language-markup"><code class="  language-markup govuk-!-font-size-16">// Include images from /images/govuk-frontend and fonts from /fonts
-$govuk-images-path: "/images/govuk-frontend/";
-$govuk-fonts-path: "/fonts/";
+$idsk-images-path: "/images/govuk-frontend/";
+$idsk-fonts-path: "/fonts/";
 @import  "govuk-frontend/govuk/all";</code></pre>
     </div>
 
@@ -392,7 +392,7 @@ $govuk-fonts-path: "/fonts/";
       <ol start="2" class="govuk-list govuk-list--number">
         <li>Nepovinné: Môžete tiež prepísať pomocníkov, ktorí sa používajú na generovanie url adries assetov, napríklad
           ak používate sass-rails asset-pipeline. Môžete to urobiť nastavením <code
-            class="  language-markup govuk-!-font-size-16">$govuk-image-url-function</code> na názov funkcie (funkcií),
+            class="  language-markup govuk-!-font-size-16">$idsk-image-url-function</code> na názov funkcie (funkcií),
           ktoré chcete použiť. Ďalšie informácie a príklady nájdete na stránke <code
             class="  language-markup govuk-!-font-size-16">src/govuk/settings/_assets.scss</code>.</li>
       </ol>
