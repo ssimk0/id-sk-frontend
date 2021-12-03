@@ -14,11 +14,10 @@ SubscriptionForm.prototype.init = function () {
   }
 
   // button to toggle content
-  var $form = $module.querySelectorAll('form')
+  var $forms = $module.querySelectorAll('form')
 
-
-  nodeListForEach($form, function ($button) {
-    $button.addEventListener('submit', this.handleSubmitForm.bind(this))
+  nodeListForEach($forms, function ($form) {
+    $form.addEventListener('submit', this.handleSubmitForm.bind(this))
   }.bind(this))
 }
 
@@ -29,14 +28,14 @@ SubscriptionForm.prototype.init = function () {
 SubscriptionForm.prototype.handleSubmitForm = function (e) {
   var $el = e.target || e.srcElement
   e.preventDefault()
+
   // check if email is set
-  if (this.$module.querySelector('input[type=email]').value === "")
+  if (this.$module.querySelector('input[type=email]').value === '')
     return
 
-
   // hide form and agreement text
-  $el.style.display = 'none';
-  this.$module.querySelector('.agreement-text').style.display = 'none';
+  $el.style.display = 'none'
+  this.$module.querySelector('.agreement-text').style.display = 'none'
 
   // change texts to sent state
   var $elementsToChange = this.$module.querySelectorAll('.description-text, .title-text')
@@ -46,7 +45,6 @@ SubscriptionForm.prototype.handleSubmitForm = function (e) {
 
   // remove bottom spacing
   this.$module.querySelector('.description-text').style.marginBottom = 0
-
 }
 
 export default SubscriptionForm
