@@ -770,6 +770,10 @@
           &:focus,
           &:active {
             @include govuk-focused-text;
+
+            @include mq($from: desktop) {
+              box-shadow: 0 0px #ffdf0f, 0 -4px #0b0c0c inset;
+            }
           }
 
           &:hover {
@@ -944,6 +948,11 @@
             &-link {
               width: 100%;
               align-self: stretch;
+
+              &:focus,
+              &:active {
+                box-shadow: 0 0px #ffdf0f, 0 -4px #0b0c0c inset;
+              }
             }
           }
         }
