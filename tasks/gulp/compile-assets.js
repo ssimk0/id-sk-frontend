@@ -170,6 +170,7 @@ gulp.task('js:compile', () => {
     srcFiles,
     '!' + configPaths.idsk_src + '**/*.test.js'
   ])
+    .pipe(sourcemaps.init())
     .pipe(rollup({
       // Used to set the `window` global and UMD/AMD export name.
       name: 'GOVUKFrontend',
@@ -188,5 +189,6 @@ gulp.task('js:compile', () => {
       })
     ))
     .pipe(eol())
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest(destinationPath))
 })
