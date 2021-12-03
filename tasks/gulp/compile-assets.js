@@ -16,7 +16,7 @@ const uglify = require('gulp-uglify')
 const eol = require('gulp-eol')
 const rename = require('gulp-rename')
 const cssnano = require('cssnano')
-var sourcemaps = require('gulp-sourcemaps');
+const sourcemaps = require('gulp-sourcemaps');
 const postcsspseudoclasses = require('postcss-pseudo-classes')({
   // Work around a bug in pseudo classes plugin that badly transforms
   // :not(:whatever) pseudo selectors
@@ -189,6 +189,6 @@ gulp.task('js:compile', () => {
       })
     ))
     .pipe(eol())
-    .pipe(sourcemaps.write())
+    .pipe(sourcemaps.write("."))
     .pipe(gulp.dest(destinationPath))
 })
