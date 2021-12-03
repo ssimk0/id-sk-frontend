@@ -1,0 +1,29 @@
+@import "../../../govuk/settings/all";
+@import "../../../govuk/tools/all";
+@import "../../../govuk/helpers/all";
+@import "../../../govuk/helpers/typography";
+@import "../../../govuk/objects/grid";
+
+@include govuk-exports("idsk/component/subscription-form") {
+  .idsk-subscription-form {
+    .govuk-heading-xl {
+      margin-bottom: govuk-spacing(3);
+    }
+
+    .description-text {
+      @include govuk-typography-responsive($size: 27);
+      margin-bottom: govuk-spacing(6);
+    }
+
+    .govuk-input {
+      height: 45px;
+    }
+
+    .govuk-button {
+      width: 100%;
+      margin-bottom: 0;
+      line-height: 32px;
+      padding: 4px 4px 3px;
+    }
+  }
+}

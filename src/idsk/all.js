@@ -19,6 +19,7 @@ import InteractiveMap from './components/interactive-map/interactive-map';
 import Accordion from './components/accordion/accordion';
 import Tabs from './components/tabs/tabs';
 import Table from './components/table/table';
+import SubscriptionForm from './components/subscription-form/subscription-form'
 
 function initAll(options) {
   // Set the options to an empty object by default if no options are passed.
@@ -120,10 +121,15 @@ function initAll(options) {
   nodeListForEach($tables, function ($table){
     new Table($table).init();
   })
-    
-  var $tableFilter = scope.querySelectorAll('[data-module="idsk-table-filter"]');
-  nodeListForEach($tableFilter, function ($tableFilter) {
+
+  var $tableFilters = scope.querySelectorAll('[data-module="idsk-table-filter"]');
+  nodeListForEach($tableFilters, function ($tableFilter) {
     new TableFilter($tableFilter).init();
+  })
+
+  var $subscriptionForms = scope.querySelectorAll('[data-module="idsk-subscription-form"]');
+  nodeListForEach($subscriptionForms, function ($subscriptionForm) {
+    new SubscriptionForm($subscriptionForm).init();
   })
 
   // Init all GOVUK components js
