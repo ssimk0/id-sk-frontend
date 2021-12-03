@@ -29,6 +29,10 @@
       padding: 4px 4px 3px;
     }
 
+    .agreement-text {
+      margin-bottom: 0;
+    }
+
     @include govuk-media-query($until: tablet) {
       .description-text, .govuk-input {
         margin-bottom: govuk-spacing(4);

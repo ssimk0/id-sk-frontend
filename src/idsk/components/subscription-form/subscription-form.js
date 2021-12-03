@@ -44,6 +44,9 @@ SubscriptionForm.prototype.handleSubmitForm = function (e) {
     $element.innerHTML = $element.dataset.sentState
   }.bind(this))
 
+  // remove bottom spacing
+  this.$module.querySelector('.description-text').style.marginBottom = 0
+
 }
 
 export default SubscriptionForm
