@@ -770,6 +770,10 @@
           &:focus,
           &:active {
             @include govuk-focused-text;
+
+            @include mq($from: desktop) {
+              box-shadow: 0 0 govuk-colour("yellow"), 0 -4px govuk-colour("black") inset;
+            }
           }
 
           &:hover {
@@ -944,6 +948,11 @@
             &-link {
               width: 100%;
               align-self: stretch;
+
+              &:focus,
+              &:active {
+                box-shadow: 0 0 govuk-colour("yellow"), 0 -4px govuk-colour("black") inset;
+              }
             }
           }
         }
