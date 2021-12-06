@@ -3,6 +3,10 @@ params:
     type: string
     required: false
     description: Id of the subscription form.
+  - name: classes
+    type: string
+    required: false
+    description: Class name for component banner.
   - name: title
     type: string
     required: false
@@ -36,4 +40,5 @@ examples:
   - name: simple
     data:
       id: "subscription-form"
+      classes: "example-action"
 

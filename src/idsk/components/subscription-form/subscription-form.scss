@@ -33,9 +33,27 @@
       margin-bottom: 0;
     }
 
+    &:not(.subscription-confirmed) .confirm-text {
+      display: none;
+    }
+
     @include govuk-media-query($until: tablet) {
       .description-text, .govuk-input {
         margin-bottom: govuk-spacing(4);
+      }
+    }
+
+    &.subscription-confirmed {
+      form, .agreement-text {
+        display: none;
+      }
+
+      .description-text {
+        margin-bottom: 0;
+      }
+
+      .default-text {
+        display: none;
       }
     }
   }

@@ -14,7 +14,7 @@ SubscriptionForm.prototype.init = function () {
   }
 
   // button to toggle content
-  var $forms = $module.querySelectorAll('form')
+  var $forms = $module.querySelectorAll('.example-action form')
 
   nodeListForEach($forms, function ($form) {
     $form.addEventListener('submit', this.handleSubmitForm.bind(this))
@@ -26,25 +26,11 @@ SubscriptionForm.prototype.init = function () {
  * @param {object} e
  */
 SubscriptionForm.prototype.handleSubmitForm = function (e) {
-  var $el = e.target || e.srcElement
   e.preventDefault()
 
-  // check if email is set
-  if (this.$module.querySelector('input[type=email]').value === '')
-    return
-
-  // hide form and agreement text
-  $el.style.display = 'none'
-  this.$module.querySelector('.agreement-text').style.display = 'none'
-
-  // change texts to sent state
-  var $elementsToChange = this.$module.querySelectorAll('.description-text, .title-text')
-  nodeListForEach($elementsToChange, function ($element) {
-    $element.innerHTML = $element.dataset.sentState
-  }.bind(this))
-
-  // remove bottom spacing
-  this.$module.querySelector('.description-text').style.marginBottom = 0
+  // check if email is set and set class for different state
+  if (this.$module.querySelector('input[type=email]').value !== '')
+    this.$module.classList.add('subscription-confirmed')
 }
 
 export default SubscriptionForm

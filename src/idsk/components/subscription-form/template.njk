@@ -4,12 +4,18 @@
 {% set buttonText = params.buttonText if params.buttonText else 'Odoslať email' %}
 {% set agreementText = params.agreementText if params.agreementText else 'Prihlásením dávam dobrovoľný súhlas SlovenskoIT a. s. na zasielanie bezplatného newslettera na mnou zadaný e-mail.
 Tento súhlas môžem kedykoľvek odvolať na <a href="mailto:info@slovenskoit.sk" class="govuk-link">info@slovenskoit.sk</a>. Oboznámil(a) som sa s informáciami v sekcii <a href="/ochrana-osobnych-udajov" class="govuk-link">Ochrana osobných údajov</a>.' %}
-{% set sentTitle = params.sentTitle if params.sentTitle else 'Ďakujeme!' %}
-{% set sentDescription = params.sentDescription if params.sentDescription else 'Budeme Vám zasielať vždy aktuálne informácie' %}
+{% set confirmTitle = params.confirmTitle if params.confirmTitle else 'Ďakujeme!' %}
+{% set confirmDescription = params.confirmDescription if params.confirmDescription else 'Budeme Vám zasielať vždy aktuálne informácie' %}
 
 <div data-module="idsk-subscription-form" id="{{ params.id }}" class="idsk-subscription-form {{ params.classes if params.classes }}">
-  <div class="govuk-heading-xl title-text" data-sent-state="{{ sentTitle }}">{{ title }}</div>
-  <p class="govuk-body description-text" data-sent-state="{{ sentDescription }}">{{ description }}</p>
+  <div class="govuk-heading-xl title-text">
+    <span class="default-text">{{ title }}</span>
+    <span class="confirm-text">{{ confirmTitle }}</span>
+  </div>
+  <p class="govuk-body description-text">
+    <span class="default-text">{{ description | safe }}</span>
+    <span class="confirm-text">{{ confirmDescription | safe }}</span>
+  </p>
 
   <form action="#" class="govuk-form-group govuk-grid-row">
     <div class="govuk-grid-column-three-quarters">
