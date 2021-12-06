@@ -44,16 +44,12 @@
     }
 
     &.subscription-confirmed {
-      form, .agreement-text {
+      form, .agreement-text, .default-text {
         display: none;
       }
 
       .description-text {
         margin-bottom: 0;
-      }
-
-      .default-text {
-        display: none;
       }
     }
   }
