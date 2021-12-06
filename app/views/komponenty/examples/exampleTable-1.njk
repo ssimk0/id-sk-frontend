@@ -1,0 +1,110 @@
+{% from "../../../../src/idsk/components/table/macro.njk" import idskTable %}
+{{ idskTable({
+  uniqueId: "priklad-1",
+  head: [
+    {
+      text: "Dátum"
+    },
+    {
+      text: "Deň"
+    },
+    {
+      text: "Názov"
+    }
+  ],
+  rows: [
+    [
+      {
+        text: "1.Január"
+      },
+      {
+        text: "piatok"
+      },
+      {
+        text: "Deň vzniku Slovenskej republiky"
+      }
+    ],
+    [
+      {
+        text: "2.Apríl"
+      },
+      {
+        text: "piatok"
+      },
+      {
+        text: "Veľký piatok - deň pracovného pokoja"
+      }
+    ],
+    [
+      {
+        text: "5.Júl"
+      },
+      {
+        text: "pondelok"
+      },
+      {
+        text: "Sviatok svätého Cyrila a Metoda"
+      }
+    ],
+    [
+      {
+        text: "29.August"
+      },
+      {
+        text: "nedeľa"
+      },
+      {
+        text: "Výročie SNP"
+      }
+    ],
+    [
+      {
+        text: "1.September"
+      },
+      {
+        text: "streda"
+      },
+      {
+        text: "Deň Ústavy Slovenskej republiky"
+      }
+    ],
+    [
+      {
+        text: "25.September"
+      },
+      {
+        text: "sobota"
+      },
+      {
+        text: "Tiborove narodeniny"
+      }
+    ],
+    [
+      {
+        text: "1.November"
+      },
+      {
+        text: "pondelok"
+      },
+      {
+        text: "Sviatok všetkých svätých - deň pracovného pokoja"
+      }
+    ],
+    [
+      {
+        text: "24.December"
+      },
+      {
+        text: "piatok"
+      },
+      {
+        text: "Štedrý deň - deň pracovného pokoja"
+      }
+    ]
+  ],
+  source:
+  {
+    name: "vlada.gov.sk",
+    href: "https://www.vlada.gov.sk/statne-sviatky/"
+  }
+}) }}
