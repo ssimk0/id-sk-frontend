@@ -7,6 +7,10 @@ params:
     type: string
     required: false
     description: Class name for component banner.
+  - name: formAction
+    type: string
+    required: false
+    description: Action for form element.
   - name: title
     type: string
     required: false

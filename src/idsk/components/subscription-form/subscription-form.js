@@ -29,8 +29,9 @@ SubscriptionForm.prototype.handleSubmitForm = function (e) {
   e.preventDefault()
 
   // check if email is set and set class for different state
-  if (this.$module.querySelector('input[type=email]').value !== '')
+  if (this.$module.querySelector('input[type=email]').value !== '') {
     this.$module.classList.add('subscription-confirmed')
+  }
 }
 
 export default SubscriptionForm

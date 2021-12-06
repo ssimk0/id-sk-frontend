@@ -13,7 +13,7 @@
       }
     }
 
-    .description-text {
+    &__description-text {
       @include govuk-typography-responsive($size: 27);
       margin-bottom: govuk-spacing(6);
     }
@@ -29,26 +29,26 @@
       padding: 4px 4px 3px;
     }
 
-    .agreement-text {
+    &__agreement-text {
       margin-bottom: 0;
     }
 
-    &:not(.subscription-confirmed) .confirm-text {
+    &:not(.subscription-confirmed) &__confirm-text {
       display: none;
     }
 
     @include govuk-media-query($until: tablet) {
-      .description-text, .govuk-input {
+      &__description-text, .govuk-input {
         margin-bottom: govuk-spacing(4);
       }
     }
 
     &.subscription-confirmed {
-      form, .agreement-text, .default-text {
+      form, .idsk-subscription-form__agreement-text, .idsk-subscription-form__default-text {
         display: none;
       }
 
-      .description-text {
+      .idsk-subscription-form__description-text {
         margin-bottom: 0;
       }
     }
