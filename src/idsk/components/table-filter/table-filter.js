@@ -1,7 +1,6 @@
 import '../../../govuk/vendor/polyfills/Function/prototype/bind'
-import '../../../govuk/vendor/polyfills/Event' // addEventListener and event.target normaliziation
-import { toggleClass } from '../../common'
-import { nodeListForEach } from '../../../../package/govuk/common'
+import '../../../govuk/vendor/polyfills/Event' // addEventListener and event.target normalization
+import { nodeListForEach, toggleClass } from '../../common'
 
 function TableFilter ($module) {
   this.$module = $module

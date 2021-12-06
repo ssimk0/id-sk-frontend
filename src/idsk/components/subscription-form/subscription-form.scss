@@ -22,7 +22,7 @@
       height: 45px;
     }
 
-    .govuk-button {
+    .idsk-button {
       width: 100%;
       margin-bottom: 0;
       line-height: 32px;
@@ -33,7 +33,7 @@
       margin-bottom: 0;
     }
 
-    &:not(.subscription-confirmed) &__confirm-text {
+    &:not(&__subscription-confirmed) &__confirm-text {
       display: none;
     }
 
@@ -43,7 +43,7 @@
       }
     }
 
-    &.subscription-confirmed {
+    &__subscription-confirmed {
       form, .idsk-subscription-form__agreement-text, .idsk-subscription-form__default-text {
         display: none;
       }

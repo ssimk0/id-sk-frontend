@@ -12,19 +12,23 @@ Tento súhlas môžem kedykoľvek odvolať na <a href="mailto:info@slovenskoit.s
     <span class="idsk-subscription-form__default-text">{{ title }}</span>
     <span class="idsk-subscription-form__confirm-text">{{ confirmTitle }}</span>
   </div>
+
   <p class="govuk-body idsk-subscription-form__description-text">
     <span class="idsk-subscription-form__default-text">{{ description | safe }}</span>
     <span class="idsk-subscription-form__confirm-text">{{ confirmDescription | safe }}</span>
   </p>
 
-  <form action="{{ params.formAction if params.formAction else "#" }}" class="govuk-form-group govuk-grid-row">
-    <div class="govuk-grid-column-three-quarters">
-      <input type="email" class="govuk-input" placeholder="{{ inputText }}">
-    </div>
-    <div class="govuk-grid-column-one-quarter">
-      <input type="submit" class="idsk-button" value="{{ buttonText }}">
-    </div>
-  </form>
+  <div class="govuk-grid-row">
+    <form action="{{ params.formAction if params.formAction else "#" }}"
+          class="govuk-form-group {{ params.targetClass if params.targetClass else "idsk-subscription-form__submit-handler" }}">
+      <div class="govuk-grid-column-three-quarters">
+        <input type="email" class="govuk-input" placeholder="{{ inputText }}">
+      </div>
+      <div class="govuk-grid-column-one-quarter">
+        <input type="submit" class="idsk-button" value="{{ buttonText }}">
+      </div>
+    </form>
+  </div>
 
   <p class="govuk-body idsk-subscription-form__agreement-text">{{ agreementText | safe }}</p>
 </div>

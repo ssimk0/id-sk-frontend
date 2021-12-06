@@ -1,5 +1,5 @@
 import '../../../govuk/vendor/polyfills/Function/prototype/bind'
-import '../../../govuk/vendor/polyfills/Event' // addEventListener and event.target normaliziation
+import '../../../govuk/vendor/polyfills/Event' // addEventListener and event.target normalization
 
 function InteractiveMap($module) {
     this.$module = $module

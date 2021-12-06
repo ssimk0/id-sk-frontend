@@ -1,7 +1,6 @@
 import '../../../govuk/vendor/polyfills/Function/prototype/bind'
-import '../../../govuk/vendor/polyfills/Event' // addEventListener and event.target normaliziation
-import { nodeListForEach } from '../../../govuk/common'
-import { toggleClass } from '../../common'
+import '../../../govuk/vendor/polyfills/Event' // addEventListener and event.target normalization
+import { nodeListForEach, toggleClass } from '../../common'
 
 /**
  * Header for web websites

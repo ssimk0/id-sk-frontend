@@ -1,6 +1,5 @@
 import '../../../govuk/vendor/polyfills/Function/prototype/bind'
-import '../../../govuk/vendor/polyfills/Event' // addEventListener and event.target normaliziation
-import { nodeListForEach } from '../../../../package/govuk/common'
+import '../../../govuk/vendor/polyfills/Event' // addEventListener and event.target normalization
 
 function SubscriptionForm ($module) {
   this.$module = $module
@@ -14,11 +13,8 @@ SubscriptionForm.prototype.init = function () {
   }
 
   // button to toggle content
-  var $forms = $module.querySelectorAll('.example-action form')
-
-  nodeListForEach($forms, function ($form) {
-    $form.addEventListener('submit', this.handleSubmitForm.bind(this))
-  }.bind(this))
+  var $form = $module.querySelector('.idsk-subscription-form__submit-handler')
+  $form.addEventListener('submit', this.handleSubmitForm.bind(this))
 }
 
 /**
@@ -29,8 +25,8 @@ SubscriptionForm.prototype.handleSubmitForm = function (e) {
   e.preventDefault()
 
   // check if email is set and set class for different state
-  if (this.$module.querySelector('input[type=email]').value !== '') {
-    this.$module.classList.add('subscription-confirmed')
+  if (e.target.querySelector('input[type=email]').value !== '') {
+    this.$module.classList.add('idsk-subscription-form__subscription-confirmed')
   }
 }
 

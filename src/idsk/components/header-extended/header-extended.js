@@ -1,7 +1,6 @@
 import '../../../govuk/vendor/polyfills/Function/prototype/bind'
-import '../../../govuk/vendor/polyfills/Event' // addEventListener and event.target normaliziation
-import { nodeListForEach } from '../../../govuk/common'
-import { toggleClass } from '../../common'
+import '../../../govuk/vendor/polyfills/Event' // addEventListener and event.target normalization
+import { nodeListForEach, toggleClass } from '../../common'
 
 /**
  * Header for extended websites
@@ -105,7 +104,7 @@ HeaderExtended.prototype.init = function () {
 
 /**
  * Hide label if search input is not empty
- * @param {object} e 
+ * @param {object} e
  */
 HeaderExtended.prototype.handleSearchChange = function (e) {
     var $searchInput = e.target || e.srcElement;
@@ -141,7 +140,7 @@ HeaderExtended.prototype.checkBlurLanguageSwitcherClick = function () {
 
 /**
  * Handle open/hide submenu
- * @param {object} e 
+ * @param {object} e
  */
 HeaderExtended.prototype.handleSubmenuClick = function (e) {
     var $srcEl = e.target || e.srcElement;

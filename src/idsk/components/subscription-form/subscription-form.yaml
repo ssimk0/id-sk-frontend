@@ -6,7 +6,11 @@ params:
   - name: classes
     type: string
     required: false
-    description: Class name for component banner.
+    description: Classes names for the subscription form.
+  - name: targetClass
+    type: string
+    required: false
+    description: Class to target form for custom submit event handler.
   - name: formAction
     type: string
     required: false
@@ -44,5 +48,4 @@ examples:
   - name: simple
     data:
       id: "subscription-form"
-      classes: "example-action"
 
