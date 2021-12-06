@@ -772,7 +772,7 @@
             @include govuk-focused-text;
 
             @include mq($from: desktop) {
-              box-shadow: 0 0px #ffdf0f, 0 -4px #0b0c0c inset;
+              box-shadow: 0 0 govuk-colour("yellow"), 0 -4px govuk-colour("black") inset;
             }
           }
 
@@ -951,7 +951,7 @@
 
               &:focus,
               &:active {
-                box-shadow: 0 0px #ffdf0f, 0 -4px #0b0c0c inset;
+                box-shadow: 0 0 govuk-colour("yellow"), 0 -4px govuk-colour("black") inset;
               }
             }
           }
