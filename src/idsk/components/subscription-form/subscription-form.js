@@ -14,7 +14,9 @@ SubscriptionForm.prototype.init = function () {
 
   // button to toggle content
   var $form = $module.querySelector('.idsk-subscription-form__submit-handler')
-  $form.addEventListener('submit', this.handleSubmitForm.bind(this))
+  if ($form) {
+    $form.addEventListener('submit', this.handleSubmitForm.bind(this))
+  }
 }
 
 /**
