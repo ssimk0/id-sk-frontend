@@ -2,13 +2,12 @@ import '../../../govuk/vendor/polyfills/Function/prototype/bind'
 import '../../../govuk/vendor/polyfills/Element/prototype/classList'
 import '../../../govuk/vendor/polyfills/Element/prototype/nextElementSibling'
 import '../../../govuk/vendor/polyfills/Element/prototype/previousElementSibling'
-import '../../../govuk/vendor/polyfills/Event' // addEventListener and event.target normaliziation
-import { nodeListForEach } from '../../common'
+import '../../../govuk/vendor/polyfills/Event' // addEventListener and event.target normalization
 
 function Table ($module) {
     this.$module = $module
   }
-  
+
   Table.prototype.init = function () {
     this.setup()
   }
@@ -24,7 +23,7 @@ function Table ($module) {
     if ($pritnTableBtn) {
       $pritnTableBtn.addEventListener('click', this.printTable.bind(this));
     }
-    
+
   }
 
   Table.prototype.printTable = function () {

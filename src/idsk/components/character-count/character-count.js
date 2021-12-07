@@ -1,5 +1,5 @@
 import '../../../govuk/vendor/polyfills/Function/prototype/bind'
-import '../../../govuk/vendor/polyfills/Event' // addEventListener and event.target normaliziation
+import '../../../govuk/vendor/polyfills/Event' // addEventListener and event.target normalization
 import '../../../govuk/vendor/polyfills/Element/prototype/classList'
 
 function CharacterCount($module) {
@@ -170,7 +170,7 @@ CharacterCount.prototype.updateCountMessage = function () {
   if (options.maxwords) {
     charNoun = 'slov'
   }
- 
+
   if ((remainingNumber > 1 && remainingNumber < 5) || (remainingNumber > -5 && remainingNumber < -1)) {
     charNoun = charNoun + 'y';
   } else if (remainingNumber == 1 || remainingNumber == -1) { } else {
