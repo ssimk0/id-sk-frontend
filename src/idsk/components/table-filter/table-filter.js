@@ -22,8 +22,8 @@ TableFilter.prototype.init = function () {
   // button to toggle content
   var $toggleButtons = $module.querySelectorAll('.idsk-filter-menu__toggle')
 
-  // button to submit all filters
-  var $submitFilters = $module.querySelectorAll('.submit-table-filter')
+  // Form with all inputs and selects
+  var $form = $module.querySelector('form')
 
   // all inputs for count of selected filters
   var $filterInputs = $module.querySelectorAll('.govuk-input, .govuk-select')
@@ -32,9 +32,12 @@ TableFilter.prototype.init = function () {
     $button.addEventListener('click', this.handleClickTogglePanel.bind(this))
   }.bind(this))
 
-  nodeListForEach($submitFilters, function ($button) {
-    $button.addEventListener('click', this.handleSubmitFilter.bind(this))
-  }.bind(this))
+  if ($form) {
+    $form.addEventListener('submit', function (e) {
+      e.preventDefault()
+      this.handleSubmitFilter(this)
+    }.bind(this))
+  }
 
   nodeListForEach($filterInputs, function ($input) {
     // for selects
@@ -42,11 +45,7 @@ TableFilter.prototype.init = function () {
     // for text inputs
     $input.addEventListener('keyup', function (e) {
       // submit if key is enter else change count of used filters
-      if (e.key === 'Enter') {
-        this.handleSubmitFilter(this)
-      } else {
-        this.handleFilterValueChange(e)
-      }
+      this.handleFilterValueChange(e)
     }.bind(this))
   }.bind(this))
 
@@ -63,6 +62,7 @@ TableFilter.prototype.handleClickTogglePanel = function (e) {
   var $expandablePanel = $el.parentNode
   var $content = $el.nextElementSibling
 
+  console.log(e.target, "was clicked")
   // get texts from button dataset
   var openText = $el.dataset.openText
   var closeText = $el.dataset.closeText
