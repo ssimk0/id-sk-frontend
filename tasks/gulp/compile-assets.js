@@ -48,7 +48,7 @@ const errorHandler = function (error) {
   this.emit('end')
 }
 // different entry points for both streams below and depending on destination flag
-const compileStyleshet = isDist ? configPaths.idsk_src + 'all.scss' : configPaths.app + 'assets/scss/app.scss'
+const compileStyleshet = isDist ? [configPaths.idsk_src + 'all.scss', configPaths.idsk_src + 'core.scss', configPaths.idsk_src + 'extended.scss'] : configPaths.app + 'assets/scss/app.scss'
 const compileOldIeStyleshet = isDist ? configPaths.idsk_src + 'all-ie8.scss' : configPaths.app + 'assets/scss/app-ie8.scss'
 
 gulp.task('scss:compile', () => {
@@ -164,7 +164,7 @@ gulp.task('scss:compile', () => {
 // --------------------------------------
 gulp.task('js:compile', () => {
   // for dist/ folder we only want compiled 'all.js' file
-  const srcFiles = isDist ? configPaths.idsk_src + 'all.js' : configPaths.idsk_src + '**/*.js'
+  const srcFiles = isDist ? [configPaths.idsk_src + 'all.js', configPaths.idsk_src + 'core.js', configPaths.idsk_src + 'extended.js'] : configPaths.idsk_src + '**/*.js'
 
   return gulp.src([
     srcFiles,
