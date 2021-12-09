@@ -1,5 +1,5 @@
 import { nodeListForEach } from "./common";
-import { initAll as initAllGOVUKjs } from "../govuk/core";
+import { initCore as initCoreGovuk } from "../govuk/core";
 import Button from "./components/button/button";
 import FooterExtended from "./components/footer-extended/footer-extended";
 import CharacterCount from "./components/character-count/character-count";
@@ -7,7 +7,7 @@ import CustomerSurveys from "./components/customer-surveys/customer-surveys";
 import HeaderWeb from './components/header-web/header-web';
 import SearchResults from './components/search-results/search-results';
 
-function initAll(options) {
+function initCore(options) {
   // Set the options to an empty object by default if no options are passed.
   options = typeof options !== "undefined" ? options : {};
 
@@ -48,15 +48,13 @@ function initAll(options) {
   var $searchResults = scope.querySelector('[data-module="idsk-search-results"]');
   new SearchResults($searchResults).init();
 
-  
-
   // Init all GOVUK components js
-  initAllGOVUKjs(options);
+  initCoreGovuk(options);
 }
 
 
 export {
-  initAll,
+  initCore,
   Button,
   CharacterCount,
   CustomerSurveys,

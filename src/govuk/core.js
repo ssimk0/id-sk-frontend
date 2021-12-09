@@ -6,7 +6,7 @@ import Checkboxes from './components/checkboxes/checkboxes'
 import ErrorSummary from './components/error-summary/error-summary'
 import Radios from './components/radios/radios'
 
-function initAll(options) {
+function initCore(options) {
   // Set the options to an empty object by default if no options are passed.
   options = typeof options !== 'undefined' ? options : {}
 
@@ -45,7 +45,7 @@ function initAll(options) {
 }
 
 export {
-  initAll,
+  initCore,
   Button,
   Details,
   CharacterCount,

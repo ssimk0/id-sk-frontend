@@ -1,15 +1,10 @@
 import { nodeListForEach } from "./common";
-import { initAll as initAllGOVUKjs } from "../govuk/extended";
-import Button from "./components/button/button";
+import { initCore } from "./core";
+import { initExtended as initExtendedGovuk } from "../govuk/extended";
 import Feedback from "./components/feedback/feedback";
-import FooterExtended from "./components/footer-extended/footer-extended";
-import CharacterCount from "./components/character-count/character-count";
 import Crossroad from "./components/crossroad/crossroad";
-import CustomerSurveys from "./components/customer-surveys/customer-surveys";
-import HeaderWeb from './components/header-web/header-web';
 import InPageNavigation from './components/in-page-navigation/in-page-navigation';
 import SearchComponent from './components/search-component/search-component';
-import SearchResults from './components/search-results/search-results';
 import TableFilter from './components/table-filter/table-filter';
 import Stepper from './components/stepper/stepper';
 import RegistrationForEvent from './components/registration-for-event/registration-for-event';
@@ -18,7 +13,7 @@ import Accordion from './components/accordion/accordion';
 import Tabs from './components/tabs/tabs';
 import Table from './components/table/table';
 
-function initAll(options) {
+function initExtended(options) {
   // Set the options to an empty object by default if no options are passed.
   options = typeof options !== "undefined" ? options : {};
 
@@ -26,30 +21,11 @@ function initAll(options) {
   // Defaults to the entire document if nothing is set.
   var scope = typeof options.scope !== 'undefined' ? options.scope : document
 
-  var $buttons = scope.querySelectorAll('[data-module="idsk-button"]')
-  nodeListForEach($buttons, function ($button) {
-    new Button($button).init()
-  })
-
   var $feedback = scope.querySelectorAll(
     '[data-module="idsk-feedback"]'
   );
   nodeListForEach($feedback, function ($feedback) {
     new Feedback($feedback).init();
-  });
-  // Find first Footer-extended module to enhance.
-  var $footerExtended = scope.querySelectorAll(
-    '[data-module="idsk-footer-extended"]'
-  );
-  nodeListForEach($footerExtended, function ($footerExtended) {
-    new FooterExtended($footerExtended).init();
-  });
-
-  var $characterCounts = scope.querySelectorAll(
-    '[data-module="idsk-character-count"]'
-  );
-  nodeListForEach($characterCounts, function ($characterCount) {
-    new CharacterCount($characterCount).init();
   });
 
   var $crossroad = scope.querySelectorAll('[data-module="idsk-crossroad"]');
@@ -57,21 +33,8 @@ function initAll(options) {
     new Crossroad($crossroad).init();
   });
 
-  var $customerSurveys = scope.querySelectorAll('[data-module="idsk-customer-surveys"]');
-  nodeListForEach($customerSurveys, function ($customerSurveys) {
-    new CustomerSurveys($customerSurveys).init();
-  });
-
-  var $headersWeb = scope.querySelectorAll('[data-module="idsk-header-web"]');
-  nodeListForEach($headersWeb, function ($headerWeb) {
-    new HeaderWeb($headerWeb).init();
-  });
-
   var $inPageNavigation = scope.querySelector('[data-module="idsk-in-page-navigation"]');
   new InPageNavigation($inPageNavigation).init();
-
-  var $searchResults = scope.querySelector('[data-module="idsk-search-results"]');
-  new SearchResults($searchResults).init();
 
   var $searchComponents = scope.querySelectorAll('[data-module="idsk-search-component"]');
   nodeListForEach($searchComponents, function ($searchComponent) {
@@ -113,23 +76,19 @@ function initAll(options) {
     new TableFilter($tableFilter).init();
   })
 
+  initCore(options);
+
   // Init all GOVUK components js
-  initAllGOVUKjs(options);
+  initExtendedGovuk(options);
 }
 
 
 export {
-  initAll,
-  Button,
-  CharacterCount,
+  initExtended,
   Crossroad,
-  CustomerSurveys,
   Feedback,
-  FooterExtended,
-  HeaderWeb,
   InPageNavigation,
   SearchComponent,
-  SearchResults,
   RegistrationForEvent,
   InteractiveMap,
   Stepper,
