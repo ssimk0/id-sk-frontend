@@ -19,7 +19,7 @@ params:
     type: array
     required: false
     description: The array of radio inputs for more table options. Maximum allowed radio inputs are 2.
-    params: 
+    params:
       - name: title
         type: string
         required: true
@@ -28,6 +28,10 @@ params:
         type: string
         required: true
         description: The value of the first option
+  - name: disableSort
+    type: boolean
+    required: false
+    description: True for disable sorting for every column
   - name: downloadButton
     type: object
     required: false
@@ -39,7 +43,7 @@ params:
         description: Text for download button
       - name: href
         type: string
-        description: Link for download button 
+        description: Link for download button
   - name: printTable
     type: object
     required: false
@@ -61,7 +65,7 @@ params:
       - name: name
         type: string
         required: true
-        description: Name of source 
+        description: Name of source
       - name: href
         type: string
         required: false
@@ -111,6 +115,10 @@ params:
         type: object
         required: false
         description: HTML attributes (for example data attributes) to add to the table cell.
+      - name: disableSort
+        type: boolean
+        required: false
+        description: True if sorting is not allowed for this column
   - name: rows
     type: array
     required: false
@@ -155,7 +163,7 @@ examples:
       - text: "Dátum"
       - text: "Deň"
       - text: "Názov"
-    rows: 
+    rows:
       -
         - text: "1.Január"
         - text: "piatok"
@@ -192,7 +200,7 @@ examples:
       - text: "Dátum"
       - text: "Deň"
       - text: "Názov"
-    rows: 
+    rows:
       -
         - text: "1.Január"
         - text: "piatok"
@@ -214,6 +222,6 @@ examples:
         - text: "streda"
         - text: "Deň boja za slobodu a demokraciu"
     printTable: true
-    source: 
+    source:
         name: "vlada.gov.sk"
         href: "https://www.vlada.gov.sk/statne-sviatky/"

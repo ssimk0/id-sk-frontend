@@ -27,10 +27,10 @@
       </div>
     {% endif %}
   </div>
-  
+
   <table class="idsk-table
     {%- if params.classes %} {{ params.classes }}{% endif -%}" {% for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
-    
+
     {% if params.head -%}
     <thead class="idsk-table__head">
       <tr class="idsk-table__row">
@@ -42,7 +42,9 @@
           {%- if item.rowspan %} rowspan="{{ item.rowspan }}"{% endif %}{% for attribute, value in item.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
           <span class="th-span">
             {{ item.html |safe if item.html else item.text }}
-            <button class="arrowBtn"></button>
+            {% if not item.disableSort and not params.disableSort %}
+              <button class="arrowBtn"></button>
+            {% endif %}
           </span>
         </th>
       {% endfor %}
@@ -75,7 +77,7 @@
       {% endfor %}
     </tbody>
   </table>
-  
+
   {% if params.downloadButton or params.printTable or params.source %}
     <div class="idsk-table__meta">
       <div class="idsk-button-group idsk-table__meta-buttons">
@@ -99,7 +101,7 @@
 
       {% if params.source %}
         <div class="govuk-body idsk-table__meta-source">
-          {{ params.source.text if params.source.text else 'Zdroj: ' }} 
+          {{ params.source.text if params.source.text else 'Zdroj: ' }}
           {% if params.source.href %}
             <a class="govuk-link" href="{{ params.source.href }}" target="_blank" title="{{ params.source.name }}">{{ params.source.name }}</a>
           {% else %}
