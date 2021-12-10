@@ -1,8 +1,9 @@
 {% extends "layout.njk" %}
 {% from "breadcrumbs/macro.njk" import govukBreadcrumbs %}
 {% from "../../../src/idsk/components/table/macro.njk" import idskTable %}
+{% from "../../../src/idsk/components/table-filter/macro.njk" import idskTableFilter %}
 
-{% set pageName = "Tabuľka" %}
+{% set pageName = "Tabuľky" %}
 
 {% block beforeContent %}
   {{ govukBreadcrumbs({
@@ -24,12 +25,10 @@
   <h2 class="govuk-heading-l">Z čoho sa skladá tabuľka?</h2>
   <p class="govuk-body-l">Tabuľka sa skladá z:</p>
   <ol class="idsk-list idsk-list--letters">
-    <li>popisu v ľavej časti - môže obsahovať dátum, čas, mesiac,</li>
-    <li>vizuálnej časovej osi s guličkou,</li>
-    <li>popisu v pravej časti - link alebo popis s udalosťou alebo časťou procesu, ktorý reprezentuje,</li>
-    <li>vertikálneho oddeľovača s popisom - voliteľná časť - zoskupuje udalosti nachádzajúce sa pod ním,</li>
-    <li>nadpisu - voliteľná časť,</li>
-    <li>tlačidiel “Zobraziť staršie udalosti” a/alebo “Zobraziť budúce udalosti”.</li>
+    <li>nadpisu,</li>
+    <li>filtra,</li>
+    <li>tabuľky,</li>
+    <li>pätičky tabuľky.</li>
   </ol>
   <h2 class="govuk-heading-l">Nadpis tabuľky</h2>
   <p class="govuk-body">
@@ -98,6 +97,7 @@
         {% endset %}
         {{ exampleComponentHtml | safe }}
       </div>
+      <pre class="language-markup"><code class="govuk-!-font-size-16 language-markup">{{ exampleComponentHtml }}</code></pre>
     </div>
   </div>
 
@@ -110,7 +110,6 @@
     odporúčame zobraziť aj zoraďovacie tlačidlá pre každý stĺpec. Zoraďovanie umožní používateľovi zoradiť si údaje podľa jeho potrieb a preferencií.
   </p>
 
-  [Príklad:Nadpis s popisom, tabulka s 20 riadkami (zobrazuje sa 8), 5 stlcpami, so zoradovacími tlacidlami a posuníkom a jendoduchým filtrom
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
       <div class="example">
@@ -119,6 +118,7 @@
         {% endset %}
         {{ exampleComponentHtml | safe }}
       </div>
+      <pre class="language-markup"><code class="govuk-!-font-size-16 language-markup">{{ exampleComponentHtml }}</code></pre>
     </div>
   </div>
 
@@ -126,7 +126,6 @@
     V prípade, že tabuľka obsahuje veľké množstvo údajov, zvážte koľko riadkov budete zobrazovať používateľom.
   </p>
 
-  [Príklad:Nadpis s popisom a prepinačmi, tabulka s 100 riadkami(zobrazuje sa 20), 5 stlcpami, so zoradovacími tlacidlami a posuníkom a zlozitým filtrom]
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
       <div class="example">
@@ -135,6 +134,7 @@
         {% endset %}
         {{ exampleComponentHtml | safe }}
       </div>
+      <pre class="language-markup"><code class="govuk-!-font-size-16 language-markup">{{ exampleComponentHtml }}</code></pre>
     </div>
   </div>
 
@@ -142,7 +142,7 @@
   <h2 class="govuk-heading-l">Pätička tabuľky</h2>
   <p class="govuk-body">
     V pätičke tabuľky musí byť uvedený zdroj údajov. Zdroj uvádzajte vpravo dole pod tabuľkou.
-    >Naľavo pod tabuľkou môžete použiť tlačidlá pre exportu údajov alebo tlačidlo pre tlač.
+    Naľavo pod tabuľkou môžete použiť tlačidlá pre exportu údajov alebo tlačidlo pre tlač.
   </p>
 
   <h2 class="govuk-heading-m">Rozšírené príklady pre tabuľku:</h2>

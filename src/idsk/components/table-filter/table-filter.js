@@ -45,12 +45,26 @@ TableFilter.prototype.init = function () {
     // for text inputs
     $input.addEventListener('keyup', function (e) {
       // submit if key is enter else change count of used filters
-      this.handleFilterValueChange(e)
+      if (e.key === 'Enter') {
+        // send event like this, because submitting form will be ignored if fields are empty
+        this.sendSubmitEvent()
+      } else {
+        this.handleFilterValueChange(e)
+      }
     }.bind(this))
   }.bind(this))
 
   // recalculate height of all expanded panels on window resize
   window.addEventListener('resize', this.handleWindowResize.bind(this))
+}
+/**
+ * Forcing submit event for form
+ */
+TableFilter.prototype.sendSubmitEvent = function () {
+  this.$module.querySelector('form').dispatchEvent(new Event('submit', {
+    'bubbles': true,
+    'cancelable': true
+  }))
 }
 
 /**
@@ -62,7 +76,6 @@ TableFilter.prototype.handleClickTogglePanel = function (e) {
   var $expandablePanel = $el.parentNode
   var $content = $el.nextElementSibling
 
-  console.log(e.target, "was clicked")
   // get texts from button dataset
   var openText = $el.dataset.openText
   var closeText = $el.dataset.closeText
@@ -113,8 +126,11 @@ TableFilter.prototype.removeActiveFilter = function ($filterToRemove) {
     })
   } else $filterToRemoveValue.value = ''
 
-  // simulate change event of inputs to change count of active filters
+  // simulate change event of inputs to change count of active filters and call form submit to send information about filter was changed
   $filterToRemoveValue.dispatchEvent(new Event('change'))
+
+  // send submit event of form to call data changes
+  this.sendSubmitEvent()
 
   this.$activeFilters = this.$activeFilters.filter(function ($filter) {
     return $filter.id !== $filterToRemove.id
