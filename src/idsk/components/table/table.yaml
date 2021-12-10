@@ -32,7 +32,7 @@ params:
     type: boolean
     required: false
     description: True for disable sorting for every column
-  - name: marRowsView
+  - name: maxRowsView
     type: integer
     required: false
     description: Limit maximum count of showed rows. More rows will be visible with scrolling

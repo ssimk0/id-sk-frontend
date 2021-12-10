@@ -53,7 +53,7 @@
       </tr>
     </thead>
     {% endif %}
-    <tbody class="idsk-table__body" style="{{ ('max-height:' + (45.5 * params.marRowsView) + 'px') if params.marRowsView  }}">
+    <tbody class="idsk-table__body" style="{{ ('max-height:' + (45.5 * params.maxRowsView) + 'px') if params.maxRowsView  }}">
       {% for row in params.rows %}
         {% if row %}
           <tr class="idsk-table__row">
