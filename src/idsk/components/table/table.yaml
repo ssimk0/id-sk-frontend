@@ -32,6 +32,10 @@ params:
     type: boolean
     required: false
     description: True for disable sorting for every column
+  - name: marRowsView
+    type: integer
+    required: false
+    description: Limit maximum count of showed rows. More rows will be visible with scrolling
   - name: downloadButton
     type: object
     required: false
@@ -167,7 +171,7 @@ examples:
       -
         - text: "1.Január"
         - text: "piatok"
-        - text: "Deň vzniku Slovenskej republiky)"
+        - text: "Deň vzniku Slovenskej republiky"
       -
         - text: "5.Júl"
         - text: "pondelok"
@@ -204,7 +208,7 @@ examples:
       -
         - text: "1.Január"
         - text: "piatok"
-        - text: "Deň vzniku Slovenskej republiky)"
+        - text: "Deň vzniku Slovenskej republiky"
       -
         - text: "5.Júl"
         - text: "pondelok"
