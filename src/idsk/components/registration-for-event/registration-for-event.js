@@ -1,4 +1,4 @@
-import '../../../govuk/vendor/polyfills/Event' // addEventListener and event.target normaliziation
+import '../../../govuk/vendor/polyfills/Event' // addEventListener and event.target normalization
 
 function RegistrationForEvent($module) {
     this.$module = $module;

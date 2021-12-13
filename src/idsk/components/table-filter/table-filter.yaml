@@ -3,6 +3,10 @@ params:
     type: string
     required: false
     description: Id of the table filter.
+  - name: formAction
+    type: string
+    required: false
+    description: Action called after submitting form
   - name: openFilter
     type: string
     required: false

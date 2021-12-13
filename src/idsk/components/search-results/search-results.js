@@ -1,5 +1,5 @@
 import '../../../govuk/vendor/polyfills/Function/prototype/bind'
-import '../../../govuk/vendor/polyfills/Event' // addEventListener and event.target normaliziation
+import '../../../govuk/vendor/polyfills/Event' // addEventListener and event.target normalization
 import { toggleClass } from "../../common";
 
 function SearchResults($module) {
@@ -164,7 +164,7 @@ SearchResults.prototype.init = function () {
 /**
  * function for handling show results button and 'back to results' button in mobile view
  * hiding and showing elements - mobile version only
- * 
+ *
  */
 SearchResults.prototype.handleClickShowResultsButton = function (e) {
     var $module = this.$module
@@ -212,7 +212,7 @@ SearchResults.prototype.handleClickShowResultsButton = function (e) {
 /**
  * function for handling whether is some filter picked, because of hiding and showing elements in container with picked items
  * returns boolean
- * 
+ *
  */
 SearchResults.prototype.handleSomeFilterPicked = function (e) {
     var $module = this.$module
@@ -233,7 +233,7 @@ SearchResults.prototype.handleSomeFilterPicked = function (e) {
 
 /**
  * function for counting selected filters, for mobile button 'Filters' purposes
- * 
+ *
  */
 SearchResults.prototype.handleCountForFiltersButton = function (e) {
     var $module = this.$module
@@ -248,7 +248,7 @@ SearchResults.prototype.handleCountForFiltersButton = function (e) {
 
 /**
  * function for disabling all picked filters
- * 
+ *
  */
 SearchResults.prototype.handleClickTurnFiltersOffButton = function (e) {
     var $module = this.$module
@@ -276,7 +276,7 @@ SearchResults.prototype.handleClickTurnFiltersOffButton = function (e) {
 
 /**
  * function for changing view for mobile after click on "Filters" button
- * 
+ *
  */
 SearchResults.prototype.handleClickFiltersButton = function (e) {
     var $module = this.$module
@@ -411,7 +411,7 @@ SearchResults.prototype.createSpanElement = function ($class, $text) {
 
 /**
  * function for checking whether is there any date items selected in container
- * 
+ *
  */
 SearchResults.prototype.checkValuesInDateContainer = function (e) {
     var $choosenDatesInFiltersContainer = this.$module.querySelector('.idsk-search-results__content__picked-filters__date')
@@ -447,7 +447,7 @@ SearchResults.prototype.checkValuesInDateContainer = function (e) {
 
 /**
  * function for changing number of cards on page
- * 
+ *
  */
 SearchResults.prototype.showResultCardsPerPage = function ($startIndex, $endIndex) {
     var $module = this.$module
@@ -505,7 +505,7 @@ SearchResults.prototype.showResultCardsPerPage = function ($startIndex, $endInde
 
 /**
  * An event handler for click event on $linkPanel - collapse or expand filter
- * @param {object} e 
+ * @param {object} e
  */
 SearchResults.prototype.handleClickLinkPanel = function (e) {
     var $el = e.target || e.srcElement
@@ -518,7 +518,7 @@ SearchResults.prototype.handleClickLinkPanel = function (e) {
 
 /**
  * An event handler for click event on radio button
- * @param {object} e 
+ * @param {object} e
  */
 SearchResults.prototype.handleClickRadioButton = function (e) {
     var $el = e.target || e.srcElement || e
@@ -591,7 +591,7 @@ SearchResults.prototype.handleRemovePickedContentType = function (e) {
 
 /**
  * function for counting selected checkboxes in content type filter
- * @param {object} $checkBoxes 
+ * @param {object} $checkBoxes
  * @param {object} $linkPanelButton
  */
 SearchResults.prototype.handleCountOfPickedContentTypes = function ($checkBoxes, $linkPanelButton) {
@@ -619,7 +619,7 @@ SearchResults.prototype.handleCountOfPickedContentTypes = function ($checkBoxes,
  * @param {object} $choosenFiltersContainer
  * @param {object} $input
  * @param {object} $el
- * @param {boolean} $insertBeforeFirst 
+ * @param {boolean} $insertBeforeFirst
  */
 SearchResults.prototype.createTopicInContainer = function ($choosenFiltersContainer, $input, $class, $el, $insertBeforeFirst) {
     var $showResultsMobileButton = this.$module.querySelector('.idsk-search-results__show-results__button')
@@ -649,7 +649,7 @@ SearchResults.prototype.createTopicInContainer = function ($choosenFiltersContai
 
 /**
  * function for setting grey background for odd elements in picked topics container
- * 
+ *
  */
 SearchResults.prototype.changeBackgroundForPickedFilters = function (e) {
     var $module = this.$module
@@ -677,7 +677,7 @@ SearchResults.prototype.changeBackgroundForPickedFilters = function (e) {
 
 /**
  * function for disabling 'subtopic' filter, in case of removing topic filter
- * 
+ *
  */
 SearchResults.prototype.disableSubtopic = function (e) {
     var $contentPanel = this.$module.subTopicButton.parentElement.querySelector('.idsk-search-results__list')
