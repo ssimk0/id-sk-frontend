@@ -22,7 +22,7 @@ Tento súhlas môžem kedykoľvek odvolať na <a href="mailto:info@slovenskoit.s
     <form action="{{ params.formAction if params.formAction else "#" }}"
           class="govuk-form-group {{ params.targetClass if params.targetClass else "idsk-subscription-form__submit-handler" }}">
       <div class="govuk-grid-column-three-quarters">
-        <input type="email" class="govuk-input" placeholder="{{ inputText }}">
+        <input type="email" class="govuk-input" title="{{ inputText }}">
       </div>
       <div class="govuk-grid-column-one-quarter">
         <input type="submit" class="idsk-button" value="{{ buttonText }}">
