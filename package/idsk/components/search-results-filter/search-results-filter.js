@@ -740,7 +740,7 @@ SearchResultsFilter.prototype.handleClickRadioButton = function (e) {
     var $el = e.target || e.srcElement;
     var $linkPanelButton = $el.closest('.idsk-search-results__link-panel');
     var $buttonCaption = $linkPanelButton.querySelector('.idsk-search-results__link-panel--span');
-    
+
     $buttonCaption.innerText = '1 vybraté';
 };
 
@@ -779,7 +779,7 @@ SearchResultsFilter.prototype.handleSearchItemsFromInput = function ($type, e) {
     }.bind(this));
     $items.forEach(function ($item) {
         var $labelItem = $item.querySelector('.govuk-' + $type + '__label');
-        
+
         if (!$labelItem.innerText.toLowerCase().includes($el.value.toLowerCase())) {
             $item.classList.add('idsk-search-results--invisible');
         }
@@ -788,7 +788,7 @@ SearchResultsFilter.prototype.handleSearchItemsFromInput = function ($type, e) {
 
 /**
  * An event handler for click event on $linkPanel - collapse or expand filter
- * @param {object} e 
+ * @param {object} e
  */
 SearchResultsFilter.prototype.handleClickLinkPanel = function (e) {
     var $el = e.target || e.srcElement;

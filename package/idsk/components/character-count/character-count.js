@@ -1179,7 +1179,7 @@ CharacterCount.prototype.updateCountMessage = function () {
   if (options.maxwords) {
     charNoun = 'slov';
   }
- 
+
   if ((remainingNumber > 1 && remainingNumber < 5) || (remainingNumber > -5 && remainingNumber < -1)) {
     charNoun = charNoun + 'y';
   } else if (remainingNumber == 1 || remainingNumber == -1) { } else {

@@ -29,6 +29,8 @@ const postcsspseudoclasses = require('postcss-pseudo-classes')({
 // check if destination flag is dist
 const isDist = taskArguments.destination === 'dist' || false
 
+const isPackage = taskArguments.destination === 'package' || false
+
 // Set the destination
 const destinationPath = function () {
   // Public & Dist directories do no need namespaced with `govuk`
@@ -170,7 +172,7 @@ gulp.task('js:compile', () => {
     srcFiles,
     '!' + configPaths.idsk_src + '**/*.test.js'
   ])
-    .pipe(sourcemaps.init())
+    .pipe(gulpif(!isPackage, sourcemaps.init()))
     .pipe(rollup({
       // Used to set the `window` global and UMD/AMD export name.
       name: 'GOVUKFrontend',

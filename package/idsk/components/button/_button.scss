@@ -96,6 +96,12 @@
       @include govuk-if-ie8 {
         color: $idsk-focus-text-colour;
         background-color: $idsk-focus-colour;
+
+        // If there is a svg icon inside the button
+        svg,
+        svg path {
+          fill: $govuk-focus-text-colour;
+        }
       }
       box-shadow: inset 0 0 0 1px $idsk-focus-colour;
     }
@@ -105,6 +111,12 @@
       color: $idsk-focus-text-colour;
       background-color: $idsk-focus-colour;
       box-shadow: 0 2px 0 $idsk-focus-text-colour;
+
+      // If there is a svg icon inside the button
+      svg,
+      svg path {
+        fill: $govuk-focus-text-colour;
+      }
     }
 
     // The following adjustments do not work for <input type="button"> as

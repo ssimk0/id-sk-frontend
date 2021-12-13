@@ -7,6 +7,7 @@ import InPageNavigation from './components/in-page-navigation/in-page-navigation
 import SearchComponent from './components/search-component/search-component';
 import TableFilter from './components/table-filter/table-filter';
 import Stepper from './components/stepper/stepper';
+import SubscriptionForm from './components/subscription-form/subscription-form';
 import RegistrationForEvent from './components/registration-for-event/registration-for-event';
 import InteractiveMap from './components/interactive-map/interactive-map';
 import Accordion from './components/accordion/accordion';
@@ -76,6 +77,11 @@ function initExtended(options) {
     new TableFilter($tableFilter).init();
   })
 
+  var $subscriptionForms = scope.querySelectorAll('[data-module="idsk-subscription-form"]');
+  nodeListForEach($subscriptionForms, function ($subscriptionForm) {
+    new SubscriptionForm($subscriptionForm).init();
+  })
+
   initCore(options);
 
   // Init all GOVUK components js
@@ -92,6 +98,7 @@ export {
   RegistrationForEvent,
   InteractiveMap,
   Stepper,
+  SubscriptionForm,
   Accordion,
   Tabs,
   Table,
