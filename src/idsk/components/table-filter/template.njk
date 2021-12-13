@@ -33,9 +33,10 @@
 
 {% macro expandFilterToggle(params, openText, closeText, expanded, disableTabIndex) %}
   <button class="govuk-body govuk-link idsk-filter-menu__toggle"
-       tabindex="{{ -1 if disableTabIndex else 0 }}"
-       data-open-text="{{ openText }}"
-       data-close-text="{{ closeText }}">
+          tabindex="{{ -1 if disableTabIndex else 0 }}"
+          data-open-text="{{ openText }}"
+          data-close-text="{{ closeText }}"
+          type="button">
     {{ closeText if expanded else openText }}
   </button>
 {% endmacro %}
@@ -44,7 +45,7 @@
   <div class="idsk-table-filter__panel idsk-table-filter__inputs">
     <div class="idsk-table-filter__title govuk-heading-m">{{ filterContentTitle }}</div>
     {{ expandFilterToggle(params, openFilter, closeFilter, false) }}
-    <div class="idsk-table-filter__content">
+    <form class="idsk-table-filter__content" action="{{ params.formAction if params.formAction else '#' }}">
       {% if params.categories %}
         {% for category in params.categories %}
           <div class="idsk-table-filter__category">
@@ -65,7 +66,7 @@
       <button type="submit" class="idsk-button submit-table-filter" disabled="disabled">
         {{ filterSelectedText }} (<span class="count">0</span>)
       </button>
-    </div>
+    </form>
   </div>
   <div class="idsk-table-filter__panel idsk-table-filter__active-filters idsk-table-filter__active-filters__hide idsk-table-filter--expanded"
        data-remove-all-filters="{{ removeAllFilters }}">

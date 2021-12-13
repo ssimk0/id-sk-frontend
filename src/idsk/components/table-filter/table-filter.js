@@ -21,8 +21,8 @@ TableFilter.prototype.init = function () {
   // button to toggle content
   var $toggleButtons = $module.querySelectorAll('.idsk-filter-menu__toggle')
 
-  // button to submit all filters
-  var $submitFilters = $module.querySelectorAll('.submit-table-filter')
+  // Form with all inputs and selects
+  var $form = $module.querySelector('form')
 
   // all inputs for count of selected filters
   var $filterInputs = $module.querySelectorAll('.govuk-input, .govuk-select')
@@ -31,9 +31,12 @@ TableFilter.prototype.init = function () {
     $button.addEventListener('click', this.handleClickTogglePanel.bind(this))
   }.bind(this))
 
-  nodeListForEach($submitFilters, function ($button) {
-    $button.addEventListener('click', this.handleSubmitFilter.bind(this))
-  }.bind(this))
+  if ($form) {
+    $form.addEventListener('submit', function (e) {
+      e.preventDefault()
+      this.handleSubmitFilter(this)
+    }.bind(this))
+  }
 
   nodeListForEach($filterInputs, function ($input) {
     // for selects
@@ -42,7 +45,8 @@ TableFilter.prototype.init = function () {
     $input.addEventListener('keyup', function (e) {
       // submit if key is enter else change count of used filters
       if (e.key === 'Enter') {
-        this.handleSubmitFilter(this)
+        // send event like this, because submitting form will be ignored if fields are empty
+        this.sendSubmitEvent()
       } else {
         this.handleFilterValueChange(e)
       }
@@ -51,6 +55,15 @@ TableFilter.prototype.init = function () {
 
   // recalculate height of all expanded panels on window resize
   window.addEventListener('resize', this.handleWindowResize.bind(this))
+}
+/**
+ * Forcing submit event for form
+ */
+TableFilter.prototype.sendSubmitEvent = function () {
+  this.$module.querySelector('form').dispatchEvent(new Event('submit', {
+    'bubbles': true,
+    'cancelable': true
+  }))
 }
 
 /**
@@ -112,8 +125,11 @@ TableFilter.prototype.removeActiveFilter = function ($filterToRemove) {
     })
   } else $filterToRemoveValue.value = ''
 
-  // simulate change event of inputs to change count of active filters
+  // simulate change event of inputs to change count of active filters and call form submit to send information about filter was changed
   $filterToRemoveValue.dispatchEvent(new Event('change'))
+
+  // send submit event of form to call data changes
+  this.sendSubmitEvent()
 
   this.$activeFilters = this.$activeFilters.filter(function ($filter) {
     return $filter.id !== $filterToRemove.id

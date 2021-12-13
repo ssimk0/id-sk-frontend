@@ -40,7 +40,7 @@
             }
 
             &::after {
-              border: 9px  solid currentColor;
+              border: 9px solid currentColor;
               top: 9px;
               left: 9px;
             }
@@ -72,15 +72,26 @@
               }
 
               &::after {
-                border: 6px  solid currentColor;
+                border: 6px solid currentColor;
                 top: 6px;
                 left: 6px;
               }
             }
           }
-        } 
+        }
       }
     }
+  }
+
+  .idsk-table__body {
+    overflow: auto;
+    display: block;
+  }
+
+  .idsk-table__head, .idsk-table__row {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
   }
 
   .idsk-table__header {
@@ -89,6 +100,7 @@
     .arrowBtn:last-of-type {
       padding-right: 20px;
     }
+
     .arrowBtn {
       position: relative;
       border: 1px solid transparent;
@@ -129,19 +141,19 @@
         @include govuk-focused-text;
       }
     }
-  
+
     .des.arrowBtn:before,
     .aes.arrowBtn:after {
       display: none;
     }
-  
+
     .th-span {
       display: inline-flex;
       flex-direction: row;
       -webkit-box-align: center;
       align-items: center;
     }
-  
+
     .sr-only {
       position: absolute;
       overflow: hidden;
@@ -150,7 +162,7 @@
       padding: 0;
       border: 0;
       margin: -1px;
-      clip: rect(1px,1px,1px,1px);
+      clip: rect(1px, 1px, 1px, 1px);
       -webkit-clip-path: inset(50%);
       clip-path: inset(50%);
       white-space: nowrap;
