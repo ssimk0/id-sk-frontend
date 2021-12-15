@@ -3,6 +3,16 @@
   title: "Mestá",
   caption: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
   maxRowsView: 20,
+  radioOptions: [
+    {
+      title: "Slovensko",
+      value: "sk"
+    },
+    {
+      title: "Česko",
+      value: "cz"
+    }
+  ],
   head: [
     {
       text: "Mesto"
@@ -1927,37 +1937,37 @@
       {
         "title": "Podľa miesta",
         "filters": [
+        {
+          "id": "mesto",
+          "inputTitle": "Mesto"
+        },
+        {
+          "id": "kraj",
+          "inputTitle": "Kraj"
+        },
+        {
+          "id": "okres",
+          "inputTitle": "Okres",
+          "options": [
           {
-            "id": "mesto",
-            "inputTitle": "Mesto"
+            "value": "",
+            "inputTitle": "Vybrať okres"
           },
           {
-            "id": "kraj",
-            "inputTitle": "Kraj"
+            "value": "bratislava",
+            "inputTitle": "Bratislava"
           },
           {
-            "id": "okres",
-            "inputTitle": "Okres",
-            "options": [
-              {
-                "value": "",
-                "inputTitle": "Vybrať okres"
-              },
-              {
-                "value": "bratislava",
-                "inputTitle": "Bratislava"
-              },
-              {
-                "value": "zilina",
-                "inputTitle": "Žilina"
-              },
-              {
-                "value": "kosice",
-                "inputTitle": "Košice"
-              }
-            ]
+            "value": "zilina",
+            "inputTitle": "Žilina"
+          },
+          {
+            "value": "kosice",
+            "inputTitle": "Košice"
           }
         ]
+        }
+      ]
       },
       {
         "title": "Podľa veľkosti",
