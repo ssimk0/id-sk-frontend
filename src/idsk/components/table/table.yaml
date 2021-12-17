@@ -15,6 +15,10 @@ params:
     type: string
     required: false
     description: Classes for caption text.
+  - name: filter
+    type: object
+    required: false
+    description: Filter component inside table.
   - name: radioOptions
     type: array
     required: false
