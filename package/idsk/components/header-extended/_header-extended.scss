@@ -771,7 +771,7 @@
             color: govuk-colour("white");
           }
 
-          &-item:first-child() {
+          &-item:first-child {
             padding-left: 0;
           }
         }

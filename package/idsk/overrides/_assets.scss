@@ -11,21 +11,21 @@
 /// @type String
 /// @access public
 
-$govuk-assets-path: "/assets/" !default;
+$idsk-assets-path: "/assets/" !default;
 
 /// Path to the images folder, with trailing slash.
 ///
 /// @type String
 /// @access public
 
-$govuk-images-path: "#{$govuk-assets-path}images/" !default;
+$idsk-images-path: "#{$idsk-assets-path}images/" !default;
 
 /// Path to the fonts folder, with trailing slash.
 ///
 /// @type String
 /// @access public
 
-$govuk-fonts-path: "#{$govuk-assets-path}fonts/" !default;
+$idsk-fonts-path: "#{$idsk-assets-path}fonts/" !default;
 
 /// Custom image URL function
 ///
@@ -39,7 +39,7 @@ $govuk-fonts-path: "#{$govuk-assets-path}fonts/" !default;
 /// @type String
 ///
 /// @example scss - Rails asset handling
-///   $govuk-image-url-function: 'image-url';
+///   $idsk-image-url-function: 'image-url';
 ///
 /// @example scss - Custom asset handling
 ///
@@ -48,11 +48,11 @@ $govuk-fonts-path: "#{$govuk-assets-path}fonts/" !default;
 ///     @return url('example.jpg');
 ///   }
 ///
-///   $govuk-image-url-function: 'my-url-handler';
+///   $idsk-image-url-function: 'my-url-handler';
 ///
 /// @access public
 
-$govuk-image-url-function: false !default;
+$idsk-image-url-function: false !default;
 
 /// Custom font URL function
 ///
@@ -66,7 +66,7 @@ $govuk-image-url-function: false !default;
 /// @type String
 ///
 /// @example scss - Rails asset handling
-///   $govuk-font-url-function: 'font-url';
+///   $idsk-font-url-function: 'font-url';
 ///
 /// @example scss - Custom asset handling
 ///
@@ -75,8 +75,8 @@ $govuk-image-url-function: false !default;
 ///     @return url('example.woff');
 ///   }
 ///
-///   $govuk-font-url-function: 'my-url-handler';
+///   $idsk-font-url-function: 'my-url-handler';
 ///
 /// @access public
 
-$govuk-font-url-function: false !default;
+$idsk-font-url-function: false !default;

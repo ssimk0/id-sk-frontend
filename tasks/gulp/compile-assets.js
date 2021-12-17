@@ -29,6 +29,8 @@ const postcsspseudoclasses = require('postcss-pseudo-classes')({
 // check if destination flag is dist
 const isDist = taskArguments.destination === 'dist' || false
 
+const isPackage = taskArguments.destination === 'package' || false
+
 // Set the destination
 const destinationPath = function () {
   // Public & Dist directories do no need namespaced with `govuk`
@@ -48,7 +50,7 @@ const errorHandler = function (error) {
   this.emit('end')
 }
 // different entry points for both streams below and depending on destination flag
-const compileStyleshet = isDist ? configPaths.idsk_src + 'all.scss' : configPaths.app + 'assets/scss/app.scss'
+const compileStyleshet = isDist ? configPaths.idsk_src + 'all.scss' : [ configPaths.app + 'assets/scss/app.scss', configPaths.idsk_src + 'core.scss', configPaths.idsk_src + 'extended.scss' ]
 const compileOldIeStyleshet = isDist ? configPaths.idsk_src + 'all-ie8.scss' : configPaths.app + 'assets/scss/app-ie8.scss'
 
 gulp.task('scss:compile', () => {
@@ -170,7 +172,7 @@ gulp.task('js:compile', () => {
     srcFiles,
     '!' + configPaths.idsk_src + '**/*.test.js'
   ])
-    .pipe(sourcemaps.init())
+    .pipe(gulpif(!isPackage, sourcemaps.init()))
     .pipe(rollup({
       // Used to set the `window` global and UMD/AMD export name.
       name: 'GOVUKFrontend',

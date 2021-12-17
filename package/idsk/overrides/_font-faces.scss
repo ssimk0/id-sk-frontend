@@ -1,4 +1,4 @@
-@import "../../govuk/tools/font-url";
+@import "../../idsk/tools/font-url";
 
 /// Font Face - Source Sans Pro
 ///
@@ -11,14 +11,14 @@
   @at-root {
     @font-face {
       font-family: "Source Sans Pro";
-      src: govuk-font-url("SourceSansPro-Regular.woff") format("woff");
+      src: idsk-font-url("SourceSansPro-Regular.woff") format("woff");
       font-weight: normal;
       font-style: normal;
       font-display: fallback;
     }
     @font-face {
       font-family: "Source Sans Pro";
-      src: govuk-font-url("SourceSansPro-Bold.woff") format("woff");
+      src: idsk-font-url("SourceSansPro-Bold.woff") format("woff");
       font-weight: bold;
       font-style: normal;
       font-display: fallback;
@@ -37,29 +37,29 @@
   @at-root {
     @font-face {
       font-family: "FontAwesome";
-      src: govuk-font-url("fa-regular-400.woff2") format("woff2"),
-      govuk-font-url("fa-regular-400.woff") format("woff");
+      src: idsk-font-url("fa-regular-400.woff2") format("woff2"),
+      idsk-font-url("fa-regular-400.woff") format("woff");
       font-weight: normal;
       font-style: solid;
       font-display: fallback;
     }
     @font-face {
       font-family: "FontAwesome";
-      src: govuk-font-url("fa-solid-900.woff2") format("woff2"),
-      govuk-font-url("fa-solid-900.woff") format("woff");
+      src: idsk-font-url("fa-solid-900.woff2") format("woff2"),
+      idsk-font-url("fa-solid-900.woff") format("woff");
       font-weight: normal;
       font-style: solid;
       font-display: fallback;
     }
     @font-face {
       font-family: "FontAwesome";
-      src: govuk-font-url("fa-brands-400.woff2") format("woff2"),
-      govuk-font-url("fa-brands-400.woff") format("woff");
+      src: idsk-font-url("fa-brands-400.woff2") format("woff2"),
+      idsk-font-url("fa-brands-400.woff") format("woff");
       font-weight: normal;
       font-style: normal;
       font-display: fallback;
     }
-    
+
     .fa, .fas, .far, .fal, .fad, .fab {
       font-family: "FontAwesome";
     }

@@ -1,0 +1,56 @@
+@import "../../../govuk/settings/all";
+@import "../../../govuk/tools/all";
+@import "../../../govuk/helpers/all";
+@import "../../../govuk/helpers/typography";
+@import "../../../govuk/objects/grid";
+
+@include govuk-exports("idsk/component/subscription-form") {
+  .idsk-subscription-form {
+    .govuk-heading-xl {
+      margin-bottom: govuk-spacing(3);
+      @include govuk-media-query($until: tablet) {
+        margin-bottom: govuk-spacing(2);
+      }
+    }
+
+    &__description-text {
+      @include govuk-typography-responsive($size: 27);
+      margin-bottom: govuk-spacing(6);
+    }
+
+    .govuk-input {
+      height: 45px;
+    }
+
+    .idsk-button {
+      width: 100%;
+      margin-bottom: 0;
+      line-height: 32px;
+      padding: 4px 4px 3px;
+    }
+
+    &__agreement-text {
+      margin-bottom: 0;
+    }
+
+    &:not(&__subscription-confirmed) &__confirm-text {
+      display: none;
+    }
+
+    @include govuk-media-query($until: tablet) {
+      &__description-text, .govuk-input {
+        margin-bottom: govuk-spacing(4);
+      }
+    }
+
+    &__subscription-confirmed {
+      form, .idsk-subscription-form__agreement-text, .idsk-subscription-form__default-text {
+        display: none;
+      }
+
+      .idsk-subscription-form__description-text {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

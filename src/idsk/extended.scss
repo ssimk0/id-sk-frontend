@@ -1,0 +1,12 @@
+// Overrides of GOV.UK frontend
+@import "overrides/all";
+
+// Import GOV.UK frontend
+@import "../govuk/extended";
+
+@import "core/all";
+
+@import "objects/all";
+
+// ID-SK components
+@import "components/extended";

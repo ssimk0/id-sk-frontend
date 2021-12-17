@@ -24,11 +24,9 @@
   .idsk-card-title {
     cursor: pointer;
     margin: 0;
-    text-decoration: underline;
 
     &:hover {
       color: govuk-colour("black");
-      text-decoration: underline;
     }
   }
 

@@ -673,7 +673,7 @@ SearchComponent.prototype.init = function () {
     var $searchInputs = $module.querySelectorAll('.idsk-search-component__input');
     if (!$searchInputs) {
         return
-    } 
+    }
 
     $searchInputs.forEach(function ($searchInput) {
         $searchInput.addEventListener('change', this.handleSearchInput.bind(this));
