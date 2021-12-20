@@ -47,7 +47,7 @@
           <span class="th-span">
             {{ item.html |safe if item.html else item.text }}
             {% if not item.disableSort and not params.disableSort %}
-              <button class="arrowBtn"></button>
+              <button class="arrowBtn"><span class="sr-only">Nezoradený stĺpec - použije vzostupné zoradenie.</span></button>
             {% endif %}
           </span>
         </th>
