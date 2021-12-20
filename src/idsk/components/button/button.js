@@ -1,4 +1,4 @@
-import '../../../govuk/vendor/polyfills/Event' // addEventListener and event.target normaliziation
+import '../../../govuk/vendor/polyfills/Event' // addEventListener and event.target normalization
 import '../../../govuk/vendor/polyfills/Function/prototype/bind'
 
 var KEY_SPACE = 32

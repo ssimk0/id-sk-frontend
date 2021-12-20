@@ -251,7 +251,7 @@
       border-top: 2px solid govuk-colour("black");
     }
 
-    @include mq($from: desktop) { 
+    @include mq($from: desktop) {
       width: 97.6%;
     }
   }
@@ -761,7 +761,7 @@
 
   .idsk-search-results__list .idsk-search-results__search__input {
     width: 97%;
-    background-image: govuk-image-url("loupe.svg");
+    background-image: idsk-image-url("loupe.svg");
     background-repeat: no-repeat;
     background-position: 7px 10px;
     background-size: 17px;

@@ -8,7 +8,6 @@ params:
         type: string
         required: false
         description: Name of prolog
-
   - name: questions
     type: array
     required: true
@@ -37,12 +36,12 @@ params:
       - name: logo
         type: string
         required: false
-        description: Name of logo file      
+        description: Name of logo file
       - name: radioOptions
         type: array
         required: true
         description: Array of radio options in customer surveys form.
-        params:      
+        params:
           - name: name
             type: string
             required: false
@@ -50,8 +49,7 @@ params:
           - name: value
             type: string
             required: true
-            description: Value of radio button.  
-
+            description: Value of radio button.
 
 examples:
   - name: basic
@@ -63,18 +61,18 @@ examples:
         - name: Čo je vašou pracovnou náplňou?
           textArea: true
           value: 2
-          radioOptions: 
+          radioOptions:
             - name: z pracovných dôvodov
               value: 1
             - name: zo súkromných dôvodov
               value: 2
         - name: Popíšte, prečo ste dnes prišli na stránku www.mirri.gov.sk
-          caption: Prosím neuvádzajte osobné ani finančné informácie, ako napr. svoje rodné číslo alebo údaje o kreditnej karte. 
+          caption: Prosím neuvádzajte osobné ani finančné informácie, ako napr. svoje rodné číslo alebo údaje o kreditnej karte.
           textArea: true
           value: 3
         - name: Našli ste, čo ste hľadali?
           value: 4
-          radioOptions: 
+          radioOptions:
             - name: Áno
               value: 1
             - name: Nie
@@ -83,7 +81,7 @@ examples:
               value: 3
         - name: Ako by ste zhodnotil/a Vášu skúsenosť s návštevou stránky www.mirri.gov.sk?
           value: 5
-          radioOptions: 
+          radioOptions:
             - name: Veľmi nespokojný
               value: 1
             - name: Nespokojný
@@ -96,7 +94,7 @@ examples:
               value: 5
         - name: Hľadali ste už niekde inde to, čo potrebujete, ešte pred tým, ako ste sem prišli?
           value: 4
-          radioOptions: 
+          radioOptions:
             - name: Áno
               value: 1
             - name: Nie
@@ -105,7 +103,7 @@ examples:
           textArea: true
           value: 3
         - name: Ak by ste nám chceli niečo odkázať, prosím, napíšte nám to sem.
-          caption: Prosím neuvádzajte osobné ani finančné informácie, ako napr. svoje rodné číslo alebo údaje o kreditnej karte. 
+          caption: Prosím neuvádzajte osobné ani finančné informácie, ako napr. svoje rodné číslo alebo údaje o kreditnej karte.
           textArea: true
           value: 3
 

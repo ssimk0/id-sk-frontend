@@ -2,7 +2,7 @@ import '../../../govuk/vendor/polyfills/Function/prototype/bind'
 import '../../../govuk/vendor/polyfills/Element/prototype/classList'
 import '../../../govuk/vendor/polyfills/Element/prototype/nextElementSibling'
 import '../../../govuk/vendor/polyfills/Element/prototype/previousElementSibling'
-import '../../../govuk/vendor/polyfills/Event' // addEventListener and event.target normaliziation
+import '../../../govuk/vendor/polyfills/Event' // addEventListener and event.target normalization
 import { nodeListForEach } from '../../common'
 
 function Tabs($module) {

@@ -1,0 +1,28 @@
+////
+/// @group tools
+////
+
+// Disable indentation linting in this file only
+// sass-lint:disable indentation
+
+/// Font URL
+///
+/// If a custom font-url handler is defined ($idsk-font-url-function) then
+/// it will be called, otherwise a url will be returned with the filename
+/// appended to the font path.
+///
+/// @param {String} $filename - Font filename
+/// @return {String} URL for the filename, wrapped in `url()`
+/// @access public
+
+@function idsk-font-url($filename) {
+  $use-custom-function: variable-exists("idsk-font-url-function")
+    and $idsk-font-url-function
+    and function-exists($idsk-font-url-function);
+
+  @if ($use-custom-function) {
+    @return call(get-function($idsk-font-url-function), $filename);
+  } @else {
+    @return url($idsk-fonts-path + $filename);
+  }
+}

@@ -16,6 +16,7 @@ const uglify = require('gulp-uglify')
 const eol = require('gulp-eol')
 const rename = require('gulp-rename')
 const cssnano = require('cssnano')
+const sourcemaps = require('gulp-sourcemaps');
 const postcsspseudoclasses = require('postcss-pseudo-classes')({
   // Work around a bug in pseudo classes plugin that badly transforms
   // :not(:whatever) pseudo selectors
@@ -27,6 +28,8 @@ const postcsspseudoclasses = require('postcss-pseudo-classes')({
 
 // check if destination flag is dist
 const isDist = taskArguments.destination === 'dist' || false
+
+const isPackage = taskArguments.destination === 'package' || false
 
 // Set the destination
 const destinationPath = function () {
@@ -47,13 +50,15 @@ const errorHandler = function (error) {
   this.emit('end')
 }
 // different entry points for both streams below and depending on destination flag
-const compileStyleshet = isDist ? configPaths.idsk_src + 'all.scss' : configPaths.app + 'assets/scss/app.scss'
+const compileStyleshet = isDist ? configPaths.idsk_src + 'all.scss' : [ configPaths.app + 'assets/scss/app.scss', configPaths.idsk_src + 'core.scss', configPaths.idsk_src + 'extended.scss' ]
 const compileOldIeStyleshet = isDist ? configPaths.idsk_src + 'all-ie8.scss' : configPaths.app + 'assets/scss/app-ie8.scss'
 
 gulp.task('scss:compile', () => {
   const compile = gulp.src(compileStyleshet)
+    .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(plumber(errorHandler))
     .pipe(sass())
+    .pipe(sourcemaps.write({includeContent: false}))
     // minify css add vendor prefixes and normalize to compiled css
     .pipe(gulpif(isDist, postcss([
       autoprefixer,
@@ -65,6 +70,7 @@ gulp.task('scss:compile', () => {
       // :hover class you can use to simulate the hover state in the review app
       postcsspseudoclasses
     ])))
+    .pipe(sourcemaps.write('.'))
     .pipe(gulpif(isDist,
       rename({
         basename: 'idsk-frontend',
@@ -74,8 +80,10 @@ gulp.task('scss:compile', () => {
     .pipe(gulp.dest(taskArguments.destination + '/'))
 
   const compileOldIe = gulp.src(compileOldIeStyleshet)
+    .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(plumber(errorHandler))
     .pipe(sass())
+    .pipe(sourcemaps.write({includeContent: false}))
     // minify css add vendor prefixes and normalize to compiled css
     .pipe(gulpif(isDist, postcss([
       autoprefixer,
@@ -98,6 +106,7 @@ gulp.task('scss:compile', () => {
         // more rules go here
       })
     ])))
+    .pipe(sourcemaps.write('.'))
     .pipe(gulpif(isDist,
       rename({
         basename: 'idsk-frontend-ie8',
@@ -110,23 +119,28 @@ gulp.task('scss:compile', () => {
 
   if (!isDist) {
     compileLegacy = gulp.src(path.join(configPaths.app, 'assets/scss/app-legacy.scss'))
+      .pipe(sourcemaps.init({loadMaps: true}))
       .pipe(plumber(errorHandler))
       .pipe(sass({
         includePaths: ['node_modules/govuk_frontend_toolkit/stylesheets', 'node_modules']
       }))
+      .pipe(sourcemaps.write({includeContent: false}))
       .pipe(postcss([
         autoprefixer,
         // Auto-generate 'companion' classes for pseudo-selector states - e.g. a
         // :hover class you can use to simulate the hover state in the review app
         postcsspseudoclasses
       ]))
+      .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(taskArguments.destination + '/'))
 
     compileLegacyIE8 = gulp.src(path.join(configPaths.app, 'assets/scss/app-legacy-ie8.scss'))
+      .pipe(sourcemaps.init({loadMaps: true}))
       .pipe(plumber(errorHandler))
       .pipe(sass({
         includePaths: ['node_modules/govuk_frontend_toolkit/stylesheets', 'node_modules']
       }))
+      .pipe(sourcemaps.write({includeContent: false}))
       .pipe(postcss([
         autoprefixer,
         postcsspseudoclasses,
@@ -137,6 +151,7 @@ gulp.task('scss:compile', () => {
           pseudo: { disable: true }
         })
       ]))
+      .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(taskArguments.destination + '/'))
   }
 
@@ -157,6 +172,7 @@ gulp.task('js:compile', () => {
     srcFiles,
     '!' + configPaths.idsk_src + '**/*.test.js'
   ])
+    .pipe(gulpif(!isPackage, sourcemaps.init()))
     .pipe(rollup({
       // Used to set the `window` global and UMD/AMD export name.
       name: 'GOVUKFrontend',
@@ -175,5 +191,6 @@ gulp.task('js:compile', () => {
       })
     ))
     .pipe(eol())
+    .pipe(sourcemaps.write("."))
     .pipe(gulp.dest(destinationPath))
 })

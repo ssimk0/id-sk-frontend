@@ -666,18 +666,12 @@ if (detect) return
  */
 function nodeListForEach(nodes, callback) {
   if (window.NodeList.prototype.forEach) {
-    return nodes.forEach(callback)
+    return nodes.forEach(callback);
   }
   for (var i = 0; i < nodes.length; i++) {
     callback.call(window, nodes[i], i, nodes);
   }
 }
-
-/**
- * TODO: Ideally this would be a NodeList.prototype.forEach polyfill
- * This seems to fail in IE8, requires more investigation.
- * See: https://github.com/imagitama/nodelist-foreach-polyfill
- */
 
 /**
  * Toggle class
@@ -798,7 +792,7 @@ HeaderExtended.prototype.init = function () {
 
 /**
  * Hide label if search input is not empty
- * @param {object} e 
+ * @param {object} e
  */
 HeaderExtended.prototype.handleSearchChange = function (e) {
     var $searchInput = e.target || e.srcElement;
@@ -834,7 +828,7 @@ HeaderExtended.prototype.checkBlurLanguageSwitcherClick = function () {
 
 /**
  * Handle open/hide submenu
- * @param {object} e 
+ * @param {object} e
  */
 HeaderExtended.prototype.handleSubmenuClick = function (e) {
     var $srcEl = e.target || e.srcElement;

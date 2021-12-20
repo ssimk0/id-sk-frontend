@@ -48,9 +48,9 @@
                 <p class="govuk-body">Kartička je obalená v <code class="govuk-!-font-size-16  language-markup">&lt;div></code> elemente ktorý vždy používa triedu <code class="govuk-!-font-size-16  language-markup">idsk-card</code>. Túto triedu je potrebné písať ako prvú a za ňou všetky ostatné. V prípade hlavnej kartičky pridávame ešte triedu <code class="govuk-!-font-size-16  language-markup">idsk-card-basic</code>.</p>
                 <div class="example example-error">
                     {% set exampleComponentHtml %}
-                        {{ idskCard({ 
-                            "type": "basic", 
-                            "imgSrc": "/public/assets/images/examples/ministerstvo-aktuality-cover.png", 
+                        {{ idskCard({
+                            "type": "basic",
+                            "imgSrc": "/public/assets/images/image-placeholder.jpg",
                             "link": "#",
                             "heading": "Lorem ipsum dolor sit amet: consectetur adipiscing elit!",
                             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
@@ -74,9 +74,9 @@
                     <div class="govuk-grid-row">
                         <div class="govuk-grid-column-one-third">
                             {% set exampleComponentHtml %}
-                                {{ idskCard({ 
-                                    "type": "secondary", 
-                                    "imgSrc": "/public/assets/images/examples/ministerstvo-aktuality-cover.png", 
+                                {{ idskCard({
+                                    "type": "secondary",
+                                    "imgSrc": "/public/assets/images/image-placeholder.jpg",
                                     "link": "#",
                                     "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do",
                                     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
@@ -102,7 +102,7 @@
                     {% set exampleComponentHtml %}
                         {{ idskCard({
                             "type": "secondary-horizontal",
-                            "imgSrc": "/public/assets/images/examples/ministerstvo-aktuality-cover.png",
+                            "imgSrc": "/public/assets/images/image-placeholder.jpg",
                             "link": "#",
                             "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do",
                             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
@@ -124,9 +124,9 @@
                 <p class="govuk-body">Kartička je obalená v <code class="govuk-!-font-size-16  language-markup">&lt;div></code> elemente ktorý vždy používa triedu <code class="govuk-!-font-size-16  language-markup">idsk-card</code>. Túto triedu je potrebné písať ako prvú a za ňou triedu <code class="govuk-!-font-size-16  language-markup">idsk-card-secondary-horizontal</code>.</p>
                 <div class="example example-error">
                     {% set exampleComponentHtml %}
-                        {{ idskCard({ 
-                            "type": "simple", 
-                            "imgSrc": "/public/assets/images/examples/ministerstvo-aktuality-cover.png", 
+                        {{ idskCard({
+                            "type": "simple",
+                            "imgSrc": "/public/assets/images/image-placeholder.jpg",
                             "link": "#",
                             "heading": "Lorem ipsum dolor sit amet",
                             "date": { "date": "1.7.2020", "link": "#" },
@@ -137,7 +137,7 @@
                 </div>
                 <pre class=" language-markup"><code class="govuk-!-font-size-16  language-markup">{{ exampleComponentHtml }}</code></pre>
             </div>
-  
+
             <div class="govuk-grid-column-full">
                 <h3 class="govuk-heading-m" id="card-hero">Hero kartička</h3>
                 <p class="govuk-body">
@@ -147,9 +147,9 @@
                 <p class="govuk-body">Kartička je obalená v <code class="govuk-!-font-size-16  language-markup">&lt;div></code> elemente ktorý vždy používa triedu <code class="govuk-!-font-size-16  language-markup">idsk-card</code>. Túto triedu je potrebné písať ako prvú a za ňou triedu <code class="govuk-!-font-size-16  language-markup">idsk-card-hero</code>.</p>
                 <div class="example example-error">
                     {% set exampleComponentHtml %}
-                        {{ idskCard({ 
-                            "type": "hero", 
-                            "imgSrc": "/public/assets/images/examples/ministerstvo-aktuality-cover.png", 
+                        {{ idskCard({
+                            "type": "hero",
+                            "imgSrc": "/public/assets/images/image-placeholder.jpg",
                             "link": "#",
                             "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed fo eiusmod tempor",
                             "description": "Lorem ipsum dolor sit amet, consenctetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
@@ -165,14 +165,14 @@
             <div class="govuk-grid-column-full">
                 <h3 class="govuk-heading-m" id="card-basic-no-image">Základná kartička bez obrázka</h3>
                 <p class="govuk-body">
-                    Kartičku použite, ak chcete zobraziť viacero článkov na menšom priestore. Z toho dôvodu sa používa aj menší font ako pri <a class="govuk-link" href="#card-basic" title="základná kartička">základnej kartičke</a>. Použite maximálne 2 tagy. 
+                    Kartičku použite, ak chcete zobraziť viacero článkov na menšom priestore. Z toho dôvodu sa používa aj menší font ako pri <a class="govuk-link" href="#card-basic" title="základná kartička">základnej kartičke</a>. Použite maximálne 2 tagy.
                 </p>
                 <p class="govuk-body">Meta dáta pri tejto kartičke sa zobrazujú na konci kontentu. Pri tejto kartičke použivajte zozbrazenie na celú šírku pomocou obaľovacieho tagu <code class="govuk-!-font-size-16  language-markup">&lt;div class="govuk-grid-column-full"></code>.</p>
                 <p class="govuk-body">Kartička je obalená v <code class="govuk-!-font-size-16  language-markup">&lt;div></code> elemente ktorý vždy používa triedu <code class="govuk-!-font-size-16  language-markup">idsk-card</code>. Túto triedu je potrebné písať ako prvú a za ňou triedu <code class="govuk-!-font-size-16  language-markup"> idsk-card-basic-variant</code>.</p>
                 <div class="example example-error">
                     {% set exampleComponentHtml %}
-                        {{ idskCard({ 
-                            "type": "basic-variant", 
+                        {{ idskCard({
+                            "type": "basic-variant",
                             "link": "#",
                             "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut",
                             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua/ Ut enim ad minim veniam, quis nonstrud exercitation ullamc Lorem ipsum dolor.",
@@ -194,8 +194,8 @@
                 <p class="govuk-body">Kartička je obalená v <code class="govuk-!-font-size-16  language-markup">&lt;div></code> elemente ktorý vždy používa triedu <code class="govuk-!-font-size-16  language-markup">idsk-card</code>. Túto triedu je potrebné písať ako prvú a za ňou triedu <code class="govuk-!-font-size-16  language-markup"> idsk-card-basic-variant</code>. Pri používaní tohto komponentu je potrebné vynechať odstavec s popisom.</p>
                 <div class="example example-error">
                     {% set exampleComponentHtml %}
-                        {{ idskCard({ 
-                            "type": "basic-variant", 
+                        {{ idskCard({
+                            "type": "basic-variant",
                             "link": "#",
                             "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolor magna aliqua",
                             "date": { "date": "1.7.2020", "link": "#" },
@@ -218,10 +218,10 @@
                     <div class="govuk-grid-row">
                         <div class="govuk-grid-column-one-third">
                             {% set exampleComponentHtml %}
-                                {{ idskCard({ 
+                                {{ idskCard({
                                     "type": "profile-vertical",
                                     "link": "#",
-                                    "imgSrc": "/public/assets/images/examples/ministerstvo-aktuality-cover.png",
+                                    "imgSrc": "/public/assets/images/image-placeholder.jpg",
                                     "heading": "Meno Priezvisko",
                                     "description": "Rola/funkcia"
                                 }) }}
@@ -242,10 +242,10 @@
                 <p class="govuk-body">Kartička je obalená v <code class="govuk-!-font-size-16  language-markup">&lt;div></code> elemente ktorý vždy používa triedu <code class="govuk-!-font-size-16  language-markup">idsk-card</code>. Túto triedu je potrebné písať ako prvú a za ňou triedu <code class="govuk-!-font-size-16  language-markup">idsk-card-profile-horizontal</code>.</p>
                 <div class="example example-error">
                     {% set exampleComponentHtml %}
-                        {{ idskCard({ 
-                            "type": "profile-horizontal", 
+                        {{ idskCard({
+                            "type": "profile-horizontal",
                             "link": "#",
-                            "imgSrc": "/public/assets/images/examples/ministerstvo-aktuality-cover.png",
+                            "imgSrc": "/public/assets/images/image-placeholder.jpg",
                             "heading": "Meno Priezvisko",
                             "description": "Rola/funkcia",
                             "quote": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
