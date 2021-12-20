@@ -1,6 +1,59 @@
 {{ idskTable({
   uniqueId: "priklad-3",
   title: "Mestá",
+  filter: idskTableFilter({
+    "id": "example-table-3-filter",
+    'categories': [
+      {
+        "title": "Podľa miesta",
+        "filters": [
+        {
+          "id": "mesto",
+          "inputTitle": "Mesto"
+        },
+        {
+          "id": "kraj",
+          "inputTitle": "Kraj"
+        },
+        {
+          "id": "okres",
+          "inputTitle": "Okres",
+          "options": [
+          {
+            "value": "",
+            "inputTitle": "Vybrať okres"
+          },
+          {
+            "value": "bratislava",
+            "inputTitle": "Bratislava"
+          },
+          {
+            "value": "zilina",
+            "inputTitle": "Žilina"
+          },
+          {
+            "value": "kosice",
+            "inputTitle": "Košice"
+          }
+        ]
+        }
+      ]
+      },
+      {
+        "title": "Podľa veľkosti",
+        "filters": [
+        {
+          "id": "rozloha",
+          "inputTitle": "Rozloha"
+        },
+        {
+          "id": "hustota",
+          "inputTitle": "Hustota"
+        }
+      ]
+      }
+    ]
+  }),
   caption: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
   maxRowsView: 20,
   radioOptions: [
@@ -1931,56 +1984,3 @@
     href: "https://sk.wikipedia.org/wiki/Zoznam_miest_na_Slovensku"
   }
 }) }}
-  {{ idskTableFilter({
-    "id": "example-table-3-filter",
-    'categories': [
-      {
-        "title": "Podľa miesta",
-        "filters": [
-          {
-            "id": "mesto",
-            "inputTitle": "Mesto"
-          },
-          {
-            "id": "kraj",
-            "inputTitle": "Kraj"
-          },
-          {
-            "id": "okres",
-            "inputTitle": "Okres",
-            "options": [
-              {
-                "value": "",
-                "inputTitle": "Vybrať okres"
-              },
-              {
-                "value": "bratislava",
-                "inputTitle": "Bratislava"
-              },
-              {
-                "value": "zilina",
-                "inputTitle": "Žilina"
-              },
-              {
-                "value": "kosice",
-                "inputTitle": "Košice"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "title": "Podľa veľkosti",
-        "filters": [
-        {
-          "id": "rozloha",
-          "inputTitle": "Rozloha"
-        },
-        {
-          "id": "hustota",
-          "inputTitle": "Hustota"
-        }
-      ]
-      }
-    ]
-  }) }}
