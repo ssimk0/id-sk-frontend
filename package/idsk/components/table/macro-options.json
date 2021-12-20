@@ -24,6 +24,12 @@
         "description": "Classes for caption text."
     },
     {
+        "name": "filter",
+        "type": "object",
+        "required": false,
+        "description": "Filter component inside table."
+    },
+    {
         "name": "radioOptions",
         "type": "array",
         "required": false,
@@ -42,6 +48,12 @@
                 "description": "The value of the first option"
             }
         ]
+    },
+    {
+        "name": "sortBtn",
+        "type": "string",
+        "required": false,
+        "description": "Initial text for sorting button"
     },
     {
         "name": "disableSort",

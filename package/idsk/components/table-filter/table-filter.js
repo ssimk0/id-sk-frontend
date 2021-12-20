@@ -697,6 +697,7 @@ function TableFilter ($module) {
 
   // get texts
   this.removeAllFiltersText = $module.querySelector('.idsk-table-filter__active-filters').dataset.removeAllFilters;
+  this.removeFilterText = $module.querySelector('.idsk-table-filter__active-filters').dataset.removeFilter;
 }
 
 TableFilter.prototype.init = function () {
@@ -788,7 +789,9 @@ TableFilter.prototype.handleClickTogglePanel = function (e) {
 
   // set text for toggle
   var hidden = $content.style.height === '0px';
-  $el.innerHTML = hidden ? openText : closeText;
+  var newToggleText = hidden ? openText : closeText;
+  $el.innerHTML = newToggleText;
+  $el.setAttribute('aria-label', newToggleText + ($el.dataset.categoryName ? ' ' + $el.dataset.categoryName : ''));
 
   // toggle tabbable if content is shown or not
   var $items = $content.querySelectorAll(':scope > .idsk-table-filter__filter-inputs input, :scope > .idsk-table-filter__filter-inputs select, .idsk-filter-menu__toggle');
@@ -855,7 +858,8 @@ TableFilter.prototype.renderActiveFilters = function (e) {
   this.$activeFilters.forEach(function ($filter) {
     var $activeFilter = document.createElement('div');
     $activeFilter.classList.add('idsk-table-filter__parameter', 'govuk-body');
-    $activeFilter.innerHTML = '<span class="idsk-table-filter__parameter-title">' + $filter.value + '</span><button class="idsk-table-filter__parameter-remove" tabindex="0">✕</button>';
+    var $removeFilterBtn = '<button class="idsk-table-filter__parameter-remove" tabindex="0">✕ <span class="govuk-visually-hidden">' + this.removeFilterText + ' ' + $filter.value + '</span></button>';
+    $activeFilter.innerHTML = '<span class="idsk-table-filter__parameter-title">' + $filter.value + '</span>' + $removeFilterBtn;
 
     $activeFilter.querySelector('.idsk-table-filter__parameter-remove').addEventListener('click', function () {
       this.removeActiveFilter($filter);
