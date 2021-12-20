@@ -8,6 +8,7 @@
 {% set activeFiltersTitle = params.activeFiltersTitle if params.activeFiltersTitle else 'Aktívny filter' %}
 {% set filterSelectedText = params.filterSelectedText if params.filterSelectedText else 'Filtrovať' %}
 {% set removeAllFilters = params.removeAllFilters if params.removeAllFilters else 'Zrušiť všetko' %}
+{% set removeFilter = params.removeFilter if params.removeFilter else 'Zrušiť filter' %}
 
 {% macro filters(filters) %}
   {% for item in filters %}
@@ -24,18 +25,22 @@
             {% endfor %}
           </select>
         {% else %}
-          <input tabindex="-1" class="govuk-input" id="{{ item.id }}" name="{{ item.id }}" type="text" placeholder="{{ item.inputTitle }}">
+          <input tabindex="-1" class="govuk-input" type="text" id="{{ item.id }}" name="{{ item.id }}"
+                 placeholder="{{ item.inputTitle }}"
+                 aria-label="{{ item.inputTitle }}">
         {% endif %}
       </div>
     </div>
   {% endfor %}
 {% endmacro %}
 
-{% macro expandFilterToggle(params, openText, closeText, expanded, disableTabIndex) %}
+{% macro expandFilterToggle(params, openText, closeText, expanded, disableTabIndex, categoryName) %}
   <button class="govuk-body govuk-link idsk-filter-menu__toggle"
           tabindex="{{ -1 if disableTabIndex else 0 }}"
           data-open-text="{{ openText }}"
           data-close-text="{{ closeText }}"
+          data-category-name="{{ categoryName if categoryName }}"
+          aria-label="{{ closeText if expanded else openText }}{{ " " + categoryName if categoryName }}"
           type="button">
     {{ closeText if expanded else openText }}
   </button>
@@ -50,7 +55,7 @@
         {% for category in params.categories %}
           <div class="idsk-table-filter__category">
             <div class="idsk-table-filter__title govuk-heading-s">{{ category.title }} <span class="count"></span></div>
-            {{ expandFilterToggle(params, openCategory, closeCategory, false, true) }}
+            {{ expandFilterToggle(params, openCategory, closeCategory, false, true, category.title) }}
             <div class="idsk-table-filter__content">
               <div class="govuk-grid-row idsk-table-filter__filter-inputs">
                 {{ filters(category.filters) }}
@@ -69,6 +74,7 @@
     </form>
   </div>
   <div class="idsk-table-filter__panel idsk-table-filter__active-filters idsk-table-filter__active-filters__hide idsk-table-filter--expanded"
+       data-remove-filter="{{ removeFilter }}"
        data-remove-all-filters="{{ removeAllFilters }}">
     <div class="govuk-body idsk-table-filter__title">{{ activeFiltersTitle }}</div>
     {{ expandFilterToggle(params, openActiveFilters, closeActiveFilters, true) }}
