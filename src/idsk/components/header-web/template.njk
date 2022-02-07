@@ -163,7 +163,7 @@
 {% if params.search and params.headerType !== "electronicService" %}
   <form class="idsk-header-web__main-action-search">
     <input class="govuk-input govuk-!-display-inline-block" id="idsk-header-web__main-action-search-input" name="search"
-      placeholder="{{ params.search.placeHolder if params.search.placeHolder else 'Zadajte hľadaný výraz' }}" 
+      placeholder="{{ params.search.placeHolder if params.search.placeHolder else 'Zadajte hľadaný výraz' }}"
       title="{{ params.search.placeHolder if params.search.placeHolder else 'Zadajte hľadaný výraz' }}" type="search"
       aria-describedby="input-width-30-hint" aria-label="{{ params.search.placeHolder if params.search.placeHolder else 'Zadajte hľadaný výraz' }}" />
     <button type="submit" class="govuk-button" data-module="govuk-button">
@@ -214,7 +214,7 @@
           {% elif main.loginButton %}
             <button class="idsk-button idsk-header-web__main-headline-menu-button idsk-header-web__main-headline-menu-button-service"
             aria-label="Rozbaliť menu" aria-expanded="false" data-text-for-show="Rozbaliť menu" data-text-for-hide="Skryť menu">
-              <img src="/assets/images/header-web/profile.svg" alt="Electronic service menu icon">
+              <img src="{{ params.assetsPath | default('/public/assets/images/header-web/') }}/profile.svg" alt="Electronic service menu icon">
               <div class="idsk-header-web__menu-close"></div>
             </button>
           {% endif %}
