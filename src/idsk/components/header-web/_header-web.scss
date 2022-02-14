@@ -1,5 +1,4 @@
-@import "../../../govuk/base";
-@import "../../../govuk/helpers/typography";
+@import "../../base";
 
 @include govuk-exports("idsk/component/header-web") {
   $idsk-header-background-primary: govuk-colour("white") !default;
@@ -19,8 +18,8 @@
 
     &__flag {
       background-color: govuk-colour("black");
-      -webkit-mask: url(#{$govuk-images-path}/header-web/flag.svg) no-repeat center;
-      mask: url(#{$govuk-images-path}/header-web/flag.svg) no-repeat center;
+      -webkit-mask: idsk-image-url("header-web/flag.svg") no-repeat center;
+      mask: idsk-image-url("header-web/flag.svg") no-repeat center;
 
       display: inline-block;
       -webkit-mask-size: contain;
@@ -31,8 +30,8 @@
 
     &__link-arrow {
       background-color: govuk-colour("black");
-      -webkit-mask: url(#{$govuk-images-path}/header-web/navigation-arrow.svg) no-repeat center;
-      mask: url(#{$govuk-images-path}/header-web/navigation-arrow.svg) no-repeat center;
+      -webkit-mask: idsk-image-url("header-web/navigation-arrow.svg") no-repeat center;
+      mask: idsk-image-url("header-web/navigation-arrow.svg") no-repeat center;
 
       display: inline-block;
       width: 10px;
@@ -42,9 +41,8 @@
 
     &__link-arrow-mobile {
       background-color: govuk-colour("black");
-      -webkit-mask: url(#{$govuk-images-path}/header-web/navigation-arrow-mobile.svg) no-repeat center;
-      mask: url(#{$govuk-images-path}/header-web/navigation-arrow-mobile.svg) no-repeat center;
-
+      -webkit-mask: idsk-image-url("header-web/navigation-arrow-mobile.svg") no-repeat center;
+      mask: idsk-image-url("header-web/navigation-arrow-mobile.svg") no-repeat center;
       display: inline;
       -webkit-mask-size: contain;
       mask-size: contain;
@@ -55,8 +53,8 @@
 
     &__warning-icon {
       background-color: govuk-colour("red");
-      -webkit-mask: url(#{$govuk-images-path}/header-web/warning.svg) no-repeat center;
-      mask: url(#{$govuk-images-path}/header-web/warning.svg) no-repeat center;
+      -webkit-mask: idsk-image-url("header-web/warning.svg") no-repeat center;
+      mask: idsk-image-url("header-web/warning.svg") no-repeat center;
       border-radius: 100%;
 
       display: inline-block;
@@ -67,8 +65,8 @@
 
     &__menu-open {
       background-color: govuk-colour("black");
-      -webkit-mask: url(#{$govuk-images-path}/header-web/menu.svg) no-repeat center;
-      mask: url(#{$govuk-images-path}/header-web/menu.svg) no-repeat center;
+      -webkit-mask: idsk-image-url("header-web/menu.svg") no-repeat center;
+      mask: idsk-image-url("header-web/menu.svg") no-repeat center;
 
       display: inline-block;
       width: 13px;
@@ -77,8 +75,8 @@
 
     &__menu-close {
       background-color: govuk-colour("black");
-      -webkit-mask: url(#{$govuk-images-path}/header-web/close.svg) no-repeat center;
-      mask: url(#{$govuk-images-path}/header-web/close.svg) no-repeat center;
+      -webkit-mask: idsk-image-url("header-web/close.svg") no-repeat center;
+      mask: idsk-image-url("header-web/close.svg") no-repeat center;
 
       display: inline-block;
       width: 13px;
@@ -612,8 +610,8 @@
           input[type="search"]::-webkit-search-cancel-button {
             -webkit-appearance: none;
             background-color: govuk-colour("grey-1");
-            -webkit-mask: url(#{$govuk-images-path}/header-web/search-input-close.svg) no-repeat center;
-            mask: url(#{$govuk-images-path}/header-web/search-input-close.svg) no-repeat center;
+            -webkit-mask: idsk-image-url("header-web/search-input-close.svg") no-repeat center;
+            mask: idsk-image-url("header-web/search-input-close.svg") no-repeat center;
             display: inline-block;
             -webkit-mask-size: contain;
             mask-size: contain;
@@ -754,8 +752,8 @@
 
           .idsk-header-web__nav-list-item-link-arrow {
             background-color: govuk-colour("black");
-            -webkit-mask: url(#{$govuk-images-path}/header-web/navigation-arrow.svg) no-repeat center;
-            mask: url(#{$govuk-images-path}/header-web/navigation-arrow.svg) no-repeat center;
+            -webkit-mask: idsk-image-url("header-web/navigation-arrow.svg") no-repeat center;
+            mask: idsk-image-url("header-web/navigation-arrow.svg") no-repeat center;
             width: 10px;
             height: 10px;
             margin-left: govuk-spacing(2);

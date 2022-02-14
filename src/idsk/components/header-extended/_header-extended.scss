@@ -1,7 +1,4 @@
-@import "../../../govuk/settings/all";
-@import "../../../govuk/tools/all";
-@import "../../../govuk/helpers/all";
-@import "../../../govuk/helpers/typography";
+@import "../../base";
 @import "./node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
 
 @include govuk-exports("idsk/component/header-extended") {
