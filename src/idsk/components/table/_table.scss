@@ -1,5 +1,4 @@
-@import "../../../govuk/base";
-@import "../../../govuk/helpers/typography";
+@import "../../base";
 
 @include govuk-exports("idsk/component/table") {
   .idsk-table {

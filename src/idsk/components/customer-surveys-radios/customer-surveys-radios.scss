@@ -1,7 +1,4 @@
-@import "../../../govuk/settings/all";
-@import "../../../govuk/tools/all";
-@import "../../../govuk/helpers/all";
-@import "../../../govuk/helpers/typography";
+@import "../../base";
 @import "../../../govuk/objects/grid";
 
 @include govuk-exports("idsk/component/customer-surveys-radios") {
