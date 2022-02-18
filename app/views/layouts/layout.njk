@@ -32,14 +32,13 @@
 {% endblock %}
 
 {% block footer %}
-  {% from "../../../src/idsk/components/footer-extended/macro.njk" import idskFooterExtended %}
+  {% from "footer-extended/macro.njk" import idskFooterExtended %}
   {{ idskFooterExtended({
     characterLength : 350,
     feedbackHeading : "Pomôžte nám zlepšiť jednotný dizajn manuál",
     showFeedback : "true",
     showFeedbackMessage : "false",
     upButtonEnabled : "true",
-    logo: "footer-extended-logo.svg",
     subtitles: [
       {
         item:"Cookies",
