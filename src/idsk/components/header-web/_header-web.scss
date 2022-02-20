@@ -1130,6 +1130,12 @@
       display: none;
     }
 
+    @include mq($until: desktop) {
+      &--scrolled{
+        display: none;
+      }
+    }
+
     &-close {
       background-color: transparent;
       border: none;
