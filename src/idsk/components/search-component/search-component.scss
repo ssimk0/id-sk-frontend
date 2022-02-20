@@ -55,6 +55,14 @@
 
     background-color: govuk-colour("blue");
     box-shadow: none;
+
+    &:hover {
+      background: govuk-colour("dark-blue");
+    }
+
+    &:active {
+      top: 0;
+    }
   }
 
   .idsk-search-component__input--small {
