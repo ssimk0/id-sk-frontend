@@ -39,6 +39,20 @@
     @include mq($from: desktop) {
       height: 40px;
     }
+
+    &::-webkit-search-cancel-button {
+      -webkit-appearance: none;
+      background-color: govuk-colour("grey-1");
+      -webkit-mask: url(#{$govuk-images-path}/header-web/search-input-close.svg) no-repeat center;
+      mask: url(#{$govuk-images-path}/header-web/search-input-close.svg) no-repeat center;
+      display: inline-block;
+      -webkit-mask-size: contain;
+      mask-size: contain;
+      height: 17px;
+      width: 17px;
+
+      // TODO: state events will not works, because compilation
+    }
   }
 
   .idsk-search-component__input:focus {

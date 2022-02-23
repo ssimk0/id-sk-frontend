@@ -619,6 +619,8 @@
             mask-size: contain;
             height: 17px;
             width: 17px;
+
+            // TODO: state events will not works, because compilation
           }
 
           @include govuk-font($size: 19);
