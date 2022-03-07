@@ -282,9 +282,9 @@
                             </div>
                             <div class="govuk-grid-column-one-third idsk-footer-extended-logo-box">
                                 <a href="/" title="domov">
-                                    <div class="idsk-footer-extended-logo">
-                                        {% include params.assetsPath | default('../../assets/images/') + (params.logo if params.logo else "footer-extended-logo.svg") %}
-                                    </div>
+                                    <img class="idsk-footer-extended-logo" 
+                                    src="{{ params.assetsPath | default('/assets/images/') + params.logo | default('footer-extended-logo.svg') }}" 
+                                    alt="{{ params.logo.alt | default('Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky') }}">
                                 </a>
                             </div>
                         </div>
