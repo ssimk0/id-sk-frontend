@@ -188,7 +188,6 @@
         &:focus,
         &:active {
           @include govuk-focused-text;
-          text-decoration: underline;
 
           .idsk-header-web__link-arrow {
             background-color: govuk-colour("black");
@@ -331,7 +330,6 @@
 
         &:focus {
           @include govuk-focused-text;
-          text-decoration: underline;
 
           .idsk-header-web__link-arrow {
             background-color: govuk-colour("black");
@@ -367,7 +365,7 @@
             color: govuk-colour("black");
           }
 
-          &:hover {
+          &:not(:focus):hover {
             text-decoration: underline;
           }
         }
