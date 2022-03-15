@@ -115,7 +115,7 @@
       }) }}
       <div class="idsk-header-web__main--login-action">
         <img class="idsk-header-web__main--login-action-profile-img"
-          src="{{ params.assetsPath | default('/public/assets/images/header-web/') + (main.loginButton.loggedIn.profileImg if main.loginButton.loggedIn.profileImg else 'profile.svg') }}"
+          src="{{ params.assetsPath | default('/assets/images/header-web/') + (main.loginButton.loggedIn.profileImg if main.loginButton.loggedIn.profileImg else 'profile.svg') }}"
           alt="Profile image">
         <div class="idsk-header-web__main--login-action-text">
           <span class="govuk-body-s idsk-header-web__main--login-action-text-user-name">
@@ -182,8 +182,8 @@
         <div class="idsk-header-web__main-headline">
           <a href="/" title="Odkaz na úvodnú stránku">
             {% if params.headerType == 'website' or params.headerType == 'projectWebsite' %}
-              {% if main.logoSrc %}
-                <img src="{{ main.logoSrc }}"
+              {% if main.showLogo %}
+                <img src="{{ params.assetsPath | default('/assets/images/header-web/') + (main.logoSrc if main.logoSrc else 'logo-mirri-farebne.svg') }}"
                 alt="{{ main.logoAlt if main.logoAlt else 'Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky' }}"
                 class="idsk-header-web__main-headline-logo">
               {% endif %}
@@ -214,7 +214,7 @@
           {% elif main.loginButton %}
             <button class="idsk-button idsk-header-web__main-headline-menu-button idsk-header-web__main-headline-menu-button-service"
             aria-label="Rozbaliť menu" aria-expanded="false" data-text-for-show="Rozbaliť menu" data-text-for-hide="Skryť menu">
-              <img src="{{ params.assetsPath | default('/public/assets/images/header-web/') }}/profile.svg" alt="Electronic service menu icon">
+              <img src="{{ params.assetsPath | default('/assets/images/header-web/') }}/profile.svg" alt="Electronic service menu icon">
               <div class="idsk-header-web__menu-close"></div>
             </button>
           {% endif %}

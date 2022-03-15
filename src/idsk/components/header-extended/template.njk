@@ -92,10 +92,10 @@
       class="idsk-header-extended__logo {{ params.logoGrid if params.logoGrid else 'govuk-grid-column-three-quarters' }}">
       <a href="{{ params.homepageUrl | default('/') }}" title="{{ params.headerTitle if params.headerTitle }}">
         <div class="idsk-header-extended__logotype-crown">
-          {% include params.assetsPathLogo | default('../../assets/images/header-extended/') + params.logo %}
+          <img src="{{ params.assetsPathLogo | default('/assets/images/header-extended/') + params.logo }}" alt="logo hlavička pre webové sídla">
         </div>
         <div class="idsk-header-extended__logotype-crown-mobile">
-          {% include params.assetsPathLogo | default('../../assets/images/header-extended/') + params.logoSmall %}
+          <img src="{{ params.assetsPathLogo | default('/assets/images/header-extended/') + params.logoSmall }}" alt="logo hlavička pre webové sídla">
         </div>
       </a>
     </div>

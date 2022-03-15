@@ -72,6 +72,10 @@ params:
     required: true
     description: MainSection object inlucing logo, title, search. It is MANDATORY for all types of pages.
     params:
+      - name: showLogo
+        type: boolean
+        required: false
+        description: Allows you to use logo.
       - name: logoSrc
         type: string
         required: false
