@@ -34,9 +34,9 @@
       <div class="idsk-footer__meta-item">
         <a
           class="idsk-footer__licence-logo idsk-footer__link"
-          href="{{ params.meta.footerLogoLink | default("#") }}"
+          href="{{ params.meta.footerLogoLink | default('#') }}"
         >
-          {% include params.assetsPath | default('../../assets/images/header-extended/') + (params.footerLogoSrc if params.footerLogoSrc else "logo-mirri-farebne.svg") %}
+          <img src="{{ params.assetsPath | default('/assets/images/header-extended/') + (params.footerLogoSrc if params.footerLogoSrc else'logo-mirri-farebne.svg') }}" alt="pätička logo">
         </a>
       </div>
       {% endif %}

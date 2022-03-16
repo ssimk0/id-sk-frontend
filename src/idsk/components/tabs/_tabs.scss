@@ -8,8 +8,8 @@
 
     &__tab-arrow-mobile {
       background-color: govuk-colour("black");
-      -webkit-mask: url(/assets/images/header-web/navigation-arrow-mobile.svg) no-repeat center;
-      mask: url(/assets/images/header-web/navigation-arrow-mobile.svg) no-repeat center;
+      -webkit-mask: idsk-image-url("header-web/navigation-arrow-mobile.svg") no-repeat center;
+      mask: idsk-image-url("header-web/navigation-arrow-mobile.svg") no-repeat center;
 
       display: inline;
       -webkit-mask-size: contain;

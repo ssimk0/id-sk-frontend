@@ -5,7 +5,7 @@
       <a href="{{ params.homepageUrl | default('/') }}" class="idsk-header__link idsk-header__link--homepage">
         {% if params.logo %}
         <span class="idsk-header__logotype">
-          {% include params.assetsPath | default('../../assets/images/') + (params.headerLogoSrc if params.headerLogoSrc else "slovensko_sk_logo.svg") %}
+          <img src="{{ params.assetsPath | default('/assets/images/') + (params.headerLogoSrc if params.headerLogoSrc else 'slovensko_sk_logo.svg') }}" alt="hlavička logo">
         </span>
         {% endif %}
         {% if (params.productName) %}
