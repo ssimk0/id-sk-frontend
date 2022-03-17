@@ -11,11 +11,13 @@
   {% from "../../../src/idsk/components/header-web/macro.njk" import idskHeaderWeb %}
   {{ idskHeaderWeb({
     headerType: "website",
+    assetsPath: "/public/assets/images/",
     brand: {
       gestor: true
     },
     main: {
-      logoSrc: "/public/assets/images/idsk-logo.svg",
+      showLogo: true,
+      logoSrc: "idsk-logo.svg",
       logoAlt: "ID-SK Frontend"
     }
   }) }}
