@@ -705,7 +705,15 @@ HeaderWeb.prototype.init = function () {
         return;
     }
 
-    // chceck for close banner button
+    // check for banner
+    var $banner = $module.querySelector('.idsk-header-web__banner');
+    this.$lastScrollTopPosition = 0;
+
+    if ($banner) {
+      document.addEventListener('scroll', this.handleToggleBanner.bind(this));
+    }
+
+    // check for close banner button
     var $bannerCloseBtn = $module.querySelector('.idsk-header-web__banner-close');
 
     if ($bannerCloseBtn) {
@@ -768,6 +776,27 @@ HeaderWeb.prototype.init = function () {
     }
 
     $module.boundCheckBlurMenuItemClick = this.checkBlurMenuItemClick.bind(this);
+};
+
+/**
+ * Handle toggle banner on scrolling
+ * @param {object} e
+ */
+HeaderWeb.prototype.handleToggleBanner = function (e) {
+    // ignore if mobile menu is open
+    if (!this.$module.querySelector('.idsk-header-web__nav--mobile')) {
+      return false;
+    }
+
+    var $scrollTop = window.pageYOffset || document.scrollTop;
+    if ($scrollTop > this.$lastScrollTopPosition) {
+      this.$module.querySelector('.idsk-header-web__banner').classList.add("idsk-header-web__banner--scrolled");
+    } else if ($scrollTop < this.$lastScrollTopPosition) {
+      this.$module.querySelector('.idsk-header-web__banner').classList.remove("idsk-header-web__banner--scrolled");
+    }
+
+    // $scrollTop is not used, because element idsk-header-web__banner change height of header
+    this.$lastScrollTopPosition = window.pageYOffset || document.scrollTop;
 };
 
 /**

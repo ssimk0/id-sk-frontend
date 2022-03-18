@@ -61,9 +61,17 @@
     },
     {
         "name": "logo",
-        "type": "svg",
+        "type": "string",
         "required": false,
-        "description": "Name of svg file for logo in footer."
+        "description": "Name of file for logo in footer.",
+        "params": [
+            {
+                "name": "alt",
+                "type": "string",
+                "required": false,
+                "description": "Alternative text for footer logo."
+            }
+        ]
     },
     {
         "name": "assetsPath",
