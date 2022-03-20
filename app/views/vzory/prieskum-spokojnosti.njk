@@ -42,7 +42,7 @@
   </div>
   <div class="example">
     {% set exampleComponentHtml %}
-    {{ idskCustomerSurveys({     
+    {{ idskCustomerSurveys({
           prologues: [
           {
             prolog: 'Cieľom tohto dotazníka je zistiť potreby a postrehy používateľov webu Ministerstva investícií, regionálneho rozvoja a informatizácie (Ďalej len "MIRRI").'
@@ -52,50 +52,50 @@
           },
           {
             prolog: "Odpovede na všetky otázky sú dobrovoľné. Vaše odpovede na tento prieskum sú anonymné."
-          }],          
-          questions: [ 
+          }],
+          questions: [
           {
             name: "Navštevujete web mirri.gov.sk z pracovných alebo súkromných dôvodov?",
             textArea: true,
-            value: 1        
+            value: 1
           },
           {
             name: "Čo je vašou pracovnou náplňou?",
             textArea: true,
-            value: 1        
+            value: 1
           },
           {
             name: "Popíšte, prečo ste dnes prišli na stránku www.mirri.gov.sk",
             caption: "Prosím neuvádzajte osobné ani finančné informácie, ako napr. svoje rodné číslo alebo údaje o kreditnej karte.",
             textArea: true,
-            value: 1        
+            value: 1
           },
           {
             name: "Našli ste, čo ste hľadali?",
             textArea: true,
-            value: 1        
+            value: 1
           },
           {
             name: "Ako by ste zhodnotil/a Vášu skúsenosť s návštevou stránky www.mirri.gov.sk?",
             textArea: true,
-            value: 1        
+            value: 1
           },
           {
             name: "Hľadali ste už niekde inde to, čo potrebujete, ešte pred tým, ako ste sem prišli?",
             textArea: true,
-            value: 1        
+            value: 1
           },
           {
             name: "Kde ste hľadali?",
             textArea: true,
-            value: 1        
+            value: 1
           },
           {
             name: "Ak by ste nám chceli niečo odkázať, prosím, napíšte nám to sem.",
             caption: "Prosím neuvádzajte osobné ani finančné informácie, ako napr. svoje rodné číslo alebo údaje o kreditnej karte. ",
             textArea: true,
-            value: 1        
-          }]  
+            value: 1
+          }]
         })
       }}
     {% endset %}

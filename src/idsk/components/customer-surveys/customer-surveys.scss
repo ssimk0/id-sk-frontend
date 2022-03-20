@@ -71,4 +71,12 @@
     .idsk-customer-surveys__icon--hidden {
         display: none;
     }
+
+    .govuk-fieldset__legend {
+      border-top: 1px solid #0b0c0c;
+      padding-top: 16px;
+      margin-top: 16px;
+      margin-bottom: 20px;
+      width: 100%;
+    }
 }
