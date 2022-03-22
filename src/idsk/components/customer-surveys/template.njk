@@ -64,7 +64,8 @@
               {% from "../../components/customer-surveys-text-area/macro.njk" import idskCustomerSurveysTextArea %}
               {{ idskCustomerSurveysTextArea ({
                 characterLength: 200,
-                id:'first'
+                id:'first',
+                label: params.questions[1].name
               }) }}
           </div>
         </fieldset>
@@ -84,7 +85,8 @@
           {% from "../../components/customer-surveys-text-area/macro.njk" import idskCustomerSurveysTextArea %}
           {{ idskCustomerSurveysTextArea ({
             characterLength: 200,
-            id:'second'
+            id:'second',
+            label: params.questions[2].name
           }) }}
         </fieldset>
         <fieldset class="govuk-fieldset" aria-describedby="4-hint">
@@ -186,7 +188,8 @@
           {% from "../../components/customer-surveys-text-area/macro.njk" import idskCustomerSurveysTextArea %}
           {{ idskCustomerSurveysTextArea ({
             characterLength: 200,
-            id:'third'
+            id:'third',
+            label: params.questions[6].name
           }) }}
         </fieldset>
       </div>
@@ -205,7 +208,8 @@
           {% from "../../components/customer-surveys-text-area/macro.njk" import idskCustomerSurveysTextArea %}
           {{ idskCustomerSurveysTextArea ({
             characterLength: 200,
-            id:'fourth'
+            id:'fourth',
+            label: params.questions[7].name
           }) }}
         </fieldset>
       </div>
