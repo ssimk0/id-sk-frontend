@@ -36,10 +36,10 @@
 
       .govuk-input {
         height: 45px;
-      }
 
-      .govuk-input:focus {
-        position: relative;
+        &:focus {
+          position: relative;
+        }
       }
     }
 

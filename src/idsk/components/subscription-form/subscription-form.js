@@ -20,7 +20,6 @@ SubscriptionForm.prototype.init = function () {
   }
 
   var $input = $module.querySelector('.govuk-input')
-  console.log("im here", $input)
 
   $input.addEventListener('change', this.handleInput.bind(this))
 }
@@ -39,7 +38,6 @@ SubscriptionForm.prototype.handleSubmitForm = function (e) {
 }
 
 SubscriptionForm.prototype.handleInput = function (e) {
-  console.log("Change")
   var $el = e.target || e.srcElement || e
   var $searchComponent = $el.closest('.idsk-subscription-form__input')
   var $searchLabel = $searchComponent.querySelector('label')
