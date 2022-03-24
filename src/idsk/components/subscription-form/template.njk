@@ -5,7 +5,7 @@
 {% set inputText = params.inputText if params.inputText else 'Vložte emailovú adresu' %}
 {% set buttonText = params.buttonText if params.buttonText else 'Odoslať email' %}
 {% set agreementText = params.agreementText if params.agreementText else 'Prihlásením dávam dobrovoľný súhlas SlovenskoIT a. s. na zasielanie bezplatného newslettera na mnou zadaný e-mail.
-Tento súhlas môžem kedykoľvek odvolať na <a href="mailto:info@slovenskoit.sk" class="govuk-link">info@slovenskoit.sk</a>. Oboznámil(a) som sa s informáciami v sekcii <a href="/ochrana-osobnych-udajov" class="govuk-link">Ochrana osobných údajov</a>.' %}
+Tento súhlas môžem kedykoľvek odvolať na <a href="mailto:info@slovenskoit.sk" class="govuk-link" title="info@slovenskoit.sk">info@slovenskoit.sk</a>. Oboznámil(a) som sa s informáciami v sekcii <a href="/ochrana-osobnych-udajov" class="govuk-link" title="Ochrana osobných údajov">Ochrana osobných údajov</a>.' %}
 {% set confirmTitle = params.confirmTitle if params.confirmTitle else 'Ďakujeme!' %}
 {% set confirmDescription = params.confirmDescription if params.confirmDescription else 'Budeme Vám zasielať vždy aktuálne informácie' %}
 
@@ -22,7 +22,6 @@ Tento súhlas môžem kedykoľvek odvolať na <a href="mailto:info@slovenskoit.s
 
   <form action="{{ params.formAction if params.formAction else "#" }}"
         class="govuk-form-group idsk-subscription-form__input {{ params.targetClass if params.targetClass else "idsk-subscription-form__submit-handler" }}">
-{#    <input type="email" class="govuk-input" title="{{ inputText }}">#}
     {{ govukInput({
       "label": {
         "text": inputText
