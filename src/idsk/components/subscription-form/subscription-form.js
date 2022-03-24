@@ -1,7 +1,8 @@
 import '../../../govuk/vendor/polyfills/Function/prototype/bind'
-import '../../../govuk/vendor/polyfills/Event' // addEventListener and event.target normalization
+import '../../../govuk/vendor/polyfills/Event'
+import SearchComponent from "../search-component/search-component"; // addEventListener and event.target normalization
 
-function SubscriptionForm ($module) {
+function SubscriptionForm($module) {
   this.$module = $module
 }
 
@@ -17,6 +18,11 @@ SubscriptionForm.prototype.init = function () {
   if ($form) {
     $form.addEventListener('submit', this.handleSubmitForm.bind(this))
   }
+
+  var $input = $module.querySelector('.govuk-input')
+  console.log("im here", $input)
+
+  $input.addEventListener('change', this.handleInput.bind(this))
 }
 
 /**
@@ -32,4 +38,16 @@ SubscriptionForm.prototype.handleSubmitForm = function (e) {
   }
 }
 
+SubscriptionForm.prototype.handleInput = function (e) {
+  console.log("Change")
+  var $el = e.target || e.srcElement || e
+  var $searchComponent = $el.closest('.idsk-subscription-form__input')
+  var $searchLabel = $searchComponent.querySelector('label')
+
+  if ($el.value == '') {
+    $searchLabel.classList.remove('govuk-visually-hidden')
+  } else {
+    $searchLabel.classList.add('govuk-visually-hidden')
+  }
+}
 export default SubscriptionForm
