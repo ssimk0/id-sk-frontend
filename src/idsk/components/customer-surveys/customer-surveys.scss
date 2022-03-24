@@ -73,10 +73,10 @@
     }
 
     .idsk-customer-surveys__step .govuk-fieldset__legend {
-        border-top: 1px solid #0b0c0c;
+        border-top: 1px solid govuk-colour("black");
         padding-top: 16px;
         margin-top: 16px;
-        margin-bottom: 20px;
+        margin-bottom: govuk-spacing(4);
         width: 100%;
     }
 
