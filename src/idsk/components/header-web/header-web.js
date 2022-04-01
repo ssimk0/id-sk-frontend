@@ -325,7 +325,7 @@ HeaderWeb.prototype.showMobileMenu = function () {
     $lastMenuItem.addEventListener('keydown', function (e) {
         var isTabPressed = (e.key === 'Tab' || e.keyCode === KEYCODE_TAB);
 
-        if (isTabPressed && !e.shiftKey) {
+        if (isTabPressed && !e.shiftKey && $menuButton.offsetParent !== null) {
             $menuButton.focus();
             e.preventDefault();
         }
