@@ -31,7 +31,7 @@ SubscriptionForm.prototype.handleSubmitForm = function (e) {
   e.preventDefault()
 
   // check if email is set and set class for different state
-  if (e.target.querySelector('input[type=email]').value !== '') {
+  if (e.target.querySelector('#subscription-email-value').value !== '') {
     this.$module.classList.add('idsk-subscription-form__subscription-confirmed')
   }
 }
