@@ -1,6 +1,5 @@
 import '../../../govuk/vendor/polyfills/Function/prototype/bind'
-import '../../../govuk/vendor/polyfills/Event'
-import SearchComponent from "../search-component/search-component"; // addEventListener and event.target normalization
+import '../../../govuk/vendor/polyfills/Event' // addEventListener and event.target normalization
 
 function SubscriptionForm($module) {
   this.$module = $module
@@ -42,7 +41,7 @@ SubscriptionForm.prototype.handleInput = function (e) {
   var $searchComponent = $el.closest('.idsk-subscription-form__input')
   var $searchLabel = $searchComponent.querySelector('label')
 
-  if ($el.value == '') {
+  if ($el.value === '') {
     $searchLabel.classList.remove('govuk-visually-hidden')
   } else {
     $searchLabel.classList.add('govuk-visually-hidden')
