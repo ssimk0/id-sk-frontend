@@ -15,15 +15,32 @@
       margin-bottom: govuk-spacing(6);
     }
 
-    .govuk-input {
-      height: 45px;
-    }
-
     .idsk-button {
       width: 100%;
       margin-bottom: 0;
       line-height: 32px;
       padding: 4px 4px 3px;
+    }
+
+    .govuk-form-group {
+      flex-basis: 100%;
+    }
+
+    &__input {
+      display: flex;
+
+      .idsk-button {
+        width: 218px;
+        box-shadow: none;
+      }
+
+      .govuk-input {
+        height: 45px;
+
+        &:focus {
+          position: relative;
+        }
+      }
     }
 
     &__agreement-text {
@@ -34,9 +51,29 @@
       display: none;
     }
 
+    .govuk-label {
+      font-weight: 400;
+      font-size: 1.2rem;
+      line-height: 1.25;
+      position: absolute;
+      padding-left: govuk-spacing(2);
+      padding-top: govuk-spacing(2);
+      cursor: text;
+      color: govuk-colour("dark-grey");
+    }
+
     @include govuk-media-query($until: tablet) {
-      &__description-text, .govuk-input {
+      &__description-text, &__input {
         margin-bottom: govuk-spacing(4);
+      }
+
+      &__input {
+        flex-direction: column;
+
+        .idsk-button {
+          margin-top: govuk-spacing(4);
+          width: initial;
+        }
       }
     }
 
