@@ -29,9 +29,24 @@ SubscriptionForm.prototype.init = function () {
  */
 SubscriptionForm.prototype.handleSubmitForm = function (e) {
   e.preventDefault()
+  var $input = e.target.querySelector('#subscription-email-value')
+  var $formGroup = $input.parentElement
+
+  // Handle email validation
+  if (!$input.checkValidity()) {
+    $formGroup.querySelectorAll(".govuk-error-message").forEach(e => e.remove());
+    var $errorLabel = document.createElement("span")
+    $errorLabel.classList.add("govuk-error-message")
+    $errorLabel.textContent = $input.validationMessage
+
+    $input.classList.add("govuk-input--error")
+    $formGroup.classList.add("govuk-form-group--error")
+    $input.before($errorLabel)
+    return
+  }
 
   // check if email is set and set class for different state
-  if (e.target.querySelector('#subscription-email-value').value !== '') {
+  if ($input.value !== '') {
     this.$module.classList.add('idsk-subscription-form__subscription-confirmed')
   }
 }
@@ -41,6 +56,7 @@ SubscriptionForm.prototype.handleInput = function (e) {
   var $searchComponent = $el.closest('.idsk-subscription-form__input')
   var $searchLabel = $searchComponent.querySelector('label')
 
+  // Handle label visibility
   if ($el.value === '') {
     $searchLabel.classList.remove('govuk-visually-hidden')
   } else {
