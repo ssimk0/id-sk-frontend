@@ -45,7 +45,7 @@ SubscriptionForm.prototype.handleSubmitForm = function (e) {
     return
   }
 
-  // check if email is set and set class for different state
+  // set and set class for different state
   this.$module.classList.add('idsk-subscription-form__subscription-confirmed')
 }
 
