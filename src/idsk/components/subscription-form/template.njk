@@ -20,14 +20,18 @@ Tento súhlas môžem kedykoľvek odvolať na <a href="mailto:info@slovenskoit.s
     <span class="idsk-subscription-form__confirm-text">{{ confirmDescription | safe }}</span>
   </p>
 
-  <form action="{{ params.formAction if params.formAction else "#" }}"
+  <form novalidate action="{{ params.formAction if params.formAction else "#" }}"
         class="govuk-form-group idsk-subscription-form__input {{ params.targetClass if params.targetClass else "idsk-subscription-form__submit-handler" }}">
     {{ govukInput({
       "label": {
         "text": inputText
       },
+      "type": "email",
       "id": "subscription-email-value",
-      "name": "subscription-email"
+      "name": "subscription-email",
+      "attributes": {
+        "required": "true"
+      }
     }) }}
     <input type="submit" class="idsk-button" value="{{ buttonText }}">
   </form>
