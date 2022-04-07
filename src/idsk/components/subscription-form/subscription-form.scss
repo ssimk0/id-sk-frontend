@@ -42,6 +42,7 @@
 
       .govuk-input:focus {
         position: relative;
+        z-index: 1;
       }
     }
 
@@ -75,7 +76,7 @@
 
         .idsk-button {
           margin-top: govuk-spacing(4);
-          width: initial;
+          width: 100%;
         }
       }
     }
