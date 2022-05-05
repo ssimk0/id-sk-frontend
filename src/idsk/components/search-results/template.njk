@@ -2,13 +2,13 @@
   <div class="govuk-grid-column-full idsk-search-results__title">
     <h1 class="govuk-heading-xl">{{params.headline}}
     </h1>
-  </div>        
+  </div>
   <div class="govuk-grid-column-full idsk-search-results__search-bar {{'idsk-search-results--visible__mobile--inline' if not params.mainSearchShow}}">
       {% from "../../components/search-component/macro.njk" import idskSearchComponent %}
       {{ idskSearchComponent({
         id : 'search-results-input'
-      }) }} 
-  </div>  
+      }) }}
+  </div>
   <div class="idsk-search-results__filter-header-panel govuk-grid-column-full idsk-search-results--invisible">
     <div class="govuk-heading-xl idsk-search-results--half-width">
       <span>Filtre
@@ -27,7 +27,7 @@
         {{ idskSearchComponent({
           id : 'search-results-input-side',
           isSmall: true
-      }) }} 
+      }) }}
     </div>
     {% endif %}
     <div class="idsk-search-results--order__dropdown">
@@ -59,7 +59,7 @@
               counter : 0,
               id : item.id,
               group: item.group,
-              feedbackOptions: 
+              feedbackOptions:
               item.radios
             }) }}
           {% endif %}
@@ -97,7 +97,7 @@
       <span class="idsk-search-results__content__number-of-results">{{ params.searchResultsCard.length }}
         výsledkov</span>
     </div>
-    <div class="govuk-grid-column-two-quarters idsk-search-results__filter-panel--mobile">
+    <div class="govuk-grid-column-two-quarters idsk-search-results__filter-panel--mobile govuk-clearfix">
       <button class="idsk-search-results__filters__button" title="Filtre">Filtre
       </button>
       <div class="idsk-search-results__per-page">
@@ -142,7 +142,7 @@
         <span class="idsk-search-results__text">{{params.secondFilterLabel if params.secondFilterLabel else 'Typ obsahu'}}</span>
       </div>
       <div class="idsk-search-results__content__picked-filters__date idsk-search-results--invisible" data-lines="Naposledy aktualizované" data-after="po" data-middle="medzi" data-before="pred">
-        
+
       </div>
       <button class="idsk-search-results__button--turn-filters-off govuk-grid-column-full idsk-search-results--invisible" type="button">Vypnúť všetky filtre
       </button>
@@ -157,22 +157,22 @@
       {% for item in params.searchResultsCard %}
         <div class="idsk-search-results__card govuk-grid-column-full">
           {% from "../../components/card/macro.njk" import idskCard %}
-          {{ idskCard({ 
-            "type": "basic-variant", 
+          {{ idskCard({
+            "type": "basic-variant",
             "link": "#",
             "heading": item.heading,
             "description": item.description,
-            "date": { "date": "1.7.2020", "link": "#" }          
+            "date": { "date": "1.7.2020", "link": "#" }
           }) }}
           {% for subcard in item.subcards %}
           <div class="govuk-grid-column-one-half idsk-search-results__subcards">
             {% from "../../components/card/macro.njk" import idskCard %}
-            {{ idskCard({ 
-              "type": "basic-variant", 
+            {{ idskCard({
+              "type": "basic-variant",
               "link": "#",
               "heading": subcard.heading,
               "description": subcard.description,
-              "date": { "date": "1.7.2020", "link": "#" }          
+              "date": { "date": "1.7.2020", "link": "#" }
             }) }}
           </div>
           {% endfor %}
