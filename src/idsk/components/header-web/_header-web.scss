@@ -870,7 +870,8 @@
       }
 
       &-list {
-        margin: govuk-spacing(3) -15px;
+        margin: 0 -15px;
+        padding: govuk-spacing(3) 0;
         &-item {
           &-link {
             font-size: 24px;
