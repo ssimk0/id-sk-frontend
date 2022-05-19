@@ -87,8 +87,11 @@
       position: sticky;
       top: 0;
       left: 0;
-      max-height: 100vh;
-      overflow: auto;
+
+      &__scrolling-wrapper {
+        max-height: 100vh;
+        overflow: auto;
+      }
     }
   }
 
@@ -300,7 +303,7 @@
           @include mq($until: tablet) {
             right: 0;
             width: 130px;
-            position: fixed;
+            position: absolute;
           }
 
           @include mq($from: tablet) {
@@ -867,7 +870,8 @@
       }
 
       &-list {
-        margin: govuk-spacing(3) -15px;
+        margin: 0 -15px;
+        padding: govuk-spacing(3) 0;
         &-item {
           &-link {
             font-size: 24px;

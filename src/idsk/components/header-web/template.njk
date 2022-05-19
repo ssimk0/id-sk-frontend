@@ -337,9 +337,11 @@
 
 <header class="idsk-header-web {{ params.classes if params.classes }}" data-module="idsk-header-web" {%- for attribute,
   value in params.attributes %} {{attribute}}="{{value}}" {% endfor %}>
-  {{ bannerSection | safe }}
-  {{ tricolor | safe }}
-  {{ brandBar | safe }}
-  {{ mainSection | safe }}
-  {{ navBar | safe }}
+  <div class="idsk-header-web__scrolling-wrapper">
+    {{ bannerSection | safe }}
+    {{ tricolor | safe }}
+    {{ brandBar | safe }}
+    {{ mainSection | safe }}
+    {{ navBar | safe }}
+  </div>
 </header>
