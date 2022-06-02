@@ -199,21 +199,21 @@
 
           {% if params.navBar and params.headerType !== 'electronicService' %}
             <button class="idsk-button idsk-header-web__main-headline-menu-button" aria-label="Rozbaliť menu" aria-expanded="false"
-            data-text-for-show="Rozbaliť menu" data-text-for-hide="Skryť menu">
+            data-text-for-show="Rozbaliť menu" data-text-for-hide="Zavrieť menu">
               {{ main.menuBtnText if main.menuBtnText else 'Menu' }}
               <div class="idsk-header-web__menu-open"></div>
               <div class="idsk-header-web__menu-close"></div>
             </button>
           {% elif  params.headerType !== 'electronicService' and params.search %}
             <button class="idsk-button idsk-header-web__main-headline-menu-button" aria-label="Rozbaliť menu" aria-expanded="false"
-            data-text-for-show="Rozbaliť menu" data-text-for-hide="Skryť menu">
+            data-text-for-show="Rozbaliť menu" data-text-for-hide="Zavrieť menu">
               {{ main.menuBtnText if main.menuBtnText else 'Hľadaj' }}
               <div class="idsk-header-web__menu-open"></div>
               <div class="idsk-header-web__menu-close"></div>
             </button>
           {% elif main.loginButton %}
             <button class="idsk-button idsk-header-web__main-headline-menu-button idsk-header-web__main-headline-menu-button-service"
-            aria-label="Rozbaliť menu" aria-expanded="false" data-text-for-show="Rozbaliť menu" data-text-for-hide="Skryť menu">
+            aria-label="Rozbaliť menu" aria-expanded="false" data-text-for-show="Rozbaliť menu" data-text-for-hide="Zavrieť menu">
               <img src="{{ params.assetsPath | default('/assets/images/header-web/') }}/profile.svg" alt="Electronic service menu icon">
               <div class="idsk-header-web__menu-close"></div>
             </button>
