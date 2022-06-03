@@ -253,7 +253,7 @@
                 <li class="idsk-header-web__nav-list-item">
                   <a class="govuk-link idsk-header-web__nav-list-item-link" href="{{ item.link if not item.submenu else '#' + loop.index }}" {% for attribute, value
                     in item.attributes %} {{attribute}}="{{value}}" {% endfor %} title="{{ item.text }}" {% if item.submenu %} aria-label="Rozbaliť {{ item.text }} menu" aria-expanded="false"
-                    data-text-for-hide="Skryť {{ item.text }} menu" data-text-for-show="Rozbaliť {{ item.text }} menu" {% endif %}>
+                    data-text-for-hide="Zavrieť {{ item.text }} menu" data-text-for-show="Rozbaliť {{ item.text }} menu" {% endif %}>
                     {{ item.text }}
                     {% if item.submenu %}
                       <div class="idsk-header-web__link-arrow"></div>
