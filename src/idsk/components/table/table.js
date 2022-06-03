@@ -29,8 +29,8 @@ function Table ($module) {
   Table.prototype.printTable = function () {
     var $table = this.$module.querySelector('.idsk-table').outerHTML;
     document.body.innerHTML = "<html><head><title></title></head><body>" + $table + "</body>";
+    window.onafterprint = (event) => {window.location.reload()};
     window.print();
-    window.location.reload();
   }
 
   export default Table
