@@ -37,7 +37,7 @@
             </span>
             {% endif %}
             <select class="govuk-select" id="{{ item.name }}" name="{{ item.name }}">
-              <option></option>
+              <option>Vyberte možnosť</option>
               {% for option in item.options %}
                 <option value="{{ option.value }}">{{ option.name }}</option>
               {% endfor %}
