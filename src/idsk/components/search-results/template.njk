@@ -33,8 +33,8 @@
     <div class="idsk-search-results--order__dropdown">
       {% from "../../../govuk/components/select/macro.njk" import govukSelect %}
       {{ govukSelect({
-        id: "sort",
-        name: "sort",
+        id: "sort1",
+        name: "sort1",
         label: {
         text: "Zoradiť podľa"
       },
@@ -104,8 +104,8 @@
         <span>Výsledky na stranu</span>
         {% from "../../../govuk/components/select/macro.njk" import govukSelect %}
         {{ govukSelect({
-          id: "sort",
-          name: "sort",
+          id: "sort2",
+          name: "sort2",
           items: params.dropdownResults
         }) }}
       </div>
@@ -113,8 +113,8 @@
     <div class="idsk-search-results--order">
       {% from "../../../govuk/components/select/macro.njk" import govukSelect %}
       {{ govukSelect({
-        id: "sort",
-        name: "sort",
+        id: "sort3",
+        name: "sort3",
         label: {
         html: "Zoradiť <strong>" + params.searchResultsCard.length + " výsledkov</strong> podľa"
       },

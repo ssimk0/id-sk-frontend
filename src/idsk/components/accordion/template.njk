@@ -1,7 +1,7 @@
 {% set id = params.id %}
 {% set headingLevel = params.headingLevel if params.headingLevel else 2 %}
 
-<div class="govuk-accordion {%- if params.classes %} {{ params.classes }}{% endif -%}" data-module="idsk-accordion" id="{{ id }}"
+<div class="govuk-accordion {%- if params.classes %} {{ params.classes }}{% endif -%}" data-module="idsk-accordion" {%- if id %} id="{{ id }}" {% endif -%}
 {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
 <div class="govuk-accordion__controls">
   <button class="govuk-accordion__open-all" data-open-title="{{ params.openTitle if params.openTitle else 'Otvoriť všetky' }}"

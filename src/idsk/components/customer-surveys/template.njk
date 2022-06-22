@@ -30,9 +30,9 @@
 
       {# 2nd #}
       <div class="idsk-customer-surveys--hidden idsk-customer-surveys__step">
-        <fieldset class="govuk-fieldset" aria-describedby="1-hint">
+        <fieldset class="govuk-fieldset" aria-labelledby="1-name">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-            <h3 class="govuk-fieldset__heading idsk-customer-surveys--subtitle">
+            <h3 class="govuk-fieldset__heading idsk-customer-surveys--subtitle" id="1-name">
               {{ params.questions[0].name }}
             </h3>
           </legend>
@@ -54,28 +54,29 @@
                 class: "idsk-customer-survey__radio--private"
               }]
           }) }}
-          <div class="idsk-customer-survey__text-area--work idsk-customer-surveys--hidden">
-            <fieldset class="govuk-fieldset" aria-describedby="2-hint">
-              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                <h3 class="govuk-fieldset__heading idsk-customer-survey__subtitle--work">
-                  {{ params.questions[1].name }}
-                </h3>
-              </legend>
-              {% from "../../components/customer-surveys-text-area/macro.njk" import idskCustomerSurveysTextArea %}
-              {{ idskCustomerSurveysTextArea ({
-                characterLength: 200,
-                id:'first',
-                label: params.questions[1].name
-              }) }}
-          </div>
         </fieldset>
+        <div class="idsk-customer-survey__text-area--work idsk-customer-surveys--hidden">
+          <fieldset class="govuk-fieldset" aria-labelledby="2-name">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h3 class="govuk-fieldset__heading idsk-customer-survey__subtitle--work" id="2-name">
+                {{ params.questions[1].name }}
+              </h3>
+            </legend>
+            {% from "../../components/customer-surveys-text-area/macro.njk" import idskCustomerSurveysTextArea %}
+            {{ idskCustomerSurveysTextArea ({
+              characterLength: 200,
+              id:'first',
+              label: params.questions[1].name
+            }) }}
+          </fieldset>
+        </div>
       </div>
 
       {# 3rd #}
       <div class="idsk-customer-surveys--hidden idsk-customer-surveys__step">
-        <fieldset class="govuk-fieldset" aria-describedby="3-hint">
+        <fieldset class="govuk-fieldset" aria-labelledby="3-name">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-            <h3 class="govuk-fieldset__heading idsk-customer-surveys--subtitle">
+            <h3 class="govuk-fieldset__heading idsk-customer-surveys--subtitle" id="3-name">
               {{ params.questions[2].name }}
             </h3>
           </legend>
@@ -89,9 +90,9 @@
             label: params.questions[2].name
           }) }}
         </fieldset>
-        <fieldset class="govuk-fieldset" aria-describedby="4-hint">
+        <fieldset class="govuk-fieldset" aria-labelledby="4-name">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-            <h3 class="govuk-fieldset__heading idsk-customer-surveys--subtitle">
+            <h3 class="govuk-fieldset__heading idsk-customer-surveys--subtitle" id="4-name">
               {{ params.questions[3].name }}
             </h3>
           </legend>
@@ -119,9 +120,9 @@
 
       {# 4th #}
       <div class="idsk-customer-surveys--hidden idsk-customer-surveys__step">
-        <fieldset class="govuk-fieldset" aria-describedby="5-hint">
+        <fieldset class="govuk-fieldset" aria-labelledby="5-name">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-            <h3 class="govuk-fieldset__heading idsk-customer-surveys--subtitle">
+            <h3 class="govuk-fieldset__heading idsk-customer-surveys--subtitle" id="5-name">
               {{ params.questions[4].name }}
             </h3>
           </legend>
@@ -157,8 +158,8 @@
 
       {# 5th #}
       <div class="idsk-customer-surveys--hidden idsk-customer-surveys__step">
-        <fieldset class="govuk-fieldset" aria-describedby="6-hint">
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+        <fieldset class="govuk-fieldset" aria-labelledby="6-name">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m" id="6-name">
             <h3 class="govuk-fieldset__heading idsk-customer-surveys--subtitle">
               {{ params.questions[5].name }}
             </h3>
@@ -179,11 +180,11 @@
                 value: 12
               }]
           }) }}
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+          <div class="govuk-fieldset__legend govuk-fieldset__legend--m">
             <h3 class="govuk-fieldset__heading idsk-customer-surveys--subtitle">
               {{ params.questions[6].name }}
             </h3>
-          </legend>
+          </div>
 
           {% from "../../components/customer-surveys-text-area/macro.njk" import idskCustomerSurveysTextArea %}
           {{ idskCustomerSurveysTextArea ({
@@ -215,7 +216,7 @@
       </div>
 
       {# 7th #}
-      <div id="idsk-feedback__thanks" class="idsk-customer-surveys--hidden idsk-customer-surveys__step">
+      <div class="idsk-feedback__thanks idsk-customer-surveys--hidden idsk-customer-surveys__step">
         <h2 class="govuk-heading-l">
           {{ params.feedbackThankNote if params.feedbackThankNote else 'Ďakujeme za spätnú väzbu.' }}
         </h2>
@@ -241,7 +242,7 @@
       </div>
     </div>
   </div>
-  <div id="idsk-feedback__thanks" class="idsk-feedback--hidden">
+  <div class="idsk-feedback__thanks idsk-feedback--hidden">
     <h2 class="govuk-heading-l">
       {{ params.feedbackThankNote if params.feedbackThankNote else 'Ďakujeme za spätnú väzbu.' }}
     </h2>

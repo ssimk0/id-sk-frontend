@@ -28,8 +28,10 @@
   z-index: 20;
   display: block;
   position: relative;
-  border: none;
+  border: 0;
   width: 100%;
+  overflow: hidden;
+  background-color: transparent;
 }
 
 // Highlight the whitespace around a component, so you can see without having to

@@ -38,8 +38,8 @@ Feedback.prototype.init = function () {
 }
 
 Feedback.prototype.handleSendButtonClick = function (e) {
-    var $thanksForFeedbackBar = this.$module.querySelector('#idsk-feedback__thanks');
-    var $feedbackContent = this.$module.querySelector('#idsk-feedback__content');
+    var $thanksForFeedbackBar = this.$module.querySelector('.idsk-feedback__thanks');
+    var $feedbackContent = this.$module.querySelector('.idsk-feedback__content');
 
     $feedbackContent.classList.add('idsk-feedback--hidden');
     $thanksForFeedbackBar.classList.remove('idsk-feedback--hidden');

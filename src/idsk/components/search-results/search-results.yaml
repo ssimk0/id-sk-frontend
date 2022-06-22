@@ -248,7 +248,7 @@ examples:
             - name: Informatizácia
               value: Informatizácia
             - name: Regionálny rozvoj a komunity
-              value: Regionálny rozvoj a komunity
+              value: Regionálny-rozvoj-a-komunity
             - name: Investície
               value: Investície
             - name: Inovácie
@@ -262,25 +262,25 @@ examples:
           searchInputTitle: Filter podtéma
           radios:
             - name: Výzvy pre rozvoj regiónov
-              value: Výzvy pre rozvoj regiónov
+              value: Výzvy-pre-rozvoj-regiónov
             - name: WiFi 4u
-              value: WiFi 4u
+              value: WiFi-4u
             - name: Dotácie na obecné školy
-              value: Dotácie na obecné školy
+              value: Dotácie-na-obecné-školy
             - name: Agroturistika
               value: Agroturistika
             - name: Podpora miestnej komunity
-              value: Podpora miestnej komunity
+              value: Podpora-miestnej-komunity
             - name: Výzvy pre rozvoj regiónov2
-              value: Výzvy pre rozvoj regiónov2
+              value: Výzvy-pre-rozvoj-regiónov2
             - name: WiFi 4u2
-              value: WiFi 4u2
+              value: WiFi-4u2
             - name: Dotácie na obecné školy2
-              value: Dotácie na obecné školy2
+              value: Dotácie-na-obecné-školy2
             - name: Agroturistika2
               value: Agroturistika2
             - name: Dotácie na obecné školy3
-              value: Dotácie na obecné školy3
+              value: Dotácie-na-obecné-školy3
             - name: Agroturistika3
               value: Agroturistika3
         - name: Typ obsahu

@@ -1,11 +1,11 @@
 <div data-module="idsk-customer-surveys-text-area">
-    <div id="idsk-feedback__content" class="idsk-customer-surveys-text-area" data-lines="Zostáva Vám {{params.characterLength}} znakov">
+    <div class="idsk-feedback__content idsk-customer-surveys-text-area" data-lines="Zostáva Vám {{params.characterLength}} znakov">
         <div id="{{params.id}}">
             <br>
             {% from "../../components/character-count/macro.njk" import idskCharacterCount %}
             {{ idskCharacterCount({
                         name: params.id,
-                        id: params.id,
+                        id: params.id + "-count",
                         maxlength: params.characterLength,
                         label: {
                             text: params.label
