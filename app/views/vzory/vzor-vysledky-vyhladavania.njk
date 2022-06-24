@@ -19,18 +19,18 @@
   </style>
 {% endblock %}
 {% block beforeContent %}
-  <div class="govuk-width-container">
     {{ govukBreadcrumbs({
     "items": [
     { text: ' ID-SK frontend', href: '/' + legacyQuery },
     { text: pageName }
     ]
   }) }}
-  {% endblock %}
-  {% block content %}
+{% endblock %}
+{% block content %}
+  <div class="govuk-width-container">
     <div class="idsk-search-results-pattern">
       <h1 class="govuk-heading-xl">Výsledky vyhľadávania</h1>
-      <p class="govuk-body">Výsledky vyhľadávania sa používateľovi zobrazia po tom, ako na vašej webovej stránke  využije vyhľadávacie pole na <a class="govuk-link" href="../vzory/homepage" title="hlavnej stránke">hlavnej stránke</a> vášho portálu alebo jeho zmenšenú verziu v <a class="govuk-link" href="../komponenty/hlavicka-webove-sidla" title="hlavičke">hlavičke</a>.</p>
+      <p class="govuk-body">Výsledky vyhľadávania sa používateľovi zobrazia po tom, ako na vašej webovej stránke  využije vyhľadávacie pole na <a class="govuk-link" href="../vzory/homepage" title="hlavnej stránke">hlavnej stránke</a> vášho portálu alebo jeho zmenšenú verziu v <a class="govuk-link" href="../komponenty/hlavicka" title="hlavičke">hlavičke</a>.</p>
       <h2 class="govuk-heading-l">Z čoho sa skladajú výsledky vyhľadávania?</h2>
       <p class="govuk-body">Pole s výsledkami vyhľadávania sa skladá z:
       </p>
@@ -51,16 +51,15 @@
           </h3>
         </div>
       </div>
-    
+
     <p class="govuk-body">Výsledky vyhľadávania sa pri desktopovej verzii zobrazujú na ⅔ šírky stránky, pričom zvyšná ⅓ je alokovaná filtrovaciemu menu. Výsledky majú formu jednoduchých, neotagovaných kartičiek. Na konci poľa s výsledkami vyhľadávania sú tlačidlá “Zobraziť ďalšie” a “Zobraziť predchádzajúce”, ktoré umožňujú používateľom prepínať medzi stranami s výsledkami v prípade, že počet nájdených výsledkov je väčší než zvolený počet zobrazených výsledkov na stranu.</p>
     <p class="govuk-body">Pod tlačidlami sa nachádza informácia o počte strán s výsledkami vyhľadávania a informácia, na ktorej strane sa práve používateľ nachádza</p>
-    <img src="/public/assets/images/examples/searchResultsMobile1.png" class="idsk-search-results__image" alt="search-results-mobile-img" width="35%" height="100%">    
+    <img src="/public/assets/images/examples/searchResultsMobile1.png" class="idsk-search-results__image" alt="search-results-mobile-img" style="width: 35%;">
     <p class="govuk-body">Vzor podstránky s výsledkami vyhľadávania sa pre mobilné zariadenia líši od desktopovej v spôsobe zobrazenia poľa s filtrami resp. zoraďovačom výsledkov vyhľadávania. Zatiaľ čo pre desktopy a tablety sa toto pole ukazuje naľavo od samotných výsledkov vyhľadávania, pri mobiloch ich človek uvidí až po tom ako klikne na textové tlačidlo “Filtre”.</p>
     <p class="govuk-body">Stránkovanie pre mobilné zariadenia sa nachádza nad výsledkami vyhľadávania vo forme navigačných šípok a statickým zobrazením počtu strán a informácie, na ktorej strane sa práve používateľ nachádza. Pod výsledkami vyhľadávania sú tlačidlá a informácia o počte strán s výsledkami vyhľadávania a na ktorej strane sa práve používateľ nachádza.</p>
-    <img src="/public/assets/images/examples/searchResultsMobile2.png" class="idsk-search-results__image" alt="search-results-mobile-img" width="35%" height="100%">    
+    <img src="/public/assets/images/examples/searchResultsMobile2.png" class="idsk-search-results__image" alt="search-results-mobile-img" style="width: 35%;">
     <p class="govuk-body">Popisu filtrov sa detailnejšie venujeme na podstránke filtrov pre filtrovanie výsledkov vyhľadávania.</p>
-    <p class="govuk-body">Predvytvorené boli 4 druhy filtrov:
-      </p>
+    <p class="govuk-body">Predvytvorené boli 4 druhy filtrov:</p>
     <ul class="govuk-list idsk-search-results-pattern--dash">
         <li>
           Téma

@@ -2,7 +2,7 @@
   <label class="{{ 'idsk-search-component__label--small' if params.isSmall }}" for="{{ params.id if params.id else 'idsk-search-component' }}">
     {{ params.placeholderText if params.placeholderText else 'Zadajte hľadaný výraz'}}
   </label>
-  <input class="govuk-input govuk-input--width-30 idsk-search-component__input {{ 'idsk-search-component__input--small' if params.isSmall }}" id="{{ params.id if params.id else 'idsk-search-component' }}" name="{{ params.name if params.name else 'search' }}" type="search">
+  <input class="govuk-input idsk-search-component__input {{ 'idsk-search-component__input--small' if params.isSmall }}" id="{{ params.id if params.id else 'idsk-search-component' }}" name="{{ params.name if params.name else 'search' }}" type="search">
     <button
       type="submit"
       class="idsk-button idsk-search-component__button {{ 'idsk-search-component__button--small' if params.isSmall }}">

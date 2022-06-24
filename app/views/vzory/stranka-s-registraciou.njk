@@ -26,6 +26,7 @@
 {% block header %}
   {{ idskHeaderWeb({
     headerType: "website",
+    assetsPath: "/public/assets/images/header-web/",
     search: true,
     brand: {
       gestor: true,
@@ -46,7 +47,8 @@
       ]
     },
     main: {
-      logoSrc: "/public/assets/images/header-web/logo-mirri-farebne.svg",
+      showLogo: true,
+      logoSrc: "logo-mirri-farebne.svg",
       logoAlt: "ID-SK Frontend"
     },
     navBar: {

@@ -35,7 +35,7 @@
       </ul>
 
       <p class="govuk-body">Povedzte používateľom o cookies, ktoré im nastavíte na zariadení a nechajte ich potvrdiť alebo zamietnuť rôzne typy menej podstatných cookies.</p>
-      <img width="100%" src="/public/assets/images/cookies-page-pattern/cookies-page.png" alt="Cookies stránka">
+      <img src="/public/assets/images/cookies-page-pattern/cookies-page.png" alt="Cookies stránka">
 
       <h2 class="govuk-heading-m" id="kedy-pouzit-tento-vzor">Kedy je možné použiť tento vzor?</h2>
         <p class="govuk-body">Používajte stránku cookies, keď chcete používateľa informovať o cookies alebo iných podobných technológiách, ktoré vaša služba / stránka používa a ukladá na zariadenie používateľa. Napríklad HTML5 lokálne úložisko.</p>
@@ -108,7 +108,7 @@
     <div class="govuk-form-group">
       <div class="govuk-checkboxes">
         <div class="govuk-checkboxes__item">
-          <input class="govuk-checkboxes__input" id="necessary-cookies" name="" type="checkbox" value="" checked="" disabled="">
+          <input class="govuk-checkboxes__input" id="necessary-cookies" name="necessary-cookies" type="checkbox" checked="" disabled="">
           <label class="govuk-label govuk-checkboxes__label" for="necessary-cookies">
             Nevyhnutne nutné súbory cookie
           </label>
@@ -123,7 +123,7 @@
     <div class="govuk-form-group">
       <div class="govuk-checkboxes">
         <div class="govuk-checkboxes__item">
-          <input class="govuk-checkboxes__input" name="" type="checkbox" value="">
+          <input class="govuk-checkboxes__input" name="ga-cookies" id="ga-cookies" type="checkbox">
           <label class="govuk-label govuk-checkboxes__label" for="ga-cookies">
             Analytické súbory cookie
           </label>
@@ -138,7 +138,7 @@
     <div class="govuk-form-group">
       <div class="govuk-checkboxes">
         <div class="govuk-checkboxes__item">
-          <input class="govuk-checkboxes__input" name="" type="checkbox" value="">
+          <input class="govuk-checkboxes__input" name="preferences-cookies" id="preferences-cookies" type="checkbox">
           <label class="govuk-label govuk-checkboxes__label" for="preferences-cookies">
             Preferenčné súbory cookie
           </label>
@@ -168,8 +168,8 @@
         </h2>
         <p class="govuk-body">Pokiaľ používateľove zariadenie nepodporuje JavaScript, ponúknite mu alternatívnu stránku cookies.</p>
         <p class="govuk-body">Nahraďte výberovníky na súhlas s textom ako si používateľ povolí použitie JavaSript na svojom zariadení.</p>
-        
-        <h2 class="govuk-heading-m" id="cookies-priklad">Príklad: Zmeňte si svoje nastavenia cookies</h3>
+
+        <h2 class="govuk-heading-m" id="cookies-priklad">Príklad: Zmeňte si svoje nastavenia cookies</h2>
         <p class="govuk-body">Momentálne nemôžme zmeniť nastavenia cookies na vašom zariadení, pretože váš webový prehliadač nepodporuje JavaScript. Aby ste to zmenili, pokúste sa:</p>
         <ul class="govuk-list govuk-list--bullet">
           <li>zapnúť JavaScript v nastaveniach vášho prehliadača</li>
@@ -192,6 +192,6 @@
           <li>ak idete už povolené cookies a dáta, ktoré s nimi zbierate, používať iným spôsobom aký mali pôvodný zámer</li>
         </ul>
         <p class="govuk-body">U používateľa nenastavujte žiadne cookies, ktoré nie sú základné alebo kľúčové, ak vám na to nedal súhlas.</p>
-      </div>  
+      </div>
   </div>
 {% endblock %}

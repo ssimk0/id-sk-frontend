@@ -63,19 +63,24 @@ Stepper.prototype.init = function () {
 // Initialise controls and set attributes
 Stepper.prototype.initControls = function () {
   var $accordionControls = this.$module.querySelector('.idsk-stepper__controls');
-  // Create "Zobraziť všetko" button and set attributes
-  this.$openAllButton = document.createElement('button')
-  this.$openAllButton.setAttribute('type', 'button')
-  this.$openAllButton.innerHTML = $accordionControls.dataset.line1 +' <span class="govuk-visually-hidden">sections</span>'
-  this.$openAllButton.setAttribute('class', this.$openAllClass)
-  this.$openAllButton.setAttribute('aria-expanded', 'false')
-  this.$openAllButton.setAttribute('type', 'button')
 
-  // Create control wrapper and add controls to it
-  $accordionControls.appendChild(this.$openAllButton)
-   
-  // Handle events for the controls
-  this.$openAllButton.addEventListener('click', this.onOpenOrCloseAllToggle.bind(this))
+  if ($accordionControls) {
+    // Create "Zobraziť všetko" button and set attributes
+    this.$openAllButton = document.createElement('button')
+    this.$openAllButton.setAttribute('type', 'button')
+    this.$openAllButton.innerHTML = $accordionControls.dataset.line1 + ' <span class="govuk-visually-hidden">sections</span>'
+    this.$openAllButton.setAttribute('class', this.$openAllClass)
+    this.$openAllButton.setAttribute('aria-expanded', 'false')
+    this.$openAllButton.setAttribute('type', 'button')
+
+    // Create control wrapper and add controls to it
+    $accordionControls.appendChild(this.$openAllButton)
+
+    // Handle events for the controls
+    this.$openAllButton.addEventListener('click', this.onOpenOrCloseAllToggle.bind(this))
+  } else {
+    console.log("Incorrect implementation of stepper, stepper controls are missing.")
+  }
 }
 
 // Initialise section headers
@@ -84,16 +89,21 @@ Stepper.prototype.initSectionHeaders = function () {
   nodeListForEach(this.$sections, function ($section, $i) {
     // Set header attributes
     var $header = $section.querySelector('.' + this.$sectionHeaderClass)
-    this.initHeaderAttributes($header, $i)
 
-    this.setExpanded(this.isExpanded($section), $section)
+    if ($header) {
+      this.initHeaderAttributes($header, $i)
 
-    // Handle events
-    $header.addEventListener('click', this.onSectionToggle.bind(this, $section))
+      this.setExpanded(this.isExpanded($section), $section)
 
-    // See if there is any state stored in sessionStorage and set the sections to
-    // open or closed.
-    this.setInitialState($section)
+      // Handle events
+      $header.addEventListener('click', this.onSectionToggle.bind(this, $section))
+
+      // See if there is any state stored in sessionStorage and set the sections to
+      // open or closed.
+      this.setInitialState($section)
+    } else {
+      console.log("Incorrect implementation of stepper, stepper header is missing.")
+    }
   }.bind(this))
 }
 
@@ -106,7 +116,7 @@ Stepper.prototype.handleItemLink = function (e) {
 Stepper.prototype.handleItemLinkBlur = function (e) {
   var $link = e.target || e.srcElement;
   var $currentSection = $link.closest('.idsk-stepper__section');
-  $currentSection.classList.remove('idsk-stepper__bolder-line') 
+  $currentSection.classList.remove('idsk-stepper__bolder-line')
 }
 
 // Set individual header attributes
@@ -222,10 +232,15 @@ Stepper.prototype.checkIfAllSectionsOpen = function () {
 // Update "Zobraziť všetko" button
 Stepper.prototype.updateOpenAllButton = function ($expanded) {
   var $accordionControls = this.$module.querySelector('.idsk-stepper__controls');
-  var $newButtonText = $expanded ? $accordionControls.dataset.line2 : $accordionControls.dataset.line1
-  $newButtonText += '<span class="govuk-visually-hidden"> sections</span>'
-  this.$openAllButton.setAttribute('aria-expanded', $expanded)
-  this.$openAllButton.innerHTML = $newButtonText
+  
+  if ($accordionControls) {
+    var $newButtonText = $expanded ? $accordionControls.dataset.line2 : $accordionControls.dataset.line1
+    $newButtonText += '<span class="govuk-visually-hidden"> sections</span>'
+    this.$openAllButton.setAttribute('aria-expanded', $expanded)
+    this.$openAllButton.innerHTML = $newButtonText
+  } else {
+    console.log("Incorrect implementation of stepper, stepper controls are missing.")
+  }
 }
 
 // Check for `window.sessionStorage`, and that it actually works.

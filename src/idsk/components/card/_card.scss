@@ -27,6 +27,7 @@
   }
 
   .idsk-card-img {
+    width: 100%;
     &-hero {
       @include govuk-grid-column("one-half");
       padding: 0;

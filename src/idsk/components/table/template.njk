@@ -19,7 +19,7 @@
             <div class="govuk-radios govuk-radios--inline">
                 {% for radio in params.radioOptions.slice(0, 2) %}
                     <div class="govuk-radios__item">
-                        <input class="govuk-radios__input" type="radio" name="radio-{{ params.uniqueId }}" value="{{ radio.value }}" {% if loop.index == 1 %}checked=""{% endif %}>
+                        <input class="govuk-radios__input" type="radio" name="radio-{{ params.uniqueId + '-' + loop.index }}" id="radio-{{ params.uniqueId + '-' + loop.index }}" value="{{ radio.value }}" {% if loop.index == 1 %}checked=""{% endif %}>
                         <label class="govuk-label govuk-radios__label" for="radio-{{ params.uniqueId + '-' + loop.index }}">{{ radio.title }}</label>
                     </div>
                 {% endfor %}

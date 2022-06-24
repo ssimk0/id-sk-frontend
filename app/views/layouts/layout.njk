@@ -11,11 +11,13 @@
   {% from "../../../src/idsk/components/header-web/macro.njk" import idskHeaderWeb %}
   {{ idskHeaderWeb({
     headerType: "website",
+    assetsPath: "/public/assets/images/",
     brand: {
       gestor: true
     },
     main: {
-      logoSrc: "/public/assets/images/idsk-logo.svg",
+      showLogo: true,
+      logoSrc: "idsk-logo.svg",
       logoAlt: "ID-SK Frontend"
     }
   }) }}
@@ -78,7 +80,7 @@
   <!--[if lte IE 8]>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.15/ie8.polyfils.min.js"></script>
   <![endif]-->
-  <script type="text/javascript">
+  <script>
     var domReady = function (a, b, c) {
       b = document, c = 'addEventListener';
       b[c] ? b[c]('DOMContentLoaded', a) : window.attachEvent('onload', a)

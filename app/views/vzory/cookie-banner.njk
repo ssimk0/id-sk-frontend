@@ -10,7 +10,7 @@
     { text: pageName }
     ]
   }) }}
-{% endblock %}  
+{% endblock %}
 
 {% block content %}
   <div class="govuk-width-container">
@@ -45,7 +45,7 @@
                 <li>umožniť používateľom prijať alebo odmietnuť akékoľvek súbory cookie, ktoré nie sú nevyhnutné pre fungovanie služby.</li>
             </ul>
 
-            <h4 class="govuk-heading-s">Medzi nevyhnutné cookies nepatrí:</h3>
+            <h4 class="govuk-heading-s">Medzi nevyhnutné cookies nepatrí:</h4>
             <ul class="govuk-list govuk-list-bullet">
                 <li>lokálne úložisko HTML5,</li>
                 <li>service workers,</li>
@@ -65,7 +65,7 @@
             </ul>
             <p class="govuk-body">Identifikujte,  či je každý jeden cookie súbor nastavený na serverovej alebo klientskej strane.</p>
             <p class="govuk-body">Výsledok tohto auditu cookie súborov Vám pomôže pri definovaní cookie pravidiel a súhlasov pre službu, ktorú prevádzkujete alebo vyvíjate.</p>
-            
+
             <h4 class="govuk-heading-s">Upozornenie</h4>
             <p class="govuk-body">Informácie v tomto návode nepovažujte  za právnu radu. Prevádzkovateľ elektronickej služby je zodpovedný za súlad s legislatívou regulujúcou ochranu osobných údajov a akoukoľvek ďalšou legislatívou, ako napríklad so zákonom č. 18/2018 Z. z. o ochrane osobných údajov a o zmene a doplnení niektorých zákonov.</p>
             <p class="govuk-body">Ak ste prevádzkovateľ služby alebo webového sídla, kontaktujte právne oddelenie Vašej organizácie pre správne nastavenie ochrany osobných údajov elektronických služieb a webových sídiel, ktoré prevádzkujete.</p>
@@ -154,16 +154,16 @@
 <form method="POST">
     <div class="idsk-cookie-banner " data-nosnippet role="region" aria-label="Cookies na [názov stránky/služby]">
         <div class="idsk-cookie-banner__message idsk-cookie-banner__example govuk-width-container">
-    
+
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-    
+
             <div class="idsk-cookie-banner__content">
                 <p>Akceptovali ste dodatočné súbory cookies. Kedykoľvek ich môžete zmeniť v <a class="govuk-link" href="#" title="nastaveniach">nastaveniach</a>.</p>
             </div>
             </div>
         </div>
-    
+
         <div class="idsk-button-group">
             <a href="#" role="button" draggable="false" class="idsk-button" data-module="idsk-button">
             Skryť túto správu
@@ -171,7 +171,7 @@
         </div>
         </div>
     </div>
-    
+
 </form>
                 {% endset %}
                 {{ exampleComponentHtml | safe }}
@@ -184,7 +184,7 @@
         <div class="govuk-grid-column-two-thirds">
             <h4 class="govuk-heading-s">Rovnaká správa pre všetkých požívateľov</h4>
             <p class="govuk-body">Pomocou cookie banneru informujte používateľa o všetkých súboroch cookie, ktoré sú v službe alebo na stránke použité, bez ohľadu na to či má používateľ povolený JavaScript. Vďaka tomuto prístupu nie je potrebné si pýtať od používateľa znovu súhlas pri ďalšej návšteve stránky.</p>
-            
+
             <h4 class="govuk-heading-s">Zlepšenie používateľského zážitku pomocou Progressive enhancement</h4>
             <p class="govuk-body">Pokiaľ používateľ zadáva informáciu do formuláru, ktorý je súčasťou služby, môže stratiť svoje informácie pri opätovnom načítavaní stránky, po tom ako klikne na prijať alebo odmietnuť súbory cookie.</p>
             <p class="govuk-body">Tento problém môžete  vyriešiť pre používateľov s povoleným JavaScriptom. Stačí  napísať krátky JS kód, ktorý umožní používateľom zvoliť si možnosť a zabráni stránke opätovne sa načítavať. Vložte  všetky možné správy, ktoré používateľ môže vidieť, keď sa stránka načíta. Následne skryte pomocou <code class="govuk-!-font-size-16  language-markup">hidden</code> atribútu tie, ktoré nie sú práve potrebné.</p>
@@ -199,18 +199,18 @@
 <form method="POST">
     <div class="idsk-cookie-banner " data-nosnippet role="region" aria-label="Cookies na [názov stránky/služby]">
         <div class="idsk-cookie-banner__message idsk-cookie-banner__example govuk-width-container">
-    
+
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
             <h2 class="idsk-cookie-banner__heading govuk-heading-m">Cookies na [názov stránky/služby]</h2>
-    
+
             <div class="idsk-cookie-banner__content">
                 <p>Používame základné cookies súbory aby mohla táto stránka fungovať.</p>
                 <p>Taktiež používame dodatočné súbory cookies, akceptovaním súhlasíte s ich používaním.</p>
             </div>
             </div>
         </div>
-    
+
         <div class="idsk-button-group">
             <button value="accept" type="button" name="cookies" class="idsk-button" data-module="idsk-button">
             Prijať dodatočné cookies
@@ -221,36 +221,36 @@
             <a class="govuk-link" href="#" title="Nastavenia cookies">Nastavenia cookies</a>
         </div>
         </div>
-    
+
         <div class="idsk-cookie-banner__message idsk-cookie-banner__example govuk-width-container" hidden>
-    
+
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-    
+
             <div class="idsk-cookie-banner__content">
                 <p>Akceptovali ste dodatočné súbory cookies. Kedykoľvek ich môžete zmeniť v <a class="govuk-link" href="#" title="nastaveniach">nastaveniach</a>.</p>
             </div>
             </div>
         </div>
-    
+
         <div class="idsk-button-group">
             <a href="#" role="button" draggable="false" class="idsk-button" data-module="idsk-button">
             Skryť túto správu
             </a>
         </div>
         </div>
-    
+
         <div class="idsk-cookie-banner__message idsk-cookie-banner__example govuk-width-container" hidden>
-    
+
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-    
+
             <div class="idsk-cookie-banner__content">
                 <p>Odmietli ste dodatočné súbory cookies. Kedykoľvek ich môžete zmeniť v <a class="govuk-link" href="#" title="nastaveniach">nastaveniach</a>.</p>
             </div>
             </div>
         </div>
-    
+
         <div class="idsk-button-group">
             <a href="#" role="button" draggable="false" class="idsk-button" data-module="idsk-button">
             Skryť túto správu
@@ -258,7 +258,7 @@
         </div>
         </div>
     </div>
-    
+
 </form>
                 {% endset %}
                 {{ exampleComponentHtml | safe }}
@@ -277,18 +277,18 @@
 <form method="POST">
     <div class="idsk-cookie-banner " data-nosnippet role="region" aria-label="Cookies na [názov stránky/služby]">
         <div class="idsk-cookie-banner__message idsk-cookie-banner__example govuk-width-container" hidden>
-    
+
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
             <h2 class="idsk-cookie-banner__heading govuk-heading-m">Cookies na [názov stránky/služby]</h2>
-    
+
             <div class="idsk-cookie-banner__content">
                 <p>Používame základné cookies súbory aby mohla táto stránka fungovať.</p>
                 <p>Taktiež používame dodatočné súbory cookies, akceptovaním súhlasíte s ich používaním.</p>
             </div>
             </div>
         </div>
-    
+
         <div class="idsk-button-group">
             <button value="accept" type="button" name="cookies" class="idsk-button" data-module="idsk-button">
             Prijať dodatočné cookies
@@ -299,36 +299,36 @@
             <a class="govuk-link" href="#" title="Nastavenia cookies">Nastavenia cookies</a>
         </div>
         </div>
-    
+
         <div class="idsk-cookie-banner__message idsk-cookie-banner__example govuk-width-container">
-    
+
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-    
+
             <div class="idsk-cookie-banner__content">
                 <p>Akceptovali ste dodatočné súbory cookies. Kedykoľvek ich môžete zmeniť v <a class="govuk-link" href="#" title="nastaveniach">nastaveniach</a>.</p>
             </div>
             </div>
         </div>
-    
+
         <div class="idsk-button-group">
             <a href="#" role="button" draggable="false" class="idsk-button" data-module="idsk-button">
             Skryť túto správu
             </a>
         </div>
         </div>
-    
+
         <div class="idsk-cookie-banner__message idsk-cookie-banner__example govuk-width-container" hidden>
-    
+
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-    
+
             <div class="idsk-cookie-banner__content">
                 <p>Odmietli ste dodatočné súbory cookies. Kedykoľvek ich môžete zmeniť v <a class="govuk-link" href="#" title="nastaveniach">nastaveniach</a>.</p>
             </div>
             </div>
         </div>
-    
+
         <div class="idsk-button-group">
             <a href="#" role="button" draggable="false" class="idsk-button" data-module="idsk-button">
             Skryť túto správu
@@ -336,7 +336,7 @@
         </div>
         </div>
     </div>
-    
+
 </form>
                 {% endset %}
                 {{ exampleComponentHtml | safe }}
@@ -359,7 +359,7 @@
                 <li>priradí potvrdzovacej správe <code class="govuk-!-font-size-16  language-markup">tabindex="-1"</code> a  <code class="govuk-!-font-size-16  language-markup">role="alert"</code> atribúty - toto umožní element zamerať, aby mohli asistenčné technológie správu prečítať,</li>
                 <li>presunie zameranie na potvrdzovaciu správu.</li>
             </ul>
-            
+
             <p class="govuk-body">Takto vyzerá príklad:</p>
         </div>
 
@@ -368,18 +368,18 @@
                 {% set exampleComponentHtml %}
 <div class="idsk-cookie-banner " data-nosnippet role="region" aria-label="Cookies na [názov stránky/služby]">
     <div class="idsk-cookie-banner__message idsk-cookie-banner__example govuk-width-container">
-    
+
         <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
             <h2 class="idsk-cookie-banner__heading govuk-heading-m">Cookies na [názov stránky/služby]</h2>
-    
+
             <div class="idsk-cookie-banner__content">
             <p>Používame základné cookies súbory aby mohla táto stránka fungovať.</p>
             <p>Taktiež používame analytické súbory, akceptovaním súhlasíte s ich používaním.</p>
             </div>
         </div>
         </div>
-    
+
         <div class="idsk-button-group">
         <button type="button" class="idsk-button" data-module="idsk-button">
             Prijať analytické cookies
@@ -390,36 +390,36 @@
         <a class="govuk-link" href="#" title="Nastavenia cookies">Nastavenia cookies</a>
         </div>
     </div>
-    
+
     <div class="idsk-cookie-banner__message idsk-cookie-banner__example govuk-width-container" role="alert" hidden>
-    
+
         <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-    
+
             <div class="idsk-cookie-banner__content">
             <p>Akceptovali ste analytické cookies. Túto voľbu môžete kedykoľvek zmeniť v <a class="govuk-link" href="#" title="nastaveniach">nastaveniach</a>.</p>
             </div>
         </div>
         </div>
-    
+
         <div class="idsk-button-group">
         <button class="idsk-button" data-module="idsk-button">
             Skryť túto správu
         </button>
         </div>
     </div>
-    
+
     <div class="idsk-cookie-banner__message idsk-cookie-banner__example govuk-width-container" role="alert" hidden>
-    
+
         <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-    
+
             <div class="idsk-cookie-banner__content">
             <p>Odmietli si analytické cookies. Túto voľbu môžete kedykoľvek zmeniť v <a class="govuk-link" href="#" title="nastaveniach">nastaveniach</a>.</p>
             </div>
         </div>
         </div>
-    
+
         <div class="idsk-button-group">
         <button class="idsk-button" data-module="idsk-button">
             Skryť túto správu
@@ -435,7 +435,7 @@
         </div>
 
         <div class="govuk-grid-column-two-thirds">
-            <h4 class="govuk-heading-s">Keď používateľ prijal súbory cookie</h3>
+            <h4 class="govuk-heading-s">Keď používateľ prijal súbory cookie</h4>
             <p class="govuk-body">Zobrazí sa potvrdzovacia správa s príslušným textom podľa toho, či používateľ prijal alebo odmietol súbory cookie odstránením atribútu <code class="govuk-!-font-size-16  language-markup">hidden</code>.</p>
         </div>
 
@@ -444,18 +444,18 @@
                 {% set exampleComponentHtml %}
 <div class="idsk-cookie-banner " data-nosnippet role="region" aria-label="Cookies na [názov stránky/služby]">
     <div class="idsk-cookie-banner__message idsk-cookie-banner__example govuk-width-container" hidden>
-    
+
         <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
             <h2 class="idsk-cookie-banner__heading govuk-heading-m">Cookies na [názov stránky/služby]</h2>
-    
+
             <div class="idsk-cookie-banner__content">
             <p>Používame základné cookies súbory aby mohla táto stránka fungovať.</p>
             <p>Taktiež používame analytické súbory, akceptovaním súhlasíte s ich používaním.</p>
             </div>
         </div>
         </div>
-    
+
         <div class="idsk-button-group">
         <button type="button" class="idsk-button" data-module="idsk-button">
             Prijať analytické cookies
@@ -466,36 +466,36 @@
         <a class="govuk-link" href="#" title="Nastavenia cookies">Nastavenia cookies</a>
         </div>
     </div>
-    
+
     <div class="idsk-cookie-banner__message idsk-cookie-banner__example govuk-width-container" role="alert">
-    
+
         <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-    
+
             <div class="idsk-cookie-banner__content">
             <p>Akceptovali ste analytické cookies. Túto voľbu môžete kedykoľvek zmeniť v <a class="govuk-link" href="#" title="nastaveniach">nastaveniach</a>.</p>
             </div>
         </div>
         </div>
-    
+
         <div class="idsk-button-group">
         <button class="idsk-button" data-module="idsk-button">
             Skryť túto správu
         </button>
         </div>
     </div>
-    
+
     <div class="idsk-cookie-banner__message idsk-cookie-banner__example govuk-width-container" role="alert" hidden>
-    
+
         <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-    
+
             <div class="idsk-cookie-banner__content">
             <p>Odmietli ste analytické cookies. Túto voľbu môžete kedykoľvek zmeniť v <a class="govuk-link" href="#" title="nastaveniach">nastaveniach</a>.</p>
             </div>
         </div>
         </div>
-    
+
         <div class="idsk-button-group">
         <button class="idsk-button" data-module="idsk-button">
             Skryť túto správu
@@ -511,7 +511,7 @@
         </div>
 
         <div class="govuk-grid-column-two-thirds">
-            <h4 class="govuk-heading-s">Keď používateľ odmietol súbory cookie</h3>
+            <h4 class="govuk-heading-s">Keď používateľ odmietol súbory cookie</h4>
         </div>
 
         <div class="govuk-grid-column-full">
@@ -519,18 +519,18 @@
                 {% set exampleComponentHtml %}
 <div class="idsk-cookie-banner " data-nosnippet role="region" aria-label="Cookies na [názov stránky/služby]">
     <div class="idsk-cookie-banner__message idsk-cookie-banner__example govuk-width-container" hidden>
-    
+
         <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
             <h2 class="idsk-cookie-banner__heading govuk-heading-m">Cookies na [názov stránky/služby]</h2>
-    
+
             <div class="idsk-cookie-banner__content">
             <p>Používame základné cookies súbory aby mohla táto stránka fungovať.</p>
             <p>Taktiež používame analytické súbory, akceptovaním súhlasíte s ich používaním.</p>
             </div>
         </div>
         </div>
-    
+
         <div class="idsk-button-group">
         <button type="button" class="idsk-button" data-module="idsk-button">
             Prijať analytické cookies
@@ -541,36 +541,36 @@
         <a class="govuk-link" href="#" title="Nastavenia cookies">Nastavenia cookies</a>
         </div>
     </div>
-    
+
     <div class="idsk-cookie-banner__message idsk-cookie-banner__example govuk-width-container" role="alert" hidden>
-    
+
         <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-    
+
             <div class="idsk-cookie-banner__content">
             <p>Akceptovali ste analytické cookies. Túto voľbu môžete kedykoľvek zmeniť v <a class="govuk-link" href="#" title="nastaveniach">nastaveniach</a>.</p>
             </div>
         </div>
         </div>
-    
+
         <div class="idsk-button-group">
         <button class="idsk-button" data-module="idsk-button">
             Skryť túto správu
         </button>
         </div>
     </div>
-    
+
     <div class="idsk-cookie-banner__message idsk-cookie-banner__example govuk-width-container" role="alert">
-    
+
         <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-    
+
             <div class="idsk-cookie-banner__content">
             <p>Odmietli ste analytické cookies. Túto voľbu môžete kedykoľvek zmeniť v <a class="govuk-link" href="#" title="nastaveniach">nastaveniach</a>.</p>
             </div>
         </div>
         </div>
-    
+
         <div class="idsk-button-group">
         <button class="idsk-button" data-module="idsk-button">
             Skryť túto správu
@@ -603,18 +603,18 @@
                 {% set exampleComponentHtml %}
 <div class="idsk-cookie-banner " data-nosnippet role="region" aria-label="Cookies na [názov stránky/služby]">
     <div class="idsk-cookie-banner__message idsk-cookie-banner__example govuk-width-container">
-    
+
         <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
             <h2 class="idsk-cookie-banner__heading govuk-heading-m">Cookies na [názov stránky/služby]</h2>
-    
+
             <div class="idsk-cookie-banner__content">
             <p>Používame základné cookies súbory aby mohla táto stránka fungovať.</p>
             <p>Taktiež používame analytické súbory, akceptovaním súhlasíte s ich používaním.</p>
             </div>
         </div>
         </div>
-    
+
         <div class="idsk-button-group">
         <button value="accept" type="button" name="cookies" class="idsk-button" data-module="idsk-button">
             Prijať analytické cookies
@@ -648,18 +648,18 @@
                 {% set exampleComponentHtml %}
 <div class="idsk-cookie-banner " data-nosnippet role="region" aria-label="Cookies na [názov stránky/služby]">
     <div class="idsk-cookie-banner__message idsk-cookie-banner__example govuk-width-container">
-    
+
         <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
             <h2 class="idsk-cookie-banner__heading govuk-heading-m">Cookies na [názov stránky/služby]</h2>
-    
+
             <div class="idsk-cookie-banner__content">
             <p>Používame základné cookies súbory aby mohla táto stránka fungovať.</p>
             <p>Taktiež používame dodatočné súbory cookies, akceptovaním súhlasíte s ich používaním.</p>
             </div>
         </div>
         </div>
-    
+
         <div class="idsk-button-group">
         <button value="accept" type="button" name="cookies" class="idsk-button" data-module="idsk-button">
             Prijať dodatočné cookies

@@ -20,7 +20,7 @@
       {% endif %}
     {% endfor %}
   </ul>
-  
+
   <ul class="idsk-tabs__list--mobile" role="tablist">
     {% for item in params.items %}
       {% if item %}
@@ -28,7 +28,7 @@
         <li class="idsk-tabs__list-item--mobile" role="presentation">
           <button class="govuk-caption-l idsk-tabs__mobile-tab" item="{{ loop.index0 }}" role="tab" aria-controls="{{ id }}" aria-selected="false" href="#{{ id }}">
             {{ item.label }}
-            <div class="idsk-tabs__tab-arrow-mobile"></div>
+            <span class="idsk-tabs__tab-arrow-mobile"></span>
           </button>
           <section class="idsk-tabs__panel{% if loop.index > 1 %} idsk-tabs__panel--hidden{% endif %}" id="{{ id }}"{% for attribute, value in item.panel.attributes %} {{attribute}}="{{value}}"{% endfor %}>
             <div class="idsk-tabs__panel-content">

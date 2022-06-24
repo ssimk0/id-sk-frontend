@@ -11,7 +11,7 @@
     { text: pageName }
     ]
   }) }}
-{% endblock %}  
+{% endblock %}
 
 {% block content %}
 
@@ -101,10 +101,10 @@
         </div>
 
         <div class="govuk-grid-column-two-thirds">
-        <h3 class="govuk-heading-m" id="button-default">Design hlavného tlačidla pri jednotlivých stavoch</h3>
+        <h3 class="govuk-heading-m">Design hlavného tlačidla pri jednotlivých stavoch</h3>
 
         {% for state_description, state_class in states %}
-        
+
         <button type="submit" class="idsk-button {{ state_class }}" data-module="idsk-button">
             {{ state_description}}
           </button><br>
@@ -135,9 +135,9 @@
         </div>
 
         <div class="govuk-grid-column-two-thirds">
-            <h3 class="govuk-heading-m" id="button-start-now">Design tlačidla začať pri jednotlivých stavoch</h3>
+            <h3 class="govuk-heading-m">Design tlačidla začať pri jednotlivých stavoch</h3>
             {% for state_description, state_class in states %}
-        
+
             <a href="#" role="button" draggable="false" class="idsk-button idsk-button--start {{ state_class }}" data-module="idsk-button">
                 {{ state_description}}
                 <svg class="idsk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" role="presentation" focusable="false">
@@ -167,10 +167,10 @@
         </div>
 
         <div class="govuk-grid-column-two-thirds">
-            <h3 class="govuk-heading-m" id="button-default">Design sekundárneho tlačidla pri jednotlivých stavoch</h3>
-    
+            <h3 class="govuk-heading-m">Design sekundárneho tlačidla pri jednotlivých stavoch</h3>
+
             {% for state_description, state_class in states %}
-            
+
             <button type="submit" class="idsk-button idsk-button--secondary {{ state_class }}" data-module="idsk-button">
                 {{ state_description}}
               </button><br>
@@ -200,10 +200,10 @@
         </div>
 
         <div class="govuk-grid-column-two-thirds">
-            <h3 class="govuk-heading-m" id="button-default">Design výstražného tlačidla pri jednotlivých stavoch</h3>
-    
+            <h3 class="govuk-heading-m">Design výstražného tlačidla pri jednotlivých stavoch</h3>
+
             {% for state_description, state_class in states %}
-            
+
             <button type="submit" class="idsk-button idsk-button--warning {{ state_class }}" data-module="idsk-button">
                 {{ state_description}}
               </button><br>
@@ -212,7 +212,7 @@
 
         <div class="govuk-grid-column-two-thirds">
             <h3 class="govuk-heading-m" id="button-disabled">Neaktívne tlačidlo</h3>
-            
+
             <p class="govuk-body">Neaktívne tlačidlá by sa nemali používať, ak na to nie je vážny dôvod.</p>
             <p class="govuk-body">Ak už musíte použiť neaktívne tlačidlo, uistite sa, že jeho dizajn vyzerá tak, že sa naň nedá kliknúť (používa sa 50% priehľadnosť).</p>
             <p class="govuk-body">Používajte atribút <code class="govuk-!-font-size-16  language-markup">aria-disabled</code> kvôli starším čítačkám obrazoviek.</p>
