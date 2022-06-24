@@ -2788,7 +2788,7 @@ HeaderWeb.prototype.showMobileMenu = function () {
     $lastMenuItem.addEventListener('keydown', function (e) {
         var isTabPressed = (e.key === 'Tab' || e.keyCode === KEYCODE_TAB);
 
-        if (isTabPressed && !e.shiftKey) {
+        if (isTabPressed && !e.shiftKey && $menuButton.offsetParent !== null) {
             $menuButton.focus();
             e.preventDefault();
         }
@@ -4192,8 +4192,8 @@ Feedback.prototype.init = function () {
 };
 
 Feedback.prototype.handleSendButtonClick = function (e) {
-    var $thanksForFeedbackBar = this.$module.querySelector('#idsk-feedback__thanks');
-    var $feedbackContent = this.$module.querySelector('#idsk-feedback__content');
+    var $thanksForFeedbackBar = this.$module.querySelector('.idsk-feedback__thanks');
+    var $feedbackContent = this.$module.querySelector('.idsk-feedback__content');
 
     $feedbackContent.classList.add('idsk-feedback--hidden');
     $thanksForFeedbackBar.classList.remove('idsk-feedback--hidden');
@@ -4806,19 +4806,24 @@ Stepper.prototype.init = function () {
 // Initialise controls and set attributes
 Stepper.prototype.initControls = function () {
   var $accordionControls = this.$module.querySelector('.idsk-stepper__controls');
-  // Create "Zobraziť všetko" button and set attributes
-  this.$openAllButton = document.createElement('button');
-  this.$openAllButton.setAttribute('type', 'button');
-  this.$openAllButton.innerHTML = $accordionControls.dataset.line1 +' <span class="govuk-visually-hidden">sections</span>';
-  this.$openAllButton.setAttribute('class', this.$openAllClass);
-  this.$openAllButton.setAttribute('aria-expanded', 'false');
-  this.$openAllButton.setAttribute('type', 'button');
 
-  // Create control wrapper and add controls to it
-  $accordionControls.appendChild(this.$openAllButton);
-   
-  // Handle events for the controls
-  this.$openAllButton.addEventListener('click', this.onOpenOrCloseAllToggle.bind(this));
+  if ($accordionControls) {
+    // Create "Zobraziť všetko" button and set attributes
+    this.$openAllButton = document.createElement('button');
+    this.$openAllButton.setAttribute('type', 'button');
+    this.$openAllButton.innerHTML = $accordionControls.dataset.line1 + ' <span class="govuk-visually-hidden">sections</span>';
+    this.$openAllButton.setAttribute('class', this.$openAllClass);
+    this.$openAllButton.setAttribute('aria-expanded', 'false');
+    this.$openAllButton.setAttribute('type', 'button');
+
+    // Create control wrapper and add controls to it
+    $accordionControls.appendChild(this.$openAllButton);
+
+    // Handle events for the controls
+    this.$openAllButton.addEventListener('click', this.onOpenOrCloseAllToggle.bind(this));
+  } else {
+    console.log("Incorrect implementation of stepper, stepper controls are missing.");
+  }
 };
 
 // Initialise section headers
@@ -4827,16 +4832,21 @@ Stepper.prototype.initSectionHeaders = function () {
   nodeListForEach(this.$sections, function ($section, $i) {
     // Set header attributes
     var $header = $section.querySelector('.' + this.$sectionHeaderClass);
-    this.initHeaderAttributes($header, $i);
 
-    this.setExpanded(this.isExpanded($section), $section);
+    if ($header) {
+      this.initHeaderAttributes($header, $i);
 
-    // Handle events
-    $header.addEventListener('click', this.onSectionToggle.bind(this, $section));
+      this.setExpanded(this.isExpanded($section), $section);
 
-    // See if there is any state stored in sessionStorage and set the sections to
-    // open or closed.
-    this.setInitialState($section);
+      // Handle events
+      $header.addEventListener('click', this.onSectionToggle.bind(this, $section));
+
+      // See if there is any state stored in sessionStorage and set the sections to
+      // open or closed.
+      this.setInitialState($section);
+    } else {
+      console.log("Incorrect implementation of stepper, stepper header is missing.");
+    }
   }.bind(this));
 };
 
@@ -4849,7 +4859,7 @@ Stepper.prototype.handleItemLink = function (e) {
 Stepper.prototype.handleItemLinkBlur = function (e) {
   var $link = e.target || e.srcElement;
   var $currentSection = $link.closest('.idsk-stepper__section');
-  $currentSection.classList.remove('idsk-stepper__bolder-line'); 
+  $currentSection.classList.remove('idsk-stepper__bolder-line');
 };
 
 // Set individual header attributes
@@ -4965,10 +4975,15 @@ Stepper.prototype.checkIfAllSectionsOpen = function () {
 // Update "Zobraziť všetko" button
 Stepper.prototype.updateOpenAllButton = function ($expanded) {
   var $accordionControls = this.$module.querySelector('.idsk-stepper__controls');
-  var $newButtonText = $expanded ? $accordionControls.dataset.line2 : $accordionControls.dataset.line1;
-  $newButtonText += '<span class="govuk-visually-hidden"> sections</span>';
-  this.$openAllButton.setAttribute('aria-expanded', $expanded);
-  this.$openAllButton.innerHTML = $newButtonText;
+  
+  if ($accordionControls) {
+    var $newButtonText = $expanded ? $accordionControls.dataset.line2 : $accordionControls.dataset.line1;
+    $newButtonText += '<span class="govuk-visually-hidden"> sections</span>';
+    this.$openAllButton.setAttribute('aria-expanded', $expanded);
+    this.$openAllButton.innerHTML = $newButtonText;
+  } else {
+    console.log("Incorrect implementation of stepper, stepper controls are missing.");
+  }
 };
 
 // Check for `window.sessionStorage`, and that it actually works.
@@ -5033,7 +5048,7 @@ Stepper.prototype.setInitialState = function ($section) {
   }
 };
 
-function SubscriptionForm ($module) {
+function SubscriptionForm($module) {
   this.$module = $module;
 }
 
@@ -5049,6 +5064,10 @@ SubscriptionForm.prototype.init = function () {
   if ($form) {
     $form.addEventListener('submit', this.handleSubmitForm.bind(this));
   }
+
+  var $input = $module.querySelector('.govuk-input');
+
+  $input.addEventListener('change', this.handleInput.bind(this));
 };
 
 /**
@@ -5057,10 +5076,38 @@ SubscriptionForm.prototype.init = function () {
  */
 SubscriptionForm.prototype.handleSubmitForm = function (e) {
   e.preventDefault();
+  var $input = e.target.querySelector('#subscription-email-value');
+  var $formGroup = $input.parentElement;
 
-  // check if email is set and set class for different state
-  if (e.target.querySelector('input[type=email]').value !== '') {
-    this.$module.classList.add('idsk-subscription-form__subscription-confirmed');
+  // Handle email validation
+  if (!$input.checkValidity()) {
+    $formGroup.querySelectorAll('.govuk-error-message').forEach(function (e) {
+      e.remove();
+    });
+    var $errorLabel = document.createElement('span');
+    $errorLabel.classList.add('govuk-error-message');
+    $errorLabel.textContent = $input.validationMessage;
+
+    $input.classList.add('govuk-input--error');
+    $formGroup.classList.add('govuk-form-group--error');
+    $input.before($errorLabel);
+    return
+  }
+
+  // set class for different state
+  this.$module.classList.add('idsk-subscription-form__subscription-confirmed');
+};
+
+SubscriptionForm.prototype.handleInput = function (e) {
+  var $el = e.target || e.srcElement || e;
+  var $searchComponent = $el.closest('.idsk-subscription-form__input');
+  var $searchLabel = $searchComponent.querySelector('label');
+
+  // Handle label visibility
+  if ($el.value === '') {
+    $searchLabel.classList.remove('govuk-visually-hidden');
+  } else {
+    $searchLabel.classList.add('govuk-visually-hidden');
   }
 };
 
@@ -5708,8 +5755,8 @@ function Table ($module) {
   Table.prototype.printTable = function () {
     var $table = this.$module.querySelector('.idsk-table').outerHTML;
     document.body.innerHTML = "<html><head><title></title></head><body>" + $table + "</body>";
+    window.onafterprint = function (event) {window.location.reload();};
     window.print();
-    window.location.reload();
   };
 
 function initExtended$1(options) {

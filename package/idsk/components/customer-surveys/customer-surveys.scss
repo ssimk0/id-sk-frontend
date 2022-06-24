@@ -71,4 +71,18 @@
     .idsk-customer-surveys__icon--hidden {
         display: none;
     }
+
+    .idsk-customer-surveys__step .govuk-fieldset__legend {
+        border-top: 1px solid govuk-colour("black");
+        padding-top: 16px;
+        margin-top: 16px;
+        margin-bottom: govuk-spacing(4);
+        width: 100%;
+    }
+
+    // labels only for readers
+    .idsk-character-count .govuk-label {
+        visibility: hidden;
+        height: 0;
+    }
 }

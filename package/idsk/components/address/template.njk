@@ -6,7 +6,9 @@
             {% if params.heading %}
             <h2 class="govuk-heading-m">{{ params.heading }}</h2>
             {% endif %}
-            <h3 class="govuk-heading-s">{{ params.addressTitle }}</h3>
+            {% if params.addressTitle %}
+              <h3 class="govuk-heading-s">{{ params.addressTitle }}</h3>
+            {% endif %}
             {% for row in params.addressDescription %}
             <p class="govuk-body">{{ row.text }}</p>
             {% endfor %}
@@ -18,7 +20,7 @@
             <p>
             {% endif %}
         </div>
-        <iframe 
+        <iframe
             class="idsk-address__map"
             loading="lazy"
             allowfullscreen

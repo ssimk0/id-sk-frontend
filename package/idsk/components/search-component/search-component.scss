@@ -43,8 +43,8 @@
     &::-webkit-search-cancel-button {
       -webkit-appearance: none;
       background-color: govuk-colour("grey-1");
-      -webkit-mask: url(#{$govuk-images-path}/header-web/search-input-close.svg) no-repeat center;
-      mask: url(#{$govuk-images-path}/header-web/search-input-close.svg) no-repeat center;
+      -webkit-mask: idsk-image-url("header-web/search-input-close.svg") no-repeat center;
+      mask: idsk-image-url("header-web/search-input-close.svg") no-repeat center;
       display: inline-block;
       -webkit-mask-size: contain;
       mask-size: contain;

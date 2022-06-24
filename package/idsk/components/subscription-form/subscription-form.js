@@ -659,7 +659,7 @@ if (detect) return
 })
 .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
-function SubscriptionForm ($module) {
+function SubscriptionForm($module) {
   this.$module = $module;
 }
 
@@ -675,6 +675,10 @@ SubscriptionForm.prototype.init = function () {
   if ($form) {
     $form.addEventListener('submit', this.handleSubmitForm.bind(this));
   }
+
+  var $input = $module.querySelector('.govuk-input');
+
+  $input.addEventListener('change', this.handleInput.bind(this));
 };
 
 /**
@@ -683,10 +687,38 @@ SubscriptionForm.prototype.init = function () {
  */
 SubscriptionForm.prototype.handleSubmitForm = function (e) {
   e.preventDefault();
+  var $input = e.target.querySelector('#subscription-email-value');
+  var $formGroup = $input.parentElement;
 
-  // check if email is set and set class for different state
-  if (e.target.querySelector('input[type=email]').value !== '') {
-    this.$module.classList.add('idsk-subscription-form__subscription-confirmed');
+  // Handle email validation
+  if (!$input.checkValidity()) {
+    $formGroup.querySelectorAll('.govuk-error-message').forEach(function (e) {
+      e.remove();
+    });
+    var $errorLabel = document.createElement('span');
+    $errorLabel.classList.add('govuk-error-message');
+    $errorLabel.textContent = $input.validationMessage;
+
+    $input.classList.add('govuk-input--error');
+    $formGroup.classList.add('govuk-form-group--error');
+    $input.before($errorLabel);
+    return
+  }
+
+  // set class for different state
+  this.$module.classList.add('idsk-subscription-form__subscription-confirmed');
+};
+
+SubscriptionForm.prototype.handleInput = function (e) {
+  var $el = e.target || e.srcElement || e;
+  var $searchComponent = $el.closest('.idsk-subscription-form__input');
+  var $searchLabel = $searchComponent.querySelector('label');
+
+  // Handle label visibility
+  if ($el.value === '') {
+    $searchLabel.classList.remove('govuk-visually-hidden');
+  } else {
+    $searchLabel.classList.add('govuk-visually-hidden');
   }
 };
 

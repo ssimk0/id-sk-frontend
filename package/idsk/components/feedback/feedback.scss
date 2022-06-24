@@ -2,15 +2,15 @@
 @import "../../../govuk/objects/grid";
 
 @include govuk-exports("idsk/component/feedback") {
-    #idsk-feedback__content {
+    .idsk-feedback__content {
         @include govuk-font($size: 19);
     }
 
-    #idsk-feedback__content .govuk-radios {
+    .idsk-feedback__content .govuk-radios {
         line-height: 0;
     }
 
-    #idsk-feedback__content .govuk-heading-l {
+    .idsk-feedback__content .govuk-heading-l {
         padding-bottom: govuk-spacing(8);
         margin-bottom: 0;
     }
@@ -20,11 +20,11 @@
     }
 
     @include mq($from: desktop) {
-        #idsk-feedback__content .govuk-radios .govuk-radios__input:hover + .govuk-radios__label::before {
+        .idsk-feedback__content .govuk-radios .govuk-radios__input:hover + .govuk-radios__label::before {
             box-shadow: 0 0 0 10px govuk-colour("mid-grey");
         }
 
-        #idsk-feedback__content
+        .idsk-feedback__content
             .govuk-radios
             .govuk-radios__item:hover
             .govuk-radios__input:focus
@@ -32,17 +32,17 @@
             box-shadow: 0 0 0 4px govuk-colour("yellow"), 0 0 0 10px govuk-colour("mid-grey");
         }
 
-        #idsk-feedback__content .govuk-radios__label {
+        .idsk-feedback__content .govuk-radios__label {
             padding-left: 0;
         }
 
-        #idsk-feedback__content .govuk-radios__label::before {
+        .idsk-feedback__content .govuk-radios__label::before {
             top: 8px;
             width: 24px;
             height: 24px;
         }
 
-        #idsk-feedback__content .govuk-radios__label::after {
+        .idsk-feedback__content .govuk-radios__label::after {
             top: 15px;
             left: 7px;
             border-width: 5px;
