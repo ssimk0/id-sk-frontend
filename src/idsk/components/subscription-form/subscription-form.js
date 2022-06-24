@@ -34,13 +34,15 @@ SubscriptionForm.prototype.handleSubmitForm = function (e) {
 
   // Handle email validation
   if (!$input.checkValidity()) {
-    $formGroup.querySelectorAll(".govuk-error-message").forEach(e => e.remove());
-    var $errorLabel = document.createElement("span")
-    $errorLabel.classList.add("govuk-error-message")
+    $formGroup.querySelectorAll('.govuk-error-message').forEach(function (e) {
+      e.remove()
+    })
+    var $errorLabel = document.createElement('span')
+    $errorLabel.classList.add('govuk-error-message')
     $errorLabel.textContent = $input.validationMessage
 
-    $input.classList.add("govuk-input--error")
-    $formGroup.classList.add("govuk-form-group--error")
+    $input.classList.add('govuk-input--error')
+    $formGroup.classList.add('govuk-form-group--error')
     $input.before($errorLabel)
     return
   }
