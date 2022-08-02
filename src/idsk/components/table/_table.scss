@@ -9,20 +9,28 @@
 
     border-spacing: 0;
     border-collapse: collapse;
+    overflow: auto;
+    display: block;
   }
 
   .idsk-table__heading {
     display: flex;
     justify-content: space-between;
-
+    &-container {
+      min-width: 50%;
+      flex: 1;
+    }
     &-extended {
       .govuk-radios {
         display: flex;
+        flex-wrap: wrap;
 
         .govuk-radios__item {
           display: flex;
-          padding: 0;
           float: none;
+          flex: 1;
+          margin-right: 0;
+          padding: 0 govuk-spacing(4) 0 0;
 
           .govuk-radios__input {
             position: initial;
@@ -82,12 +90,18 @@
     }
   }
 
+  .idsk-table__head {
+    display: table;
+    position: sticky;
+    top: 0;
+    background-color: #FFFFFF;
+  }
+
   .idsk-table__body {
-    overflow: auto;
     display: block;
   }
 
-  .idsk-table__head, .idsk-table__row {
+  .idsk-table__row {
     display: table;
     width: 100%;
     table-layout: fixed;
@@ -175,12 +189,20 @@
     text-align: left;
     vertical-align: top;
     overflow-wrap: anywhere;
+    width: 80px; // works like min-width for fixed table-layout
+
     // GOV.UK Elements sets the font-size and line-height for all headers and cells
     // in tables.
     @include govuk-compatibility(govuk_elements) {
       font-size: inherit;
       line-height: inherit;
     }
+  }
+
+  .idsk-table__header:last-child,
+  .idsk-table__cell:last-child {
+    padding-right: 0;
+    width: 100px;
   }
 
   .idsk-table__cell--numeric {
@@ -190,11 +212,6 @@
   .idsk-table__header--numeric,
   .idsk-table__cell--numeric {
     text-align: right;
-  }
-
-  .idsk-table__header:last-child,
-  .idsk-table__cell:last-child {
-    padding-right: 0;
   }
 
   .idsk-table__meta {
