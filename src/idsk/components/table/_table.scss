@@ -16,11 +16,21 @@
   .idsk-table__heading {
     display: flex;
     justify-content: space-between;
-    &-container {
-      min-width: 50%;
-      flex: 1;
+    @include mq($until: tablet) {
+      flex-direction: column;
     }
+
+    &-container {
+      flex: 1 1 0;
+      max-width: 50%;
+      @include mq($until: tablet) {
+        max-width: 100%;
+      }
+    }
+
     &-extended {
+      flex: 1 1 0;
+
       .govuk-radios {
         display: flex;
         flex-wrap: wrap;
@@ -28,9 +38,10 @@
         .govuk-radios__item {
           display: flex;
           float: none;
-          flex: 1;
           margin-right: 0;
-          padding: 0 govuk-spacing(4) 0 0;
+          padding: 0;
+          margin-left: govuk-spacing(4);
+          flex: 1 1 0;
 
           .govuk-radios__input {
             position: initial;
@@ -39,7 +50,7 @@
           }
 
           .govuk-radios__label {
-            white-space: nowrap;
+            flex: 1;
 
             &::before {
               width: 36px;
