@@ -88,7 +88,9 @@
                 <li class="idsk-header-web__brand-language-list-item">
                   <a class="govuk-link idsk-header-web__brand-language-list-item-link {{ 'idsk-header-web__brand-language-list-item-link--selected' if language.selected }}"
                     title="{{ language.text }}"
-                    href="{{ language.link }}">
+                    href="{{ language.link }}"
+                    lang="{{language.language}}"
+                    >
                     {{ language.text }}
                   </a>
                 </li>
@@ -213,7 +215,7 @@
           {% elif main.loginButton %}
             <button class="idsk-button idsk-header-web__main-headline-menu-button idsk-header-web__main-headline-menu-button-service"
             aria-label="Rozbaliť menu" aria-expanded="false" data-text-for-show="Rozbaliť menu" data-text-for-hide="Zavrieť menu">
-              <img src="{{ params.assetsPath | default('/assets/images/header-web/') }}/profile.svg" alt="Electronic service menu icon">
+              <img src="{{ params.assetsPath | default('/assets/images/header-web/') }}/profile.svg" alt="Ikona elektronického servisného menu">
               <span class="idsk-header-web__menu-close"></span>
             </button>
           {% endif %}
