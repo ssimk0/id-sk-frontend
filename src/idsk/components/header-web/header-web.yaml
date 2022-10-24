@@ -67,6 +67,10 @@ params:
             type: string
             required: false
             description: link to english mutation
+          - name: language
+            type: string
+            required: false
+            description: Set the language
   - name: main
     type: object
     required: true
@@ -244,12 +248,16 @@ examples:
           - text: "Slovenčina"
             selected: true,
             link: "#"
+            language: "sk"
           - text: "Deutsch"
             link: "#"
+            language: "de"
           - text: "English"
             link: "#"
+            language: "en"
           - text: "Español"
             link: "#"
+            language: "es"
       main:
         showLogo: true
         logoSrc: "logo-mirri-farebne.svg"
@@ -299,12 +307,16 @@ examples:
           - text: "Slovenčina"
             selected: true,
             link: "#"
+            language: "sk"
           - text: "Deutsch"
             link: "#"
+            language: "de"
           - text: "English"
             link: "#"
+            language: "en"
           - text: "Español"
             link: "#"
+            language: "es"
       main:
         showLogo: true
         logoSrc: "logo-mirri-farebne.svg"
@@ -357,12 +369,16 @@ examples:
           - text: "Slovenčina"
             selected: true,
             link: "#"
+            language: "sk"
           - text: "Deutsch"
             link: "#"
+            language: "de"
           - text: "English"
             link: "#"
+            language: "en"
           - text: "Español"
             link: "#"
+            language: "es"
       main:
         title: "Ministerstvo investícií"
         loginButton: true
@@ -378,12 +394,16 @@ examples:
           - text: "Slovenčina"
             selected: true,
             link: "#"
+            language: "sk"
           - text: "Deutsch"
             link: "#"
+            language: "de"
           - text: "English"
             link: "#"
+            language: "en"
           - text: "Español"
             link: "#"
+            language: "es"
       main:
         title: "Ministerstvo investícií"
         loginButton: true

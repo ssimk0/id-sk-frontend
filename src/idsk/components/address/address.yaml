@@ -37,11 +37,15 @@ params:
         type: string
         required: false
         description: href link address
-
+  - name: title
+    type: string
+    required: true
+    description: text representing address
 examples:
   - name: ukážka 1
     data:
       addressTitle: Adresa podujatia
+      title: Adresa podujatia
       addressDescription:
         - text: Štefánikova 15
         - text: 811 05 Bratislava
@@ -53,6 +57,7 @@ examples:
     data:
       heading: Ministerstvo investícií, regionálneho rozvoja a informatizácie SR
       fullWidth: true
+      title: Adresa sídla
       addressDescription:
         - text: Štefánikova 15
         - text: 811 05 Bratislava
@@ -65,6 +70,7 @@ examples:
     data:
       heading: Ministerstvo investícií, regionálneho rozvoja a informatizácie SR
       addressTitle: Oddelenie behaviorálnych inovácií
+      title: Adresa sídla
       fullWidth: true
       addressDescription:
         - text: Štefánikova 15
