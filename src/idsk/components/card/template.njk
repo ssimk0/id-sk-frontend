@@ -25,9 +25,9 @@
         {{ dateAndTag | safe }}
         {% endif %}
 
-        <div class="idsk-heading idsk-heading-{{ type }}">
+        <h1 class="idsk-heading idsk-heading-{{ type }}">
             <a href="{{params.link}}" class="idsk-card-title govuk-link" title="{{ params.heading }}">{{ params.heading }}</a>
-        </div>
+        </h1>
 
         {% if params.description %}
         {% if type != 'profile-horizontal' and type != 'profile-vertical' %}
