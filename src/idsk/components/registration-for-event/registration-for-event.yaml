@@ -42,6 +42,10 @@ params:
         type: string
         required: false
         description: these options will be in select dropdown list - required if 'params.tag' == select
+      - name: autocomplete
+      type: boolean
+      required: false
+      description: This option will set autocomplete parameter
   - name: buttonLabel
     type: string
     required: true
@@ -61,12 +65,14 @@ examples:
           tag: input
           name: name
           type: text
+          autocomplete: true
           required: true
         - label: Priezvisko
           error: Zadajte priezvisko.
           tag: input
           name: surname
           type: text
+          autocomplete: true
           required: true
         - label: Emailová adresa
           hint: Sem zadajte emailovú adresu v tvare email@email.sk
@@ -74,11 +80,13 @@ examples:
           tag: input
           name: email
           type: email
+          autocomplete: true
           required: true
         - label: Organizácia
           tag: input
           name: organization
           type: text
+          autocomplete: true
         - label: Miesto konania podujatia
           tag: select
           name: city
