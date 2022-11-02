@@ -3,7 +3,7 @@
     <div class="idsk-search-results__filter idsk-search-results-filter__filter-panel">
     {% for item in params.filters %}
     <div class="idsk-search-results__link-panel idsk-search-results--expand {{ item.filterClass if item.filterClass }}" >
-        <button class="idsk-search-results__link-panel-button {{ 'idsk-search-results__subtopic' if item.isSubtopic }}">
+        <button class="idsk-search-results__link-panel-button {{ 'idsk-search-results__subtopic' if item.isSubtopic }}" aria-expanded='false' data-text-for-show="Rozbaliť akordeón {{item.name}}" data-text-for-hide="Zatvoriť akordeón {{item.name}}" aria-label="Rozbaliť akordeón {{item.name}}">
           <span class="idsk-search-results__link-panel__title">
             {{ item.name }}
           </span>
@@ -12,7 +12,7 @@
         <div class="idsk-search-results__list">
           {% if item.isRadio %}
             {% if item.radios.length > 10 %}
-              <input class="govuk-input idsk-search-results__search__input" type="text" title="{{item.searchInputId}}" name="{{item.searchInputId}}" id="{{item.searchInputId}}">
+              <input class="govuk-input idsk-search-results__search__input" type="text" title="{{item.searchInputId}}" name="{{item.searchInputId}}" id="{{item.searchInputId}}" aria-label="Vstupné pole pre {{item.searchInputTitle}}">
             {% endif %}
                 {% from "../../components/customer-surveys-radios/macro.njk" import idskCustomerSurveysRadios %}
                 {{ idskCustomerSurveysRadios({
@@ -25,7 +25,7 @@
           {% endif %}
           {% if item.isCheckBox %}
             {% if item.checkBoxItems.length > 10 %}
-              <input class="govuk-input idsk-search-results__search__input" type="text" title="{{item.searchInputTitle}}" name="{{item.searchInputId}}" id="{{item.searchInputId}}">
+              <input class="govuk-input idsk-search-results__search__input" type="text" title="{{item.searchInputTitle}}" name="{{item.searchInputId}}" id="{{item.searchInputId}}" aria-label="Vstupné pole pre {{item.searchInputTitle}}">
             {% endif %}
             <div class="idsk-option-select-filter {{ params.classes if params.classes }}">
               {% from "checkboxes/macro.njk" import govukCheckboxes %}

@@ -151,7 +151,7 @@ HeaderWeb.prototype.checkBlurLanguageSwitcherClick = function (e) {
 HeaderWeb.prototype.handleBackTabbing = function (e) {
     //shift was down when tab was pressed
     if(e.shiftKey && e.keyCode == 9 && document.activeElement == this.$languageBtn) {
-        this.handleLanguageSwitcherClick(e);
+        // this.handleLanguageSwitcherClick(e);
     }
 }
 
