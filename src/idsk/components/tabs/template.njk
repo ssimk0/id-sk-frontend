@@ -26,7 +26,7 @@
       {% if item %}
         {% set id = item.id if item.id else idPrefix + "-" + loop.index %}
         <li class="idsk-tabs__list-item--mobile" role="presentation">
-          <button class="govuk-caption-l idsk-tabs__mobile-tab" item="{{ loop.index0 }}" role="tab" aria-controls="{{ id }}" aria-selected="false" href="#{{ id }}">
+          <button class="govuk-caption-l idsk-tabs__mobile-tab" item="{{ loop.index0 }}" role="tab" aria-controls="{{ id }}" aria-selected="false" href="#{{ id }}" aria-expanded="false" text-for-show="Akordeón {{item.label}} je otvorený" text-for-hide="Akordeón {{item.label}} je zatvorený" aria-label="Akordeón {{item.label}} je zatvorený" >
             {{ item.label }}
             <span class="idsk-tabs__tab-arrow-mobile"></span>
           </button>
