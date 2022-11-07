@@ -12,7 +12,7 @@
         <div class="idsk-search-results__list">
           {% if item.isRadio %}
             {% if item.radios.length > 10 %}
-              <input class="govuk-input idsk-search-results__search__input" type="text" title="{{item.searchInputId}}" name="{{item.searchInputId}}" id="{{item.searchInputId}}" aria-label="Vstupné pole pre {{item.searchInputTitle}}">
+              <input class="govuk-input idsk-search-results__search__input" type="text" title="{{item.searchInputTitle}}" name="{{item.searchInputId}}" id="{{item.searchInputId}}" aria-label="Vstupné pole pre {{item.searchInputTitle}}">
             {% endif %}
                 {% from "../../components/customer-surveys-radios/macro.njk" import idskCustomerSurveysRadios %}
                 {{ idskCustomerSurveysRadios({
