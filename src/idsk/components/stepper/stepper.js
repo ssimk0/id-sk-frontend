@@ -68,7 +68,6 @@ Stepper.prototype.initControls = function () {
     // Create "Zobraziť všetko" button and set attributes
     this.$openAllButton = document.createElement('button')
     this.$openAllButton.setAttribute('type', 'button')
-    this.$openAllButton.innerHTML = $accordionControls.dataset.line1 + ' <span class="govuk-visually-hidden">sekcie</span>'
     this.$openAllButton.setAttribute('class', this.$openAllClass)
     this.$openAllButton.setAttribute('aria-expanded', 'false')
     this.$openAllButton.setAttribute('type', 'button')
@@ -235,7 +234,6 @@ Stepper.prototype.updateOpenAllButton = function ($expanded) {
   
   if ($accordionControls) {
     var $newButtonText = $expanded ? $accordionControls.dataset.line2 : $accordionControls.dataset.line1
-    $newButtonText += '<span class="govuk-visually-hidden">sekcie</span>'
     this.$openAllButton.setAttribute('aria-expanded', $expanded)
     this.$openAllButton.innerHTML = $newButtonText
   } else {

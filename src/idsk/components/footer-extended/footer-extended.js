@@ -125,9 +125,11 @@ FooterExtended.prototype.handleYesButtonClick = function (e) {
     $noOption.classList.add('idsk-footer-extended-display-hidden');
     $errorOption.classList.add('idsk-footer-extended-display-hidden');
 
+    var $heartSymbolText = "Ďakujeme za Vašu spätnú väzbu"
+
     toggleClass($infoQuestion, 'idsk-footer-extended-heart');
     toggleClass($heartSymbol, 'idsk-footer-extended-heart-visible');
-    $heartSymbol.setAttribute('aria-label', 'Ďakujeme za Vašu spätnú väzbu')
+    $heartSymbol.setAttribute('aria-label', $heartSymbolText);
 }
 
 
@@ -140,12 +142,15 @@ FooterExtended.prototype.handleNoButtonClick = function (e) {
 
     var $helpAndErrorContainer = this.$module.querySelector('#idsk-footer-extended-feedback-content');
 
+    var $helpInfoText = "Aby sme vedeli zlepšiť obsah na tejto stránke, chceli by sme vedieť o Vašej skúsenosti so stránkou. Pošleme Vám link na formulár spätnej väzby. Jeho vyplnenie Vám zaberie iba 2 minúty."
+    var $footerButtonText = "Vyplniť prieskum"
+
     toggleClass($helpAndErrorContainer, 'idsk-footer-extended-feedback-content');
     toggleClass($feedbackQuestion, 'idsk-footer-extended-display-none');
     toggleClass($helpOption, 'idsk-footer-extended-display-hidden');
     toggleClass($helpOption, 'idsk-footer-extended-open');
-    $helpInfo.setAttribute('aria-label', 'Aby sme vedeli zlepšiť obsah na tejto stránke, chceli by sme vedieť o Vašej skúsenosti so stránkou. Pošleme Vám link na formulár spätnej väzby. Jeho vyplnenie Vám zaberie iba 2 minúty.')
-    $footerButton.setAttribute('aria-label', 'Vyplniť prieskum')
+    $helpInfo.setAttribute('aria-label', $helpInfoText)
+    $footerButton.setAttribute('aria-label', $footerButtonText)
 }
 
 //Hiding feedback question element and showing error form with animation

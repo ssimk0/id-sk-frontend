@@ -26,6 +26,7 @@
 {% set hideLogin = "Skryť menu prihlásenia do Ministerstva investícií" %}
 {% set innerNavigation = "Vnútorná navigácia" %}
 {% set closeBanner = "Zavrieť banner" %}
+{% set mainNavigation = "Hlavná navigácia" %}
 
 
 <div class="idsk-header-web__brand {{ 'idsk-header-web__brand--light' if brand.lightBackground }}">
@@ -262,7 +263,7 @@
         <div class="govuk-grid-column-full">
           <nav class="{{ 'idsk-header-web__nav-bar--buttons' if main.loginButton or main.secondaryButton }}">
             <ul class="idsk-header-web__nav-list {{ params.navBar.classes if params.navBar.classes }}"
-               aria-label="Hlavná navigácia">
+               aria-label="{{ mainNavigation }}">
               {% for item in navigation.slice(0, 5) %}
                 <li class="idsk-header-web__nav-list-item">
                   <a class="govuk-link idsk-header-web__nav-list-item-link" href="{{ item.link if not item.submenu else '#' + loop.index }}" {% for attribute, value
