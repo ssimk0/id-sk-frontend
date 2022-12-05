@@ -1,5 +1,6 @@
 {% set showTopLevelNavigation = "Show or hide Top level navigation" %}
 {% set topLevelNavigation = "Top level navigation" %}
+{% set Menu = "Menu" %}
 
 <header class="idsk-header {{ params.classes if params.classes }}" data-module="idsk-header"
         {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
@@ -28,7 +29,7 @@
     {% endif %}
     
     {% if params.navigation %}
-    <button type="button" class="idsk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="{{ showTopLevelNavigation }}">Menu</button>
+    <button type="button" class="idsk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="{{ showTopLevelNavigation }}">{{ Menu }}</button>
     <nav>
       <ul id="navigation" class="idsk-header__navigation {{ params.navigationClasses if params.navigationClasses }}" aria-label="{{ topLevelNavigation }}">
         {% for item in params.navigation %}
