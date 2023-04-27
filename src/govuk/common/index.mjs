@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 /**
  * Common helpers which do not require polyfill.
  *
@@ -25,6 +27,24 @@ export function nodeListForEach (nodes, callback) {
   }
   for (var i = 0; i < nodes.length; i++) {
     callback.call(window, nodes[i], i, nodes)
+  }
+}
+
+/**
+ * Toggle class
+ *
+ * @param {object} node - element
+ * @param {string} className - to toggle
+ */
+export function toggleClass (node, className) {
+  if (node === null) {
+    return
+  }
+
+  if (node.className.indexOf(className) > 0) {
+    node.className = node.className.replace(' ' + className, '')
+  } else {
+    node.className += ' ' + className
   }
 }
 

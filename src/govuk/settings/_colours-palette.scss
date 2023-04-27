@@ -47,18 +47,21 @@ $govuk-use-legacy-palette: if(
 /// @access private
 
 $_govuk-colour-palette-modern: (
-  "red": #d4351c,
-  "yellow": #ffdd00,
+  "red": #d0190f,
+  "dark-red": #9e1912,
+  "yellow": #ffdf0f,
   "green": #00703c,
-  "blue": #1d70b8,
+  "dark-green": #204e2e,
+  "blue": #0065b3,
   "dark-blue": #003078,
-  "light-blue": #5694ca,
+  "light-blue": #2b8cc4,
   "purple": #4c2c92,
 
   "black": #0b0c0c,
-  "dark-grey": #505a5f,
-  "mid-grey": #b1b4b6,
-  "light-grey": #f3f2f1,
+  "dark-grey": #626a6e,
+  "mid-grey": #bfc1c3,
+  "light-grey": #dee0e2,
+  "lighter-grey": #f3f2f1,
   "white": #ffffff,
 
   "light-purple": #6f72af,
@@ -68,7 +71,13 @@ $_govuk-colour-palette-modern: (
   "orange": #f47738,
   "brown": #b58840,
   "light-green": #85994b,
-  "turquoise": #28a197
+  "turquoise": #28a197,
+
+  "grey-1": #626a6e,
+  "grey-2": #bfc1c3,
+  "grey-3": #dee0e2,
+  "grey-4": #f3f2f1,
+  "grey-5": #949494,
 );
 
 /// Legacy colour palette
@@ -80,28 +89,37 @@ $_govuk-colour-palette-modern: (
 /// @access private
 
 $_govuk-colour-palette-legacy: (
-  "purple": #2e358b,
+  "purple": #4c2c92,
   "light-purple": #6f72af,
   "bright-purple": #912b88,
   "pink": #d53880,
   "light-pink": #f499be,
-  "red": #b10e1e,
-  "bright-red": #df3034,
+  "red": #9e1912,
+  "dark-red": #9e1912,
+  "bright-red": #d0190f,
   "orange": #f47738,
   "brown": #b58840,
-  "yellow": #ffbf47,
+  "yellow": #ffdf0f,
   "light-green": #85994b,
-  "green": #006435,
+  "green": #00703c,
+  "dark-green": #204e2e,
   "turquoise": #28a197,
   "light-blue": #2b8cc4,
-  "blue": #005ea5,
+  "blue": #0065b3,
+  "dark-blue": #003078,
 
   "black": #0b0c0c,
-  "grey-1": #6f777b,
+  "dark-grey": #626a6e,
+  "mid-grey": #bfc1c3,
+  "light-grey": #dee0e2,
+  "lighter-grey": #f3f2f1,
+
+  "grey-1": #626a6e,
   "grey-2": #bfc1c3,
   "grey-3": #dee0e2,
-  "grey-4": #f8f8f8,
-  "white": #ffffff
+  "grey-4": #f3f2f1,
+  "grey-5": #949494,
+  "white": #ffffff,
 );
 
 /// Colour palette

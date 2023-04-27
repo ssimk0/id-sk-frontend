@@ -18,6 +18,7 @@ dist/
 .DS_Store
 *.zip
 *.log
+.idea
 
 # Project lockfile only
 package-lock.json

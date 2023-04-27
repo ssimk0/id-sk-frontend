@@ -3069,7 +3069,7 @@ If you're using your own components that rely on the overflow state of the docum
 
   ```html
     <script>
-      new Button().init()
+      new IdskButton().init()
       new Details().init()
     </script>
   ```
@@ -3078,7 +3078,7 @@ If you're using your own components that rely on the overflow state of the docum
 
   ```html
     <script>
-      new Button(document).init()
+      new IdskButton(document).init()
 
       var $details = document.querySelectorAll('details')
       nodeListForEach($details, function ($detail) {

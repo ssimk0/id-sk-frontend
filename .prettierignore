@@ -14,6 +14,9 @@ dist/
 # Build output (committed)
 /package
 
+# Public assets folder
+public/
+
 # 3rd party vendor code
 vendor/
 

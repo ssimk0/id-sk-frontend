@@ -34,7 +34,7 @@
     "test:screenshots": "gulp screenshots",
     "lint": "npm run lint:editorconfig && npm run lint:prettier && npm run lint:js && npm run lint:scss",
     "lint:editorconfig": "npm run lint:editorconfig:cli",
-    "lint:editorconfig:cli": "editorconfig-checker",
+    "lint:editorconfig:cli": "editorconfig-checker --exclude \"**/public/**\"",
     "lint:js": "npm run lint:js:cli -- \"**/*.{cjs,js,mjs}\"",
     "lint:js:cli": "eslint --cache --cache-location .cache/eslint --cache-strategy content --color --ignore-path .gitignore --max-warnings 0",
     "lint:prettier": "npm run lint:prettier:cli -- \"**/*.{json,md,yaml,yml}\"",
