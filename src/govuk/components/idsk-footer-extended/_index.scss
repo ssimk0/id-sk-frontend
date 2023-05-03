@@ -136,6 +136,7 @@
 
   .idsk-footer-extended-main-content {
     width: 100%;
+    padding-bottom: 15px;
 
     .govuk-grid-column-one-half {
       padding: 0;
@@ -416,7 +417,7 @@
   }
 
   .idsk-footer-extended-display-hidden .idsk-footer-extended-feedback-container {
-    max-height: 0;
+    display: none;
   }
 
   .idsk-footer-extended-feedback-container {
