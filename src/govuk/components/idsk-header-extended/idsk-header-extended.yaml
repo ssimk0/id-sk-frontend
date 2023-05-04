@@ -266,7 +266,7 @@ examples:
           text: Twitter
       notification:
         iconFallbackText: warning
-        html: Ak prichádzate z rizikovej krajiny, musíte vyplniť <a href='#' title='formulár'>formulár</a>.
+        html: Ak prichádzate z rizikovej krajiny, musíte vyplniť <a href="#" title="formulár">formulár</a>.
 
   - name: Ukážka podsekcií po kliknutí na "Programy EŠIF", vyhľadávanie
     data:

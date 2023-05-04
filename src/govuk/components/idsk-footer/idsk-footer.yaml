@@ -120,7 +120,10 @@ examples:
       meta:
         copy: 'Prevádzkovateľom služby je Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky. Vytvorené v súlade s Jednotným dizajn manuálom elektronických služieb.'
         footerLogoLink: 'https://www.mirri.gov.sk/'
-
+  - name: with empty meta
+    hidden: true
+    data:
+      meta: {}
   - name: with meta
     description: Secondary navigation with meta information relating to the site
     data:

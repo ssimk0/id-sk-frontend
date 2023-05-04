@@ -14,5 +14,6 @@ params:
 examples:
   - name: basic
     data:
+      id: basic-textarea
       label: Survey text
       characterLength: 100

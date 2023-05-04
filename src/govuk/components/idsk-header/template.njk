@@ -26,8 +26,8 @@
 
     {% if params.navigation %}
     <button type="button" class="idsk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
-    <nav>
-      <ul id="navigation" class="idsk-header__navigation {{ params.navigationClasses if params.navigationClasses }}" aria-label="Top Level Navigation">
+    <nav aria-label="Top Level Navigation">
+      <ul id="navigation" class="idsk-header__navigation {{ params.navigationClasses if params.navigationClasses }}">
         {% for item in params.navigation %}
           {% if item.href and item.text %}
             <li class="idsk-header__navigation-item{{ ' idsk-header__navigation-item--active' if item.active }}">

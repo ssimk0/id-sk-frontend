@@ -52,19 +52,9 @@ function initAll (config) {
     new Accordion($accordion, config.accordion).init()
   })
 
-  var $idskAccordions = $scope.querySelectorAll('[data-module="idsk-accordion"]')
-  nodeListForEach($idskAccordions, function ($idskAccordions) {
-    new IdskAccordion($idskAccordions).init()
-  })
-
   var $buttons = $scope.querySelectorAll('[data-module="govuk-button"]')
   nodeListForEach($buttons, function ($button) {
     new Button($button, config.button).init()
-  })
-
-  var $idskButtons = $scope.querySelectorAll('[data-module="idsk-button"]')
-  nodeListForEach($idskButtons, function ($idskButtons) {
-    new IdskButton($idskButtons).init()
   })
 
   var $characterCounts = $scope.querySelectorAll('[data-module="govuk-character-count"]')
@@ -75,16 +65,6 @@ function initAll (config) {
   var $checkboxes = $scope.querySelectorAll('[data-module="govuk-checkboxes"]')
   nodeListForEach($checkboxes, function ($checkbox) {
     new Checkboxes($checkbox).init()
-  })
-
-  var $crossroad = $scope.querySelectorAll('[data-module="idsk-crossroad"]')
-  nodeListForEach($crossroad, function ($crossroad) {
-    new IdskCrossroad($crossroad).init()
-  })
-
-  var $customerSurveys = $scope.querySelectorAll('[data-module="idsk-customer-surveys"]')
-  nodeListForEach($customerSurveys, function ($customerSurveys) {
-    new IdskCustomerSurveys($customerSurveys).init()
   })
 
   var $details = $scope.querySelectorAll('[data-module="govuk-details"]')
@@ -98,49 +78,11 @@ function initAll (config) {
     new ErrorSummary($errorSummary, config.errorSummary).init()
   }
 
-  var $feedback = $scope.querySelectorAll('[data-module="idsk-feedback"]')
-  nodeListForEach($feedback, function ($feedback) {
-    new IdskFeedback($feedback).init()
-  })
-
-  var $footerExtended = $scope.querySelectorAll('[data-module="idsk-footer-extended"]')
-  nodeListForEach($footerExtended, function ($footerExtended) {
-    new IdskFooterExtended($footerExtended).init()
-  })
-
   // Find first header module to enhance.
   var $header = $scope.querySelector('[data-module="govuk-header"]')
   if ($header) {
     new Header($header).init()
   }
-
-  // Find first idsk header module to enhance.
-  var $idskHeader = $scope.querySelector('[data-module="idsk-header"]')
-  if ($idskHeader) {
-    new IdskHeader($idskHeader).init()
-  }
-
-  // Find first header-extended module to enhance.
-  var $headerExtended = $scope.querySelector('[data-module="idsk-header-extended"]')
-  if ($headerExtended) {
-    new IdskHeaderExtended($headerExtended).init()
-  }
-
-  // Find first header-web module to enhance.
-  var $headerWeb = $scope.querySelector('[data-module="idsk-header-web"]')
-  if ($headerWeb) {
-    new IdskHeaderWeb($headerWeb).init()
-  }
-
-  var $inPageNavigation = $scope.querySelectorAll('[data-module="idsk-in-page-navigation"]')
-  nodeListForEach($inPageNavigation, function ($inPageNavigation) {
-    new IdskInPageNavigation($inPageNavigation).init()
-  })
-
-  var interactiveMap = $scope.querySelectorAll('[data-module="idsk-interactive-map"]')
-  nodeListForEach(interactiveMap, function (interactiveMap) {
-    new IdskInteractiveMap(interactiveMap).init()
-  })
 
   var $notificationBanners = $scope.querySelectorAll('[data-module="govuk-notification-banner"]')
   nodeListForEach($notificationBanners, function ($notificationBanner) {
@@ -152,40 +94,103 @@ function initAll (config) {
     new Radios($radio).init()
   })
 
-  var $registrationForEvent = $scope.querySelectorAll('[data-module="idsk-registration-for-event"]')
-  nodeListForEach($registrationForEvent, function ($registrationForEvent) {
-    new IdskRegistrationForEvent($registrationForEvent).init()
-  })
-
-  var $searchComponent = $scope.querySelectorAll('[data-module="idsk-search-component"]')
-  nodeListForEach($searchComponent, function ($searchComponent) {
-    new IdskSearchComponent($searchComponent).init()
-  })
-
-  var $searchResults = $scope.querySelectorAll('[data-module="idsk-search-results"]')
-  nodeListForEach($searchResults, function ($searchResults) {
-    new IdskSearchResults($searchResults).init()
-  })
-
-  var $searchResultsFilter = $scope.querySelectorAll('[data-module="idsk-search-results-filter"]')
-  nodeListForEach($searchResultsFilter, function ($searchResultsFilter) {
-    new IdskSearchResultsFilter($searchResultsFilter).init()
-  })
-
   // Find first skip link module to enhance.
   var $skipLink = $scope.querySelector('[data-module="govuk-skip-link"]')
   if ($skipLink) {
     new SkipLink($skipLink).init()
   }
 
-  var $stepper = $scope.querySelectorAll('[data-module="idsk-stepper"]')
-  nodeListForEach($stepper, function ($stepper) {
-    new IdskStepper($stepper).init()
+  var $tabs = $scope.querySelectorAll('[data-module="govuk-tabs"]')
+  nodeListForEach($tabs, function ($tabs) {
+    new Tabs($tabs).init()
   })
 
-  var subscriptionForm = $scope.querySelectorAll('[data-module="idsk-stepper"]')
-  nodeListForEach(subscriptionForm, function (subscriptionForm) {
-    new IdskSubscriptionForm(subscriptionForm).init()
+  var $idskAccordions = $scope.querySelectorAll('[data-module="idsk-accordion"]')
+  nodeListForEach($idskAccordions, function ($idskAccordions) {
+    new IdskAccordion($idskAccordions).init()
+  })
+
+  var $idskButtons = $scope.querySelectorAll('[data-module="idsk-button"]')
+  nodeListForEach($idskButtons, function ($idskButtons) {
+    new IdskButton($idskButtons).init()
+  })
+
+  var $idskCrossroad = $scope.querySelectorAll('[data-module="idsk-crossroad"]')
+  nodeListForEach($idskCrossroad, function ($idskCrossroad) {
+    new IdskCrossroad($idskCrossroad).init()
+  })
+
+  var $idskCustomerSurveys = $scope.querySelectorAll('[data-module="idsk-customer-surveys"]')
+  nodeListForEach($idskCustomerSurveys, function ($idskCustomerSurveys) {
+    new IdskCustomerSurveys($idskCustomerSurveys).init()
+  })
+
+  var $idskFeedback = $scope.querySelectorAll('[data-module="idsk-feedback"]')
+  nodeListForEach($idskFeedback, function ($idskFeedback) {
+    new IdskFeedback($idskFeedback).init()
+  })
+
+  var $idskFooterExtended = $scope.querySelectorAll('[data-module="idsk-footer-extended"]')
+  nodeListForEach($idskFooterExtended, function ($idskFooterExtended) {
+    new IdskFooterExtended($idskFooterExtended).init()
+  })
+
+  // Find first idsk header module to enhance.
+  var $idskHeader = $scope.querySelector('[data-module="idsk-header"]')
+  if ($idskHeader) {
+    new IdskHeader($idskHeader).init()
+  }
+
+  // Find first idsk-header-extended module to enhance.
+  var $idskHeaderExtended = $scope.querySelector('[data-module="idsk-header-extended"]')
+  if ($idskHeaderExtended) {
+    new IdskHeaderExtended($idskHeaderExtended).init()
+  }
+
+  // Find first idsk-header-web module to enhance.
+  var $idskHeaderWeb = $scope.querySelector('[data-module="idsk-header-web"]')
+  if ($idskHeaderWeb) {
+    new IdskHeaderWeb($idskHeaderWeb).init()
+  }
+
+  var $idskInPageNavigation = $scope.querySelectorAll('[data-module="idsk-in-page-navigation"]')
+  nodeListForEach($idskInPageNavigation, function ($idskInPageNavigation) {
+    new IdskInPageNavigation($idskInPageNavigation).init()
+  })
+
+  var idskInteractiveMap = $scope.querySelectorAll('[data-module="idsk-interactive-map"]')
+  nodeListForEach(idskInteractiveMap, function (idskInteractiveMap) {
+    new IdskInteractiveMap(idskInteractiveMap).init()
+  })
+
+  var $idskRegistrationForEvent = $scope.querySelectorAll('[data-module="idsk-registration-for-event"]')
+  nodeListForEach($idskRegistrationForEvent, function ($idskRegistrationForEvent) {
+    new IdskRegistrationForEvent($idskRegistrationForEvent).init()
+  })
+
+  var $idskSearchComponent = $scope.querySelectorAll('[data-module="idsk-search-component"]')
+  nodeListForEach($idskSearchComponent, function ($idskSearchComponent) {
+    new IdskSearchComponent($idskSearchComponent).init()
+  })
+
+  var $idskSearchResults = $scope.querySelectorAll('[data-module="idsk-search-results"]')
+  nodeListForEach($idskSearchResults, function ($idskSearchResults) {
+    new IdskSearchResults($idskSearchResults).init()
+  })
+
+  var $idskSearchResultsFilter = $scope.querySelectorAll('[data-module="idsk-search-results-filter"]')
+  nodeListForEach($idskSearchResultsFilter, function ($idskSearchResultsFilter) {
+    new IdskSearchResultsFilter($idskSearchResultsFilter).init()
+  })
+
+  var $idskStepper = $scope.querySelectorAll('[data-module="idsk-stepper"]')
+  nodeListForEach($idskStepper, function ($idskStepper) {
+    new IdskStepper($idskStepper).init()
+  })
+
+  var $idskSubscriptionForm = $scope.querySelectorAll('[data-module="idsk-stepper"]')
+  nodeListForEach($idskSubscriptionForm, function ($idskSubscriptionForm) {
+    new IdskSubscriptionForm($idskSubscriptionForm).init()
   })
 
   var $idskTable = $scope.querySelectorAll('[data-module="idsk-table"]')
@@ -193,14 +198,9 @@ function initAll (config) {
     new IdskTable($idskTable).init()
   })
 
-  var $tableFilter = $scope.querySelectorAll('[data-module="idsk-table-filter"]')
-  nodeListForEach($tableFilter, function ($tableFilter) {
-    new IdskTableFilter($tableFilter).init()
-  })
-
-  var $tabs = $scope.querySelectorAll('[data-module="govuk-tabs"]')
-  nodeListForEach($tabs, function ($tabs) {
-    new Tabs($tabs).init()
+  var $idskTableFilter = $scope.querySelectorAll('[data-module="idsk-table-filter"]')
+  nodeListForEach($idskTableFilter, function ($idskTableFilter) {
+    new IdskTableFilter($idskTableFilter).init()
   })
 
   var $idskTabs = $scope.querySelectorAll('[data-module="idsk-tabs"]')
@@ -215,35 +215,35 @@ export {
 
   // Components
   Accordion,
-  IdskAccordion,
   Button,
-  IdskButton,
   Details,
   CharacterCount,
   Checkboxes,
+  ErrorSummary,
+  Header,
+  NotificationBanner,
+  Radios,
+  SkipLink,
+  Tabs,
+  IdskAccordion,
+  IdskButton,
   IdskCrossroad,
   IdskCustomerSurveys,
-  ErrorSummary,
   IdskFeedback,
   IdskFooterExtended,
-  Header,
   IdskHeader,
   IdskHeaderExtended,
   IdskHeaderWeb,
   IdskInPageNavigation,
   IdskInteractiveMap,
-  NotificationBanner,
-  Radios,
   IdskRegistrationForEvent,
   IdskSearchComponent,
   IdskSearchResults,
   IdskSearchResultsFilter,
-  SkipLink,
   IdskStepper,
   IdskSubscriptionForm,
   IdskTable,
   IdskTableFilter,
-  Tabs,
   IdskTabs
 }
 

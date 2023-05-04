@@ -179,7 +179,7 @@
   <form class="idsk-header-web__main-action-search">
     <input class="govuk-input govuk-!-display-inline-block" id="idsk-header-web__main-action-search-input" name="search"
       placeholder="{{ params.search.placeHolder if params.search.placeHolder else 'Zadajte hľadaný výraz' }}"
-      title="{{ params.search.placeHolder if params.search.placeHolder else 'Zadajte hľadaný výraz' }}" type="search" aria-label="{{ params.search.placeHolder if params.search.placeHolder else 'Zadajte hľadaný výraz' }}" />
+      title="{{ params.search.placeHolder if params.search.placeHolder else 'Zadajte hľadaný výraz' }}" type="search" aria-label="{{ params.search.placeHolder if params.search.placeHolder else 'Zadajte hľadaný výraz' }}">
     <button type="submit" class="govuk-button" data-module="govuk-button">
       <span class="govuk-visually-hidden">{{ params.search.button if params.search.button else "Vyhľadať" }}</span>
       <i aria-hidden="true" class="fas fa-search"></i>
@@ -260,9 +260,8 @@
       {% if params.navBar and params.headerType !== 'electronicService' %}
         {% set navigation = params.navBar.navigation %}
         <div class="govuk-grid-column-full">
-          <nav class="{{ 'idsk-header-web__nav-bar--buttons' if main.loginButton or main.secondaryButton }}">
-            <ul class="idsk-header-web__nav-list {{ params.navBar.classes if params.navBar.classes }}"
-              aria-label="Hlavná navigácia">
+          <nav class="{{ 'idsk-header-web__nav-bar--buttons' if main.loginButton or main.secondaryButton }}" aria-label="Hlavná navigácia">
+            <ul class="idsk-header-web__nav-list {{ params.navBar.classes if params.navBar.classes }}">
               {% for item in navigation.slice(0, 5) %}
                 <li class="idsk-header-web__nav-list-item">
                   <a class="govuk-link idsk-header-web__nav-list-item-link" href="{{ item.link if not item.submenu else '#' + loop.index }}" {% for attribute, value
@@ -275,8 +274,8 @@
                     {% endif %}
                   </a>
                   {% if item.submenu and (item.submenu | length < 6) %}
-                    <div class="idsk-header-web__nav-submenulite">
-                      <ul class="idsk-header-web__nav-submenulite-list" aria-label="{{ innerNavigation }}">
+                    <nav class="idsk-header-web__nav-submenulite" aria-label="{{ innerNavigation }}">
+                      <ul class="idsk-header-web__nav-submenulite-list">
                         {% for subItem in item.submenu %}
                           <li class="idsk-header-web__nav-submenulite-list-item">
                             <a class="govuk-link idsk-header-web__nav-submenulite-list-item-link" href="{{ subItem.link }}"
@@ -286,13 +285,13 @@
                           </li>
                         {% endfor %}
                       </ul>
-                    </div>
+                    </nav>
 
                   {% elif item.submenu %}
                     <div class="idsk-header-web__nav-submenu">
                       <div class="govuk-width-container">
-                        <div class="govuk-grid-row">
-                            <ul class="idsk-header-web__nav-submenu-list"  aria-label="{{ innerNavigation }}">
+                        <nav class="govuk-grid-row" aria-label="{{ innerNavigation }}">
+                            <ul class="idsk-header-web__nav-submenu-list">
                               {% for subItem in item.submenu.slice(0, 9) %}
                                 <li class="idsk-header-web__nav-submenu-list-item">
                                   <a class="govuk-link idsk-header-web__nav-submenu-list-item-link" href="{{ subItem.link }}"
@@ -302,7 +301,7 @@
                                 </li>
                               {% endfor %}
                             </ul>
-                        </div>
+                        </nav>
                       </div>
                     </div>
                   {% endif %}

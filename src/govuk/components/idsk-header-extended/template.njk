@@ -48,9 +48,8 @@
 {% set navigationBlock %}
   <div class="idsk-header-extended__content">
     {% if params.navigation %}
-    <nav>
-      <ul class="idsk-header-extended__navigation {{ params.navigationClasses if params.navigationClasses }}"
-        aria-label="Top Level Navigation">
+    <nav aria-label="Top Level Navigation">
+      <ul class="idsk-header-extended__navigation {{ params.navigationClasses if params.navigationClasses }}">
         {% for item in params.navigation %}
         <li class="idsk-header-extended__navigation-item
                 {{ ' idsk-header-extended__navigation-item--active' if item.active }}">
@@ -106,7 +105,7 @@
           {{ params.search.label if params.search.label else "Zadajte hľadaný výraz" }}
         </label>
         <input class="govuk-input govuk-!-display-inline-block" id="idsk-header-extended__search-input" name="search"
-          type="text" aria-describedby="input-width-30-hint" aria-label="Zadajte hľadaný výraz" />
+          type="text" aria-describedby="input-width-30-hint" aria-label="Zadajte hľadaný výraz">
         <button type="submit" class="govuk-button govuk-!-display-inline-block" data-module="govuk-button">
           <span class="govuk-visually-hidden">{{ params.search.button if params.search.button else "Vyhľadať" }}</span>
           <i aria-hidden="true" class="fas fa-search"></i>
@@ -135,10 +134,10 @@
         class="idsk-header-extended__logo {{ params.logoGrid if params.logoGrid else 'govuk-grid-column-three-quarters' }}">
         <a href="{{ params.homepageUrl | default('/') }}" title="{{ params.headerTitle if params.headerTitle }}">
           <div class="idsk-header-extended__logotype-crown-mobile-navigation">
-            {% include params.assetsPathLogo | default('../../assets/images/header-extended/') + params.logoWhite %}
+            <img src="{{ params.assetsPathLogo | default('/assets/images/header-extended/') + params.logoWhite }}" alt="logo hlavička pre webové sídla">
           </div>
           <div class="idsk-header-extended__logotype-crown-mobile-small-navigation">
-            {% include params.assetsPathLogo | default('../../assets/images/header-extended/') + params.logoSmallWhite %}
+            <img src="{{ params.assetsPathLogo | default('/assets/images/header-extended/') + params.logoSmallWhite }}" alt="logo hlavička pre webové sídla">
           </div>
         </a>
       </div>
@@ -149,7 +148,7 @@
             {{ params.search.label if params.search.label else "Zadajte hľadaný výraz" }}
           </label>
           <input class="govuk-input govuk-!-display-inline-block" id="idsk-header-extended__search-input-mobile"
-            name="search" type="text" aria-describedby="input-width-30-hint" aria-label="Zadajte hľadaný výraz" />
+            name="search" type="text" aria-describedby="input-width-30-hint" aria-label="Zadajte hľadaný výraz">
           <button type="submit" class="govuk-button govuk-!-display-inline-block" data-module="govuk-button">
             <span class="govuk-visually-hidden">{{ params.search.button if params.search.button else "Vyhľadať"}}</span>
             <i aria-hidden="true" class="fas fa-search"></i>

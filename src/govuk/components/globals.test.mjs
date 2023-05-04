@@ -44,7 +44,27 @@ describe('GOV.UK Frontend', () => {
         'NotificationBanner',
         'Radios',
         'SkipLink',
-        'Tabs'
+        'Tabs',
+        'IdskAccordion',
+        'IdskButton',
+        'IdskCrossroad',
+        'IdskCustomerSurveys',
+        'IdskFeedback',
+        'IdskFooterExtended',
+        'IdskHeader',
+        'IdskHeaderExtended',
+        'IdskHeaderWeb',
+        'IdskInPageNavigation',
+        'IdskInteractiveMap',
+        'IdskRegistrationForEvent',
+        'IdskSearchComponent',
+        'IdskSearchResults',
+        'IdskSearchResultsFilter',
+        'IdskStepper',
+        'IdskSubscriptionForm',
+        'IdskTable',
+        'IdskTableFilter',
+        'IdskTabs'
       ])
     })
 

@@ -61,7 +61,7 @@ params:
 examples:
   - name: basic
     data:
-      mainTitle: Dozvedieť sa <a class='govuk-link' href='#' title='viac o ministerstve'>viac o ministerstve</a>.
+      mainTitle: Dozvedieť sa <a class="govuk-link" href="#" title="viac o ministerstve">viac o ministerstve</a>.
       bottomMenu:
         - href: '#'
           item: Eurofondy
@@ -88,7 +88,7 @@ examples:
 
   - name: extended
     data:
-      mainTitle: Dozvedieť sa <a class='govuk-link' href='#' title='viac o ministerstve'>viac o ministerstve</a>.
+      mainTitle: Dozvedieť sa <a class="govuk-link" href="#" title="viac o ministerstve">viac o ministerstve</a>.
       bottomMenu:
         - href: '#'
           item: Eurofondy
@@ -116,7 +116,7 @@ examples:
 
   - name: without search
     data:
-      mainTitle: Dozvedieť sa <a class='govuk-link' href='#' title='viac o ministerstve'>viac o ministerstve</a>.
+      mainTitle: Dozvedieť sa <a class="govuk-link" href="#" title="viac o ministerstve">viac o ministerstve</a>.
       bottomMenu:
         - href: '#'
           item: Eurofondy
@@ -145,7 +145,7 @@ examples:
 
   - name: without bottom menu
     data:
-      mainTitle: Dozvedieť sa <a class='govuk-link' href='#' title='viac o ministerstve'>viac o ministerstve</a>.
+      mainTitle: Dozvedieť sa <a class="govuk-link" href="#" title="viac o ministerstve">viac o ministerstve</a>.
       sideMenu:
         - href: '#'
           item: O eurofondoch
