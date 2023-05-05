@@ -92,40 +92,11 @@ describe('@mixin govuk-typography-common', () => {
     })
 
     await expect(results).resolves.toMatchObject({
-      css: expect.not.stringContaining('font-family: "GDS Transport"')
+      css: expect.not.stringContaining('font-family: "Source Sans Pro"')
     })
 
     await expect(results).resolves.toMatchObject({
       css: expect.not.stringContaining('font-family: "ntatabularnumbers"')
-    })
-  })
-
-  it('should not output a @font-face declaration when the user wants compatibility with GOV.UK Template', async () => {
-    const sass = `
-      $govuk-compatibility-govuktemplate: true;
-      @import "settings/all";
-      @import "helpers/all";
-
-      :root {
-        @include govuk-typography-common;
-      }
-      :root {
-        @include govuk-typography-common($font-family: $govuk-font-family-tabular);
-      }
-    `
-
-    const results = compileSassString(sass)
-
-    await expect(results).resolves.toMatchObject({
-      css: expect.not.stringContaining('@font-face')
-    })
-
-    await expect(results).resolves.toMatchObject({
-      css: expect.stringContaining('font-family: "nta"')
-    })
-
-    await expect(results).resolves.toMatchObject({
-      css: expect.stringContaining('font-family: "ntatabularnumbers"')
     })
   })
 
@@ -150,7 +121,7 @@ describe('@mixin govuk-typography-common', () => {
     })
 
     await expect(results).resolves.toMatchObject({
-      css: expect.stringContaining('font-family: "GDS Transport"')
+      css: expect.stringContaining('font-family: "Source Sans Pro"')
     })
   })
 
@@ -177,7 +148,7 @@ describe('@mixin govuk-typography-common', () => {
     })
 
     await expect(results).resolves.toMatchObject({
-      css: expect.stringContaining('font-family: "GDS Transport"')
+      css: expect.stringContaining('font-family: "Source Sans Pro"')
     })
   })
 })
@@ -570,7 +541,7 @@ describe('@mixin govuk-typography-responsive', () => {
         .toMatchObject({
           css: outdent`
             .foo {
-              font-family: "GDS Transport", arial, sans-serif;
+              font-family: "Source Sans Pro", arial, sans-serif;
               -webkit-font-smoothing: antialiased;
               -moz-osx-font-smoothing: grayscale;
               font-weight: 400;
