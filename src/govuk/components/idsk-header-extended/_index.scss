@@ -28,7 +28,7 @@
       flex-flow: wrap row;
     }
 
-    /// content menu navigation
+    // content menu navigation
     &__content {
       width: 100%;
 
@@ -65,7 +65,7 @@
     }
   }
 
-  ///  logo part
+  //  logo part
   .idsk-header-extended__logo {
     margin-right: auto;
     padding-bottom: govuk-spacing(3);
@@ -107,7 +107,7 @@
     }
   }
 
-  /// logo svg image
+  // logo svg image
   .idsk-header-extended__logotype-crown {
     position: relative;
     max-width: 246px;
@@ -120,7 +120,7 @@
     }
   }
 
-  /// logo svg image - mobile view
+  // logo svg image - mobile view
   .idsk-header-extended__logotype-crown-mobile,
   .idsk-header-extended__logotype-crown-mobile-navigation,
   .idsk-header-extended__logotype-crown-mobile-small-navigation {
@@ -154,7 +154,7 @@
     }
   }
 
-  /// search bar
+  // search bar
   .idsk-header-extended__search {
     @include govuk-font($size: 16);
 
@@ -198,7 +198,7 @@
     }
   }
 
-  /// language selector
+  // language selector
   .idsk-header-extended__language {
     @include govuk-font($size: 19);
 
@@ -268,7 +268,7 @@
     }
   }
 
-  /// social icons
+  // social icons
   .idsk-header-extended__social {
     &-list {
       margin: 0;
@@ -297,7 +297,7 @@
     margin-left: auto;
   }
 
-  /// navigation
+  // navigation
   .idsk-header-extended__navigation {
     display: block;
     margin: 0;
@@ -330,7 +330,7 @@
         }
       }
 
-      /// arrow
+      // arrow
       .idsk-header-extended__arrow:after {
         @include govuk-shape-arrow(
           $direction: down,
@@ -376,7 +376,7 @@
     }
   }
 
-  /// navigation - submenu
+  // navigation - submenu
   .idsk-header-extended__navigation-submenu {
     display: none;
     z-index: 10;
@@ -444,7 +444,7 @@
     }
   }
 
-  /// navigation - hmaburger button
+  // navigation - hmaburger button
   .idsk-header-extended__menu-button {
     @include govuk-font($size: 24);
     display: none;
@@ -471,7 +471,7 @@
       color: govuk-colour("black");
       background: transparent;
 
-      /// Hide the inverted crown when printing in browsers that don't support SVG.
+      // Hide the inverted crown when printing in browsers that don't support SVG.
       &__logotype-crown-fallback-image {
         display: none;
       }
@@ -483,7 +483,7 @@
         }
       }
 
-      /// Do not append link href to GOV.UK link when printing (e.g. '(/)')
+      // Do not append link href to GOV.UK link when printing (e.g. '(/)')
       &:after {
         display: none;
       }
@@ -787,16 +787,16 @@
       padding-top: 7.938rem;
     }
   }
-}
 
-/// IE10+ CSS styles
-/// ie doesnt recognize position: sticky
-/// need to be there cause some part of top of contet will not be visible
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
   .idsk-header-extended-ie-fix {
-    height: 55px;
-    @include mq($from: desktop) {
-      height: 0;
+    // IE10+ CSS styles
+    // ie doesnt recognize position: sticky
+    // need to be there cause some part of top of contet will not be visible
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      height: 55px;
+      @include mq($from: desktop) {
+        height: 0;
+      }
     }
   }
 }
