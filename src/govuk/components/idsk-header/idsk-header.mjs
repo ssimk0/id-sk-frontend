@@ -3,6 +3,7 @@
 
 import '../../vendor/polyfills/Event.mjs'
 import '../../vendor/polyfills/Function/prototype/bind.mjs'
+import { toggleClass } from '../../common.mjs'
 
 /**
  * Header component
@@ -10,116 +11,62 @@ import '../../vendor/polyfills/Function/prototype/bind.mjs'
  * @class
  * @param {Element} $module - HTML element to use for header
  */
-function IdskHeader ($module) {
-  if (!($module instanceof HTMLElement)) {
-    return this
-  }
-
-  /** @deprecated Will be made private in v5.0 */
+function IdskHeader($module) {
   this.$module = $module
-
-  /** @deprecated Will be made private in v5.0 */
-  this.$menuButton = $module.querySelector('.govuk-js-header-toggle')
-
-  /** @deprecated Will be made private in v5.0 */
-  this.$menu = this.$menuButton && $module.querySelector(
-    '#' + this.$menuButton.getAttribute('aria-controls')
-  )
-
-  /**
-   * Save the opened/closed state for the nav in memory so that we can
-   * accurately maintain state when the screen is changed from small to
-   * big and back to small
-   *
-   * @deprecated Will be made private in v5.0
-   */
-  this.menuIsOpen = false
-
-  /**
-   * A global const for storing a matchMedia instance which we'll use to
-   * detect when a screen size change happens. We set this later during the
-   * init function and rely on it being null if the feature isn't available
-   * to initially apply hidden attributes
-   *
-   * @deprecated Will be made private in v5.0
-   */
-  this.mql = null
 }
 
 /**
- * Initialise component
- *
- * Check for the presence of the header, menu and menu button – if any are
- * missing then there's nothing to do so return early.
- * Feature sniff for and apply a matchMedia for desktop which will
- * trigger a state sync if the browser viewport moves between states. If
- * matchMedia isn't available, hide the menu button and present the "no js"
- * version of the menu to the user.
+ * Initialise header
  */
 IdskHeader.prototype.init = function () {
-  // Check that required elements are present
-  if (!this.$module || !this.$menuButton || !this.$menu) {
+  // Check for module
+  var $module = this.$module
+  if (!$module) {
     return
   }
 
-  if ('matchMedia' in window) {
-    // Set the matchMedia to the govuk-frontend desktop breakpoint
-    this.mql = window.matchMedia('(min-width: 48.0625em)')
+  // Check for button
+  var $toggleButton = $module.querySelector('.govuk-js-header-toggle')
+  if (!$toggleButton) {
+    return
+  }
 
-    if ('addEventListener' in this.mql) {
-      this.mql.addEventListener('change', this.syncState.bind(this))
-    } else {
-      // addListener is a deprecated function, however addEventListener
-      // isn't supported by IE or Safari < 14. We therefore add this in as
-      // a fallback for those browsers
-      // @ts-expect-error Property 'addListener' does not exist
-      this.mql.addListener(this.syncState.bind(this))
-    }
+  // Handle $toggleButton click events
+  $toggleButton.addEventListener('click', this.handleClick.bind(this))
+}
 
-    this.syncState()
-    this.$menuButton.addEventListener('click', this.handleMenuButtonClick.bind(this))
+/**
+ * Toggle class
+ *
+ * @param {object} node - element
+ * @param {string} className - className to toggle
+ */
+IdskHeader.prototype.toggleClass = function (node, className) {
+  if (node.className.indexOf(className) > 0) {
+    node.className = node.className.replace(' ' + className, '')
   } else {
-    this.$menuButton.setAttribute('hidden', '')
+    node.className += ' ' + className
   }
 }
 
 /**
- * Sync menu state
+ * An event handler for click event on $toggleButton
  *
- * Uses the global variable menuIsOpen to correctly set the accessible and
- * visual states of the menu and the menu button.
- * Additionally will force the menu to be visible and the menu button to be
- * hidden if the matchMedia is triggered to desktop.
- *
- * @deprecated Will be made private in v5.0
+ * @param {object} event - event
  */
-IdskHeader.prototype.syncState = function () {
-  if (this.mql.matches) {
-    this.$menu.removeAttribute('hidden')
-    this.$menuButton.setAttribute('hidden', '')
-  } else {
-    this.$menuButton.removeAttribute('hidden')
-    this.$menuButton.setAttribute('aria-expanded', this.menuIsOpen.toString())
+IdskHeader.prototype.handleClick = function (event) {
+  var $module = this.$module
+  var $toggleButton = event.target || event.srcElement
+  var $target = $module.querySelector('#' + $toggleButton.getAttribute('aria-controls'))
 
-    if (this.menuIsOpen) {
-      this.$menu.removeAttribute('hidden')
-    } else {
-      this.$menu.setAttribute('hidden', '')
-    }
+  // If a button with aria-controls, handle click
+  if ($toggleButton && $target) {
+    toggleClass($target, 'idsk-header__navigation--open')
+    toggleClass($toggleButton, 'idsk-header__menu-button--open')
+
+    $toggleButton.setAttribute('aria-expanded', $toggleButton.getAttribute('aria-expanded') !== 'true')
+    $target.setAttribute('aria-hidden', ($target.getAttribute('aria-hidden') === 'false').toString())
   }
-}
-
-/**
- * Handle menu button click
- *
- * When the menu button is clicked, change the visibility of the menu and then
- * sync the accessibility state and menu button state
- *
- * @deprecated Will be made private in v5.0
- */
-IdskHeader.prototype.handleMenuButtonClick = function () {
-  this.menuIsOpen = !this.menuIsOpen
-  this.syncState()
 }
 
 export default IdskHeader

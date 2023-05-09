@@ -8,13 +8,12 @@ const PORT = ports.app
 
 const baseUrl = 'http://localhost:' + PORT
 
-beforeAll(async (done) => {
+beforeAll(async () => {
   await page.emulate(iPhone)
-  done()
 })
 
-describe('/components/header', () => {
-  describe('/components/header/with-navigation/preview', () => {
+describe('/components/idsk-header', () => {
+  describe('/components/idsk-header/with-navigation/preview', () => {
     describe('when JavaScript is unavailable or fails', () => {
       beforeAll(async () => {
         await page.setJavaScriptEnabled(false)
@@ -26,12 +25,12 @@ describe('/components/header', () => {
 
       it('falls back to making the navigation visible', async () => {
         await page.goto(
-          baseUrl + '/components/header/with-navigation/preview',
+          baseUrl + '/components/idsk-header/with-navigation/preview',
           { waitUntil: 'load' }
         )
         const isContentVisible = await page.waitForSelector(
-          '.govuk-header__navigation',
-          { visible: true, timeout: 1000 }
+          '.idsk-header__navigation',
+          { visible: true, timeout: 5000 }
         )
         expect(isContentVisible).toBeTruthy()
       })
@@ -41,7 +40,7 @@ describe('/components/header', () => {
       describe('when menu button is pressed', () => {
         it('should indicate the open state of the toggle button', async () => {
           await page.goto(
-            baseUrl + '/components/header/with-navigation/preview',
+            baseUrl + '/components/idsk-header/with-navigation/preview',
             { waitUntil: 'load' }
           )
 
@@ -49,15 +48,15 @@ describe('/components/header', () => {
 
           const toggleButtonIsOpen = await page.evaluate(() =>
             document.body
-              .querySelector('.govuk-header__menu-button')
-              .classList.contains('govuk-header__menu-button--open')
+              .querySelector('.idsk-header__menu-button')
+              .classList.contains('idsk-header__menu-button--open')
           )
           expect(toggleButtonIsOpen).toBeTruthy()
         })
 
         it('should indicate the expanded state of the toggle button using aria-expanded', async () => {
           await page.goto(
-            baseUrl + '/components/header/with-navigation/preview',
+            baseUrl + '/components/idsk-header/with-navigation/preview',
             { waitUntil: 'load' }
           )
 
@@ -65,7 +64,7 @@ describe('/components/header', () => {
 
           const toggleButtonAriaExpanded = await page.evaluate(() =>
             document.body
-              .querySelector('.govuk-header__menu-button')
+              .querySelector('.idsk-header__menu-button')
               .getAttribute('aria-expanded')
           )
           expect(toggleButtonAriaExpanded).toBe('true')
@@ -73,7 +72,7 @@ describe('/components/header', () => {
 
         it('should indicate the open state of the navigation', async () => {
           await page.goto(
-            baseUrl + '/components/header/with-navigation/preview',
+            baseUrl + '/components/idsk-header/with-navigation/preview',
             { waitUntil: 'load' }
           )
 
@@ -81,15 +80,15 @@ describe('/components/header', () => {
 
           const navigationIsOpen = await page.evaluate(() =>
             document.body
-              .querySelector('.govuk-header__navigation')
-              .classList.contains('govuk-header__navigation--open')
+              .querySelector('.idsk-header__navigation')
+              .classList.contains('idsk-header__navigation--open')
           )
           expect(navigationIsOpen).toBeTruthy()
         })
 
         it('should indicate the visible state of the navigation using aria-hidden', async () => {
           await page.goto(
-            baseUrl + '/components/header/with-navigation/preview',
+            baseUrl + '/components/idsk-header/with-navigation/preview',
             { waitUntil: 'load' }
           )
 
@@ -97,7 +96,7 @@ describe('/components/header', () => {
 
           const navigationAriaHidden = await page.evaluate(() =>
             document.body
-              .querySelector('.govuk-header__navigation')
+              .querySelector('.idsk-header__navigation')
               .getAttribute('aria-hidden')
           )
           expect(navigationAriaHidden).toBe('false')
@@ -107,7 +106,7 @@ describe('/components/header', () => {
       describe('when menu button is pressed twice', () => {
         it('should indicate the open state of the toggle button', async () => {
           await page.goto(
-            baseUrl + '/components/header/with-navigation/preview',
+            baseUrl + '/components/idsk-header/with-navigation/preview',
             { waitUntil: 'load' }
           )
 
@@ -116,15 +115,15 @@ describe('/components/header', () => {
 
           const toggleButtonIsOpen = await page.evaluate(() =>
             document.body
-              .querySelector('.govuk-header__menu-button')
-              .classList.contains('govuk-header__menu-button--open')
+              .querySelector('.idsk-header__menu-button')
+              .classList.contains('idsk-header__menu-button--open')
           )
           expect(toggleButtonIsOpen).toBeFalsy()
         })
 
         it('should indicate the expanded state of the toggle button using aria-expanded', async () => {
           await page.goto(
-            baseUrl + '/components/header/with-navigation/preview',
+            baseUrl + '/components/idsk-header/with-navigation/preview',
             { waitUntil: 'load' }
           )
 
@@ -133,7 +132,7 @@ describe('/components/header', () => {
 
           const toggleButtonAriaExpanded = await page.evaluate(() =>
             document.body
-              .querySelector('.govuk-header__menu-button')
+              .querySelector('.idsk-header__menu-button')
               .getAttribute('aria-expanded')
           )
           expect(toggleButtonAriaExpanded).toBe('false')
@@ -141,7 +140,7 @@ describe('/components/header', () => {
 
         it('should indicate the open state of the navigation', async () => {
           await page.goto(
-            baseUrl + '/components/header/with-navigation/preview',
+            baseUrl + '/components/idsk-header/with-navigation/preview',
             { waitUntil: 'load' }
           )
 
@@ -150,15 +149,15 @@ describe('/components/header', () => {
 
           const navigationIsOpen = await page.evaluate(() =>
             document.body
-              .querySelector('.govuk-header__navigation')
-              .classList.contains('govuk-header__navigation--open')
+              .querySelector('.idsk-header__navigation')
+              .classList.contains('idsk-header__navigation--open')
           )
           expect(navigationIsOpen).toBeFalsy()
         })
 
         it('should indicate the visible state of the navigation using aria-hidden', async () => {
           await page.goto(
-            baseUrl + '/components/header/with-navigation/preview',
+            baseUrl + '/components/idsk-header/with-navigation/preview',
             { waitUntil: 'load' }
           )
 
@@ -167,7 +166,7 @@ describe('/components/header', () => {
 
           const navigationAriaHidden = await page.evaluate(() =>
             document.body
-              .querySelector('.govuk-header__navigation')
+              .querySelector('.idsk-header__navigation')
               .getAttribute('aria-hidden')
           )
           expect(navigationAriaHidden).toBe('true')

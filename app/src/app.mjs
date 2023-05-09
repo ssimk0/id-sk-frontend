@@ -65,7 +65,7 @@ export default async () => {
   // All components view
   app.get('/components/all', function (req, res, next) {
     res.locals.componentsData = componentsData.map((componentData) => {
-      const defaultExample = componentData.examples.find(({ name }) => name === 'default')
+      const defaultExample = componentData.examples[0]
 
       return {
         ...componentData,
