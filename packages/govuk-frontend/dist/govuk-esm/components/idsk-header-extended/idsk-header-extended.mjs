@@ -147,9 +147,9 @@ IdskHeaderExtended.prototype.handleSearchChange = function (e) {
   var $search = $searchInput.closest('.idsk-header-extended__search');
   var $searchLabel = $search.querySelector('label');
   if ($searchInput.value) {
-    $searchLabel.classList.add('idsk-header-extended__search-input--focus');
+    $searchLabel && $searchLabel.classList.add('idsk-header-extended__search-input--focus');
   } else {
-    $searchLabel.classList.remove('idsk-header-extended__search-input--focus');
+    $searchLabel && $searchLabel.classList.remove('idsk-header-extended__search-input--focus');
   }
 };
 

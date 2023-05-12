@@ -134,23 +134,20 @@ function initAll (config) {
     new IdskFooterExtended($idskFooterExtended).init()
   })
 
-  // Find first idsk header module to enhance.
-  var $idskHeader = $scope.querySelector('[data-module="idsk-header"]')
-  if ($idskHeader) {
+  var $idskHeader = $scope.querySelectorAll('[data-module="idsk-header"]')
+  $idskHeader.forEach(function ($idskHeader) {
     new IdskHeader($idskHeader).init()
-  }
+  })
 
-  // Find first idsk-header-extended module to enhance.
-  var $idskHeaderExtended = $scope.querySelector('[data-module="idsk-header-extended"]')
-  if ($idskHeaderExtended) {
+  var $idskHeaderExtended = $scope.querySelectorAll('[data-module="idsk-header-extended"]')
+  $idskHeaderExtended.forEach(function ($idskHeaderExtended) {
     new IdskHeaderExtended($idskHeaderExtended).init()
-  }
+  })
 
-  // Find first idsk-header-web module to enhance.
-  var $idskHeaderWeb = $scope.querySelector('[data-module="idsk-header-web"]')
-  if ($idskHeaderWeb) {
+  var $idskHeaderWeb = $scope.querySelectorAll('[data-module="idsk-header-web"]')
+  $idskHeaderWeb.forEach(function ($idskHeaderWeb) {
     new IdskHeaderWeb($idskHeaderWeb).init()
-  }
+  })
 
   var $idskInPageNavigation = $scope.querySelectorAll('[data-module="idsk-in-page-navigation"]')
   $idskInPageNavigation.forEach(function ($idskInPageNavigation) {
