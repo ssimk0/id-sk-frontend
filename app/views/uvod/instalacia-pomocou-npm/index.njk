@@ -46,6 +46,9 @@
           Môžete vytvoriť predvolený súbor spustením npm init z koreňovej zložky vašej aplikácie.</li>
         <li>Ak chcete použiť ID-SK Frontend Nunjucks makrá, nainštalujte Nunjucks. Minimálna požadovaná verzia je 3.0.0.
         </li>
+        <li>Príklad použitia nájdete tu: <a class="govuk-link" href="https://github.com/id-sk/id-sk-frontend-example"
+          target="_blank" rel="noopener noreferrer" title="Príklad použitia">github.com/id-sk/id-sk-frontend-example</a>
+        </li>
       </ol>
     </div>
 
@@ -61,11 +64,11 @@
 
     <div class="govuk-grid-column-full">
       <pre
-        class=" language-markup"><code class="govuk-!-font-size-16  language-markup">npm install --save govuk-frontend</code></pre>
+        class=" language-markup"><code class="govuk-!-font-size-16  language-markup">npm install --save @id-sk/frontend</code></pre>
     </div>
 
     <div class="govuk-grid-column-two-thirds govuk-body govuk-!-margin-bottom-0">
-      <p>Po skončení inštalácie ID-SK Frontend, balík govuk-frontend sa objaví v súbore</p>
+      <p>Po skončení inštalácie ID-SK Frontend, balík @id-sk/frontend sa objaví v súbore</p>
     </div>
     <div class="govuk-grid-column-full">
       <pre class=" language-markup"><code class="govuk-!-font-size-16  language-markup">node_modules</code></pre>
@@ -141,7 +144,7 @@
 
     <div class="govuk-grid-column-full">
       <pre
-        class=" language-markup"><code class="  language-markup govuk-!-font-size-16">@import  "govuk-frontend/govuk/components/button/button";</code></pre>
+        class=" language-markup"><code class="  language-markup govuk-!-font-size-16">@import  "@id-sk/frontend/idsk/components/button/button";</code></pre>
     </div>
 
     <div class="govuk-grid-column-two-thirds govuk-body govuk-!-margin-bottom-0">
@@ -193,7 +196,7 @@ $govuk-global-styles: true;
         byť inicializované.</p>
       <h3 class="govuk-heading-m">Možnosť 1: Zahrnúť JavaScript</h3>
       <p>Zahrňte script <code
-          class=" language-markup govuk-!-font-size-16">node_modules/govuk-frontend/govuk/all.js</code> na vašu stránku.
+          class=" language-markup govuk-!-font-size-16">node_modules/@id-sk/frontend/idsk/all.js</code> na vašu stránku.
         Možno budete chcieť súbor skopírovať do svojho projektu alebo naň odkazovať cez <code
           class=" language-markup govuk-!-font-size-16">node_modules</code>.</p>
       <p>Pre inicializáciu všetkých komponentov použite funkciu <code
@@ -204,7 +207,7 @@ $govuk-global-styles: true;
         zabráni správnemu fungovaniu komponentov alebo ich zobrazeniu.</p>
     </div>
     <div class="govuk-grid-column-full">
-      <pre class=" language-markup"><code class="  language-markup govuk-!-font-size-16">    &lt;script  src="path-to-assets/govuk-frontend/govuk/all.js"&gt;&lt;/script&gt;
+      <pre class=" language-markup"><code class="  language-markup govuk-!-font-size-16">    &lt;script  src="path-to-assets/@id-sk/frontend/idsk/all.js"&gt;&lt;/script&gt;
     &lt;script&gt;window.GOVUKFrontend.initAll()&lt;/script&gt;
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
@@ -262,7 +265,7 @@ initAll()</code></pre>
     </div>
 
     <div class="govuk-grid-column-full">
-      <pre class=" language-markup"><code class="  language-markup govuk-!-font-size-16">const  GOVUKFrontend = require('govuk-frontend')
+      <pre class=" language-markup"><code class="  language-markup govuk-!-font-size-16">const  GOVUKFrontend = require('@id-sk/frontend')
 GOVUKFrontend.initAll()</code></pre>
     </div>
 
@@ -284,7 +287,7 @@ GOVUKFrontend.initAll()</code></pre>
     </div>
 
     <div class="govuk-grid-column-full">
-      <pre class=" language-markup"><code class="  language-markup govuk-!-font-size-16">const  GOVUKFrontend = require('govuk-frontend')
+      <pre class=" language-markup"><code class="  language-markup govuk-!-font-size-16">const  GOVUKFrontend = require('@id-sk/frontend')
 const  Radios = GOVUKFrontend.Radios</code></pre>
     </div>
 
@@ -342,7 +345,7 @@ if ($radio) {
           target="_blank" rel="noopener noreferrer" title="Alternatívneho riešenia">Alternatívneho riešenia</a>.</p>
 
       <h3 class="govuk-heading-m">Odporúčané riešenie</h3>
-      <p>Sprístupnite <code class="  language-markup govuk-!-font-size-16">/node_modules/govuk-frontend/assets</code>
+      <p>Sprístupnite <code class="  language-markup govuk-!-font-size-16">/node_modules/@id-sk/frontend/idsk/assets</code>
         pre váš projekt smerovaním požiadaviek na priečinok s assetmi.</p>
       <p>Napríklad, ak váš projekt využíva <a class="govuk-link" href="https://expressjs.com/" target="_blank"
           rel="noopener noreferrer" title="express.js">express.js</a>, nižšie je ukážka kódu, ktorú môžete pridať do
@@ -351,13 +354,13 @@ if ($radio) {
 
     <div class="govuk-grid-column-full">
       <pre
-        class=" language-markup"><code class="  language-markup govuk-!-font-size-16">app.use('/assets', express.static(path.join(__dirname, '/node_modules/govuk-frontend/assets')))</code></pre>
+        class=" language-markup"><code class="  language-markup govuk-!-font-size-16">app.use('/assets', express.static(path.join(__dirname, '/node_modules/@id-sk/frontend/idsk/assets')))</code></pre>
     </div>
 
     <div class="govuk-grid-column-two-thirds govuk-body govuk-!-margin-bottom-0">
       <h3 class="govuk-heading-m">Alternatívne riešenie</h3>
       <p>Obrázky a fonty skopírujte manuálne z <code
-          class="  language-markup govuk-!-font-size-16">/node_modules/govuk-frontend/assets</code> do verejného
+          class="  language-markup govuk-!-font-size-16">/node_modules/@id-sk/frontend/idsk/assets</code> do verejného
         adresára vo vašom projekte. V ideálnom prípade by kopírovanie súborov do vášho projektu malo byť automatizovanou
         úlohou alebo súčasťou pipeline, aby sa zaistilo, že ID-SK Frontend assety zostanú aktuálne.</p>
       <p>Predvolené cesty pre assety sú <code class="  language-markup govuk-!-font-size-16">assets/images</code> a
@@ -368,8 +371,8 @@ if ($radio) {
         <li>Nastavte <code class="  language-markup govuk-!-font-size-16">$idsk-assets-path, $idsk-images-path</code>
           a <code class="  language-markup govuk-!-font-size-16">$idsk-fonts-path</code> do vášho projektového Sass
           súboru tak, aby odkazoval na príslušné adresáre v projekte (prepíše sa tým predvolené nastavenie v
-          /node_modules/govuk-frontend/settings/_assets.scss). Uistite sa, že ste tak urobili pred importovaním
-          govuk-frontend do vášho projektu – pozri <a class="govuk-link"
+          /node_modules/@id-sk/frontend/idsk/settings/_assets.scss). Uistite sa, že ste tak urobili pred importovaním
+          id-sk-frontend do vášho projektu – pozri <a class="govuk-link"
             href="https://github.com/id-sk/id-sk-frontend/blob/master/docs/installation/installing-with-npm.md#importing-styles"
             target="_blank" rel="noopener noreferrer" title="Importing styles">Importing styles</a>.</li>
       </ol>
@@ -379,13 +382,13 @@ if ($radio) {
       <p class="govuk-body">Príklad 1:</p>
       <pre class=" language-markup"><code class="  language-markup govuk-!-font-size-16">// Include images from /application/assets/images and fonts from /application/assets/fonts
 $idsk-assets-path: '/application/assets';
-@import  "govuk-frontend/govuk/all";</code></pre>
+@import  "@id-sk/frontend/idsk/all";</code></pre>
 
       <p class="govuk-body">Príklad 2:</p>
-      <pre class=" language-markup"><code class="  language-markup govuk-!-font-size-16">// Include images from /images/govuk-frontend and fonts from /fonts
-$idsk-images-path: "/images/govuk-frontend/";
+      <pre class=" language-markup"><code class="  language-markup govuk-!-font-size-16">// Include images from /images/id-sk-frontend and fonts from /fonts
+$idsk-images-path: "/images/id-sk-frontend/";
 $idsk-fonts-path: "/fonts/";
-@import  "govuk-frontend/govuk/all";</code></pre>
+@import  "@id-sk/frontend/idsk/all";</code></pre>
     </div>
 
     <div class="govuk-grid-column-two-thirds govuk-body">
@@ -394,7 +397,7 @@ $idsk-fonts-path: "/fonts/";
           ak používate sass-rails asset-pipeline. Môžete to urobiť nastavením <code
             class="  language-markup govuk-!-font-size-16">$idsk-image-url-function</code> na názov funkcie (funkcií),
           ktoré chcete použiť. Ďalšie informácie a príklady nájdete na stránke <code
-            class="  language-markup govuk-!-font-size-16">src/govuk/settings/_assets.scss</code>.</li>
+            class="  language-markup govuk-!-font-size-16">src/idsk/settings/_assets.scss</code>.</li>
       </ol>
     </div>
 
@@ -411,7 +414,7 @@ $idsk-fonts-path: "/fonts/";
   &lt;/head>
   &lt;body>
     &lt;!-- Copy and paste component HTML-->
-    &lt;button  class="govuk-button">This is a button component&lt;/button>
+    &lt;button  class="idsk-button">This is a button component&lt;/button>
     &lt;script  src="assets/application.js">&lt;/script>
   &lt;/body>
 &lt;/html></code></pre>
