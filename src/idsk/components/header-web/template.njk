@@ -22,6 +22,7 @@
 {% set hideLanguageMenu = "Skryť jazykové menu" %}
 {% set showMenu = "Rozbaliť menu" %}
 {% set closeMenu = "Zavrieť menu" %}
+{% set closeMenuButton = "Zavrieť" %}
 {% set showLogin = "Rozbaliť menu prihlásenia do Ministerstva investícií" %}
 {% set hideLogin = "Skryť menu prihlásenia do Ministerstva investícií" %}
 {% set innerNavigation = "Vnútorná navigácia" %}
@@ -71,7 +72,7 @@
                 <div class="govuk-grid-row">
                   <div class="govuk-grid-column-one-half">
                     <h3 class="govuk-body-s">
-                      Doména gov.sk je oficálna
+                      Doména gov.sk je oficiálna
                     </h3>
                     <p class="govuk-body-s">
                       Toto je oficiálna webová stránka orgánu verejnej moci Slovenskej republiky. Oficiálne stránky využívajú najmä doménu gov.sk. <a class="govuk-link" href="https://www.slovensko.sk/sk/agendy/agenda/_organy-verejnej-moci" target="_blank" title="odkazy na webové sídla orgánov verejnej moci">Odkazy na jednotlivé webové sídla orgánov verejnej moci nájdete na tomto odkaze</a>.
@@ -214,21 +215,22 @@
 
           {% if params.navBar and params.headerType !== 'electronicService' %}
             <button class="idsk-button idsk-header-web__main-headline-menu-button" aria-label="{{ showMenu }}" aria-expanded="false"
-            data-text-for-show="{{ showMenu }}" data-text-for-hide="{{ closeMenu }}">
+            data-text-for-show="{{ showMenu }}" data-text-for-hide="{{ closeMenu }}" data-text-for-close="{{ closeMenuButton }}">
               {{ main.menuBtnText if main.menuBtnText else 'Menu' }}
               <span class="idsk-header-web__menu-open"></span>
               <span class="idsk-header-web__menu-close"></span>
             </button>
           {% elif  params.headerType !== 'electronicService' and params.search %}
             <button class="idsk-button idsk-header-web__main-headline-menu-button" aria-label="{{ showMenu }}" aria-expanded="false"
-            data-text-for-show="{{ showMenu }}" data-text-for-hide="{{ closeMenu }}">
+            data-text-for-show="{{ showMenu }}" data-text-for-hide="{{ closeMenu }}" data-text-for-close="{{ closeMenuButton }}">
               {{ main.menuBtnText if main.menuBtnText else 'Hľadaj' }}
               <span class="idsk-header-web__menu-open"></span>
               <span class="idsk-header-web__menu-close"></span>
             </button>
           {% elif main.loginButton %}
             <button class="idsk-button idsk-header-web__main-headline-menu-button idsk-header-web__main-headline-menu-button-service"
-            aria-label="{{ showLogin }}" aria-expanded="false" data-text-for-show="{{ showLogin }}" data-text-for-hide="{{ hideLogin }}">
+            aria-label="{{ showLogin }}" aria-expanded="false" data-text-for-show="{{ showLogin }}" data-text-for-hide="{{ hideLogin }}"
+            data-text-for-close="{{ closeMenuButton }}">
               <img src="{{ params.assetsPath | default('/assets/images/header-web/') }}/profile.svg" alt="Ikona elektronického servisného menu">
               <span class="idsk-header-web__menu-close"></span>
             </button>

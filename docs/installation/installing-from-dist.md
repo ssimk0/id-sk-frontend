@@ -34,16 +34,16 @@ Podľa nižšie uvedeného príkladu pridajte súbory CSS a JavaScript do šabl�
   <head>
     <title>Ukážka</title>
     <!--[if !IE 8]><!-->
-      <link rel="stylesheet" href="stylesheets/govuk-frontend-[latest version].min.css">
+      <link rel="stylesheet" href="stylesheets/idsk-frontend-[latest version].min.css">
     <!--<![endif]-->
     <!--[if IE 8]>
-      <link rel="stylesheet" href="stylesheets/govuk-frontend-ie8-[latest-version].min.css">
+      <link rel="stylesheet" href="stylesheets/idsk-frontend-ie8-[latest-version].min.css">
     <![endif]-->
   </head>
   <body>
     <!-- Copy and paste component HTML-->
     <button class="govuk-button">Toto je komponent tlačidlo</button>
-    <script src="javascript/govuk-frontend-[latest version].min.js"></script>
+    <script src="javascript/idsk-frontend-[latest version].min.js"></script>
     <script>window.GOVUKFrontend.initAll()</script>
   </body>
 </html>

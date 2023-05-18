@@ -22,6 +22,7 @@ const postcsspseudoclasses = require('postcss-pseudo-classes')({
   // :not(:whatever) pseudo selectors
   blacklist: [':not(', ':disabled)', ':last-child)', ':focus)', ':active)', ':hover)']
 })
+const replace = require('gulp-replace')
 
 // Compile CSS and JS task --------------
 // --------------------------------------
@@ -77,6 +78,7 @@ gulp.task('scss:compile', () => {
         extname: '.min.css'
       })
     ))
+    .pipe(replace('\/assets', 'assets'))
     .pipe(gulp.dest(taskArguments.destination + '/'))
 
   const compileOldIe = gulp.src(compileOldIeStyleshet)
@@ -113,6 +115,7 @@ gulp.task('scss:compile', () => {
         extname: '.min.css'
       })
     ))
+    .pipe(replace('\/assets', 'assets'))
     .pipe(gulp.dest(taskArguments.destination + '/'))
 
   let compileLegacy, compileLegacyIE8
