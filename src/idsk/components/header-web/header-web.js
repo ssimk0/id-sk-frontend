@@ -48,9 +48,6 @@ HeaderWeb.prototype.init = function () {
         nodeListForEach($lastLanguageItems, function ($lastLanguageItem) {
             $lastLanguageItem.addEventListener('blur', this.checkBlurLanguageSwitcherClick.bind(this));
         }.bind(this))
-
-        // close language list if user back tabbing
-        this.$languageBtn.addEventListener('keydown', this.handleBackTabbing.bind(this));
     }
 
     $module.boundCheckBlurLanguageSwitcherClick = this.checkBlurLanguageSwitcherClick.bind(this);
@@ -145,13 +142,6 @@ HeaderWeb.prototype.checkBlurLanguageSwitcherClick = function (e) {
         this.$activeSearch.firstElementChild.setAttribute('aria-expanded', 'false')
         this.$activeSearch.firstElementChild.setAttribute('aria-label',  this.$activeSearch.firstElementChild.getAttribute('data-text-for-show'))
         document.removeEventListener('click', this.$module.boundCheckBlurLanguageSwitcherClick, true);
-    }
-}
-
-HeaderWeb.prototype.handleBackTabbing = function (e) {
-    //shift was down when tab was pressed
-    if(e.shiftKey && e.keyCode == 9 && document.activeElement == this.$languageBtn) {
-        // this.handleLanguageSwitcherClick(e);
     }
 }
 
