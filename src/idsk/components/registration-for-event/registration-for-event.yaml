@@ -43,9 +43,9 @@ params:
         required: false
         description: these options will be in select dropdown list - required if 'params.tag' == select
       - name: autocomplete
-      type: boolean
-      required: false
-      description: This option will set autocomplete parameter
+        type: boolean
+        required: false
+        description: This option will set autocomplete parameter
   - name: buttonLabel
     type: string
     required: true
