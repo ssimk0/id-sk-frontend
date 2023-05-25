@@ -757,10 +757,6 @@
       // mobile version
       @include mq($until: desktop) {
         float: none;
-
-        &-search {
-          display: none;
-        }
       }
     }
 
