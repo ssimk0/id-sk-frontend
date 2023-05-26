@@ -1,0 +1,25 @@
+@import "../../../core/lists";
+
+@include govuk-exports("idsk/core/lists") {
+  .idsk-list {
+    @extend %govuk-list;
+  }
+
+  .idsk-list--letters {
+    @extend %govuk-list--number;
+
+    counter-reset: list;
+
+    & > li {
+      position: relative;
+      list-style: none;
+    }
+
+    & > li::before {
+      content: counter(list, lower-alpha) ") ";
+      counter-increment: list;
+      position: absolute;
+      left: -(govuk-spacing(4));
+    }
+  }
+}

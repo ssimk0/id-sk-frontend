@@ -1,0 +1,31 @@
+@import "./tools/font-url";
+
+/// Font Face - Source Sans Pro
+///
+/// Outputs the font-face declaration for Source Sans Pro at the root of the CSS document
+/// the first time it is called.
+///
+/// @access private
+
+@mixin _idsk-font-face-source-sans-pro {
+  @at-root {
+    @font-face {
+      font-family: "Source Sans Pro";
+      font-style: normal;
+      font-weight: normal;
+      src:
+        govuk-font-url("SourceSansPro-Regular.woff2") format("woff2"),
+        govuk-font-url("SourceSansPro-Regular.woff") format("woff");
+      font-display: fallback;
+    }
+    @font-face {
+      font-family: "Source Sans Pro";
+      font-style: normal;
+      font-weight: bold;
+      src:
+        govuk-font-url("SourceSansPro-Bold.woff2") format("woff2"),
+        govuk-font-url("SourceSansPro-Bold.woff") format("woff");
+      font-display: fallback;
+    }
+  }
+}

@@ -1,0 +1,8 @@
+// import Source Sans Pro
+@include _idsk-font-face-source-sans-pro;
+
+// ID-SK font family
+$idsk-font-family: "Source Sans Pro", "Arial", sans-serif;
+
+// Overide GOV.UK fonts
+$govuk-font-family: $idsk-font-family;
