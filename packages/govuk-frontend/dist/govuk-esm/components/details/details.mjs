@@ -159,5 +159,5 @@ Details.prototype.polyfillHandleInputs = function (callback) {
   this.$summary.addEventListener('click', callback);
 };
 
-export default Details;
-//# sourceMappingURL=components/details/details.mjs.map
+export { Details as default };
+//# sourceMappingURL=details.mjs.map

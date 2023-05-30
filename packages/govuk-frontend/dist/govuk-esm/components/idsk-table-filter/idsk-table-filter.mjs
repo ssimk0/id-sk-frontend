@@ -2,6 +2,7 @@ import { toggleClass } from '../../common/index.mjs';
 
 /* eslint-disable */
 
+
 /**
  * TableFilter
  *
@@ -403,5 +404,5 @@ IdskTableFilter.prototype.handleWindowResize = function () {
   });
 };
 
-export default IdskTableFilter;
-//# sourceMappingURL=components/idsk-table-filter/idsk-table-filter.mjs.map
+export { IdskTableFilter as default };
+//# sourceMappingURL=idsk-table-filter.mjs.map

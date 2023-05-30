@@ -25,7 +25,7 @@ module.exports = {
       '--disable-setuid-sandbox',
 
       /**
-       * Prevent empty Chromium startup window
+       * Prevent empty Chrome startup window
        * Tests use their own `browser.newPage()` instead
        */
       '--no-startup-window'
@@ -33,12 +33,12 @@ module.exports = {
 
     /**
      * Allow headless mode switching using `HEADLESS=false`
-     * but default to `1` to skip deprecation warning
+     * but default to `new` to skip deprecation warning
      *
      * {@link https://developer.chrome.com/articles/new-headless/}
      */
     headless: process.env.HEADLESS !== 'false'
-      ? 1
+      ? 'new'
       : false,
 
     // See launch arg '--no-startup-window'

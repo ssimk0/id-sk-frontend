@@ -1,8 +1,8 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define('GOVUKFrontend', ['exports'], factory) :
-  (factory((global.GOVUKFrontend = {})));
-}(this, (function (exports) { 'use strict';
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.GOVUKFrontend = {}));
+})(this, (function (exports) { 'use strict';
 
   /*
    * This variable is automatically overwritten during builds and releases.
@@ -170,7 +170,7 @@
   /**
    * Toggle class
    *
-   * @param {object} node - element
+   * @param {Element | HTMLElement} node - element
    * @param {string} className - to toggle
    */
   function toggleClass (node, className) {
@@ -631,7 +631,7 @@
    * @property {string} [many] - Plural form used for many
    */
 
-  (function (undefined) {
+  (function (undefined$1) {
 
       // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/master/packages/polyfill-library/polyfills/DOMTokenList/detect.js
       var detect = (
@@ -814,7 +814,7 @@
                 preop.apply(that, [token]);
 
                 /** Token state's being forced. */
-                if (undefined !== force) {
+                if (undefined$1 !== force) {
                   if (force) {
                     that.add(token);
                     return true;
@@ -850,7 +850,7 @@
           if (!e.classList.contains('x')) return;
           e.classList.constructor.prototype.toggle = function toggle(token /*, force*/) {
             var force = arguments[1];
-            if (force === undefined) {
+            if (force === undefined$1) {
               var add = !this.contains(token);
               this[add ? 'add' : 'remove'](token);
               return add;
@@ -899,7 +899,7 @@
 
   }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
-  (function(undefined) {
+  (function(undefined$1) {
 
       // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/8717a9e04ac7aff99b4980fbedead98036b0929a/packages/polyfill-library/polyfills/Element/prototype/classList/detect.js
       var detect = (
@@ -992,7 +992,7 @@
 
   }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
-  (function (undefined) {
+  (function (undefined$1) {
 
     // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/1f3c09b402f65bf6e393f933a15ba63f1b86ef1f/packages/polyfill-library/polyfills/Element/prototype/matches/detect.js
     var detect = (
@@ -1017,7 +1017,7 @@
 
   }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
-  (function(undefined) {
+  (function(undefined$1) {
 
     // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/1f3c09b402f65bf6e393f933a15ba63f1b86ef1f/packages/polyfill-library/polyfills/Element/prototype/closest/detect.js
     var detect = (
@@ -1167,7 +1167,7 @@
     this.$sections = $sections;
 
     /** @deprecated Will be made private in v5.0 */
-    this.browserSupportsSessionStorage = helper.checkForSessionStorage();
+    this.browserSupportsSessionStorage = helper$1.checkForSessionStorage();
 
     /** @deprecated Will be made private in v5.0 */
     this.$showAllButton = null;
@@ -1542,7 +1542,7 @@
     }
   };
 
-  var helper = {
+  var helper$1 = {
     /**
      * Check for `window.sessionStorage`, and that it actually works.
      *
@@ -1657,8 +1657,8 @@
    *   'Show' button's accessible name when a section is expanded.
    */
 
-  var KEY_SPACE = 32;
-  var DEBOUNCE_TIMEOUT_IN_SECONDS = 1;
+  var KEY_SPACE$2 = 32;
+  var DEBOUNCE_TIMEOUT_IN_SECONDS$1 = 1;
 
   /**
    * JavaScript enhancements for the Button component
@@ -1722,7 +1722,7 @@
     var $target = event.target;
 
     // Handle space bar only
-    if (event.keyCode !== KEY_SPACE) {
+    if (event.keyCode !== KEY_SPACE$2) {
       return
     }
 
@@ -1758,7 +1758,7 @@
 
     this.debounceFormSubmitTimer = setTimeout(/** @this {Button} */ function () {
       this.debounceFormSubmitTimer = null;
-    }.bind(this), DEBOUNCE_TIMEOUT_IN_SECONDS * 1000);
+    }.bind(this), DEBOUNCE_TIMEOUT_IN_SECONDS$1 * 1000);
   };
 
   /**
@@ -3006,6 +3006,7 @@
 
   */
 
+
   /**
    * Accordion Component
    *
@@ -3015,7 +3016,7 @@
     this.$module = $module;
     this.moduleId = $module.getAttribute('id');
     this.$sections = $module.querySelectorAll('.govuk-accordion__section');
-    this.browserSupportsSessionStorage = helper$1.checkForSessionStorage();
+    this.browserSupportsSessionStorage = helper.checkForSessionStorage();
 
     this.controlsClass = 'govuk-accordion__controls';
     this.openAllClass = 'govuk-accordion__open-all';
@@ -3242,7 +3243,7 @@
     this.$openAllButton.innerHTML = newButtonText;
   };
 
-  var helper$1 = {
+  var helper = {
     /**
      * Check for `window.sessionStorage`, and that it actually works.
      *
@@ -3335,8 +3336,8 @@
 
   /* eslint-disable */
 
-  var KEY_SPACE$2 = 32;
-  var DEBOUNCE_TIMEOUT_IN_SECONDS$1 = 1;
+  var KEY_SPACE = 32;
+  var DEBOUNCE_TIMEOUT_IN_SECONDS = 1;
 
   /**
    * JavaScript enhancements for the Button component
@@ -3361,7 +3362,7 @@
     // get the target element
     var target = event.target;
     // if the element has a role='button' and the pressed key is a space, we'll simulate a click
-    if (target.getAttribute('role') === 'button' && event.keyCode === KEY_SPACE$2) {
+    if (target.getAttribute('role') === 'button' && event.keyCode === KEY_SPACE) {
       event.preventDefault();
       // trigger the target's click event
       target.click();
@@ -3393,7 +3394,7 @@
       function () {
         this.debounceFormSubmitTimer = null;
       }.bind(this),
-      DEBOUNCE_TIMEOUT_IN_SECONDS$1 * 1000
+      DEBOUNCE_TIMEOUT_IN_SECONDS * 1000
     );
   };
 
@@ -3406,9 +3407,8 @@
     this.$module.addEventListener('click', this.debounce);
   };
 
-  // Implementation of common function is gathered in the `common` folder
-
   /* eslint-disable */
+
 
   /**
    * Crossroad Component
@@ -3519,6 +3519,7 @@
   };
 
   /* eslint-disable */
+
 
   /**
    * CustomerSurveys Component
@@ -3963,6 +3964,7 @@
 
   /* eslint-disable */
 
+
   /**
    * Footer for extended websites
    */
@@ -4262,6 +4264,7 @@
 
   /* eslint-disable */
 
+
   /**
    * Header component
    *
@@ -4327,6 +4330,7 @@
   };
 
   /* eslint-disable */
+
 
   /**
    * Header for extended websites
@@ -4640,6 +4644,7 @@
   };
 
   /* eslint-disable */
+
 
   /**
    * Header for web websites
@@ -5620,6 +5625,7 @@
   };
 
   /* eslint-disable */
+
 
   /**
    * Search Results component
@@ -6775,6 +6781,7 @@
 
   /* eslint-disable */
 
+
   /**
    * SearchResultsFilter component
    *
@@ -7002,6 +7009,7 @@
     attribute, which also provides accessibility.
 
   */
+
 
   /**
    * Stepper component
@@ -7484,6 +7492,7 @@
 
   /* eslint-disable */
 
+
   /**
    * IDSK Table
    *
@@ -7536,6 +7545,7 @@
   };
 
   /* eslint-disable */
+
 
   /**
    * TableFilter
@@ -9337,19 +9347,13 @@
    * @typedef {import('./components/notification-banner/notification-banner.mjs').NotificationBannerConfig} NotificationBannerConfig
    */
 
-  exports.initAll = initAll;
-  exports.version = version;
   exports.Accordion = Accordion;
   exports.Button = Button;
-  exports.Details = Details;
   exports.CharacterCount = CharacterCount;
   exports.Checkboxes = Checkboxes;
+  exports.Details = Details;
   exports.ErrorSummary = ErrorSummary;
   exports.Header = Header;
-  exports.NotificationBanner = NotificationBanner;
-  exports.Radios = Radios;
-  exports.SkipLink = SkipLink;
-  exports.Tabs = Tabs;
   exports.IdskAccordion = IdskAccordion;
   exports.IdskButton = IdskButton;
   exports.IdskCrossroad = IdskCrossroad;
@@ -9370,8 +9374,12 @@
   exports.IdskTable = IdskTable;
   exports.IdskTableFilter = IdskTableFilter;
   exports.IdskTabs = IdskTabs;
+  exports.NotificationBanner = NotificationBanner;
+  exports.Radios = Radios;
+  exports.SkipLink = SkipLink;
+  exports.Tabs = Tabs;
+  exports.initAll = initAll;
+  exports.version = version;
 
-  Object.defineProperty(exports, '__esModule', { value: true });
-
-})));
+}));
 //# sourceMappingURL=all.js.map

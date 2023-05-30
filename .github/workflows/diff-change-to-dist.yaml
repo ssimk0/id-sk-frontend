@@ -9,10 +9,12 @@ permissions:
 
 jobs:
   generate-diff:
-    name: Generate Diff
+    name: Generate diff
     runs-on: ubuntu-latest
-    # Abort if run from a fork, as token won't have write access to post comment
-    if: github.event.pull_request.head.repo.full_name == github.repository
+
+    # Skip when token write permissions are unavailable on forks
+    if: ${{ !github.event.pull_request.head.repo.fork }}
+
     steps:
       - uses: actions/checkout@v3
         with:
@@ -33,27 +35,44 @@ jobs:
       - name: Generate diff
         id: diff
         run: |
-          git diff -M05 origin/$GITHUB_BASE_REF -- dist \
-            > $GITHUB_WORKSPACE/dist.diff
+          # Using `origin/$GITHUB_BASE_REF` to avoid actually checking out the branch
+          # as all we need is to let Git diff the two references
+          bin/dist-diff.sh origin/$GITHUB_BASE_REF $GITHUB_WORKSPACE
+
+      - name: Save distribution diffs
+        uses: actions/upload-artifact@v3
+        with:
+          name: Dist diff
+          path: dist*.diff
+          if-no-files-found: ignore
 
       - name: Add comment to PR
         uses: actions/github-script@v6
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            const fs = require('fs').promises
-            const diff = await fs.readFile(
-              process.env.GITHUB_WORKSPACE + '/dist.diff', 'utf8'
-            )
+            const { commentDiffs } = await import('${{ github.workspace }}/.github/workflows/scripts/comments.mjs')
 
-            const commentText = '## Changes to dist\n' +
-              '```diff\n' +
-              diff +
-              '\n```'
+            // PR information
+            const issueNumber = ${{ github.event.pull_request.number }}
+            const commit = '${{ github.event.pull_request.head.sha }}'
 
-            github.rest.issues.createComment({
-              issue_number: context.payload.pull_request.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: commentText
-            })
+            const diffs = [
+              {
+                path: '${{ github.workspace }}/dist-js.diff',
+                titleText: 'JavaScript changes to `dist`',
+                markerText: 'dist-diff-js'
+              },
+              {
+                path: '${{ github.workspace }}/dist-css.diff',
+                titleText: 'Stylesheets changes to `dist`',
+                markerText: 'dist-diff-css'
+              },
+              {
+                path: '${{ github.workspace }}/dist-other.diff',
+                titleText: 'Other changes to `dist`',
+                markerText: 'dist-diff-other'
+              }
+            ]
+
+            await commentDiffs({ github, context, commit }, issueNumber, diffs)

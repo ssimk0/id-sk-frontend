@@ -1,4 +1,4 @@
-(function (undefined) {
+(function (undefined$1) {
 
   // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/1f3c09b402f65bf6e393f933a15ba63f1b86ef1f/packages/polyfill-library/polyfills/Element/prototype/matches/detect.js
   var detect = (
@@ -22,4 +22,4 @@
   };
 
 }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
-//# sourceMappingURL=vendor/polyfills/Element/prototype/matches.mjs.map
+//# sourceMappingURL=matches.mjs.map

@@ -2,6 +2,7 @@ import { toggleClass } from '../../common/index.mjs';
 
 /* eslint-disable */
 
+
 /**
  * Header for web websites
  */
@@ -517,5 +518,5 @@ IdskHeaderWeb.prototype.initMobileMenuTabbing = function () {
   });
 };
 
-export default IdskHeaderWeb;
-//# sourceMappingURL=components/idsk-header-web/idsk-header-web.mjs.map
+export { IdskHeaderWeb as default };
+//# sourceMappingURL=idsk-header-web.mjs.map

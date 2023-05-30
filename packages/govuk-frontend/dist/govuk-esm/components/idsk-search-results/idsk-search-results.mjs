@@ -2,6 +2,7 @@ import { toggleClass } from '../../common/index.mjs';
 
 /* eslint-disable */
 
+
 /**
  * Search Results component
  *
@@ -1154,5 +1155,5 @@ IdskSearchResults.prototype.removeTopic = function ($el, $disableFilter) {
   this.changeBackgroundForPickedFilters.call(this);
 };
 
-export default IdskSearchResults;
-//# sourceMappingURL=components/idsk-search-results/idsk-search-results.mjs.map
+export { IdskSearchResults as default };
+//# sourceMappingURL=idsk-search-results.mjs.map

@@ -124,5 +124,5 @@ IdskInteractiveMap.prototype.renderData = function () {
     $tableSrc + '?indicator=' + $indicatorValue + '&time=' + $timePeriodValue;
 };
 
-export default IdskInteractiveMap;
-//# sourceMappingURL=components/idsk-interactive-map/idsk-interactive-map.mjs.map
+export { IdskInteractiveMap as default };
+//# sourceMappingURL=idsk-interactive-map.mjs.map

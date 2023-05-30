@@ -11,4 +11,4 @@
 var version = '4.6.0';
 
 export { version };
-//# sourceMappingURL=common/govuk-frontend-version.mjs.map
+//# sourceMappingURL=govuk-frontend-version.mjs.map

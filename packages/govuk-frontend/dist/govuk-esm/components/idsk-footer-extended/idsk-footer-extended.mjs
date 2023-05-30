@@ -2,6 +2,7 @@ import { toggleClass } from '../../common/index.mjs';
 
 /* eslint-disable */
 
+
 /**
  * Footer for extended websites
  */
@@ -299,5 +300,5 @@ IdskFooterExtended.prototype.scrollFunction = function () {
   }
 };
 
-export default IdskFooterExtended;
-//# sourceMappingURL=components/idsk-footer-extended/idsk-footer-extended.mjs.map
+export { IdskFooterExtended as default };
+//# sourceMappingURL=idsk-footer-extended.mjs.map

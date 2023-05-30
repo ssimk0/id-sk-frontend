@@ -1,8 +1,8 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define('GOVUKFrontend.Details', factory) :
-  (global.GOVUKFrontend = global.GOVUKFrontend || {}, global.GOVUKFrontend.Details = factory());
-}(this, (function () { 'use strict';
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, (global.GOVUKFrontend = global.GOVUKFrontend || {}, global.GOVUKFrontend.Details = factory()));
+})(this, (function () { 'use strict';
 
   /**
    * Common helpers which do not require polyfill.
@@ -195,5 +195,5 @@
 
   return Details;
 
-})));
+}));
 //# sourceMappingURL=details.js.map

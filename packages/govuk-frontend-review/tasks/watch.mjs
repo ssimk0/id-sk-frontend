@@ -1,3 +1,5 @@
+import { join } from 'path'
+
 import { paths } from 'govuk-frontend-config'
 import { npm, task } from 'govuk-frontend-tasks'
 import gulp from 'gulp'
@@ -20,7 +22,7 @@ export const watch = (options) => gulp.parallel(
   task.name('lint:scss watch', () =>
     gulp.watch([
       `${slash(paths.app)}/src/**/*.scss`
-    ], npm.script('lint:scss', options))
+    ], npm.script('lint:scss:cli', [slash(join(options.workspace, '**/*.scss'))]))
   ),
 
   /**
@@ -30,8 +32,7 @@ export const watch = (options) => gulp.parallel(
     gulp.watch([
       `${slash(paths.root)}/sassdoc.config.yaml`,
       `${slash(paths.app)}/src/**/*.scss`,
-      `${slash(paths.package)}/src/govuk/**/*.scss`,
-      `!${slash(paths.package)}/src/govuk/vendor/*`
+      `${slash(paths.package)}/dist/govuk/**/*.scss`
     ], styles(options))
   ),
 
@@ -41,7 +42,7 @@ export const watch = (options) => gulp.parallel(
   task.name('lint:js watch', () =>
     gulp.watch([
       `${slash(paths.app)}/src/javascripts/**/*.mjs`
-    ], npm.script('lint:js', options))
+    ], npm.script('lint:js:cli', [slash(join(options.workspace, '**/*.{cjs,js,mjs}'))]))
   ),
 
   /**
@@ -51,7 +52,7 @@ export const watch = (options) => gulp.parallel(
     gulp.watch([
       `${slash(paths.root)}/typedoc.config.js`,
       `${slash(paths.app)}/src/javascripts/**/*.mjs`,
-      `${slash(paths.package)}/src/govuk/**/*.mjs`
+      `${slash(paths.package)}/dist/govuk-esm/**/*.mjs`
     ], scripts(options))
   )
 )

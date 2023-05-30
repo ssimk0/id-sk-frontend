@@ -2,6 +2,7 @@ import { toggleClass } from '../../common/index.mjs';
 
 /* eslint-disable */
 
+
 /**
  * Header for extended websites
  */
@@ -313,5 +314,5 @@ IdskHeaderExtended.prototype.scrollFunction = function () {
   }
 };
 
-export default IdskHeaderExtended;
-//# sourceMappingURL=components/idsk-header-extended/idsk-header-extended.mjs.map
+export { IdskHeaderExtended as default };
+//# sourceMappingURL=idsk-header-extended.mjs.map

@@ -4,13 +4,114 @@
 
 ### New features
 
+#### Tag design changes
+
+The design of the tag component has changed to improve accessibility and readability.
+
+Text within the tag is no longer bold and uppercase with extra letter spacing, and is
+instead regular 19px text. Due to this, there may be changes to the width of existing tags.
+
+The colours have also changed to make them more distinguishable from buttons.
+
+This change was made in [pull request #3502: Tag design changes](https://github.com/alphagov/govuk-frontend/pull/3502).
+
 #### Added inverse modifier for buttons on dark backgrounds
 
 You can now style buttons on dark backgrounds to have a white background colour by adding the `govuk-button--inverse` class.
 
 This change was made in [pull request #3556: Add inverse button styles](https://github.com/alphagov/govuk-frontend/pull/3556).
 
+#### New link styles are now enabled by default
+
+In GOV.UK Frontend v3.12.0 we introduced new link styles which:
+
+- have underlines that are consistently thinner and a bit further away from the link text
+- have a clearer hover state, where the underline gets thicker to make the link stand out to users
+
+The new link styles are now enabled by default. If you are setting `$govuk-new-link-styles` to `true` in your Sass you can now remove this.
+
+This change was made in [pull request #3599: Enable new link styles by default](https://github.com/alphagov/govuk-frontend/pull/3599) and [pull request #3600: Remove new link styles feature flag](https://github.com/alphagov/govuk-frontend/pull/3600).
+
 ### Breaking changes
+
+You must make the following changes when you migrate to this release, or your service might break.
+
+#### Update package file paths
+
+In preparation for additional build targets, we've moved our package files into a directory called `dist`.
+
+##### Node.js and other bundlers
+
+Replace `govuk-frontend/govuk` with `govuk-frontend/dist/govuk` in any JavaScript `require()` or `import` file paths.
+
+For example using `require()`:
+
+```js
+const Button = require('govuk-frontend/dist/govuk/components/button/button')
+```
+
+For example using `import`:
+
+```js
+import Button from 'govuk-frontend/dist/govuk-esm/components/button/button.mjs'
+```
+
+##### If you’re using Sass
+
+Replace `govuk-frontend/govuk` with `govuk-frontend/dist/govuk` in any [Sass](https://sass-lang.com/) `@import` paths.
+
+For example:
+
+```scss
+@import "node_modules/govuk-frontend/dist/govuk/all";
+```
+
+If you’ve [added `node_modules/govuk-frontend` as a Sass import path](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#simplify-sass-import-paths), update it with the `/dist` suffix:
+
+```js
+loadPaths: [
+  'node_modules/govuk-frontend/dist'
+]
+```
+
+##### If you’re using Nunjucks
+
+Replace `govuk-frontend` with `govuk-frontend/dist` in any [`nunjucks.configure()`](https://mozilla.github.io/nunjucks/api.html#configure) search paths:
+
+```js
+nunjucks.configure([
+  'node_modules/govuk-frontend/dist'
+])
+```
+
+These changes were made in the following pull requests:
+
+- [#3491: Update Review app to import `govuk-frontend` via local package](https://github.com/alphagov/govuk-frontend/pull/3491)
+- [#3498: Remove built `dist` and `package` from source](https://github.com/alphagov/govuk-frontend/pull/3498)
+
+#### "Compatibility mode" features are no longer supported
+
+GOV.UK Frontend no longer supports compatibility with [our old frameworks](https://frontend.design-system.service.gov.uk/migrating-from-legacy-products/#migrate-from-our-old-frameworks): GOV.UK Elements, GOV.UK Template and GOV.UK Frontend Toolkit. You can no longer incrementally add GOV.UK Frontend to an existing service using one of these previous frameworks. We have removed the following Sass variables and one mixin which controlled compatibility mode:
+
+- `$govuk-compatibility-govukelements`
+- `$govuk-compatibility-govuktemplate`
+- `$govuk-compatibility-govukfrontendtoolkit`
+- The `compatibility-mode` mixin which automatically checked if any of the 3 control variables were set to `true`
+
+We have additionally removed features that were managed using the above variables. The following features and their corresponding variables have now been removed:
+
+- Access to the legacy colour palette using `$govuk-use-legacy-palette`
+- Access to the legacy font using `$govuk-use-legacy-font`
+- Use of legacy tabular fonts using `$govuk-font-family-tabular`
+- The ability to not use rem font sizes using `$govuk-typography-use-rem`
+
+These changes were introduced in:
+
+- [pull request #3622: Remove compatibility mode variables](https://github.com/alphagov/govuk-frontend/pull/3622)
+- [pull request #3602: Remove `compatibility-mode` mixin](https://github.com/alphagov/govuk-frontend/pull/3602)
+- [pull request #3576: Remove legacy colour palette](https://github.com/alphagov/govuk-frontend/pull/3576)
+- [pull request #3574: Remove legacy and tabular fonts support](https://github.com/alphagov/govuk-frontend/pull/3574)
+- [pull request #3576: Remove `$govuk-typography-use-rem` setting](https://github.com/alphagov/govuk-frontend/pull/3575)
 
 #### Check that disabled buttons work as expected
 
@@ -57,6 +158,20 @@ We've removed the override classes starting with `.govuk-!-margin-static` and `.
 Use the classes starting with `.govuk-!-static-margin` and `.govuk-!-static-padding` instead.
 
 This change was introduced in [pull request #3593: Remove deprecated static spacing classes](https://github.com/alphagov/govuk-frontend/pull/3593).
+
+#### Remove the fallback GOV.UK crown logo from your HTML
+
+The header component previously included a fallback version of the GOV.UK crown logo for Internet Explorer 8. As Frontend no longer supports IE8, this fallback has been removed.
+
+If you're not using the Nunjucks macros, you'll need to remove this fallback from your HTML code. In your header component:
+
+1. Remove the block of HTML containing the `govuk-header__logotype-crown-fallback-image` image, starting with `<!--[if IE 8]>` and ending with `<![endif]-->`.
+2. Remove `<!--[if gt IE 8]><!-->` and ` <!--<![endif]-->` from around the `govuk-header__logotype-crown` SVG, but don't remove the SVG.
+3. Delete the `govuk-logotype-crown.png` file from your assets folder.
+
+You don't need to change any HTML if you're using the supplied Nunjucks macros, but may still need to remove the `govuk-logotype-crown.png` image depending on [how you are serving the font and image assets](https://frontend.design-system.service.gov.uk/importing-css-assets-and-javascript/#font-and-image-assets).
+
+This change was introduced in [pull request #3641: Remove fallback GOV.UK logo for IE8](https://github.com/alphagov/govuk-frontend/pull/3641).
 
 #### Remove deprecated `.govuk-header__link--service-name` class
 

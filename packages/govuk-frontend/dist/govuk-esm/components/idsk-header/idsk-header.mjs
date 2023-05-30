@@ -2,6 +2,7 @@ import { toggleClass } from '../../common/index.mjs';
 
 /* eslint-disable */
 
+
 /**
  * Header component
  *
@@ -66,5 +67,5 @@ IdskHeader.prototype.handleClick = function (event) {
   }
 };
 
-export default IdskHeader;
-//# sourceMappingURL=components/idsk-header/idsk-header.mjs.map
+export { IdskHeader as default };
+//# sourceMappingURL=idsk-header.mjs.map

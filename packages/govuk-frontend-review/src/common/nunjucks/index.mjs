@@ -1,4 +1,3 @@
-
 import { join } from 'path'
 
 import { paths } from 'govuk-frontend-config'
@@ -12,9 +11,8 @@ export function renderer (app) {
   const appViews = [
     join(paths.app, 'src/views/layouts'),
     join(paths.app, 'src/views'),
-    packageNameToPath('govuk-frontend', 'src/govuk/components'),
-    packageNameToPath('govuk-frontend', 'src/govuk'),
-    packageNameToPath('govuk_template_jinja')
+    packageNameToPath('govuk-frontend', 'dist/govuk/components'),
+    packageNameToPath('govuk-frontend', 'dist/govuk')
   ]
 
   // Initialise nunjucks environment

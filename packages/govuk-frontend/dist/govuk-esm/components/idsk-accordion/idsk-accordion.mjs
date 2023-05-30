@@ -14,6 +14,7 @@ import '../../vendor/polyfills/Element/prototype/classList.mjs';
 
 */
 
+
 /**
  * Accordion Component
  *
@@ -341,5 +342,5 @@ IdskAccordion.prototype.setInitialState = function ($section) {
   }
 };
 
-export default IdskAccordion;
-//# sourceMappingURL=components/idsk-accordion/idsk-accordion.mjs.map
+export { IdskAccordion as default };
+//# sourceMappingURL=idsk-accordion.mjs.map

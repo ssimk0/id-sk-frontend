@@ -2,6 +2,7 @@ import { toggleClass } from '../../common/index.mjs';
 
 /* eslint-disable */
 
+
 /**
  * Crossroad Component
  */
@@ -110,5 +111,5 @@ IdskCrossroad.prototype.handleShowItems = function (e) {
   }
 };
 
-export default IdskCrossroad;
-//# sourceMappingURL=components/idsk-crossroad/idsk-crossroad.mjs.map
+export { IdskCrossroad as default };
+//# sourceMappingURL=idsk-crossroad.mjs.map

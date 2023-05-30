@@ -1,75 +1,35 @@
-import { version } from './common/govuk-frontend-version.mjs';
 export { version } from './common/govuk-frontend-version.mjs';
 import Accordion from './components/accordion/accordion.mjs';
-export { default as Accordion } from './components/accordion/accordion.mjs';
 import Button from './components/button/button.mjs';
-export { default as Button } from './components/button/button.mjs';
 import CharacterCount from './components/character-count/character-count.mjs';
-export { default as CharacterCount } from './components/character-count/character-count.mjs';
 import Checkboxes from './components/checkboxes/checkboxes.mjs';
-export { default as Checkboxes } from './components/checkboxes/checkboxes.mjs';
 import Details from './components/details/details.mjs';
-export { default as Details } from './components/details/details.mjs';
 import ErrorSummary from './components/error-summary/error-summary.mjs';
-export { default as ErrorSummary } from './components/error-summary/error-summary.mjs';
 import Header from './components/header/header.mjs';
-export { default as Header } from './components/header/header.mjs';
 import IdskAccordion from './components/idsk-accordion/idsk-accordion.mjs';
-export { default as IdskAccordion } from './components/idsk-accordion/idsk-accordion.mjs';
 import IdskButton from './components/idsk-button/idsk-button.mjs';
-export { default as IdskButton } from './components/idsk-button/idsk-button.mjs';
 import IdskCrossroad from './components/idsk-crossroad/idsk-crossroad.mjs';
-export { default as IdskCrossroad } from './components/idsk-crossroad/idsk-crossroad.mjs';
 import IdskCustomerSurveys from './components/idsk-customer-surveys/idsk-customer-surveys.mjs';
-export { default as IdskCustomerSurveys } from './components/idsk-customer-surveys/idsk-customer-surveys.mjs';
 import IdskFeedback from './components/idsk-feedback/idsk-feedback.mjs';
-export { default as IdskFeedback } from './components/idsk-feedback/idsk-feedback.mjs';
 import IdskFooterExtended from './components/idsk-footer-extended/idsk-footer-extended.mjs';
-export { default as IdskFooterExtended } from './components/idsk-footer-extended/idsk-footer-extended.mjs';
 import IdskHeader from './components/idsk-header/idsk-header.mjs';
-export { default as IdskHeader } from './components/idsk-header/idsk-header.mjs';
 import IdskHeaderExtended from './components/idsk-header-extended/idsk-header-extended.mjs';
-export { default as IdskHeaderExtended } from './components/idsk-header-extended/idsk-header-extended.mjs';
 import IdskHeaderWeb from './components/idsk-header-web/idsk-header-web.mjs';
-export { default as IdskHeaderWeb } from './components/idsk-header-web/idsk-header-web.mjs';
 import IdskInPageNavigation from './components/idsk-in-page-navigation/idsk-in-page-navigation.mjs';
-export { default as IdskInPageNavigation } from './components/idsk-in-page-navigation/idsk-in-page-navigation.mjs';
 import IdskInteractiveMap from './components/idsk-interactive-map/idsk-interactive-map.mjs';
-export { default as IdskInteractiveMap } from './components/idsk-interactive-map/idsk-interactive-map.mjs';
 import IdskRegistrationForEvent from './components/idsk-registration-for-event/idsk-registration-for-event.mjs';
-export { default as IdskRegistrationForEvent } from './components/idsk-registration-for-event/idsk-registration-for-event.mjs';
 import IdskSearchComponent from './components/idsk-search-component/idsk-search-component.mjs';
-export { default as IdskSearchComponent } from './components/idsk-search-component/idsk-search-component.mjs';
 import IdskSearchResults from './components/idsk-search-results/idsk-search-results.mjs';
-export { default as IdskSearchResults } from './components/idsk-search-results/idsk-search-results.mjs';
 import IdskSearchResultsFilter from './components/idsk-search-results-filter/idsk-search-results-filter.mjs';
-export { default as IdskSearchResultsFilter } from './components/idsk-search-results-filter/idsk-search-results-filter.mjs';
 import IdskStepper from './components/idsk-stepper/idsk-stepper.mjs';
-export { default as IdskStepper } from './components/idsk-stepper/idsk-stepper.mjs';
 import IdskSubscriptionForm from './components/idsk-subscription-form/idsk-subscription-form.mjs';
-export { default as IdskSubscriptionForm } from './components/idsk-subscription-form/idsk-subscription-form.mjs';
 import IdskTable from './components/idsk-table/idsk-table.mjs';
-export { default as IdskTable } from './components/idsk-table/idsk-table.mjs';
 import IdskTableFilter from './components/idsk-table-filter/idsk-table-filter.mjs';
-export { default as IdskTableFilter } from './components/idsk-table-filter/idsk-table-filter.mjs';
 import IdskTabs from './components/idsk-tabs/idsk-tabs.mjs';
-export { default as IdskTabs } from './components/idsk-tabs/idsk-tabs.mjs';
 import NotificationBanner from './components/notification-banner/notification-banner.mjs';
-export { default as NotificationBanner } from './components/notification-banner/notification-banner.mjs';
 import Radios from './components/radios/radios.mjs';
-export { default as Radios } from './components/radios/radios.mjs';
 import SkipLink from './components/skip-link/skip-link.mjs';
-export { default as SkipLink } from './components/skip-link/skip-link.mjs';
 import Tabs from './components/tabs/tabs.mjs';
-export { default as Tabs } from './components/tabs/tabs.mjs';
-import './common/index.mjs';
-import './common/normalise-dataset.mjs';
-import './i18n.mjs';
-import './vendor/polyfills/Element/prototype/classList.mjs';
-import './vendor/polyfills/DOMTokenList.mjs';
-import './vendor/polyfills/Element/prototype/closest.mjs';
-import './vendor/polyfills/Element/prototype/matches.mjs';
-import './common/closest-attribute-value.mjs';
 
 /**
  * Initialise all components
@@ -271,5 +231,5 @@ function initAll (config) {
  * @typedef {import('./components/notification-banner/notification-banner.mjs').NotificationBannerConfig} NotificationBannerConfig
  */
 
-export { initAll };
+export { Accordion, Button, CharacterCount, Checkboxes, Details, ErrorSummary, Header, IdskAccordion, IdskButton, IdskCrossroad, IdskCustomerSurveys, IdskFeedback, IdskFooterExtended, IdskHeader, IdskHeaderExtended, IdskHeaderWeb, IdskInPageNavigation, IdskInteractiveMap, IdskRegistrationForEvent, IdskSearchComponent, IdskSearchResults, IdskSearchResultsFilter, IdskStepper, IdskSubscriptionForm, IdskTable, IdskTableFilter, IdskTabs, NotificationBanner, Radios, SkipLink, Tabs, initAll };
 //# sourceMappingURL=all.mjs.map

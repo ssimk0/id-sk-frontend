@@ -1,8 +1,8 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define('GOVUKFrontend', ['exports'], factory) :
-  (factory((global.GOVUKFrontend = {})));
-}(this, (function (exports) { 'use strict';
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.GOVUKFrontend = {}));
+})(this, (function (exports) { 'use strict';
 
   /**
    * Common helpers which do not require polyfill.
@@ -158,7 +158,7 @@
   /**
    * Toggle class
    *
-   * @param {object} node - element
+   * @param {Element | HTMLElement} node - element
    * @param {string} className - to toggle
    */
   function toggleClass (node, className) {
@@ -173,14 +173,10 @@
     }
   }
 
-  // Implementation of common function is gathered in the `common` folder
-
+  exports.extractConfigByNamespace = extractConfigByNamespace;
   exports.generateUniqueID = generateUniqueID;
   exports.mergeConfigs = mergeConfigs;
-  exports.extractConfigByNamespace = extractConfigByNamespace;
   exports.toggleClass = toggleClass;
 
-  Object.defineProperty(exports, '__esModule', { value: true });
-
-})));
+}));
 //# sourceMappingURL=common.js.map

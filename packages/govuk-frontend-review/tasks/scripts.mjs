@@ -12,15 +12,19 @@ import gulp from 'gulp'
 export const compile = (options) => gulp.series(
   task.name('compile:js', () =>
     scripts.compile('all.mjs', {
+      ...options,
+
       srcPath: join(options.srcPath, 'javascripts'),
       destPath: join(options.destPath, 'javascripts'),
+      configPath: join(options.basePath, 'rollup.config.mjs'),
 
-      filePath (file) {
-        return join(file.dir, `${file.name}.min.js`)
+      // Rename with `*.min.js` extension
+      filePath ({ dir, name }) {
+        return join(dir, `${name}.min.js`)
       }
     })
   ),
 
   // Build JSDoc for /docs/javascript
-  npm.script('build:jsdoc')
+  npm.script('build:jsdoc', [], options)
 )

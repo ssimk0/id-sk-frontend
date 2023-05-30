@@ -506,5 +506,5 @@ Tabs.prototype.getHref = function ($tab) {
   return hash
 };
 
-export default Tabs;
-//# sourceMappingURL=components/tabs/tabs.mjs.map
+export { Tabs as default };
+//# sourceMappingURL=tabs.mjs.map

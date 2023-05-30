@@ -1,10 +1,10 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
     typeof define === 'function' && define.amd ? define('GOVUKFrontend.SkipLink', factory) :
-    (global.GOVUKFrontend = global.GOVUKFrontend || {}, global.GOVUKFrontend.SkipLink = factory());
-}(this, (function () { 'use strict';
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, (global.GOVUKFrontend = global.GOVUKFrontend || {}, global.GOVUKFrontend.SkipLink = factory()));
+})(this, (function () { 'use strict';
 
-    (function (undefined) {
+    (function (undefined$1) {
 
         // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/master/packages/polyfill-library/polyfills/DOMTokenList/detect.js
         var detect = (
@@ -187,7 +187,7 @@
                   preop.apply(that, [token]);
 
                   /** Token state's being forced. */
-                  if (undefined !== force) {
+                  if (undefined$1 !== force) {
                     if (force) {
                       that.add(token);
                       return true;
@@ -223,7 +223,7 @@
             if (!e.classList.contains('x')) return;
             e.classList.constructor.prototype.toggle = function toggle(token /*, force*/) {
               var force = arguments[1];
-              if (force === undefined) {
+              if (force === undefined$1) {
                 var add = !this.contains(token);
                 this[add ? 'add' : 'remove'](token);
                 return add;
@@ -272,7 +272,7 @@
 
     }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
-    (function(undefined) {
+    (function(undefined$1) {
 
         // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/8717a9e04ac7aff99b4980fbedead98036b0929a/packages/polyfill-library/polyfills/Element/prototype/classList/detect.js
         var detect = (
@@ -478,5 +478,5 @@
 
     return SkipLink;
 
-})));
+}));
 //# sourceMappingURL=skip-link.js.map

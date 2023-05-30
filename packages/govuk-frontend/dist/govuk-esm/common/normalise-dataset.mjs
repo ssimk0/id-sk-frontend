@@ -57,5 +57,5 @@ function normaliseDataset (dataset) {
   return out
 }
 
-export { normaliseString, normaliseDataset };
-//# sourceMappingURL=common/normalise-dataset.mjs.map
+export { normaliseDataset, normaliseString };
+//# sourceMappingURL=normalise-dataset.mjs.map

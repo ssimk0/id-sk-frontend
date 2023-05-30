@@ -48,5 +48,5 @@ IdskSearchComponent.prototype.handleSearchInput = function (e) {
   }
 };
 
-export default IdskSearchComponent;
-//# sourceMappingURL=components/idsk-search-component/idsk-search-component.mjs.map
+export { IdskSearchComponent as default };
+//# sourceMappingURL=idsk-search-component.mjs.map

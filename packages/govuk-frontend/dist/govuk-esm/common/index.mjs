@@ -152,7 +152,7 @@ function extractConfigByNamespace (configObject, namespace) {
 /**
  * Toggle class
  *
- * @param {object} node - element
+ * @param {Element | HTMLElement} node - element
  * @param {string} className - to toggle
  */
 function toggleClass (node, className) {
@@ -167,5 +167,5 @@ function toggleClass (node, className) {
   }
 }
 
-export { generateUniqueID, mergeConfigs, extractConfigByNamespace, toggleClass };
-//# sourceMappingURL=common/index.mjs.map
+export { extractConfigByNamespace, generateUniqueID, mergeConfigs, toggleClass };
+//# sourceMappingURL=index.mjs.map

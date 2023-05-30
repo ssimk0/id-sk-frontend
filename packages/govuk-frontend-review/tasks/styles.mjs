@@ -12,15 +12,19 @@ import gulp from 'gulp'
 export const compile = (options) => gulp.series(
   task.name('compile:scss', () =>
     styles.compile('**/[!_]*.scss', {
+      ...options,
+
       srcPath: join(options.srcPath, 'stylesheets'),
       destPath: join(options.destPath, 'stylesheets'),
+      configPath: join(options.basePath, 'postcss.config.mjs'),
 
-      filePath (file) {
-        return join(file.dir, `${file.name}.min.css`)
+      // Rename with `*.min.css` extension
+      filePath ({ dir, name }) {
+        return join(dir, `${name}.min.css`)
       }
     })
   ),
 
   // Build SassDoc for /docs/sass
-  npm.script('build:sassdoc')
+  npm.script('build:sassdoc', [], options)
 )

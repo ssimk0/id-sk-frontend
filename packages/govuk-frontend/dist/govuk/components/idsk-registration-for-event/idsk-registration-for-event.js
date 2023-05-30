@@ -1,8 +1,8 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define('GOVUKFrontend.IdskRegistrationForEvent', factory) :
-  (global.GOVUKFrontend = global.GOVUKFrontend || {}, global.GOVUKFrontend.IdskRegistrationForEvent = factory());
-}(this, (function () { 'use strict';
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, (global.GOVUKFrontend = global.GOVUKFrontend || {}, global.GOVUKFrontend.IdskRegistrationForEvent = factory()));
+})(this, (function () { 'use strict';
 
   /* eslint-disable */
   /* eslint-disable es-x/no-function-prototype-bind -- Polyfill imported */
@@ -83,5 +83,5 @@
 
   return IdskRegistrationForEvent;
 
-})));
+}));
 //# sourceMappingURL=idsk-registration-for-event.js.map

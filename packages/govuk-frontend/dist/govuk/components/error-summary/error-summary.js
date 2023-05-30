@@ -1,8 +1,8 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define('GOVUKFrontend.ErrorSummary', factory) :
-  (global.GOVUKFrontend = global.GOVUKFrontend || {}, global.GOVUKFrontend.ErrorSummary = factory());
-}(this, (function () { 'use strict';
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, (global.GOVUKFrontend = global.GOVUKFrontend || {}, global.GOVUKFrontend.ErrorSummary = factory()));
+})(this, (function () { 'use strict';
 
   /**
    * Common helpers which do not require polyfill.
@@ -13,6 +13,7 @@
    *
    * @module common/index
    */
+
 
   /**
    * Config flattening function
@@ -151,7 +152,7 @@
     return out
   }
 
-  (function (undefined) {
+  (function (undefined$1) {
 
     // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/1f3c09b402f65bf6e393f933a15ba63f1b86ef1f/packages/polyfill-library/polyfills/Element/prototype/matches/detect.js
     var detect = (
@@ -176,7 +177,7 @@
 
   }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
-  (function(undefined) {
+  (function(undefined$1) {
 
     // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/1f3c09b402f65bf6e393f933a15ba63f1b86ef1f/packages/polyfill-library/polyfills/Element/prototype/closest/detect.js
     var detect = (
@@ -426,5 +427,5 @@
 
   return ErrorSummary;
 
-})));
+}));
 //# sourceMappingURL=error-summary.js.map

@@ -77,5 +77,5 @@ IdskSubscriptionForm.prototype.handleInput = function (e) {
   }
 };
 
-export default IdskSubscriptionForm;
-//# sourceMappingURL=components/idsk-subscription-form/idsk-subscription-form.mjs.map
+export { IdskSubscriptionForm as default };
+//# sourceMappingURL=idsk-subscription-form.mjs.map

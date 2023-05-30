@@ -1,10 +1,9 @@
-(function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory() :
+(function (factory) {
   typeof define === 'function' && define.amd ? define('GOVUKFrontend', factory) :
-  (factory());
-}(this, (function () { 'use strict';
+  factory();
+})((function () { 'use strict';
 
-  (function (undefined) {
+  (function (undefined$1) {
 
     // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/1f3c09b402f65bf6e393f933a15ba63f1b86ef1f/packages/polyfill-library/polyfills/Element/prototype/matches/detect.js
     var detect = (
@@ -29,7 +28,7 @@
 
   }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
-  (function(undefined) {
+  (function(undefined$1) {
 
     // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/1f3c09b402f65bf6e393f933a15ba63f1b86ef1f/packages/polyfill-library/polyfills/Element/prototype/closest/detect.js
     var detect = (
@@ -53,5 +52,5 @@
 
   }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
-})));
+}));
 //# sourceMappingURL=closest.js.map

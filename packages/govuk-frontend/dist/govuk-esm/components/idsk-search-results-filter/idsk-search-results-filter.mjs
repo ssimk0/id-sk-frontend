@@ -2,6 +2,7 @@ import { toggleClass } from '../../common/index.mjs';
 
 /* eslint-disable */
 
+
 /**
  * SearchResultsFilter component
  *
@@ -216,5 +217,5 @@ IdskSearchResultsFilter.prototype.handleClickLinkPanel = function (e) {
   }
 };
 
-export default IdskSearchResultsFilter;
-//# sourceMappingURL=components/idsk-search-results-filter/idsk-search-results-filter.mjs.map
+export { IdskSearchResultsFilter as default };
+//# sourceMappingURL=idsk-search-results-filter.mjs.map

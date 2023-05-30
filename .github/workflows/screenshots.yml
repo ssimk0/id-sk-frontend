@@ -14,8 +14,9 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      PERCY_PARALLEL_NONCE: ${{ github.run_id }}-${{ github.run_attempt }}
+      PERCY_POSTINSTALL_BROWSER: false
       PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+      PUPPETEER_SKIP_DOWNLOAD: true
 
     # Skip when secrets are unavailable on forks
     if: ${{ !github.event.pull_request.head.repo.fork }}
@@ -44,7 +45,4 @@ jobs:
         run: npm start --workspace govuk-frontend-review &
 
       - name: Send screenshots to Percy
-        run: npx percy exec --parallel -- npm run test:screenshots --workspace govuk-frontend-review
-
-      - name: Finalise Percy build
-        run: npx percy build:finalize
+        run: npx --workspace govuk-frontend-review percy exec -- npm run test:screenshots

@@ -17,7 +17,7 @@ import { assets } from './index.mjs'
  * Compile Sass to CSS task
  *
  * @param {string} pattern - Minimatch pattern
- * @param {AssetEntry[1]} [options] - Asset options
+ * @param {AssetEntry[1]} options - Asset options
  */
 export async function compile (pattern, options) {
   const modulePaths = await getListing(options.srcPath, pattern)
@@ -28,7 +28,7 @@ export async function compile (pattern, options) {
 
     await Promise.all(compileTasks)
   } catch (cause) {
-    throw new PluginError('compile:scss', cause)
+    throw new PluginError('shared/tasks/styles', cause)
   }
 }
 
@@ -37,7 +37,7 @@ export async function compile (pattern, options) {
  *
  * @param {AssetEntry} assetEntry - Asset entry
  */
-export async function compileStylesheet ([modulePath, { srcPath, destPath, filePath }]) {
+export async function compileStylesheet ([modulePath, { configPath, srcPath, destPath, filePath }]) {
   const moduleSrcPath = join(srcPath, modulePath)
   const moduleDestPath = join(destPath, filePath ? filePath(parse(modulePath)) : modulePath)
 
@@ -79,8 +79,7 @@ export async function compileStylesheet ([modulePath, { srcPath, destPath, fileP
 
       // Resolve @imports via
       loadPaths: [
-        packageNameToPath('govuk-frontend', 'src'),
-        packageNameToPath('govuk_frontend_toolkit', 'stylesheets'),
+        packageNameToPath('govuk-frontend', 'dist'),
         join(paths.root, 'node_modules')
       ],
 
@@ -106,7 +105,7 @@ export async function compileStylesheet ([modulePath, { srcPath, destPath, fileP
   }
 
   // Locate PostCSS config
-  const config = await postcssrc(options)
+  const config = await postcssrc(options, configPath)
 
   // Transform with PostCSS
   const result = await postcss(config.plugins)

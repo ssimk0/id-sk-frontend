@@ -91,5 +91,5 @@ NotificationBanner.prototype.setFocus = function () {
  *   component will not be focused on page load, regardless of this option.
  */
 
-export default NotificationBanner;
-//# sourceMappingURL=components/notification-banner/notification-banner.mjs.map
+export { NotificationBanner as default };
+//# sourceMappingURL=notification-banner.mjs.map

@@ -2,6 +2,7 @@ import { toggleClass } from '../../common/index.mjs';
 
 /* eslint-disable */
 
+
 /**
  * CustomerSurveys Component
  */
@@ -343,5 +344,5 @@ IdskCustomerSurveys.prototype.handleNextButtonClick = function (e) {
   }
 };
 
-export default IdskCustomerSurveys;
-//# sourceMappingURL=components/idsk-customer-surveys/idsk-customer-surveys.mjs.map
+export { IdskCustomerSurveys as default };
+//# sourceMappingURL=idsk-customer-surveys.mjs.map

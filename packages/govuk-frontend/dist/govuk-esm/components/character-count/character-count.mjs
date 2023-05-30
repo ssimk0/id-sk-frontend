@@ -1,5 +1,5 @@
 import { closestAttributeValue } from '../../common/closest-attribute-value.mjs';
-import { extractConfigByNamespace, mergeConfigs } from '../../common/index.mjs';
+import { mergeConfigs, extractConfigByNamespace } from '../../common/index.mjs';
 import { normaliseDataset } from '../../common/normalise-dataset.mjs';
 import { I18n } from '../../i18n.mjs';
 import '../../vendor/polyfills/Element/prototype/classList.mjs';
@@ -506,5 +506,5 @@ CharacterCount.prototype.isOverThreshold = function () {
  * @typedef {import('../../i18n.mjs').TranslationPluralForms} TranslationPluralForms
  */
 
-export default CharacterCount;
-//# sourceMappingURL=components/character-count/character-count.mjs.map
+export { CharacterCount as default };
+//# sourceMappingURL=character-count.mjs.map

@@ -7,6 +7,7 @@ import { filterPath, getDirectories, getListing, mapPathTo } from 'govuk-fronten
 import { componentNameToClassName, componentPathToModuleName } from 'govuk-frontend-lib/names'
 
 describe('packages/govuk-frontend/dist/', () => {
+  let listingPackage
   let listingSource
   let listingDist
 
@@ -17,6 +18,7 @@ describe('packages/govuk-frontend/dist/', () => {
   let componentNames
 
   beforeAll(async () => {
+    listingPackage = await getListing(paths.package, '*')
     listingSource = await getListing(join(paths.package, 'src'))
     listingDist = await getListing(join(paths.package, 'dist'))
 
@@ -34,17 +36,16 @@ describe('packages/govuk-frontend/dist/', () => {
       '!**/*.test.*',
       '!**/__snapshots__/',
       '!**/__snapshots__/**',
-      '!**/tsconfig?(.build).json'
+      '!**/tsconfig?(.build).json',
+      '!README.md'
     ]
 
     // Build array of expected output files
     const listingExpected = listingSource
       .filter(filterPath(filterPatterns))
 
-      // Replaces GOV.UK Prototype kit config with JSON
-      .flatMap(mapPathTo(['**/govuk-prototype-kit.config.mjs'], ({ dir: requirePath, name }) => [
-        join(requirePath, '../', `${name}.json`)
-      ]))
+      // Removes GOV.UK Prototype kit config (moved to package top level)
+      .flatMap(mapPathTo(['**/govuk-prototype-kit.config.mjs'], () => []))
 
       // Replaces all source '*.mjs' files
       .flatMap(mapPathTo(['**/*.mjs'], ({ dir: requirePath, name }) => {
@@ -82,22 +83,25 @@ describe('packages/govuk-frontend/dist/', () => {
         join(requirePath, 'fixtures.json'),
         join(requirePath, 'macro-options.json')
       ]))
-
-      // Files already present in 'package/dist'
-      .concat(['package.json'])
       .sort()
 
     // Compare array of actual output files
     expect(listingDist).toEqual(listingExpected)
-  })
 
-  describe('README.md', () => {
-    it('is not overwritten', async () => {
-      const contents = await readFile(join(paths.package, 'dist/README.md'), 'utf8')
-
-      // Look for H1 matching 'GOV.UK Frontend' from existing README
-      expect(contents).toMatch(/^# GOV.UK Frontend/)
-    })
+    // Check top level package contents
+    expect(listingPackage).toEqual([
+      'README.md',
+      'govuk-prototype-kit.config.json',
+      'gulpfile.mjs',
+      'package.json',
+      'postcss.config.mjs',
+      'postcss.config.unit.test.mjs',
+      'rollup.esm.config.mjs',
+      'rollup.release.config.mjs',
+      'rollup.umd.config.mjs',
+      'tsconfig.build.json',
+      'tsconfig.json'
+    ])
   })
 
   describe('all.scss', () => {
@@ -206,7 +210,7 @@ describe('packages/govuk-frontend/dist/', () => {
         const moduleTextESM = await readFile(join(paths.package, 'dist/govuk-esm/components', modulePathESM), 'utf8')
 
         expect(moduleText).toContain(`typeof define === 'function' && define.amd ? define('${moduleName}', factory)`)
-        expect(moduleTextESM).toContain(`export default ${componentNameToClassName(componentName)}`)
+        expect(moduleTextESM).toContain(`export { ${componentNameToClassName(componentName)} as default }`)
       })
 
       // Check all component files

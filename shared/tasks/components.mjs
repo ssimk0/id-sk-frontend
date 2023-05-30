@@ -11,7 +11,7 @@ import { files } from './index.mjs'
  * Generate fixtures.json from component data
  *
  * @param {AssetEntry[0]} pattern - Path to ${componentName}.yaml
- * @param {AssetEntry[1]} options - Asset options
+ * @param {Pick<AssetEntry[1], "srcPath" | "destPath">} options - Asset options
  */
 export async function generateFixtures (pattern, { srcPath, destPath }) {
   const componentDataPaths = await getListing(srcPath, pattern)
@@ -22,7 +22,6 @@ export async function generateFixtures (pattern, { srcPath, destPath }) {
 
     // Write to destination
     await files.write(componentDataPath, {
-      srcPath,
       destPath,
 
       // Rename to fixtures.json
@@ -30,7 +29,7 @@ export async function generateFixtures (pattern, { srcPath, destPath }) {
         return join(dir, 'fixtures.json')
       },
 
-      // Replace contents with JSON
+      // Add fixtures as JSON (formatted)
       async fileContents () {
         return JSON.stringify(fixture, null, 4)
       }
@@ -44,7 +43,7 @@ export async function generateFixtures (pattern, { srcPath, destPath }) {
  * Generate macro-options.json from component data
  *
  * @param {AssetEntry[0]} pattern - Path to ${componentName}.yaml
- * @param {AssetEntry[1]} options - Asset options
+ * @param {Pick<AssetEntry[1], "srcPath" | "destPath">} options - Asset options
  */
 export async function generateMacroOptions (pattern, { srcPath, destPath }) {
   const componentDataPaths = await getListing(srcPath, pattern)
@@ -55,7 +54,6 @@ export async function generateMacroOptions (pattern, { srcPath, destPath }) {
 
     // Write to destination
     await files.write(componentDataPath, {
-      srcPath,
       destPath,
 
       // Rename to 'macro-options.json'
@@ -63,7 +61,7 @@ export async function generateMacroOptions (pattern, { srcPath, destPath }) {
         return join(dir, 'macro-options.json')
       },
 
-      // Replace contents with JSON
+      // Add macro options as JSON (formatted)
       async fileContents () {
         return JSON.stringify(macroOption, null, 4)
       }
@@ -80,6 +78,7 @@ export async function generateMacroOptions (pattern, { srcPath, destPath }) {
  * @returns {Promise<{ component: string; fixtures: { [key: string]: unknown }[] }>} Component fixtures object
  */
 async function generateFixture (componentDataPath) {
+  /** @type {ComponentData} */
   const json = await yaml.load(await readFile(componentDataPath, 'utf8'), { json: true })
 
   if (!json?.examples) {
@@ -100,9 +99,10 @@ async function generateFixture (componentDataPath) {
       hidden: Boolean(example.hidden),
 
       // Wait for render to complete
+      /** @type {string} */
       html: await new Promise((resolve, reject) => {
         return nunjucks.render(template, context, (error, result) => {
-          return error ? reject(error) : resolve(result.trim())
+          return error ? reject(error) : resolve(result?.trim() ?? '')
         })
       })
     }
@@ -118,9 +118,10 @@ async function generateFixture (componentDataPath) {
  * Macro options YAML to JSON
  *
  * @param {string} componentDataPath - Path to ${componentName}.yaml
- * @returns {Promise<{ [key: string]: unknown }>} Component macro options
+ * @returns {Promise<ComponentOption[] | undefined>} Component macro options
  */
 async function generateMacroOption (componentDataPath) {
+  /** @type {ComponentData} */
   const json = await yaml.load(await readFile(componentDataPath, 'utf8'), { json: true })
 
   if (!json?.params) {
@@ -132,4 +133,6 @@ async function generateMacroOption (componentDataPath) {
 
 /**
  * @typedef {import('./assets.mjs').AssetEntry} AssetEntry
+ * @typedef {import('govuk-frontend-lib/files').ComponentData} ComponentData
+ * @typedef {import('govuk-frontend-lib/files').ComponentOption} ComponentOption
  */

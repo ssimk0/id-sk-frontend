@@ -152,7 +152,7 @@ export function extractConfigByNamespace (configObject, namespace) {
 /**
  * Toggle class
  *
- * @param {object} node - element
+ * @param {Element | HTMLElement} node - element
  * @param {string} className - to toggle
  */
 export function toggleClass (node, className) {

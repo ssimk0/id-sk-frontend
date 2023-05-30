@@ -339,5 +339,5 @@ IdskTabs.prototype.getHref = function ($tab) {
   return hash
 };
 
-export default IdskTabs;
-//# sourceMappingURL=components/idsk-tabs/idsk-tabs.mjs.map
+export { IdskTabs as default };
+//# sourceMappingURL=idsk-tabs.mjs.map

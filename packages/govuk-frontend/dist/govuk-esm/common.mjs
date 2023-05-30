@@ -1,4 +1,2 @@
-export { generateUniqueID, mergeConfigs, extractConfigByNamespace, toggleClass } from './common/index.mjs';
-
-// Implementation of common function is gathered in the `common` folder
+export { extractConfigByNamespace, generateUniqueID, mergeConfigs, toggleClass } from './common/index.mjs';
 //# sourceMappingURL=common.mjs.map

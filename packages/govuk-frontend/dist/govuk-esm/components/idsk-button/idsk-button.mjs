@@ -71,5 +71,5 @@ IdskButton.prototype.init = function () {
   this.$module.addEventListener('click', this.debounce);
 };
 
-export default IdskButton;
-//# sourceMappingURL=components/idsk-button/idsk-button.mjs.map
+export { IdskButton as default };
+//# sourceMappingURL=idsk-button.mjs.map

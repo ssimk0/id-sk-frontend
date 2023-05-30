@@ -151,5 +151,5 @@ Radios.prototype.handleClick = function (event) {
   });
 };
 
-export default Radios;
-//# sourceMappingURL=components/radios/radios.mjs.map
+export { Radios as default };
+//# sourceMappingURL=radios.mjs.map

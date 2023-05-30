@@ -14,6 +14,7 @@ import '../../vendor/polyfills/Element/prototype/classList.mjs';
 
 */
 
+
 /**
  * Stepper component
  *
@@ -414,5 +415,5 @@ IdskStepper.prototype.setInitialState = function ($section) {
   }
 };
 
-export default IdskStepper;
-//# sourceMappingURL=components/idsk-stepper/idsk-stepper.mjs.map
+export { IdskStepper as default };
+//# sourceMappingURL=idsk-stepper.mjs.map

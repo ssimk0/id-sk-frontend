@@ -98,5 +98,5 @@ IdskFeedback.prototype.handleStatusOfCharacterCountButton = function (e) {
   }, 300);
 };
 
-export default IdskFeedback;
-//# sourceMappingURL=components/idsk-feedback/idsk-feedback.mjs.map
+export { IdskFeedback as default };
+//# sourceMappingURL=idsk-feedback.mjs.map

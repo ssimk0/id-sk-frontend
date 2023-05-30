@@ -1,8 +1,8 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define('GOVUKFrontend.IdskCrossroad', factory) :
-  (global.GOVUKFrontend = global.GOVUKFrontend || {}, global.GOVUKFrontend.IdskCrossroad = factory());
-}(this, (function () { 'use strict';
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, (global.GOVUKFrontend = global.GOVUKFrontend || {}, global.GOVUKFrontend.IdskCrossroad = factory()));
+})(this, (function () { 'use strict';
 
   /**
    * Common helpers which do not require polyfill.
@@ -14,10 +14,11 @@
    * @module common/index
    */
 
+
   /**
    * Toggle class
    *
-   * @param {object} node - element
+   * @param {Element | HTMLElement} node - element
    * @param {string} className - to toggle
    */
   function toggleClass (node, className) {
@@ -32,9 +33,8 @@
     }
   }
 
-  // Implementation of common function is gathered in the `common` folder
-
   /* eslint-disable */
+
 
   /**
    * Crossroad Component
@@ -146,5 +146,5 @@
 
   return IdskCrossroad;
 
-})));
+}));
 //# sourceMappingURL=idsk-crossroad.js.map

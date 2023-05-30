@@ -1,4 +1,4 @@
-(function (undefined) {
+(function (undefined$1) {
 
     // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/master/packages/polyfill-library/polyfills/DOMTokenList/detect.js
     var detect = (
@@ -181,7 +181,7 @@
               preop.apply(that, [token]);
 
               /** Token state's being forced. */
-              if (undefined !== force) {
+              if (undefined$1 !== force) {
                 if (force) {
                   that.add(token);
                   return true;
@@ -217,7 +217,7 @@
         if (!e.classList.contains('x')) return;
         e.classList.constructor.prototype.toggle = function toggle(token /*, force*/) {
           var force = arguments[1];
-          if (force === undefined) {
+          if (force === undefined$1) {
             var add = !this.contains(token);
             this[add ? 'add' : 'remove'](token);
             return add;
@@ -265,4 +265,4 @@
     }(this));
 
 }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
-//# sourceMappingURL=vendor/polyfills/DOMTokenList.mjs.map
+//# sourceMappingURL=DOMTokenList.mjs.map

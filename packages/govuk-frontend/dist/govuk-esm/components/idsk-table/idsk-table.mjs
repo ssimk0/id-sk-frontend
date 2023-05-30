@@ -2,6 +2,7 @@ import '../../vendor/polyfills/Element/prototype/classList.mjs';
 
 /* eslint-disable */
 
+
 /**
  * IDSK Table
  *
@@ -53,5 +54,5 @@ IdskTable.prototype.printTable = function () {
   window.print();
 };
 
-export default IdskTable;
-//# sourceMappingURL=components/idsk-table/idsk-table.mjs.map
+export { IdskTable as default };
+//# sourceMappingURL=idsk-table.mjs.map

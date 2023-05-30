@@ -1,8 +1,8 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define('GOVUKFrontend', ['exports'], factory) :
-  (factory((global.GOVUKFrontend = {})));
-}(this, (function (exports) { 'use strict';
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.GOVUKFrontend = {}));
+})(this, (function (exports) { 'use strict';
 
   /**
    * Normalise string
@@ -63,10 +63,8 @@
     return out
   }
 
-  exports.normaliseString = normaliseString;
   exports.normaliseDataset = normaliseDataset;
+  exports.normaliseString = normaliseString;
 
-  Object.defineProperty(exports, '__esModule', { value: true });
-
-})));
+}));
 //# sourceMappingURL=normalise-dataset.js.map

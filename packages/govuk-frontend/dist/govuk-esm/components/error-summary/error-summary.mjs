@@ -226,5 +226,5 @@ ErrorSummary.prototype.getAssociatedLegendOrLabel = function ($input) {
  *   summary will not be focussed when the page loads.
  */
 
-export default ErrorSummary;
-//# sourceMappingURL=components/error-summary/error-summary.mjs.map
+export { ErrorSummary as default };
+//# sourceMappingURL=error-summary.mjs.map

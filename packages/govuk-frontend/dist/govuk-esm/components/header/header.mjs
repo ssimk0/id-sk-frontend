@@ -118,5 +118,5 @@ Header.prototype.handleMenuButtonClick = function () {
   this.syncState();
 };
 
-export default Header;
-//# sourceMappingURL=components/header/header.mjs.map
+export { Header as default };
+//# sourceMappingURL=header.mjs.map

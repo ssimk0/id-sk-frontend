@@ -1,6 +1,6 @@
 import '../../DOMTokenList.mjs';
 
-(function(undefined) {
+(function(undefined$1) {
 
     // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/8717a9e04ac7aff99b4980fbedead98036b0929a/packages/polyfill-library/polyfills/Element/prototype/classList/detect.js
     var detect = (
@@ -92,4 +92,4 @@ import '../../DOMTokenList.mjs';
     }(this));
 
 }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
-//# sourceMappingURL=vendor/polyfills/Element/prototype/classList.mjs.map
+//# sourceMappingURL=classList.mjs.map

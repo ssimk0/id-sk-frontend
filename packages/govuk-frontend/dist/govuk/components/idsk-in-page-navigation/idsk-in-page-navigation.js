@@ -1,8 +1,8 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define('GOVUKFrontend.IdskInPageNavigation', factory) :
-  (global.GOVUKFrontend = global.GOVUKFrontend || {}, global.GOVUKFrontend.IdskInPageNavigation = factory());
-}(this, (function () { 'use strict';
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, (global.GOVUKFrontend = global.GOVUKFrontend || {}, global.GOVUKFrontend.IdskInPageNavigation = factory()));
+})(this, (function () { 'use strict';
 
   /* eslint-disable */
 
@@ -216,5 +216,5 @@
 
   return IdskInPageNavigation;
 
-})));
+}));
 //# sourceMappingURL=idsk-in-page-navigation.js.map

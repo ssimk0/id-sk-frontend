@@ -111,5 +111,5 @@ SkipLink.prototype.getFragmentFromUrl = function () {
   return this.$module.hash.split('#').pop()
 };
 
-export default SkipLink;
-//# sourceMappingURL=components/skip-link/skip-link.mjs.map
+export { SkipLink as default };
+//# sourceMappingURL=skip-link.mjs.map

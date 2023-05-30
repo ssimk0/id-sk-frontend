@@ -75,5 +75,5 @@ IdskRegistrationForEvent.prototype.handleSubmitClick = function (e) {
   }
 };
 
-export default IdskRegistrationForEvent;
-//# sourceMappingURL=components/idsk-registration-for-event/idsk-registration-for-event.mjs.map
+export { IdskRegistrationForEvent as default };
+//# sourceMappingURL=idsk-registration-for-event.mjs.map

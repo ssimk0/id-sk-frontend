@@ -1,8 +1,8 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define('GOVUKFrontend.IdskInteractiveMap', factory) :
-  (global.GOVUKFrontend = global.GOVUKFrontend || {}, global.GOVUKFrontend.IdskInteractiveMap = factory());
-}(this, (function () { 'use strict';
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, (global.GOVUKFrontend = global.GOVUKFrontend || {}, global.GOVUKFrontend.IdskInteractiveMap = factory()));
+})(this, (function () { 'use strict';
 
   /* eslint-disable */
 
@@ -132,5 +132,5 @@
 
   return IdskInteractiveMap;
 
-})));
+}));
 //# sourceMappingURL=idsk-interactive-map.js.map

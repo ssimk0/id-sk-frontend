@@ -113,5 +113,5 @@ Button.prototype.debounce = function (event) {
  *   clicks on submit buttons from submitting forms multiple times.
  */
 
-export default Button;
-//# sourceMappingURL=components/button/button.mjs.map
+export { Button as default };
+//# sourceMappingURL=button.mjs.map

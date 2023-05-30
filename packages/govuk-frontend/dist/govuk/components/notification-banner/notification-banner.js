@@ -1,8 +1,8 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define('GOVUKFrontend.NotificationBanner', factory) :
-  (global.GOVUKFrontend = global.GOVUKFrontend || {}, global.GOVUKFrontend.NotificationBanner = factory());
-}(this, (function () { 'use strict';
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, (global.GOVUKFrontend = global.GOVUKFrontend || {}, global.GOVUKFrontend.NotificationBanner = factory()));
+})(this, (function () { 'use strict';
 
   /**
    * Common helpers which do not require polyfill.
@@ -13,6 +13,7 @@
    *
    * @module common/index
    */
+
 
   /**
    * Config flattening function
@@ -243,5 +244,5 @@
 
   return NotificationBanner;
 
-})));
+}));
 //# sourceMappingURL=notification-banner.js.map

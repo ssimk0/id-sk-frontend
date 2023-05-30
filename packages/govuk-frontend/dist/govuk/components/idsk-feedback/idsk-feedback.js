@@ -1,8 +1,8 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define('GOVUKFrontend.IdskFeedback', factory) :
-  (global.GOVUKFrontend = global.GOVUKFrontend || {}, global.GOVUKFrontend.IdskFeedback = factory());
-}(this, (function () { 'use strict';
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, (global.GOVUKFrontend = global.GOVUKFrontend || {}, global.GOVUKFrontend.IdskFeedback = factory()));
+})(this, (function () { 'use strict';
 
   /* eslint-disable */
 
@@ -106,5 +106,5 @@
 
   return IdskFeedback;
 
-})));
+}));
 //# sourceMappingURL=idsk-feedback.js.map

@@ -620,5 +620,5 @@ Accordion.prototype.getButtonPunctuationEl = function () {
  *   'Show' button's accessible name when a section is expanded.
  */
 
-export default Accordion;
-//# sourceMappingURL=components/accordion/accordion.mjs.map
+export { Accordion as default };
+//# sourceMappingURL=accordion.mjs.map

@@ -208,5 +208,5 @@ IdskInPageNavigation.prototype.changeCurrentLink = function (el) {
   });
 };
 
-export default IdskInPageNavigation;
-//# sourceMappingURL=components/idsk-in-page-navigation/idsk-in-page-navigation.mjs.map
+export { IdskInPageNavigation as default };
+//# sourceMappingURL=idsk-in-page-navigation.mjs.map

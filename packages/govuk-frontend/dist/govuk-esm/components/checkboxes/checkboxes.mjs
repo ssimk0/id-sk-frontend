@@ -203,5 +203,5 @@ Checkboxes.prototype.handleClick = function (event) {
   }
 };
 
-export default Checkboxes;
-//# sourceMappingURL=components/checkboxes/checkboxes.mjs.map
+export { Checkboxes as default };
+//# sourceMappingURL=checkboxes.mjs.map
